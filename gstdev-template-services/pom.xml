@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <name>GstDev Template Project :: Services</name>
+
+  <artifactId>gstdev-template-services</artifactId>
+  <packaging>pom</packaging>
+
+  <parent>
+    <groupId>com.gstdev.template</groupId>
+    <artifactId>gstdev-template-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../gstdev-template-parent</relativePath>
+  </parent>
+
+  <modules>
+    <module>gstdev-template-service-identity</module>
+    <module>gstdev-template-service-system</module>
+    <module>gstdev-template-service-storage</module>
+    <module>gstdev-template-service-demo</module>
+    <module>gstdev-template-service-email</module>
+  </modules>
+</project>

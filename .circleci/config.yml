@@ -1,0 +1,73 @@
+# Java Maven CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+
+version: 2
+jobs:
+  build_test_api:
+    docker:
+      - image: cimg/openjdk:17.0
+    working_directory: /home/circleci/verity/api
+    steps:
+      - checkout:
+          path: /home/circleci/verity/api
+      - setup_remote_docker:
+          version: 17.05.0-ce
+
+      - run: mvn install -s settings.xml # run the actual tests
+
+      - run:
+          name: Install awscli
+          command: |
+            sudo apt update
+            sudo apt install python3-venv python3-pip
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install awscli
+
+      - run:
+          name: Build dev api
+          command: |
+            mvn install -s settings.xml
+            mvn clean package
+            eval "docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/gateway:build-$CIRCLE_BUILD_NUM ./gstdev-template-gateway"
+            eval "docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/identity:build-$CIRCLE_BUILD_NUM ./gstdev-template-services/gstdev-template-service-identity"
+            eval "docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/system:build-$CIRCLE_BUILD_NUM ./gstdev-template-services/gstdev-template-service-system"
+            eval "docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/tenant:build-$CIRCLE_BUILD_NUM ./gstdev-template-services/gstdev-template-service-tenant"
+            eval "docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/storage:build-$CIRCLE_BUILD_NUM ./gstdev-template-services/gstdev-template-service-storage"
+            eval "docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/email:build-$CIRCLE_BUILD_NUM ./gstdev-template-services/gstdev-template-service-email"
+
+      - run:
+          name: Push dev docker images
+          command: |
+            . venv/bin/activate
+            eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+            eval "docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/gateway:build-$CIRCLE_BUILD_NUM"
+            eval "docker tag $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/gateway:build-$CIRCLE_BUILD_NUM $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/gateway:latest"
+            eval "docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/gateway:latest"
+            eval "docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/identity:build-$CIRCLE_BUILD_NUM"
+            eval "docker tag $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/identity:build-$CIRCLE_BUILD_NUM $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/identity:latest"
+            eval "docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/identity:latest"
+            eval "docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/system:build-$CIRCLE_BUILD_NUM"
+            eval "docker tag $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/system:build-$CIRCLE_BUILD_NUM $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/system:latest"
+            eval "docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/system:latest"
+            eval "docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/tenant:build-$CIRCLE_BUILD_NUM"
+            eval "docker tag $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/tenant:build-$CIRCLE_BUILD_NUM $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/tenant:latest"
+            eval "docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/tenant:latest"
+            eval "docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/storage:build-$CIRCLE_BUILD_NUM"
+            eval "docker tag $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/storage:build-$CIRCLE_BUILD_NUM $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/storage:latest"
+            eval "docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/storage:latest"
+            eval "docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/email:build-$CIRCLE_BUILD_NUM"
+            eval "docker tag $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/email:build-$CIRCLE_BUILD_NUM $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/email:latest"
+            eval "docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/verity/test/api/email:latest"
+
+workflows:
+  version: 2
+  build_test:
+    jobs:
+      - build_test_api:
+          filters:
+            branches:
+              only:
+                - test

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <name>GstDev Project Template :: Project</name>
+  <description>${project.name}</description>
+
+  <developers>
+    <developer>
+      <id>bijiasuo2006</id>
+      <name>Yongjie Liu</name>
+      <organization>GstDev</organization>
+      <organizationUrl>http://gstdev.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>Apache v2</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <url/>
+  </scm>
+
+  <organization>
+    <name>GstDev</name>
+    <url>http://gstdev.com</url>
+  </organization>
+
+  <groupId>com.gstdev.template</groupId>
+  <artifactId>gstdev-template-project</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <parent>
+    <groupId>com.gstdev.cloud</groupId>
+    <artifactId>gstdev-cloud-project</artifactId>
+    <version>2022.0.0-SNAPSHOT</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+
+  <properties>
+    <gstdev-template.version>1.0.0-SNAPSHOT</gstdev-template.version>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <java.release>17</java.release>
+    <java.version>1.${java.release}</java.version>
+  </properties>
+
+  <modules>
+    <module>gstdev-template-dependencies</module>
+    <module>gstdev-template-parent</module>
+    <module>gstdev-template-common</module>
+    <module>gstdev-template-autoconfigure</module>
+    <module>gstdev-template-gateway</module>
+    <module>gstdev-template-services</module>
+  </modules>
+
+  <!--  <distributionManagement>-->
+  <!--    &lt;!&ndash;正式版本&ndash;&gt;-->
+  <!--    <repository>-->
+  <!--      &lt;!&ndash;必须与 settings.xml 的 id 一致&ndash;&gt;-->
+  <!--      <id>riching-repository-maven</id>-->
+  <!--      <name>Riching Maven Releases Repository</name>-->
+  <!--      <url>https://nexus.richingcloud.com/repository/maven-releases/</url>-->
+  <!--    </repository>-->
+  <!--    &lt;!&ndash;快照&ndash;&gt;-->
+  <!--    <snapshotRepository>-->
+  <!--      <id>riching-repository-maven-snapshots</id>-->
+  <!--      <name>Riching Maven Snapshot Repository</name>-->
+  <!--      <url>https://nexus.richingcloud.com/repository/maven-snapshots/</url>-->
+  <!--    </snapshotRepository>-->
+  <!--  </distributionManagement>-->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <excludes>
+            <exclude>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+            </exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <source>17</source>
+          <target>17</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <!--仓库路径 -->
+  <repositories>
+    <repository>
+      <id>repo-maven</id>
+      <name>Repo Apache</name>
+      <url>https://repo.maven.apache.org/maven2/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+
+    <repository>
+      <id>riching-maven</id>
+      <name>Public Repository</name>
+      <url>https://nexus.richingcloud.com/repository/maven-public/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>https://repo.spring.io/milestone</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+
+  </repositories>
+
+  <distributionManagement>
+    <!--正式版本-->
+    <repository>
+      <!--必须与 settings.xml 的 id 一致-->
+      <id>riching-repository-maven</id>
+      <name>Riching Maven Releases Repository</name>
+      <url>https://nexus.richingcloud.com/repository/maven-releases/</url>
+    </repository>
+    <!--快照-->
+    <snapshotRepository>
+      <id>riching-repository-maven-snapshots</id>
+      <name>Riching Maven Snapshot Repository</name>
+      <url>https://nexus.richingcloud.com/repository/maven-snapshots/</url>
+    </snapshotRepository>
+
+  </distributionManagement>
+</project>

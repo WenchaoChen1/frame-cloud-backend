@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>gstdev-template-services</artifactId>
+    <groupId>com.gstdev.template</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <name>template Cloud :: Service :: demo</name>
+  <artifactId>gstdev-template-service-demo</artifactId>
+  <groupId>com.gstdev.template</groupId>
+
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-commons</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-starter-swagger</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-starter-data-jpa</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.gstdev.template</groupId>
+      <artifactId>gstdev-template-common</artifactId>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-bootstrap</artifactId>
+    </dependency>
+    <!-- 导入openFeign的依赖 -->
+    <!--    <dependency>-->
+    <!--      <groupId>org.springframework.cloud</groupId>-->
+    <!--      <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+    <!--    </dependency>-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+    </dependency>
+
+    <!--nacos -->
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+    <!-- MapStruct related dependencies -->
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct-processor</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>

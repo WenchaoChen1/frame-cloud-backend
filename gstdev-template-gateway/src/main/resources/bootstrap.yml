@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: gstdev-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_DISCOVERY_HOST:127.0.0.1}:${NACOS_DISCOVERY_PORT:8848}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        group: ${NACOS_CONFIG_GROUP:dev}
+
