@@ -21,7 +21,7 @@
     <hikaricp.version>3.4.5</hikaricp.version>
     <frame-template.version>1.0.0-SNAPSHOT</frame-template.version>
     <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
-    <org.mapstruct.version>42.2.9</org.mapstruct.version>
+    <org.postgresql.version>42.2.9</org.postgresql.version>
 <!--    <mysql-connector-java.version>8.0.19</mysql-connector-java.version>-->
   </properties>
 
