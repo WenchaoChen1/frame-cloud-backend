@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <name>Frame Template Project :: Dependencies</name>
+  <description>${project.name}</description>
+  <artifactId>frame-template-dependencies</artifactId>
+  <packaging>pom</packaging>
+  <!--  <groupId>com.frame.template</groupId>-->
+
+  <parent>
+    <groupId>com.frame.template</groupId>
+    <artifactId>frame-template-project</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <properties>
+    <gstdev-cloud.version>2022.0.2-SNAPSHOT</gstdev-cloud.version>
+    <hikaricp.version>3.4.5</hikaricp.version>
+    <frame-template.version>1.0.0-SNAPSHOT</frame-template.version>
+    <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+    <org.mapstruct.version>42.2.9</org.mapstruct.version>
+<!--    <mysql-connector-java.version>8.0.19</mysql-connector-java.version>-->
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- cloud 底层库依赖 -->
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starter-web</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starter-data-jpa</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-service-oauth2</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starter-swagger</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starter-storage-aws</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starter-data-commons</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+
+      <!--当前库-->
+      <dependency>
+        <groupId>com.frame.template</groupId>
+        <artifactId>frame-template-autoconfigure</artifactId>
+        <version>${frame-template.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.frame.template</groupId>
+        <artifactId>frame-template-common</artifactId>
+        <version>${frame-template.version}</version>
+      </dependency>
+
+      <!-- Database related dependencies -->
+      <dependency>
+        <groupId>com.zaxxer</groupId>
+        <artifactId>HikariCP</artifactId>
+        <version>${hikaricp.version}</version>
+      </dependency>
+
+<!--      &lt;!&ndash; DB related dependencies &ndash;&gt;-->
+<!--      <dependency>-->
+<!--        <groupId>mysql</groupId>-->
+<!--        <artifactId>mysql-connector-java</artifactId>-->
+<!--        <version>${mysql-connector-java.version}</version>-->
+<!--      </dependency>-->
+
+      <!-- postgresq-->
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>${org.postgresql.version}</version>
+      </dependency>
+
+      <!-- GstDev Cloud related dependencies -->
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-dependencies</artifactId>
+        <version>${gstdev-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- MapStruct related dependencies -->
+      <dependency>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct</artifactId>
+        <version>${org.mapstruct.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct-processor</artifactId>
+        <version>${org.mapstruct.version}</version>
+      </dependency>
+
+
+    </dependencies>
+  </dependencyManagement>
+</project>

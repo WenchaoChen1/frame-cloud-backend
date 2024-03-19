@@ -1,0 +1,104 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_DISCOVERY_HOST:127.0.0.1}:${NACOS_DISCOVERY_PORT:8848}
+        namespace: ${NACOS_DISCOVERY_NAMESPACE:frame-cloud}
+        group: ${NACOS_DISCOVERY_GROUP:dev}
+      config:
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        group: ${NACOS_CONFIG_GROUP:dev}
+        #指定共享配置，且支持动态刷新
+        extension-configs:
+          - data-id: common-config.yml
+            group: ${NACOS_CONFIG_GROUP:dev}
+            refresh: true
+  application:
+    name: gstdev-identity
+
+
+
+  #  main:
+  #    allow-bean-definition-overriding: true # 意思是后来发现的bean会覆盖之前相同名称的bean
+
+#
+#server:
+#  port: 5213
+#spring:
+#  mvc:
+#    throw-exception-if-no-handler-found: true
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
+#  web:
+#    resources:
+#      add-mappings: false
+#  freemarker:
+#    check-template-location: false
+#  application:
+#    name: gstdev-identity
+#  datasource:
+#    type: com.zaxxer.hikari.HikariDataSource
+#    hikari:
+#      connection-timeout: 30000
+#      minimum-idle: 5
+#      maximum-pool-size: 100
+#      idle-timeout: 300000
+#      max-lifetime: 1200000
+#      auto-commit: true
+#    url: jdbc:postgresql://ci
+#    username: ci
+#    password: B
+#    #driver-class-name: org.postgresql.Driver
+#
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        enable_lazy_load_no_trans: true
+#        jdbc.time_zone: UTC
+#        hbm2ddl.auto: update
+#    open-in-view: false
+#    show-sql: true
+#  data:
+#    redis:
+#      repositories:
+#        enabled: false
+#  redis:
+#    database: 0
+#    host: 127.0.0.1
+#    port: 6379
+#    password:
+#    timeout: 5000
+#  jta:
+#    atomikos:
+#      datasource:
+#        borrow-connection-timeout: 10000
+#        max-pool-size: 100
+#
+#application:
+#  security:
+#    authentication:
+#      jwt:
+#        secret: "#9m7!CnPhTm8!pjzVoikJ30i2o*^mLL^"
+#        access-token-validity-seconds: 25920000
+#        refresh-token-validity-seconds: 25920000
+#    client-authorization:
+#      service-system:
+#        secret: ${CIOAAS_SERVICE_SYSTEM_CLIENT_SECRET:black123}
+#gstdev:
+#  cloud:
+#    security:
+#      oauth2:
+#        issuer-uri: http://127.0.0.1:5213
+#        whitelist:
+#          - "/asd/asd"
+#          - "/bbb/bbb"
+#          - "/bbb/ccc"
+#          - "/oauth2/token"
+#          - "/oauth/token"
+#          - "/login"
+#          - "/doLogin"
+#          - "/oauth/authorize"
+#          - "/logout"

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <name>Frame Template Project :: Services</name>
+  <artifactId>frame-template-services</artifactId>
+  <packaging>pom</packaging>
+
+  <parent>
+    <groupId>com.frame.template</groupId>
+    <artifactId>frame-template-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../frame-template-parent</relativePath>
+  </parent>
+
+  <modules>
+    <module>frame-template-service-identity</module>
+    <module>frame-template-service-system</module>
+    <module>frame-template-service-storage</module>
+    <module>frame-template-service-demo</module>
+    <module>frame-template-service-email</module>
+  </modules>
+</project>

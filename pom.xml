@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
-  <name>GstDev Project Template :: Project</name>
+  <name>Frame Project Template :: Project</name>
   <description>${project.name}</description>
+  <groupId>com.frame.template</groupId>
+  <artifactId>frame-template-project</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
   <developers>
-    <developer>
-      <id>bijiasuo2006</id>
-      <name>Yongjie Liu</name>
-      <organization>GstDev</organization>
-      <organizationUrl>http://gstdev.com</organizationUrl>
-    </developer>
+<!--    <developer>-->
+<!--      <id>bijiasuo2006</id>-->
+<!--      <name>Yongjie Liu</name>-->
+<!--      <organization>GstDev</organization>-->
+<!--      <organizationUrl>http://gstdev.com</organizationUrl>-->
+<!--    </developer>-->
   </developers>
 
   <licenses>
@@ -30,35 +35,28 @@
     <url>http://gstdev.com</url>
   </organization>
 
-  <groupId>com.gstdev.template</groupId>
-  <artifactId>gstdev-template-project</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+<!--  <parent>-->
+<!--    <groupId>com.gstdev.cloud</groupId>-->
+<!--    <artifactId>gstdev-cloud-project</artifactId>-->
+<!--    <version>2022.0.2-SNAPSHOT</version>-->
+<!--    <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+<!--  </parent>-->
 
-  <parent>
-    <groupId>com.gstdev.cloud</groupId>
-    <artifactId>gstdev-cloud-project</artifactId>
-    <version>2022.0.2-SNAPSHOT</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
-
-  <properties>
-    <gstdev-template.version>1.0.0-SNAPSHOT</gstdev-template.version>
-
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-    <java.release>17</java.release>
-    <java.version>1.${java.release}</java.version>
-  </properties>
+<!--  <properties>-->
+<!--    <gstdev-template.version>1.0.0-SNAPSHOT</gstdev-template.version>-->
+<!--    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+<!--    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>-->
+<!--    <java.release>17</java.release>-->
+<!--    <java.version>1.${java.release}</java.version>-->
+<!--  </properties>-->
 
   <modules>
-    <module>gstdev-template-dependencies</module>
-    <module>gstdev-template-parent</module>
-    <module>gstdev-template-common</module>
-    <module>gstdev-template-autoconfigure</module>
-    <module>gstdev-template-gateway</module>
-    <module>gstdev-template-services</module>
+    <module>frame-template-dependencies</module>
+    <module>frame-template-parent</module>
+    <module>frame-template-common</module>
+    <module>frame-template-autoconfigure</module>
+    <module>frame-template-gateway</module>
+    <module>frame-template-services</module>
   </modules>
 
   <!--  <distributionManagement>-->
