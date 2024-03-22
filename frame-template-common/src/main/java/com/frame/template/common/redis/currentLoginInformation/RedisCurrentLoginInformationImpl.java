@@ -5,6 +5,7 @@ import com.frame.template.common.constant.ServletConstants;
 import com.gstdev.cloud.commons.utils.RedisUtils;
 import com.gstdev.cloud.commons.web.Result;
 import com.frame.template.common.utils.ServletUtils;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisCurrentLoginInformationImpl implements RedisCurrentLoginInformation {
 
-  @Autowired
+  @Resource
   private RedisUtils redisUtils;
 
   public Result<Object> addByTokenCurrentLoginInformation(CurrentLoginInformation currentLoginInformation) {

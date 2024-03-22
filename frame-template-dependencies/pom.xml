@@ -17,7 +17,7 @@
   </parent>
 
   <properties>
-    <gstdev-cloud.version>2022.0.2-SNAPSHOT</gstdev-cloud.version>
+    <gstdev-cloud.version>2024.0.1-SNAPSHOT</gstdev-cloud.version>
     <hikaricp.version>3.4.5</hikaricp.version>
     <frame-template.version>1.0.0-SNAPSHOT</frame-template.version>
     <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
@@ -48,9 +48,14 @@
         <artifactId>gstdev-cloud-service-oauth2</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
+<!--      <dependency>-->
+<!--        <groupId>com.gstdev.cloud</groupId>-->
+<!--        <artifactId>gstdev-cloud-starter-swagger</artifactId>-->
+<!--        <version>${gstdev-cloud.version}</version>-->
+<!--      </dependency>-->
       <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-swagger</artifactId>
+      <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
@@ -121,6 +126,13 @@
         <groupId>org.mapstruct</groupId>
         <artifactId>mapstruct-processor</artifactId>
         <version>${org.mapstruct.version}</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>6.4.4.Final</version>
+        <type>pom</type>
       </dependency>
 
 

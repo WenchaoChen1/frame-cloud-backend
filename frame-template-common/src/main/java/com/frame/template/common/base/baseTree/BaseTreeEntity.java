@@ -1,12 +1,11 @@
 package com.frame.template.common.base.baseTree;
 
 import com.frame.template.common.base.BaseEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
 
 @Data
 @AllArgsConstructor

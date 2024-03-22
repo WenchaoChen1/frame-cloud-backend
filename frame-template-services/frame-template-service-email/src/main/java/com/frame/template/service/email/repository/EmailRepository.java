@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 
 public interface EmailRepository extends JpaRepository<Email, String>, JpaSpecificationExecutor<Email> {

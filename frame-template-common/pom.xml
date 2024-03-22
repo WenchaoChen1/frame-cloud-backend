@@ -54,10 +54,10 @@
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.hibernate</groupId>-->
+<!--      <artifactId>hibernate-core</artifactId>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
@@ -69,7 +69,8 @@
 
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-swagger</artifactId>
+<!--      <artifactId>gstdev-cloud-starter-swagger</artifactId>-->
+      <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
     </dependency>
     <!-- MapStruct related dependencies -->
     <dependency>

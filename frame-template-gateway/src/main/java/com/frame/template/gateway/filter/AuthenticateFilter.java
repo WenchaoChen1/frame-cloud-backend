@@ -91,87 +91,87 @@ public class AuthenticateFilter implements GlobalFilter, Ordered {
     return response.writeWith(Mono.just(dataBuffer));
   }
 
-  @Override
-  public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-
-
-    //先检查是否需要鉴权
-    String path = exchange.getRequest().getPath().value();
-    log.debug("网关--------------" + path);
-
-    if (log.isDebugEnabled()) {
-      log.debug("请求的路径为:{}", path);
-    }
-
-    /**
-     * 使用动态规划算法匹配*路径
-     */
-    for (String whitesPath : ignoreWhite.getWhites()) {
-      if (PathMatchUtils.isMatch(path, whitesPath)) {
-        if (log.isDebugEnabled()) {
-          log.debug("请求的路径'{}'不需要进行鉴权", path);
-          log.debug("白名单匹配规则为:{}", whitesPath);
-        }
-        return chain.filter(exchange);
-      }
-    }
-
-    //检查token是否已check过
-    List<String> tokenFlags = exchange.getRequest().getHeaders().get(TOKEN_CHECK);
-    boolean anyMatch = CollectionUtils.isEmpty(tokenFlags) ? false : tokenFlags.stream().anyMatch(tokenFlag -> StringUtils.equalsIgnoreCase(tokenFlag, "true"));
-    if (anyMatch) {
-      return chain.filter(exchange);
-    }
-
-    //检查token
-    List<String> tokens = exchange.getRequest().getHeaders().get(TOKEN_NAME);
-    if (tokens == null || tokens.isEmpty()) {
-      String errorMsg = "请求需要进行鉴权，请求header中的" + TOKEN_NAME + "为null或者空值";
-      if (log.isDebugEnabled()) {
-        log.debug(errorMsg);
-      }
-      return setUnauthorizedResponse(exchange, "令牌不能为空");
-    }
-    String token = tokens.get(0);
-    TokenDTO tokenDto = new TokenDTO();
-    tokenDto.setToken(token);
-    tokenDto.setTokenType(TOKEN_NAME);
-    if (log.isDebugEnabled()) {
-      log.debug("当前token为-------------------：" + token);
-    }
-    return authenticateService.checkToken(tokenDto).onErrorResume(e -> {
-      e.printStackTrace();
-      log.error("访问校验接口出现错误:{}", e.getLocalizedMessage(), e);
-
-      exchange.getResponse().setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
-      return Mono.just(Result.fail("服务异常"));
-    }).doOnSuccess(commonResponse -> {
-      if (log.isDebugEnabled()) {
-        log.debug("请求checkToken接口成功，返回：{}", commonResponse);
-      }
-    }).map(commonResponse -> {
-      if (log.isDebugEnabled()) {
-        log.debug("checkToken验证结果:{}", commonResponse);
-      }
-      if (commonResponse.getCode().equals("200")) {
-        if (log.isDebugEnabled()) {
-          log.debug("checkToken校验成功,token:{}", tokenDto.getToken());
-        }
-
-
-        exchange.getRequest().mutate().header(TOKEN_NAME, tokenDto.getToken());
-
-
-        return chain.filter(exchange);
-      } else {
-        if (log.isDebugEnabled()) {
-          log.debug("checkToken验证失败，token:{}", tokenDto.getToken());
-        }
-
-        return getVoidMono(exchange, commonResponse);
-      }
-    }).flatMap(Function.identity());
-  }
+//  @Override
+//  public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+//
+//
+//    //先检查是否需要鉴权
+//    String path = exchange.getRequest().getPath().value();
+//    log.debug("网关--------------" + path);
+//
+//    if (log.isDebugEnabled()) {
+//      log.debug("请求的路径为:{}", path);
+//    }
+//
+//    /**
+//     * 使用动态规划算法匹配*路径
+//     */
+//    for (String whitesPath : ignoreWhite.getWhites()) {
+//      if (PathMatchUtils.isMatch(path, whitesPath)) {
+//        if (log.isDebugEnabled()) {
+//          log.debug("请求的路径'{}'不需要进行鉴权", path);
+//          log.debug("白名单匹配规则为:{}", whitesPath);
+//        }
+//        return chain.filter(exchange);
+//      }
+//    }
+//
+//    //检查token是否已check过
+//    List<String> tokenFlags = exchange.getRequest().getHeaders().get(TOKEN_CHECK);
+//    boolean anyMatch = CollectionUtils.isEmpty(tokenFlags) ? false : tokenFlags.stream().anyMatch(tokenFlag -> StringUtils.equalsIgnoreCase(tokenFlag, "true"));
+//    if (anyMatch) {
+//      return chain.filter(exchange);
+//    }
+//
+//    //检查token
+//    List<String> tokens = exchange.getRequest().getHeaders().get(TOKEN_NAME);
+//    if (tokens == null || tokens.isEmpty()) {
+//      String errorMsg = "请求需要进行鉴权，请求header中的" + TOKEN_NAME + "为null或者空值";
+//      if (log.isDebugEnabled()) {
+//        log.debug(errorMsg);
+//      }
+//      return setUnauthorizedResponse(exchange, "令牌不能为空");
+//    }
+//    String token = tokens.get(0);
+//    TokenDTO tokenDto = new TokenDTO();
+//    tokenDto.setToken(token);
+//    tokenDto.setTokenType(TOKEN_NAME);
+//    if (log.isDebugEnabled()) {
+//      log.debug("当前token为-------------------：" + token);
+//    }
+//    return authenticateService.checkToken(tokenDto).onErrorResume(e -> {
+//      e.printStackTrace();
+//      log.error("访问校验接口出现错误:{}", e.getLocalizedMessage(), e);
+//
+//      exchange.getResponse().setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
+//      return Mono.just(Result.fail("服务异常"));
+//    }).doOnSuccess(commonResponse -> {
+//      if (log.isDebugEnabled()) {
+//        log.debug("请求checkToken接口成功，返回：{}", commonResponse);
+//      }
+//    }).map(commonResponse -> {
+//      if (log.isDebugEnabled()) {
+//        log.debug("checkToken验证结果:{}", commonResponse);
+//      }
+//      if (commonResponse.getCode().equals("200")) {
+//        if (log.isDebugEnabled()) {
+//          log.debug("checkToken校验成功,token:{}", tokenDto.getToken());
+//        }
+//
+//
+//        exchange.getRequest().mutate().header(TOKEN_NAME, tokenDto.getToken());
+//
+//
+//        return chain.filter(exchange);
+//      } else {
+//        if (log.isDebugEnabled()) {
+//          log.debug("checkToken验证失败，token:{}", tokenDto.getToken());
+//        }
+//
+//        return getVoidMono(exchange, commonResponse);
+//      }
+//    }).flatMap(Function.identity());
+//  }
 
   private Mono<Void> getVoidMono(ServerWebExchange exchange, Result AUTH_FAIL) {
     return exchange.getResponse().writeWith(Mono.create(sink -> {
@@ -202,5 +202,10 @@ public class AuthenticateFilter implements GlobalFilter, Ordered {
     ServerHttpResponse response = exchange.getResponse();
     response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
     return webFluxResponseWriter(response, msg, 4000);
+  }
+
+  @Override
+  public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+    return null;
   }
 }

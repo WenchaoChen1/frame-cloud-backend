@@ -9,7 +9,7 @@ import com.frame.template.common.exception.CommonException;
 import com.frame.template.service.demo.pojo.dto.demo.DemoUpdateXXXXXXInput;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 /**
  * @author: xxxxx

@@ -33,16 +33,16 @@ public class TokenUtils {
     return newStr;
   }
 
-  public String decode(String token){
-    Base64 decoder = new Base64();
-    String newStr = "";
-    try {
-      newStr = new String(decoder.decodeBase64(token.getBytes()));
-    } catch (Exception ex) {
-      ex.printStackTrace();
-      return "Invalid token!";
-    }
-    return newStr;
-  }
+//  public String decode(String token){
+//    Base64 decoder = new Base64();
+//    String newStr = "";
+//    try {
+//      newStr = new String(decoder.decodeBase64(token.getBytes()));
+//    } catch (Exception ex) {
+//      ex.printStackTrace();
+//      return "Invalid token!";
+//    }
+//    return newStr;
+//  }
 
 }

@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.context.Context;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 
 

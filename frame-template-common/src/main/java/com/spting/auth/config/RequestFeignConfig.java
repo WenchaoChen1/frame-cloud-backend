@@ -7,7 +7,7 @@
 //import org.springframework.web.context.request.RequestContextHolder;
 //import org.springframework.web.context.request.ServletRequestAttributes;
 //
-//import javax.servlet.http.HttpServletRequest;
+//import jakarta.servlet.http.HttpServletRequest;
 //
 //@Configuration
 //public class RequestFeignConfig implements RequestInterceptor {

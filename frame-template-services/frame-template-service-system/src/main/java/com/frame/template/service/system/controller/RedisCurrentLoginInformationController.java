@@ -7,7 +7,7 @@ import com.frame.template.service.system.service.RedisCurrentLoginInformationSer
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 @RestController
 @RequestMapping("/current-login-information")

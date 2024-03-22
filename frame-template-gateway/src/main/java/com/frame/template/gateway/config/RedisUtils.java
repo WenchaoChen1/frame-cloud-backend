@@ -96,12 +96,12 @@ public class RedisUtils {
     while (cursor.hasNext()) {
       result.add(new String(cursor.next()));
     }
-
-    try {
-      RedisConnectionUtils.releaseConnection(rc, factory, false);
-    } catch (Exception e) {
-      log.error(e.getMessage(), e);
-    }
+//
+//    try {
+//      RedisConnectionUtils.releaseConnection(rc, factory, false);
+//    } catch (Exception e) {
+//      log.error(e.getMessage(), e);
+//    }
 
     return result;
   }
@@ -139,12 +139,12 @@ public class RedisUtils {
       tmpIndex++;
       cursor.next();
     }
-
-    try {
-      RedisConnectionUtils.releaseConnection(rc, factory, false);
-    } catch (Exception e) {
-      log.error(e.getMessage(), e);
-    }
+//
+//    try {
+//      RedisConnectionUtils.releaseConnection(rc, factory, false);
+//    } catch (Exception e) {
+//      log.error(e.getMessage(), e);
+//    }
 
     return result;
   }

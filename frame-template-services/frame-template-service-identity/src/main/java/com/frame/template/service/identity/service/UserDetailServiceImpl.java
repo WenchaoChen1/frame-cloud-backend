@@ -17,10 +17,11 @@ import com.gstdev.cloud.oauth2.server.authorization.service.UserDetailService;
 import com.frame.template.common.constant.ServiceConstants;
 import com.frame.template.common.utils.CryptoUtils;
 import lombok.extern.slf4j.Slf4j;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 

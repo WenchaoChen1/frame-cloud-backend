@@ -1,5 +1,6 @@
 package com.frame.template.common.utils;
 
+import com.frame.template.common.constant.ServiceConstants;
 import com.frame.template.common.utils.crypto.AsymKeyPairs;
 import com.frame.template.common.utils.crypto.SymKey;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
 
 /**
  * 敏感数据加解密、租户密钥加解密、生成密钥的的工具类
@@ -185,9 +187,10 @@ public final class CryptoUtils {
   }
 
   public static void main(String[] args) {
-    AsymKeyPairs pairs = generateAsymKeypair();
-    System.out.println(pairs.getHexPrivateKey());
-    System.out.println(pairs.getHexPublicKey());
+//    AsymKeyPairs pairs = generateAsymKeypair();
+//    System.out.println(pairs.getHexPrivateKey());
+//    System.out.println(pairs.getHexPublicKey());
+    System.out.println(Base64.getEncoder().encodeToString(CryptoUtils.asymEncrypt("123456", ServiceConstants.ASYM_PUBLIC_KEY)));
   }
 
   /**

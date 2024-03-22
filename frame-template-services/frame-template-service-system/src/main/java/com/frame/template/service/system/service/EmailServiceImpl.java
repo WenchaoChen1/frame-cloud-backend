@@ -14,8 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import javax.annotation.Resource;
-import javax.mail.internet.MimeMessage;
+import jakarta.annotation.Resource;
+import jakarta.mail.internet.MimeMessage;
 
 
 @Service
