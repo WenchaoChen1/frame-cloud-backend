@@ -18,7 +18,7 @@ import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplatePageQuer
 import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplateUpdateInput;
 import com.gstdev.cloud.commons.web.Result;
 import com.gstdev.cloud.data.jpa.utils.QueryUtils;
-import com.gstdev.cloud.web.exception.BadRequestException;
+import com.gstdev.cloud.commons.exception.BadRequestException;
 import com.frame.template.service.demo.pojo.dto.demoTemplate.DemoTemplateDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

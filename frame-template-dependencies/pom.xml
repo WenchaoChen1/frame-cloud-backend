@@ -22,7 +22,7 @@
     <frame-template.version>1.0.0-SNAPSHOT</frame-template.version>
     <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     <org.postgresql.version>42.2.9</org.postgresql.version>
-<!--    <mysql-connector-java.version>8.0.19</mysql-connector-java.version>-->
+    <!--    <mysql-connector-java.version>8.0.19</mysql-connector-java.version>-->
   </properties>
 
   <dependencyManagement>
@@ -48,13 +48,13 @@
         <artifactId>gstdev-cloud-service-oauth2</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
-<!--      <dependency>-->
-<!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-starter-swagger</artifactId>-->
-<!--        <version>${gstdev-cloud.version}</version>-->
-<!--      </dependency>-->
+      <!--      <dependency>-->
+      <!--        <groupId>com.gstdev.cloud</groupId>-->
+      <!--        <artifactId>gstdev-cloud-starter-swagger</artifactId>-->
+      <!--        <version>${gstdev-cloud.version}</version>-->
+      <!--      </dependency>-->
       <dependency>
-      <groupId>com.gstdev.cloud</groupId>
+        <groupId>com.gstdev.cloud</groupId>
         <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
@@ -65,14 +65,35 @@
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
+        <artifactId>gstdev-cloud-starter-data-commons</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
       <dependency>
         <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-data-commons</artifactId>
+        <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
         <version>${gstdev-cloud.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-core</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-sdk-authentication</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-oauth2-sdk-resource-authorization</artifactId>
+        <version>${gstdev-cloud.version}</version>
+      </dependency>
+
 
       <!--当前库-->
       <dependency>
@@ -93,12 +114,12 @@
         <version>${hikaricp.version}</version>
       </dependency>
 
-<!--      &lt;!&ndash; DB related dependencies &ndash;&gt;-->
-<!--      <dependency>-->
-<!--        <groupId>mysql</groupId>-->
-<!--        <artifactId>mysql-connector-java</artifactId>-->
-<!--        <version>${mysql-connector-java.version}</version>-->
-<!--      </dependency>-->
+      <!--      &lt;!&ndash; DB related dependencies &ndash;&gt;-->
+      <!--      <dependency>-->
+      <!--        <groupId>mysql</groupId>-->
+      <!--        <artifactId>mysql-connector-java</artifactId>-->
+      <!--        <version>${mysql-connector-java.version}</version>-->
+      <!--      </dependency>-->
 
       <!-- postgresq-->
       <dependency>
