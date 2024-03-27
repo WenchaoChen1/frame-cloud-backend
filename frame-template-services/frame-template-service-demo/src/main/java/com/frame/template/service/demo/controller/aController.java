@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class aController {
   @GetMapping("/a")
   public String a() {
+    System.out.println("aaaaaaaaaaa");
 //    ServletUtils.getRequest()
 //    System.out.println(SecurityUtils.getUserDetails());
     return "/demo";
   }
   @GetMapping("/bb")
   public String testa() {
+    System.out.println("aaaaaaaaaaa");
 //    ServletUtils.getRequest()
     return "System.out.println(SecurityUtils.getUserDetails());";
   }
