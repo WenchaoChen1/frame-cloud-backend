@@ -2,7 +2,7 @@ package com.frame.template.service.system.feign.service;
 
 import com.frame.template.service.system.feign.TenantFeignClient;
 import com.frame.template.service.system.feign.vo.TenantDto;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import com.frame.template.common.exception.CommonException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

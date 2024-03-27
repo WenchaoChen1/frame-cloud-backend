@@ -1,6 +1,6 @@
 //package com.gstdev.template.service.system.controller;
 //
-//import com.gstdev.cloud.commons.web.Result;
+//import com.gstdev.cloud.commons.domain.Result;
 //import com.frame.template.service.system.service.TenantDictService;
 //import com.frame.template.service.system.pojo.vo.TenantDict.TenantDictDto;
 //import com.frame.template.service.system.pojo.vo.TenantDict.TenantDictModifyInput;
@@ -35,7 +35,7 @@
 //      return Result.success("Save successfully");
 //    } catch (Exception e) {
 //      e.printStackTrace();
-//      return Result.fail("Save failed");
+//      return Result.failure("Save failed");
 //    }
 //  }
 //
@@ -52,7 +52,7 @@
 //      return Result.success(tenantDictService.findById(id));
 //    } catch (Exception e) {
 //      e.printStackTrace();
-//      return Result.fail("Query failed");
+//      return Result.failure("Query failed");
 //    }
 //  }
 //
@@ -70,7 +70,7 @@
 //      return Result.success("Save successfully");
 //    } catch (Exception e) {
 //      e.printStackTrace();
-//      return Result.fail("Save failed");
+//      return Result.failure("Save failed");
 //    }
 //  }
 //
@@ -88,7 +88,7 @@
 //      return Result.success("Delete successfully");
 //    } catch (Exception e) {
 //      e.printStackTrace();
-//      return Result.fail("Delete failed");
+//      return Result.failure("Delete failed");
 //    }
 //  }
 //
@@ -104,7 +104,7 @@
 //      return Result.success(tenantDictService.getAllTree(tenantDictId));
 //    } catch (Exception e) {
 //      e.printStackTrace();
-//      return Result.fail("Query failed");
+//      return Result.failure("Query failed");
 //    }
 //  }
 //

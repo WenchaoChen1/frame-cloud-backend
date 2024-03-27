@@ -12,10 +12,10 @@ package com.frame.template.service.identity.service;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.frame.template.service.identity.domain.User;
-import com.gstdev.cloud.oauth2.server.authorization.model.UserAuth;
-import com.gstdev.cloud.oauth2.server.authorization.service.UserDetailService;
 import com.frame.template.common.constant.ServiceConstants;
 import com.frame.template.common.utils.CryptoUtils;
+import com.gstdev.cloud.oauth2.authentication.model.UserAuth;
+import com.gstdev.cloud.oauth2.authentication.service.UserDetailService;
 import lombok.extern.slf4j.Slf4j;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -13,7 +13,7 @@ import com.frame.template.service.identity.contract.UserDto;
 import com.frame.template.service.identity.contract.UserInput;
 import com.frame.template.service.identity.contract.query.PostQueryCriteria;
 import com.frame.template.service.identity.service.UserService;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import com.frame.template.common.utils.SecurityUtils;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;

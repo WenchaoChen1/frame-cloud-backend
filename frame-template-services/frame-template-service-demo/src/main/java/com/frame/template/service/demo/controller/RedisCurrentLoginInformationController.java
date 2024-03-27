@@ -1,7 +1,7 @@
 package com.frame.template.service.demo.controller;
 
 import com.frame.template.service.demo.service.RedisCurrentLoginInformationService;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
 import io.swagger.annotations.ApiOperation;
@@ -30,7 +30,7 @@ public class RedisCurrentLoginInformationController {
       return redisCurrentLoginInformationService.addByTokenCurrentLoginInformation(redisCurrentLoginInformationInput);
     } catch (Exception e) {
       e.printStackTrace();
-      return Result.fail("Delete failed");
+      return Result.failure("Delete failed");
     }
   }
 
@@ -46,7 +46,7 @@ public class RedisCurrentLoginInformationController {
       return redisCurrentLoginInformationService.updateByTokenCurrentLoginInformation(redisCurrentLoginInformationInput);
     } catch (Exception e) {
       e.printStackTrace();
-      return Result.fail("Delete failed");
+      return Result.failure("Delete failed");
     }
   }
 
@@ -62,7 +62,7 @@ public class RedisCurrentLoginInformationController {
       return redisCurrentLoginInformationService.deleteByTokenCurrentLoginInformation();
     } catch (Exception e) {
       e.printStackTrace();
-      return Result.fail("Delete failed");
+      return Result.failure("Delete failed");
     }
   }
 
@@ -80,7 +80,7 @@ public class RedisCurrentLoginInformationController {
       return redisCurrentLoginInformationService.getCurrentLoginInformation();
     } catch (Exception e) {
       e.printStackTrace();
-      return Result.fail("Delete failed");
+      return Result.failure("Delete failed");
     }
   }
 }

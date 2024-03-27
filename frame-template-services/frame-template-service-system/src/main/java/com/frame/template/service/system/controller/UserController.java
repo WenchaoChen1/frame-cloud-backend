@@ -9,7 +9,7 @@ import com.frame.template.service.system.pojo.vo.UserInsertInput;
 import com.frame.template.service.system.pojo.vo.UserUpdateInput;
 import com.frame.template.service.system.pojo.vo.user.AccountListDto;
 import com.frame.template.service.system.service.UserService;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import com.frame.template.common.base.BaseController;
 import com.frame.template.common.base.BaseRedisCurrentLoginInformation;
 import com.frame.template.service.system.pojo.base.user.*;

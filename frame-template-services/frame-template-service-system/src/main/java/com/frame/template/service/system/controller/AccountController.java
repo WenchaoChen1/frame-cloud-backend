@@ -2,7 +2,7 @@ package com.frame.template.service.system.controller;
 
 import com.frame.template.service.system.mapper.vo.AccountVoMapper;
 import com.frame.template.service.system.pojo.base.account.*;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import com.frame.template.common.base.BaseController;
 import com.frame.template.common.base.BaseRedisCurrentLoginInformation;
 import com.frame.template.service.system.pojo.base.account.*;

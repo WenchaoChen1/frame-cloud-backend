@@ -3,7 +3,7 @@ package com.frame.template.service.demo.service;
 
 import com.frame.template.service.demo.mapper.DemoMapper;
 import com.frame.template.service.demo.pojo.base.demo.*;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import com.frame.template.common.base.BaseServiceImpl;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 import com.frame.template.service.demo.pojo.base.demo.*;

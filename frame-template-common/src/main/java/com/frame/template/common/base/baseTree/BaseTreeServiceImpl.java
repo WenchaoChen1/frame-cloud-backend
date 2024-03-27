@@ -3,7 +3,7 @@ package com.frame.template.common.base.baseTree;
 import com.frame.template.common.base.BaseRedisCurrentLoginInformation;
 import com.frame.template.common.base.BaseServiceImpl;
 import com.frame.template.common.utils.treeUtils.TreeFactory;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;

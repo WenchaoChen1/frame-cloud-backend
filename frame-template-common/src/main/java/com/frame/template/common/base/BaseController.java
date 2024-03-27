@@ -1,6 +1,6 @@
 package com.frame.template.common.base;
 
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -48,7 +48,7 @@ public abstract class BaseController<S extends BaseService<D, II, UI, PQC, FQC>,
       return getMapper().toVo(getService().insertToResult(var1));
 //    } catch (Exception e) {
 //      e.printStackTrace();
-//      return Result.fail("Save failed");
+//      return Result.failure("Save failed");
 //    }
   }
 

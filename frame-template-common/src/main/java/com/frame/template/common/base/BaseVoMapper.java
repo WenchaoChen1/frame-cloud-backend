@@ -1,6 +1,6 @@
 package com.frame.template.common.base;
 
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
@@ -20,14 +20,14 @@ public interface BaseVoMapper<V extends BaseVo, D extends BaseDto> {
   default Result<V> toVo(Result<D> result) {
     D data = result.getData();
     V v = toVo(data);
-    Result<V> of = Result.of(result.getSuccess(), result.getMessage(), result.getCode(), v);
+    Result<V> of = Result.success(result.getMessage(), result.getCode(), v);
     return of;
   }
 
   default Result<List<V>> toAllVo(Result<List<D>> result) {
     List<D> data = result.getData();
     List<V> v = toVo(data);
-    Result<List<V>> of = Result.of(result.getSuccess(), result.getMessage(), result.getCode(), v);
+    Result<List<V>> of = Result.success(result.getMessage(), result.getCode(), v);
     return of;
   }
 

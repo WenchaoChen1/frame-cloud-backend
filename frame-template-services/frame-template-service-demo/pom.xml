@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <name>Frame Template Project :: Service :: demo</name>
+  <name>Frame Template Cloud :: Service :: demo</name>
   <artifactId>frame-template-service-demo</artifactId>
 <!--  <groupId>com.gstdev.template</groupId>-->
 
@@ -27,10 +27,6 @@
 
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-commons</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-starter-swagger</artifactId>
     </dependency>
 
@@ -40,7 +36,7 @@
     </dependency>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
+      <artifactId>gstdev-cloud-starter-oauth2-service-authorization</artifactId>
     </dependency>
 
     <dependency>

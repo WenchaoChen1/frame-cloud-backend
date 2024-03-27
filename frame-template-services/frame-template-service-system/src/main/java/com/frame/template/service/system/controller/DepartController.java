@@ -11,7 +11,7 @@ package com.frame.template.service.system.controller;
 
 import com.frame.template.service.system.mapper.vo.DepartVoMapper;
 import com.frame.template.service.system.pojo.base.depart.*;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import com.frame.template.common.base.baseTree.BaseTreeController;
 import com.frame.template.service.system.pojo.base.depart.*;
 import com.frame.template.service.system.service.DepartService;

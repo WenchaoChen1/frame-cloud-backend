@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.frame.template.gateway.dto.TokenDTO;
 import com.frame.template.gateway.utils.PathMatchUtils;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 
 import com.frame.template.gateway.service.WebClientAuthenticateService;
 import lombok.extern.slf4j.Slf4j;
@@ -86,7 +86,7 @@ public class AuthenticateFilter implements GlobalFilter, Ordered {
   public static Mono<Void> webFluxResponseWriter(ServerHttpResponse response, String contentType, HttpStatus status, Object value, int code) {
     response.setStatusCode(status);
     response.getHeaders().add(HttpHeaders.CONTENT_TYPE, contentType);
-    Result result = Result.fail(code + "", value.toString());
+    Result result = Result.failure(code + "", value.toString());
     DataBuffer dataBuffer = response.bufferFactory().wrap(JSON.toJSONString(result).getBytes());
     return response.writeWith(Mono.just(dataBuffer));
   }
@@ -144,7 +144,7 @@ public class AuthenticateFilter implements GlobalFilter, Ordered {
 //      log.error("访问校验接口出现错误:{}", e.getLocalizedMessage(), e);
 //
 //      exchange.getResponse().setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
-//      return Mono.just(Result.fail("服务异常"));
+//      return Mono.just(Result.failure("服务异常"));
 //    }).doOnSuccess(commonResponse -> {
 //      if (log.isDebugEnabled()) {
 //        log.debug("请求checkToken接口成功，返回：{}", commonResponse);

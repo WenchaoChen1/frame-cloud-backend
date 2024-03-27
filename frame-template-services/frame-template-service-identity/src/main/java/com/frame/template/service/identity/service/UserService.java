@@ -10,7 +10,7 @@
 package com.frame.template.service.identity.service;
 
 import com.frame.template.service.identity.domain.User;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import com.frame.template.service.identity.contract.UserDto;
 import com.frame.template.service.identity.contract.UserInput;
 import com.frame.template.service.identity.contract.query.PostQueryCriteria;

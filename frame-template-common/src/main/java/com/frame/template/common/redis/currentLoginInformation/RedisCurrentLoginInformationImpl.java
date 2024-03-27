@@ -2,8 +2,8 @@ package com.frame.template.common.redis.currentLoginInformation;
 
 import com.frame.template.common.constant.RedisConstants;
 import com.frame.template.common.constant.ServletConstants;
+import com.gstdev.cloud.commons.domain.Result;
 import com.gstdev.cloud.commons.utils.RedisUtils;
-import com.gstdev.cloud.commons.web.Result;
 import com.frame.template.common.utils.ServletUtils;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;

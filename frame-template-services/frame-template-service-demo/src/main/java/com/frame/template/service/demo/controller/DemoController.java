@@ -3,7 +3,7 @@ package com.frame.template.service.demo.controller;
 import com.frame.template.service.demo.mapper.vo.DemoVoMapper;
 import com.frame.template.service.demo.pojo.base.demo.*;
 import com.frame.template.service.demo.service.DemoService;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import com.frame.template.common.base.BaseController;
 import com.frame.template.common.exception.CommonException;
 import com.frame.template.service.demo.pojo.dto.demo.DemoUpdateXXXXXXInput;
@@ -86,7 +86,7 @@ public class DemoController extends BaseController<DemoService, DemoVoMapper, De
       return demoService.updatexxxxxx(demoUpdateXXXXXXInput);
     } catch (Exception e) {
       e.printStackTrace();
-      return Result.fail("Delete failed");
+      return Result.failure("Delete failed");
     }
   }
 
@@ -103,7 +103,7 @@ public class DemoController extends BaseController<DemoService, DemoVoMapper, De
       return Result.success(demoService.findByName(name));
     } catch (Exception e) {
       e.printStackTrace();
-      return Result.fail("Delete failed");
+      return Result.failure("Delete failed");
     }
   }
 
@@ -113,7 +113,7 @@ public class DemoController extends BaseController<DemoService, DemoVoMapper, De
       return Result.success(demoService.findByNameAndCode(name, code));
     } catch (Exception e) {
       e.printStackTrace();
-      return Result.fail("Delete failed");
+      return Result.failure("Delete failed");
     }
   }
 
@@ -123,7 +123,7 @@ public class DemoController extends BaseController<DemoService, DemoVoMapper, De
       return Result.success(demoService.findAllByName(name));
     } catch (Exception e) {
       e.printStackTrace();
-      return Result.fail("Delete failed");
+      return Result.failure("Delete failed");
     }
   }
 
@@ -143,10 +143,10 @@ public class DemoController extends BaseController<DemoService, DemoVoMapper, De
       return Result.success(demoService.getCurrentLoginInformation(name));
     } catch (CommonException commonException) {
       commonException.printStackTrace();
-      return Result.fail(commonException.getMessage());
+      return Result.failure(commonException.getMessage());
     } catch (Exception e) {
       e.printStackTrace();
-      return Result.fail("Delete failed");
+      return Result.failure("Delete failed");
     }
   }
 

@@ -11,7 +11,7 @@ package com.frame.template.service.demo.mapper.vo;
 
 import com.frame.template.service.demo.pojo.dto.demoTemplate.DemoTemplateDto;
 import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplateVo;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
@@ -38,14 +38,14 @@ public interface DemoTemplateVoMapper {
   default Result<DemoTemplateVo> toVo(Result<DemoTemplateDto> result) {
     DemoTemplateDto data = result.getData();
     DemoTemplateVo v = toVo(data);
-    Result<DemoTemplateVo> of = Result.of(result.getSuccess(), result.getMessage(), result.getCode(), v);
+    Result<DemoTemplateVo> of = Result.success(result.getMessage(), result.getCode(), v);
     return of;
   }
 
   default Result<List<DemoTemplateVo>> toAllVo(Result<List<DemoTemplateDto>> result) {
     List<DemoTemplateDto> data = result.getData();
     List<DemoTemplateVo> v = toVo(data);
-    Result<List<DemoTemplateVo>> of = Result.of(result.getSuccess(), result.getMessage(), result.getCode(), v);
+    Result<List<DemoTemplateVo>> of = Result.success(result.getMessage(), result.getCode(), v);
     return of;
   }
 

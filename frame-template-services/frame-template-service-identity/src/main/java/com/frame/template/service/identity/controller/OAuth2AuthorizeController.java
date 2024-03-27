@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/ooauth2")
+@RequestMapping("/oauth2")
 public class OAuth2AuthorizeController {
 
-  @GetMapping("/autho1111rize")
+  @GetMapping("/authorize")
   public String authorize() {
     // 处理授权请求逻辑，例如验证客户端信息、用户身份验证等
 

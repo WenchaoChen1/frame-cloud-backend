@@ -15,7 +15,7 @@ import com.frame.template.service.system.mapper.TenantMapper;
 import com.frame.template.service.system.pojo.base.tenant.*;
 import com.frame.template.service.system.pojo.domain.Tenant;
 import com.frame.template.service.system.repository.TenantRepository;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import com.frame.template.common.base.baseTree.BaseTreeServiceImpl;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 

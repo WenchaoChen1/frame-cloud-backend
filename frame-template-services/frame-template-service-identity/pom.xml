@@ -22,12 +22,13 @@
 
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>
+      <artifactId>gstdev-cloud-starter-oauth2-authentication</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-service-oauth2</artifactId>
-    </dependency>
+
+<!--    <dependency>-->
+<!--      <groupId>com.gstdev.cloud</groupId>-->
+<!--      <artifactId>gstdev-cloud-service-oauth2</artifactId>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-commons</artifactId>

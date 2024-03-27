@@ -1,6 +1,6 @@
 package com.frame.template.common.redis.currentLoginInformation;
 
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import com.frame.template.common.base.BaseRedisCurrentLoginInformation;
 
 public interface RedisCurrentLoginInformation extends BaseRedisCurrentLoginInformation {

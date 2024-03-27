@@ -11,7 +11,7 @@ package com.frame.template.service.storage.service;
 
 
 import com.frame.template.service.storage.domain.base.*;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import com.frame.template.common.base.BaseService;
 import com.frame.template.common.constant.FileConstants;
 import com.frame.template.service.storage.domain.base.*;

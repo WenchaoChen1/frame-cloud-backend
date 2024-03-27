@@ -18,7 +18,7 @@ import com.frame.template.service.system.repository.RoleRepository;
 import com.frame.template.service.system.repository.UserRepository;
 import com.frame.template.service.system.util.TokenUtils;
 import com.gstdev.cloud.commons.exception.BadRequestException;
-import com.gstdev.cloud.commons.web.Result;
+import com.gstdev.cloud.commons.domain.Result;
 import com.frame.template.common.base.BaseServiceImpl;
 import com.frame.template.common.constant.ServiceConstants;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
