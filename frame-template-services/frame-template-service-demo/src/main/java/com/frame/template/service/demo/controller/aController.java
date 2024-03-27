@@ -11,7 +11,12 @@ public class aController {
   @GetMapping("/a")
   public String a() {
 //    ServletUtils.getRequest()
-    System.out.println(SecurityUtils.getUserDetails());
-    return "a";
+//    System.out.println(SecurityUtils.getUserDetails());
+    return "/demo";
+  }
+  @GetMapping("/bb")
+  public String testa() {
+//    ServletUtils.getRequest()
+    return "System.out.println(SecurityUtils.getUserDetails());";
   }
 }
