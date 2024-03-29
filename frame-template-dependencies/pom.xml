@@ -32,81 +32,81 @@
   <dependencyManagement>
     <dependencies>
       <!-- cloud 底层库依赖 -->
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-web</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-data-jpa</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
 <!--      <dependency>-->
 <!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>-->
+<!--        <artifactId>gstdev-cloud-starter-web</artifactId>-->
 <!--        <version>${gstdev-cloud.version}</version>-->
 <!--      </dependency>-->
 <!--      <dependency>-->
 <!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-service-oauth2</artifactId>-->
+<!--        <artifactId>gstdev-cloud-starter-data-jpa</artifactId>-->
 <!--        <version>${gstdev-cloud.version}</version>-->
 <!--      </dependency>-->
-      <!--      <dependency>-->
-      <!--        <groupId>com.gstdev.cloud</groupId>-->
-      <!--        <artifactId>gstdev-cloud-starter-swagger</artifactId>-->
-      <!--        <version>${gstdev-cloud.version}</version>-->
-      <!--      </dependency>-->
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-storage-aws</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-data-commons</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
+<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
+<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <artifactId>gstdev-cloud-service-oauth2</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
+<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
+<!--      &lt;!&ndash;      <dependency>&ndash;&gt;-->
+<!--      &lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
+<!--      &lt;!&ndash;        <artifactId>gstdev-cloud-starter-swagger</artifactId>&ndash;&gt;-->
+<!--      &lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
+<!--      &lt;!&ndash;      </dependency>&ndash;&gt;-->
 <!--      <dependency>-->
 <!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>-->
+<!--        <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>-->
 <!--        <version>${gstdev-cloud.version}</version>-->
 <!--      </dependency>-->
 <!--      <dependency>-->
 <!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>-->
+<!--        <artifactId>gstdev-cloud-starter-storage-aws</artifactId>-->
 <!--        <version>${gstdev-cloud.version}</version>-->
 <!--      </dependency>-->
 <!--      <dependency>-->
 <!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-oauth2-core</artifactId>-->
+<!--        <artifactId>gstdev-cloud-starter-data-commons</artifactId>-->
+<!--        <version>${gstdev-cloud.version}</version>-->
+<!--      </dependency>-->
+<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
+<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
+<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <artifactId>gstdev-cloud-oauth2-core</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
+<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <artifactId>gstdev-cloud-oauth2-sdk-authentication</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
+<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <artifactId>gstdev-cloud-oauth2-sdk-resource-authorization</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
+<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
+<!--      <dependency>-->
+<!--        <groupId>com.gstdev.cloud</groupId>-->
+<!--        <artifactId>gstdev-cloud-starter-oauth2-authentication</artifactId>-->
 <!--        <version>${gstdev-cloud.version}</version>-->
 <!--      </dependency>-->
 <!--      <dependency>-->
 <!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-oauth2-sdk-authentication</artifactId>-->
+<!--        <artifactId>gstdev-cloud-starter-oauth2-service-authorization</artifactId>-->
 <!--        <version>${gstdev-cloud.version}</version>-->
 <!--      </dependency>-->
-<!--      <dependency>-->
-<!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-oauth2-sdk-resource-authorization</artifactId>-->
-<!--        <version>${gstdev-cloud.version}</version>-->
-<!--      </dependency>-->
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-oauth2-authentication</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-oauth2-service-authorization</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
 
       <!--当前库-->
       <dependency>

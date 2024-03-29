@@ -20,10 +20,17 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableFeignClients
 @ComponentScan(value = {"com.gstdev","com.frame"})
-@EntityScan(value = {"com.gstdev.cloud.oauth2.server.authorization.domain", "com.frame.template.service.identity"})
-@EnableJpaRepositories(value = {"com.gstdev.cloud.oauth2.server.authorization.repository", "com.frame.template.service.identity"})
-@ConfigurationPropertiesScan({"com.gstdev"})
+@EntityScan(value = {"com.frame.template.service.identity"})
+@EnableJpaRepositories(value = {"com.frame.template.service.identity"})
+//@ConfigurationPropertiesScan({"com.gstdev"})
 @SpringBootApplication
+
+//@EnableFeignClients
+//@ComponentScan(value = {"com.gstdev","com.frame"})
+//@EntityScan(value = {"com.gstdev.cloud.oauth2.server.authorization.domain", "com.frame.template.service.identity"})
+//@EnableJpaRepositories(value = {"com.gstdev.cloud.oauth2.server.authorization.repository", "com.frame.template.service.identity"})
+//@ConfigurationPropertiesScan({"com.gstdev"})
+//@SpringBootApplication
 //@EnableDiscoveryClient
 public class IdentityApplication {
 

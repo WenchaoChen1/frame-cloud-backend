@@ -34,7 +34,12 @@
     <name>GstDev</name>
     <url>http://gstdev.com</url>
   </organization>
-
+  <parent>
+    <groupId>com.gstdev.cloud</groupId>
+    <artifactId>gstdev-cloud-dependencies</artifactId>
+    <version>2024.0.1-SNAPSHOT</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
 <!--  <parent>-->
 <!--    <groupId>com.gstdev.cloud</groupId>-->
 <!--    <artifactId>gstdev-cloud-project</artifactId>-->
