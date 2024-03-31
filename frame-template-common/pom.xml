@@ -15,6 +15,11 @@
   </parent>
 
   <dependencies>
+    <!-- GstdevCloud related dependencies -->
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
+    </dependency>
     <dependency>
       <groupId>com.frame.template</groupId>
       <artifactId>frame-template-autoconfigure</artifactId>
@@ -54,10 +59,7 @@
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>org.hibernate</groupId>-->
-<!--      <artifactId>hibernate-core</artifactId>-->
-<!--    </dependency>-->
+
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
@@ -67,15 +69,6 @@
       <artifactId>gstdev-cloud-data-redis</artifactId>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>com.gstdev.cloud</groupId>-->
-<!--&lt;!&ndash;      <artifactId>gstdev-cloud-starter-swagger</artifactId>&ndash;&gt;-->
-<!--      <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>com.gstdev.cloud</groupId>-->
-<!--      <artifactId>rest-sdk-service</artifactId>-->
-<!--    </dependency>-->
 
     <!-- MapStruct related dependencies -->
     <dependency>
@@ -94,10 +87,6 @@
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
     </dependency>
 
   </dependencies>
