@@ -15,7 +15,7 @@ import com.frame.template.service.storage.domain.entity.File;
 import com.frame.template.service.storage.mapper.FileMapper;
 import com.gstdev.cloud.commons.exception.BadRequestException;
 import com.gstdev.cloud.commons.web.FileUtils;
-import com.gstdev.cloud.commons.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.gstdev.cloud.plugin.storage.core.service.StorageService;
 //import com.gstdev.cloud.plugin.storage.core.storage.StorageProperties;
 import com.frame.template.common.base.BaseServiceImpl;

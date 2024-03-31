@@ -1,6 +1,6 @@
 //package com.gstdev.template.service.system.controller;
 //
-//import com.gstdev.cloud.commons.domain.Result;
+//import com.gstdev.cloud.commons.ass.definition.domain.Result;
 //import com.frame.template.service.system.service.TenantDictService;
 //import com.frame.template.service.system.pojo.vo.TenantDict.TenantDictDto;
 //import com.frame.template.service.system.pojo.vo.TenantDict.TenantDictModifyInput;

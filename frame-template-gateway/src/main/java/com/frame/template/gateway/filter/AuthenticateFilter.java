@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.frame.template.gateway.dto.TokenDTO;
 import com.frame.template.gateway.utils.PathMatchUtils;
-import com.gstdev.cloud.commons.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
 
 import com.frame.template.gateway.service.WebClientAuthenticateService;
 import lombok.extern.slf4j.Slf4j;

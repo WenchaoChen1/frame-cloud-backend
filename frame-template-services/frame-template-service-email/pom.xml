@@ -20,10 +20,11 @@
 <!--    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
 <!--  </properties>-->
   <dependencies>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-web</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.gstdev.cloud</groupId>-->
+<!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
+<!--    </dependency>-->
+
 
     <dependency>
       <groupId>com.gstdev.cloud</groupId>

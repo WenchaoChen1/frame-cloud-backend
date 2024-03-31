@@ -14,16 +14,12 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
 
-<!--  <properties>-->
-<!--    <maven.compiler.source>17</maven.compiler.source>-->
-<!--    <maven.compiler.target>17</maven.compiler.target>-->
-<!--    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
-<!--  </properties>-->
+
   <dependencies>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-web</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.gstdev.cloud</groupId>-->
+<!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
@@ -36,7 +32,7 @@
     </dependency>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-oauth2-service-authorization</artifactId>
+      <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
     </dependency>
 
     <dependency>

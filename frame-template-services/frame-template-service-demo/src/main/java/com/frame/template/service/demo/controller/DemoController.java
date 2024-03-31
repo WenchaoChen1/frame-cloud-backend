@@ -3,7 +3,7 @@ package com.frame.template.service.demo.controller;
 import com.frame.template.service.demo.mapper.vo.DemoVoMapper;
 import com.frame.template.service.demo.pojo.base.demo.*;
 import com.frame.template.service.demo.service.DemoService;
-import com.gstdev.cloud.commons.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.frame.template.common.base.BaseController;
 import com.frame.template.common.exception.CommonException;
 import com.frame.template.service.demo.pojo.dto.demo.DemoUpdateXXXXXXInput;

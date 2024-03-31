@@ -16,7 +16,7 @@ import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplateFindAllB
 import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplateInsertInput;
 import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplatePageQueryCriteria;
 import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplateUpdateInput;
-import com.gstdev.cloud.commons.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.gstdev.cloud.data.jpa.utils.QueryUtils;
 import com.gstdev.cloud.commons.exception.BadRequestException;
 import com.frame.template.service.demo.pojo.dto.demoTemplate.DemoTemplateDto;

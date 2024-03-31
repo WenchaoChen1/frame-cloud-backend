@@ -2,7 +2,7 @@ package com.frame.template.service.system.feign.service;
 
 import com.frame.template.service.system.feign.FileFeignClient;
 import com.frame.template.service.system.feign.vo.FileVo;
-import com.gstdev.cloud.commons.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

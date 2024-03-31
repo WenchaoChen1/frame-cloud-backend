@@ -1,7 +1,7 @@
 package com.frame.template.gateway.service;
 
 
-import com.gstdev.cloud.commons.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.frame.template.gateway.dto.TokenDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

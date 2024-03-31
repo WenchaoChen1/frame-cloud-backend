@@ -2,7 +2,7 @@ package com.frame.template.service.system.controller;
 
 import com.frame.template.service.system.mapper.vo.RoleVoMapper;
 import com.frame.template.service.system.pojo.base.role.*;
-import com.gstdev.cloud.commons.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.frame.template.common.base.baseTree.BaseTreeController;
 import com.frame.template.service.system.pojo.base.role.*;
 import com.frame.template.service.system.service.RoleService;

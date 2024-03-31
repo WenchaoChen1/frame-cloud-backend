@@ -11,7 +11,7 @@ package com.frame.template.service.system.service;
 
 
 import com.frame.template.service.system.pojo.base.rTenantMenu.*;
-import com.gstdev.cloud.commons.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.frame.template.common.base.BaseServiceImpl;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 import com.frame.template.service.system.pojo.base.rTenantMenu.*;

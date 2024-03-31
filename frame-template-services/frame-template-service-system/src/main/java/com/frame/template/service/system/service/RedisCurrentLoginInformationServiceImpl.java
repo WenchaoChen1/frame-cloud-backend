@@ -3,7 +3,7 @@ package com.frame.template.service.system.service;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import com.frame.template.service.system.pojo.base.account.AccountDto;
-import com.gstdev.cloud.commons.domain.Result;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.frame.template.common.exception.CommonException;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;

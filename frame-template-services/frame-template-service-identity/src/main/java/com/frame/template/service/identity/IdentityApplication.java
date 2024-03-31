@@ -9,24 +9,30 @@
 
 package com.frame.template.service.identity;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableFeignClients
-@ComponentScan(value = {"com.gstdev","com.frame"})
+@ComponentScan(value = {
+  "com.gstdev"
+//  "com.gstdev.cloud.cache"
+//  , "com.gstdev.cloud.oauth2"
+  , "com.frame"
+//  , "com.gstdev.cloud.commons.utils"
+//  , "com.gstdev.cloud.captcha"
+})
 @EntityScan(value = {"com.frame.template.service.identity"})
 @EnableJpaRepositories(value = {"com.frame.template.service.identity"})
 //@ConfigurationPropertiesScan({"com.gstdev"})
 @SpringBootApplication
 
-//@EnableFeignClients
-//@ComponentScan(value = {"com.gstdev","com.frame"})
+//@EnableFeignComponentScanClients
+//@(value = {"com.gstdev","com.frame"})
 //@EntityScan(value = {"com.gstdev.cloud.oauth2.server.authorization.domain", "com.frame.template.service.identity"})
 //@EnableJpaRepositories(value = {"com.gstdev.cloud.oauth2.server.authorization.repository", "com.frame.template.service.identity"})
 //@ConfigurationPropertiesScan({"com.gstdev"})

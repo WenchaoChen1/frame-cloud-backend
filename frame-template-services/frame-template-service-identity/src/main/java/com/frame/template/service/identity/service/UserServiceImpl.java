@@ -11,8 +11,8 @@ package com.frame.template.service.identity.service;
 
 import com.frame.template.service.identity.domain.User;
 import com.frame.template.service.identity.mapper.UserMapper;
+import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.gstdev.cloud.commons.exception.BadRequestException;
-import com.gstdev.cloud.commons.domain.Result;
 import com.gstdev.cloud.data.jpa.utils.PageUtils;
 import com.gstdev.cloud.data.jpa.utils.QueryUtils;
 import com.frame.template.service.identity.contract.UserDto;

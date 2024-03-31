@@ -23,10 +23,11 @@
 
   <dependencies>
 
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-web</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.gstdev.cloud</groupId>-->
+<!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
+<!--    </dependency>-->
+
 
     <dependency>
       <groupId>com.gstdev.cloud</groupId>

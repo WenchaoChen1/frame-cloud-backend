@@ -6,7 +6,7 @@
   <modelVersion>4.0.0</modelVersion>
   <name>Frame Template Cloud :: Service :: identity</name>
   <artifactId>frame-template-service-identity</artifactId>
-<!--  <groupId>com.gstdev.cloud</groupId>-->
+  <!--  <groupId>com.gstdev.cloud</groupId>-->
 
   <parent>
     <artifactId>frame-template-services</artifactId>
@@ -20,27 +20,11 @@
       <artifactId>gstdev-cloud-starter-web</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-oauth2-authentication</artifactId>
-    </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>com.gstdev.cloud</groupId>-->
-<!--      <artifactId>gstdev-cloud-service-oauth2</artifactId>-->
-<!--    </dependency>-->
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-commons</artifactId>
-    </dependency>
-<!--    <dependency>-->
-<!--      <groupId>com.gstdev.cloud</groupId>-->
-<!--      <artifactId>gstdev-cloud-starter-swagger</artifactId>-->
-<!--    </dependency>-->
 
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-data-jpa</artifactId>
+      <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>
     </dependency>
 
     <dependency>
@@ -78,17 +62,32 @@
     </dependency>
 
 
-
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>3.1.0</version>
       <scope>provided</scope>
     </dependency>
-
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <configuration>
+            <!-- 解决字体图标不显示以及Chrome控制台Failed to decode downloaded font错误的问题-->
+            <!-- 主要原因是maven打包项目的时候对项目进行统一编码，这就导致字体文件被破坏，增加过滤配置，让maven不对字体文件进行处理-->
+            <nonFilteredFileExtensions>
+              <nonFilteredFileExtension>jks</nonFilteredFileExtension>
+              <nonFilteredFileExtension>old</nonFilteredFileExtension>
+              <nonFilteredFileExtension>pub</nonFilteredFileExtension>
+            </nonFilteredFileExtensions>
+          </configuration>
+        </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
@@ -120,6 +119,15 @@
         </configuration>
       </plugin>
     </plugins>
+    <resources>
+      <resource>
+        <directory>${project.basedir}/src/main/java</directory>
+      </resource>
+      <resource>
+        <directory>${project.basedir}/src/main/resources</directory>
+      </resource>
+    </resources>
+
   </build>
 
 </project>
