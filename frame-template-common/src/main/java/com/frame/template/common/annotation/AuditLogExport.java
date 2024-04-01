@@ -9,18 +9,21 @@ public @interface AuditLogExport {
 
   /**
    * The smaller the sort, the higher the front
+   *
    * @return
    */
   int sort() default 0;
 
   /**
    * export name
+   *
    * @return
    */
   String exportName() default "";
 
   /**
    * whether
+   *
    * @return
    */
   boolean currencyValue1() default false;
@@ -28,6 +31,7 @@ public @interface AuditLogExport {
 
   /**
    * whether
+   *
    * @return
    */
   boolean currencyValue2() default false;

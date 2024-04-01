@@ -6,7 +6,7 @@
   <modelVersion>4.0.0</modelVersion>
   <name>Frame Template Cloud :: Service :: email</name>
   <artifactId>frame-template-service-email</artifactId>
-<!--  <groupId>com.gstdev.template</groupId>-->
+  <!--  <groupId>com.gstdev.template</groupId>-->
 
   <parent>
     <artifactId>frame-template-services</artifactId>
@@ -14,16 +14,16 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
 
-<!--  <properties>-->
-<!--    <maven.compiler.source>17</maven.compiler.source>-->
-<!--    <maven.compiler.target>17</maven.compiler.target>-->
-<!--    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
-<!--  </properties>-->
+  <!--  <properties>-->
+  <!--    <maven.compiler.source>17</maven.compiler.source>-->
+  <!--    <maven.compiler.target>17</maven.compiler.target>-->
+  <!--    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+  <!--  </properties>-->
   <dependencies>
-<!--    <dependency>-->
-<!--      <groupId>com.gstdev.cloud</groupId>-->
-<!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.gstdev.cloud</groupId>-->
+    <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
+    <!--    </dependency>-->
 
 
     <dependency>
@@ -89,8 +89,6 @@
     </dependency>
 
 
-
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-mail</artifactId>
@@ -100,11 +98,11 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>com.amazonaws</groupId>-->
-<!--      <artifactId>aws-java-sdk-quicksight</artifactId>-->
-<!--      <version>1.11.842</version>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.amazonaws</groupId>-->
+    <!--      <artifactId>aws-java-sdk-quicksight</artifactId>-->
+    <!--      <version>1.11.842</version>-->
+    <!--    </dependency>-->
   </dependencies>
   <build>
     <plugins>

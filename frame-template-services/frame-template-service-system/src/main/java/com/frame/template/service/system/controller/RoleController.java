@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
+
 import java.util.List;
 
 
@@ -62,7 +63,7 @@ public class RoleController extends BaseTreeController<RoleService, RoleVoMapper
   @GetMapping("/get-all-by-role-id")
   @ApiOperation("获取指定角色的所有菜单，返回id")
   public Result<List<String>> getAllByRoleId(@RequestParam("roleId") String roleId) {
-     return getService().getAllByRoleId(roleId);
+    return getService().getAllByRoleId(roleId);
   }
 
   @PostMapping("/insertRoleMenu")

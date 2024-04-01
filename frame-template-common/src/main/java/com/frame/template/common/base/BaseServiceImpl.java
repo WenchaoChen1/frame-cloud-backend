@@ -192,15 +192,17 @@ public abstract class BaseServiceImpl<R extends BaseRepository<E>, M extends Bas
   public D findByIdToDto(String id) {
     return getMapper().toDto(findById(id));
   }
+
   @Override
   public Result<D> findByIdToResult(String id) {
-    return  Result.success(findByIdToDto(id));
+    return Result.success(findByIdToDto(id));
   }
 
   @Override
   public List<D> findAllByQueryCriteriaToDto(FQC queryCriteria) {
     return getMapper().toDto(getRepository().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder)));
   }
+
   @Override
   public Result<List<D>> findAllByQueryCriteriaToResult(FQC queryCriteria) {
     return Result.success(findAllByQueryCriteriaToDto(queryCriteria));

@@ -12,7 +12,7 @@ package com.frame.template.service.system.message;
 public enum BaseErrorMessage implements ErrorMessage {
 
   SAVE_SUCCESS("base001", "Saved successfully"),
-  FAIL_SAVE ("base002", "Save failed"),
+  FAIL_SAVE("base002", "Save failed"),
   MODIFY_SUCCESS("base003", "Saved successfully"),
   FAIL_MODIFY("base004", "Save failed"),
   INFORMATION_NOT_EXIST("base005", "This information does not exists"),

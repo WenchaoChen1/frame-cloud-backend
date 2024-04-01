@@ -22,19 +22,19 @@ import java.util.List;
 @Setter
 public class UserInsertInput extends BaseInsertInput {
 
+  List<String> departIds;
+  List<String> roleIds;
   private String avatar;
   private String email;
   private Integer gender;
-  @JsonFormat(pattern="yyyy-MM-dd")
+  @JsonFormat(pattern = "yyyy-MM-dd")
   private Date lastLoginTime;
   private String mobile;
   private String password;
   private String username;
   private String accountName;
   private String tenantId;
-  List<String> departIds;
-  List<String> roleIds;
-  private AccountTypeConstants accountTypeConstants=AccountTypeConstants.USER;
+  private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
   private String firstName;
   private String lastName;
   private String icon;

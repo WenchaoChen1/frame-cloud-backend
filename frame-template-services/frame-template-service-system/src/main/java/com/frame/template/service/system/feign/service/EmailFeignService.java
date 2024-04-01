@@ -19,7 +19,6 @@ public class EmailFeignService {
   private final EmailFeignClient emailFeignClient;
 
 
-
 //  public void sendEmail(Email email, Context context, String templateName, EmailTypeEnum emailTypeEnum) throws Exception{
 //      emailFeignClient.sendEmail(email,context, templateName, emailTypeEnum);
 //  }

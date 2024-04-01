@@ -23,7 +23,7 @@ import java.util.Date;
 @Setter
 public class TenantDto extends BaseTreeDto<TenantDto> implements Serializable {
 
-//  List<TenantDto> children;
+  //  List<TenantDto> children;
 //  private String id;
   @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

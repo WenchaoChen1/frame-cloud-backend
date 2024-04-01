@@ -14,7 +14,7 @@ import java.util.List;
 public interface UserService extends BaseService<UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> {
 
   //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
-  UserDto create(UserDto userDto,String tenentId);
+  UserDto create(UserDto userDto, String tenentId);
 
   Result<UserDto> insertUserInitializationToResult(UserInsertInput userInsertInput);
 

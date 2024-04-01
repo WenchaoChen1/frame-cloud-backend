@@ -22,6 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.Resource;
+
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 

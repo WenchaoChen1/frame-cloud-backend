@@ -9,6 +9,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 
 /**
@@ -29,9 +30,9 @@ public class Account extends BaseEntity {
   @Column(name = "identity", length = 100)
   private String identity;
 
-//  super:0 看到所有数据最大权限,admin:1只能看到当前租户的所有权限，user：需要根据role来获取权限
+  //  super:0 看到所有数据最大权限,admin:1只能看到当前租户的所有权限，user：需要根据role来获取权限
   @Column(name = "type", length = 100)
-  private String type="user";
+  private String type = "user";
   @Column(name = "name")
   private String name;
 

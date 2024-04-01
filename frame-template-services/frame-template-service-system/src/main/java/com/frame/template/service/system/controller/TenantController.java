@@ -23,6 +23,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
+
 import java.util.List;
 
 
@@ -56,7 +57,7 @@ public class TenantController extends BaseTreeController<TenantService, TenantVo
   @ApiOperation("获取当前租户以及当前租户的所有子租户，返回树状结构")
   public Result<List<TenantVo>> findByIdToTreeToResult(TenantFindAllByQueryCriteria tenantFindAllByQueryCriteria) {
     List<TenantDto> itselfAndSubsetsToDto = getService().findItselfAndSubsetsToDto(redisCurrentLoginInformation.getCurrentLoginTenantId());
-    List<String> tenantIds =itselfAndSubsetsToDto.stream().map(TenantDto::getId).toList();
+    List<String> tenantIds = itselfAndSubsetsToDto.stream().map(TenantDto::getId).toList();
     tenantFindAllByQueryCriteria.setTenantIds(tenantIds);
     return findAllByQueryCriteriaToResultToTree(tenantFindAllByQueryCriteria);
   }

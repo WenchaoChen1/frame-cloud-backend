@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.Resource;
+
 import java.util.List;
 
 @Service
@@ -30,13 +31,14 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
   private MenuService menuService;
   @Resource
   private TenantService tenantService;
+
   @Override
   public Result<Object> addByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput) {
-    AccountDto accountDto=null;
-    if(redisCurrentLoginInformationInput.getAccountId()!=null){
+    AccountDto accountDto = null;
+    if (redisCurrentLoginInformationInput.getAccountId() != null) {
       accountDto = accountService.findByIdToDto(redisCurrentLoginInformationInput.getAccountId());
     }
-    if (accountDto==null||accountDto.getId() == null) {
+    if (accountDto == null || accountDto.getId() == null) {
       //TODO 以后解决token 这里直接获取当前用户，不要调用
       Result<String> securityUserId = identityFeignClient.getSecurityUserId();
       Result<String> userId = identityFeignClient.getUserId();
@@ -79,7 +81,6 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
     CurrentLoginInformation currentLoginInformation = redisCurrentLoginInformation.getCurrentLoginInformation();
     return Result.success(currentLoginInformation);
   }
-
 
 
 }

@@ -26,12 +26,12 @@ public class UserUpdateInput extends BaseUpdateInput {
   private Integer deleted;
   private String email;
   private Integer gender;
-  @JsonFormat(pattern="yyyy-MM-dd")
+  @JsonFormat(pattern = "yyyy-MM-dd")
   private Date lastLoginTime;
   private String mobile;
   private String password;
   private String username;
-  private AccountTypeConstants accountTypeConstants=AccountTypeConstants.USER;
+  private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
   private String firstName;
   private String lastName;
   private String icon;

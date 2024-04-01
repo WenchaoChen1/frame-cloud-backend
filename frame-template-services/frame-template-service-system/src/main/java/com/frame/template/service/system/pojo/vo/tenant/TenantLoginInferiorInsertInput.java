@@ -22,7 +22,7 @@ import jakarta.validation.constraints.NotEmpty;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TenantLoginInferiorInsertInput extends BaseTreeInsertInput {
-//  @ApiModelProperty(value = "parentId 不能为空", required = true)
+  //  @ApiModelProperty(value = "parentId 不能为空", required = true)
 //  @NotEmpty
   private String parentId;
   private String tenantCode;

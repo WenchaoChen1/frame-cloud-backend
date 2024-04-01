@@ -11,6 +11,7 @@ package com.frame.template.service.system.pojo.base.rRoleRTenantMenu;
 
 import com.frame.template.common.base.BasePageQueryCriteria;
 import lombok.Data;
+
 @Deprecated
 @Data
 public class RRoleRTenantMenuPageQueryCriteria extends BasePageQueryCriteria {

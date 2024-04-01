@@ -33,13 +33,14 @@ public class EmailServiceImpl implements EmailService {
   @Resource
   private EmailRepository emailRepository;
 
-//  @Value(value = "${invitation.app-url}")
+  //  @Value(value = "${invitation.app-url}")
   @Value("http://192.168.0.41:8005")
   private String appUrl;
   @Value(value = "${spring.mail.email}")
   private String senderEmil;
+
   @Override
-  public void inviteUser(UserDto userDto){
+  public void inviteUser(UserDto userDto) {
     Email email = new Email();
     email.setType(2);
     email.setReceiverEmail(userDto.getEmail());
@@ -51,17 +52,18 @@ public class EmailServiceImpl implements EmailService {
     Context context = new Context();
     context.setVariable("token", userDto.getActivateToken());
     context.setVariable("userEmail", userDto.getEmail());
-    context.setVariable("username", userDto.getFirstName()+ " " + userDto.getLastName());
+    context.setVariable("username", userDto.getFirstName() + " " + userDto.getLastName());
     context.setVariable("emailAddress", senderEmil);
     context.setVariable("customerName", userDto.getCustomerName());
-    context.setVariable("password",userDto.getPassword());
+    context.setVariable("password", userDto.getPassword());
     context.setVariable("url", "/user/registered?");
     try {
-      this.sendEmail(email,context,"Welcome", EmailTypeEnum.Welcome);
+      this.sendEmail(email, context, "Welcome", EmailTypeEnum.Welcome);
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
   }
+
   @Override
   public void sendEmail(Email email, Context context, String templateName, EmailTypeEnum emailTypeEnum) throws Exception {
 

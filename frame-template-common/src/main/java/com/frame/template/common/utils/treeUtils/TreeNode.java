@@ -5,17 +5,8 @@ import java.util.List;
 
 /**
  * 树节点接口
- *
  */
 public interface TreeNode<K, T extends TreeNode<K, T>> {
-  /**
-   * 设置节点id
-   *
-   * @param id
-   */
-  void setId(K id);
-
-
   /**
    * 获取节点id
    *
@@ -24,6 +15,13 @@ public interface TreeNode<K, T extends TreeNode<K, T>> {
    * @date 2020/7/9 18:36
    */
   K getId();
+
+  /**
+   * 设置节点id
+   *
+   * @param id
+   */
+  void setId(K id);
 
   /**
    * 获取节点父id

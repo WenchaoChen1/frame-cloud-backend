@@ -20,8 +20,9 @@ public class AccountUpdateInput extends BaseUpdateInput {
 
   private String id;
   private String name;
-//  private String type;
-  private AccountTypeConstants accountTypeConstants=AccountTypeConstants.USER;
+  //  private String type;
+  private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
+
   public String getType() {
     return accountTypeConstants.getCode();
   }

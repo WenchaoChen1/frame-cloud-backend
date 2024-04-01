@@ -38,7 +38,7 @@ public class RedisCurrentLoginInformationImpl implements RedisCurrentLoginInform
     CurrentLoginInformation currentLogininformation = null;
     try {
       currentLogininformation = (CurrentLoginInformation) redisUtils.get(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
-    }catch (Exception e){
+    } catch (Exception e) {
       return null;
     }
 //    CurrentLoginInformation currentLogininformation = (CurrentLoginInformation) redisUtils.get(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
@@ -47,7 +47,7 @@ public class RedisCurrentLoginInformationImpl implements RedisCurrentLoginInform
 
   public String getCurrentLoginAccountId() {
     CurrentLoginInformation loginInformation = getCurrentLoginInformation();
-    if(loginInformation==null){
+    if (loginInformation == null) {
       return null;
     }
     return loginInformation.getUserId();
@@ -55,7 +55,7 @@ public class RedisCurrentLoginInformationImpl implements RedisCurrentLoginInform
 
   public String getCurrentLoginTenantId() {
     CurrentLoginInformation loginInformation = getCurrentLoginInformation();
-    if(loginInformation==null){
+    if (loginInformation == null) {
       return null;
     }
     return loginInformation.getTenantId();

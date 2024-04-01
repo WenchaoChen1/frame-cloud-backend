@@ -27,6 +27,7 @@ import org.mapstruct.ReportingPolicy;
 public interface UserVoMapper extends BaseVoMapper<UserVo, UserDto> {
 
   UserInsertInput toUserInsertInput(UserLoginInferiorInsertInput userLoginInferiorInsertInput);
+
   UserUpdateInput toUserUpdateInput(UserLoginInferiorUpdateInput userLoginInferiorUpdateInput);
 
 }

@@ -6,7 +6,7 @@
   <modelVersion>4.0.0</modelVersion>
   <name>Frame Template Project :: Service :: system</name>
   <artifactId>frame-template-service-system</artifactId>
-<!--  <groupId>com.gstdev.template</groupId>-->
+  <!--  <groupId>com.gstdev.template</groupId>-->
   <description>${project.name}</description>
 
   <parent>
@@ -15,18 +15,18 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
 
-<!--  <properties>-->
-<!--    <maven.compiler.source>17</maven.compiler.source>-->
-<!--    <maven.compiler.target>17</maven.compiler.target>-->
-<!--    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
-<!--  </properties>-->
+  <!--  <properties>-->
+  <!--    <maven.compiler.source>17</maven.compiler.source>-->
+  <!--    <maven.compiler.target>17</maven.compiler.target>-->
+  <!--    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+  <!--  </properties>-->
 
   <dependencies>
 
-<!--    <dependency>-->
-<!--      <groupId>com.gstdev.cloud</groupId>-->
-<!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.gstdev.cloud</groupId>-->
+    <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
+    <!--    </dependency>-->
 
 
     <dependency>
@@ -52,7 +52,6 @@
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-bootstrap</artifactId>
     </dependency>
-
 
 
     <!-- 导入openFeign的依赖 -->
@@ -98,14 +97,14 @@
       <artifactId>lombok</artifactId>
     </dependency>
     <!-- MapStruct related dependencies -->
-<!--    <dependency>-->
-<!--      <groupId>org.mapstruct</groupId>-->
-<!--      <artifactId>mapstruct</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.mapstruct</groupId>-->
-<!--      <artifactId>mapstruct-processor</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.mapstruct</groupId>-->
+    <!--      <artifactId>mapstruct</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.mapstruct</groupId>-->
+    <!--      <artifactId>mapstruct-processor</artifactId>-->
+    <!--    </dependency>-->
 
   </dependencies>
   <build>

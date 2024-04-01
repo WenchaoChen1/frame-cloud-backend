@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 public class IdentityFeignService {
   private final IdentityFeignClient identityFeignClient;
   private final IdentityClient identityClient;
+
   public UserDto save(IdentitySaveDto identitySaveDto) {
     Result<UserDto> result = identityFeignClient.save(identitySaveDto);
     if (null == result) {
@@ -33,16 +34,16 @@ public class IdentityFeignService {
     return dto;
   }
 
-  public void deleteByUserId( String userId) {
+  public void deleteByUserId(String userId) {
     identityFeignClient.deleteByUserId(userId);
   }
 
-  public Result<UserDto> updateEmail(IdentitySaveDto identitySaveDto){
+  public Result<UserDto> updateEmail(IdentitySaveDto identitySaveDto) {
     return identityFeignClient.updateEmail(identitySaveDto);
   }
 
-  public Object login(String username,String password,Boolean rememberMe){
-    return identityClient.login("Basic cGFzc3dvcmQtY2xpZW50OmJsYWNrMTIz",username,password,rememberMe,"password");
+  public Object login(String username, String password, Boolean rememberMe) {
+    return identityClient.login("Basic cGFzc3dvcmQtY2xpZW50OmJsYWNrMTIz", username, password, rememberMe, "password");
   }
 
 }

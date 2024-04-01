@@ -39,7 +39,7 @@ public class UserLoginInferiorInsertInput extends BaseUpdateInput {
   @ApiModelProperty(value = "username 不能为空", required = true)
   private String username;
   @ApiModelProperty(value = "accountTypeConstants 不能为空", required = true)
-  private AccountTypeConstants accountTypeConstants=AccountTypeConstants.USER;
+  private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
   private String firstName;
   private String lastName;
   private String icon;

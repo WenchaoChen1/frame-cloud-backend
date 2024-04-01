@@ -18,6 +18,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 
 @Getter
@@ -38,7 +39,7 @@ public class Menu extends BaseTreeEntity {
   @Column(name = "name", length = 64, nullable = false)
   private String name;
 
-  @Column(name = "code", length = 64, nullable = false,unique= true)
+  @Column(name = "code", length = 64, nullable = false, unique = true)
   private String code;
 
   @Column(name = "icon", length = 100)
@@ -55,7 +56,6 @@ public class Menu extends BaseTreeEntity {
 
   @Column(name = "description")
   private String description;
-
 
 
   @Column(name = "url", length = 100)

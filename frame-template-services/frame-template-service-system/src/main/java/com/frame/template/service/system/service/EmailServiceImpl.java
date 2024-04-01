@@ -32,7 +32,7 @@ public class EmailServiceImpl implements EmailService {
   @Resource
   private EmailRepository emailRepository;
 
-//  @Value(value = "${invitation.app-url}")
+  //  @Value(value = "${invitation.app-url}")
   @Value("http://192.168.0.41:8005")
   private String appUrl;
 

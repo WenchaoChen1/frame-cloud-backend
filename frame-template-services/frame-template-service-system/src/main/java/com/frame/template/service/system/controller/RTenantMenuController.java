@@ -20,6 +20,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
+
 import java.util.List;
 
 
@@ -45,12 +46,13 @@ public class RTenantMenuController extends BaseController<RTenantMenuService, RT
   @PostMapping("/insertTenantMenu")
   @ApiOperation("insertSave")
   public Result<String> insertTenantMenu(@RequestBody RTenantMenuInsertInput rTenantMenuInsertInput) {
-      return rTenantMenuService.insertTenantMenu(rTenantMenuInsertInput);
+    return rTenantMenuService.insertTenantMenu(rTenantMenuInsertInput);
   }
+
   @GetMapping("/get-all-by-tenant-id")
   @ApiOperation("获取指定租户的所有菜单，返回id")
   public Result<List<String>> getAllByTenantId(@RequestParam("tenantId") String tenantId) {
-    RTenantMenuFindAllByQueryCriteria rTenantMenuFindAllByQueryCriteria=new RTenantMenuFindAllByQueryCriteria();
+    RTenantMenuFindAllByQueryCriteria rTenantMenuFindAllByQueryCriteria = new RTenantMenuFindAllByQueryCriteria();
     rTenantMenuFindAllByQueryCriteria.setTenantId(tenantId);
     List<String> strings = getService().findAllByQueryCriteriaToDto(rTenantMenuFindAllByQueryCriteria).stream().map(RTenantMenuDto::getMenuId).toList();
     return Result.success(strings);

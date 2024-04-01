@@ -2,10 +2,9 @@ package com.frame.template.service.system.enums;
 
 public enum EmailTypeEnum {
   UnKnow("UnKnow", 0),
-  ForgetPassword("Forget password",1),
-  Welcome("Welcome register",2),
-  PasswordReset("Password Reset",3)
-  ;
+  ForgetPassword("Forget password", 1),
+  Welcome("Welcome register", 2),
+  PasswordReset("Password Reset", 3);
 
   private String name;
   private int index;
@@ -17,6 +16,6 @@ public enum EmailTypeEnum {
 
   @Override
   public String toString() {
-    return this.index+"_"+this.name;
+    return this.index + "_" + this.name;
   }
 }

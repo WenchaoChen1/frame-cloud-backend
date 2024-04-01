@@ -45,7 +45,7 @@ public abstract class BaseController<S extends BaseService<D, II, UI, PQC, FQC>,
 
   protected Result<V> insertToResult(II var1) {
 //    try {
-      return getMapper().toVo(getService().insertToResult(var1));
+    return getMapper().toVo(getService().insertToResult(var1));
 //    } catch (Exception e) {
 //      e.printStackTrace();
 //      return Result.failure("Save failed");
@@ -53,36 +53,36 @@ public abstract class BaseController<S extends BaseService<D, II, UI, PQC, FQC>,
   }
 
   protected Result<List<V>> insertAllToResult(List<II> var1) {
-      return getMapper().toAllVo(getService().insertAllToResult(var1));
+    return getMapper().toAllVo(getService().insertAllToResult(var1));
   }
 
   protected Result<V> updateToResult(UI var1) {
-      return getMapper().toVo(getService().updateToResult(var1));
+    return getMapper().toVo(getService().updateToResult(var1));
   }
 
   protected Result<List<V>> updateAllToResult(List<UI> var1) {
-      return getMapper().toAllVo(getService().updateAllToResult(var1));
+    return getMapper().toAllVo(getService().updateAllToResult(var1));
   }
 
 
   protected Result<V> deleteByIdToResult(String id) {
-      return getMapper().toVo(getService().deleteById(id));
+    return getMapper().toVo(getService().deleteById(id));
   }
 
   protected Result<List<V>> deleteAllByIdToResult(List<String> ids) {
-      return getMapper().toAllVo(getService().deleteAllById(ids));
+    return getMapper().toAllVo(getService().deleteAllById(ids));
   }
 
   protected Result<Page<V>> pageToResult(PQC queryCriteria, Pageable pageable) {
-      return Result.success(getMapper().toVo(getService().page(queryCriteria, pageable)));
+    return Result.success(getMapper().toVo(getService().page(queryCriteria, pageable)));
   }
 
   protected Result<V> findByIdToResult(String id) {
-      return getMapper().toVo(getService().findByIdToResult(id));
+    return getMapper().toVo(getService().findByIdToResult(id));
   }
 
   protected Result<List<V>> findAllByQueryCriteriaToResult(FQC var1) {
-      return getMapper().toAllVo(getService().findAllByQueryCriteriaToResult(var1));
+    return getMapper().toAllVo(getService().findAllByQueryCriteriaToResult(var1));
   }
 
 

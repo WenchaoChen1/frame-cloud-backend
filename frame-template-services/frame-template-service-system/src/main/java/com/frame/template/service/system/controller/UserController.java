@@ -22,6 +22,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
+
 import java.util.List;
 
 @Slf4j
@@ -62,7 +63,7 @@ public class UserController extends BaseController<UserService, UserVoMapper, Us
 
   @GetMapping("/get-by-id")
   @ApiOperation("根据id获取实体数据")
-  public Result<UserVo> getById(@RequestParam("id")  String id) {
+  public Result<UserVo> getById(@RequestParam("id") String id) {
     return findByIdToResult(id);
   }
 
@@ -86,7 +87,7 @@ public class UserController extends BaseController<UserService, UserVoMapper, Us
 
   @ApiOperation("删除用户及所属的账号信息")
   @DeleteMapping
-  public Result<UserVo> deleteById(@RequestParam("id")  String id) {
+  public Result<UserVo> deleteById(@RequestParam("id") String id) {
     return deleteByIdToResult(id);
   }
   // *********************************访问控制*****************************************

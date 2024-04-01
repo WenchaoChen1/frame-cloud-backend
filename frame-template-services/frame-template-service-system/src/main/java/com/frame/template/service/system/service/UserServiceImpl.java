@@ -32,6 +32,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import jakarta.annotation.Resource;
+
 import java.util.*;
 
 @Slf4j
@@ -39,30 +40,27 @@ import java.util.*;
 @Transactional(readOnly = true)
 public class UserServiceImpl extends BaseServiceImpl<UserRepository, UserMapper, User, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria, RedisCurrentLoginInformation> implements UserService {
 
+  private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
   @Resource
   private UserRepository userRepository;
   @Resource
   private UserMapper userMapper;
   @Resource
   private RedisCurrentLoginInformation redisCurrentLoginInformation;
-
   @Resource
   private EmailService emailService;
-
   @Resource
   private AccountService accountService;
-
   @Resource
   private IdentityFeignService identityFeignService;
-//
+
+//  @Resource
+//  private EmailFeignService emailFeignService;
+  //
 //  @Resource
 //  private TenantFeignService tenantFeignService;
   @Resource
   private RoleRepository roleRepository;
-
-//  @Resource
-//  private EmailFeignService emailFeignService;
-
   @Value(value = "${spring.mail.email}")
   private String senderEmil;
 
@@ -71,6 +69,28 @@ public class UserServiceImpl extends BaseServiceImpl<UserRepository, UserMapper,
     this.userRepository = userRepository;
     this.userMapper = userMapper;
     this.redisCurrentLoginInformation = redisCurrentLoginInformation;
+  }
+
+  private static char nextChar(Random rnd) {
+    switch (rnd.nextInt(4)) {
+      case 0:
+        return (char) ('a' + rnd.nextInt(26));
+      case 1:
+        return (char) ('A' + rnd.nextInt(26));
+      case 2:
+        return (char) ('0' + rnd.nextInt(10));
+      default:
+        return SPECIAL_CHARS.charAt(rnd.nextInt(SPECIAL_CHARS.length()));
+    }
+  }
+
+  public static String randomPassword() {
+    char[] chars = new char[8];
+    Random rnd = new Random();
+    for (int i = 0; i < 8; i++) {
+      chars[i] = nextChar(rnd);
+    }
+    return new String(chars);
   }
 
   @Override
@@ -103,41 +123,6 @@ public class UserServiceImpl extends BaseServiceImpl<UserRepository, UserMapper,
     identitySaveDto.setPassword(insert.getPassword());
     identityFeignService.save(identitySaveDto);
     return insert;
-  }
-
-
-  /**
-   * 新增用户并且创建账户角色，关联部门
-   *
-   * @param userInsertInput
-   * @return
-   */
-  @Override
-  @Transactional
-  public Result<UserDto> insertUserInitializationToResult(UserInsertInput userInsertInput) {
-    User user = insertUserInitialization(userInsertInput);
-    return Result.success(getMapper().toDto(user));
-  }
-
-  @Override
-  public List<AccountListDto> getByIdToAccount(String id) {
-    User user = userRepository.findById(id).orElseGet(User::new);
-    List<Account> account = user.getAccount();
-    List<AccountListDto> accountListDtos = userMapper.accountListToDto(account);
-    return accountListDtos;
-  }
-
-  @Override
-  @Transactional()
-  public Result<UserDto> deleteById(String id) {
-    if (id == null || id.length() == 0) {
-      throw new BadRequestException("The primary key cannot be empty");
-    }
-    if(id.equals(redisCurrentLoginInformation.getCurrentLoginInformation().getUserId())){
-      throw new BadRequestException("You cannot delete your own data");
-    }
-    getRepository().deleteById(id);
-    return Result.success(null);
   }
 
   //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
@@ -184,9 +169,66 @@ public class UserServiceImpl extends BaseServiceImpl<UserRepository, UserMapper,
 //  }
 //
 
+  /**
+   * 新增用户并且创建账户角色，关联部门
+   *
+   * @param userInsertInput
+   * @return
+   */
+  @Override
+  @Transactional
+  public Result<UserDto> insertUserInitializationToResult(UserInsertInput userInsertInput) {
+    User user = insertUserInitialization(userInsertInput);
+    return Result.success(getMapper().toDto(user));
+  }
+//
+//  @Override
+//  public String checkIfUserExist(String emailAddress){
+//    String validationMessage = null;
+//    Optional<User> user = userRepository.findByEmailAndDeletedFalse(emailAddress);
+//    if(user.isPresent() && !ObjectUtils.isEmpty(user)){
+//      validationMessage = "The email address already exists";
+//    }
+//    return validationMessage;
+//  }
+//
+//  public List<Role> getRoleEntity(List<String> list) {
+//    List<Role> roleList = new ArrayList<Role>();
+//    if (list != null && list.size() > 0) {
+//      for (String item : list) {
+//        Role role = new Role();
+//        role.setId(item);
+//        roleList.add(role);
+//      }
+//    }
+//    return roleList;
+//  }
+//
+
+  @Override
+  public List<AccountListDto> getByIdToAccount(String id) {
+    User user = userRepository.findById(id).orElseGet(User::new);
+    List<Account> account = user.getAccount();
+    List<AccountListDto> accountListDtos = userMapper.accountListToDto(account);
+    return accountListDtos;
+  }
+
+  @Override
+  @Transactional()
+  public Result<UserDto> deleteById(String id) {
+    if (id == null || id.length() == 0) {
+      throw new BadRequestException("The primary key cannot be empty");
+    }
+    if (id.equals(redisCurrentLoginInformation.getCurrentLoginInformation().getUserId())) {
+      throw new BadRequestException("You cannot delete your own data");
+    }
+    getRepository().deleteById(id);
+    return Result.success(null);
+  }
+
   @Override
   @Transactional(rollbackFor = ServiceException.class)
-  public UserDto create(UserDto userDto,String tenentId) {
+  public UserDto create(UserDto userDto, String tenentId) {
 
     User user = userMapper.toEntity(userDto);
 
@@ -237,52 +279,5 @@ public class UserServiceImpl extends BaseServiceImpl<UserRepository, UserMapper,
 
     return userMapper.toDto(user);
   }
-//
-//  @Override
-//  public String checkIfUserExist(String emailAddress){
-//    String validationMessage = null;
-//    Optional<User> user = userRepository.findByEmailAndDeletedFalse(emailAddress);
-//    if(user.isPresent() && !ObjectUtils.isEmpty(user)){
-//      validationMessage = "The email address already exists";
-//    }
-//    return validationMessage;
-//  }
-//
-//  public List<Role> getRoleEntity(List<String> list) {
-//    List<Role> roleList = new ArrayList<Role>();
-//    if (list != null && list.size() > 0) {
-//      for (String item : list) {
-//        Role role = new Role();
-//        role.setId(item);
-//        roleList.add(role);
-//      }
-//    }
-//    return roleList;
-//  }
-//
-
-
-    private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
-
-    private static char nextChar(Random rnd){
-      switch(rnd.nextInt(4)){
-        case 0:
-          return (char)('a'+rnd.nextInt(26));
-        case 1:
-          return (char)('A'+rnd.nextInt(26));
-        case 2:
-          return     (char)('0'+rnd.nextInt(10));
-        default:
-          return SPECIAL_CHARS.charAt(rnd.nextInt(SPECIAL_CHARS.length()));
-      }
-    }
-    public static String randomPassword(){
-      char[] chars = new char[8];
-      Random rnd = new Random();
-      for(int i=0; i<8; i++){
-        chars[i] = nextChar(rnd);
-      }
-      return new String(chars);
-    }
 
 }

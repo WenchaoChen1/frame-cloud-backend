@@ -15,11 +15,10 @@
   </parent>
 
   <dependencies>
-<!--    <dependency>-->
-<!--      <groupId>com.gstdev.cloud</groupId>-->
-<!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
-<!--    </dependency>-->
-
+    <!--    <dependency>-->
+    <!--      <groupId>com.gstdev.cloud</groupId>-->
+    <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
+    <!--    </dependency>-->
 
 
     <dependency>
@@ -27,10 +26,6 @@
       <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>com.frame.template</groupId>
-      <artifactId>frame-template-common</artifactId>
-    </dependency>
 
     <dependency>
       <groupId>org.springframework.cloud</groupId>
@@ -75,19 +70,19 @@
   </dependencies>
   <build>
     <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-resources-plugin</artifactId>
-          <configuration>
-            <!-- 解决字体图标不显示以及Chrome控制台Failed to decode downloaded font错误的问题-->
-            <!-- 主要原因是maven打包项目的时候对项目进行统一编码，这就导致字体文件被破坏，增加过滤配置，让maven不对字体文件进行处理-->
-            <nonFilteredFileExtensions>
-              <nonFilteredFileExtension>jks</nonFilteredFileExtension>
-              <nonFilteredFileExtension>old</nonFilteredFileExtension>
-              <nonFilteredFileExtension>pub</nonFilteredFileExtension>
-            </nonFilteredFileExtensions>
-          </configuration>
-        </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <configuration>
+          <!-- 解决字体图标不显示以及Chrome控制台Failed to decode downloaded font错误的问题-->
+          <!-- 主要原因是maven打包项目的时候对项目进行统一编码，这就导致字体文件被破坏，增加过滤配置，让maven不对字体文件进行处理-->
+          <nonFilteredFileExtensions>
+            <nonFilteredFileExtension>jks</nonFilteredFileExtension>
+            <nonFilteredFileExtension>old</nonFilteredFileExtension>
+            <nonFilteredFileExtension>pub</nonFilteredFileExtension>
+          </nonFilteredFileExtensions>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>

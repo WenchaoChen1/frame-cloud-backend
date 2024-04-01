@@ -30,7 +30,7 @@ public interface IdentityFeignClient {
   Result<String> getUserIdHerder(@RequestHeader("authorization") String authorization);
 
   @DeleteMapping("delete-by-userId/{userId}")
-  void deleteByUserId(@RequestParam("userId")  String userId);
+  void deleteByUserId(@RequestParam("userId") String userId);
 
   @PostMapping("update-email")
   Result<UserDto> updateEmail(@RequestBody IdentitySaveDto identitySaveDto);

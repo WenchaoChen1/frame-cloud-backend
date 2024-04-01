@@ -16,6 +16,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 
 @Getter
@@ -46,6 +47,6 @@ public class Dict extends BaseTreeEntity {
   private Integer deleted = 0;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "dict",cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "dict", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
   private List<TenantDict> tenantDicts;
 }

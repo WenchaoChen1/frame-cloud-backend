@@ -8,25 +8,25 @@ import java.util.Random;
 @Deprecated
 public class TokenUtils {
 
-  private TokenUtils(){
-  }
-
   private static final TokenUtils instance = new TokenUtils();
 
-  public static TokenUtils getInstance(){
+  private TokenUtils() {
+  }
+
+  public static TokenUtils getInstance() {
     return instance;
   }
 
-  public String randomCode(){
+  public String randomCode() {
 //    return UUID.randomUUID().toString().replaceAll("-", "");
-    String token = (System.currentTimeMillis() +"@@"+ new Random().nextInt(999999999)) + "";
+    String token = (System.currentTimeMillis() + "@@" + new Random().nextInt(999999999)) + "";
     Base64 encoder = new Base64();
     String newStr = encoder.encodeBase64String(token.getBytes());
-    return newStr.replaceAll("=","");
+    return newStr.replaceAll("=", "");
   }
 
-  public String encode(){
-    String token = (System.currentTimeMillis() +"@@"+ new Random().nextInt(999999999)) + "";
+  public String encode() {
+    String token = (System.currentTimeMillis() + "@@" + new Random().nextInt(999999999)) + "";
     Base64 encoder = new Base64();
     String newStr = "";
     newStr = encoder.encodeBase64String(token.getBytes());

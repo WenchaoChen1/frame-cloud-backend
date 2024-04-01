@@ -25,6 +25,7 @@ public class AccountListDto {
   private String name;
   private String type;
   private AccountTypeConstants accountTypeConstants;
+
   public AccountTypeConstants getAccountTypeConstants() {
     return AccountTypeConstants.getAccountTypeConstants(this.type);
   }

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.annotation.Resource;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -49,9 +50,9 @@ public class FileController extends BaseController<FileService, FileVoMapper, Fi
 
   @PostMapping
   @ApiOperation("新增一条数据")
-  public Result<FileVo> insert(FileInsertInput fileInsertInput,@RequestParam("file") MultipartFile file) {
+  public Result<FileVo> insert(FileInsertInput fileInsertInput, @RequestParam("file") MultipartFile file) {
     return insertToResult(fileInsertInput);
-}
+  }
 
 
   @ApiOperation("Delete file")
@@ -62,18 +63,19 @@ public class FileController extends BaseController<FileService, FileVoMapper, Fi
 
   @ApiOperation("Upload file")
   @PostMapping(value = "/upload")
-  public Result<FileVo> upload(@RequestParam("file") MultipartFile file, @RequestParam("tenantId") String tenantId,@RequestParam("type") FileConstants fileConstants) throws IOException {
-    if(fileConstants==null){
+  public Result<FileVo> upload(@RequestParam("file") MultipartFile file, @RequestParam("tenantId") String tenantId, @RequestParam("type") FileConstants fileConstants) throws IOException {
+    if (fileConstants == null) {
 
     }
-    Result<FileVo> fileVoResult = getMapper().toVo(fileService.upload(file,tenantId,fileConstants));
+    Result<FileVo> fileVoResult = getMapper().toVo(fileService.upload(file, tenantId, fileConstants));
     return fileVoResult;
 
   }
+
   @ApiOperation("Uploads file")
   @PostMapping(value = "/uploads")
-  public Result<List<FileVo>> uploads(@RequestParam("file") List<MultipartFile> file, @RequestParam("tenantId") String tenantId,@RequestParam("type") FileConstants fileConstants) throws IOException {
-    Result<List<FileVo>> fileVoResult = getMapper().toAllVo(fileService.uploads(file,tenantId,fileConstants));
+  public Result<List<FileVo>> uploads(@RequestParam("file") List<MultipartFile> file, @RequestParam("tenantId") String tenantId, @RequestParam("type") FileConstants fileConstants) throws IOException {
+    Result<List<FileVo>> fileVoResult = getMapper().toAllVo(fileService.uploads(file, tenantId, fileConstants));
     return fileVoResult;
   }
 

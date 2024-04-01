@@ -16,6 +16,7 @@ public interface EmailFeignClient {
 
   @PostMapping(value = "/v1/email/invite-user")
   void inviteUser(@RequestBody UserDto userDto);
+
   @GetMapping(value = "/v1/email/a")
   void a();
 }

@@ -26,6 +26,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.Resource;
+
 import java.util.Objects;
 
 
@@ -87,7 +88,8 @@ public class UserServiceImpl implements UserService {
   public User getByUsername(String username) {
     return userRepository.findByUsername(username);
   }
-@Override
+
+  @Override
   public User findByEmail(String email) {
     return userRepository.findByEmail(email);
   }

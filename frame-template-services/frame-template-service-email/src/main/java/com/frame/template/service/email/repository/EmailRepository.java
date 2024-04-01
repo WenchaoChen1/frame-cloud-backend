@@ -26,6 +26,6 @@ public interface EmailRepository extends JpaRepository<Email, String>, JpaSpecif
 
   @Transactional
   @Modifying
-  @Query(value="update public.email set status = 1 where id = ?1",nativeQuery=true)
+  @Query(value = "update public.email set status = 1 where id = ?1", nativeQuery = true)
   void updateStatusById(String id);
 }

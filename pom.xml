@@ -11,12 +11,12 @@
   <packaging>pom</packaging>
 
   <developers>
-<!--    <developer>-->
-<!--      <id>bijiasuo2006</id>-->
-<!--      <name>Yongjie Liu</name>-->
-<!--      <organization>GstDev</organization>-->
-<!--      <organizationUrl>http://gstdev.com</organizationUrl>-->
-<!--    </developer>-->
+    <!--    <developer>-->
+    <!--      <id>bijiasuo2006</id>-->
+    <!--      <name>Yongjie Liu</name>-->
+    <!--      <organization>GstDev</organization>-->
+    <!--      <organizationUrl>http://gstdev.com</organizationUrl>-->
+    <!--    </developer>-->
   </developers>
 
   <licenses>
@@ -40,20 +40,20 @@
     <version>2024.0.1-SNAPSHOT</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-<!--  <parent>-->
-<!--    <groupId>com.gstdev.cloud</groupId>-->
-<!--    <artifactId>gstdev-cloud-project</artifactId>-->
-<!--    <version>2022.0.2-SNAPSHOT</version>-->
-<!--    <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
-<!--  </parent>-->
+  <!--  <parent>-->
+  <!--    <groupId>com.gstdev.cloud</groupId>-->
+  <!--    <artifactId>gstdev-cloud-project</artifactId>-->
+  <!--    <version>2022.0.2-SNAPSHOT</version>-->
+  <!--    <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+  <!--  </parent>-->
 
-<!--  <properties>-->
-<!--    <gstdev-template.version>1.0.0-SNAPSHOT</gstdev-template.version>-->
-<!--    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
-<!--    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>-->
-<!--    <java.release>17</java.release>-->
-<!--    <java.version>1.${java.release}</java.version>-->
-<!--  </properties>-->
+  <!--  <properties>-->
+  <!--    <gstdev-template.version>1.0.0-SNAPSHOT</gstdev-template.version>-->
+  <!--    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+  <!--    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>-->
+  <!--    <java.release>17</java.release>-->
+  <!--    <java.version>1.${java.release}</java.version>-->
+  <!--  </properties>-->
 
   <modules>
     <module>frame-template-dependencies</module>

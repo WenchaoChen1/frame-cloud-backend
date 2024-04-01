@@ -27,12 +27,14 @@ public class AccountController extends BaseController<AccountService, AccountVoM
   private AccountVoMapper accountVoMapper;
   @Resource
   private BaseRedisCurrentLoginInformation redisCurrentLoginInformation;
+
   public AccountController(AccountService accountService, AccountVoMapper accountVoMapper) {
     super(accountService, accountVoMapper);
     this.accountService = accountService;
     this.accountVoMapper = accountVoMapper;
   }
-//  @GetMapping("/get-all-account")
+
+  //  @GetMapping("/get-all-account")
 //  @ApiOperation("获取所有的账户")
 //  public Result<List<AccountVo>> getAllQueryCriteria(@RequestParam("tenantId") String tenantId) {
 //    AccountFindAllByQueryCriteria accountFindAllByQueryCriteria=new AccountFindAllByQueryCriteria();
@@ -44,13 +46,14 @@ public class AccountController extends BaseController<AccountService, AccountVoM
   public Result<Page<AccountVo>> getAllPageQueryCriteria(AccountPageQueryCriteria accountPageQueryCriteria, Pageable pageable) {
     return pageToResult(accountPageQueryCriteria, pageable);
   }
+
   @GetMapping("/get-by-id")
   @ApiOperation("根据id获取实体数据")
-  public Result<AccountVo> getById(@RequestParam("id")  String id) {
+  public Result<AccountVo> getById(@RequestParam("id") String id) {
     return findByIdToResult(id);
   }
 
-//  @PostMapping
+  //  @PostMapping
 //  @ApiOperation("新增一条数据")
 //  public Result<AccountVo> insert(@RequestBody @Validated AccountInsertInput accountInsertInput) {
 //    return insertToResult(accountInsertInput);
@@ -61,6 +64,7 @@ public class AccountController extends BaseController<AccountService, AccountVoM
   public Result<AccountVo> update(@RequestBody @Validated AccountUpdateInput updateInput) {
     return updateToResult(updateInput);
   }
+
   @ApiOperation("删除一条数据")
   @DeleteMapping
   public Result<AccountVo> deleteById(String id) {

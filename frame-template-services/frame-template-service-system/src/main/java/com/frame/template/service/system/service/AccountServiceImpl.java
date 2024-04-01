@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.Resource;
+
 import java.util.List;
 
 //@Service
@@ -56,11 +57,14 @@ public class AccountServiceImpl extends BaseServiceImpl<AccountRepository, Accou
     User user = userRepository.findById(accountInsertInput.getUserId()).get();
     account.setUser(user);
     account.setType(accountInsertInput.getAccountTypeConstants().getCode());
-    if (!CollectionUtils.isEmpty(accountInsertInput.getDepartIds())) account.setDeparts(departRepository.findAllById(accountInsertInput.getDepartIds()));
-    if (!CollectionUtils.isEmpty(accountInsertInput.getRoleIds())) account.setRoles(roleRepository.findAllById(accountInsertInput.getRoleIds()));
+    if (!CollectionUtils.isEmpty(accountInsertInput.getDepartIds()))
+      account.setDeparts(departRepository.findAllById(accountInsertInput.getDepartIds()));
+    if (!CollectionUtils.isEmpty(accountInsertInput.getRoleIds()))
+      account.setRoles(roleRepository.findAllById(accountInsertInput.getRoleIds()));
     Account insert = insert(account);
     return insert;
   }
+
   @Transactional
   public AccountDto insertAccountInitializationToDto(AccountInsertInput accountInsertInput) {
     return getMapper().toDto(insertAccountInitialization(accountInsertInput));
@@ -75,7 +79,7 @@ public class AccountServiceImpl extends BaseServiceImpl<AccountRepository, Accou
   @Transactional()
   public Account save(Account var) {
     var.setUpdatedBy(getRedisCurrentLoginInformation().getCurrentLoginAccountId());
-    if(redisCurrentLoginInformation.getCurrentLoginAccountId().equals(var.getId())&&!redisCurrentLoginInformation.getCurrentLoginInformation().getAccountType().equals(var.getType())){
+    if (redisCurrentLoginInformation.getCurrentLoginAccountId().equals(var.getId()) && !redisCurrentLoginInformation.getCurrentLoginInformation().getAccountType().equals(var.getType())) {
       throw new BadRequestException("This action is not available");
     }
     return getRepository().save(var);
@@ -92,7 +96,7 @@ public class AccountServiceImpl extends BaseServiceImpl<AccountRepository, Accou
   @Transactional(rollbackFor = Exception.class)
   public void deleteByTenantId(String tenantId) {
     List<Account> accountList = accountRepository.findAllByTenantId(tenantId);
-    if(ObjectUtil.isNotEmpty(accountList)){
+    if (ObjectUtil.isNotEmpty(accountList)) {
       accountRepository.deleteAll(accountList);
     }
   }

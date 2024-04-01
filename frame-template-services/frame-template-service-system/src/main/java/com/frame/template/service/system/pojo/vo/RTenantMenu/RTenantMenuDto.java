@@ -24,7 +24,7 @@ public class RTenantMenuDto implements Serializable {
 
   private String id;
   private String tenantId;
-//  private Menu menu;
+  //  private Menu menu;
   private Integer status;
   private Integer checked;
   @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")

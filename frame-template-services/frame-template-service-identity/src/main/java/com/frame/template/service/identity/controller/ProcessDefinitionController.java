@@ -1,7 +1,7 @@
 package com.frame.template.service.identity.controller;
 
+import com.alibaba.nacos.api.model.v2.Result;
 import com.frame.template.service.identity.domain.User;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;

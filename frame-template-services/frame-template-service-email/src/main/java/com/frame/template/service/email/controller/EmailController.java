@@ -13,11 +13,10 @@ import org.thymeleaf.context.Context;
 import jakarta.annotation.Resource;
 
 
-
 @Slf4j
 @RestController
 @RequestMapping("/v1/email")
-public class EmailController{
+public class EmailController {
 
   @Resource
   private EmailService emailService;
@@ -25,7 +24,7 @@ public class EmailController{
   @PostMapping("/send-email")
   @ApiOperation("发送邮件")
   public void sendEmail(@RequestBody Email email, Context context, String templateName, EmailTypeEnum emailTypeEnum) throws Exception {
-    emailService.sendEmail(email,context,templateName,emailTypeEnum);
+    emailService.sendEmail(email, context, templateName, emailTypeEnum);
   }
 
   @PostMapping("/invite-user")
@@ -33,6 +32,7 @@ public class EmailController{
   public void inviteUser(@RequestBody UserDto userDto) {
     emailService.inviteUser(userDto);
   }
+
   @GetMapping("/a")
   @ApiOperation("创建用户时时发送邮件")
   public void a() {

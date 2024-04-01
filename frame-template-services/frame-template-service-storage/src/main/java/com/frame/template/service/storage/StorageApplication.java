@@ -22,9 +22,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
   "com.frame.template.service.storage",
   "com.frame",
   "com.frame.template.common.redis"})
-@EntityScan(value = {"com.gstdev","com.frame.template.service.storage"})
+@EntityScan(value = {"com.gstdev", "com.frame.template.service.storage"})
 @EnableJpaRepositories(value = {"com.frame.template.service.storage"})
-@ConfigurationPropertiesScan(value = { "com.gstdev","com.frame.template.service.storage"})
+@ConfigurationPropertiesScan(value = {"com.gstdev", "com.frame.template.service.storage"})
 @SpringBootApplication
 public class StorageApplication {
 

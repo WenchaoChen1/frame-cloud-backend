@@ -15,7 +15,7 @@ public interface IdentityClient {
 
 
   @PostMapping(value = "/oauth2/token")
-  Object login(@RequestHeader("authorization") String authorization, @RequestParam("username")String username, @RequestParam("password")String password, @RequestParam("rememberMe")Boolean rememberMe, @RequestParam("grant_type")String grant_type);
+  Object login(@RequestHeader("authorization") String authorization, @RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("rememberMe") Boolean rememberMe, @RequestParam("grant_type") String grant_type);
 
 
 }

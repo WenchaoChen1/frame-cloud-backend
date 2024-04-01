@@ -28,6 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.annotation.Resource;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,6 @@ public class FileServiceImpl extends BaseServiceImpl<FileRepository, FileMapper,
 
   @Resource
   private StorageService storageService;
-
 
 
   public FileServiceImpl(FileRepository fileRepository, FileMapper fileMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
@@ -76,13 +76,14 @@ public class FileServiceImpl extends BaseServiceImpl<FileRepository, FileMapper,
     FileDto fileDto = insertToDto(fileEntity);
     return Result.success(fileDto);
   }
+
   @Override
   @Transactional
   public Result<List<FileDto>> uploads(List<MultipartFile> file, String tenantId, FileConstants fileConstants) {
-    if(file.size()==0){
+    if (file.size() == 0) {
       throw new BadRequestException("文件不能为空");
     }
-    List<FileDto> fileDtos=new ArrayList<>();
+    List<FileDto> fileDtos = new ArrayList<>();
     for (MultipartFile multipartFile : file) {
       File fileEntity = upload(multipartFile);
       fileEntity.setTenantId(tenantId);

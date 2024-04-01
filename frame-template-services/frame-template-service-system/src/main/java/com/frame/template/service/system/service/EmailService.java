@@ -14,6 +14,4 @@ public interface EmailService {
   Email findByTokenAndReceiverEmail(String token, String email);
 
 
-
-
 }

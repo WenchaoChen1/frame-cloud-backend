@@ -2,9 +2,9 @@ package com.frame.template.common.constant;
 
 public enum AccountTypeConstants {
 
-  SUPER("super","0"),
-  ADMIN("admin","1"),
-  USER("user","2");
+  SUPER("super", "0"),
+  ADMIN("admin", "1"),
+  USER("user", "2");
 
 
   private final String name;
@@ -15,15 +15,6 @@ public enum AccountTypeConstants {
     this.code = code;
   }
 
-
-  public String getName() {
-    return name;
-  }
-
-  public String getCode() {
-    return code;
-  }
-
   public static AccountTypeConstants getAccountTypeConstants(String code) {
     for (AccountTypeConstants constant : AccountTypeConstants.values()) {
       if (constant.getCode().equals(code)) {
@@ -31,6 +22,14 @@ public enum AccountTypeConstants {
       }
     }
     return AccountTypeConstants.USER;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getCode() {
+    return code;
   }
 
 

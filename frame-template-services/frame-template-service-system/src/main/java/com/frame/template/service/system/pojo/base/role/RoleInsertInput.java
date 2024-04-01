@@ -19,6 +19,7 @@ import java.util.List;
 @Setter
 public class RoleInsertInput extends BaseTreeInsertInput {
 
+  List<String> menuIds;
   private String id;
   private String code;
   private String description;
@@ -27,7 +28,6 @@ public class RoleInsertInput extends BaseTreeInsertInput {
   private Integer sort;
   private Integer status;
   private String tenantId;
-  List<String> menuIds;
 
 }
 

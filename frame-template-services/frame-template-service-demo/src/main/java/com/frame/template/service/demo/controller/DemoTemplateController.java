@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
 
 import jakarta.annotation.Resource;
+
 import java.util.List;
 
 @RestController
@@ -33,7 +34,7 @@ public class DemoTemplateController {
   private DemoTemplateVoMapper demoTemplateVoMapper;
 
   @PostMapping
-  @Operation(summary =  "insert")
+  @Operation(summary = "insert")
   public Result<DemoTemplateVo> insert(@RequestBody DemoTemplateInsertInput demoTemplateInsertInput) {
     return demoTemplateVoMapper.toVo(demoTemplateService.insert(demoTemplateInsertInput));
   }

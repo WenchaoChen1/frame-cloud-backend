@@ -18,6 +18,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class User extends BaseEntity {
   @Column(name = "mobile", length = 20)
   private String mobile;
 
-  @Column(name = "email", length = 100, nullable = false,unique= true)
+  @Column(name = "email", length = 100, nullable = false, unique = true)
   private String email;
 
   @Column(name = "avatar", length = 36)
@@ -60,14 +61,14 @@ public class User extends BaseEntity {
   private String icon;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "user",cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
   private List<Account> account;
 
   //-----------------自定义-----------
-    @Column(name="first_name",length = 60)
+  @Column(name = "first_name", length = 60)
   private String firstName;
 
-  @Column(name="last_name",length = 60)
+  @Column(name = "last_name", length = 60)
   private String lastName;
 
   @Column(name = "activate_token", length = 255)

@@ -49,8 +49,8 @@ public class MenuDto extends BaseTreeDto<MenuDto> {
   private String location;
 
 
-  private List<String> checkedMenuId=new ArrayList<>();
-  private List<String> halfCheckedMenuId=new ArrayList<>();
+  private List<String> checkedMenuId = new ArrayList<>();
+  private List<String> halfCheckedMenuId = new ArrayList<>();
 
 }
 

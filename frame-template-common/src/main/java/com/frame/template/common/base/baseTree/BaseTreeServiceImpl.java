@@ -34,6 +34,7 @@ public abstract class BaseTreeServiceImpl<R extends BaseTreeRepository<E>, M ext
   public BaseTreeServiceImpl(R repository, M mapper, RCLI redisCurrentLoginInformation) {
     super(repository, mapper, redisCurrentLoginInformation);
   }
+
   public List<E> findByParentId(String parentId) {
     List<E> byId = getRepository().findByParentId(parentId);
     return byId;
@@ -46,12 +47,12 @@ public abstract class BaseTreeServiceImpl<R extends BaseTreeRepository<E>, M ext
 
   public List<E> findSubsets(String id) {
     List<E> subsets = findByParentId(id);
-    List<E> data =new ArrayList<>();
-    if(ObjectUtils.isEmpty(subsets)) {
+    List<E> data = new ArrayList<>();
+    if (ObjectUtils.isEmpty(subsets)) {
       return subsets;
     }
     for (E subset : subsets) {
-        data.addAll(findSubsets(subset.getId()));
+      data.addAll(findSubsets(subset.getId()));
     }
     return subsets;
   }

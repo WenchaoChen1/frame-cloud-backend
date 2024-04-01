@@ -19,6 +19,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
+
 import java.util.List;
 
 
@@ -41,10 +42,11 @@ public class DepartController extends BaseTreeController<DepartService, DepartVo
   @GetMapping("/get-all-depart-to-tree")
   @ApiOperation("获取指定租户下的depart所有数据，返回树状结构")
   public Result<List<DepartVo>> findAllByQueryCriteriaToTree(@RequestParam("tenantId") String tenantId) {
-    DepartFindAllByQueryCriteria departFindAllByQueryCriteria=new DepartFindAllByQueryCriteria();
+    DepartFindAllByQueryCriteria departFindAllByQueryCriteria = new DepartFindAllByQueryCriteria();
     departFindAllByQueryCriteria.setTenantId(tenantId);
     return findAllByQueryCriteriaToResultToTree(departFindAllByQueryCriteria);
   }
+
   @GetMapping("/get-by-id")
   @ApiOperation("根据id获取实体数据")
   public Result<DepartVo> getById(String id) {
@@ -56,11 +58,13 @@ public class DepartController extends BaseTreeController<DepartService, DepartVo
   public Result<DepartVo> insert(@RequestBody DepartInsertInput departInsertInput) {
     return insertToResult(departInsertInput);
   }
+
   @PutMapping
   @ApiOperation("修改一条数据")
   public Result<DepartVo> update(@RequestBody DepartUpdateInput departUpdateInput) {
     return updateToResult(departUpdateInput);
   }
+
   @ApiOperation("")
   @DeleteMapping
   public Result<DepartVo> deleteById(String id) {

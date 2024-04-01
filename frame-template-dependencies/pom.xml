@@ -15,16 +15,16 @@
     <version>1.0.0-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
-<!--    <parent>-->
-<!--      <groupId>com.gstdev.cloud</groupId>-->
-<!--      <artifactId>gstdev-cloud-dependencies</artifactId>-->
-<!--      <version>2024.0.1-SNAPSHOT</version>-->
-<!--    </parent>-->
+  <!--    <parent>-->
+  <!--      <groupId>com.gstdev.cloud</groupId>-->
+  <!--      <artifactId>gstdev-cloud-dependencies</artifactId>-->
+  <!--      <version>2024.0.1-SNAPSHOT</version>-->
+  <!--    </parent>-->
   <properties>
     <gstdev-cloud.version>2024.0.1-SNAPSHOT</gstdev-cloud.version>
     <hikaricp.version>3.4.5</hikaricp.version>
     <frame-template.version>1.0.0-SNAPSHOT</frame-template.version>
-<!--    <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>-->
+    <!--    <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>-->
     <org.postgresql.version>42.2.9</org.postgresql.version>
     <!--    <mysql-connector-java.version>8.0.19</mysql-connector-java.version>-->
   </properties>
@@ -69,16 +69,16 @@
       </dependency>
 
       <!-- MapStruct related dependencies -->
-<!--      <dependency>-->
-<!--        <groupId>org.mapstruct</groupId>-->
-<!--        <artifactId>mapstruct</artifactId>-->
-<!--        <version>${org.mapstruct.version}</version>-->
-<!--      </dependency>-->
-<!--      <dependency>-->
-<!--        <groupId>org.mapstruct</groupId>-->
-<!--        <artifactId>mapstruct-processor</artifactId>-->
-<!--        <version>${org.mapstruct.version}</version>-->
-<!--      </dependency>-->
+      <!--      <dependency>-->
+      <!--        <groupId>org.mapstruct</groupId>-->
+      <!--        <artifactId>mapstruct</artifactId>-->
+      <!--        <version>${org.mapstruct.version}</version>-->
+      <!--      </dependency>-->
+      <!--      <dependency>-->
+      <!--        <groupId>org.mapstruct</groupId>-->
+      <!--        <artifactId>mapstruct-processor</artifactId>-->
+      <!--        <version>${org.mapstruct.version}</version>-->
+      <!--      </dependency>-->
       <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
       <dependency>
         <groupId>org.hibernate</groupId>

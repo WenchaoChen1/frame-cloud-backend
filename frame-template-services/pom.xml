@@ -13,7 +13,12 @@
     <version>1.0.0-SNAPSHOT</version>
     <relativePath>../frame-template-parent</relativePath>
   </parent>
-
+  <dependencies>
+    <dependency>
+      <groupId>com.frame.template</groupId>
+      <artifactId>frame-template-common</artifactId>
+    </dependency>
+  </dependencies>
   <modules>
     <module>frame-template-service-identity</module>
     <module>frame-template-service-system</module>

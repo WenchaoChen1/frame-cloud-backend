@@ -26,8 +26,9 @@ import org.mapstruct.ReportingPolicy;
   nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
   nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface TenantVoMapper extends BaseTreeVoMapper<TenantVo, TenantDto> {
- TenantInsertInput toTenantInsertInput(TenantLoginInferiorInsertInput tenantLoginInferiorInsertInput);
- TenantUpdateInput toTenantInsertUpdate(TenantLoginInferiorUpdateInput tenantLoginInferiorUpdateInput);
+  TenantInsertInput toTenantInsertInput(TenantLoginInferiorInsertInput tenantLoginInferiorInsertInput);
+
+  TenantUpdateInput toTenantInsertUpdate(TenantLoginInferiorUpdateInput tenantLoginInferiorUpdateInput);
 
 
 }

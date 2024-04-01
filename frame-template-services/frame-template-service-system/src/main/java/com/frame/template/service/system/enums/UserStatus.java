@@ -13,7 +13,7 @@ public enum UserStatus {
   /**
    * Enabled Status
    */
-  PENDING("Pending",2),
+  PENDING("Pending", 2),
   ACTIVE("Active", 1);
 
   private String name;

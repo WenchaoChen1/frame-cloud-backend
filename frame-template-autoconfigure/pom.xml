@@ -6,7 +6,7 @@
   <name>Frame Template Project :: AutoConfigure</name>
   <description>${project.name}</description>
   <artifactId>frame-template-autoconfigure</artifactId>
-<!--  <packaging>jar</packaging>-->
+  <!--  <packaging>jar</packaging>-->
 
   <parent>
     <groupId>com.frame.template</groupId>

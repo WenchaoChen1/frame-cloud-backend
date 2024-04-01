@@ -14,17 +14,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+
 @Deprecated
 @Getter
 @Setter
 public class RRoleRTenantMenuInsertInput extends BaseInsertInput {
 
+  List<String> rTenantMenuIds;
   private String id;
   private Integer checked;
   private String tenantId;
   private String menuId;
   private String roleId;
-  List<String> rTenantMenuIds;
 
 
 }

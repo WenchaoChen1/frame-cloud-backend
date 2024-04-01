@@ -24,6 +24,8 @@ public interface UserMapper extends BaseMapper<User, UserDto, UserInsertInput, U
    * @param user
    */
   void copyModify(UserModifyInput modifyInput, @MappingTarget User user);
+
   void copyModify(UserLoginInferiorUpdateInput userLoginInferiorUpdateInput, @MappingTarget User user);
+
   List<AccountListDto> accountListToDto(List<Account> accountList);
 }

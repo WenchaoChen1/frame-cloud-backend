@@ -11,18 +11,21 @@ public @interface CheckDataLength {
 
   /**
    * requires a comparison class
+   *
    * @return
    */
   Class dataClass() default Class.class;
 
   /**
    * The first-level parameter name that needs to be verified
+   *
    * @return
    */
   String paramNameLevel1() default "";
 
   /**
    * The name of the second-level parameter that needs to be verified (currently only supports the second-level)
+   *
    * @return
    */
   String paramNameLevel2() default "";
@@ -31,14 +34,16 @@ public @interface CheckDataLength {
    * Several levels of parameters,
    * For example, there is a List object in a @RequestBody InvoiceVo invoiceVo object
    * invoiceVo is a level 1 parameter, List is a level 2 parameter
+   *
    * @return
    */
   int level() default 1;
 
   /**
    * Whether it is a csv file, only do special processing for csv
+   *
    * @return
    */
-  boolean isCsvFile()  default false;
+  boolean isCsvFile() default false;
 
 }

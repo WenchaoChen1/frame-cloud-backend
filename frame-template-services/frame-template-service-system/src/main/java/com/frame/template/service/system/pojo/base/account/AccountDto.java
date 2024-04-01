@@ -43,6 +43,7 @@ public class AccountDto extends BaseDto {
   public String getUserId() {
     return user.getId();
   }
+
   public AccountTypeConstants getAccountTypeConstants() {
     return AccountTypeConstants.getAccountTypeConstants(this.type);
   }

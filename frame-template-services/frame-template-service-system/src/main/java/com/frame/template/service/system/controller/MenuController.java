@@ -20,6 +20,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
+
 import java.util.List;
 
 @RestController
@@ -43,9 +44,10 @@ public class MenuController extends BaseTreeController<MenuService, MenuVoMapper
   @GetMapping("/get-all-mean-to-tree")
   @ApiOperation("获取所有菜单，返回树状结构")
   public Result<List<MenuVo>> findAllByQueryCriteriaToTree() {
-    MenuFindAllByQueryCriteria menuFindAllByQueryCriteria=new MenuFindAllByQueryCriteria();
+    MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
     return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
   }
+
   @GetMapping("/get-by-id")
   @ApiOperation("根据id获取实体数据")
   public Result<MenuVo> getById(String id) {
@@ -63,6 +65,7 @@ public class MenuController extends BaseTreeController<MenuService, MenuVoMapper
   public Result<MenuVo> update(@RequestBody MenuUpdateInput menuUpdateInput) {
     return updateToResult(menuUpdateInput);
   }
+
   @ApiOperation("")
   @DeleteMapping
   public Result<MenuVo> deleteById(String id) {
@@ -73,15 +76,17 @@ public class MenuController extends BaseTreeController<MenuService, MenuVoMapper
   @GetMapping("/get-all-by-tenant-Menu-to-tree")
   @ApiOperation("获取指定租户的所有菜单，返回树状结构")
   public Result<List<MenuVo>> getAllByTenantMenuToTree(@RequestParam("tenantId") String tenantId) {
-    MenuFindAllByQueryCriteria menuFindAllByQueryCriteria=new MenuFindAllByQueryCriteria();
+    MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
     menuFindAllByQueryCriteria.setTenantId(tenantId);
     return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
   }
+
   @GetMapping("/get-all-by-role-Menu-to-tree")
   @ApiOperation("获取指定role的所有菜单，返回树状结构")
   public Result<List<MenuVo>> getAllByRoleMenuToTree(@RequestParam("roleId") String roleId) {
     return getMapper().toAllVo(getService().getAllByRoleMenuToTree(roleId));
   }
+
   @GetMapping("/get-all-tenant-menu-id")
   @ApiOperation("获取指定租户的所有菜单id")
   public Result<MenuVo> getAllTenantMenuIds(@RequestParam("tenantId") String tenantId) {
@@ -89,7 +94,6 @@ public class MenuController extends BaseTreeController<MenuService, MenuVoMapper
   }
 
   /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
-
 
 
 }

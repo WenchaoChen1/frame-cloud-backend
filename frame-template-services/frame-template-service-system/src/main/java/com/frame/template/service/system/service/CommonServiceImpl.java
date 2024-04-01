@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
 import jakarta.annotation.Resource;
+
 import java.util.Optional;
 
 @Service
@@ -33,10 +34,10 @@ public class CommonServiceImpl implements CommonService {
 
 
   @Override
-  public String checkIfUserExist(String emailAddress){
+  public String checkIfUserExist(String emailAddress) {
     String validationMessage = null;
     Optional<User> user = userRepository.findByEmail(emailAddress);
-    if(user.isPresent() && !ObjectUtils.isEmpty(user)){
+    if (user.isPresent() && !ObjectUtils.isEmpty(user)) {
       validationMessage = "The email address already exists";
     }
     return validationMessage;

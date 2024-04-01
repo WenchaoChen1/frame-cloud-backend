@@ -17,6 +17,7 @@ public class aController {
 //    System.out.println(SecurityUtils.getUserDetails());
     return "/demo";
   }
+
   @GetMapping("/bb")
   public String testa() {
     Object userDetails = SecurityUtils.getUserDetails();
@@ -24,14 +25,16 @@ public class aController {
 //    ServletUtils.getRequest()
     return "System.out.println(SecurityUtils.getUserDetails());";
   }
+
   /**
    * 获取用户信息
+   *
    * @return
    */
   @GetMapping("/user")
-  public Authentication oauth2UserInfo(){
+  public Authentication oauth2UserInfo() {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    if(authentication == null){
+    if (authentication == null) {
       throw new RuntimeException("无有效认证用户！");
     }
     return authentication;

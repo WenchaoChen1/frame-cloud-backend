@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.Resource;
+
 import java.util.List;
 
 
@@ -35,16 +36,15 @@ public class TenantServiceImpl extends BaseTreeServiceImpl<TenantRepository, Ten
   private TenantRepository tenantRepository;
   @Resource
   private TenantMapper tenantMapper;
-//  @Resource
+  //  @Resource
 //  private SystemDepartService systemDepartService;
   @Resource
   private RedisCurrentLoginInformation redisCurrentLoginInformation;
 
-//  @Resource
+  //  @Resource
 //  private SystemAccountService systemAccountService;
   @Resource
   private AccountService accountService;
-
 
 
   public TenantServiceImpl(TenantRepository tenantRepository, TenantMapper tenantMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
@@ -58,7 +58,7 @@ public class TenantServiceImpl extends BaseTreeServiceImpl<TenantRepository, Ten
   @Override
   @Transactional
   public Tenant insert(Tenant tenant) {
-    if(tenant.getTenantCode()==null){
+    if (tenant.getTenantCode() == null) {
       tenant.setTenantCode(UUID.fastUUID().toString());
     }
     Tenant save = super.insert(tenant);
@@ -110,11 +110,9 @@ public class TenantServiceImpl extends BaseTreeServiceImpl<TenantRepository, Ten
 //  }
 
 
-
   public List<TenantDto> findAllByIds(List<String> tenantIds) {
     return tenantMapper.toDto(tenantRepository.findAllById(tenantIds));
   }
-
 
 
 }

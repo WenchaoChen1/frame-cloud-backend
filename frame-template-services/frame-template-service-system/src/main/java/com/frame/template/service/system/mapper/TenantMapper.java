@@ -31,6 +31,6 @@ public interface TenantMapper extends BaseTreeMapper<Tenant, TenantDto, TenantIn
 
   List<TenantDto> toDtos(List<Tenant> tenants);
 
-    void copyModify(TenantLoginInferiorUpdateInput tenantLoginInferiorUpdateInput, @MappingTarget Tenant byId);
+  void copyModify(TenantLoginInferiorUpdateInput tenantLoginInferiorUpdateInput, @MappingTarget Tenant byId);
 }
 

@@ -10,15 +10,13 @@ import java.lang.annotation.Target;
 public @interface AuditLog {
 
   /**
-
-   *There are currently only two types of logs
-
-   *At 1, the exported CSV is the complete data with ID,
-
-   *At 2, it is the complete data of AuditLogRecEntity
-
-   *3. No exported content
-
+   * There are currently only two types of logs
+   * <p>
+   * At 1, the exported CSV is the complete data with ID,
+   * <p>
+   * At 2, it is the complete data of AuditLogRecEntity
+   * <p>
+   * 3. No exported content
    */
   int type() default 1;
 
@@ -35,11 +33,9 @@ public @interface AuditLog {
   String commonValue2Name() default "";
 
   /**
-
-   *Class to be queried
-
+   * Class to be queried
+   *
    * @return
-
    */
   Class dataClass() default Class.class;
 
@@ -56,6 +52,7 @@ public @interface AuditLog {
   /**
    * The primary key is in that parameter, or the parameter name of id
    * When posting, the parameter name is xxx.id, and when getting, it is the parameter name
+   *
    * @return
    */
   String primaryKeyParamName1() default "";
@@ -64,12 +61,14 @@ public @interface AuditLog {
   /**
    * The primary key is in that parameter, or the parameter name of id
    * When posting, the parameter name is xxx.id, and when getting, it is the parameter name
+   *
    * @return
    */
   String primaryKeyParamName2() default "";
 
   /**
    * 0 primary key is String (modify one, return one), 1 primary key is List (batch modification, return multiple)
+   *
    * @return
    */
   int primaryKeyAndResultType() default 0;

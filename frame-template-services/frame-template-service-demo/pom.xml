@@ -6,7 +6,7 @@
   <modelVersion>4.0.0</modelVersion>
   <name>Frame Template Cloud :: Service :: demo</name>
   <artifactId>frame-template-service-demo</artifactId>
-<!--  <groupId>com.gstdev.template</groupId>-->
+  <!--  <groupId>com.gstdev.template</groupId>-->
 
   <parent>
     <artifactId>frame-template-services</artifactId>
@@ -16,10 +16,10 @@
 
 
   <dependencies>
-<!--    <dependency>-->
-<!--      <groupId>com.gstdev.cloud</groupId>-->
-<!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.gstdev.cloud</groupId>-->
+    <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
+    <!--    </dependency>-->
 
     <dependency>
       <groupId>com.gstdev.cloud</groupId>

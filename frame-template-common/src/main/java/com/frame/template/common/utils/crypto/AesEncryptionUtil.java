@@ -24,7 +24,7 @@ public class AesEncryptionUtil {
 
     // encrypted data
     //String ciphertext = encrypt(plaintext, secretKeyString);
-    String ciphertext= "OEyO+s+orVaTsTPB6ajIEn1JR5oDKaO4+GsoAnEXCXktgMtydXgg45Z2srDQI6izOBsin9mays0IOAuhbVa/9TPfmzvWIkHCWZDEynyO+2tvnDCgr038B7nRMdHTb5BZ";
+    String ciphertext = "OEyO+s+orVaTsTPB6ajIEn1JR5oDKaO4+GsoAnEXCXktgMtydXgg45Z2srDQI6izOBsin9mays0IOAuhbVa/9TPfmzvWIkHCWZDEynyO+2tvnDCgr038B7nRMdHTb5BZ";
     System.out.println("Ciphertext: " + ciphertext);
 
     // decrypt data

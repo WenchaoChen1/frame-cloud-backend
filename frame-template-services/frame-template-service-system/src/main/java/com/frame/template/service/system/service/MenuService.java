@@ -11,15 +11,13 @@ import java.util.List;
  * @author zhucy
  */
 public interface MenuService extends BaseTreeService<MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> {
-    Result<List<MenuDto>> getAllByRoleMenuToTree(String roleId);
+  Result<List<MenuDto>> getAllByRoleMenuToTree(String roleId);
 
   Result<MenuDto> getAllTenantMenuIds(String tenantId);
 
   List<MenuDto> getAccountPermissions(String accountId);
 
   /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
-
-
 
 
 }

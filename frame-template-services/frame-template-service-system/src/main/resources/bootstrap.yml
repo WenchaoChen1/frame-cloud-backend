@@ -10,11 +10,11 @@ spring:
         server-addr: ${spring.cloud.nacos.discovery.server-addr}
         file-extension: yml
         group: ${NACOS_CONFIG_GROUP:dev}
-          #指定共享配置，且支持动态刷新
+        #指定共享配置，且支持动态刷新
         extension-configs:
-            - data-id: common-config.yml
-              group: ${NACOS_CONFIG_GROUP:dev}
-              refresh: true
+          - data-id: common-config.yml
+            group: ${NACOS_CONFIG_GROUP:dev}
+            refresh: true
   application:
     name: gstdev-system
 

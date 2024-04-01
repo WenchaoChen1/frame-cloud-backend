@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.Resource;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -61,8 +62,8 @@ public class MenuServiceImpl extends BaseTreeServiceImpl<MenuRepository, MenuMap
 
   public MenuDto getMenuParentChildren(List<MenuDto> menuDtos) {
     MenuDto menu = new MenuDto();
-    List<String> checkedMenuIds=new ArrayList<>();
-    List<String> halfCheckedMenuIds=new ArrayList<>();
+    List<String> checkedMenuIds = new ArrayList<>();
+    List<String> halfCheckedMenuIds = new ArrayList<>();
     for (MenuDto menuDto : menuDtos) {
       if (menuDto.getChildren() == null || menuDto.getChildren().size() == 0) {
         checkedMenuIds.add(menuDto.getId());
@@ -79,16 +80,17 @@ public class MenuServiceImpl extends BaseTreeServiceImpl<MenuRepository, MenuMap
     menu.setHalfCheckedMenuId(halfCheckedMenuIds);
     return menu;
   }
-  public List<MenuDto> getAccountPermissions(String accountId){
+
+  public List<MenuDto> getAccountPermissions(String accountId) {
     Account account = accountRepository.findById(accountId).get();
     MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
-    if(account.getType().equals(AccountTypeConstants.SUPER.getCode())){
+    if (account.getType().equals(AccountTypeConstants.SUPER.getCode())) {
       return findAllByQueryCriteriaToDtoToTree(menuFindAllByQueryCriteria);
-    }else if(account.getType().equals(AccountTypeConstants.ADMIN.getCode())){
+    } else if (account.getType().equals(AccountTypeConstants.ADMIN.getCode())) {
       menuFindAllByQueryCriteria.setTenantId(account.getTenantId());
       return findAllByQueryCriteriaToDtoToTree(menuFindAllByQueryCriteria);
-    }else if(account.getType().equals(AccountTypeConstants.USER.getCode())){
-      Map<String, Menu> collect =new HashMap<>();
+    } else if (account.getType().equals(AccountTypeConstants.USER.getCode())) {
+      Map<String, Menu> collect = new HashMap<>();
       for (Role role : account.getRoles()) {
         List<Menu> menus = role.getRTenantMenus().stream().map(RTenantMenu::getMenu).toList();
         Map<String, List<Menu>> collect2 = menus.stream().collect(Collectors.groupingBy(Menu::getId));
@@ -103,8 +105,6 @@ public class MenuServiceImpl extends BaseTreeServiceImpl<MenuRepository, MenuMap
   }
 
   /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
-
-
 
 
 }
