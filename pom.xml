@@ -81,6 +81,8 @@
   <!--  </distributionManagement>-->
   <build>
     <plugins>
+      <!-- spring boot 默认插件 -->
+
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
@@ -103,6 +105,14 @@
           <target>17</target>
         </configuration>
       </plugin>
+
+
+      <!-- 拷贝插件 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+      </plugin>
+
     </plugins>
   </build>
   <!--仓库路径 -->

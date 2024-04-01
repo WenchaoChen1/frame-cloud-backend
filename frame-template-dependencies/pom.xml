@@ -32,11 +32,11 @@
   <dependencyManagement>
     <dependencies>
       <!-- cloud 底层库依赖 -->
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>
-        <version>${gstdev-cloud.version}</version>
-      </dependency>
+<!--      <dependency>-->
+<!--        <groupId>com.gstdev.cloud</groupId>-->
+<!--        <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>-->
+<!--        <version>${gstdev-cloud.version}</version>-->
+<!--      </dependency>-->
 <!--      <dependency>-->
 <!--        <groupId>com.gstdev.cloud</groupId>-->
 <!--        <artifactId>gstdev-cloud-starter-web</artifactId>-->
