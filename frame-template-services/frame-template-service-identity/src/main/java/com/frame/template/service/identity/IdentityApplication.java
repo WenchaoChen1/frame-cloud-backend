@@ -31,13 +31,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //@ConfigurationPropertiesScan({"com.gstdev"})
 @SpringBootApplication
 
-//@EnableFeignComponentScanClients
-//@(value = {"com.gstdev","com.frame"})
-//@EntityScan(value = {"com.gstdev.cloud.oauth2.server.authorization.domain", "com.frame.template.service.identity"})
-//@EnableJpaRepositories(value = {"com.gstdev.cloud.oauth2.server.authorization.repository", "com.frame.template.service.identity"})
-//@ConfigurationPropertiesScan({"com.gstdev"})
-//@SpringBootApplication
-//@EnableDiscoveryClient
 public class IdentityApplication {
 
   public static void main(String[] args) {

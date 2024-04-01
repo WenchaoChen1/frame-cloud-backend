@@ -14,5 +14,10 @@
     <version>1.0.0-SNAPSHOT</version>
     <relativePath>../frame-template-dependencies</relativePath>
   </parent>
-
+  <dependencies>
+    <dependency>
+      <groupId>com.gstdev.cloud</groupId>
+      <artifactId>gstdev-cloud-cache-jetcache</artifactId>
+    </dependency>
+  </dependencies>
 </project>

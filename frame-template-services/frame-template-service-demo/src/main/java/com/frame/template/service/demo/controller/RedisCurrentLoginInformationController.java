@@ -4,7 +4,7 @@ import com.frame.template.service.demo.service.RedisCurrentLoginInformationServi
 import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +23,7 @@ public class RedisCurrentLoginInformationController {
    *
    * @return
    */
-  @ApiOperation("")
+  @Operation(summary = "")
   @PostMapping("/add_by_token_current_login_information")
   public Result<Object> addByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput) {
     try {
@@ -39,7 +39,7 @@ public class RedisCurrentLoginInformationController {
    *
    * @return
    */
-  @ApiOperation("")
+  @Operation(summary = "")
   @PostMapping("/update_by_token_current_login_information")
   public Result<Object> updateByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput) {
     try {
@@ -55,7 +55,7 @@ public class RedisCurrentLoginInformationController {
    *
    * @return
    */
-  @ApiOperation("")
+  @Operation(summary = "")
   @DeleteMapping("/delete_by_token_current_login_information")
   public Result<Object> deleteByTokenCurrentLoginInformation() {
     try {
@@ -73,7 +73,7 @@ public class RedisCurrentLoginInformationController {
    *
    * @return
    */
-  @ApiOperation("")
+  @Operation(summary = "")
   @DeleteMapping("/get_current_login_information")
   public Result<CurrentLoginInformation> getCurrentLoginInformation() {
     try {

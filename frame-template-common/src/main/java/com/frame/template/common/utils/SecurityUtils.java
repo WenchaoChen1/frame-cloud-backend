@@ -10,7 +10,7 @@ package com.frame.template.common.utils;// =====================================
 import com.frame.template.common.constant.RedisConstants;
 import com.frame.template.common.constant.ServletConstants;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
-import com.gstdev.cloud.commons.utils.RedisUtils;
+import com.gstdev.cloud.cache.redis.utils.RedisUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;

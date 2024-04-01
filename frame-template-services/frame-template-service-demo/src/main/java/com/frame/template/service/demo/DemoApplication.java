@@ -18,7 +18,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableFeignClients
-@ComponentScan(value = {"com.gstdev.cloud.commons.utils",
+@ComponentScan(value = {"com.gstdev.cloud",
   "com.frame.template.service.demo",
   "com.gstdev.cloud.oauth2",
   "com.frame.template.common.redis"})

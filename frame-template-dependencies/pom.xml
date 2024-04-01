@@ -24,7 +24,7 @@
     <gstdev-cloud.version>2024.0.1-SNAPSHOT</gstdev-cloud.version>
     <hikaricp.version>3.4.5</hikaricp.version>
     <frame-template.version>1.0.0-SNAPSHOT</frame-template.version>
-    <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+<!--    <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>-->
     <org.postgresql.version>42.2.9</org.postgresql.version>
     <!--    <mysql-connector-java.version>8.0.19</mysql-connector-java.version>-->
   </properties>
@@ -32,86 +32,6 @@
   <dependencyManagement>
     <dependencies>
       <!-- cloud 底层库依赖 -->
-<!--      <dependency>-->
-<!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>-->
-<!--        <version>${gstdev-cloud.version}</version>-->
-<!--      </dependency>-->
-<!--      <dependency>-->
-<!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-starter-web</artifactId>-->
-<!--        <version>${gstdev-cloud.version}</version>-->
-<!--      </dependency>-->
-<!--      <dependency>-->
-<!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-starter-data-jpa</artifactId>-->
-<!--        <version>${gstdev-cloud.version}</version>-->
-<!--      </dependency>-->
-<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
-<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <artifactId>gstdev-cloud-service-oauth2</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
-<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
-<!--      &lt;!&ndash;      <dependency>&ndash;&gt;-->
-<!--      &lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
-<!--      &lt;!&ndash;        <artifactId>gstdev-cloud-starter-swagger</artifactId>&ndash;&gt;-->
-<!--      &lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
-<!--      &lt;!&ndash;      </dependency>&ndash;&gt;-->
-<!--      <dependency>-->
-<!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>-->
-<!--        <version>${gstdev-cloud.version}</version>-->
-<!--      </dependency>-->
-<!--      <dependency>-->
-<!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-starter-storage-aws</artifactId>-->
-<!--        <version>${gstdev-cloud.version}</version>-->
-<!--      </dependency>-->
-<!--      <dependency>-->
-<!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-starter-data-commons</artifactId>-->
-<!--        <version>${gstdev-cloud.version}</version>-->
-<!--      </dependency>-->
-<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <artifactId>gstdev-cloud-oauth2-authorization-server</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
-<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <artifactId>gstdev-cloud-oauth2-resource-server</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
-<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <artifactId>gstdev-cloud-oauth2-core</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
-<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <artifactId>gstdev-cloud-oauth2-sdk-authentication</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
-<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;        <groupId>com.gstdev.cloud</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <artifactId>gstdev-cloud-oauth2-sdk-resource-authorization</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;        <version>${gstdev-cloud.version}</version>&ndash;&gt;-->
-<!--&lt;!&ndash;      </dependency>&ndash;&gt;-->
-<!--      <dependency>-->
-<!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-starter-oauth2-authentication</artifactId>-->
-<!--        <version>${gstdev-cloud.version}</version>-->
-<!--      </dependency>-->
-<!--      <dependency>-->
-<!--        <groupId>com.gstdev.cloud</groupId>-->
-<!--        <artifactId>gstdev-cloud-starter-oauth2-service-authorization</artifactId>-->
-<!--        <version>${gstdev-cloud.version}</version>-->
-<!--      </dependency>-->
 
       <!--当前库-->
       <dependency>
@@ -132,13 +52,6 @@
         <version>${hikaricp.version}</version>
       </dependency>
 
-      <!--      &lt;!&ndash; DB related dependencies &ndash;&gt;-->
-      <!--      <dependency>-->
-      <!--        <groupId>mysql</groupId>-->
-      <!--        <artifactId>mysql-connector-java</artifactId>-->
-      <!--        <version>${mysql-connector-java.version}</version>-->
-      <!--      </dependency>-->
-
       <!-- postgresq-->
       <dependency>
         <groupId>org.postgresql</groupId>
@@ -155,7 +68,7 @@
         <scope>import</scope>
       </dependency>
 
-<!--      &lt;!&ndash; MapStruct related dependencies &ndash;&gt;-->
+      <!-- MapStruct related dependencies -->
 <!--      <dependency>-->
 <!--        <groupId>org.mapstruct</groupId>-->
 <!--        <artifactId>mapstruct</artifactId>-->
@@ -172,6 +85,11 @@
         <artifactId>hibernate-core</artifactId>
         <version>6.4.4.Final</version>
         <type>pom</type>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.1</version> <!-- 或者适合你项目的其他版本 -->
       </dependency>
 
 
