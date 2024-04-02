@@ -24,9 +24,7 @@
     <gstdev-cloud.version>2024.0.1-SNAPSHOT</gstdev-cloud.version>
     <hikaricp.version>3.4.5</hikaricp.version>
     <frame-template.version>1.0.0-SNAPSHOT</frame-template.version>
-    <!--    <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>-->
     <org.postgresql.version>42.2.9</org.postgresql.version>
-    <!--    <mysql-connector-java.version>8.0.19</mysql-connector-java.version>-->
   </properties>
 
   <dependencyManagement>
@@ -59,14 +57,14 @@
         <version>${org.postgresql.version}</version>
       </dependency>
 
-      <!-- GstDev Cloud related dependencies -->
-      <dependency>
-        <groupId>com.gstdev.cloud</groupId>
-        <artifactId>gstdev-cloud-dependencies</artifactId>
-        <version>${gstdev-cloud.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
+<!--       GstDev Cloud related dependencies -->
+<!--      <dependency>-->
+<!--        <groupId>com.gstdev.cloud</groupId>-->
+<!--        <artifactId>gstdev-cloud-dependencies</artifactId>-->
+<!--        <version>${gstdev-cloud.version}</version>-->
+<!--        <type>pom</type>-->
+<!--        <scope>import</scope>-->
+<!--      </dependency>-->
 
       <!-- MapStruct related dependencies -->
       <!--      <dependency>-->
