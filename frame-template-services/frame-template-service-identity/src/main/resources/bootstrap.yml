@@ -45,11 +45,17 @@ jetcache:
       uri:
         #        - redis://${spring.data.redis.password}@${spring.data.redis.host}:${spring.data.redis.port}/${spring.data.redis.database}
         - redis://Black.123!@127.0.0.1:6379/0
-
+server:
+  forward-headers-strategy: framework
 springdoc:
+  chche:
+    disabled: true
+  version: '@springdoc.version@'
   api-docs:
+    version: openapi_3_1
     resolve-schema-properties: true
   swagger-ui:
+    use-root-path: true
     enabled: ${gstdev.cloud.switch.swagger.enabled}
     disable-swagger-default-url: true
     operations-sorter: method

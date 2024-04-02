@@ -14,36 +14,28 @@
     <relativePath>../frame-template-dependencies</relativePath>
   </parent>
 
-  <!--  <properties>-->
-  <!--    <java.version>17</java.version>-->
-  <!--    <spring-cloud.version>2022.0.0-RC2</spring-cloud.version>-->
-  <!--  </properties>-->
-
   <dependencies>
     <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter</artifactId>
-      <exclusions>
-
-      </exclusions>
+      <groupId>com.frame.template</groupId>
+      <artifactId>frame-template-common</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-gateway</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-openfeign</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-loadbalancer</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.cloud</groupId>-->
+<!--      <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.cloud</groupId>-->
+<!--      <artifactId>spring-cloud-loadbalancer</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-test</artifactId>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>com.alibaba.cloud</groupId>
@@ -53,56 +45,52 @@
       <groupId>com.alibaba.cloud</groupId>
       <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-bootstrap</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.cloud</groupId>-->
+<!--      <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
+<!--    </dependency>-->
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <scope>runtime</scope>
-      <optional>true</optional>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.projectlombok</groupId>-->
+<!--      <artifactId>lombok</artifactId>-->
+<!--      <optional>true</optional>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; fastjson &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>com.alibaba</groupId>-->
+<!--      <artifactId>fastjson</artifactId>-->
+<!--      <version>1.2.79</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.commons</groupId>-->
+<!--      <artifactId>commons-lang3</artifactId>-->
+<!--      <version>3.12.0</version>-->
+<!--    </dependency>-->
 
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <optional>true</optional>
-    </dependency>
-    <!-- fastjson -->
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>fastjson</artifactId>
-      <version>1.2.79</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-      <version>3.12.0</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.gstdev.cloud</groupId>-->
+<!--      <artifactId>gstdev-cloud-commons</artifactId>-->
+<!--      <exclusions>-->
+<!--        <exclusion>-->
+<!--          <groupId>org.springframework.boot</groupId>-->
+<!--          <artifactId>spring-boot-starter-web</artifactId>-->
+<!--        </exclusion>-->
+<!--      </exclusions>-->
+<!--    </dependency>-->
 
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-commons</artifactId>
-      <exclusions>
-        <exclusion>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-actuator</artifactId>-->
+<!--    </dependency>-->
+
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-actuator-autoconfigure</artifactId>-->
+<!--    </dependency>-->
+      <dependency>
           <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-web</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-actuator</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-actuator-autoconfigure</artifactId>
-    </dependency>
-
+          <artifactId>spring-boot-starter-thymeleaf</artifactId>
+      </dependency>
   </dependencies>
 
   <build>
