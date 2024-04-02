@@ -15,10 +15,6 @@
     </parent>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.frame.template</groupId>-->
-<!--            <artifactId>frame-template-common</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
@@ -28,6 +24,15 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
+            <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-starter-test</artifactId>
+              <scope>test</scope>
+            </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
@@ -36,21 +41,25 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.gstdev.cloud</groupId>-->
+<!--            <artifactId>gstdev-cloud-commons</artifactId>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.springframework.boot</groupId>-->
+<!--                    <artifactId>spring-boot-starter-web</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
 
-        <!--    <dependency>-->
-        <!--      <groupId>org.springframework.cloud</groupId>-->
-        <!--      <artifactId>spring-cloud-starter-openfeign</artifactId>-->
-        <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <groupId>org.springframework.cloud</groupId>-->
-        <!--      <artifactId>spring-cloud-loadbalancer</artifactId>-->
-        <!--    </dependency>-->
-        <!--    <dependency>-->
-        <!--      <groupId>org.springframework.boot</groupId>-->
-        <!--      <artifactId>spring-boot-starter-test</artifactId>-->
-        <!--      <scope>test</scope>-->
-        <!--    </dependency>-->
-
+<!--            <dependency>-->
+<!--              <groupId>org.springframework.cloud</groupId>-->
+<!--              <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--              <groupId>org.springframework.cloud</groupId>-->
+<!--              <artifactId>spring-cloud-loadbalancer</artifactId>-->
+<!--            </dependency>-->
 
         <!--    <dependency>-->
         <!--      <groupId>org.projectlombok</groupId>-->
@@ -68,31 +77,18 @@
         <!--      <artifactId>commons-lang3</artifactId>-->
         <!--      <version>3.12.0</version>-->
         <!--    </dependency>-->
-
-        <!--    <dependency>-->
-        <!--      <groupId>com.gstdev.cloud</groupId>-->
-        <!--      <artifactId>gstdev-cloud-commons</artifactId>-->
-        <!--      <exclusions>-->
-        <!--        <exclusion>-->
-        <!--          <groupId>org.springframework.boot</groupId>-->
-        <!--          <artifactId>spring-boot-starter-web</artifactId>-->
-        <!--        </exclusion>-->
-        <!--      </exclusions>-->
-        <!--    </dependency>-->
-
         <!--    <dependency>-->
         <!--      <groupId>org.springframework.boot</groupId>-->
         <!--      <artifactId>spring-boot-actuator</artifactId>-->
         <!--    </dependency>-->
-
         <!--    <dependency>-->
         <!--      <groupId>org.springframework.boot</groupId>-->
         <!--      <artifactId>spring-boot-actuator-autoconfigure</artifactId>-->
         <!--    </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-thymeleaf</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+        <!--        </dependency>-->
     </dependencies>
 
     <build>
