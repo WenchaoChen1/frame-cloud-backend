@@ -20,7 +20,11 @@
     <!--      <groupId>com.gstdev.cloud</groupId>-->
     <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
     <!--    </dependency>-->
-
+      <!--sentinel alibaba 控流监控-->
+      <dependency>
+          <groupId>com.gstdev.cloud</groupId>
+          <artifactId>gstdev-cloud-sentinel-alibaba</artifactId>
+      </dependency>
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
       <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>

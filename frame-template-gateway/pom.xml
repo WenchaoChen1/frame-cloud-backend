@@ -15,6 +15,11 @@
     </parent>
 
     <dependencies>
+        <!--sentinel alibaba 控流监控-->
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-sentinel-alibaba</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>

@@ -32,13 +32,16 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-cache-jetcache</artifactId>
         </dependency>
-        // TODO 可能
+<!--         TODO 可能-->
         <!-- aspects切面 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
         <!-- Lombok related dependencies -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -80,8 +83,6 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
         </dependency>
-
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>

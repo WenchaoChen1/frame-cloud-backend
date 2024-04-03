@@ -96,7 +96,11 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
     </dependency>
-    <!-- MapStruct related dependencies -->
+      <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-openfeign-core</artifactId>
+      </dependency>
+      <!-- MapStruct related dependencies -->
     <!--    <dependency>-->
     <!--      <groupId>org.mapstruct</groupId>-->
     <!--      <artifactId>mapstruct</artifactId>-->

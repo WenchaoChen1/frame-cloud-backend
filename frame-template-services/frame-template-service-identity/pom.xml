@@ -20,10 +20,18 @@
         <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
         <!--    </dependency>-->
 
-
+        <!--sentinel-->
+        <dependency>
+            <artifactId>frame-template-common</artifactId>
+            <groupId>com.frame.template</groupId>
+        </dependency>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-sentinel-alibaba</artifactId>
         </dependency>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
@@ -71,6 +79,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+
     </dependencies>
     <build>
         <plugins>

@@ -1,95 +1,100 @@
 spring:
-  main:
-    allow-bean-definition-overriding: true
-  cloud:
-    nacos:
-      discovery:
-        server-addr: ${NACOS_DISCOVERY_HOST:127.0.0.1}:${NACOS_DISCOVERY_PORT:8848}
-        namespace: ${NACOS_DISCOVERY_NAMESPACE:frame-cloud}
-        group: ${NACOS_DISCOVERY_GROUP:dev}
-      config:
-        namespace: ${spring.cloud.nacos.discovery.namespace}
-        server-addr: ${spring.cloud.nacos.discovery.server-addr}
-        file-extension: yml
-        group: ${NACOS_CONFIG_GROUP:dev}
-        #指定共享配置，且支持动态刷新
-        extension-configs:
-          - data-id: common-config.yml
-            group: ${NACOS_CONFIG_GROUP:dev}
-  #            refresh: true
-  #          - data-id: gstdev-cloud-cache.yml
-  #            group: ${NACOS_CONFIG_GROUP:dev}
-  #            refresh: true
-  application:
-    name: gstdev-identity
+    main:
+        allow-bean-definition-overriding: true
+    cloud:
+        nacos:
+            discovery:
+                server-addr: ${NACOS_DISCOVERY_HOST:127.0.0.1}:${NACOS_DISCOVERY_PORT:8848}
+                namespace: ${NACOS_DISCOVERY_NAMESPACE:frame-cloud}
+                group: ${NACOS_DISCOVERY_GROUP:dev}
+            config:
+                namespace: ${spring.cloud.nacos.discovery.namespace}
+                server-addr: ${spring.cloud.nacos.discovery.server-addr}
+                file-extension: yml
+                group: ${NACOS_CONFIG_GROUP:dev}
+                #指定共享配置，且支持动态刷新
+                extension-configs:
+                    -   data-id: common-config.yml
+                        group: ${NACOS_CONFIG_GROUP:dev}
+        #            refresh: true
+        #          - data-id: gstdev-cloud-cache.yml
+        #            group: ${NACOS_CONFIG_GROUP:dev}
+        #            refresh: true
+        sentinel:
+            transport:
+#                port: 8719
+                dashboard: localhost:8858
+            eager: true #服务注启动，直接注册到dashboard
+    application:
+        name: gstdev-identity
 jetcache:
-  statIntervalMinutes: 15
-  areaInCacheName: false
-  local:
-    default:
-      type: caffeine
-      keyConvertor: fastjson2
-      limit: 10000
-  remote:
-    default:
-      type: redis.lettuce
-      keyConvertor: fastjson2
-      broadcastChannel: herodotus
-      valueEncoder: java
-      valueDecoder: java
-      #      poolConfig:
-      #        minIdle: ${spring.data.redis.lettuce.pool.min-idle}
-      #        maxIdle: ${spring.data.redis.lettuce.pool.max-idle}
-      #        maxTotal: ${spring.data.redis.lettuce.pool.max-active}
-      #        maxWait: ${spring.data.redis.lettuce.pool.max-wait}
-      uri:
-        #        - redis://${spring.data.redis.password}@${spring.data.redis.host}:${spring.data.redis.port}/${spring.data.redis.database}
-        - redis://Black.123!@127.0.0.1:6379/0
+    statIntervalMinutes: 15
+    areaInCacheName: false
+    local:
+        default:
+            type: caffeine
+            keyConvertor: fastjson2
+            limit: 10000
+    remote:
+        default:
+            type: redis.lettuce
+            keyConvertor: fastjson2
+            broadcastChannel: herodotus
+            valueEncoder: java
+            valueDecoder: java
+            #      poolConfig:
+            #        minIdle: ${spring.data.redis.lettuce.pool.min-idle}
+            #        maxIdle: ${spring.data.redis.lettuce.pool.max-idle}
+            #        maxTotal: ${spring.data.redis.lettuce.pool.max-active}
+            #        maxWait: ${spring.data.redis.lettuce.pool.max-wait}
+            uri:
+                #        - redis://${spring.data.redis.password}@${spring.data.redis.host}:${spring.data.redis.port}/${spring.data.redis.database}
+                - redis://Black.123!@127.0.0.1:6379/0
 server:
-  forward-headers-strategy: framework
+    forward-headers-strategy: framework
 springdoc:
-  chche:
-    disabled: true
-  version: '@springdoc.version@'
-  api-docs:
-    version: openapi_3_1
-    resolve-schema-properties: true
-  swagger-ui:
-    use-root-path: true
-    enabled: ${gstdev.cloud.switch.swagger.enabled}
-    disable-swagger-default-url: true
-    operations-sorter: method
-    show-common-extensions: true
-    show-extensions: true
-    oauth:
-      use-pkce-with-authorization-code-grant: true
-      app-name: ${spring.application.name}
+    chche:
+        disabled: true
+    version: '@springdoc.version@'
+    api-docs:
+        version: openapi_3_1
+        resolve-schema-properties: true
+    swagger-ui:
+        use-root-path: true
+        enabled: ${gstdev.cloud.switch.swagger.enabled}
+        disable-swagger-default-url: true
+        operations-sorter: method
+        show-common-extensions: true
+        show-extensions: true
+        oauth:
+            use-pkce-with-authorization-code-grant: true
+            app-name: ${spring.application.name}
 logging:
-  #  file:
-  #    name: logs/${spring.application.name}.log
-  #  config: http://${spring.cloud.nacos.config.server-addr}/nacos/v1/cs/configs?group=logs&tenant=${spring.cloud.nacos.config.namespace}&dataId=logback-spring.xml
-  #  config: http://${spring.cloud.nacos.config.server-addr}/nacos/v1/cs/configs?group=logs&dataId=logback-spring.xml
-  level:
-    root: INFO
-  #    root: DEBUG
-  #      root: trace
-  #    # 关闭不必要的日志
-  #    org.reflections.Reflections: off
-  #    com.alibaba.nacos.client: error
-  #    com.alibaba.nacos.common.remote.client: error
-  #    com.ulisesbocchio: error
-  #    # 开发、调试需要的日志
-  #    org.springframework.security: info
-  #    org.springframework.web: info
-  #    com.alicp.jetcache: trace
-  #    org.springframework.cloud.bus: info
-  #    org.apache.kafka: warn
+    #  file:
+    #    name: logs/${spring.application.name}.log
+    #  config: http://${spring.cloud.nacos.config.server-addr}/nacos/v1/cs/configs?group=logs&tenant=${spring.cloud.nacos.config.namespace}&dataId=logback-spring.xml
+    #  config: http://${spring.cloud.nacos.config.server-addr}/nacos/v1/cs/configs?group=logs&dataId=logback-spring.xml
+    level:
+        root: INFO
+    #    root: DEBUG
+    #      root: trace
+    #    # 关闭不必要的日志
+    #    org.reflections.Reflections: off
+    #    com.alibaba.nacos.client: error
+    #    com.alibaba.nacos.common.remote.client: error
+    #    com.ulisesbocchio: error
+    #    # 开发、调试需要的日志
+    #    org.springframework.security: info
+    #    org.springframework.web: info
+    #    com.alicp.jetcache: trace
+    #    org.springframework.cloud.bus: info
+    #    org.apache.kafka: warn
 
-  #  main:
-  #    allow-bean-definition-overriding: true # 意思是后来发现的bean会覆盖之前相同名称的bean
+    #  main:
+    #    allow-bean-definition-overriding: true # 意思是后来发现的bean会覆盖之前相同名称的bean
 
 gstdev:
-  cloud:
-    switch:
-      swagger:
-        enabled: true
+    cloud:
+        switch:
+            swagger:
+                enabled: true
