@@ -15,25 +15,25 @@ spring:
 
 server:
   forward-headers-strategy: framework
-springdoc:
-  webjars:
-    prefix: /document
-  chche:
-    disabled: true
-  version: '@springdoc.version@'
-  api-docs:
-    version: openapi_3_1
-    resolve-schema-properties: true
-  swagger-ui:
-    use-root-path: true
-    enabled: true
-    disable-swagger-default-url: true
-    operations-sorter: method
-    show-common-extensions: true
-    show-extensions: true
-    oauth:
-      use-pkce-with-authorization-code-grant: true
-      app-name: ${spring.application.name}
+#springdoc:
+#  webjars:
+#    prefix: /document
+#  chche:
+#    disabled: true
+#  version: '@springdoc.version@'
+#  api-docs:
+#    version: openapi_3_1
+#    resolve-schema-properties: true
+#  swagger-ui:
+#    use-root-path: true
+#    enabled: true
+#    disable-swagger-default-url: true
+#    operations-sorter: method
+#    show-common-extensions: true
+#    show-extensions: true
+#    oauth:
+#      use-pkce-with-authorization-code-grant: true
+#      app-name: ${spring.application.name}
 herodotus:
     gateway:
         white-list:

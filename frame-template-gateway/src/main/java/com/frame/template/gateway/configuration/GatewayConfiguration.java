@@ -65,25 +65,25 @@ public class GatewayConfiguration {
         };
     }
 
-//    @Configuration(proxyBeanMethods = false)
-////    @ConditionalOnSwaggerEnabled
-//    static class GatewaySwaggerConfiguration {
-//
-//      // 定义一个 Bean，用于监听路由刷新事件
-//      @Bean
-//      public RefreshRoutesListener refreshRoutesListener(RouteLocator routeLocator, SwaggerUiConfigParameters swaggerUiConfigParameters, SwaggerUiConfigProperties swaggerUiConfigProperties) {
-//        // 创建 RefreshRoutesListener 实例
-//        RefreshRoutesListener refreshRoutesListener = new RefreshRoutesListener();
-//        // 设置路由定位器
-//        refreshRoutesListener.setRouteLocator(routeLocator);
-//        // 设置 Swagger UI 配置参数
-//        refreshRoutesListener.setSwaggerUiConfigParameters(swaggerUiConfigParameters);
-//        // 设置 Swagger UI 配置属性
-//        refreshRoutesListener.setSwaggerUiConfigProperties(swaggerUiConfigProperties);
-//        // 记录日志
-//        log.trace("[Gstdev Cloud] |- Bean [Refresh Routes Listener] in AliyunScanConfiguration Auto Configure.");
-//        // 返回 RefreshRoutesListener 实例
-//        return refreshRoutesListener;
-//      }
-//    }
+    @Configuration(proxyBeanMethods = false)
+//    @ConditionalOnSwaggerEnabled
+    static class GatewaySwaggerConfiguration {
+
+      // 定义一个 Bean，用于监听路由刷新事件
+      @Bean
+      public RefreshRoutesListener refreshRoutesListener(RouteLocator routeLocator, SwaggerUiConfigParameters swaggerUiConfigParameters, SwaggerUiConfigProperties swaggerUiConfigProperties) {
+        // 创建 RefreshRoutesListener 实例
+        RefreshRoutesListener refreshRoutesListener = new RefreshRoutesListener();
+        // 设置路由定位器
+        refreshRoutesListener.setRouteLocator(routeLocator);
+        // 设置 Swagger UI 配置参数
+        refreshRoutesListener.setSwaggerUiConfigParameters(swaggerUiConfigParameters);
+        // 设置 Swagger UI 配置属性
+        refreshRoutesListener.setSwaggerUiConfigProperties(swaggerUiConfigProperties);
+        // 记录日志
+        log.trace("[Gstdev Cloud] |- Bean [Refresh Routes Listener] in AliyunScanConfiguration Auto Configure.");
+        // 返回 RefreshRoutesListener 实例
+        return refreshRoutesListener;
+      }
+    }
 }
