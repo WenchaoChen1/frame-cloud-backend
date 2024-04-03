@@ -37,7 +37,7 @@
 
     <dependency>
       <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-data-jpa</artifactId>
+      <artifactId>gstdev-cloud-data-jpa</artifactId>
     </dependency>
 
     <dependency>

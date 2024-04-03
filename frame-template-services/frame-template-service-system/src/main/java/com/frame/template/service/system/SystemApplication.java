@@ -20,7 +20,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableFeignClients
 @ComponentScan(value = {"com.gstdev"})
 @EntityScan(value = {"com.gstdev.template"})
-@EnableJpaRepositories(value = {"com.gstdev.template.service.system"})
+@EnableJpaRepositories(value = {"com.gstdev"})
 @ConfigurationPropertiesScan("com.gstdev")
 @SpringBootApplication
 public class SystemApplication {
