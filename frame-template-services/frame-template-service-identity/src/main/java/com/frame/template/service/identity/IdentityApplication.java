@@ -22,7 +22,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
   "com.gstdev"
 //  "com.gstdev.cloud.cache"
 //  , "com.gstdev.cloud.oauth2"
-  , "com.frame"
+  ,"com.frame"
 //  , "com.gstdev.cloud.commons.utils"
 //  , "com.gstdev.cloud.captcha"
 })
