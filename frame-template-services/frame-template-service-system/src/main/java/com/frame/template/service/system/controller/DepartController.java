@@ -15,7 +15,7 @@ import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.frame.template.common.base.baseTree.BaseTreeController;
 import com.frame.template.service.system.pojo.base.depart.*;
 import com.frame.template.service.system.service.DepartService;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
@@ -40,7 +40,7 @@ public class DepartController extends BaseTreeController<DepartService, DepartVo
   }
 
   @GetMapping("/get-all-depart-to-tree")
-  @ApiOperation("获取指定租户下的depart所有数据，返回树状结构")
+  @Operation(summary = "获取指定租户下的depart所有数据，返回树状结构")
   public Result<List<DepartVo>> findAllByQueryCriteriaToTree(@RequestParam("tenantId") String tenantId) {
     DepartFindAllByQueryCriteria departFindAllByQueryCriteria = new DepartFindAllByQueryCriteria();
     departFindAllByQueryCriteria.setTenantId(tenantId);
@@ -48,24 +48,24 @@ public class DepartController extends BaseTreeController<DepartService, DepartVo
   }
 
   @GetMapping("/get-by-id")
-  @ApiOperation("根据id获取实体数据")
+  @Operation(summary = "根据id获取实体数据")
   public Result<DepartVo> getById(String id) {
     return findByIdToResult(id);
   }
 
   @PostMapping
-  @ApiOperation("新增一条数据")
+  @Operation(summary = "新增一条数据")
   public Result<DepartVo> insert(@RequestBody DepartInsertInput departInsertInput) {
     return insertToResult(departInsertInput);
   }
 
   @PutMapping
-  @ApiOperation("修改一条数据")
+  @Operation(summary = "修改一条数据")
   public Result<DepartVo> update(@RequestBody DepartUpdateInput departUpdateInput) {
     return updateToResult(departUpdateInput);
   }
 
-  @ApiOperation("")
+  @Operation(summary = "")
   @DeleteMapping
   public Result<DepartVo> deleteById(String id) {
     return deleteByIdToResult(id);

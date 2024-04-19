@@ -18,7 +18,7 @@ import com.frame.template.common.base.baseTree.BaseTreeController;
 
 import com.frame.template.service.system.pojo.base.tenant.*;
 import com.frame.template.service.system.pojo.base.tenant.TenantVo;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,13 +48,13 @@ public class TenantController extends BaseTreeController<TenantService, TenantVo
   }
 
 //  @GetMapping("/get-all-tenant-to-tree")
-//  @ApiOperation("获取当前当前租户的所有子租户，返回树状结构")
+//  @Operation(summary = "获取当前当前租户的所有子租户，返回树状结构")
 //  public Result<List<TenantVo>> findAllByQueryCriteriaToTree() {
 //    return findByParentIdIdToTreeToResult(redisCurrentLoginInformation.getCurrentLoginTenantId());
 //  }
 
   @GetMapping("/get-tenant-by-id-to-tree")
-  @ApiOperation("获取当前租户以及当前租户的所有子租户，返回树状结构")
+  @Operation(summary = "获取当前租户以及当前租户的所有子租户，返回树状结构")
   public Result<List<TenantVo>> findByIdToTreeToResult(TenantFindAllByQueryCriteria tenantFindAllByQueryCriteria) {
     List<TenantDto> itselfAndSubsetsToDto = getService().findItselfAndSubsetsToDto(redisCurrentLoginInformation.getCurrentLoginTenantId());
     List<String> tenantIds = itselfAndSubsetsToDto.stream().map(TenantDto::getId).toList();
@@ -63,24 +63,24 @@ public class TenantController extends BaseTreeController<TenantService, TenantVo
   }
 
   @GetMapping("/get-by-id")
-  @ApiOperation("根据id获取实体数据")
+  @Operation(summary = "根据id获取实体数据")
   public Result<TenantVo> getById(String id) {
     return findByIdToResult(id);
   }
 
   @PostMapping
-  @ApiOperation("新增一条数据")
+  @Operation(summary = "新增一条数据")
   public Result<TenantVo> insert(@RequestBody @Validated TenantInsertInput tenantInsertInput) {
     return insertToResult(tenantInsertInput);
   }
 
   @PutMapping
-  @ApiOperation("修改一条数据")
+  @Operation(summary = "修改一条数据")
   public Result<TenantVo> update(@RequestBody @Validated TenantUpdateInput updateInput) {
     return updateToResult(updateInput);
   }
 
-  @ApiOperation("")
+  @Operation(summary = "")
   @DeleteMapping
   public Result<TenantVo> deleteById(String id) {
     return deleteByIdToResult(id);

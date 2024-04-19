@@ -10,7 +10,7 @@
 package com.frame.template.service.system.pojo.vo.tenant;
 
 import com.frame.template.common.base.baseTree.BaseTreeInsertInput;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 import jakarta.validation.constraints.NotEmpty;
@@ -22,11 +22,11 @@ import jakarta.validation.constraints.NotEmpty;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TenantLoginInferiorInsertInput extends BaseTreeInsertInput {
-  //  @ApiModelProperty(value = "parentId 不能为空", required = true)
+  //  @Schema(title = "parentId 不能为空", required = true)
 //  @NotEmpty
   private String parentId;
   private String tenantCode;
-  @ApiModelProperty(value = "companyName 不能为空", required = true)
+  @Schema(title = "companyName 不能为空", required = true)
   @NotEmpty
   private String tenantName;
   private String description;
@@ -36,33 +36,33 @@ public class TenantLoginInferiorInsertInput extends BaseTreeInsertInput {
   //-----------------自定义-----------
 
   private String website;
-  @ApiModelProperty(value = "addressLine1 不能为空", required = true)
+  @Schema(title = "addressLine1 不能为空", required = true)
   @NotEmpty
   private String addressLine1;
-  @ApiModelProperty(value = "addressLine2 不能为空")
+  @Schema(title = "addressLine2 不能为空")
   private String addressLine2;
-  @ApiModelProperty(value = "city 不能为空", required = true)
+  @Schema(title = "city 不能为空", required = true)
   @NotEmpty
   private String city;
-  @ApiModelProperty(value = "state 不能为空", required = true)
+  @Schema(title = "state 不能为空", required = true)
   @NotEmpty
   private String state;
-  @ApiModelProperty(value = "country 不能为空", required = true)
+  @Schema(title = "country 不能为空", required = true)
   @NotEmpty
   private String country;
-  @ApiModelProperty(value = "zipCode 不能为空", required = true)
+  @Schema(title = "zipCode 不能为空", required = true)
   @NotEmpty
   private String zipCode;
-  @ApiModelProperty(value = "firstName 不能为空", required = true)
+  @Schema(title = "firstName 不能为空", required = true)
   @NotEmpty
   private String firstName;
-  @ApiModelProperty(value = "lastName 不能为空", required = true)
+  @Schema(title = "lastName 不能为空", required = true)
   @NotEmpty
   private String lastName;
-  @ApiModelProperty(value = "emailAddress 不能为空", required = true)
+  @Schema(title = "emailAddress 不能为空", required = true)
   @NotEmpty
   private String emailAddress;
-  @ApiModelProperty(value = "phoneNumber 不能为空", required = true)
+  @Schema(title = "phoneNumber 不能为空", required = true)
   @NotEmpty
   private String phoneNumber;
   private String logo;

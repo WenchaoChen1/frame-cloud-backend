@@ -10,7 +10,7 @@
 package com.frame.template.service.system.pojo.base.tenant;
 
 import com.frame.template.common.base.baseTree.BaseTreeInsertInput;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import jakarta.validation.constraints.NotEmpty;
@@ -21,7 +21,7 @@ import jakarta.validation.constraints.NotEmpty;
 //@NoArgsConstructor
 public class TenantInsertInput extends BaseTreeInsertInput {
 
-  @ApiModelProperty(value = "parentId 不能为空", required = true)
+  @Schema(title = "parentId 不能为空", required = true)
   @NotEmpty
   private String parentId;
   private String tenantCode;

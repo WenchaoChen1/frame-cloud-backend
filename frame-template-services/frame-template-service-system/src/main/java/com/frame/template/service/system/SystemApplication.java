@@ -18,10 +18,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableFeignClients
-@ComponentScan(value = {"com.gstdev"})
-@EntityScan(value = {"com.gstdev.template"})
-@EnableJpaRepositories(value = {"com.gstdev"})
-@ConfigurationPropertiesScan("com.gstdev")
+@ComponentScan(value = {"com.gstdev","com.frame"})
+//@EntityScan(value = {"com.frame.template"})
+//@EnableJpaRepositories(value = {"com.frame"})
+@ConfigurationPropertiesScan("com.frame")
+@EntityScan(value = {"com.frame.template.service.system"})
+@EnableJpaRepositories(value = {"com.frame.template.service.system"})
 @SpringBootApplication
 public class SystemApplication {
 

@@ -11,7 +11,7 @@ package com.frame.template.service.system.pojo.base.user;
 
 import com.frame.template.common.base.BaseUpdateInput;
 import com.frame.template.common.constant.AccountTypeConstants;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,21 +22,21 @@ import java.util.Date;
 public class UserLoginInferiorUpdateInput extends BaseUpdateInput {
 
   private String id;
-  @ApiModelProperty(value = "avatar 不能为空", required = true)
+  @Schema(title = "avatar 不能为空", required = true)
   private String avatar;
-  @ApiModelProperty(value = "deleted 不能为空", required = true)
+  @Schema(title = "deleted 不能为空", required = true)
   private Integer deleted;
-  @ApiModelProperty(value = "email 不能为空", required = true)
+  @Schema(title = "email 不能为空", required = true)
   private String email;
-  @ApiModelProperty(value = "gender 不能为空", required = true)
+  @Schema(title = "gender 不能为空", required = true)
   private Integer gender;
-  @ApiModelProperty(value = "lastLoginTime 不能为空", required = true)
+  @Schema(title = "lastLoginTime 不能为空", required = true)
   private Date lastLoginTime;
-  @ApiModelProperty(value = "mobile 不能为空", required = true)
+  @Schema(title = "mobile 不能为空", required = true)
   private String mobile;
-  @ApiModelProperty(value = "password 不能为空", required = true)
+  @Schema(title = "password 不能为空", required = true)
   private String password;
-  @ApiModelProperty(value = "username 不能为空", required = true)
+  @Schema(title = "username 不能为空", required = true)
   private String username;
   private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
   private String firstName;

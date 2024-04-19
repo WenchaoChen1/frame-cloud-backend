@@ -16,7 +16,6 @@ import com.frame.template.service.system.pojo.vo.UserUpdateInput;
 import com.frame.template.service.system.pojo.vo.user.AccountListDto;
 import com.frame.template.service.system.repository.RoleRepository;
 import com.frame.template.service.system.repository.UserRepository;
-import com.frame.template.service.system.util.TokenUtils;
 import com.gstdev.cloud.commons.exception.BadRequestException;
 import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.frame.template.common.base.BaseServiceImpl;
@@ -47,8 +46,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserRepository, UserMapper,
   private UserMapper userMapper;
   @Resource
   private RedisCurrentLoginInformation redisCurrentLoginInformation;
-  @Resource
-  private EmailService emailService;
+//  @Resource
+//  private EmailService emailService;
   @Resource
   private AccountService accountService;
   @Resource
@@ -61,8 +60,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserRepository, UserMapper,
 //  private TenantFeignService tenantFeignService;
   @Resource
   private RoleRepository roleRepository;
-  @Value(value = "${spring.mail.email}")
-  private String senderEmil;
+//  @Value(value = "${spring.mail.email}")
+//  private String senderEmil;
 
   public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
     super(userRepository, userMapper, redisCurrentLoginInformation);
@@ -237,7 +236,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserRepository, UserMapper,
       user.setUsername(user.getEmail());
     }
     user.setStatus(UserStatus.INVITED.getValue());
-    user.setActivateToken(TokenUtils.getInstance().encode());
+//    user.setActivateToken(TokenUtils.getInstance().encode());
     String password = randomPassword();
     user.setPassword(Base64.getEncoder().encodeToString(CryptoUtils.asymEncrypt(password, ServiceConstants.ASYM_PUBLIC_KEY)));
     try {

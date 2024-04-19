@@ -7,7 +7,7 @@ import com.frame.template.common.base.BaseController;
 import com.frame.template.common.base.BaseRedisCurrentLoginInformation;
 import com.frame.template.service.system.pojo.base.account.*;
 import com.frame.template.service.system.service.AccountService;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
@@ -35,44 +35,44 @@ public class AccountController extends BaseController<AccountService, AccountVoM
   }
 
   //  @GetMapping("/get-all-account")
-//  @ApiOperation("获取所有的账户")
+//  @Operation(summary = "获取所有的账户")
 //  public Result<List<AccountVo>> getAllQueryCriteria(@RequestParam("tenantId") String tenantId) {
 //    AccountFindAllByQueryCriteria accountFindAllByQueryCriteria=new AccountFindAllByQueryCriteria();
 //    accountFindAllByQueryCriteria.setTenantId(tenantId);
 //    return findAllByQueryCriteriaToResult(accountFindAllByQueryCriteria);
 //  }
   @GetMapping("/get-account-page")
-  @ApiOperation("获取所有的账户,分页")
+  @Operation(summary = "获取所有的账户,分页")
   public Result<Page<AccountVo>> getAllPageQueryCriteria(AccountPageQueryCriteria accountPageQueryCriteria, Pageable pageable) {
     return pageToResult(accountPageQueryCriteria, pageable);
   }
 
   @GetMapping("/get-by-id")
-  @ApiOperation("根据id获取实体数据")
+  @Operation(summary = "根据id获取实体数据")
   public Result<AccountVo> getById(@RequestParam("id") String id) {
     return findByIdToResult(id);
   }
 
   //  @PostMapping
-//  @ApiOperation("新增一条数据")
+//  @Operation(summary = "新增一条数据")
 //  public Result<AccountVo> insert(@RequestBody @Validated AccountInsertInput accountInsertInput) {
 //    return insertToResult(accountInsertInput);
 //  }
 //
   @PutMapping
-  @ApiOperation("修改一条数据")
+  @Operation(summary = "修改一条数据")
   public Result<AccountVo> update(@RequestBody @Validated AccountUpdateInput updateInput) {
     return updateToResult(updateInput);
   }
 
-  @ApiOperation("删除一条数据")
+  @Operation(summary = "删除一条数据")
   @DeleteMapping
   public Result<AccountVo> deleteById(String id) {
     return deleteByIdToResult(id);
   }
 
   @PostMapping("/insert-account-initialization")
-  @ApiOperation("新增一个账户并创建角色,部门")
+  @Operation(summary = "新增一个账户并创建角色,部门")
   public Result<AccountVo> insertAccountInitialization(@RequestBody @Validated AccountInsertInput accountInsertInput) {
     return getMapper().toVo(getService().insertAccountInitializationToResult(accountInsertInput));
   }

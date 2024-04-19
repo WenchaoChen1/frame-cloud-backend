@@ -16,7 +16,7 @@ import com.frame.template.service.system.service.RTenantMenuService;
 import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.frame.template.common.base.BaseController;
 import com.frame.template.service.system.pojo.base.rTenantMenu.*;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
@@ -44,13 +44,13 @@ public class RTenantMenuController extends BaseController<RTenantMenuService, RT
 
 
   @PostMapping("/insertTenantMenu")
-  @ApiOperation("insertSave")
+  @Operation(summary = "insertSave")
   public Result<String> insertTenantMenu(@RequestBody RTenantMenuInsertInput rTenantMenuInsertInput) {
     return rTenantMenuService.insertTenantMenu(rTenantMenuInsertInput);
   }
 
   @GetMapping("/get-all-by-tenant-id")
-  @ApiOperation("获取指定租户的所有菜单，返回id")
+  @Operation(summary = "获取指定租户的所有菜单，返回id")
   public Result<List<String>> getAllByTenantId(@RequestParam("tenantId") String tenantId) {
     RTenantMenuFindAllByQueryCriteria rTenantMenuFindAllByQueryCriteria = new RTenantMenuFindAllByQueryCriteria();
     rTenantMenuFindAllByQueryCriteria.setTenantId(tenantId);

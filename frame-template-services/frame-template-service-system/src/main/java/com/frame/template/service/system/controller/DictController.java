@@ -6,7 +6,7 @@ import com.frame.template.service.system.service.DictService;
 import com.gstdev.cloud.commons.ass.definition.domain.Result;
 import com.frame.template.common.base.baseTree.BaseTreeController;
 import com.frame.template.service.system.pojo.base.dict.*;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
@@ -30,31 +30,31 @@ public class DictController extends BaseTreeController<DictService, DictVoMapper
   }
 
   @GetMapping("/get-all-dict-to-tree")
-  @ApiOperation("获取所有数据，返回树状结构")
+  @Operation(summary = "获取所有数据，返回树状结构")
   public Result<List<DictVo>> findAllByQueryCriteriaToTree() {
     DictFindAllByQueryCriteria dictFindAllByQueryCriteria = new DictFindAllByQueryCriteria();
     return findAllByQueryCriteriaToResultToTree(dictFindAllByQueryCriteria);
   }
 
   @GetMapping("/get-by-id")
-  @ApiOperation("根据id获取实体数据")
+  @Operation(summary = "根据id获取实体数据")
   public Result<DictVo> getById(String id) {
     return findByIdToResult(id);
   }
 
   @PostMapping
-  @ApiOperation("新增一条数据")
+  @Operation(summary = "新增一条数据")
   public Result<DictVo> insert(@RequestBody DictInsertInput dictInsertInput) {
     return insertToResult(dictInsertInput);
   }
 
   @PutMapping
-  @ApiOperation("修改一条数据")
+  @Operation(summary = "修改一条数据")
   public Result<DictVo> update(@RequestBody DictUpdateInput dictUpdateInput) {
     return updateToResult(dictUpdateInput);
   }
 
-  @ApiOperation("")
+  @Operation(summary = "")
   @DeleteMapping
   public Result<DictVo> deleteById(String id) {
     return deleteByIdToResult(id);

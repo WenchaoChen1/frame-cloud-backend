@@ -6,7 +6,7 @@
 //import com.frame.template.service.system.pojo.vo.TenantDict.TenantDictModifyInput;
 //import com.frame.template.service.system.pojo.vo.TenantDict.TenantDictSaveInput;
 //import com.frame.template.service.system.pojo.vo.menu.MenuDto;
-//import io.swagger.annotations.ApiOperation;
+//import io.swagger.v3.oas.annotations.Operation;
 //import lombok.RequiredArgsConstructor;
 //import org.springframework.web.bind.annotation.*;
 //
@@ -28,7 +28,7 @@
 //   * @return
 //   */
 //  @PostMapping
-//  @ApiOperation("save")
+//  @Operation(summary = "save")
 //  public Result<String> save(@RequestBody TenantDictSaveInput tenantDictSaveInput) {
 //    try {
 //      tenantDictService.save(tenantDictSaveInput);
@@ -46,7 +46,7 @@
 //   * @return
 //   */
 //  @GetMapping
-//  @ApiOperation("findById")
+//  @Operation(summary = "findById")
 //  public Result<TenantDictDto> findById(String id) {
 //    try {
 //      return Result.success(tenantDictService.findById(id));
@@ -63,7 +63,7 @@
 //   * @return
 //   */
 //  @PutMapping
-//  @ApiOperation("modify")
+//  @Operation(summary = "modify")
 //  public Result<MenuDto> modify(@RequestBody TenantDictModifyInput tenantDictModifyInput) {
 //    try {
 //      tenantDictService.modify(tenantDictModifyInput);
@@ -80,7 +80,7 @@
 //   * @param id
 //   * @return
 //   */
-//  @ApiOperation("")
+//  @Operation(summary = "")
 //  @DeleteMapping
 //  public Result<Object> deleteById(String id) {
 //    try {
@@ -97,7 +97,7 @@
 //   *
 //   * @return
 //   */
-//  @ApiOperation("Get all tree")
+//  @Operation(summary = "Get all tree")
 //  @GetMapping("/getAllTree")
 //  public Result<List<TenantDictDto>> getAllTree(String tenantDictId) {
 //    try {

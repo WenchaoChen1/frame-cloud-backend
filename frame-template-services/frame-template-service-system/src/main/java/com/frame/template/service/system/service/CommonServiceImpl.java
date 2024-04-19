@@ -28,9 +28,9 @@ import java.util.Optional;
 public class CommonServiceImpl implements CommonService {
   @Resource
   private UserRepository userRepository;
-
-  @Resource
-  private EmailService emailService;
+//
+//  @Resource
+//  private EmailService emailService;
 
 
   @Override

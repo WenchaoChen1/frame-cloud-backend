@@ -48,7 +48,7 @@ public class Menu extends BaseTreeEntity {
   @Column(name = "path", length = 100)
   private String path;
 
-  @Column(name = "hidden", nullable = false)
+  @Column(name = "hidden")
   private Integer hidden = 0;
 
   @Column(name = "sort", length = 6)
@@ -70,10 +70,10 @@ public class Menu extends BaseTreeEntity {
   @Column(name = "status", nullable = false)
   private Integer status = 0;
 
-  @Column(name = "tenant_enable", nullable = false)
+  @Column(name = "tenant_enable")
   private Integer tenantEnable = 0;
 
-  @Column(name = "location", length = 6)
+  @Column(name = "location", length = 16)
   private String location = "LEFT-MENU";
 
 

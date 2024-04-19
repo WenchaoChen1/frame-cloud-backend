@@ -4,7 +4,7 @@ spring:
     cloud:
         nacos:
             discovery:
-                server-addr: ${NACOS_DISCOVERY_HOST:127.0.0.1}:${NACOS_DISCOVERY_PORT:8848}
+                server-addr: ${NACOS_DISCOVERY_HOST:192.168.0.99}:${NACOS_DISCOVERY_PORT:8848}
                 namespace: ${NACOS_DISCOVERY_NAMESPACE:frame-cloud}
                 group: ${NACOS_DISCOVERY_GROUP:dev}
             config:

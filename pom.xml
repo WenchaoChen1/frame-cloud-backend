@@ -129,7 +129,7 @@
     <repository>
       <id>riching-maven</id>
       <name>Public Repository</name>
-      <url>https://nexus.richingcloud.com/repository/maven-public/</url>
+      <url>https://nexus.esapiens.ai//repository/maven-public/</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -154,13 +154,13 @@
       <!--必须与 settings.xml 的 id 一致-->
       <id>riching-repository-maven</id>
       <name>Riching Maven Releases Repository</name>
-      <url>https://nexus.richingcloud.com/repository/maven-releases/</url>
+      <url>https://nexus.esapiens.ai//repository/maven-releases/</url>
     </repository>
     <!--快照-->
     <snapshotRepository>
       <id>riching-repository-maven-snapshots</id>
       <name>Riching Maven Snapshot Repository</name>
-      <url>https://nexus.richingcloud.com/repository/maven-snapshots/</url>
+      <url>https://nexus.esapiens.ai//repository/maven-snapshots/</url>
     </snapshotRepository>
 
   </distributionManagement>

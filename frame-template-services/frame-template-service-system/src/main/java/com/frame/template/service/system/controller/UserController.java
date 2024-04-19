@@ -14,7 +14,7 @@ import com.frame.template.common.base.BaseController;
 import com.frame.template.common.base.BaseRedisCurrentLoginInformation;
 import com.frame.template.service.system.pojo.base.user.*;
 import com.frame.template.service.system.service.CommonService;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -49,43 +49,43 @@ public class UserController extends BaseController<UserService, UserVoMapper, Us
   }
 
   @GetMapping("/get-all-user")
-  @ApiOperation("获取所有的用户")
+  @Operation(summary = "获取所有的用户")
   public Result<List<UserVo>> getAllQueryCriteria() {
     UserFindAllByQueryCriteria userFindAllByQueryCriteria = new UserFindAllByQueryCriteria();
     return findAllByQueryCriteriaToResult(userFindAllByQueryCriteria);
   }
 
   @GetMapping("/get-user-page")
-  @ApiOperation("获取所有的用户,分页")
+  @Operation(summary = "获取所有的用户,分页")
   public Result<Page<UserVo>> getAllPageQueryCriteria(UserPageQueryCriteria userPageQueryCriteria, Pageable pageable) {
     return pageToResult(userPageQueryCriteria, pageable);
   }
 
   @GetMapping("/get-by-id")
-  @ApiOperation("根据id获取实体数据")
+  @Operation(summary = "根据id获取实体数据")
   public Result<UserVo> getById(@RequestParam("id") String id) {
     return findByIdToResult(id);
   }
 
   @PostMapping
-  @ApiOperation("新增一条数据")
+  @Operation(summary = "新增一条数据")
   public Result<UserVo> insert(@RequestBody @Validated UserInsertInput userInsertInput) {
     return insertToResult(userInsertInput);
   }
 //
 //  @PostMapping("/insert-user-initialization")
-//  @ApiOperation("新增一个用户并创建用户的账户以及角色,部门")
+//  @Operation(summary = "新增一个用户并创建用户的账户以及角色,部门")
 //  public Result<UserVo> insertUserInitialization(@RequestBody @Validated UserInsertInput userInsertInput) {
 //    return getMapper().toVo(getService().insertUserInitializationToResult(userInsertInput));
 //  }
 
   @PutMapping
-  @ApiOperation("修改一条数据")
+  @Operation(summary = "修改一条数据")
   public Result<UserVo> update(@RequestBody UserUpdateInput userUpdateInput) {
     return updateToResult(userUpdateInput);
   }
 
-  @ApiOperation("删除用户及所属的账号信息")
+  @Operation(summary = "删除用户及所属的账号信息")
   @DeleteMapping
   public Result<UserVo> deleteById(@RequestParam("id") String id) {
     return deleteByIdToResult(id);
@@ -93,7 +93,7 @@ public class UserController extends BaseController<UserService, UserVoMapper, Us
   // *********************************访问控制*****************************************
 
   @GetMapping("/get-by-id-to-account")
-  @ApiOperation("根据id获取当前用户下的所有账户")
+  @Operation(summary = "根据id获取当前用户下的所有账户")
   public Result<List<AccountListDto>> getByIdToAccount() {
     return Result.success(userService.getByIdToAccount(redisCurrentLoginInformation.getCurrentLoginInformation().getUserId()));
   }
