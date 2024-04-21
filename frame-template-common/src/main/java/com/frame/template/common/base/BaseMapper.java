@@ -1,6 +1,7 @@
 package com.frame.template.common.base;
 
-import com.gstdev.cloud.data.jpa.mapper.AbstractMapper;
+
+import com.gstdev.cloud.data.core.mapper.AbstractMapper;
 import org.mapstruct.MappingTarget;
 
 public interface BaseMapper<E extends BaseEntity, D extends BaseDto, II extends BaseInsertInput, UI extends BaseUpdateInput> extends AbstractMapper<D, E> {

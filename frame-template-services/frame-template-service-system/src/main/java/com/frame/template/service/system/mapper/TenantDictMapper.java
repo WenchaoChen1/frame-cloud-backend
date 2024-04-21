@@ -12,7 +12,7 @@ package com.frame.template.service.system.mapper;
 import com.frame.template.service.system.pojo.vo.TenantDict.TenantDictDto;
 import com.frame.template.service.system.pojo.vo.TenantDict.TenantDictModifyInput;
 import com.frame.template.service.system.pojo.vo.TenantDict.TenantDictSaveInput;
-import com.gstdev.cloud.data.jpa.mapper.AbstractMapper;
+import com.gstdev.cloud.data.core.mapper.AbstractMapper;
 import com.frame.template.service.system.pojo.domain.TenantDict;
 import org.mapstruct.*;
 

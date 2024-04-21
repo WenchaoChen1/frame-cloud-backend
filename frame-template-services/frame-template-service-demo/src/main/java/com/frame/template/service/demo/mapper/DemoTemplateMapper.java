@@ -9,7 +9,7 @@
 
 package com.frame.template.service.demo.mapper;
 
-import com.gstdev.cloud.data.jpa.mapper.AbstractMapper;
+import com.gstdev.cloud.data.core.mapper.AbstractMapper;
 import com.frame.template.service.demo.pojo.domain.DemoTemplate;
 import com.frame.template.service.demo.pojo.dto.demoTemplate.DemoTemplateDto;
 import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplateInsertInput;

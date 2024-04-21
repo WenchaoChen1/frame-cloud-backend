@@ -2,7 +2,7 @@ package com.frame.template.common.base;
 
 import com.gstdev.cloud.commons.exception.BadRequestException;
 import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.data.jpa.utils.QueryUtils;
+import com.gstdev.cloud.data.core.utils.QueryUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

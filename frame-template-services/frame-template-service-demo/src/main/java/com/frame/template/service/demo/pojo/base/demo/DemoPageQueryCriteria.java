@@ -1,6 +1,6 @@
 package com.frame.template.service.demo.pojo.base.demo;
 
-import com.gstdev.cloud.data.jpa.annotations.Query;
+import com.gstdev.cloud.data.core.annotations.Query;
 import com.frame.template.common.base.BasePageQueryCriteria;
 import lombok.Getter;
 import lombok.Setter;

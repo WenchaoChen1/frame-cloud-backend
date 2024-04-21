@@ -17,6 +17,7 @@ import com.frame.template.service.system.service.CommonService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -60,7 +61,11 @@ public class UserController extends BaseController<UserService, UserVoMapper, Us
   public Result<Page<UserVo>> getAllPageQueryCriteria(UserPageQueryCriteria userPageQueryCriteria, Pageable pageable) {
     return pageToResult(userPageQueryCriteria, pageable);
   }
-
+    @GetMapping("/page")
+    @Operation(summary = "获取所有的用户,分页")
+    public Result<Page<UserVo>> a(UserPageQueryCriteria userPageQueryCriteria, PageRequest pageable) {
+        return null;
+    }
   @GetMapping("/get-by-id")
   @Operation(summary = "根据id获取实体数据")
   public Result<UserVo> getById(@RequestParam("id") String id) {

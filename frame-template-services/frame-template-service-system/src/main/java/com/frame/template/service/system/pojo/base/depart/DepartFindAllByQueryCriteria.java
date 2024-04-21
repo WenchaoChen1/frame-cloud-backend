@@ -9,7 +9,7 @@
 
 package com.frame.template.service.system.pojo.base.depart;
 
-import com.gstdev.cloud.data.jpa.annotations.Query;
+import com.gstdev.cloud.data.core.annotations.Query;
 import com.frame.template.common.base.baseTree.BaseTreeFindAllByQueryCriteria;
 import lombok.Getter;
 import lombok.Setter;

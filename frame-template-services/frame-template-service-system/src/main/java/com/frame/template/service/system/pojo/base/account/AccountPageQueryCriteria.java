@@ -9,7 +9,7 @@
 
 package com.frame.template.service.system.pojo.base.account;
 
-import com.gstdev.cloud.data.jpa.annotations.Query;
+import com.gstdev.cloud.data.core.annotations.Query;
 import com.frame.template.common.base.BasePageQueryCriteria;
 import lombok.Data;
 

@@ -10,9 +10,10 @@
 package com.frame.template.service.identity.mapper;
 
 import com.frame.template.service.identity.domain.User;
-import com.gstdev.cloud.data.jpa.mapper.AbstractMapper;
+
 import com.frame.template.service.identity.contract.UserDto;
 import com.frame.template.service.identity.contract.UserInput;
+import com.gstdev.cloud.data.core.mapper.AbstractMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;

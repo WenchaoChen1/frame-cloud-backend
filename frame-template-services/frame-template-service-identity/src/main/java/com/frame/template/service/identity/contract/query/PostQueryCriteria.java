@@ -9,7 +9,8 @@
 
 package com.frame.template.service.identity.contract.query;
 
-import com.gstdev.cloud.data.jpa.annotations.Query;
+
+import com.gstdev.cloud.data.core.annotations.Query;
 import lombok.Data;
 
 import java.io.Serializable;
