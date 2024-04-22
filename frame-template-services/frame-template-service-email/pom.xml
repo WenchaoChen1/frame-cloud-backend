@@ -36,11 +36,6 @@
     </dependency>
 
     <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-data-jpa</artifactId>
-    </dependency>
-
-    <dependency>
       <groupId>com.frame.template</groupId>
       <artifactId>frame-template-common</artifactId>
     </dependency>

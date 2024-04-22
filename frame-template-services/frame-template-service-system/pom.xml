@@ -16,15 +16,7 @@
 
 
     <dependencies>
-        <!--sentinel-->
-        <dependency>
-            <artifactId>frame-template-common</artifactId>
-            <groupId>com.frame.template</groupId>
-        </dependency>
-        <dependency>
-            <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-data-jpa</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
@@ -57,10 +49,6 @@
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -79,10 +67,6 @@
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

@@ -25,13 +25,15 @@
             <artifactId>gstdev-cloud-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.frame.template</groupId>
-            <artifactId>frame-template-autoconfigure</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-cache-jetcache</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.frame.template</groupId>
+            <artifactId>frame-template-autoconfigure</artifactId>
+        </dependency>
+
 <!--         TODO 可能-->
         <!-- aspects切面 -->
         <dependency>
@@ -42,12 +44,7 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
         </dependency>
-        <!-- Lombok related dependencies -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
@@ -67,26 +64,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-        </dependency>
-
-        <!-- MapStruct related dependencies -->
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-processor</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
         </dependency>
 
     </dependencies>

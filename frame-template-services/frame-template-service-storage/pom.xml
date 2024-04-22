@@ -37,10 +37,6 @@
   <!--      <artifactId>gstdev-cloud-starter-swagger</artifactId>-->
   <!--    </dependency>-->
 
-  <!--    <dependency>-->
-  <!--      <groupId>com.gstdev.cloud</groupId>-->
-  <!--      <artifactId>gstdev-cloud-data-jpa</artifactId>-->
-  <!--    </dependency>-->
 
   <!--    <dependency>-->
   <!--      <groupId>com.gstdev.template</groupId>-->
@@ -127,10 +123,6 @@
       <artifactId>gstdev-cloud-starter-storage-aws</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-data-jpa</artifactId>
-    </dependency>
 
     <dependency>
       <groupId>com.frame.template</groupId>
