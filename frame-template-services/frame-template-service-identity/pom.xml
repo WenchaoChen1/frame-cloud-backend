@@ -29,13 +29,6 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-sentinel-alibaba</artifactId>
         </dependency>
-
-
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
-<!--        </dependency>-->
         <!-- 导入openFeign的依赖 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -52,21 +45,27 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.zaxxer</groupId>-->
-<!--            <artifactId>HikariCP</artifactId>-->
-<!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>javax.servlet</groupId>-->
-<!--            <artifactId>javax.servlet-api</artifactId>-->
-<!--            <version>3.1.0</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-actuator</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>com.zaxxer</groupId>-->
+        <!--            <artifactId>HikariCP</artifactId>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>javax.servlet</groupId>-->
+        <!--            <artifactId>javax.servlet-api</artifactId>-->
+        <!--            <version>3.1.0</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-actuator</artifactId>-->
+        <!--        </dependency>-->
 
     </dependencies>
     <build>
