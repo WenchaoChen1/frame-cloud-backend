@@ -16,8 +16,8 @@ import com.frame.template.service.system.pojo.vo.UserUpdateInput;
 import com.frame.template.service.system.pojo.vo.user.AccountListDto;
 import com.frame.template.service.system.repository.RoleRepository;
 import com.frame.template.service.system.repository.UserRepository;
-import com.gstdev.cloud.commons.exception.BadRequestException;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.base.BaseServiceImpl;
 import com.frame.template.common.constant.ServiceConstants;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
@@ -216,10 +216,10 @@ public class UserServiceImpl extends BaseServiceImpl<UserRepository, UserMapper,
   @Transactional()
   public Result<UserDto> deleteById(String id) {
     if (id == null || id.length() == 0) {
-      throw new BadRequestException("The primary key cannot be empty");
+      throw new PlatformRuntimeException("The primary key cannot be empty");
     }
     if (id.equals(redisCurrentLoginInformation.getCurrentLoginInformation().getUserId())) {
-      throw new BadRequestException("You cannot delete your own data");
+      throw new PlatformRuntimeException("You cannot delete your own data");
     }
     getRepository().deleteById(id);
     return Result.success(null);

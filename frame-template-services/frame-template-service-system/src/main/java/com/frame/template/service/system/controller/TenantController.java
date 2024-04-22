@@ -12,7 +12,7 @@ package com.frame.template.service.system.controller;
 import com.frame.template.service.system.mapper.vo.TenantVoMapper;
 import com.frame.template.service.system.pojo.base.tenant.*;
 import com.frame.template.service.system.service.TenantService;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.base.BaseRedisCurrentLoginInformation;
 import com.frame.template.common.base.baseTree.BaseTreeController;
 

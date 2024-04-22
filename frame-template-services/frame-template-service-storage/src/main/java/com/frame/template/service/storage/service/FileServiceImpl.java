@@ -13,8 +13,8 @@ package com.frame.template.service.storage.service;
 import com.frame.template.service.storage.domain.base.*;
 import com.frame.template.service.storage.domain.entity.File;
 import com.frame.template.service.storage.mapper.FileMapper;
-import com.gstdev.cloud.commons.exception.BadRequestException;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.plugin.storage.core.service.StorageService;
 //import com.gstdev.cloud.plugin.storage.core.storage.StorageProperties;
 import com.frame.template.common.base.BaseServiceImpl;
@@ -80,7 +80,7 @@ public class FileServiceImpl extends BaseServiceImpl<FileRepository, FileMapper,
   @Transactional
   public Result<List<FileDto>> uploads(List<MultipartFile> file, String tenantId, FileConstants fileConstants) {
     if (file.size() == 0) {
-      throw new BadRequestException("文件不能为空");
+      throw new PlatformRuntimeException("文件不能为空");
     }
     List<FileDto> fileDtos = new ArrayList<>();
     for (MultipartFile multipartFile : file) {

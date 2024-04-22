@@ -1,7 +1,7 @@
 package com.frame.template.common.base;
 
-import com.gstdev.cloud.commons.exception.BadRequestException;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -156,7 +156,7 @@ public abstract class BaseServiceImpl<R extends BaseRepository<E>, M extends Bas
   @Transactional()
   public Result<D> deleteById(String id) {
     if (id == null || id.length() == 0) {
-      throw new BadRequestException("The primary key cannot be empty");
+      throw new PlatformRuntimeException("The primary key cannot be empty");
     }
     getRepository().deleteById(id);
     return Result.success(null);
@@ -229,14 +229,14 @@ public abstract class BaseServiceImpl<R extends BaseRepository<E>, M extends Bas
       Object value = method.invoke(var1, new Object[]{});
       id = String.valueOf(value);
     } catch (Exception e) {
-      throw new BadRequestException("The primary key cannot be empty");
+      throw new PlatformRuntimeException("The primary key cannot be empty");
     }
     if (id.equals("null")) {
-      throw new BadRequestException("The primary key cannot be empty");
+      throw new PlatformRuntimeException("The primary key cannot be empty");
     }
     Optional<E> byId = getRepository().findById(id);
     if (byId.isEmpty()) {
-      throw new BadRequestException("The primary key cannot be empty");
+      throw new PlatformRuntimeException("The primary key cannot be empty");
     }
     E e = null;
     if (byId.isPresent()) {

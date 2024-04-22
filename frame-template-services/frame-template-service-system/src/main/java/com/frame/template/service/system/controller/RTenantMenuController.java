@@ -13,7 +13,7 @@ import com.frame.template.service.system.mapper.vo.RTenantMenuVoMapper;
 import com.frame.template.service.system.pojo.base.rTenantMenu.*;
 import com.frame.template.service.system.service.MenuService;
 import com.frame.template.service.system.service.RTenantMenuService;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.base.BaseController;
 import com.frame.template.service.system.pojo.base.rTenantMenu.*;
 import io.swagger.v3.oas.annotations.Operation;

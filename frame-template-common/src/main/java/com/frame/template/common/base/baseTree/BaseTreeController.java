@@ -1,7 +1,7 @@
 package com.frame.template.common.base.baseTree;
 
 import com.frame.template.common.base.BaseController;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.base.BaseVoMapper;
 
 import java.util.List;

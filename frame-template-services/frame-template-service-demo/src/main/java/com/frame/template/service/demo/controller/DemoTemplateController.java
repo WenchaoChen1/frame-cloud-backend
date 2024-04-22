@@ -12,7 +12,7 @@ package com.frame.template.service.demo.controller;
 import com.frame.template.service.demo.mapper.vo.DemoTemplateVoMapper;
 import com.frame.template.service.demo.pojo.vo.demoTemplate.*;
 import com.frame.template.service.demo.service.DemoTemplateService;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.data.domain.Page;

@@ -4,7 +4,7 @@ import com.frame.template.service.system.feign.IdentityClient;
 import com.frame.template.service.system.feign.IdentityFeignClient;
 import com.frame.template.service.system.feign.vo.IdentitySaveDto;
 import com.frame.template.service.system.feign.vo.UserDto;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.exception.CommonException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -11,7 +11,7 @@ package com.frame.template.service.system.service;
 
 
 import com.frame.template.service.system.pojo.base.rTenantMenu.*;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.base.BaseService;
 import com.frame.template.service.system.pojo.base.rTenantMenu.*;
 

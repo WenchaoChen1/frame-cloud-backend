@@ -1,7 +1,7 @@
 package com.frame.template.service.demo.controller;
 
 import com.frame.template.service.demo.service.RedisCurrentLoginInformationService;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
 import io.swagger.v3.oas.annotations.Operation;

@@ -16,10 +16,11 @@ import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplateFindAllB
 import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplateInsertInput;
 import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplatePageQueryCriteria;
 import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplateUpdateInput;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.data.jpa.utils.QueryUtils;
-import com.gstdev.cloud.commons.exception.BadRequestException;
+import com.gstdev.cloud.base.definition.domain.Result;
+
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.frame.template.service.demo.pojo.dto.demoTemplate.DemoTemplateDto;
+import com.gstdev.cloud.data.core.utils.QueryUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -62,7 +63,7 @@ public class DemoTemplateServiceImpl implements DemoTemplateService {
   public Result<DemoTemplateDto> update(DemoTemplateUpdateInput demoTemplateUpdateInput) {
     DemoTemplate demoTemplate = demoTemplateRepository.findById(demoTemplateUpdateInput.getId()).orElseGet(DemoTemplate::new);
     if (ObjectUtil.isEmpty(demoTemplate.getId())) {
-      throw new BadRequestException("数据异常");
+      throw new PlatformRuntimeException("数据异常");
     }
     demoTemplateMapper.copyModify(demoTemplateUpdateInput, demoTemplate);
     return Result.success(demoTemplateMapper.toDto(demoTemplateRepository.save(demoTemplate)));

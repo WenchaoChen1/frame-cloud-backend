@@ -11,7 +11,7 @@ package com.frame.template.service.demo.mapper.vo;
 
 import com.frame.template.service.demo.pojo.dto.demoTemplate.DemoTemplateDto;
 import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplateVo;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;

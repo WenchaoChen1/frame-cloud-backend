@@ -9,7 +9,7 @@ import com.frame.template.service.system.pojo.domain.Role;
 import com.frame.template.service.system.repository.AccountRepository;
 import com.frame.template.service.system.repository.MenuRepository;
 import com.frame.template.service.system.repository.RoleRepository;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.base.baseTree.BaseTreeServiceImpl;
 import com.frame.template.common.constant.AccountTypeConstants;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;

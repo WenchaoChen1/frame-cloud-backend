@@ -1,6 +1,6 @@
 package com.frame.template.common.base;
 
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

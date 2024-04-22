@@ -13,7 +13,7 @@ import com.frame.template.service.identity.domain.User;
 import com.frame.template.service.identity.contract.UserDto;
 import com.frame.template.service.identity.contract.UserInput;
 import com.frame.template.service.identity.contract.query.PostQueryCriteria;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import org.springframework.data.domain.Pageable;
 
 public interface UserService {

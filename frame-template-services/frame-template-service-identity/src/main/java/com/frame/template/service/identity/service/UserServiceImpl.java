@@ -11,8 +11,8 @@ package com.frame.template.service.identity.service;
 
 import com.frame.template.service.identity.domain.User;
 import com.frame.template.service.identity.mapper.UserMapper;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
-import com.gstdev.cloud.commons.exception.BadRequestException;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.frame.template.service.identity.contract.UserDto;
 import com.frame.template.service.identity.contract.UserInput;
 import com.frame.template.service.identity.contract.query.PostQueryCriteria;
@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
   private User getUserById(String postId) {
     User user = userRepository.findById(postId).orElseGet(User::new);
     if (Objects.isNull(user)) {
-      throw new BadRequestException("该用户不存在！");
+      throw new PlatformRuntimeException("该用户不存在！");
     }
     return user;
   }

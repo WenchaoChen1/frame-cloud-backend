@@ -6,7 +6,7 @@ import com.frame.template.service.system.pojo.base.user.UserPageQueryCriteria;
 import com.frame.template.service.system.pojo.vo.UserInsertInput;
 import com.frame.template.service.system.pojo.vo.UserUpdateInput;
 import com.frame.template.service.system.pojo.vo.user.AccountListDto;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.base.BaseService;
 
 import java.util.List;

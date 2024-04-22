@@ -12,7 +12,7 @@ package com.frame.template.service.system.controller;
 import com.frame.template.service.system.mapper.vo.MenuVoMapper;
 import com.frame.template.service.system.pojo.base.menu.*;
 import com.frame.template.service.system.service.MenuService;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.base.baseTree.BaseTreeController;
 import com.frame.template.service.system.pojo.base.menu.*;
 import com.frame.template.service.system.service.RoleService;

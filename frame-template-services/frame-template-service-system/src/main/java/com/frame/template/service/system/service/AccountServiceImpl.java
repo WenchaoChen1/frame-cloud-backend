@@ -10,8 +10,8 @@ import com.frame.template.service.system.repository.AccountRepository;
 import com.frame.template.service.system.repository.DepartRepository;
 import com.frame.template.service.system.repository.RoleRepository;
 import com.frame.template.service.system.repository.UserRepository;
-import com.gstdev.cloud.commons.exception.BadRequestException;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.base.BaseServiceImpl;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 import com.frame.template.service.system.pojo.base.account.*;
@@ -80,7 +80,7 @@ public class AccountServiceImpl extends BaseServiceImpl<AccountRepository, Accou
   public Account save(Account var) {
     var.setUpdatedBy(getRedisCurrentLoginInformation().getCurrentLoginAccountId());
     if (redisCurrentLoginInformation.getCurrentLoginAccountId().equals(var.getId()) && !redisCurrentLoginInformation.getCurrentLoginInformation().getAccountType().equals(var.getType())) {
-      throw new BadRequestException("This action is not available");
+      throw new PlatformRuntimeException("This action is not available");
     }
     return getRepository().save(var);
   }

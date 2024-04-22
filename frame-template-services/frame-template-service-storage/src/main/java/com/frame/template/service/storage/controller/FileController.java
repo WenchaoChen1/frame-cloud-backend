@@ -12,7 +12,7 @@ package com.frame.template.service.storage.controller;
 import com.frame.template.service.storage.domain.base.*;
 import com.frame.template.service.storage.mapper.vo.FileVoMapper;
 import com.frame.template.service.storage.service.FileService;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.base.BaseController;
 import com.frame.template.common.constant.FileConstants;
 import com.frame.template.service.storage.domain.base.*;

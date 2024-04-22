@@ -1,7 +1,7 @@
 package com.frame.template.gateway.utils;
 
-import com.gstdev.cloud.commons.ass.core.json.jackson2.utils.Jackson2Utils;
-import com.gstdev.cloud.commons.ass.definition.domain.Result;
+import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
+import com.gstdev.cloud.base.definition.domain.Result;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.http.HttpHeaders;

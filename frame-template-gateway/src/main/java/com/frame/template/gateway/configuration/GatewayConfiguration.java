@@ -1,7 +1,7 @@
 package com.frame.template.gateway.configuration;
 
 import com.frame.template.gateway.handler.RefreshRoutesListener;
-import com.gstdev.cloud.commons.ass.core.annotation.ConditionalOnSwaggerEnabled;
+import com.gstdev.cloud.base.core.annotation.ConditionalOnSwaggerEnabled;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springdoc.core.properties.SwaggerUiConfigParameters;
