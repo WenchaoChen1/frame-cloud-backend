@@ -20,7 +20,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class DepartDto extends BaseTreeDto {
+public class DepartDto extends BaseTreeDto<DepartDto> {
 
   private String id;
   @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")

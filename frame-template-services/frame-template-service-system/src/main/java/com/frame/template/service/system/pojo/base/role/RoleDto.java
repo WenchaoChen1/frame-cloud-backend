@@ -22,7 +22,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class RoleDto extends BaseTreeDto {
+public class RoleDto extends BaseTreeDto<RoleDto> {
 
   private String id;
   @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
