@@ -9,7 +9,7 @@
 
 package com.frame.template.service.system.pojo.base.dict;
 
-import com.frame.template.common.base.baseTree.BaseTreeFindAllByQueryCriteria;
+import com.gstdev.cloud.data.core.pojo.BaseTreeFindAllByQueryCriteria;
 import lombok.Getter;
 import lombok.Setter;
 

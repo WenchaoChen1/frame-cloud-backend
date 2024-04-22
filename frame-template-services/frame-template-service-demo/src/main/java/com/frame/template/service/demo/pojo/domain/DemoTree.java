@@ -1,7 +1,7 @@
 package com.frame.template.service.demo.pojo.domain;
 
 
-import com.frame.template.common.base.baseTree.BaseTreeEntity;
+import com.gstdev.cloud.data.core.pojo.BaseTreeEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;

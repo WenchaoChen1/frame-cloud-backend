@@ -17,10 +17,8 @@ import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.plugin.storage.core.service.StorageService;
 //import com.gstdev.cloud.plugin.storage.core.storage.StorageProperties;
-import com.frame.template.common.base.BaseServiceImpl;
 import com.frame.template.common.constant.FileConstants;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
-import com.frame.template.service.storage.domain.base.*;
 import com.frame.template.service.storage.repository.FileRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,13 +26,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.annotation.Resource;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class FileServiceImpl extends BaseServiceImpl<FileRepository, FileMapper, File, FileDto, FileInsertInput, FileUpdateInput, FilePageQueryCriteria, FileFindAllByQueryCriteria, RedisCurrentLoginInformation> implements FileService {
+public class FileServiceImpl extends BasePOJOServiceImpl<FileRepository, FileMapper, File, FileDto, FileInsertInput, FileUpdateInput, FilePageQueryCriteria, FileFindAllByQueryCriteria, RedisCurrentLoginInformation> implements FileService {
 
   @Resource
   private FileRepository fileRepository;

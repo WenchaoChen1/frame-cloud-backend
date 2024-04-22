@@ -12,11 +12,11 @@ package com.frame.template.service.storage.domain.base;
 import lombok.Getter;
 import lombok.Setter;
 
-import com.frame.template.common.base.BaseInsertInput;
+import java.io.Serializable;
 
 @Getter
 @Setter
-public class FileInsertInput extends BaseInsertInput {
+public class FileInsertInput implements Serializable {
   private String bucketName;
   private String contentType;
   private String etag;

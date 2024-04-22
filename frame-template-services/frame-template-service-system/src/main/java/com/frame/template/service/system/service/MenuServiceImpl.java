@@ -10,11 +10,11 @@ import com.frame.template.service.system.repository.AccountRepository;
 import com.frame.template.service.system.repository.MenuRepository;
 import com.frame.template.service.system.repository.RoleRepository;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.frame.template.common.base.baseTree.BaseTreeServiceImpl;
 import com.frame.template.common.constant.AccountTypeConstants;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 import com.frame.template.common.utils.treeUtils.TreeFactory;
 import com.frame.template.service.system.pojo.base.menu.*;
+import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
-public class MenuServiceImpl extends BaseTreeServiceImpl<MenuRepository, MenuMapper, Menu, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria, RedisCurrentLoginInformation> implements MenuService {
+public class MenuServiceImpl extends BaseTreeServiceImpl<Menu,String, MenuRepository, MenuMapper, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> implements MenuService {
 
   @Resource
   private MenuRepository menuRepository;
@@ -39,7 +39,7 @@ public class MenuServiceImpl extends BaseTreeServiceImpl<MenuRepository, MenuMap
   private AccountRepository accountRepository;
 
   public MenuServiceImpl(MenuRepository menuRepository, MenuMapper menuMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
-    super(menuRepository, menuMapper, redisCurrentLoginInformation);
+    super(menuRepository, menuMapper);
     this.menuRepository = menuRepository;
     this.menuMapper = menuMapper;
     this.redisCurrentLoginInformation = redisCurrentLoginInformation;

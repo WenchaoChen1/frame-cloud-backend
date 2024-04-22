@@ -9,7 +9,6 @@
 
 package com.frame.template.service.demo.mapper.vo;
 
-import com.frame.template.common.base.BaseVoMapper;
 import com.frame.template.service.demo.pojo.base.demo.DemoDto;
 import com.frame.template.service.demo.pojo.base.demo.DemoVo;
 import org.mapstruct.Mapper;

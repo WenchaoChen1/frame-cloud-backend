@@ -10,13 +10,14 @@
 package com.frame.template.service.system.repository;
 
 
-import com.frame.template.common.base.baseTree.BaseTreeRepository;
+
 import com.frame.template.service.system.pojo.domain.Tenant;
+import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 
 import java.util.List;
 
-public interface TenantRepository extends BaseTreeRepository<Tenant> {
+public interface TenantRepository extends BaseTreeRepository<Tenant,String> {
   List<Tenant> findAllByParentId(String parentId);
 
 }

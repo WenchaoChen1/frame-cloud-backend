@@ -10,7 +10,7 @@
 package com.frame.template.service.system.pojo.base.role;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.frame.template.common.base.baseTree.BaseTreeDto;
+import com.gstdev.cloud.data.core.pojo.BaseTreeDto;
 import com.frame.template.service.system.pojo.vo.RTenantMenu.RTenantMenuDto;
 import lombok.Getter;
 import lombok.Setter;

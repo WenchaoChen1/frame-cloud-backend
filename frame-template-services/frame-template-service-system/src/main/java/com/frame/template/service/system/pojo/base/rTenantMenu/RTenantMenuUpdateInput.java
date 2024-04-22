@@ -9,7 +9,7 @@
 
 package com.frame.template.service.system.pojo.base.rTenantMenu;
 
-import com.frame.template.common.base.BaseUpdateInput;
+import com.gstdev.cloud.data.core.pojo.BaseUpdateInput;
 import lombok.Getter;
 import lombok.Setter;
 

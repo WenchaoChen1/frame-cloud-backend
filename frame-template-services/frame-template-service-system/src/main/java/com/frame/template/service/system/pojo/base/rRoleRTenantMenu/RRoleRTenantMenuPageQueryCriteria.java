@@ -9,12 +9,13 @@
 
 package com.frame.template.service.system.pojo.base.rRoleRTenantMenu;
 
-import com.frame.template.common.base.BasePageQueryCriteria;
 import lombok.Data;
+
+import java.io.Serializable;
 
 @Deprecated
 @Data
-public class RRoleRTenantMenuPageQueryCriteria extends BasePageQueryCriteria {
+public class RRoleRTenantMenuPageQueryCriteria implements Serializable {
 
   private static final long serialVersionUID = 3163118978801722144L;
 //  @Query(type = Query.Type.IN)

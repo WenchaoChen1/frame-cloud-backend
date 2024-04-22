@@ -9,7 +9,7 @@
 
 package com.frame.template.service.system.mapper;
 
-import com.frame.template.common.base.baseTree.BaseTreeMapper;
+
 import com.frame.template.service.system.pojo.base.dict.DictDto;
 import com.frame.template.service.system.pojo.base.dict.DictInsertInput;
 import com.frame.template.service.system.pojo.base.dict.DictUpdateInput;
@@ -19,7 +19,7 @@ import com.frame.template.service.system.pojo.domain.Dict;
 import org.mapstruct.*;
 
 import java.util.List;
-
+import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
 /**
  * @author zhucy
  */

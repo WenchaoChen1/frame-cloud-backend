@@ -10,8 +10,8 @@
 package com.frame.template.service.system.pojo.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.frame.template.common.base.BaseUpdateInput;
 import com.frame.template.common.constant.AccountTypeConstants;
+import com.gstdev.cloud.data.core.pojo.BaseUpdateInput;
 import lombok.Getter;
 import lombok.Setter;
 

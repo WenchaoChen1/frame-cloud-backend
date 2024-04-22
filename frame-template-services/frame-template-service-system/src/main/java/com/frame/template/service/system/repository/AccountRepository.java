@@ -1,11 +1,11 @@
 package com.frame.template.service.system.repository;
 
-import com.frame.template.common.base.BaseRepository;
 import com.frame.template.service.system.pojo.domain.Account;
+import com.gstdev.cloud.data.core.repository.BaseRepository;
 
 import java.util.List;
 
-public interface AccountRepository extends BaseRepository<Account> {
+public interface AccountRepository extends BaseRepository<Account, String> {
   /**
    * 通过登录名查账号和用户信息
    *

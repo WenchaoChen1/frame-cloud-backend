@@ -9,7 +9,6 @@
 
 package com.frame.template.service.demo.mapper;
 
-import com.frame.template.common.base.BaseMapper;
 import com.frame.template.service.demo.pojo.base.demo.DemoDto;
 import com.frame.template.service.demo.pojo.base.demo.DemoInsertInput;
 import com.frame.template.service.demo.pojo.base.demo.DemoUpdateInput;

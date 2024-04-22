@@ -9,13 +9,15 @@
 
 package com.frame.template.service.system.repository;
 
-import com.frame.template.common.base.BaseRepository;
 import com.frame.template.service.system.pojo.domain.Menu;
 import com.frame.template.service.system.pojo.domain.RTenantMenu;
+import com.gstdev.cloud.data.core.repository.BaseRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.List;
 
-public interface RTenantMenuRepository extends BaseRepository<RTenantMenu> {
+public interface RTenantMenuRepository extends JpaRepository<RTenantMenu, String>, JpaSpecificationExecutor<RTenantMenu>, BaseRepository<RTenantMenu, String> {
 
   RTenantMenu findByTenantIdAndMenu(String tenantId, Menu menu);
 

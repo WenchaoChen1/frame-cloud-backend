@@ -1,14 +1,15 @@
 package com.frame.template.service.system.repository;
 
-import com.frame.template.common.base.baseTree.BaseTreeRepository;
+
 import com.frame.template.service.system.pojo.domain.Dict;
+import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 import java.util.List;
 
 /**
  * @author zhucy
  */
-public interface DictRepository extends BaseTreeRepository<Dict> {
+public interface DictRepository extends BaseTreeRepository<Dict,String> {
   /**
    * 父级主键查询
    *

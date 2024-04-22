@@ -10,7 +10,7 @@
 package com.frame.template.service.system.pojo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.frame.template.common.base.baseTree.BaseTreeEntity;
+import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;

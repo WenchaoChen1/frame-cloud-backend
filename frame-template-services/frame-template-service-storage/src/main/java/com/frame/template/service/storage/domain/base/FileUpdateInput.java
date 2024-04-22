@@ -14,8 +14,6 @@ import lombok.Setter;
 
 import java.util.Date;
 
-import com.frame.template.common.base.BaseUpdateInput;
-
 @Getter
 @Setter
 public class FileUpdateInput extends BaseUpdateInput {

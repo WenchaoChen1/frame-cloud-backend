@@ -3,12 +3,11 @@ package com.frame.template.service.system.service;
 import com.frame.template.service.system.pojo.base.account.*;
 import com.frame.template.service.system.pojo.domain.Account;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.frame.template.common.base.BaseService;
-import com.frame.template.service.system.pojo.base.account.*;
+import com.gstdev.cloud.data.core.service.BasePOJOService;
 
 import java.util.List;
 
-public interface AccountService extends BaseService<AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
+public interface AccountService extends BasePOJOService<Account,String,AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
   List<AccountDto> findAllByUserId(String message);
 
 //  boolean save(AccountSaveInput accountSaveInput);

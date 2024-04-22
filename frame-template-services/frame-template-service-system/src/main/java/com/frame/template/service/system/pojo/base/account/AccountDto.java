@@ -10,9 +10,9 @@
 package com.frame.template.service.system.pojo.base.account;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.frame.template.common.base.BaseDto;
 import com.frame.template.common.constant.AccountTypeConstants;
 import com.frame.template.service.system.pojo.base.user.UserDto;
+import com.gstdev.cloud.data.core.pojo.BaseDto;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;

@@ -18,14 +18,12 @@ import com.frame.template.service.system.repository.RoleRepository;
 import com.frame.template.service.system.repository.UserRepository;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.frame.template.common.base.BaseServiceImpl;
 import com.frame.template.common.constant.ServiceConstants;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 import com.frame.template.common.utils.CryptoUtils;
-import com.frame.template.service.system.pojo.domain.*;
+import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.service.spi.ServiceException;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -37,94 +35,94 @@ import java.util.*;
 @Slf4j
 @Service
 @Transactional(readOnly = true)
-public class UserServiceImpl extends BaseServiceImpl<UserRepository, UserMapper, User, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria, RedisCurrentLoginInformation> implements UserService {
+public class UserServiceImpl extends BasePOJOServiceImpl<User, String, UserRepository, UserMapper, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> implements UserService {
 
-  private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
-  @Resource
-  private UserRepository userRepository;
-  @Resource
-  private UserMapper userMapper;
-  @Resource
-  private RedisCurrentLoginInformation redisCurrentLoginInformation;
-//  @Resource
+    private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
+    @Resource
+    private UserRepository userRepository;
+    @Resource
+    private UserMapper userMapper;
+    @Resource
+    private RedisCurrentLoginInformation redisCurrentLoginInformation;
+    //  @Resource
 //  private EmailService emailService;
-  @Resource
-  private AccountService accountService;
-  @Resource
-  private IdentityFeignService identityFeignService;
+    @Resource
+    private AccountService accountService;
+    @Resource
+    private IdentityFeignService identityFeignService;
 
-//  @Resource
+    //  @Resource
 //  private EmailFeignService emailFeignService;
-  //
+    //
 //  @Resource
 //  private TenantFeignService tenantFeignService;
-  @Resource
-  private RoleRepository roleRepository;
+    @Resource
+    private RoleRepository roleRepository;
 //  @Value(value = "${spring.mail.email}")
 //  private String senderEmil;
 
-  public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
-    super(userRepository, userMapper, redisCurrentLoginInformation);
-    this.userRepository = userRepository;
-    this.userMapper = userMapper;
-    this.redisCurrentLoginInformation = redisCurrentLoginInformation;
-  }
-
-  private static char nextChar(Random rnd) {
-    switch (rnd.nextInt(4)) {
-      case 0:
-        return (char) ('a' + rnd.nextInt(26));
-      case 1:
-        return (char) ('A' + rnd.nextInt(26));
-      case 2:
-        return (char) ('0' + rnd.nextInt(10));
-      default:
-        return SPECIAL_CHARS.charAt(rnd.nextInt(SPECIAL_CHARS.length()));
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
+        super(userRepository, userMapper);
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
+        this.redisCurrentLoginInformation = redisCurrentLoginInformation;
     }
-  }
 
-  public static String randomPassword() {
-    char[] chars = new char[8];
-    Random rnd = new Random();
-    for (int i = 0; i < 8; i++) {
-      chars[i] = nextChar(rnd);
+    private static char nextChar(Random rnd) {
+        switch (rnd.nextInt(4)) {
+            case 0:
+                return (char) ('a' + rnd.nextInt(26));
+            case 1:
+                return (char) ('A' + rnd.nextInt(26));
+            case 2:
+                return (char) ('0' + rnd.nextInt(10));
+            default:
+                return SPECIAL_CHARS.charAt(rnd.nextInt(SPECIAL_CHARS.length()));
+        }
     }
-    return new String(chars);
-  }
 
-  @Override
-  public Result<UserDto> insertToResult(UserInsertInput varInsertUpdate) {
-    return super.insertToResult(varInsertUpdate);
-  }
+    public static String randomPassword() {
+        char[] chars = new char[8];
+        Random rnd = new Random();
+        for (int i = 0; i < 8; i++) {
+            chars[i] = nextChar(rnd);
+        }
+        return new String(chars);
+    }
 
-  @Override
-  @Transactional
-  public User insert(User user) {
-    user.setPassword(Base64.getEncoder().encodeToString(CryptoUtils.asymEncrypt(user.getPassword(), ServiceConstants.ASYM_PUBLIC_KEY)));
-    User insert = super.insert(user);
-    return insert;
-  }
+    @Override
+    public Result<UserDto> insertToResult(UserInsertInput varInsertUpdate) {
+        return super.insertToResult(varInsertUpdate);
+    }
 
-  @Transactional
-  public User insertUserInitialization(UserInsertInput userInsertInput) {
-    User user = toEntityInsert(userInsertInput);
-    User insert = insert(user);
-    AccountInsertInput accountInsertInput = new AccountInsertInput();
-    accountInsertInput.setTenantId(userInsertInput.getTenantId());
-    accountInsertInput.setUserId(insert.getId());
-    accountInsertInput.setAccountTypeConstants(userInsertInput.getAccountTypeConstants());
-    Account insertAccount = accountService.insertAccountInitialization(accountInsertInput);
-    // 同步到identity模块
-    IdentitySaveDto identitySaveDto = new IdentitySaveDto();
-    identitySaveDto.setUserId(insert.getId());
-    identitySaveDto.setEmail(insert.getEmail());
-    identitySaveDto.setUsername(insert.getUsername());
-    identitySaveDto.setPassword(insert.getPassword());
-    identityFeignService.save(identitySaveDto);
-    return insert;
-  }
+    @Override
+    @Transactional
+    public User insert(User user) {
+        user.setPassword(Base64.getEncoder().encodeToString(CryptoUtils.asymEncrypt(user.getPassword(), ServiceConstants.ASYM_PUBLIC_KEY)));
+        User insert = super.insert(user);
+        return insert;
+    }
 
-  //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
+    @Transactional
+    public User insertUserInitialization(UserInsertInput userInsertInput) {
+        User user = toEntityInsert(userInsertInput);
+        User insert = insert(user);
+        AccountInsertInput accountInsertInput = new AccountInsertInput();
+        accountInsertInput.setTenantId(userInsertInput.getTenantId());
+        accountInsertInput.setUserId(insert.getId());
+        accountInsertInput.setAccountTypeConstants(userInsertInput.getAccountTypeConstants());
+        Account insertAccount = accountService.insertAccountInitialization(accountInsertInput);
+        // 同步到identity模块
+        IdentitySaveDto identitySaveDto = new IdentitySaveDto();
+        identitySaveDto.setUserId(insert.getId());
+        identitySaveDto.setEmail(insert.getEmail());
+        identitySaveDto.setUsername(insert.getUsername());
+        identitySaveDto.setPassword(insert.getPassword());
+        identityFeignService.save(identitySaveDto);
+        return insert;
+    }
+
+    //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 
 //  @Transactional
 //  public Result<UserDto> insertCustomerUser(UserInsertInput userInsertInput) {
@@ -168,18 +166,18 @@ public class UserServiceImpl extends BaseServiceImpl<UserRepository, UserMapper,
 //  }
 //
 
-  /**
-   * 新增用户并且创建账户角色，关联部门
-   *
-   * @param userInsertInput
-   * @return
-   */
-  @Override
-  @Transactional
-  public Result<UserDto> insertUserInitializationToResult(UserInsertInput userInsertInput) {
-    User user = insertUserInitialization(userInsertInput);
-    return Result.success(getMapper().toDto(user));
-  }
+    /**
+     * 新增用户并且创建账户角色，关联部门
+     *
+     * @param userInsertInput
+     * @return
+     */
+    @Override
+    @Transactional
+    public Result<UserDto> insertUserInitializationToResult(UserInsertInput userInsertInput) {
+        User user = insertUserInitialization(userInsertInput);
+        return Result.success(getMapper().toDto(user));
+    }
 //
 //  @Override
 //  public String checkIfUserExist(String emailAddress){
@@ -204,43 +202,42 @@ public class UserServiceImpl extends BaseServiceImpl<UserRepository, UserMapper,
 //  }
 //
 
-  @Override
-  public List<AccountListDto> getByIdToAccount(String id) {
-    User user = userRepository.findById(id).orElseGet(User::new);
-    List<Account> account = user.getAccount();
-    List<AccountListDto> accountListDtos = userMapper.accountListToDto(account);
-    return accountListDtos;
-  }
-
-  @Override
-  @Transactional()
-  public Result<UserDto> deleteById(String id) {
-    if (id == null || id.length() == 0) {
-      throw new PlatformRuntimeException("The primary key cannot be empty");
+    @Override
+    public List<AccountListDto> getByIdToAccount(String id) {
+        User user = userRepository.findById(id).orElseGet(User::new);
+        List<Account> account = user.getAccount();
+        List<AccountListDto> accountListDtos = userMapper.accountListToDto(account);
+        return accountListDtos;
     }
-    if (id.equals(redisCurrentLoginInformation.getCurrentLoginInformation().getUserId())) {
-      throw new PlatformRuntimeException("You cannot delete your own data");
+
+    @Override
+    @Transactional()
+    public void deleteById(String id) {
+        if (id == null || id.length() == 0) {
+            throw new PlatformRuntimeException("The primary key cannot be empty");
+        }
+        if (id.equals(redisCurrentLoginInformation.getCurrentLoginInformation().getUserId())) {
+            throw new PlatformRuntimeException("You cannot delete your own data");
+        }
+        getRepository().deleteById(id);
     }
-    getRepository().deleteById(id);
-    return Result.success(null);
-  }
 
-  @Override
-  @Transactional(rollbackFor = ServiceException.class)
-  public UserDto create(UserDto userDto, String tenentId) {
+    @Override
+    @Transactional(rollbackFor = ServiceException.class)
+    public UserDto create(UserDto userDto, String tenentId) {
 
-    User user = userMapper.toEntity(userDto);
+        User user = userMapper.toEntity(userDto);
 
 //    this.checkPassword(user.getPassword());
-    if (StringUtils.isEmpty(user.getUsername())) {
-      user.setUsername(user.getEmail());
-    }
-    user.setStatus(UserStatus.INVITED.getValue());
+        if (StringUtils.isEmpty(user.getUsername())) {
+            user.setUsername(user.getEmail());
+        }
+        user.setStatus(UserStatus.INVITED.getValue());
 //    user.setActivateToken(TokenUtils.getInstance().encode());
-    String password = randomPassword();
-    user.setPassword(Base64.getEncoder().encodeToString(CryptoUtils.asymEncrypt(password, ServiceConstants.ASYM_PUBLIC_KEY)));
-    try {
-      user = this.userRepository.save(user);
+        String password = randomPassword();
+        user.setPassword(Base64.getEncoder().encodeToString(CryptoUtils.asymEncrypt(password, ServiceConstants.ASYM_PUBLIC_KEY)));
+        try {
+            user = this.userRepository.save(user);
 
 //      com.gstdev.template.service.system.feign.vo.UserDto feignUserDto = new com.gstdev.template.service.system.feign.vo.UserDto();
 //      feignUserDto.setEmail(user.getEmail());
@@ -271,12 +268,12 @@ public class UserServiceImpl extends BaseServiceImpl<UserRepository, UserMapper,
 //      context.setVariable("emailAddress", senderEmil);
 //      context.setVariable("url", "/user/registered?");
 //      emailFeignService.sendEmail(email, context, "Welcome", EmailTypeEnum.Welcome);
-    } catch (Exception e) {
-      log.info(e.getMessage(), e);
-      throw new ServiceException(ServiceErrorMessage.USER_ADD_FAILED.getMessage());
-    }
+        } catch (Exception e) {
+            log.info(e.getMessage(), e);
+            throw new ServiceException(ServiceErrorMessage.USER_ADD_FAILED.getMessage());
+        }
 
-    return userMapper.toDto(user);
-  }
+        return userMapper.toDto(user);
+    }
 
 }

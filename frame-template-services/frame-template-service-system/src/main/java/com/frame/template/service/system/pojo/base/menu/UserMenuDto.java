@@ -9,7 +9,7 @@
 
 package com.frame.template.service.system.pojo.base.menu;
 
-import com.frame.template.common.base.baseTree.BaseTreeUpdateInput;
+import com.gstdev.cloud.data.core.pojo.BaseTreeUpdateInput;
 import com.frame.template.service.system.pojo.base.user.UserDto;
 import lombok.Getter;
 import lombok.Setter;

@@ -9,7 +9,7 @@
 
 package com.frame.template.service.demo.pojo.base.demoTree;
 
-import com.frame.template.common.base.baseTree.BaseTreePageQueryCriteria;
+import com.gstdev.cloud.data.core.pojo.BaseTreePageQueryCriteria;
 import lombok.Data;
 
 

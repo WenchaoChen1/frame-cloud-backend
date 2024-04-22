@@ -9,11 +9,10 @@
 
 package com.frame.template.service.storage.repository;
 
-import com.frame.template.common.base.BaseRepository;
 import com.frame.template.service.storage.domain.entity.File;
 
 
-public interface FileRepository extends BaseRepository<File> {
+public interface FileRepository extends org.springframework.data.jpa.repository.JpaRepository<File, String>, org.springframework.data.jpa.repository.JpaSpecificationExecutor<File> {
 
 
 }

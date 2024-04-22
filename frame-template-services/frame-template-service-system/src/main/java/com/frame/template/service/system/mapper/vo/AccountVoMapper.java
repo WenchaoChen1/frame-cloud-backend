@@ -9,9 +9,9 @@
 
 package com.frame.template.service.system.mapper.vo;
 
-import com.frame.template.common.base.BaseVoMapper;
 import com.frame.template.service.system.pojo.base.account.AccountDto;
 import com.frame.template.service.system.pojo.base.account.AccountVo;
+import com.gstdev.cloud.data.core.mapper.BaseVoMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;

@@ -9,13 +9,13 @@
 
 package com.frame.template.service.system.mapper.vo;
 
-import com.frame.template.common.base.baseTree.BaseTreeVoMapper;
 import com.frame.template.service.system.pojo.base.tenant.TenantDto;
 import com.frame.template.service.system.pojo.base.tenant.TenantInsertInput;
 import com.frame.template.service.system.pojo.base.tenant.TenantUpdateInput;
 import com.frame.template.service.system.pojo.base.tenant.TenantVo;
 import com.frame.template.service.system.pojo.vo.tenant.TenantLoginInferiorInsertInput;
 import com.frame.template.service.system.pojo.vo.tenant.TenantLoginInferiorUpdateInput;
+import com.gstdev.cloud.data.core.mapper.BaseTreeVoMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;

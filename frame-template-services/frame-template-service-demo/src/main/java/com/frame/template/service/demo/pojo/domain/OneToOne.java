@@ -1,6 +1,6 @@
 package com.frame.template.service.demo.pojo.domain;
 
-import com.frame.template.common.base.BaseEntity;
+import com.frame.template.common.persistence.AbstractAuditingEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 @Entity
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 @Table(name = "one_to_one", schema = "public")
-public class OneToOne extends BaseEntity {
+public class OneToOne extends AbstractAuditingEntity {
 
   @Column(name = "name", length = 100)
   String name;

@@ -9,9 +9,6 @@
 
 package com.frame.template.service.system.message;
 
-
-import com.gstdev.cloud.commons.message.ErrorMessage;
-
 public enum UserErrorMessage implements ErrorMessage {
 
   USER_NOT_EXISTS("USER_000001", "This user name does not exist"),

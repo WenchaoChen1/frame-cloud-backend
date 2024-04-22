@@ -10,7 +10,8 @@
 package com.frame.template.service.system.pojo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.frame.template.common.base.BaseEntity;
+import com.frame.template.common.persistence.AbstractAuditingEntity;
+import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -25,7 +26,7 @@ import java.util.List;
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 @Table(name = "r_tenant_menu", schema = "public")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-public class RTenantMenu extends BaseEntity {
+public class RTenantMenu extends BasePOJOEntity {
 
   @Column(name = "tenantId", length = 36, nullable = false)
   private String tenantId;

@@ -10,7 +10,7 @@
 package com.frame.template.service.demo.service;
 
 
-import com.frame.template.common.base.baseTree.BaseTreeService;
+import com.gstdev.cloud.data.core.pojo.BaseTreeService;
 import com.frame.template.service.demo.pojo.base.demoTree.*;
 
 

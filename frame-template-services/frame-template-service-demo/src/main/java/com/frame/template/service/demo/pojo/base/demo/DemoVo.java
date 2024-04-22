@@ -1,6 +1,5 @@
 package com.frame.template.service.demo.pojo.base.demo;
 
-import com.frame.template.common.base.BaseVo;
 import lombok.Getter;
 import lombok.Setter;
 

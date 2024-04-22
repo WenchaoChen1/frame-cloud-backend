@@ -4,9 +4,7 @@ package com.frame.template.service.demo.service;
 import com.frame.template.service.demo.mapper.DemoMapper;
 import com.frame.template.service.demo.pojo.base.demo.*;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.frame.template.common.base.BaseServiceImpl;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
-import com.frame.template.service.demo.pojo.base.demo.*;
 import com.frame.template.service.demo.pojo.domain.Demo;
 import com.frame.template.service.demo.pojo.dto.demo.DemoUpdateXXXXXXInput;
 import com.frame.template.service.demo.repository.DemoRepository;
@@ -23,7 +21,7 @@ import java.util.List;
  */
 @Service
 @Transactional(readOnly = true)
-public class DemoServiceImpl extends BaseServiceImpl<DemoRepository, DemoMapper, Demo, DemoDto, DemoInsertInput, DemoUpdateInput, DemoPageQueryCriteria, DemoFindAllByQueryCriteria, RedisCurrentLoginInformation> implements DemoService {
+public class DemoServiceImpl extends BasePOJOServiceImpl<DemoRepository, DemoMapper, Demo, DemoDto, DemoInsertInput, DemoUpdateInput, DemoPageQueryCriteria, DemoFindAllByQueryCriteria, RedisCurrentLoginInformation> implements DemoService {
 
   @Resource
   private DemoRepository demoRepository;

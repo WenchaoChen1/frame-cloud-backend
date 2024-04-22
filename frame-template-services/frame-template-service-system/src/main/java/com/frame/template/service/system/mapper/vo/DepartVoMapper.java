@@ -9,9 +9,9 @@
 
 package com.frame.template.service.system.mapper.vo;
 
-import com.frame.template.common.base.baseTree.BaseTreeVoMapper;
 import com.frame.template.service.system.pojo.base.depart.DepartDto;
 import com.frame.template.service.system.pojo.base.depart.DepartVo;
+import com.gstdev.cloud.data.core.mapper.BaseTreeVoMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;

@@ -9,8 +9,8 @@
 
 package com.frame.template.service.system.pojo.base.user;
 
-import com.frame.template.common.base.BaseUpdateInput;
 import com.frame.template.common.constant.AccountTypeConstants;
+import com.gstdev.cloud.data.core.pojo.BaseUpdateInput;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;

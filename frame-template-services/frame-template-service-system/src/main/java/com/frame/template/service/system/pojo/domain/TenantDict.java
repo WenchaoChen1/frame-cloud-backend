@@ -9,7 +9,8 @@
 
 package com.frame.template.service.system.pojo.domain;
 
-import com.frame.template.common.base.BaseEntity;
+import com.frame.template.common.persistence.AbstractAuditingEntity;
+import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -25,7 +26,7 @@ import jakarta.persistence.*;
 @Table(name = "tenant_dict", schema = "public")
 @Where(clause = "deleted = 0")
 @SQLDelete(sql = "UPDATE tenant_dict SET deleted=1 WHERE id =?")
-public class TenantDict extends BaseEntity {
+public class TenantDict extends BasePOJOEntity {
   @Column(name = "name", length = 64, nullable = false)
   private String name;
 

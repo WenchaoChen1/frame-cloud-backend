@@ -1,11 +1,12 @@
 package com.frame.template.service.system.repository;
 
-import com.frame.template.common.base.baseTree.BaseTreeRepository;
+
 import com.frame.template.service.system.pojo.domain.Depart;
+import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 import java.util.List;
 
-public interface DepartRepository extends BaseTreeRepository<Depart> {
+public interface DepartRepository extends BaseTreeRepository<Depart,String> {
   /**
    * 父级主键查询
    *

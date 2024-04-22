@@ -9,11 +9,13 @@
 
 package com.frame.template.service.system.pojo.base.user;
 
-import com.frame.template.common.base.BasePageQueryCriteria;
+import com.gstdev.cloud.data.core.pojo.BasePageQueryCriteria;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class UserPageQueryCriteria extends BasePageQueryCriteria {
+public class UserPageQueryCriteria extends BasePageQueryCriteria implements Serializable {
 
   private static final long serialVersionUID = 3163118978801722144L;
 }

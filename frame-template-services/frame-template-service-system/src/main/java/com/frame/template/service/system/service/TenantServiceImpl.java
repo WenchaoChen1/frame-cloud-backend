@@ -16,10 +16,9 @@ import com.frame.template.service.system.pojo.base.tenant.*;
 import com.frame.template.service.system.pojo.domain.Tenant;
 import com.frame.template.service.system.repository.TenantRepository;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.frame.template.common.base.baseTree.BaseTreeServiceImpl;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 
-import com.frame.template.service.system.pojo.base.tenant.*;
+import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +29,7 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class TenantServiceImpl extends BaseTreeServiceImpl<TenantRepository, TenantMapper, Tenant, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria, RedisCurrentLoginInformation> implements TenantService {
+public class TenantServiceImpl extends BaseTreeServiceImpl<Tenant,String,TenantRepository, TenantMapper,  TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> implements TenantService {
 
   @Resource
   private TenantRepository tenantRepository;
@@ -48,7 +47,7 @@ public class TenantServiceImpl extends BaseTreeServiceImpl<TenantRepository, Ten
 
 
   public TenantServiceImpl(TenantRepository tenantRepository, TenantMapper tenantMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
-    super(tenantRepository, tenantMapper, redisCurrentLoginInformation);
+    super(tenantRepository, tenantMapper);
     this.tenantRepository = tenantRepository;
     this.tenantMapper = tenantMapper;
     this.redisCurrentLoginInformation = redisCurrentLoginInformation;
@@ -75,10 +74,9 @@ public class TenantServiceImpl extends BaseTreeServiceImpl<TenantRepository, Ten
   }
 
   @Override
-  public Result<TenantDto> deleteById(String id) {
-    Result<TenantDto> tenantDtoResult = super.deleteById(id);
+  public void deleteById(String id) {
+     super.deleteById(id);
     accountService.deleteByTenantId(id);
-    return tenantDtoResult;
   }
 
 //  /**

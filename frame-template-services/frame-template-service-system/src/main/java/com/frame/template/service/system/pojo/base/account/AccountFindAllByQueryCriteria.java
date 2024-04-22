@@ -10,13 +10,15 @@
 package com.frame.template.service.system.pojo.base.account;
 
 import com.gstdev.cloud.data.core.annotations.Query;
-import com.frame.template.common.base.BaseFindAllByQueryCriteria;
+import com.gstdev.cloud.data.core.pojo.BaseFindAllByQueryCriteria;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
-public class AccountFindAllByQueryCriteria extends BaseFindAllByQueryCriteria {
+public class AccountFindAllByQueryCriteria extends BaseFindAllByQueryCriteria implements Serializable {
 
   private static final long serialVersionUID = 3163118978801722144L;
   @Query

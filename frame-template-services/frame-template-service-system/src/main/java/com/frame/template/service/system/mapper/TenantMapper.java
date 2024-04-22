@@ -9,7 +9,7 @@
 
 package com.frame.template.service.system.mapper;
 
-import com.frame.template.common.base.baseTree.BaseTreeMapper;
+
 
 import com.frame.template.service.system.pojo.base.tenant.TenantDto;
 import com.frame.template.service.system.pojo.base.tenant.TenantInsertInput;
@@ -19,7 +19,7 @@ import com.frame.template.service.system.pojo.vo.tenant.TenantLoginInferiorUpdat
 import org.mapstruct.*;
 
 import java.util.List;
-
+import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
   nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,

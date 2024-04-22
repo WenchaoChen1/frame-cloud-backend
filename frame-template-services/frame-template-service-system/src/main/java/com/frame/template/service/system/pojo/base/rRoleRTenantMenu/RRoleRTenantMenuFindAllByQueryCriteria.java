@@ -10,14 +10,15 @@
 package com.frame.template.service.system.pojo.base.rRoleRTenantMenu;
 
 import com.gstdev.cloud.data.core.annotations.Query;
-import com.frame.template.common.base.BaseFindAllByQueryCriteria;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.io.Serializable;
 
 @Deprecated
 @Getter
 @Setter
-public class RRoleRTenantMenuFindAllByQueryCriteria extends BaseFindAllByQueryCriteria {
+public class RRoleRTenantMenuFindAllByQueryCriteria implements Serializable {
 
   private static final long serialVersionUID = 3163118978801722144L;
   //  @Query(type = Query.Type.IN)

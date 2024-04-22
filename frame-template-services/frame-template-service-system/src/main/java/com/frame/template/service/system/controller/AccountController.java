@@ -1,12 +1,12 @@
 package com.frame.template.service.system.controller;
 
+import com.frame.template.common.base.BaseRedisCurrentLoginInformation;
 import com.frame.template.service.system.mapper.vo.AccountVoMapper;
 import com.frame.template.service.system.pojo.base.account.*;
+import com.frame.template.service.system.pojo.domain.Account;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.frame.template.common.base.BaseController;
-import com.frame.template.common.base.BaseRedisCurrentLoginInformation;
-import com.frame.template.service.system.pojo.base.account.*;
 import com.frame.template.service.system.service.AccountService;
+import com.gstdev.cloud.rest.core.controller.BasePOJOController;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +18,7 @@ import jakarta.annotation.Resource;
 
 @RestController
 @RequestMapping("/v1/account")
-public class AccountController extends BaseController<AccountService, AccountVoMapper, AccountVo, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
+public class AccountController extends BasePOJOController<Account,String,AccountService, AccountVoMapper, AccountVo, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
 
   @Resource
   private AccountService accountService;
@@ -30,8 +30,6 @@ public class AccountController extends BaseController<AccountService, AccountVoM
 
   public AccountController(AccountService accountService, AccountVoMapper accountVoMapper) {
     super(accountService, accountVoMapper);
-    this.accountService = accountService;
-    this.accountVoMapper = accountVoMapper;
   }
 
   //  @GetMapping("/get-all-account")

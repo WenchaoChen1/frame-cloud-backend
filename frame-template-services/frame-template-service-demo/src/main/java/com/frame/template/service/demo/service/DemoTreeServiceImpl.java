@@ -10,7 +10,7 @@
 package com.frame.template.service.demo.service;
 
 
-import com.frame.template.common.base.baseTree.BaseTreeServiceImpl;
+import com.gstdev.cloud.data.core.pojo.BaseTreeServiceImpl;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 
 import com.frame.template.service.demo.mapper.DemoTreeMapper;

@@ -9,7 +9,7 @@
 
 package com.frame.template.service.demo.pojo.base.demoTree;
 
-import com.frame.template.common.base.baseTree.BaseTreeInsertInput;
+import com.gstdev.cloud.data.core.pojo.BaseTreeInsertInput;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -4,7 +4,7 @@ import com.frame.template.service.demo.mapper.vo.DemoVoMapper;
 import com.frame.template.service.demo.pojo.base.demo.*;
 import com.frame.template.service.demo.service.DemoService;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.frame.template.common.base.BaseController;
+import com.frame.template.common.base.BasePOJOController;
 import com.frame.template.common.exception.CommonException;
 import com.frame.template.service.demo.pojo.dto.demo.DemoUpdateXXXXXXInput;
 import org.springframework.web.bind.annotation.*;
@@ -66,7 +66,7 @@ import jakarta.annotation.Resource;
  *
  */
 @RequestMapping("/demo")
-public class DemoController extends BaseController<DemoService, DemoVoMapper, DemoVo, DemoDto, DemoInsertInput, DemoUpdateInput, DemoPageQueryCriteria, DemoFindAllByQueryCriteria> {
+public class DemoController extends BasePOJOController<DemoService, DemoVoMapper, DemoVo, DemoDto, DemoInsertInput, DemoUpdateInput, DemoPageQueryCriteria, DemoFindAllByQueryCriteria> {
 
   @Resource
   private DemoService demoService;

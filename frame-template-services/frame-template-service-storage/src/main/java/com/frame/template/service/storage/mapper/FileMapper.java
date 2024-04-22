@@ -10,7 +10,6 @@
 package com.frame.template.service.storage.mapper;
 
 
-import com.frame.template.common.base.BaseMapper;
 import com.frame.template.service.storage.domain.base.FileDto;
 import com.frame.template.service.storage.domain.base.FileInsertInput;
 import com.frame.template.service.storage.domain.base.FileUpdateInput;

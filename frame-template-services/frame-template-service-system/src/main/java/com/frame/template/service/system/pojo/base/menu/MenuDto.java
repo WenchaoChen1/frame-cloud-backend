@@ -10,7 +10,8 @@
 package com.frame.template.service.system.pojo.base.menu;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.frame.template.common.base.baseTree.BaseTreeDto;
+import com.frame.template.common.utils.treeUtils.TreeNode;
+import com.gstdev.cloud.data.core.pojo.BaseTreeDto;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,7 +23,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class MenuDto extends BaseTreeDto<MenuDto> {
+public class MenuDto extends BaseTreeDto<MenuDto> implements TreeNode<String, MenuDto> {
 
   private String id;
   private String code;

@@ -3,12 +3,11 @@ package com.frame.template.service.demo.service;
 import com.frame.template.service.demo.pojo.base.demo.*;
 import com.frame.template.service.demo.pojo.dto.demo.*;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.frame.template.common.base.BaseService;
 
 import java.util.List;
 
 
-public interface DemoService extends BaseService<DemoDto, DemoInsertInput, DemoUpdateInput, DemoPageQueryCriteria, DemoFindAllByQueryCriteria> {
+public interface DemoService extends BasePOJOService<DemoDto, DemoInsertInput, DemoUpdateInput, DemoPageQueryCriteria, DemoFindAllByQueryCriteria> {
 
 //  Result<Object> insert(DemoInsertInput accountInsertInput);
 //

@@ -2,10 +2,11 @@ package com.frame.template.service.system.controller;
 
 import com.frame.template.service.system.mapper.vo.DictVoMapper;
 import com.frame.template.service.system.pojo.base.dict.*;
+import com.frame.template.service.system.pojo.domain.Dict;
 import com.frame.template.service.system.service.DictService;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.frame.template.common.base.baseTree.BaseTreeController;
-import com.frame.template.service.system.pojo.base.dict.*;
+import com.gstdev.cloud.rest.core.controller.BaseTreeController;
+import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,19 +16,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/dict")
-public class DictController extends BaseTreeController<DictService, DictVoMapper, DictVo, DictDto, DictInsertInput, DictUpdateInput, DictPageQueryCriteria, DictFindAllByQueryCriteria> {
+public class DictController implements TreeController<Dict, String, DictService, DictVoMapper, DictVo, DictDto, DictInsertInput, DictUpdateInput, DictPageQueryCriteria, DictFindAllByQueryCriteria> {
 
   @Resource
   private DictService dictService;
 
   @Resource
   private DictVoMapper dictVoMapper;
+    @Override
+    public DictService getService() {
+        return dictService;
+    }
 
-  public DictController(DictService dictService, DictVoMapper dictVoMapper) {
-    super(dictService, dictVoMapper);
-    this.dictService = dictService;
-    this.dictVoMapper = dictVoMapper;
-  }
+    @Override
+    public DictVoMapper getMapper() {
+        return dictVoMapper;
+    }
+
 
   @GetMapping("/get-all-dict-to-tree")
   @Operation(summary = "获取所有数据，返回树状结构")
@@ -60,6 +65,8 @@ public class DictController extends BaseTreeController<DictService, DictVoMapper
     return deleteByIdToResult(id);
   }
 
-  /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
+
+
+    /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
 
 }

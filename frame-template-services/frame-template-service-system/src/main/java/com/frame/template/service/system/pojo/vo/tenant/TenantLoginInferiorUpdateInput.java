@@ -9,7 +9,7 @@
 
 package com.frame.template.service.system.pojo.vo.tenant;
 
-import com.frame.template.common.base.baseTree.BaseTreeUpdateInput;
+import com.gstdev.cloud.data.core.pojo.BaseTreeUpdateInput;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;

@@ -10,17 +10,18 @@
 package com.frame.template.service.system.pojo.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.frame.template.common.base.BaseInsertInput;
 import com.frame.template.common.constant.AccountTypeConstants;
+import com.gstdev.cloud.data.core.pojo.BaseInsertInput;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Getter
 @Setter
-public class UserInsertInput extends BaseInsertInput {
+public class UserInsertInput extends BaseInsertInput implements Serializable {
 
   List<String> departIds;
   List<String> roleIds;

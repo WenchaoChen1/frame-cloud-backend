@@ -10,7 +10,7 @@
 package com.frame.template.service.system.pojo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.frame.template.common.base.baseTree.BaseTreeEntity;
+import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -28,8 +28,8 @@ public class Dict extends BaseTreeEntity {
   @Column(name = "name", length = 64, nullable = false)
   private String name;
 
-  @Column(name = "parent_id", length = 36)
-  private String parentId;
+//  @Column(name = "parent_id", length = 36)
+//  private String parentId;
 
   @Column(name = "code", length = 50, nullable = false)
   private String code;

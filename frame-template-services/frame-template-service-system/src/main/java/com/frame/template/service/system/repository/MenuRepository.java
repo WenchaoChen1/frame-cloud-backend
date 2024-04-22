@@ -1,11 +1,12 @@
 package com.frame.template.service.system.repository;
 
-import com.frame.template.common.base.baseTree.BaseTreeRepository;
+
 import com.frame.template.service.system.pojo.domain.Menu;
+import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 import java.util.List;
 
-public interface MenuRepository extends BaseTreeRepository<Menu> {
+public interface MenuRepository extends BaseTreeRepository<Menu,String> {
   /**
    * 父级主键查询
    *

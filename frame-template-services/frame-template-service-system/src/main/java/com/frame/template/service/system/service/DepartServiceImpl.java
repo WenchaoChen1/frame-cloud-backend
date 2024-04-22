@@ -1,12 +1,12 @@
 package com.frame.template.service.system.service;
 
-import com.frame.template.common.base.baseTree.BaseTreeServiceImpl;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 import com.frame.template.service.system.mapper.DepartMapper;
 import com.frame.template.service.system.pojo.base.depart.*;
 import com.frame.template.service.system.pojo.domain.Depart;
 import com.frame.template.service.system.repository.DepartRepository;
 import com.frame.template.service.system.pojo.base.depart.*;
+import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +23,7 @@ import jakarta.annotation.Resource;
 //  private final DepartMapper departMapper;
 @Service
 @Transactional(readOnly = true)
-public class DepartServiceImpl extends BaseTreeServiceImpl<DepartRepository, DepartMapper, Depart, DepartDto, DepartInsertInput, DepartUpdateInput, DepartPageQueryCriteria, DepartFindAllByQueryCriteria, RedisCurrentLoginInformation> implements DepartService {
+public class DepartServiceImpl extends BaseTreeServiceImpl<Depart,String,DepartRepository, DepartMapper, DepartDto, DepartInsertInput, DepartUpdateInput, DepartPageQueryCriteria, DepartFindAllByQueryCriteria> implements DepartService {
 
   @Resource
   private DepartRepository departRepository;
@@ -33,9 +33,8 @@ public class DepartServiceImpl extends BaseTreeServiceImpl<DepartRepository, Dep
   private RedisCurrentLoginInformation redisCurrentLoginInformation;
 
   public DepartServiceImpl(DepartRepository departRepository, DepartMapper departMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
-    super(departRepository, departMapper, redisCurrentLoginInformation);
-    this.departRepository = departRepository;
-    this.departMapper = departMapper;
+    super(departRepository, departMapper);
+
     this.redisCurrentLoginInformation = redisCurrentLoginInformation;
   }
 

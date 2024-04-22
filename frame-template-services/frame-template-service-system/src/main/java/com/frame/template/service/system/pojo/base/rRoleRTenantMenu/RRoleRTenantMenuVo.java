@@ -10,7 +10,7 @@
 package com.frame.template.service.system.pojo.base.rRoleRTenantMenu;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.frame.template.common.base.BaseVo;
+import com.gstdev.cloud.data.core.pojo.BaseVo;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;

@@ -1,6 +1,7 @@
 package com.frame.template.service.system.pojo.domain;
 
 import com.frame.template.common.persistence.AbstractAuditingEntity;
+import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -16,7 +17,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "email")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-public class Email extends AbstractAuditingEntity {
+public class Email extends BasePOJOEntity {
 
   @Column(name = "type")
   private int type;

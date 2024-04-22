@@ -9,12 +9,12 @@
 
 package com.frame.template.service.system.service;
 
-import com.frame.template.common.base.baseTree.BaseTreeService;
 import com.frame.template.service.system.pojo.base.tenant.*;
-import com.frame.template.service.system.pojo.base.tenant.*;
+import com.frame.template.service.system.pojo.domain.Tenant;
+import com.gstdev.cloud.data.core.service.BaseTreeService;
 
 
-public interface TenantService extends BaseTreeService<TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
+public interface TenantService extends BaseTreeService<Tenant,String,TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
 //
 //  Result<List<TenantDto>> getTenantTree();
 //

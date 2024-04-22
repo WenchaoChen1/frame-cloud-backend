@@ -5,15 +5,16 @@ import com.frame.template.service.system.pojo.base.user.UserDto;
 import com.frame.template.service.system.pojo.base.user.UserFindAllByQueryCriteria;
 import com.frame.template.service.system.pojo.base.user.UserPageQueryCriteria;
 import com.frame.template.service.system.pojo.base.user.UserVo;
+import com.frame.template.service.system.pojo.domain.User;
 import com.frame.template.service.system.pojo.vo.UserInsertInput;
 import com.frame.template.service.system.pojo.vo.UserUpdateInput;
 import com.frame.template.service.system.pojo.vo.user.AccountListDto;
 import com.frame.template.service.system.service.UserService;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.frame.template.common.base.BaseController;
 import com.frame.template.common.base.BaseRedisCurrentLoginInformation;
-import com.frame.template.service.system.pojo.base.user.*;
 import com.frame.template.service.system.service.CommonService;
+import com.gstdev.cloud.rest.core.controller.BasePOJOController;
+import com.gstdev.cloud.rest.core.controller.POJOController;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -29,54 +30,67 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/v1/user")
-public class UserController extends BaseController<UserService, UserVoMapper, UserVo, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> {
+public class UserController implements POJOController<User, String, UserService, UserVoMapper, UserVo, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> {
 
-  @Resource
-  private UserService userService;
+    @Resource
+    private UserService userService;
 
-  @Resource
-  private CommonService commonService;
+    @Resource
+    private CommonService commonService;
 
-  @Resource
-  private UserVoMapper userVoMapper;
+    @Resource
+    private UserVoMapper userVoMapper;
 
-  @Resource
-  private BaseRedisCurrentLoginInformation redisCurrentLoginInformation;
+    @Resource
+    private BaseRedisCurrentLoginInformation redisCurrentLoginInformation;
 
-  public UserController(UserService userService, UserVoMapper userVoMapper) {
-    super(userService, userVoMapper);
-    this.userService = userService;
-    this.userVoMapper = userVoMapper;
-  }
+    @Override
+    public UserService getService() {
+        return userService;
+    }
 
-  @GetMapping("/get-all-user")
-  @Operation(summary = "获取所有的用户")
-  public Result<List<UserVo>> getAllQueryCriteria() {
-    UserFindAllByQueryCriteria userFindAllByQueryCriteria = new UserFindAllByQueryCriteria();
-    return findAllByQueryCriteriaToResult(userFindAllByQueryCriteria);
-  }
+    @Override
+    public UserVoMapper getMapper() {
+        return userVoMapper;
+    }
 
-  @GetMapping("/get-user-page")
-  @Operation(summary = "获取所有的用户,分页")
-  public Result<Page<UserVo>> getAllPageQueryCriteria(UserPageQueryCriteria userPageQueryCriteria, Pageable pageable) {
-    return pageToResult(userPageQueryCriteria, pageable);
-  }
+    public UserController(UserService userService, CommonService commonService, UserVoMapper userVoMapper, BaseRedisCurrentLoginInformation redisCurrentLoginInformation) {
+        this.userService = userService;
+        this.commonService = commonService;
+        this.userVoMapper = userVoMapper;
+        this.redisCurrentLoginInformation = redisCurrentLoginInformation;
+    }
+
+    @GetMapping("/get-all-user")
+    @Operation(summary = "获取所有的用户")
+    public Result<List<UserVo>> getAllQueryCriteria() {
+        UserFindAllByQueryCriteria userFindAllByQueryCriteria = new UserFindAllByQueryCriteria();
+        return findAllByQueryCriteriaToResult(userFindAllByQueryCriteria);
+    }
+
+    @GetMapping("/get-user-page")
+    @Operation(summary = "获取所有的用户,分页")
+    public Result<Page<UserVo>> getAllPageQueryCriteria(UserPageQueryCriteria userPageQueryCriteria, Pageable pageable) {
+        return pageToResult(userPageQueryCriteria, pageable);
+    }
+
     @GetMapping("/page")
     @Operation(summary = "获取所有的用户,分页")
     public Result<Page<UserVo>> a(UserPageQueryCriteria userPageQueryCriteria, PageRequest pageable) {
         return null;
     }
-  @GetMapping("/get-by-id")
-  @Operation(summary = "根据id获取实体数据")
-  public Result<UserVo> getById(@RequestParam("id") String id) {
-    return findByIdToResult(id);
-  }
 
-  @PostMapping
-  @Operation(summary = "新增一条数据")
-  public Result<UserVo> insert(@RequestBody @Validated UserInsertInput userInsertInput) {
-    return insertToResult(userInsertInput);
-  }
+    @GetMapping("/get-by-id")
+    @Operation(summary = "根据id获取实体数据")
+    public Result<UserVo> getById(@RequestParam("id") String id) {
+        return findByIdToResult(id);
+    }
+
+    @PostMapping
+    @Operation(summary = "新增一条数据")
+    public Result<UserVo> insert(@RequestBody @Validated UserInsertInput userInsertInput) {
+        return insertToResult(userInsertInput);
+    }
 //
 //  @PostMapping("/insert-user-initialization")
 //  @Operation(summary = "新增一个用户并创建用户的账户以及角色,部门")
@@ -84,22 +98,24 @@ public class UserController extends BaseController<UserService, UserVoMapper, Us
 //    return getMapper().toVo(getService().insertUserInitializationToResult(userInsertInput));
 //  }
 
-  @PutMapping
-  @Operation(summary = "修改一条数据")
-  public Result<UserVo> update(@RequestBody UserUpdateInput userUpdateInput) {
-    return updateToResult(userUpdateInput);
-  }
+    @PutMapping
+    @Operation(summary = "修改一条数据")
+    public Result<UserVo> update(@RequestBody UserUpdateInput userUpdateInput) {
+        return updateToResult(userUpdateInput);
+    }
 
-  @Operation(summary = "删除用户及所属的账号信息")
-  @DeleteMapping
-  public Result<UserVo> deleteById(@RequestParam("id") String id) {
-    return deleteByIdToResult(id);
-  }
-  // *********************************访问控制*****************************************
+    @Operation(summary = "删除用户及所属的账号信息")
+    @DeleteMapping
+    public Result<UserVo> deleteById(@RequestParam("id") String id) {
+        return deleteByIdToResult(id);
+    }
+    // *********************************访问控制*****************************************
 
-  @GetMapping("/get-by-id-to-account")
-  @Operation(summary = "根据id获取当前用户下的所有账户")
-  public Result<List<AccountListDto>> getByIdToAccount() {
-    return Result.success(userService.getByIdToAccount(redisCurrentLoginInformation.getCurrentLoginInformation().getUserId()));
-  }
+    @GetMapping("/get-by-id-to-account")
+    @Operation(summary = "根据id获取当前用户下的所有账户")
+    public Result<List<AccountListDto>> getByIdToAccount() {
+        return Result.success(userService.getByIdToAccount(redisCurrentLoginInformation.getCurrentLoginInformation().getUserId()));
+    }
+
+
 }

@@ -9,7 +9,7 @@
 
 package com.frame.template.service.demo.mapper.vo;
 
-import com.frame.template.common.base.baseTree.BaseTreeVoMapper;
+import com.gstdev.cloud.data.core.pojo.BaseTreeVoMapper;
 import com.frame.template.service.demo.pojo.base.demoTree.DemoTreeDto;
 import com.frame.template.service.demo.pojo.base.demoTree.DemoTreeVo;
 import org.mapstruct.Mapper;

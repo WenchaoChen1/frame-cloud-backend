@@ -1,7 +1,8 @@
 package com.frame.template.service.system.pojo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.frame.template.common.base.BaseEntity;
+import com.frame.template.common.persistence.AbstractAuditingEntity;
+import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -24,7 +25,7 @@ import java.util.List;
 @Table(name = "account", schema = "public")
 @Where(clause = "deleted = 0")
 @SQLDelete(sql = "UPDATE account SET deleted=1 WHERE id =?")
-public class Account extends BaseEntity {
+public class Account extends BasePOJOEntity {
   @Column(name = "tenant_id", length = 36, nullable = false)
   private String tenantId;
   @Column(name = "identity", length = 100)

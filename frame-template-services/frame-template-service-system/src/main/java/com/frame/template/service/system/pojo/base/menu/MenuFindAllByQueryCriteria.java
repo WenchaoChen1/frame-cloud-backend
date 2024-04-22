@@ -11,7 +11,7 @@ package com.frame.template.service.system.pojo.base.menu;
 
 
 import com.gstdev.cloud.data.core.annotations.Query;
-import com.frame.template.common.base.baseTree.BaseTreeFindAllByQueryCriteria;
+import com.gstdev.cloud.data.core.pojo.BaseTreeFindAllByQueryCriteria;
 import lombok.Getter;
 import lombok.Setter;
 

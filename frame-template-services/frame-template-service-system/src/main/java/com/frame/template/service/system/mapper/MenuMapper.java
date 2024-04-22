@@ -9,7 +9,7 @@
 
 package com.frame.template.service.system.mapper;
 
-import com.frame.template.common.base.baseTree.BaseTreeMapper;
+
 import com.frame.template.service.system.pojo.base.menu.MenuDto;
 import com.frame.template.service.system.pojo.base.menu.MenuInsertInput;
 import com.frame.template.service.system.pojo.base.menu.MenuUpdateInput;
@@ -18,7 +18,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.ReportingPolicy;
-
+import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
 /**
  * @author zhucy
  */

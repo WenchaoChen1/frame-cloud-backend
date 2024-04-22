@@ -9,7 +9,6 @@
 
 package com.frame.template.service.storage.mapper.vo;
 
-import com.frame.template.common.base.BaseVoMapper;
 import com.frame.template.service.storage.domain.base.FileDto;
 import com.frame.template.service.storage.domain.base.FileVo;
 import org.mapstruct.Mapper;

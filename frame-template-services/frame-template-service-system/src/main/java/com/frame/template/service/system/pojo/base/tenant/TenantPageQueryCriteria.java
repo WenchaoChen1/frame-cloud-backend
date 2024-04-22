@@ -10,7 +10,7 @@
 package com.frame.template.service.system.pojo.base.tenant;
 
 import com.gstdev.cloud.data.core.annotations.Query;
-import com.frame.template.common.base.baseTree.BaseTreePageQueryCriteria;
+import com.gstdev.cloud.data.core.pojo.BaseTreePageQueryCriteria;
 import lombok.Data;
 
 

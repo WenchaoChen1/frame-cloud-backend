@@ -10,7 +10,7 @@
 package com.frame.template.service.system.pojo.base.dict;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.frame.template.common.base.baseTree.BaseTreeDto;
+import com.gstdev.cloud.data.core.pojo.BaseTreeDto;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;

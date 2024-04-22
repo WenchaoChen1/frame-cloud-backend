@@ -9,7 +9,8 @@
 
 package com.frame.template.service.system.pojo.domain;
 
-import com.frame.template.common.base.baseTree.BaseTreeEntity;
+
+import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -28,8 +29,8 @@ public class Depart extends BaseTreeEntity {
   @Column(name = "tenant_id", length = 50, nullable = false)
   private String tenantId;
 
-  @Column(name = "parent_id", length = 36)
-  private String parentId;
+//  @Column(name = "parent_id", length = 36)
+//  private String parentId;
 
   @Column(name = "name", length = 100, nullable = false)
   private String name;

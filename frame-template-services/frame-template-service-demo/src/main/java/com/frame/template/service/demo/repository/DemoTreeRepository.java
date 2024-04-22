@@ -9,7 +9,7 @@
 
 package com.frame.template.service.demo.repository;
 
-import com.frame.template.common.base.baseTree.BaseTreeRepository;
+
 import com.frame.template.service.demo.pojo.domain.DemoTree;
 
 

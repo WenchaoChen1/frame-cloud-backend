@@ -10,7 +10,7 @@
 package com.frame.template.service.demo.mapper;
 
 
-import com.frame.template.common.base.baseTree.BaseTreeMapper;
+
 import com.frame.template.service.demo.pojo.base.demoTree.DemoTreeDto;
 import com.frame.template.service.demo.pojo.base.demoTree.DemoTreeInsertInput;
 import com.frame.template.service.demo.pojo.base.demoTree.DemoTreeUpdateInput;

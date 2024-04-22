@@ -10,11 +10,13 @@
 package com.frame.template.service.system.pojo.base.account;
 
 import com.gstdev.cloud.data.core.annotations.Query;
-import com.frame.template.common.base.BasePageQueryCriteria;
+import com.gstdev.cloud.data.core.pojo.BasePageQueryCriteria;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class AccountPageQueryCriteria extends BasePageQueryCriteria {
+public class AccountPageQueryCriteria extends BasePageQueryCriteria implements Serializable {
 
   private static final long serialVersionUID = 3163118978801722144L;
   @Query

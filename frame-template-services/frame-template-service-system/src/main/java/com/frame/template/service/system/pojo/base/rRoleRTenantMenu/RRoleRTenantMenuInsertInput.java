@@ -9,16 +9,16 @@
 
 package com.frame.template.service.system.pojo.base.rRoleRTenantMenu;
 
-import com.frame.template.common.base.BaseInsertInput;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Deprecated
 @Getter
 @Setter
-public class RRoleRTenantMenuInsertInput extends BaseInsertInput {
+public class RRoleRTenantMenuInsertInput implements Serializable {
 
   List<String> rTenantMenuIds;
   private String id;

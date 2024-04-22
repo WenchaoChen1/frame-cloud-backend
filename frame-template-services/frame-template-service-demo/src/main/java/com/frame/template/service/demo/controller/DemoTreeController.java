@@ -9,7 +9,7 @@
 
 package com.frame.template.service.demo.controller;
 
-import com.frame.template.common.base.baseTree.BaseTreeController;
+import com.gstdev.cloud.data.core.pojo.BaseTreeController;
 import com.frame.template.service.demo.mapper.vo.DemoTreeVoMapper;
 import com.frame.template.service.demo.pojo.base.demoTree.*;
 import com.frame.template.service.demo.service.DemoTreeService;

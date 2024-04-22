@@ -9,16 +9,17 @@
 
 package com.frame.template.service.system.pojo.base.account;
 
-import com.frame.template.common.base.BaseInsertInput;
 import com.frame.template.common.constant.AccountTypeConstants;
+import com.gstdev.cloud.data.core.pojo.BaseInsertInput;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
 @Setter
-public class AccountInsertInput extends BaseInsertInput {
+public class AccountInsertInput extends BaseInsertInput implements Serializable {
 
   List<String> departIds;
   List<String> roleIds;

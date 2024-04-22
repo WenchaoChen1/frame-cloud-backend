@@ -9,11 +9,12 @@
 
 package com.frame.template.service.storage.domain.base;
 
-import com.frame.template.common.base.BasePageQueryCriteria;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class FilePageQueryCriteria extends BasePageQueryCriteria {
+public class FilePageQueryCriteria implements Serializable {
 
   private static final long serialVersionUID = 3163118978801722144L;
 }

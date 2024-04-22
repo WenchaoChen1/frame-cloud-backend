@@ -9,15 +9,16 @@
 
 package com.frame.template.service.system.pojo.base.rTenantMenu;
 
-import com.frame.template.common.base.BaseInsertInput;
+import com.gstdev.cloud.data.core.pojo.BaseInsertInput;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
 @Setter
-public class RTenantMenuInsertInput extends BaseInsertInput {
+public class RTenantMenuInsertInput extends BaseInsertInput implements Serializable {
 
 
   private Integer checked;
