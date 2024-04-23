@@ -54,7 +54,7 @@ public class MenuController implements TreeController<Menu, String, MenuService,
     }
 
 
-    @GetMapping("/get-all-mean-to-tree")
+    @GetMapping("/get-all-menu-to-tree")
     @Operation(summary = "获取所有菜单，返回树状结构")
     public Result<List<MenuVo>> findAllByQueryCriteriaToTree() {
         System.out.println(SecurityUtils.getUserId());
@@ -87,7 +87,7 @@ public class MenuController implements TreeController<Menu, String, MenuService,
     }
 
 
-    @GetMapping("/get-all-by-tenant-Menu-to-tree")
+    @GetMapping("/get-all-by-tenant-menu-to-tree")
     @Operation(summary = "获取指定租户的所有菜单，返回树状结构")
     public Result<List<MenuVo>> getAllByTenantMenuToTree(@RequestParam("tenantId") String tenantId) {
         MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
@@ -95,7 +95,7 @@ public class MenuController implements TreeController<Menu, String, MenuService,
         return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
     }
 
-    @GetMapping("/get-all-by-role-Menu-to-tree")
+    @GetMapping("/get-all-by-role-menu-to-tree")
     @Operation(summary = "获取指定role的所有菜单，返回树状结构")
     public Result<List<MenuVo>> getAllByRoleMenuToTree(@RequestParam("roleId") String roleId) {
         return getMapper().toAllVo(getService().getAllByRoleMenuToTree(roleId));
