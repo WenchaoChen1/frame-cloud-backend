@@ -9,6 +9,7 @@
 
 package com.frame.template.service.system.controller;
 
+import com.frame.template.common.utils.SecurityUtils;
 import com.frame.template.service.system.mapper.vo.MenuVoMapper;
 import com.frame.template.service.system.pojo.base.menu.*;
 import com.frame.template.service.system.pojo.domain.Menu;
@@ -56,6 +57,7 @@ public class MenuController implements TreeController<Menu, String, MenuService,
     @GetMapping("/get-all-mean-to-tree")
     @Operation(summary = "获取所有菜单，返回树状结构")
     public Result<List<MenuVo>> findAllByQueryCriteriaToTree() {
+        System.out.println(SecurityUtils.getUserId());
         MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
         return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
     }

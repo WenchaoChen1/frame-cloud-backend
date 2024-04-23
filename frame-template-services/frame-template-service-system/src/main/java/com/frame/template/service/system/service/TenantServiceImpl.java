@@ -19,6 +19,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,39 +30,35 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class TenantServiceImpl extends BaseTreeServiceImpl<Tenant,String,TenantRepository, TenantMapper,  TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> implements TenantService {
+public class TenantServiceImpl extends BaseTreeServiceImpl<Tenant, String, TenantRepository, TenantMapper, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> implements TenantService {
 
-  @Resource
-  private TenantRepository tenantRepository;
-  @Resource
-  private TenantMapper tenantMapper;
-  //  @Resource
+    private TenantRepository tenantRepository;
+    private TenantMapper tenantMapper;
+    //  @Resource
 //  private SystemDepartService systemDepartService;
-  @Resource
-  private RedisCurrentLoginInformation redisCurrentLoginInformation;
+    private RedisCurrentLoginInformation redisCurrentLoginInformation;
 
-  //  @Resource
+    //  @Resource
 //  private SystemAccountService systemAccountService;
-  @Resource
-  private AccountService accountService;
+    private AccountService accountService;
 
-
-  public TenantServiceImpl(TenantRepository tenantRepository, TenantMapper tenantMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
-    super(tenantRepository, tenantMapper);
-    this.tenantRepository = tenantRepository;
-    this.tenantMapper = tenantMapper;
-    this.redisCurrentLoginInformation = redisCurrentLoginInformation;
-  }
-
-
-  @Override
-  @Transactional
-  public Tenant insert(Tenant tenant) {
-    if (tenant.getTenantCode() == null) {
-      tenant.setTenantCode(UUID.fastUUID().toString());
+    @Autowired
+    public TenantServiceImpl(TenantRepository tenantRepository, TenantMapper tenantMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
+        super(tenantRepository, tenantMapper);
+        this.tenantRepository = tenantRepository;
+        this.tenantMapper = tenantMapper;
+        this.redisCurrentLoginInformation = redisCurrentLoginInformation;
     }
-    Tenant save = super.insert(tenant);
-    //新增租户的时候默认向组织里插入一条数据
+
+
+    @Override
+    @Transactional
+    public Tenant insert(Tenant tenant) {
+        if (tenant.getTenantCode() == null) {
+            tenant.setTenantCode(UUID.fastUUID().toString());
+        }
+        Tenant save = super.insert(tenant);
+        //新增租户的时候默认向组织里插入一条数据
 //    DepartSaveInput departSaveInput = new DepartSaveInput();
 //    departSaveInput.setName(save.getTenantName());
 //    departSaveInput.setCode(save.getTenantCode());
@@ -70,14 +67,14 @@ public class TenantServiceImpl extends BaseTreeServiceImpl<Tenant,String,TenantR
 //    departSaveInput.setTenantId(save.getId());
 //    DepartDto insert = systemDepartService.insert(departSaveInput);
 //
-    return save;
-  }
+        return save;
+    }
 
-  @Override
-  public void deleteById(String id) {
-     super.deleteById(id);
-    accountService.deleteByTenantId(id);
-  }
+    @Override
+    public void deleteById(String id) {
+        super.deleteById(id);
+        accountService.deleteByTenantId(id);
+    }
 
 //  /**
 //   * 获取当前租户id  返回本级和所有子集
@@ -108,9 +105,9 @@ public class TenantServiceImpl extends BaseTreeServiceImpl<Tenant,String,TenantR
 //  }
 
 
-  public List<TenantDto> findAllByIds(List<String> tenantIds) {
-    return tenantMapper.toDto(tenantRepository.findAllById(tenantIds));
-  }
+    public List<TenantDto> findAllByIds(List<String> tenantIds) {
+        return tenantMapper.toDto(tenantRepository.findAllById(tenantIds));
+    }
 
 
 }
