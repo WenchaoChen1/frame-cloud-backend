@@ -22,7 +22,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "depart", schema = "public")
+@Table(name = "sys_depart", schema = "public")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 public class Depart extends BaseTreeEntity {
 
@@ -55,7 +55,7 @@ public class Depart extends BaseTreeEntity {
 
 
   @ManyToMany
-  @JoinTable(name = "r_account_depart", joinColumns = {
+  @JoinTable(name = "sys_r_account_depart", joinColumns = {
     @JoinColumn(name = "depart_id", referencedColumnName = "id")}, inverseJoinColumns = {
     @JoinColumn(name = "account_id", referencedColumnName = "id")})
   private List<Account> accounts;

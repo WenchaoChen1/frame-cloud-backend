@@ -30,7 +30,7 @@ import java.util.List;
 @Setter
 @Entity
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-@Table(name = "user", schema = "public")
+@Table(name = "sys_user", schema = "public")
 @Where(clause = "deleted = 0")
 @SQLDelete(sql = "UPDATE public.user SET deleted=1 WHERE id =?")
 public class User extends BasePOJOEntity {

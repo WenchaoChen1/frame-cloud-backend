@@ -22,7 +22,7 @@ import java.util.List;
 @Setter
 @Entity
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-@Table(name = "account", schema = "public")
+@Table(name = "sys_account", schema = "public")
 @Where(clause = "deleted = 0")
 @SQLDelete(sql = "UPDATE account SET deleted=1 WHERE id =?")
 public class Account extends BasePOJOEntity {

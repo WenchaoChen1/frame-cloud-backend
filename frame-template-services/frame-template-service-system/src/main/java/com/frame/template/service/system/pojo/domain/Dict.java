@@ -23,7 +23,7 @@ import java.util.List;
 @Setter
 @Entity
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-@Table(name = "dict", schema = "public")
+@Table(name = "sys_dict", schema = "public")
 public class Dict extends BaseTreeEntity {
   @Column(name = "name", length = 64, nullable = false)
   private String name;

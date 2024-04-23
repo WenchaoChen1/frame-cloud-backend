@@ -23,7 +23,7 @@ import jakarta.persistence.*;
 @Setter
 @Entity
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-@Table(name = "tenant_dict", schema = "public")
+@Table(name = "sys_tenant_dict", schema = "public")
 @Where(clause = "deleted = 0")
 @SQLDelete(sql = "UPDATE tenant_dict SET deleted=1 WHERE id =?")
 public class TenantDict extends BasePOJOEntity {

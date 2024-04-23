@@ -24,7 +24,7 @@ import jakarta.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "tenant", schema = "public")
+@Table(name = "sys_tenant", schema = "public")
 @Where(clause = "deleted = 0")
 @SQLDelete(sql = "UPDATE tenant SET deleted=1 WHERE id =?")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
