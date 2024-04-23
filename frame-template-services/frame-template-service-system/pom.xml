@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <name>Frame Template Project :: Service :: system</name>
+    <name>Frame Template Cloud :: Service :: system</name>
     <artifactId>frame-template-service-system</artifactId>
     <description>${project.name}</description>
 
