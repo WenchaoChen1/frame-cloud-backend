@@ -38,21 +38,22 @@ public class UserDetailServiceImpl implements StrategyUserDetailsService {
     @Resource
     private UserService userService;
 
-    @Resource
-    private PasswordEncoder passwordEncoder;
+//    @Resource
+//    private PasswordEncoder passwordEncoder;
 
     @Override
     public DefaultSecurityUser findUserDetailsByUsername(String username) throws AuthenticationException {
         //    User user = userService.getByUsername(username);
         User user = userService.findByEmail(username);
         // 数据库密码解密
-        byte[] decryptWord = CryptoUtils.asymDecrypt(Base64.getDecoder().decode(user.getPassword()), ServiceConstants.ASYM_PRIVATE_KEY);
-        String password = new String(decryptWord, StandardCharsets.UTF_8);
-        log.debug(password.equals(user.getPassword()) + " ");
-        if (password.equals(user.getPassword())) {
-
-        }
-        DefaultSecurityUser defaultSecurityUser = new DefaultSecurityUser(user.getUserId(),user.getUserId(),passwordEncoder.encode(password),getAuthorities(new ArrayList<>(List.of("USER"))));
+//        byte[] decryptWord = CryptoUtils.asymDecrypt(Base64.getDecoder().decode(user.getPassword()), ServiceConstants.ASYM_PRIVATE_KEY);
+//        String password = new String(decryptWord, StandardCharsets.UTF_8);
+//        log.debug(password.equals(user.getPassword()) + " ");
+//        if (password.equals(user.getPassword())) {
+//
+//        }
+//        passwordEncoder.encode(password)
+        DefaultSecurityUser defaultSecurityUser = new DefaultSecurityUser(user.getUserId(),user.getUserId(), user.getPassword(),getAuthorities(new ArrayList<>(List.of("USER"))));
         if (ObjectUtil.isNotNull(user) && ObjectUtil.isNotNull(user.getUsername())) {
 //            defaultSecurityUser.setUsername(user.getUserId());
 //            defaultSecurityUser.setPassword(passwordEncoder.encode(password));

@@ -19,6 +19,7 @@ import com.frame.template.service.identity.contract.query.PostQueryCriteria;
 import com.frame.template.service.identity.repository.UserRepository;
 import com.gstdev.cloud.data.core.utils.PageUtils;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
+import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -101,7 +102,5 @@ public class UserServiceImpl implements UserService {
     }
     return user;
   }
-
-
 }
 

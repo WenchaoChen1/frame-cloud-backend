@@ -22,6 +22,7 @@ import com.frame.template.common.constant.ServiceConstants;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 import com.frame.template.common.utils.CryptoUtils;
 import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
+import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
@@ -98,7 +99,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<User, String, UserRepos
     @Override
     @Transactional
     public User insert(User user) {
-        user.setPassword(Base64.getEncoder().encodeToString(CryptoUtils.asymEncrypt(user.getPassword(), ServiceConstants.ASYM_PUBLIC_KEY)));
+        user.setPassword((SecurityUtils.encrypt(user.getPassword())));
         User insert = super.insert(user);
         return insert;
     }

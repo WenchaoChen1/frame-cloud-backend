@@ -19,12 +19,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableFeignClients
 @ComponentScan(value = {
-  "com.gstdev"
-//  "com.gstdev.cloud.cache"
-//  , "com.gstdev.cloud.oauth2"
-  ,"com.frame"
-//  , "com.gstdev.cloud.commons.utils"
-//  , "com.gstdev.cloud.captcha"
+  "com.gstdev.cloud",
+
+    "com.frame.template"
 })
 @EntityScan(value = {"com.frame.template.service.identity"})
 @EnableJpaRepositories(value = {"com.frame.template.service.identity"})
