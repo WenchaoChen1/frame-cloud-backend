@@ -29,6 +29,27 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-sentinel-alibaba</artifactId>
         </dependency>
+
+
+<!--        <dependency>-->
+<!--            <groupId>com.gstdev.cloud</groupId>-->
+<!--            <artifactId>gstdev-cloud-cache-jetcache</artifactId>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.frame.template</groupId>
+            <artifactId>frame-template-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-rest-core</artifactId>
+        </dependency>
+
+
+
         <!-- 导入openFeign的依赖 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

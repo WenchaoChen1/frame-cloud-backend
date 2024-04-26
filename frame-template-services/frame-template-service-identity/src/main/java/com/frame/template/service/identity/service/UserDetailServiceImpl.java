@@ -16,6 +16,7 @@ import com.frame.template.common.constant.ServiceConstants;
 import com.frame.template.common.utils.CryptoUtils;
 import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
+import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.definition.strategy.StrategyUserDetailsService;
 import com.gstdev.cloud.starter.oauth2.authentication.server.model.UserAuth;
 import lombok.extern.slf4j.Slf4j;
@@ -53,7 +54,28 @@ public class UserDetailServiceImpl implements StrategyUserDetailsService {
 //
 //        }
 //        passwordEncoder.encode(password)
-        DefaultSecurityUser defaultSecurityUser = new DefaultSecurityUser(user.getUserId(),user.getUserId(), user.getPassword(),getAuthorities(new ArrayList<>(List.of("USER"))));
+
+//        Set<FrameGrantedAuthority> authorities = new HashSet();
+//        DefaultSecurityUser defaultSecurityUser = new DefaultSecurityUser(user.getUserId(), user.getUserId(), user.getPassword(), authorities);
+
+
+//        DefaultSecurityUser defaultSecurityUser = new DefaultSecurityUser(user.getUserId()
+//            , user.getUserId()
+//            , user.getPassword()
+//            , getAuthorities(new ArrayList<>(List.of("USER"))));
+        Set<String> role = new HashSet<>();
+        DefaultSecurityUser defaultSecurityUser = new DefaultSecurityUser(user.getUserId()
+            , user.getUserId()
+            , user.getPassword()
+            ,true
+            ,true
+            ,true
+            ,true
+            , getAuthorities(new ArrayList<>(List.of("USER")))
+            ,role
+            ,"123123"
+            ,"ava123213"
+        );
         if (ObjectUtil.isNotNull(user) && ObjectUtil.isNotNull(user.getUsername())) {
 //            defaultSecurityUser.setUsername(user.getUserId());
 //            defaultSecurityUser.setPassword(passwordEncoder.encode(password));
@@ -66,18 +88,18 @@ public class UserDetailServiceImpl implements StrategyUserDetailsService {
         return null;
     }
 
-      private Collection<? extends GrantedAuthority> getAuthorities(List<String> roles) {
-    if (roles == null) {
-      return Collections.emptyList();
-    }
+    private Collection<? extends GrantedAuthority> getAuthorities(List<String> roles) {
+        if (roles == null) {
+            return Collections.emptyList();
+        }
 
-    List<GrantedAuthority> authorities = new ArrayList<>();
-    for (String role : roles) {
-      authorities.add(new SimpleGrantedAuthority(role));
-    }
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        for (String role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role));
+        }
 
-    return authorities;
-  }
+        return authorities;
+    }
 //
 //  @Override
 //  public UserAuth loadUserByUsername(String username) {

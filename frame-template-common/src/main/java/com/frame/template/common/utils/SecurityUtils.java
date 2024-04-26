@@ -41,6 +41,9 @@ public class SecurityUtils {
     return authentication.getName();
   }
 
+
+
+
   public static String getUserId() {
     Authentication authentication = getAuthentication();
     String name = getAuthentication().getName();

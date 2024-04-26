@@ -15,22 +15,22 @@
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-cache-jetcache</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.frame.template</groupId>
-            <artifactId>frame-template-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-rest-core</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.gstdev.cloud</groupId>-->
+<!--            <artifactId>gstdev-cloud-cache-jetcache</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.gstdev.cloud</groupId>-->
+<!--            <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.frame.template</groupId>-->
+<!--            <artifactId>frame-template-common</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.gstdev.cloud</groupId>-->
+<!--            <artifactId>gstdev-cloud-rest-core</artifactId>-->
+<!--        </dependency>-->
 
     </dependencies>
     <modules>

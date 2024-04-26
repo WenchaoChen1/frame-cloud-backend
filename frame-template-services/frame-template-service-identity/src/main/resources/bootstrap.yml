@@ -1,4 +1,6 @@
 spring:
+    application:
+        name: gstdev-identity
     main:
         allow-bean-definition-overriding: true
     cloud:
@@ -10,46 +12,25 @@ spring:
             config:
                 namespace: ${spring.cloud.nacos.discovery.namespace}
                 server-addr: ${spring.cloud.nacos.discovery.server-addr}
-                file-extension: yml
-                group: ${NACOS_CONFIG_GROUP:dev}
+                file-extension: yaml
+                #                group: ${NACOS_CONFIG_GROUP:service}
                 #指定共享配置，且支持动态刷新
                 extension-configs:
-                    -   data-id: common-config.yml
-                        group: ${NACOS_CONFIG_GROUP:dev}
-        #            refresh: true
-        #          - data-id: gstdev-cloud-cache.yml
-        #            group: ${NACOS_CONFIG_GROUP:dev}
+                    -   data-id: common-config.yaml
+                        group: ${NACOS_CONFIG_GROUP:common}
+                    -   data-id: gstdev-cloud-redis.yaml
+                        group: common
+                    -   data-id: gstdev-cloud-cache.yaml
+                        group: common
+                    -   data-id: ${spring.application.name}.yaml
+                        group: service
         #            refresh: true
         sentinel:
             transport:
-#                port: 8719
+                #                port: 8719
                 dashboard: 192.168.0.99:8858
             eager: true #服务注启动，直接注册到dashboard
-    application:
-        name: gstdev-identity
-jetcache:
-    statIntervalMinutes: 15
-    areaInCacheName: false
-    local:
-        default:
-            type: caffeine
-            keyConvertor: fastjson2
-            limit: 10000
-    remote:
-        default:
-            type: redis.lettuce
-            keyConvertor: fastjson2
-            broadcastChannel: herodotus
-            valueEncoder: java
-            valueDecoder: java
-            #      poolConfig:
-            #        minIdle: ${spring.data.redis.lettuce.pool.min-idle}
-            #        maxIdle: ${spring.data.redis.lettuce.pool.max-idle}
-            #        maxTotal: ${spring.data.redis.lettuce.pool.max-active}
-            #        maxWait: ${spring.data.redis.lettuce.pool.max-wait}
-            uri:
-                #        - redis://${spring.data.redis.password}@${spring.data.redis.host}:${spring.data.redis.port}/${spring.data.redis.database}
-                - redis://Black.123!@192.168.0.99:6379/0
+
 server:
     forward-headers-strategy: framework
 springdoc:
@@ -76,12 +57,12 @@ logging:
     #  config: http://${spring.cloud.nacos.config.server-addr}/nacos/v1/cs/configs?group=logs&dataId=logback-spring.xml
     level:
         root: INFO
-#        root: DEBUG
+    #        root: DEBUG
     #      root: trace
     #    # 关闭不必要的日志
     #    org.reflections.Reflections: off
-#        com.alibaba.nacos.client: error
-#        com.alibaba.nacos.common.remote.client: error
+    #        com.alibaba.nacos.client: error
+    #        com.alibaba.nacos.common.remote.client: error
     #    com.ulisesbocchio: error
     #    # 开发、调试需要的日志
     #    org.springframework.security: info

@@ -26,6 +26,21 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-web-server-spring-boot-starter</artifactId>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.frame.template</groupId>
+            <artifactId>frame-template-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-rest-core</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
