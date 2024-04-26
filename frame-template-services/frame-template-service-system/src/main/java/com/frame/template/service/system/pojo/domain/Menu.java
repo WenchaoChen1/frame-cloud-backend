@@ -21,6 +21,11 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
+
+/**
+ * <p>Description: 前端系统菜单 </p>
+ *
+ */
 @Getter
 @Setter
 @Entity

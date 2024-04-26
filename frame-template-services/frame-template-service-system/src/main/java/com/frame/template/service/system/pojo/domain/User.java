@@ -12,6 +12,7 @@ package com.frame.template.service.system.pojo.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.frame.template.common.persistence.AbstractAuditingEntity;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -34,47 +35,57 @@ import java.util.List;
 @Where(clause = "deleted = 0")
 @SQLDelete(sql = "UPDATE public.user SET deleted=1 WHERE id =?")
 public class User extends BasePOJOEntity {
-  @Column(name = "username", length = 30)
-  private String username;
+    @Schema(title = "用户名")
+    @Column(name = "username", length = 128, nullable = false, unique = true)
+    private String username;
 
-  @Column(name = "mobile", length = 20)
-  private String mobile;
+    @Schema(title = "EMAIL")
+    @Column(name = "email", length = 100, unique = true)
+    private String email;
 
-  @Column(name = "email", length = 100, nullable = false, unique = true)
-  private String email;
+    @Schema(title = "手机号码")
+    @Column(name = "phone_number", length = 256)
+    private String phoneNumber;
 
-  @Column(name = "avatar", length = 36)
-  private String avatar;
+    @Schema(title = "密码", description = "BCryptPasswordEncoder")
+    @Column(name = "password", length = 500)
+    private String password;
 
-  @Column(name = "gender", length = 1)
-  private Integer gender = 0;
+    @Schema(title = "昵称")
+    @Column(name = "nick_name", length = 64)
+    private String nickname;
 
-  @Column(name = "last_login_time")
-  private Date lastLoginTime;
+    @Schema(title = "头像")
+    @Column(name = "avatar", length = 36)
+    private String avatar;
 
-  @Column(name = "deleted", nullable = false)
-  private Integer deleted = 0;
+//    @Column(name = "mobile", length = 20)
+//    private String mobile;
 
-  @Column(name = "password", length = 500)
-  private String password;
+    @Schema(title = "性别")
+    @Column(name = "gender", length = 1)
+    private Integer gender = 0;
 
-  @Column(name = "icon")
-  private String icon;
+    @Column(name = "last_login_time")
+    private Date lastLoginTime;
 
-  @JsonIgnore
-  @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-  private List<Account> account;
+    @Column(name = "deleted", nullable = false)
+    private Integer deleted = 0;
 
-  //-----------------自定义-----------
-  @Column(name = "first_name", length = 60)
-  private String firstName;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    private List<Account> account;
 
-  @Column(name = "last_name", length = 60)
-  private String lastName;
+    //-----------------自定义-----------
+    @Column(name = "first_name", length = 60)
+    private String firstName;
 
-  @Column(name = "activate_token", length = 255)
-  private String activateToken;
+    @Column(name = "last_name", length = 60)
+    private String lastName;
 
-  @Column(name = "status")
-  private Integer status = 0;
+    @Column(name = "activate_token", length = 255)
+    private String activateToken;
+
+    @Column(name = "status")
+    private Integer status = 0;
 }
