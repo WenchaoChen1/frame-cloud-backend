@@ -11,8 +11,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LoginInput {
-  String identity;
-  String password;
-  String email;
-  String mobile;
+    String identity;
+    String password;
+    String email;
+    String mobile;
 }

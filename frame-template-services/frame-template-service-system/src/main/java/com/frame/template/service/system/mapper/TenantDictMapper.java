@@ -22,48 +22,48 @@ import java.util.List;
  * @author zhucy
  */
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-  nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-  nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface TenantDictMapper extends AbstractMapper<TenantDictDto, TenantDict> {
-  /**
-   * 转换
-   *
-   * @param tenantDictSaveInput
-   * @return 数据库实体类
-   */
-  TenantDict toEntitySave(TenantDictSaveInput tenantDictSaveInput);
+    /**
+     * 转换
+     *
+     * @param tenantDictSaveInput
+     * @return 数据库实体类
+     */
+    TenantDict toEntitySave(TenantDictSaveInput tenantDictSaveInput);
 
-  /**
-   * 转换
-   *
-   * @param tenantDictModifyInput
-   * @return 数据库实体类
-   */
-  TenantDict toEntityModify(TenantDictModifyInput tenantDictModifyInput);
+    /**
+     * 转换
+     *
+     * @param tenantDictModifyInput
+     * @return 数据库实体类
+     */
+    TenantDict toEntityModify(TenantDictModifyInput tenantDictModifyInput);
 
-  /**
-   * 转换
-   *
-   * @param tenantDictModifyInput
-   * @param tenantDict
-   */
-  void copyModify(TenantDictModifyInput tenantDictModifyInput, @MappingTarget TenantDict tenantDict);
+    /**
+     * 转换
+     *
+     * @param tenantDictModifyInput
+     * @param tenantDict
+     */
+    void copyModify(TenantDictModifyInput tenantDictModifyInput, @MappingTarget TenantDict tenantDict);
 
-  /**
-   * 转换
-   *
-   * @param tenantDict
-   * @return
-   */
-  TenantDictDto toDto(TenantDict tenantDict);
+    /**
+     * 转换
+     *
+     * @param tenantDict
+     * @return
+     */
+    TenantDictDto toDto(TenantDict tenantDict);
 
-  /**
-   * 转换
-   *
-   * @param tenantDicts
-   * @return
-   */
-  List<TenantDictDto> toDto(List<TenantDict> tenantDicts);
+    /**
+     * 转换
+     *
+     * @param tenantDicts
+     * @return
+     */
+    List<TenantDictDto> toDto(List<TenantDict> tenantDicts);
 
 }
 

@@ -18,7 +18,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class RTenantMenuModifyInput implements Serializable {
-  private String id;
-  private Integer status;
+    private String id;
+    private Integer status;
 }
 

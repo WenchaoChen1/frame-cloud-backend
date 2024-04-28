@@ -21,11 +21,11 @@ import java.util.List;
 public class RTenantMenuInsertInput extends BaseInsertInput implements Serializable {
 
 
-  private Integer checked;
-  private Integer status;
-  private String tenantId;
-  private String menuId;
-  private List<String> menuIds;
+    private Integer checked;
+    private Integer status;
+    private String tenantId;
+    private String menuId;
+    private List<String> menuIds;
 
 }
 

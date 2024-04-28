@@ -12,15 +12,15 @@ import lombok.Setter;
 @Setter
 public class RoleSaveInput {
 
-  private String parentId;
+    private String parentId;
 
-  private String roleName;
+    private String roleName;
 
-  private String code;
+    private String code;
 
-  private Integer sort;
+    private Integer sort;
 
-  private String tenantId;
+    private String tenantId;
 
-  private String description;
+    private String description;
 }

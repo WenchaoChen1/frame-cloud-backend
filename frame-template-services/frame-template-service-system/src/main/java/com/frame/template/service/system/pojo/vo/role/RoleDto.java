@@ -11,21 +11,21 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RoleDto {
-  private String id;
+    private String id;
 
-  private String tenantId;
+    private String tenantId;
 
-  private String parentId;
+    private String parentId;
 
-  private String roleName;
+    private String roleName;
 
-  private String code;
+    private String code;
 
-  private Integer status;
+    private Integer status;
 
-  private Integer sort;
+    private Integer sort;
 
-  private String description;
+    private String description;
 
-  private Integer deleted;
+    private Integer deleted;
 }

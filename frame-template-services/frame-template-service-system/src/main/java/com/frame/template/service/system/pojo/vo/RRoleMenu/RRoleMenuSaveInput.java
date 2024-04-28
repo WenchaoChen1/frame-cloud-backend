@@ -11,9 +11,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RRoleMenuSaveInput {
-  private String roleId;
+    private String roleId;
 
-  private String menuId;
+    private String menuId;
 
-  private Integer checked;
+    private Integer checked;
 }

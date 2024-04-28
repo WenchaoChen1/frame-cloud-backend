@@ -22,22 +22,22 @@ import java.util.Date;
 @Setter
 public class RoleVo extends BaseTreeVo {
 
-  private String id;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date createdAt;
-  private String createdBy;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date updatedAt;
-  private String updatedBy;
-  private String code;
-  private String description;
-  private String parentId;
-  private String roleName;
-  private Integer sort;
-  private Integer status;
-  private String tenantId;
+    private String id;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date createdAt;
+    private String createdBy;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date updatedAt;
+    private String updatedBy;
+    private String code;
+    private String description;
+    private String parentId;
+    private String roleName;
+    private Integer sort;
+    private Integer status;
+    private String tenantId;
 
 
 }

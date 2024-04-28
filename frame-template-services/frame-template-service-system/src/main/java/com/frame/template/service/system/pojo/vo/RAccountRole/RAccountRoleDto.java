@@ -17,15 +17,15 @@ import java.util.Date;
 @Getter
 @Setter
 public class RAccountRoleDto implements Serializable {
-  private String id;
-  private Account account;
-  private Role role;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  private Date createdAt;
-  private String createdBy;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  private Date updatedAt;
-  private String updatedBy;
+    private String id;
+    private Account account;
+    private Role role;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createdAt;
+    private String createdBy;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updatedAt;
+    private String updatedBy;
 }

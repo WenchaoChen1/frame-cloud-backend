@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = ServiceConstants.SERVICE_NAME_IDENTITY)
 public interface IdentityClient {
-  @GetMapping(value = "/user/a")
-  String a();
+    @GetMapping(value = "/user/a")
+    String a();
 
 
-  @PostMapping(value = "/oauth2/token")
-  Object login(@RequestHeader("authorization") String authorization, @RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("rememberMe") Boolean rememberMe, @RequestParam("grant_type") String grant_type);
+    @PostMapping(value = "/oauth2/token")
+    Object login(@RequestHeader("authorization") String authorization, @RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("rememberMe") Boolean rememberMe, @RequestParam("grant_type") String grant_type);
 
 
 }

@@ -7,10 +7,10 @@ import java.lang.reflect.Parameter;
 @Data
 public class ParameterGstDev {
 
-  private String paramName;
+    private String paramName;
 
-  private Parameter parameter;
+    private Parameter parameter;
 
-  private Object paramValue;
+    private Object paramValue;
 
 }

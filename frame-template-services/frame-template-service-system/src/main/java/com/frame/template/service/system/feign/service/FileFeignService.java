@@ -16,11 +16,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class FileFeignService {
-  private final FileFeignClient fileFeignClient;
+    private final FileFeignClient fileFeignClient;
 
-  public Result<FileVo> getById(String id) {
-    return fileFeignClient.getById(id);
-  }
+    public Result<FileVo> getById(String id) {
+        return fileFeignClient.getById(id);
+    }
 
 
 }

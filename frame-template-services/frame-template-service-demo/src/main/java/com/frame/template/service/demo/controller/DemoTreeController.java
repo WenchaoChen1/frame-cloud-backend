@@ -23,17 +23,17 @@ import jakarta.annotation.Resource;
 @RequestMapping("/v1/demoTree")
 public class DemoTreeController extends BaseTreeController<DemoTreeService, DemoTreeVoMapper, DemoTreeVo, DemoTreeDto, DemoTreeInsertInput, DemoTreeUpdateInput, DemoTreePageQueryCriteria, DemoTreeFindAllByQueryCriteria> {
 
-  @Resource
-  private DemoTreeService demoTreeService;
+    @Resource
+    private DemoTreeService demoTreeService;
 
-  @Resource
-  private DemoTreeVoMapper demoTreeVoMapper;
+    @Resource
+    private DemoTreeVoMapper demoTreeVoMapper;
 
-  public DemoTreeController(DemoTreeService demoTreeService, DemoTreeVoMapper demoTreeVoMapper) {
-    super(demoTreeService, demoTreeVoMapper);
-    this.demoTreeService = demoTreeService;
-    this.demoTreeVoMapper = demoTreeVoMapper;
-  }
+    public DemoTreeController(DemoTreeService demoTreeService, DemoTreeVoMapper demoTreeVoMapper) {
+        super(demoTreeService, demoTreeVoMapper);
+        this.demoTreeService = demoTreeService;
+        this.demoTreeVoMapper = demoTreeVoMapper;
+    }
 
 }
 

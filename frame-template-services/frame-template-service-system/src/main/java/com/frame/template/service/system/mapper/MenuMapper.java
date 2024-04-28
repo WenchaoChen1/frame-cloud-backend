@@ -19,12 +19,13 @@ import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.ReportingPolicy;
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
+
 /**
  * @author zhucy
  */
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-  nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-  nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface MenuMapper extends BaseTreeMapper<Menu, MenuDto, MenuInsertInput, MenuUpdateInput> {
 }
 

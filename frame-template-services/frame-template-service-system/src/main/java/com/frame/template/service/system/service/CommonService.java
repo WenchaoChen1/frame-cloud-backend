@@ -11,6 +11,6 @@ package com.frame.template.service.system.service;
 
 
 public interface CommonService {
-  String checkIfUserExist(String emailAddress);
+    String checkIfUserExist(String emailAddress);
 
 }

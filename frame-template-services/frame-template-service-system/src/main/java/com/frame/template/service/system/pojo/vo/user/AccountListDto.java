@@ -12,21 +12,21 @@ import java.util.Date;
 @Setter
 public class AccountListDto {
 
-  private String id;
-  @JsonFormat(pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date createdAt;
-  private String createdBy;
-  @JsonFormat(pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date updatedAt;
-  private String updatedBy;
-  private String identity;
-  private String name;
-  private String type;
-  private AccountTypeConstants accountTypeConstants;
+    private String id;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date createdAt;
+    private String createdBy;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date updatedAt;
+    private String updatedBy;
+    private String identity;
+    private String name;
+    private String type;
+    private AccountTypeConstants accountTypeConstants;
 
-  public AccountTypeConstants getAccountTypeConstants() {
-    return AccountTypeConstants.getAccountTypeConstants(this.type);
-  }
+    public AccountTypeConstants getAccountTypeConstants() {
+        return AccountTypeConstants.getAccountTypeConstants(this.type);
+    }
 }

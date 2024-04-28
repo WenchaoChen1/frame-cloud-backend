@@ -17,6 +17,6 @@ import java.io.Serializable;
 @Data
 public class RTenantMenuPageQueryCriteria extends BasePageQueryCriteria implements Serializable {
 
-  private static final long serialVersionUID = 3163118978801722144L;
+    private static final long serialVersionUID = 3163118978801722144L;
 }
 

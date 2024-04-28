@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface FileFeignClient {
 
 
-  @GetMapping("/get-by-id")
-  Result<FileVo> getById(@RequestParam("id") String id);
+    @GetMapping("/get-by-id")
+    Result<FileVo> getById(@RequestParam("id") String id);
 
 
 }

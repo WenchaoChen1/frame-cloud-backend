@@ -19,10 +19,10 @@ import java.util.List;
 
 
 public interface FileService extends BasePOJOService<FileDto, FileInsertInput, FileUpdateInput, FilePageQueryCriteria, FileFindAllByQueryCriteria> {
-  Result<FileDto> upload(MultipartFile file, String tenantId, FileConstants fileConstants);
+    Result<FileDto> upload(MultipartFile file, String tenantId, FileConstants fileConstants);
 
-  Result<List<FileDto>> uploads(List<MultipartFile> file, String tenantId, FileConstants fileConstants);
+    Result<List<FileDto>> uploads(List<MultipartFile> file, String tenantId, FileConstants fileConstants);
 
-  /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
+    /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
 }
 

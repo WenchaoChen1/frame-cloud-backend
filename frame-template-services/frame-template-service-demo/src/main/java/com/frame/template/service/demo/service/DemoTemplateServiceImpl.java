@@ -43,56 +43,56 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class DemoTemplateServiceImpl implements DemoTemplateService {
 
-  @Resource
-  private DemoTemplateRepository demoTemplateRepository;
-  @Resource
-  private DemoTemplateMapper demoTemplateMapper;
-  @Resource
-  private RedisCurrentLoginInformation redisCurrentLoginInformation;
+    @Resource
+    private DemoTemplateRepository demoTemplateRepository;
+    @Resource
+    private DemoTemplateMapper demoTemplateMapper;
+    @Resource
+    private RedisCurrentLoginInformation redisCurrentLoginInformation;
 
 
-  @Override
-  @Transactional
-  public Result<DemoTemplateDto> insert(DemoTemplateInsertInput demoTemplateInsertInput) {
-    DemoTemplate demoTemplate = demoTemplateMapper.toEntityInsert(demoTemplateInsertInput);
-    return Result.success(demoTemplateMapper.toDto(demoTemplateRepository.save(demoTemplate)));
-  }
-
-
-  @Override
-  @Transactional
-  public Result<DemoTemplateDto> update(DemoTemplateUpdateInput demoTemplateUpdateInput) {
-    DemoTemplate demoTemplate = demoTemplateRepository.findById(demoTemplateUpdateInput.getId()).orElseGet(DemoTemplate::new);
-    if (ObjectUtil.isEmpty(demoTemplate.getId())) {
-      throw new PlatformRuntimeException("数据异常");
+    @Override
+    @Transactional
+    public Result<DemoTemplateDto> insert(DemoTemplateInsertInput demoTemplateInsertInput) {
+        DemoTemplate demoTemplate = demoTemplateMapper.toEntityInsert(demoTemplateInsertInput);
+        return Result.success(demoTemplateMapper.toDto(demoTemplateRepository.save(demoTemplate)));
     }
-    demoTemplateMapper.copyModify(demoTemplateUpdateInput, demoTemplate);
-    return Result.success(demoTemplateMapper.toDto(demoTemplateRepository.save(demoTemplate)));
-  }
 
-  @Override
-  @Transactional
-  public Result<DemoTemplateDto> deleteById(String id) {
-    demoTemplateRepository.deleteById(id);
-    return Result.success();
-  }
 
-  @Override
-  public Page<DemoTemplateDto> page(DemoTemplatePageQueryCriteria queryCriteria, Pageable pageable) {
-    pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(Sort.Direction.DESC, "updatedAt"));
-    Page<DemoTemplate> page = demoTemplateRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder), pageable);
-    return demoTemplateMapper.toDto(page);
-  }
+    @Override
+    @Transactional
+    public Result<DemoTemplateDto> update(DemoTemplateUpdateInput demoTemplateUpdateInput) {
+        DemoTemplate demoTemplate = demoTemplateRepository.findById(demoTemplateUpdateInput.getId()).orElseGet(DemoTemplate::new);
+        if (ObjectUtil.isEmpty(demoTemplate.getId())) {
+            throw new PlatformRuntimeException("数据异常");
+        }
+        demoTemplateMapper.copyModify(demoTemplateUpdateInput, demoTemplate);
+        return Result.success(demoTemplateMapper.toDto(demoTemplateRepository.save(demoTemplate)));
+    }
 
-  @Override
-  public DemoTemplateDto findById(String id) {
-    return demoTemplateMapper.toDto(demoTemplateRepository.findById(id).orElseGet(DemoTemplate::new));
-  }
+    @Override
+    @Transactional
+    public Result<DemoTemplateDto> deleteById(String id) {
+        demoTemplateRepository.deleteById(id);
+        return Result.success();
+    }
 
-  @Override
-  public List<DemoTemplateDto> findAllByQueryCriteria(DemoTemplateFindAllByQueryCriteria queryCriteria) {
-    return demoTemplateMapper.toDto(demoTemplateRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder)));
-  }
+    @Override
+    public Page<DemoTemplateDto> page(DemoTemplatePageQueryCriteria queryCriteria, Pageable pageable) {
+        pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by(Sort.Direction.DESC, "updatedAt"));
+        Page<DemoTemplate> page = demoTemplateRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder), pageable);
+        return demoTemplateMapper.toDto(page);
+    }
+
+    @Override
+    public DemoTemplateDto findById(String id) {
+        return demoTemplateMapper.toDto(demoTemplateRepository.findById(id).orElseGet(DemoTemplate::new));
+    }
+
+    @Override
+    public List<DemoTemplateDto> findAllByQueryCriteria(DemoTemplateFindAllByQueryCriteria queryCriteria) {
+        return demoTemplateMapper.toDto(demoTemplateRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder)));
+    }
 
 ////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 

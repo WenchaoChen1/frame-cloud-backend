@@ -3,219 +3,219 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
-  <name>Freme Template Cloud :: Service :: storage</name>
-  <artifactId>frame-template-service-storage</artifactId>
-  <!--  <groupId>com.gstdev.template</groupId>-->
+    <modelVersion>4.0.0</modelVersion>
+    <name>Freme Template Cloud :: Service :: storage</name>
+    <artifactId>frame-template-service-storage</artifactId>
+    <!--  <groupId>com.gstdev.template</groupId>-->
 
-  <parent>
-    <artifactId>frame-template-services</artifactId>
-    <groupId>com.frame.template</groupId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
-
-
-  <properties>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
-  <!--  <dependencies>-->
-
-  <!--    <dependency>-->
-  <!--      <groupId>com.gstdev.cloud</groupId>-->
-  <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
-  <!--    </dependency>-->
-
-  <!--    <dependency>-->
-  <!--      <groupId>com.gstdev.cloud</groupId>-->
-  <!--      <artifactId>gstdev-cloud-commons</artifactId>-->
-  <!--    </dependency>-->
-  <!--    <dependency>-->
-  <!--      <groupId>com.gstdev.cloud</groupId>-->
-  <!--      <artifactId>gstdev-cloud-starter-swagger</artifactId>-->
-  <!--    </dependency>-->
+    <parent>
+        <artifactId>frame-template-services</artifactId>
+        <groupId>com.frame.template</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
 
-  <!--    <dependency>-->
-  <!--      <groupId>com.gstdev.template</groupId>-->
-  <!--      <artifactId>gstdev-template-common</artifactId>-->
-  <!--    </dependency>-->
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-
-  <!--    <dependency>-->
-  <!--      <groupId>org.springframework.cloud</groupId>-->
-  <!--      <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
-  <!--    </dependency>-->
-  <!--    &lt;!&ndash; 导入openFeign的依赖 &ndash;&gt;-->
-  <!--    &lt;!&ndash;    <dependency>&ndash;&gt;-->
-  <!--    &lt;!&ndash;      <groupId>org.springframework.cloud</groupId>&ndash;&gt;-->
-  <!--    &lt;!&ndash;      <artifactId>spring-cloud-starter-openfeign</artifactId>&ndash;&gt;-->
-  <!--    &lt;!&ndash;    </dependency>&ndash;&gt;-->
-  <!--    <dependency>-->
-  <!--      <groupId>org.springframework.cloud</groupId>-->
-  <!--      <artifactId>spring-cloud-starter-loadbalancer</artifactId>-->
-  <!--    </dependency>-->
-
-  <!--    &lt;!&ndash;nacos &ndash;&gt;-->
-  <!--    <dependency>-->
-  <!--      <groupId>com.alibaba.cloud</groupId>-->
-  <!--      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-  <!--    </dependency>-->
-  <!--    <dependency>-->
-  <!--      <groupId>com.alibaba.cloud</groupId>-->
-  <!--      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
-  <!--    </dependency>-->
-
-  <!--    <dependency>-->
-  <!--      <groupId>com.zaxxer</groupId>-->
-  <!--      <artifactId>HikariCP</artifactId>-->
-  <!--    </dependency>-->
-  <!--    <dependency>-->
-  <!--      <groupId>org.projectlombok</groupId>-->
-  <!--      <artifactId>lombok</artifactId>-->
-  <!--    </dependency>-->
-  <!--    &lt;!&ndash; MapStruct related dependencies &ndash;&gt;-->
-  <!--    <dependency>-->
-  <!--      <groupId>org.mapstruct</groupId>-->
-  <!--      <artifactId>mapstruct</artifactId>-->
-  <!--    </dependency>-->
-  <!--    <dependency>-->
-  <!--      <groupId>org.mapstruct</groupId>-->
-  <!--      <artifactId>mapstruct-processor</artifactId>-->
-  <!--    </dependency>-->
-
-  <!--    <dependency>-->
-  <!--      <groupId>com.alibaba</groupId>-->
-  <!--      <artifactId>fastjson</artifactId>-->
-  <!--      <version>1.2.83</version>-->
-  <!--      <scope>compile</scope>-->
-  <!--    </dependency>-->
-
-  <!--        <dependency>-->
-  <!--          <groupId>com.gstdev.cloud</groupId>-->
-  <!--          <artifactId>gstdev-cloud-starter-storage-minio</artifactId>-->
-  <!--        </dependency>-->
-
-  <!--  </dependencies>-->
-
-  <dependencies>
+    <!--  <dependencies>-->
 
     <!--    <dependency>-->
     <!--      <groupId>com.gstdev.cloud</groupId>-->
     <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
     <!--    </dependency>-->
 
-
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-commons</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-swagger</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-storage-aws</artifactId>
-    </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>com.gstdev.cloud</groupId>-->
+    <!--      <artifactId>gstdev-cloud-commons</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.gstdev.cloud</groupId>-->
+    <!--      <artifactId>gstdev-cloud-starter-swagger</artifactId>-->
+    <!--    </dependency>-->
 
 
-    <dependency>
-      <groupId>com.frame.template</groupId>
-      <artifactId>frame-template-common</artifactId>
-    </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>com.gstdev.template</groupId>-->
+    <!--      <artifactId>gstdev-template-common</artifactId>-->
+    <!--    </dependency>-->
 
 
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-bootstrap</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-    </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>org.springframework.cloud</groupId>-->
+    <!--      <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
+    <!--    </dependency>-->
+    <!--    &lt;!&ndash; 导入openFeign的依赖 &ndash;&gt;-->
+    <!--    &lt;!&ndash;    <dependency>&ndash;&gt;-->
+    <!--    &lt;!&ndash;      <groupId>org.springframework.cloud</groupId>&ndash;&gt;-->
+    <!--    &lt;!&ndash;      <artifactId>spring-cloud-starter-openfeign</artifactId>&ndash;&gt;-->
+    <!--    &lt;!&ndash;    </dependency>&ndash;&gt;-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.springframework.cloud</groupId>-->
+    <!--      <artifactId>spring-cloud-starter-loadbalancer</artifactId>-->
+    <!--    </dependency>-->
 
-    <!--nacos -->
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-    </dependency>
+    <!--    &lt;!&ndash;nacos &ndash;&gt;-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.alibaba.cloud</groupId>-->
+    <!--      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.alibaba.cloud</groupId>-->
+    <!--      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
+    <!--    </dependency>-->
 
-    <dependency>
-      <groupId>com.zaxxer</groupId>
-      <artifactId>HikariCP</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-    </dependency>
-    <!-- MapStruct related dependencies -->
-    <dependency>
-      <groupId>org.mapstruct</groupId>
-      <artifactId>mapstruct</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.mapstruct</groupId>
-      <artifactId>mapstruct-processor</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-codec-http</artifactId>
-    </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>com.zaxxer</groupId>-->
+    <!--      <artifactId>HikariCP</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.projectlombok</groupId>-->
+    <!--      <artifactId>lombok</artifactId>-->
+    <!--    </dependency>-->
+    <!--    &lt;!&ndash; MapStruct related dependencies &ndash;&gt;-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.mapstruct</groupId>-->
+    <!--      <artifactId>mapstruct</artifactId>-->
+    <!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.mapstruct</groupId>-->
+    <!--      <artifactId>mapstruct-processor</artifactId>-->
+    <!--    </dependency>-->
+
+    <!--    <dependency>-->
+    <!--      <groupId>com.alibaba</groupId>-->
+    <!--      <artifactId>fastjson</artifactId>-->
+    <!--      <version>1.2.83</version>-->
+    <!--      <scope>compile</scope>-->
+    <!--    </dependency>-->
+
+    <!--        <dependency>-->
+    <!--          <groupId>com.gstdev.cloud</groupId>-->
+    <!--          <artifactId>gstdev-cloud-starter-storage-minio</artifactId>-->
+    <!--        </dependency>-->
+
+    <!--  </dependencies>-->
+
+    <dependencies>
+
+        <!--    <dependency>-->
+        <!--      <groupId>com.gstdev.cloud</groupId>-->
+        <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
+        <!--    </dependency>-->
 
 
-  </dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>repackage</goal>
-              <goal>build-info</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <includeSystemScope>true</includeSystemScope>
-          <mainClass>com.frame.template.service.storage.StorageApplication</mainClass>
-          <excludes>
-            <exclude>
-              <groupId>org.projectlombok</groupId>
-              <artifactId>lombok</artifactId>
-            </exclude>
-          </excludes>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>17</source>
-          <target>17</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-commons</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-swagger</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-storage-aws</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.frame.template</groupId>
+            <artifactId>frame-template-common</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+
+        <!--nacos -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- MapStruct related dependencies -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-codec-http</artifactId>
+        </dependency>
+
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                    <mainClass>com.frame.template.service.storage.StorageApplication</mainClass>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

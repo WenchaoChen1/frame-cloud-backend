@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class RedisCurrentLoginInformationInput {
 
-  private String accountId;
+    private String accountId;
 
 }

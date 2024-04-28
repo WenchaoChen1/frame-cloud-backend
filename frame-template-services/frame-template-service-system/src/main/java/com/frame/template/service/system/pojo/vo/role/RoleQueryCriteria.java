@@ -12,9 +12,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RoleQueryCriteria {
-  private String roleName;
-  @Query
-  private String code;
-  @Query
-  private String tenantId;
+    private String roleName;
+    @Query
+    private String code;
+    @Query
+    private String tenantId;
 }

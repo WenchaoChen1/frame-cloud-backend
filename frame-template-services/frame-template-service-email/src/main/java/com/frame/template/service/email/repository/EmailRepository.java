@@ -20,12 +20,12 @@ import jakarta.transaction.Transactional;
 
 public interface EmailRepository extends JpaRepository<Email, String>, JpaSpecificationExecutor<Email> {
 
-  Email findByTokenAndType(String token, int type);
+    Email findByTokenAndType(String token, int type);
 
-  Email findByTokenAndReceiverEmail(String token, String email);
+    Email findByTokenAndReceiverEmail(String token, String email);
 
-  @Transactional
-  @Modifying
-  @Query(value = "update public.email set status = 1 where id = ?1", nativeQuery = true)
-  void updateStatusById(String id);
+    @Transactional
+    @Modifying
+    @Query(value = "update public.email set status = 1 where id = ?1", nativeQuery = true)
+    void updateStatusById(String id);
 }

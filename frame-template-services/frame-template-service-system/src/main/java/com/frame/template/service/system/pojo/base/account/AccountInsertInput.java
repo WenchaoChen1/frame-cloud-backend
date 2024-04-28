@@ -21,15 +21,15 @@ import java.util.List;
 @Setter
 public class AccountInsertInput extends BaseInsertInput implements Serializable {
 
-  List<String> departIds;
-  List<String> roleIds;
-  private String tenantId;
-  private String userId;
-  private String name;
-  private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
+    List<String> departIds;
+    List<String> roleIds;
+    private String tenantId;
+    private String userId;
+    private String name;
+    private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
 
-  public String getType() {
-    return accountTypeConstants.getCode();
-  }
+    public String getType() {
+        return accountTypeConstants.getCode();
+    }
 }
 

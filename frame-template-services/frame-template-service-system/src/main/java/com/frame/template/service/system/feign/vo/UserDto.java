@@ -20,14 +20,14 @@ import lombok.ToString;
 @AllArgsConstructor
 public class UserDto {
 
-  private String id;
-  private String username;
-  private String email;
-  private String password;
-  private String firstName;
-  private String lastName;
-  private String customerName;
+    private String id;
+    private String username;
+    private String email;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String customerName;
 
-  public UserDto() {
-  }
+    public UserDto() {
+    }
 }

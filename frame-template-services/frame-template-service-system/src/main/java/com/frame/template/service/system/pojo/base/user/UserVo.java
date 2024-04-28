@@ -22,28 +22,28 @@ import java.util.Date;
 @Setter
 public class UserVo extends BaseVo {
 
-  private String id;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date createdAt;
-  private String createdBy;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date updatedAt;
-  private String updatedBy;
-  private String avatar;
-  private String email;
-  private Integer gender;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date lastLoginTime;
-  private String mobile;
-  private String username;
-  private String firstName;
-  private String lastName;
-  private String icon;
+    private String id;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date createdAt;
+    private String createdBy;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date updatedAt;
+    private String updatedBy;
+    private String avatar;
+    private String email;
+    private Integer gender;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date lastLoginTime;
+    private String mobile;
+    private String username;
+    private String firstName;
+    private String lastName;
+    private String icon;
 
-  private String AccountType;
+    private String AccountType;
 
 }
 

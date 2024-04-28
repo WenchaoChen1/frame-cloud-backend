@@ -20,11 +20,11 @@ import java.io.Serializable;
 @Setter
 public class UserFindAllByQueryCriteria extends BaseFindAllByQueryCriteria implements Serializable {
 
-  private static final long serialVersionUID = 3163118978801722144L;
-  @Query(propName = "tenantId", joinName = "account", join = Query.Join.LEFT)
-  String tenantId;
+    private static final long serialVersionUID = 3163118978801722144L;
+    @Query(propName = "tenantId", joinName = "account", join = Query.Join.LEFT)
+    String tenantId;
 
-  @Query(propName = "AccountType", joinName = "account", join = Query.Join.LEFT)
-  String AccountType;
+    @Query(propName = "AccountType", joinName = "account", join = Query.Join.LEFT)
+    String AccountType;
 }
 

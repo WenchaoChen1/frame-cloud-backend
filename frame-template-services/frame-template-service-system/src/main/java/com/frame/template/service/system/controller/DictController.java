@@ -18,11 +18,12 @@ import java.util.List;
 @RequestMapping("/v1/dict")
 public class DictController implements TreeController<Dict, String, DictService, DictVoMapper, DictVo, DictDto, DictInsertInput, DictUpdateInput, DictPageQueryCriteria, DictFindAllByQueryCriteria> {
 
-  @Resource
-  private DictService dictService;
+    @Resource
+    private DictService dictService;
 
-  @Resource
-  private DictVoMapper dictVoMapper;
+    @Resource
+    private DictVoMapper dictVoMapper;
+
     @Override
     public DictService getService() {
         return dictService;
@@ -34,36 +35,36 @@ public class DictController implements TreeController<Dict, String, DictService,
     }
 
 
-  @GetMapping("/get-all-dict-to-tree")
-  @Operation(summary = "获取所有数据，返回树状结构")
-  public Result<List<DictVo>> findAllByQueryCriteriaToTree() {
-    DictFindAllByQueryCriteria dictFindAllByQueryCriteria = new DictFindAllByQueryCriteria();
-    return findAllByQueryCriteriaToResultToTree(dictFindAllByQueryCriteria);
-  }
+    @GetMapping("/get-all-dict-to-tree")
+    @Operation(summary = "获取所有数据，返回树状结构")
+    public Result<List<DictVo>> findAllByQueryCriteriaToTree() {
+        DictFindAllByQueryCriteria dictFindAllByQueryCriteria = new DictFindAllByQueryCriteria();
+        return findAllByQueryCriteriaToResultToTree(dictFindAllByQueryCriteria);
+    }
 
-  @GetMapping("/get-by-id")
-  @Operation(summary = "根据id获取实体数据")
-  public Result<DictVo> getById(String id) {
-    return findByIdToResult(id);
-  }
+    @GetMapping("/get-by-id")
+    @Operation(summary = "根据id获取实体数据")
+    public Result<DictVo> getById(String id) {
+        return findByIdToResult(id);
+    }
 
-  @PostMapping
-  @Operation(summary = "新增一条数据")
-  public Result<DictVo> insert(@RequestBody DictInsertInput dictInsertInput) {
-    return insertToResult(dictInsertInput);
-  }
+    @PostMapping
+    @Operation(summary = "新增一条数据")
+    public Result<DictVo> insert(@RequestBody DictInsertInput dictInsertInput) {
+        return insertToResult(dictInsertInput);
+    }
 
-  @PutMapping
-  @Operation(summary = "修改一条数据")
-  public Result<DictVo> update(@RequestBody DictUpdateInput dictUpdateInput) {
-    return updateToResult(dictUpdateInput);
-  }
+    @PutMapping
+    @Operation(summary = "修改一条数据")
+    public Result<DictVo> update(@RequestBody DictUpdateInput dictUpdateInput) {
+        return updateToResult(dictUpdateInput);
+    }
 
-  @Operation(summary = "")
-  @DeleteMapping
-  public Result<DictVo> deleteById(String id) {
-    return deleteByIdToResult(id);
-  }
+    @Operation(summary = "")
+    @DeleteMapping
+    public Result<DictVo> deleteById(String id) {
+        return deleteByIdToResult(id);
+    }
 
 
 

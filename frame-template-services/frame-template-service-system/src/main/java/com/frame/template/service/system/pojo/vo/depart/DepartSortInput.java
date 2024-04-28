@@ -9,6 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DepartSortInput {
-  String id;
-  String moveOperation;
+    String id;
+    String moveOperation;
 }

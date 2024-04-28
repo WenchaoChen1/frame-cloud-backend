@@ -21,8 +21,8 @@ import java.util.List;
 @Setter
 public class UserMenuDto extends BaseTreeUpdateInput {
 
-  private UserDto userDto;
+    private UserDto userDto;
 
-  private List<MenuDto> menuDtoList;
+    private List<MenuDto> menuDtoList;
 }
 

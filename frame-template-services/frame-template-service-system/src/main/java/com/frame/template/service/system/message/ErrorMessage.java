@@ -11,7 +11,7 @@ package com.frame.template.service.system.message;
 
 public interface ErrorMessage {
 
-  String getCode();
+    String getCode();
 
-  String getMessage();
+    String getMessage();
 }

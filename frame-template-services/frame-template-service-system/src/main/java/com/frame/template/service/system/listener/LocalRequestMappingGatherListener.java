@@ -16,7 +16,6 @@ import java.util.List;
  * <p>Description: 本地RequestMapping收集监听 </p>
  * <p>
  * 主要在单体式架构，以及 UUA 服务自身使用
- *
  */
 @Component
 public class LocalRequestMappingGatherListener implements ApplicationListener<RequestMappingGatherEvent> {

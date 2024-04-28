@@ -31,10 +31,10 @@
         </dependency>
 
 
-<!--        <dependency>-->
-<!--            <groupId>com.gstdev.cloud</groupId>-->
-<!--            <artifactId>gstdev-cloud-cache-jetcache</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.gstdev.cloud</groupId>-->
+        <!--            <artifactId>gstdev-cloud-cache-jetcache</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
@@ -47,7 +47,6 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-rest-core</artifactId>
         </dependency>
-
 
 
         <!-- 导入openFeign的依赖 -->
@@ -77,11 +76,11 @@
         <!--        </dependency>-->
 
 
-<!--        Update your application's configuration-->
-                <dependency>
-                    <groupId>com.zaxxer</groupId>
-                    <artifactId>HikariCP</artifactId>
-                </dependency>
+        <!--        Update your application's configuration-->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
 
         <!--        <dependency>-->
         <!--            <groupId>javax.servlet</groupId>-->

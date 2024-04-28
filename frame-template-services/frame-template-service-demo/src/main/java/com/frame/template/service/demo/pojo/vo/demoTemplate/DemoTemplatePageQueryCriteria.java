@@ -17,7 +17,7 @@ import java.util.Set;
 @Data
 public class DemoTemplatePageQueryCriteria {
 
-  private static final long serialVersionUID = 3163118978801722144L;
+    private static final long serialVersionUID = 3163118978801722144L;
 //  @Query(type = Query.Type.IN)
 // private Set<String> nailedType;
 }

@@ -17,13 +17,13 @@ import lombok.Setter;
 @Setter
 public class DictUpdateInput extends BaseTreeUpdateInput {
 
-  private String id;
-  private String code;
-  private String description;
-  private String name;
-  private String parentId;
-  private Integer sort;
-  private Integer status;
+    private String id;
+    private String code;
+    private String description;
+    private String name;
+    private String parentId;
+    private Integer sort;
+    private Integer status;
 
 
 }

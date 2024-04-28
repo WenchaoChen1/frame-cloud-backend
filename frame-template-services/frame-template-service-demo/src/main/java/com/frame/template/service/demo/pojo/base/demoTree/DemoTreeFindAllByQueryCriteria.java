@@ -17,9 +17,9 @@ import lombok.Setter;
 @Setter
 public class DemoTreeFindAllByQueryCriteria extends BaseTreeFindAllByQueryCriteria {
 
-  private static final long serialVersionUID = 3163118978801722144L;
-  //  @Query(type = Query.Type.IN)
+    private static final long serialVersionUID = 3163118978801722144L;
+    //  @Query(type = Query.Type.IN)
 // private Set<String> nailedType;
-  private String parentId;
+    private String parentId;
 }
 

@@ -26,8 +26,8 @@ import jakarta.persistence.MappedSuperclass;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "fieldHandler"})
 public abstract class AbstractEntity {
 
-  @Id
-  @GeneratedValue(generator = "jpa-uuid")
-  @Column(length = 36)
-  private String id;
+    @Id
+    @GeneratedValue(generator = "jpa-uuid")
+    @Column(length = 36)
+    private String id;
 }

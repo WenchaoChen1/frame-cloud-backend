@@ -21,28 +21,28 @@ import java.util.Date;
 @Setter
 public class UserLoginInferiorInsertInput extends BaseUpdateInput {
 
-  private String id;
-  @Schema(title = "avatar 不能为空", required = true)
-  private String avatar;
-  @Schema(title = "deleted 不能为空", required = true)
-  private Integer deleted;
-  @Schema(title = "email 不能为空", required = true)
-  private String email;
-  @Schema(title = "gender 不能为空", required = true)
-  private Integer gender;
-  @Schema(title = "lastLoginTime 不能为空", required = true)
-  private Date lastLoginTime;
-  @Schema(title = "mobile 不能为空", required = true)
-  private String mobile;
-  @Schema(title = "password 不能为空", required = true)
-  private String password;
-  @Schema(title = "username 不能为空", required = true)
-  private String username;
-  @Schema(title = "accountTypeConstants 不能为空", required = true)
-  private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
-  private String firstName;
-  private String lastName;
-  private String icon;
+    private String id;
+    @Schema(title = "avatar 不能为空", required = true)
+    private String avatar;
+    @Schema(title = "deleted 不能为空", required = true)
+    private Integer deleted;
+    @Schema(title = "email 不能为空", required = true)
+    private String email;
+    @Schema(title = "gender 不能为空", required = true)
+    private Integer gender;
+    @Schema(title = "lastLoginTime 不能为空", required = true)
+    private Date lastLoginTime;
+    @Schema(title = "mobile 不能为空", required = true)
+    private String mobile;
+    @Schema(title = "password 不能为空", required = true)
+    private String password;
+    @Schema(title = "username 不能为空", required = true)
+    private String username;
+    @Schema(title = "accountTypeConstants 不能为空", required = true)
+    private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
+    private String firstName;
+    private String lastName;
+    private String icon;
 
 }
 

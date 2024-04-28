@@ -12,20 +12,22 @@ import com.gstdev.cloud.data.core.mapper.BaseMapper;
 import org.mapstruct.*;
 
 import java.util.List;
+
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
+
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-  nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-  nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface UserMapper extends BaseMapper<User, UserDto, UserInsertInput, UserUpdateInput> {
-  /**
-   * 复制
-   *
-   * @param modifyInput
-   * @param user
-   */
-  void copyModify(UserModifyInput modifyInput, @MappingTarget User user);
+    /**
+     * 复制
+     *
+     * @param modifyInput
+     * @param user
+     */
+    void copyModify(UserModifyInput modifyInput, @MappingTarget User user);
 
-  void copyModify(UserLoginInferiorUpdateInput userLoginInferiorUpdateInput, @MappingTarget User user);
+    void copyModify(UserLoginInferiorUpdateInput userLoginInferiorUpdateInput, @MappingTarget User user);
 
-  List<AccountListDto> accountListToDto(List<Account> accountList);
+    List<AccountListDto> accountListToDto(List<Account> accountList);
 }

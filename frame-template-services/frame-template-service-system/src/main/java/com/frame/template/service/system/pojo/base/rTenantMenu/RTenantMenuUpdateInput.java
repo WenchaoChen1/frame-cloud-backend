@@ -17,11 +17,11 @@ import lombok.Setter;
 @Setter
 public class RTenantMenuUpdateInput extends BaseUpdateInput {
 
-  private String id;
-  private Integer checked;
-  private Integer status;
-  private String tenantId;
-  private String menuId;
+    private String id;
+    private Integer checked;
+    private Integer status;
+    private String tenantId;
+    private String menuId;
 
 
 }

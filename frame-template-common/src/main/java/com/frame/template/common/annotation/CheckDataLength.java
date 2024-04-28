@@ -9,41 +9,41 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME) // 运行时通过反射访问
 public @interface CheckDataLength {
 
-  /**
-   * requires a comparison class
-   *
-   * @return
-   */
-  Class dataClass() default Class.class;
+    /**
+     * requires a comparison class
+     *
+     * @return
+     */
+    Class dataClass() default Class.class;
 
-  /**
-   * The first-level parameter name that needs to be verified
-   *
-   * @return
-   */
-  String paramNameLevel1() default "";
+    /**
+     * The first-level parameter name that needs to be verified
+     *
+     * @return
+     */
+    String paramNameLevel1() default "";
 
-  /**
-   * The name of the second-level parameter that needs to be verified (currently only supports the second-level)
-   *
-   * @return
-   */
-  String paramNameLevel2() default "";
+    /**
+     * The name of the second-level parameter that needs to be verified (currently only supports the second-level)
+     *
+     * @return
+     */
+    String paramNameLevel2() default "";
 
-  /**
-   * Several levels of parameters,
-   * For example, there is a List object in a @RequestBody InvoiceVo invoiceVo object
-   * invoiceVo is a level 1 parameter, List is a level 2 parameter
-   *
-   * @return
-   */
-  int level() default 1;
+    /**
+     * Several levels of parameters,
+     * For example, there is a List object in a @RequestBody InvoiceVo invoiceVo object
+     * invoiceVo is a level 1 parameter, List is a level 2 parameter
+     *
+     * @return
+     */
+    int level() default 1;
 
-  /**
-   * Whether it is a csv file, only do special processing for csv
-   *
-   * @return
-   */
-  boolean isCsvFile() default false;
+    /**
+     * Whether it is a csv file, only do special processing for csv
+     *
+     * @return
+     */
+    boolean isCsvFile() default false;
 
 }

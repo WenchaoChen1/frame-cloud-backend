@@ -17,15 +17,15 @@ import lombok.Setter;
 @Setter
 public class DepartUpdateInput extends BaseTreeUpdateInput {
 
-  private String id;
-  private String code;
-  private String description;
-  private String name;
-  private String parentId;
-  private String shortName;
-  private Integer sort;
-  private Integer status;
-  private String tenantId;
+    private String id;
+    private String code;
+    private String description;
+    private String name;
+    private String parentId;
+    private String shortName;
+    private Integer sort;
+    private Integer status;
+    private String tenantId;
 
 
 }

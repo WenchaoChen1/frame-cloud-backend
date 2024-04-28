@@ -8,9 +8,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DemoXXXXQueryCriteria {
-  @Query(blurry = "name")
-  String name;
-  String sdsadad;
-  String asdsa;
-  String asdsad;
+    @Query(blurry = "name")
+    String name;
+    String sdsadad;
+    String asdsa;
+    String asdsad;
 }

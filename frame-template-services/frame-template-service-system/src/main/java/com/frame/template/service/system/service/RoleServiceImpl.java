@@ -20,41 +20,41 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class RoleServiceImpl extends BaseTreeServiceImpl<Role,String,RoleRepository, RoleMapper,  RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> implements RoleService {
+public class RoleServiceImpl extends BaseTreeServiceImpl<Role, String, RoleRepository, RoleMapper, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> implements RoleService {
 
-  @Resource
-  private RoleRepository roleRepository;
-  @Resource
-  private RoleMapper roleMapper;
-  @Resource
-  private RedisCurrentLoginInformation redisCurrentLoginInformation;
-  @Resource
-  private RTenantMenuRepository rTenantMenuRepository;
+    @Resource
+    private RoleRepository roleRepository;
+    @Resource
+    private RoleMapper roleMapper;
+    @Resource
+    private RedisCurrentLoginInformation redisCurrentLoginInformation;
+    @Resource
+    private RTenantMenuRepository rTenantMenuRepository;
 
-  public RoleServiceImpl(RoleRepository roleRepository, RoleMapper roleMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
-    super(roleRepository, roleMapper);
-    this.roleRepository = roleRepository;
-    this.roleMapper = roleMapper;
-    this.redisCurrentLoginInformation = redisCurrentLoginInformation;
-  }
+    public RoleServiceImpl(RoleRepository roleRepository, RoleMapper roleMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
+        super(roleRepository, roleMapper);
+        this.roleRepository = roleRepository;
+        this.roleMapper = roleMapper;
+        this.redisCurrentLoginInformation = redisCurrentLoginInformation;
+    }
 
-  @Override
-  public Result<List<String>> getAllByRoleId(String roleId) {
-    List<String> strings = findById(roleId).getRTenantMenus().stream().map(RTenantMenu::getMenu).map(Menu::getId).toList();
-    return Result.success(strings);
-  }
+    @Override
+    public Result<List<String>> getAllByRoleId(String roleId) {
+        List<String> strings = findById(roleId).getRTenantMenus().stream().map(RTenantMenu::getMenu).map(Menu::getId).toList();
+        return Result.success(strings);
+    }
 
-  @Override
-  public Result<String> insertRoleMenu(RoleInsertInput roleInsertInput) {
-    Role role = findById(roleInsertInput.getId());
+    @Override
+    public Result<String> insertRoleMenu(RoleInsertInput roleInsertInput) {
+        Role role = findById(roleInsertInput.getId());
 
-    role.setRTenantMenus(rTenantMenuRepository.findAllByTenantIdAndMenuIdIn(role.getTenantId(), roleInsertInput.getMenuIds()));
-    update(role);
-    return Result.success();
-  }
+        role.setRTenantMenus(rTenantMenuRepository.findAllByTenantIdAndMenuIdIn(role.getTenantId(), roleInsertInput.getMenuIds()));
+        update(role);
+        return Result.success();
+    }
 
 
-  //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
+    //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 }
 
 

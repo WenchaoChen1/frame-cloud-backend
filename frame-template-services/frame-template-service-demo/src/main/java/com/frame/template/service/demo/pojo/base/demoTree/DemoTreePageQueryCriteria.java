@@ -16,9 +16,9 @@ import lombok.Data;
 @Data
 public class DemoTreePageQueryCriteria extends BaseTreePageQueryCriteria {
 
-  private static final long serialVersionUID = 3163118978801722144L;
-  //  @Query(type = Query.Type.IN)
+    private static final long serialVersionUID = 3163118978801722144L;
+    //  @Query(type = Query.Type.IN)
 // private Set<String> nailedType;
-  private String parentId;
+    private String parentId;
 }
 

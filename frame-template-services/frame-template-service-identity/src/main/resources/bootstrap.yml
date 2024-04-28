@@ -9,9 +9,9 @@ spring:
                 server-addr: ${NACOS_DISCOVERY_HOST:192.168.0.99}:${NACOS_DISCOVERY_PORT:8848}
                 namespace: ${NACOS_DISCOVERY_NAMESPACE:frame-cloud}
                 group: ${NACOS_DISCOVERY_GROUP:dev}
-#                server-addr: ${NACOS_DISCOVERY_HOST:@alibaba.config.server-addr@}
-#                namespace: ${NACOS_DISCOVERY_NAMESPACE:@alibaba.namespace@}
-#                group: ${NACOS_DISCOVERY_GROUP:dev}
+            #                server-addr: ${NACOS_DISCOVERY_HOST:@alibaba.config.server-addr@}
+            #                namespace: ${NACOS_DISCOVERY_NAMESPACE:@alibaba.namespace@}
+            #                group: ${NACOS_DISCOVERY_GROUP:dev}
             config:
                 namespace: ${spring.cloud.nacos.discovery.namespace}
                 server-addr: ${spring.cloud.nacos.discovery.server-addr}
@@ -22,11 +22,11 @@ spring:
                     -   data-id: common-config.yaml
                         group: ${NACOS_CONFIG_GROUP:common}
                     -   data-id: gstdev-cloud-environment.yaml
-#                        group: ${PROFILE:@profile@}
+                        #                        group: ${PROFILE:@profile@}
                         group: development
                     -   data-id: gstdev-cloud-platform.yaml
                         group: common
-#                    -   data-id: gstdev-cloud-database-${DATABASE:@database@}.yaml
+                    #                    -   data-id: gstdev-cloud-database-${DATABASE:@database@}.yaml
                     -   data-id: gstdev-cloud-database-postgresql.yaml
                         group: common
                     -   data-id: gstdev-cloud-database.yaml
@@ -39,8 +39,8 @@ spring:
                         group: common
                     -   data-id: gstdev-cloud-kafka.yaml
                         group: common
-#                    -   data-id: gstdev-cloud-social.yaml
-#                        group: common
+                    #                    -   data-id: gstdev-cloud-social.yaml
+                    #                        group: common
                     -   data-id: ${spring.application.name}.yaml
                         group: service
         #            refresh: true

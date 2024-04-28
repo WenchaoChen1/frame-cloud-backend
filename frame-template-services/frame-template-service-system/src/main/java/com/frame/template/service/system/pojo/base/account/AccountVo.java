@@ -23,21 +23,21 @@ import java.util.Date;
 @Setter
 public class AccountVo extends BaseVo {
 
-  private String id;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date createdAt;
-  private String createdBy;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date updatedAt;
-  private String updatedBy;
-  private Integer deleted;
-  private String identity;
-  private String tenantId;
-  private String userId;
-  private String name;
-  private AccountTypeConstants accountTypeConstants;
+    private String id;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date createdAt;
+    private String createdBy;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date updatedAt;
+    private String updatedBy;
+    private Integer deleted;
+    private String identity;
+    private String tenantId;
+    private String userId;
+    private String name;
+    private AccountTypeConstants accountTypeConstants;
 
 
 }

@@ -11,14 +11,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class IdentitySaveDto {
-  private String password;
+    private String password;
 
-  private String username;
+    private String username;
 
-  private String email;
-  private String userId;
+    private String email;
+    private String userId;
 
-  public void setId(String id) {
-    this.userId = id;
-  }
+    public void setId(String id) {
+        this.userId = id;
+    }
 }

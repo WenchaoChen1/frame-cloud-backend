@@ -18,12 +18,12 @@ import java.io.Serializable;
 @Getter
 public class UserInput implements Serializable {
 
-  private String id;
+    private String id;
 
-  private String password;
+    private String password;
 
-  private String username;
+    private String username;
 
-  private String email;
-  private String userId;
+    private String email;
+    private String userId;
 }

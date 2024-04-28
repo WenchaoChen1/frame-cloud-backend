@@ -12,8 +12,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RRoleMenuQueryCriteria {
-  @Query
-  String tenantId;
-  @Query(propName = "id", joinName = "role", join = Query.Join.LEFT)
-  String roleId;
+    @Query
+    String tenantId;
+    @Query(propName = "id", joinName = "role", join = Query.Join.LEFT)
+    String roleId;
 }

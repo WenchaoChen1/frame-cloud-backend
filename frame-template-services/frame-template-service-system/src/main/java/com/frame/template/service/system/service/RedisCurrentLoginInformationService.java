@@ -6,11 +6,11 @@ import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLogin
 
 public interface RedisCurrentLoginInformationService {
 
-  Result<Object> addByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput);
+    Result<Object> addByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput);
 
-  Result<Object> updateByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput);
+    Result<Object> updateByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput);
 
-  Result<Object> deleteByTokenCurrentLoginInformation();
+    Result<Object> deleteByTokenCurrentLoginInformation();
 
-  Result<CurrentLoginInformation> getCurrentLoginInformation();
+    Result<CurrentLoginInformation> getCurrentLoginInformation();
 }

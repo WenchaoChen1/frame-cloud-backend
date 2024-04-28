@@ -17,6 +17,6 @@ import lombok.Setter;
 @Setter
 public class DictFindAllByQueryCriteria extends BaseTreeFindAllByQueryCriteria {
 
-  private static final long serialVersionUID = 3163118978801722144L;
+    private static final long serialVersionUID = 3163118978801722144L;
 }
 

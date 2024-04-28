@@ -11,16 +11,16 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class MenuSaveInput implements Serializable {
-  String name;
-  String parentId;
-  String url;
-  String icon;
-  String path;
-  String permission;
-  Integer type;
-  Integer hidden;
-  Integer status;
-  Integer tenantEnable;
-  Integer sort;
-  String description;
+    String name;
+    String parentId;
+    String url;
+    String icon;
+    String path;
+    String permission;
+    Integer type;
+    Integer hidden;
+    Integer status;
+    Integer tenantEnable;
+    Integer sort;
+    String description;
 }

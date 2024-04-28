@@ -21,29 +21,29 @@ import jakarta.validation.constraints.NotEmpty;
 //@NoArgsConstructor
 public class TenantInsertInput extends BaseTreeInsertInput {
 
-  @Schema(title = "parentId 不能为空", required = true)
-  @NotEmpty
-  private String parentId;
-  private String tenantCode;
-  private String tenantName;
-  private String description;
-  private Integer status;
-  private Integer type;
+    @Schema(title = "parentId 不能为空", required = true)
+    @NotEmpty
+    private String parentId;
+    private String tenantCode;
+    private String tenantName;
+    private String description;
+    private Integer status;
+    private Integer type;
 
-  //-----------------自定义-----------
+    //-----------------自定义-----------
 
-  private String companyName = "";
-  private String website = "";
-  private String addressLine1 = "";
-  private String addressLine2 = "";
-  private String city = "";
-  private String state = "";
-  private String country = "";
-  private String zipCode = "";
-  private String firstName = "";
-  private String lastName = "";
-  private String emailAddress = "";
-  private String phoneNumber = "";
-  private String logo = "";
+    private String companyName = "";
+    private String website = "";
+    private String addressLine1 = "";
+    private String addressLine2 = "";
+    private String city = "";
+    private String state = "";
+    private String country = "";
+    private String zipCode = "";
+    private String firstName = "";
+    private String lastName = "";
+    private String emailAddress = "";
+    private String phoneNumber = "";
+    private String logo = "";
 }
 

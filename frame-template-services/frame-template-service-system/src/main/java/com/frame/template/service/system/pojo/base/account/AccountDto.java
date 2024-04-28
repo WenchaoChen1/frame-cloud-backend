@@ -24,28 +24,28 @@ import java.util.Date;
 @Setter
 public class AccountDto extends BaseDto {
 
-  private String id;
-  @JsonFormat(pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date createdAt;
-  private String createdBy;
-  @JsonFormat(pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date updatedAt;
-  private String updatedBy;
-  private Integer deleted;
-  private String identity;
-  private String tenantId;
-  private String name;
-  private String type;
-  private UserDto user;
+    private String id;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date createdAt;
+    private String createdBy;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date updatedAt;
+    private String updatedBy;
+    private Integer deleted;
+    private String identity;
+    private String tenantId;
+    private String name;
+    private String type;
+    private UserDto user;
 
-  public String getUserId() {
-    return user.getId();
-  }
+    public String getUserId() {
+        return user.getId();
+    }
 
-  public AccountTypeConstants getAccountTypeConstants() {
-    return AccountTypeConstants.getAccountTypeConstants(this.type);
-  }
+    public AccountTypeConstants getAccountTypeConstants() {
+        return AccountTypeConstants.getAccountTypeConstants(this.type);
+    }
 }
 

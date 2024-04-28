@@ -15,49 +15,49 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisCurrentLoginInformationImpl implements RedisCurrentLoginInformation {
 
-  @Resource
-  private RedisUtils redisUtils;
+    @Resource
+    private RedisUtils redisUtils;
 
-  public Result<Object> addByTokenCurrentLoginInformation(CurrentLoginInformation currentLoginInformation) {
-    redisUtils.set(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)), currentLoginInformation, RedisConstants.TIMEOUT, TimeUnit.HOURS);
-    return Result.success();
-  }
-
-  //add和update一样的功能
-  public Result<Object> updateByTokenCurrentLoginInformation(CurrentLoginInformation currentLoginInformation) {
-    redisUtils.set(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)), currentLoginInformation, RedisConstants.TIMEOUT, TimeUnit.HOURS);
-    return Result.success();
-  }
-
-  public Result<Object> deleteByTokenCurrentLoginInformation() {
-    redisUtils.del(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
-    return Result.success();
-  }
-
-  public CurrentLoginInformation getCurrentLoginInformation() {
-    CurrentLoginInformation currentLogininformation = null;
-    try {
-      currentLogininformation = (CurrentLoginInformation) redisUtils.get(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
-    } catch (Exception e) {
-      return null;
+    public Result<Object> addByTokenCurrentLoginInformation(CurrentLoginInformation currentLoginInformation) {
+        redisUtils.set(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)), currentLoginInformation, RedisConstants.TIMEOUT, TimeUnit.HOURS);
+        return Result.success();
     }
+
+    //add和update一样的功能
+    public Result<Object> updateByTokenCurrentLoginInformation(CurrentLoginInformation currentLoginInformation) {
+        redisUtils.set(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)), currentLoginInformation, RedisConstants.TIMEOUT, TimeUnit.HOURS);
+        return Result.success();
+    }
+
+    public Result<Object> deleteByTokenCurrentLoginInformation() {
+        redisUtils.del(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
+        return Result.success();
+    }
+
+    public CurrentLoginInformation getCurrentLoginInformation() {
+        CurrentLoginInformation currentLogininformation = null;
+        try {
+            currentLogininformation = (CurrentLoginInformation) redisUtils.get(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
+        } catch (Exception e) {
+            return null;
+        }
 //    CurrentLoginInformation currentLogininformation = (CurrentLoginInformation) redisUtils.get(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
-    return currentLogininformation;
-  }
-
-  public String getCurrentLoginAccountId() {
-    CurrentLoginInformation loginInformation = getCurrentLoginInformation();
-    if (loginInformation == null) {
-      return null;
+        return currentLogininformation;
     }
-    return loginInformation.getUserId();
-  }
 
-  public String getCurrentLoginTenantId() {
-    CurrentLoginInformation loginInformation = getCurrentLoginInformation();
-    if (loginInformation == null) {
-      return null;
+    public String getCurrentLoginAccountId() {
+        CurrentLoginInformation loginInformation = getCurrentLoginInformation();
+        if (loginInformation == null) {
+            return null;
+        }
+        return loginInformation.getUserId();
     }
-    return loginInformation.getTenantId();
-  }
+
+    public String getCurrentLoginTenantId() {
+        CurrentLoginInformation loginInformation = getCurrentLoginInformation();
+        if (loginInformation == null) {
+            return null;
+        }
+        return loginInformation.getTenantId();
+    }
 }

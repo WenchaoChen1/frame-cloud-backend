@@ -3,91 +3,91 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
-  <name>Frame Template Cloud :: Service :: demo</name>
-  <artifactId>frame-template-service-demo</artifactId>
-  <!--  <groupId>com.gstdev.template</groupId>-->
+    <modelVersion>4.0.0</modelVersion>
+    <name>Frame Template Cloud :: Service :: demo</name>
+    <artifactId>frame-template-service-demo</artifactId>
+    <!--  <groupId>com.gstdev.template</groupId>-->
 
-  <parent>
-    <artifactId>frame-template-services</artifactId>
-    <groupId>com.frame.template</groupId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
-
-
-  <dependencies>
-    <!--    <dependency>-->
-    <!--      <groupId>com.gstdev.cloud</groupId>-->
-    <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
-    <!--    </dependency>-->
-      <!--sentinel alibaba 控流监控-->
-      <dependency>
-          <groupId>com.gstdev.cloud</groupId>
-          <artifactId>gstdev-cloud-sentinel-alibaba</artifactId>
-      </dependency>
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.gstdev.cloud</groupId>
-      <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.frame.template</groupId>
-      <artifactId>frame-template-common</artifactId>
-    </dependency>
+    <parent>
+        <artifactId>frame-template-services</artifactId>
+        <groupId>com.frame.template</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
 
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-bootstrap</artifactId>
-    </dependency>
-    <!-- 导入openFeign的依赖 -->
-    <!--    <dependency>-->
-    <!--      <groupId>org.springframework.cloud</groupId>-->
-    <!--      <artifactId>spring-cloud-starter-openfeign</artifactId>-->
-    <!--    </dependency>-->
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-    </dependency>
+    <dependencies>
+        <!--    <dependency>-->
+        <!--      <groupId>com.gstdev.cloud</groupId>-->
+        <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
+        <!--    </dependency>-->
+        <!--sentinel alibaba 控流监控-->
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-sentinel-alibaba</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
+        </dependency>
 
-    <!--nacos -->
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>com.zaxxer</groupId>
-      <artifactId>HikariCP</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-    </dependency>
-    <!-- MapStruct related dependencies -->
-    <dependency>
-      <groupId>org.mapstruct</groupId>
-      <artifactId>mapstruct</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.mapstruct</groupId>
-      <artifactId>mapstruct-processor</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+        <dependency>
+            <groupId>com.frame.template</groupId>
+            <artifactId>frame-template-common</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+        <!-- 导入openFeign的依赖 -->
+        <!--    <dependency>-->
+        <!--      <groupId>org.springframework.cloud</groupId>-->
+        <!--      <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+        <!--    </dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+
+        <!--nacos -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- MapStruct related dependencies -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
 </project>

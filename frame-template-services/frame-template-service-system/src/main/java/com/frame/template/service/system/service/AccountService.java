@@ -7,19 +7,19 @@ import com.gstdev.cloud.data.core.service.BasePOJOService;
 
 import java.util.List;
 
-public interface AccountService extends BasePOJOService<Account,String,AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
-  List<AccountDto> findAllByUserId(String message);
+public interface AccountService extends BasePOJOService<Account, String, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
+    List<AccountDto> findAllByUserId(String message);
 
 //  boolean save(AccountSaveInput accountSaveInput);
 
-  Account insert(Account account);
+    Account insert(Account account);
 
-  Account insertAccountInitialization(AccountInsertInput accountInsertInput);
+    Account insertAccountInitialization(AccountInsertInput accountInsertInput);
 
-  Result<AccountDto> insertAccountInitializationToResult(AccountInsertInput accountInsertInput);
+    Result<AccountDto> insertAccountInitializationToResult(AccountInsertInput accountInsertInput);
 
 //    Integer findByTenantId(String tenantId);
 
-  void deleteByTenantId(String tenantId);
+    void deleteByTenantId(String tenantId);
 
 }

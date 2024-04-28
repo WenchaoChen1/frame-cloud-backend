@@ -75,13 +75,13 @@ public class GlobalResponseFilter implements GlobalFilter, Ordered {
                 httpHeaders.add(HttpHeaders.CONTENT_TYPE, originalResponseContentType);
 
                 ClientResponse clientResponse = ClientResponse
-                        .create(Objects.requireNonNull(exchange.getResponse().getStatusCode()))
-                        .headers(headers -> headers.putAll(httpHeaders))
-                        .body(Flux.from(body)).build();
+                    .create(Objects.requireNonNull(exchange.getResponse().getStatusCode()))
+                    .headers(headers -> headers.putAll(httpHeaders))
+                    .body(Flux.from(body)).build();
 
                 //修改body
                 Mono<String> modifiedBody = clientResponse.bodyToMono(String.class)
-                        .flatMap(originalBody -> modifyBody().apply(exchange, Mono.just(originalBody)));
+                    .flatMap(originalBody -> modifyBody().apply(exchange, Mono.just(originalBody)));
 
                 BodyInserter<Mono<String>, ReactiveHttpOutputMessage> bodyInserter = BodyInserters.fromPublisher(modifiedBody, String.class);
                 CachedBodyOutputMessage outputMessage = new CachedBodyOutputMessage(exchange, exchange.getResponse().getHeaders());

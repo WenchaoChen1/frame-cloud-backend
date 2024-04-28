@@ -26,22 +26,22 @@ import java.util.Optional;
 @CacheConfig(cacheNames = "invite")
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public class CommonServiceImpl implements CommonService {
-  @Resource
-  private UserRepository userRepository;
+    @Resource
+    private UserRepository userRepository;
 //
 //  @Resource
 //  private EmailService emailService;
 
 
-  @Override
-  public String checkIfUserExist(String emailAddress) {
-    String validationMessage = null;
-    Optional<User> user = userRepository.findByEmail(emailAddress);
-    if (user.isPresent() && !ObjectUtils.isEmpty(user)) {
-      validationMessage = "The email address already exists";
+    @Override
+    public String checkIfUserExist(String emailAddress) {
+        String validationMessage = null;
+        Optional<User> user = userRepository.findByEmail(emailAddress);
+        if (user.isPresent() && !ObjectUtils.isEmpty(user)) {
+            validationMessage = "The email address already exists";
+        }
+        return validationMessage;
     }
-    return validationMessage;
-  }
 
 
 }

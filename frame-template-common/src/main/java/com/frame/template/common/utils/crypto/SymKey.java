@@ -7,22 +7,22 @@ package com.frame.template.common.utils.crypto;
  */
 public class SymKey {
 
-  private String hexKey;
-  private Integer keySize;
+    private String hexKey;
+    private Integer keySize;
 
-  public String getHexKey() {
-    return hexKey;
-  }
+    public String getHexKey() {
+        return hexKey;
+    }
 
-  public void setHexKey(String hexKey) {
-    this.hexKey = hexKey;
-  }
+    public void setHexKey(String hexKey) {
+        this.hexKey = hexKey;
+    }
 
-  public Integer getKeySize() {
-    return keySize;
-  }
+    public Integer getKeySize() {
+        return keySize;
+    }
 
-  public void setKeySize(Integer keySize) {
-    this.keySize = keySize;
-  }
+    public void setKeySize(Integer keySize) {
+        this.keySize = keySize;
+    }
 }

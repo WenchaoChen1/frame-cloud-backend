@@ -9,11 +9,11 @@ import java.util.List;
 @Getter
 @Setter
 public class AccountModifyInput {
-  String id;
-  String tenantId;
-  String identity;
+    String id;
+    String tenantId;
+    String identity;
 
-  UserModifyInput user;
-  List<String> depart;
-  List<String> role;
+    UserModifyInput user;
+    List<String> depart;
+    List<String> role;
 }

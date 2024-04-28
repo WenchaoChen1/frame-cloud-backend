@@ -11,13 +11,13 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class DepartSaveInput implements Serializable {
-  private String tenantId;
-  private String parentId;
-  private String name;
-  private String code;
-  private String shortName;
-  private Integer status;
-  private Integer sort;
-  private String description;
-  private Integer deleted;
+    private String tenantId;
+    private String parentId;
+    private String name;
+    private String code;
+    private String shortName;
+    private Integer status;
+    private Integer sort;
+    private String description;
+    private Integer deleted;
 }

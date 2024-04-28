@@ -26,30 +26,30 @@ import java.util.List;
 @Where(clause = "deleted = 0")
 @SQLDelete(sql = "UPDATE account SET deleted=1 WHERE id =?")
 public class Account extends BasePOJOEntity {
-  @Column(name = "tenant_id", length = 36, nullable = false)
-  private String tenantId;
-  @Column(name = "identity", length = 100)
-  private String identity;
+    @Column(name = "tenant_id", length = 36, nullable = false)
+    private String tenantId;
+    @Column(name = "identity", length = 100)
+    private String identity;
 
-  //  super:0 看到所有数据最大权限,admin:1只能看到当前租户的所有权限，user：需要根据role来获取权限
-  @Column(name = "type", length = 100)
-  private String type = "user";
-  @Column(name = "name")
-  private String name;
+    //  super:0 看到所有数据最大权限,admin:1只能看到当前租户的所有权限，user：需要根据role来获取权限
+    @Column(name = "type", length = 100)
+    private String type = "user";
+    @Column(name = "name")
+    private String name;
 
-  @Column(name = "deleted", nullable = false)
-  private Integer deleted = 0;
-
-
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_id", referencedColumnName = "id")
-  private User user;
+    @Column(name = "deleted", nullable = false)
+    private Integer deleted = 0;
 
 
-  @JsonIgnore
-  @ManyToMany(mappedBy = "accounts")
-  private List<Depart> departs;
-  @JsonIgnore
-  @ManyToMany(mappedBy = "accounts")
-  private List<Role> roles;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "accounts")
+    private List<Depart> departs;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "accounts")
+    private List<Role> roles;
 }

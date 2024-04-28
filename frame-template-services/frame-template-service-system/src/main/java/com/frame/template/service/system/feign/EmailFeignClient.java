@@ -14,9 +14,9 @@ public interface EmailFeignClient {
 //  @PostMapping(value = "/v1/email/send-email")
 //  void sendEmail(Email email, Context context, String templateName, EmailTypeEnum emailTypeEnum);
 
-  @PostMapping(value = "/v1/email/invite-user")
-  void inviteUser(@RequestBody UserDto userDto);
+    @PostMapping(value = "/v1/email/invite-user")
+    void inviteUser(@RequestBody UserDto userDto);
 
-  @GetMapping(value = "/v1/email/a")
-  void a();
+    @GetMapping(value = "/v1/email/a")
+    void a();
 }

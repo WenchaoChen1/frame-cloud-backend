@@ -19,8 +19,8 @@ import java.util.List;
 @Getter
 @Setter
 public class RTenantMenuBatchSaveInput implements Serializable {
-  private String tenantId;
-  private List<String> checkedMenuId;
-  private List<String> halfCheckedMenuId;
+    private String tenantId;
+    private List<String> checkedMenuId;
+    private List<String> halfCheckedMenuId;
 }
 

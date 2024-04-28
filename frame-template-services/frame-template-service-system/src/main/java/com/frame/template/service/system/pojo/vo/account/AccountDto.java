@@ -10,11 +10,11 @@ import java.util.List;
 @Getter
 @Setter
 public class AccountDto implements Serializable {
-  String id;
-  String identity;
-  UserDto user;
-  String tenantId;
+    String id;
+    String identity;
+    UserDto user;
+    String tenantId;
 
-  List<String> depart;
-  List<String> role;
+    List<String> depart;
+    List<String> role;
 }

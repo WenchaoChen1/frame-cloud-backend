@@ -11,14 +11,14 @@ import java.util.Date;
 @Getter
 @Setter
 public class UserDto implements Serializable {
-  String id;
-  String username;
-  String mobile;
-  String email;
-  String avatar;
-  Integer gender;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  Date lastLoginTime;
-  Integer deleted;
+    String id;
+    String username;
+    String mobile;
+    String email;
+    String avatar;
+    Integer gender;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    Date lastLoginTime;
+    Integer deleted;
 }

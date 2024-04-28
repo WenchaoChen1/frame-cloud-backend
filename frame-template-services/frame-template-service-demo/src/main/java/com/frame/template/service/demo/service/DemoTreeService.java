@@ -15,9 +15,9 @@ import com.frame.template.service.demo.pojo.base.demoTree.*;
 
 
 public interface DemoTreeService extends BaseTreeService<DemoTreeDto,
-  DemoTreeInsertInput, DemoTreeUpdateInput,
-  DemoTreePageQueryCriteria, DemoTreeFindAllByQueryCriteria> {
+    DemoTreeInsertInput, DemoTreeUpdateInput,
+    DemoTreePageQueryCriteria, DemoTreeFindAllByQueryCriteria> {
 
-  /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
+    /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
 }
 

@@ -14,6 +14,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class RAccountDepartSaveInput implements Serializable {
-  private Account account;
-  private Depart depart;
+    private Account account;
+    private Depart depart;
 }

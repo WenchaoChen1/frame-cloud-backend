@@ -21,45 +21,43 @@ import jakarta.annotation.Resource;
 @Slf4j
 public class SecurityUtils {
 
-  //    @Resource
+    //    @Resource
 //    private UserDetailService<User> userDetailService;
-  @Resource
-  private static RedisUtils redisUtils;
+    @Resource
+    private static RedisUtils redisUtils;
 
 
-  public static SecurityContext getSecurityContext() {
-    return SecurityContextHolder.getContext();
-  }
+    public static SecurityContext getSecurityContext() {
+        return SecurityContextHolder.getContext();
+    }
 
-  public static Authentication getAuthentication() {
-    return getSecurityContext().getAuthentication();
-  }
+    public static Authentication getAuthentication() {
+        return getSecurityContext().getAuthentication();
+    }
 
-  public static Object getUserDetails() {
-    Authentication authentication = getAuthentication();
+    public static Object getUserDetails() {
+        Authentication authentication = getAuthentication();
 
-    return authentication.getName();
-  }
-
-
+        return authentication.getName();
+    }
 
 
-  public static String getUserId() {
-    Authentication authentication = getAuthentication();
-    String name = getAuthentication().getName();
-    return name;
-  }
+    public static String getUserId() {
+        Authentication authentication = getAuthentication();
+        String name = getAuthentication().getName();
+        return name;
+    }
 
-  public static String getAccountId() {
-    SecurityUtils s = new SecurityUtils();
-    CurrentLoginInformation currentLogininformation = s.getCurrentLogininformation();
-    return "getCurrentLogininformation().getAccountId();";
+    public static String getAccountId() {
+        SecurityUtils s = new SecurityUtils();
+        CurrentLoginInformation currentLogininformation = s.getCurrentLogininformation();
+        return "getCurrentLogininformation().getAccountId();";
 //      return ServletUtils.getHeader("Authorization");
-  }
+    }
 
-  public CurrentLoginInformation getCurrentLogininformation() {
-    CurrentLoginInformation currentLogininformation = (CurrentLoginInformation) redisUtils.get(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
-    return (CurrentLoginInformation) redisUtils.get(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
+    public CurrentLoginInformation getCurrentLogininformation() {
+        CurrentLoginInformation currentLogininformation = (CurrentLoginInformation) redisUtils.get(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
+        return (CurrentLoginInformation) redisUtils.get(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
 //      return ServletUtils.getHeader("Authorization");
-  }
+    }
 }

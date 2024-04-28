@@ -11,35 +11,35 @@ import org.springframework.stereotype.Service;
 public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLoginInformationService {
 
 
-  @Autowired
-  private RedisCurrentLoginInformation redisCurrentLoginInformation;
+    @Autowired
+    private RedisCurrentLoginInformation redisCurrentLoginInformation;
 
-  @Override
-  public Result<Object> addByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput) {
-    CurrentLoginInformation CurrentLoginInformation = new CurrentLoginInformation();
-    CurrentLoginInformation.setAccountId(redisCurrentLoginInformationInput.getAccountId());
-    redisCurrentLoginInformation.addByTokenCurrentLoginInformation(CurrentLoginInformation);
-    return Result.success();
-  }
+    @Override
+    public Result<Object> addByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput) {
+        CurrentLoginInformation CurrentLoginInformation = new CurrentLoginInformation();
+        CurrentLoginInformation.setAccountId(redisCurrentLoginInformationInput.getAccountId());
+        redisCurrentLoginInformation.addByTokenCurrentLoginInformation(CurrentLoginInformation);
+        return Result.success();
+    }
 
-  @Override
-  public Result<Object> updateByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput) {
-    CurrentLoginInformation CurrentLoginInformation = new CurrentLoginInformation();
-    CurrentLoginInformation.setAccountId(redisCurrentLoginInformationInput.getAccountId());
-    redisCurrentLoginInformation.updateByTokenCurrentLoginInformation(CurrentLoginInformation);
-    return Result.success();
-  }
+    @Override
+    public Result<Object> updateByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput) {
+        CurrentLoginInformation CurrentLoginInformation = new CurrentLoginInformation();
+        CurrentLoginInformation.setAccountId(redisCurrentLoginInformationInput.getAccountId());
+        redisCurrentLoginInformation.updateByTokenCurrentLoginInformation(CurrentLoginInformation);
+        return Result.success();
+    }
 
-  @Override
-  public Result<Object> deleteByTokenCurrentLoginInformation() {
-    redisCurrentLoginInformation.deleteByTokenCurrentLoginInformation();
-    return Result.success();
-  }
+    @Override
+    public Result<Object> deleteByTokenCurrentLoginInformation() {
+        redisCurrentLoginInformation.deleteByTokenCurrentLoginInformation();
+        return Result.success();
+    }
 
-  @Override
-  public Result<CurrentLoginInformation> getCurrentLoginInformation() {
-    CurrentLoginInformation currentLoginInformation = redisCurrentLoginInformation.getCurrentLoginInformation();
-    return Result.success(currentLoginInformation);
-  }
+    @Override
+    public Result<CurrentLoginInformation> getCurrentLoginInformation() {
+        CurrentLoginInformation currentLoginInformation = redisCurrentLoginInformation.getCurrentLoginInformation();
+        return Result.success(currentLoginInformation);
+    }
 
 }

@@ -67,14 +67,14 @@ public class UserDetailServiceImpl implements StrategyUserDetailsService {
         DefaultSecurityUser defaultSecurityUser = new DefaultSecurityUser(user.getUserId()
             , user.getUserId()
             , user.getPassword()
-            ,true
-            ,true
-            ,true
-            ,true
+            , true
+            , true
+            , true
+            , true
             , getAuthorities(new ArrayList<>(List.of("USER")))
-            ,role
-            ,"123123"
-            ,"ava123213"
+            , role
+            , "123123"
+            , "ava123213"
         );
         if (ObjectUtil.isNotNull(user) && ObjectUtil.isNotNull(user.getUsername())) {
 //            defaultSecurityUser.setUsername(user.getUserId());

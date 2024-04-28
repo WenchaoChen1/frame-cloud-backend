@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 @FeignClient(contextId = "identityClient", name = ServiceConstants.SERVICE_NAME_IDENTITY, path = "/user")
 public interface IdentityFeignClient {
-  @GetMapping(value = "/a")
-  String a();
+    @GetMapping(value = "/a")
+    String a();
 
-  /**
-   * 同步保存到identity
-   *
-   * @param saveDto
-   */
-  @PostMapping()
-  ApiResult<UserDto> save(IdentitySaveDto saveDto);
+    /**
+     * 同步保存到identity
+     *
+     * @param saveDto
+     */
+    @PostMapping()
+    ApiResult<UserDto> save(IdentitySaveDto saveDto);
 }

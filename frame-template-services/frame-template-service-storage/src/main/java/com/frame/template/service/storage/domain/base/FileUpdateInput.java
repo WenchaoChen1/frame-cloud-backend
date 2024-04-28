@@ -18,23 +18,23 @@ import java.util.Date;
 @Setter
 public class FileUpdateInput extends BaseUpdateInput {
 
-  private String id;
-  private Date createdAt;
-  private String createdBy;
-  private Date updatedAt;
-  private String updatedBy;
-  private String bucketName;
-  private String contentType;
-  private String etag;
-  private String hash;
-  private Long length;
-  private String link;
-  private String name;
-  private String originalName;
-  private String tenantId;
-  private String services;
-  private String tableCode;
-  private Integer state;
+    private String id;
+    private Date createdAt;
+    private String createdBy;
+    private Date updatedAt;
+    private String updatedBy;
+    private String bucketName;
+    private String contentType;
+    private String etag;
+    private String hash;
+    private Long length;
+    private String link;
+    private String name;
+    private String originalName;
+    private String tenantId;
+    private String services;
+    private String tableCode;
+    private Integer state;
 
 }
 

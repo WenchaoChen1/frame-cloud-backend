@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Setter
 public class DemoInsertInput implements Serializable {
 
-  String name;
-  String code;
+    String name;
+    String code;
 
 }

@@ -17,7 +17,7 @@ spring:
                         refresh: true
         sentinel:
             transport:
-#                port: 8719
+                #                port: 8719
                 dashboard: localhost:8858
             eager: true #服务注启动，直接注册到dashboard
     application:

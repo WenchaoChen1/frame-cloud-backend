@@ -13,8 +13,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RRoleMenuDto {
-  String id;
-  RoleDto role;
-  MenuDto menu;
-  Integer checked;
+    String id;
+    RoleDto role;
+    MenuDto menu;
+    Integer checked;
 }

@@ -11,7 +11,6 @@ import org.hibernate.annotations.UuidGenerator;
 
 /**
  * <p>Description: 系统权限实体 </p>
- *
  */
 @Schema(name = "系统权限")
 @Getter
@@ -57,9 +56,9 @@ public class SysPermission extends BaseEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("permissionId", permissionId)
-                .add("permissionCode", permissionCode)
-                .add("permissionName", permissionName)
-                .toString();
+            .add("permissionId", permissionId)
+            .add("permissionCode", permissionCode)
+            .add("permissionName", permissionName)
+            .toString();
     }
 }

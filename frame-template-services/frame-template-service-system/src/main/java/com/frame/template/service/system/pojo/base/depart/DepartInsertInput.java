@@ -17,14 +17,14 @@ import lombok.Setter;
 @Setter
 public class DepartInsertInput extends BaseTreeInsertInput {
 
-  private String code;
-  private String description;
-  private String name;
-  private String parentId;
-  private String shortName;
-  private Integer sort;
-  private Integer status;
-  private String tenantId;
+    private String code;
+    private String description;
+    private String name;
+    private String parentId;
+    private String shortName;
+    private Integer sort;
+    private Integer status;
+    private String tenantId;
 
 
 }

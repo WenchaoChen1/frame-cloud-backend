@@ -18,19 +18,19 @@ import org.springframework.data.domain.Pageable;
 
 public interface UserService {
 
-  Result<Object> getUserData(PostQueryCriteria criteria, Pageable pageable);
+    Result<Object> getUserData(PostQueryCriteria criteria, Pageable pageable);
 
-  Result<UserDto> create(UserInput userInput);
+    Result<UserDto> create(UserInput userInput);
 
-  Result<Object> update(UserInput userInput);
+    Result<Object> update(UserInput userInput);
 
-  Result<Object> delete(String userId);
+    Result<Object> delete(String userId);
 
-  User getByUsername(String username);
+    User getByUsername(String username);
 
-  User getUserByUserId(String userId);
+    User getUserByUserId(String userId);
 
-  String findByUserId(String userId);
+    String findByUserId(String userId);
 
-  User findByEmail(String username);
+    User findByEmail(String username);
 }

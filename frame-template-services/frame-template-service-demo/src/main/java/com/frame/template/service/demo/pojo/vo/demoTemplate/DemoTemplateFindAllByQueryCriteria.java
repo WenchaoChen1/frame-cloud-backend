@@ -21,7 +21,7 @@ import lombok.Setter;
 @Setter
 public class DemoTemplateFindAllByQueryCriteria {
 
-  private static final long serialVersionUID = 3163118978801722144L;
+    private static final long serialVersionUID = 3163118978801722144L;
 //  @Query(type = Query.Type.IN)
 // private Set<String> nailedType;
 }

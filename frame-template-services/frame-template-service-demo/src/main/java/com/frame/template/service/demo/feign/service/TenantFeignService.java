@@ -17,19 +17,19 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class TenantFeignService {
-  private final TenantFeignClient tenantFeignClient;
+    private final TenantFeignClient tenantFeignClient;
 
-  /**
-   * 查询租户信息
-   *
-   * @param tenantId
-   * @return
-   */
-  public TenantDto findById(String tenantId) {
-    ApiResult<TenantDto> tenantDtoApiResult = tenantFeignClient.findById(tenantId);
-    if (null == tenantDtoApiResult || !tenantDtoApiResult.getSuccess()) {
-      throw new CommonException(500, "接口查询异常");
+    /**
+     * 查询租户信息
+     *
+     * @param tenantId
+     * @return
+     */
+    public TenantDto findById(String tenantId) {
+        ApiResult<TenantDto> tenantDtoApiResult = tenantFeignClient.findById(tenantId);
+        if (null == tenantDtoApiResult || !tenantDtoApiResult.getSuccess()) {
+            throw new CommonException(500, "接口查询异常");
+        }
+        return tenantDtoApiResult.getData();
     }
-    return tenantDtoApiResult.getData();
-  }
 }

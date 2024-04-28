@@ -11,10 +11,10 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class DictSaveInput implements Serializable {
-  String name;
-  String code;
-  String parentId;
-  Integer status;
-  Integer sort;
-  String description;
+    String name;
+    String code;
+    String parentId;
+    Integer status;
+    Integer sort;
+    String description;
 }

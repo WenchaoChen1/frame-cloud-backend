@@ -18,28 +18,28 @@ import lombok.Setter;
 @Setter
 public class TenantUpdateInput extends BaseTreeUpdateInput {
 
-  private String id;
-  private String parentId;
-  private String tenantName;
-  private String description;
-  private Integer status;
-  private String tenantCode;
-  private Integer type;
+    private String id;
+    private String parentId;
+    private String tenantName;
+    private String description;
+    private Integer status;
+    private String tenantCode;
+    private Integer type;
 
-  //-----------------自定义-----------
+    //-----------------自定义-----------
 
-  private String companyName;
-  private String website;
-  private String addressLine1;
-  private String addressLine2;
-  private String city;
-  private String state;
-  private String country;
-  private String zipCode;
-  private String firstName;
-  private String lastName;
-  private String emailAddress;
-  private String phoneNumber;
-  private String logo;
+    private String companyName;
+    private String website;
+    private String addressLine1;
+    private String addressLine2;
+    private String city;
+    private String state;
+    private String country;
+    private String zipCode;
+    private String firstName;
+    private String lastName;
+    private String emailAddress;
+    private String phoneNumber;
+    private String logo;
 }
 

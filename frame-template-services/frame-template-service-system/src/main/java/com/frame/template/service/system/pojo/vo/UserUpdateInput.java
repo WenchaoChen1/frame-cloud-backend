@@ -21,19 +21,19 @@ import java.util.Date;
 @Setter
 public class UserUpdateInput extends BaseUpdateInput {
 
-  private String id;
-  private String avatar;
-  private Integer deleted;
-  private String email;
-  private Integer gender;
-  @JsonFormat(pattern = "yyyy-MM-dd")
-  private Date lastLoginTime;
-  private String mobile;
-  private String password;
-  private String username;
-  private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
-  private String firstName;
-  private String lastName;
-  private String icon;
+    private String id;
+    private String avatar;
+    private Integer deleted;
+    private String email;
+    private Integer gender;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date lastLoginTime;
+    private String mobile;
+    private String password;
+    private String username;
+    private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
+    private String firstName;
+    private String lastName;
+    private String icon;
 }
 

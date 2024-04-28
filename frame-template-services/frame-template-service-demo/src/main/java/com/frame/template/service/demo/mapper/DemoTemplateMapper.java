@@ -18,12 +18,12 @@ import org.mapstruct.*;
 
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-  nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-  nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface DemoTemplateMapper extends AbstractMapper<DemoTemplateDto, DemoTemplate> {
 
-  DemoTemplate toEntityInsert(DemoTemplateInsertInput demoTemplateInsertInput);
+    DemoTemplate toEntityInsert(DemoTemplateInsertInput demoTemplateInsertInput);
 
-  void copyModify(DemoTemplateUpdateInput demoTemplateUpdateInput, @MappingTarget DemoTemplate depart);
+    void copyModify(DemoTemplateUpdateInput demoTemplateUpdateInput, @MappingTarget DemoTemplate depart);
 }
 

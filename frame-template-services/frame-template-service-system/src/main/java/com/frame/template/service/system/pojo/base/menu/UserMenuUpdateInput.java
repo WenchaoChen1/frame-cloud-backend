@@ -20,10 +20,10 @@ import java.util.List;
 @Setter
 public class UserMenuUpdateInput extends BaseTreeUpdateInput {
 
-  private String userId;
+    private String userId;
 
-  private List<String> checkedMenuId;
+    private List<String> checkedMenuId;
 
-  private String AccountType;
+    private String AccountType;
 }
 

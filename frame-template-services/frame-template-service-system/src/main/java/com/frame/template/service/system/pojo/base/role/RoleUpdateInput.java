@@ -17,14 +17,14 @@ import lombok.Setter;
 @Setter
 public class RoleUpdateInput extends BaseTreeUpdateInput {
 
-  private String id;
-  private String code;
-  private String description;
-  private String parentId;
-  private String roleName;
-  private Integer sort;
-  private Integer status;
-  private String tenantId;
+    private String id;
+    private String code;
+    private String description;
+    private String parentId;
+    private String roleName;
+    private Integer sort;
+    private Integer status;
+    private String tenantId;
 
 
 }

@@ -19,32 +19,32 @@ import java.util.Objects;
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 public class Email extends BasePOJOEntity {
 
-  @Column(name = "type")
-  private int type;
+    @Column(name = "type")
+    private int type;
 
-  @Column(name = "sender_email", nullable = false, length = 200)
-  private String senderEmail;
+    @Column(name = "sender_email", nullable = false, length = 200)
+    private String senderEmail;
 
-  @Column(name = "receiver_email", nullable = false, length = 200)
-  private String receiverEmail;
+    @Column(name = "receiver_email", nullable = false, length = 200)
+    private String receiverEmail;
 
-  @Column(name = "subject", nullable = false, length = 255)
-  private String subject;
+    @Column(name = "subject", nullable = false, length = 255)
+    private String subject;
 
-  @Column(name = "body", nullable = false, length = 1000)
-  private String body;
+    @Column(name = "body", nullable = false, length = 1000)
+    private String body;
 
-  @Column(name = "token")
-  private String token;
+    @Column(name = "token")
+    private String token;
 
-  @Column(name = "status", nullable = false)
-  private int Status;
+    @Column(name = "status", nullable = false)
+    private int Status;
 
-  @Column(name = "is_deleted")
-  private Boolean deleted = false;
+    @Column(name = "is_deleted")
+    private Boolean deleted = false;
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(getId());
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
 }

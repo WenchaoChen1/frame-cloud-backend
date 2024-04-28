@@ -20,12 +20,12 @@ import java.util.List;
 @Setter
 public class RRoleRTenantMenuInsertInput implements Serializable {
 
-  List<String> rTenantMenuIds;
-  private String id;
-  private Integer checked;
-  private String tenantId;
-  private String menuId;
-  private String roleId;
+    List<String> rTenantMenuIds;
+    private String id;
+    private Integer checked;
+    private String tenantId;
+    private String menuId;
+    private String roleId;
 
 
 }

@@ -15,6 +15,6 @@ import lombok.Data;
 @Data
 public class DepartPageQueryCriteria extends BaseTreePageQueryCriteria {
 
-  private static final long serialVersionUID = 3163118978801722144L;
+    private static final long serialVersionUID = 3163118978801722144L;
 }
 

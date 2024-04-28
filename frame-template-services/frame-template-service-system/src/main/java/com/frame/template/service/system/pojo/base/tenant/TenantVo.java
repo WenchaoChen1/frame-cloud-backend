@@ -21,22 +21,22 @@ import java.util.Date;
 @Getter
 @Setter
 public class TenantVo extends BaseTreeVo {
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  private Date createdAt;
-  private String createdBy;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  private Date updatedAt;
-  private String updatedBy;
-  private String tenantName;
-  private String description;
-  private Integer status;
-  private String parentId;
-  private String tenantCode;
-  private Integer type;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createdAt;
+    private String createdBy;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updatedAt;
+    private String updatedBy;
+    private String tenantName;
+    private String description;
+    private Integer status;
+    private String parentId;
+    private String tenantCode;
+    private Integer type;
 
-  //-----------------自定义-----------
+    //-----------------自定义-----------
 //  private String website;
 //  private String addressLine1;
 //  private String addressLine2;

@@ -14,7 +14,7 @@ import com.frame.template.service.system.pojo.domain.Tenant;
 import com.gstdev.cloud.data.core.service.BaseTreeService;
 
 
-public interface TenantService extends BaseTreeService<Tenant,String,TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
+public interface TenantService extends BaseTreeService<Tenant, String, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
 //
 //  Result<List<TenantDto>> getTenantTree();
 //

@@ -23,19 +23,19 @@ import jakarta.annotation.Resource;
 //  private final DepartMapper departMapper;
 @Service
 @Transactional(readOnly = true)
-public class DepartServiceImpl extends BaseTreeServiceImpl<Depart,String,DepartRepository, DepartMapper, DepartDto, DepartInsertInput, DepartUpdateInput, DepartPageQueryCriteria, DepartFindAllByQueryCriteria> implements DepartService {
+public class DepartServiceImpl extends BaseTreeServiceImpl<Depart, String, DepartRepository, DepartMapper, DepartDto, DepartInsertInput, DepartUpdateInput, DepartPageQueryCriteria, DepartFindAllByQueryCriteria> implements DepartService {
 
-  @Resource
-  private DepartRepository departRepository;
-  @Resource
-  private DepartMapper departMapper;
-  @Resource
-  private RedisCurrentLoginInformation redisCurrentLoginInformation;
+    @Resource
+    private DepartRepository departRepository;
+    @Resource
+    private DepartMapper departMapper;
+    @Resource
+    private RedisCurrentLoginInformation redisCurrentLoginInformation;
 
-  public DepartServiceImpl(DepartRepository departRepository, DepartMapper departMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
-    super(departRepository, departMapper);
+    public DepartServiceImpl(DepartRepository departRepository, DepartMapper departMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
+        super(departRepository, departMapper);
 
-    this.redisCurrentLoginInformation = redisCurrentLoginInformation;
-  }
+        this.redisCurrentLoginInformation = redisCurrentLoginInformation;
+    }
 
 }

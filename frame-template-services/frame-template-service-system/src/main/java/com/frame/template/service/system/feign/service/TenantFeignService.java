@@ -17,14 +17,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class TenantFeignService {
-  private final TenantFeignClient tenantFeignClient;
+    private final TenantFeignClient tenantFeignClient;
 
 
-  public TenantDto findById(String tenantId) {
-    Result<TenantDto> tenantDtoApiResult = tenantFeignClient.findById(tenantId);
-    if (null == tenantDtoApiResult || !tenantDtoApiResult.getSuccess()) {
-      throw new CommonException(500, "Interface query exception");
+    public TenantDto findById(String tenantId) {
+        Result<TenantDto> tenantDtoApiResult = tenantFeignClient.findById(tenantId);
+        if (null == tenantDtoApiResult || !tenantDtoApiResult.getSuccess()) {
+            throw new CommonException(500, "Interface query exception");
+        }
+        return tenantDtoApiResult.getData();
     }
-    return tenantDtoApiResult.getData();
-  }
 }

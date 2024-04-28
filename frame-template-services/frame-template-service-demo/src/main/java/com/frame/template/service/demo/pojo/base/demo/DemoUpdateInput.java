@@ -8,8 +8,8 @@ import lombok.Setter;
 @Setter
 public class DemoUpdateInput extends BaseUpdateInput {
 
-  String id;
-  String name;
-  String code;
+    String id;
+    String name;
+    String code;
 
 }

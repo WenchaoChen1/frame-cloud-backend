@@ -21,10 +21,10 @@ import org.mapstruct.ReportingPolicy;
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-  nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-  nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface RTenantMenuVoMapper extends BaseVoMapper<RTenantMenuVo, RTenantMenuDto> {
-  List<RTenantMenuVo> menuDtoToRTenantMenuVo(List<MenuDto> var1);
+    List<RTenantMenuVo> menuDtoToRTenantMenuVo(List<MenuDto> var1);
 
 }
 

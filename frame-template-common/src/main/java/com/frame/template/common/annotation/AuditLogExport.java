@@ -7,32 +7,32 @@ import java.lang.annotation.*;
 @Target({ElementType.FIELD})
 public @interface AuditLogExport {
 
-  /**
-   * The smaller the sort, the higher the front
-   *
-   * @return
-   */
-  int sort() default 0;
+    /**
+     * The smaller the sort, the higher the front
+     *
+     * @return
+     */
+    int sort() default 0;
 
-  /**
-   * export name
-   *
-   * @return
-   */
-  String exportName() default "";
+    /**
+     * export name
+     *
+     * @return
+     */
+    String exportName() default "";
 
-  /**
-   * whether
-   *
-   * @return
-   */
-  boolean currencyValue1() default false;
+    /**
+     * whether
+     *
+     * @return
+     */
+    boolean currencyValue1() default false;
 
 
-  /**
-   * whether
-   *
-   * @return
-   */
-  boolean currencyValue2() default false;
+    /**
+     * whether
+     *
+     * @return
+     */
+    boolean currencyValue2() default false;
 }

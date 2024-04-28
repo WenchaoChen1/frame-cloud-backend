@@ -14,6 +14,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class RAccountRoleSaveInput implements Serializable {
-  private Account account;
-  private Role role;
+    private Account account;
+    private Role role;
 }

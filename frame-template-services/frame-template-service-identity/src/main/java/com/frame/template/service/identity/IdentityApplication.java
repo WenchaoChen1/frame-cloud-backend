@@ -19,7 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableFeignClients
 @ComponentScan(value = {
-  "com.gstdev.cloud",
+    "com.gstdev.cloud",
 
     "com.frame.template"
 })
@@ -30,8 +30,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 public class IdentityApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(IdentityApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(IdentityApplication.class, args);
+    }
 
 }

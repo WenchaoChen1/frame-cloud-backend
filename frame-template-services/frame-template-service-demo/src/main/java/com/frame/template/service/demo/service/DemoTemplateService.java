@@ -23,17 +23,17 @@ import java.util.List;
 
 public interface DemoTemplateService {
 
-  Result<DemoTemplateDto> insert(DemoTemplateInsertInput insertInput);
+    Result<DemoTemplateDto> insert(DemoTemplateInsertInput insertInput);
 
-  Result<DemoTemplateDto> update(DemoTemplateUpdateInput updateInput);
+    Result<DemoTemplateDto> update(DemoTemplateUpdateInput updateInput);
 
-  Result<DemoTemplateDto> deleteById(String id);
+    Result<DemoTemplateDto> deleteById(String id);
 
-  Page<DemoTemplateDto> page(DemoTemplatePageQueryCriteria queryCriteria, Pageable pageable);
+    Page<DemoTemplateDto> page(DemoTemplatePageQueryCriteria queryCriteria, Pageable pageable);
 
-  DemoTemplateDto findById(String id);
+    DemoTemplateDto findById(String id);
 
-  List<DemoTemplateDto> findAllByQueryCriteria(DemoTemplateFindAllByQueryCriteria queryCriteria);
+    List<DemoTemplateDto> findAllByQueryCriteria(DemoTemplateFindAllByQueryCriteria queryCriteria);
 
 //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 

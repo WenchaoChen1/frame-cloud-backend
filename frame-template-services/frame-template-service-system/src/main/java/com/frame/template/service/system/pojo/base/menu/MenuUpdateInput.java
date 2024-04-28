@@ -17,21 +17,21 @@ import lombok.Setter;
 @Setter
 public class MenuUpdateInput extends BaseTreeUpdateInput {
 
-  private String id;
-  private String code;
-  private String description;
-  private Integer hidden;
-  private String icon;
-  private String name;
-  private String parentId;
-  private String path;
-  private String permission;
-  private Integer sort;
-  private Integer status;
-  private Integer tenantEnable;
-  private Integer type;
-  private String url;
-  private String location;
+    private String id;
+    private String code;
+    private String description;
+    private Integer hidden;
+    private String icon;
+    private String name;
+    private String parentId;
+    private String path;
+    private String permission;
+    private Integer sort;
+    private Integer status;
+    private Integer tenantEnable;
+    private Integer type;
+    private String url;
+    private String location;
 
 }
 

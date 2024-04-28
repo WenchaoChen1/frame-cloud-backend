@@ -18,22 +18,21 @@ import java.util.List;
 
 /**
  * <p>Description: SecurityMetadata数据处理器 </p>
- *
  */
 @Component
 public class SecurityMetadataDistributeProcessor implements StrategyEventManager<List<SecurityAttribute>> {
 
     private static final Logger log = LoggerFactory.getLogger(SecurityMetadataDistributeProcessor.class);
 
-//    private final Converter<List<SysInterface>, List<SysAttribute>> toSysAttributes;
+    //    private final Converter<List<SysInterface>, List<SysAttribute>> toSysAttributes;
 //    private final Converter<SysAttribute, SecurityAttribute> toSecurityAttribute;
 //
 //    private final SysAttributeService sysAttributeService;
 //    private final SysInterfaceService sysInterfaceService;
     private final SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer;
 
-//    public SecurityMetadataDistributeProcessor(SysAttributeService sysAttributeService, SysInterfaceService sysInterfaceService, SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
-    public SecurityMetadataDistributeProcessor( SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
+    //    public SecurityMetadataDistributeProcessor(SysAttributeService sysAttributeService, SysInterfaceService sysInterfaceService, SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
+    public SecurityMetadataDistributeProcessor(SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
 //        this.sysAttributeService = sysAttributeService;
 //        this.sysInterfaceService = sysInterfaceService;
         this.securityMetadataSourceAnalyzer = securityMetadataSourceAnalyzer;

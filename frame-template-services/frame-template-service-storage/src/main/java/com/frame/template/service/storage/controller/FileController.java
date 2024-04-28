@@ -30,54 +30,54 @@ import java.util.List;
 @RequestMapping("/v1/file")
 public class FileController extends BasePOJOController<FileService, FileVoMapper, FileVo, FileDto, FileInsertInput, FileUpdateInput, FilePageQueryCriteria, FileFindAllByQueryCriteria> {
 
-  @Resource
-  private FileService fileService;
+    @Resource
+    private FileService fileService;
 
-  @Resource
-  private FileVoMapper fileVoMapper;
+    @Resource
+    private FileVoMapper fileVoMapper;
 
-  public FileController(FileService fileService, FileVoMapper fileVoMapper) {
-    super(fileService, fileVoMapper);
-    this.fileService = fileService;
-    this.fileVoMapper = fileVoMapper;
-  }
+    public FileController(FileService fileService, FileVoMapper fileVoMapper) {
+        super(fileService, fileVoMapper);
+        this.fileService = fileService;
+        this.fileVoMapper = fileVoMapper;
+    }
 
-  @GetMapping("/get-by-id")
-  @ApiOperation("根据id获取实体数据")
-  public Result<FileVo> getById(String id) {
-    return findByIdToResult(id);
-  }
+    @GetMapping("/get-by-id")
+    @ApiOperation("根据id获取实体数据")
+    public Result<FileVo> getById(String id) {
+        return findByIdToResult(id);
+    }
 
-  @PostMapping
-  @ApiOperation("新增一条数据")
-  public Result<FileVo> insert(FileInsertInput fileInsertInput, @RequestParam("file") MultipartFile file) {
-    return insertToResult(fileInsertInput);
-  }
+    @PostMapping
+    @ApiOperation("新增一条数据")
+    public Result<FileVo> insert(FileInsertInput fileInsertInput, @RequestParam("file") MultipartFile file) {
+        return insertToResult(fileInsertInput);
+    }
 
 
-  @ApiOperation("Delete file")
-  @DeleteMapping
-  public Result<FileVo> delete(@PathVariable final String id) {
-    return deleteByIdToResult(id);
-  }
+    @ApiOperation("Delete file")
+    @DeleteMapping
+    public Result<FileVo> delete(@PathVariable final String id) {
+        return deleteByIdToResult(id);
+    }
 
-  @ApiOperation("Upload file")
-  @PostMapping(value = "/upload")
-  public Result<FileVo> upload(@RequestParam("file") MultipartFile file, @RequestParam("tenantId") String tenantId, @RequestParam("type") FileConstants fileConstants) throws IOException {
-    if (fileConstants == null) {
+    @ApiOperation("Upload file")
+    @PostMapping(value = "/upload")
+    public Result<FileVo> upload(@RequestParam("file") MultipartFile file, @RequestParam("tenantId") String tenantId, @RequestParam("type") FileConstants fileConstants) throws IOException {
+        if (fileConstants == null) {
+
+        }
+        Result<FileVo> fileVoResult = getMapper().toVo(fileService.upload(file, tenantId, fileConstants));
+        return fileVoResult;
 
     }
-    Result<FileVo> fileVoResult = getMapper().toVo(fileService.upload(file, tenantId, fileConstants));
-    return fileVoResult;
 
-  }
-
-  @ApiOperation("Uploads file")
-  @PostMapping(value = "/uploads")
-  public Result<List<FileVo>> uploads(@RequestParam("file") List<MultipartFile> file, @RequestParam("tenantId") String tenantId, @RequestParam("type") FileConstants fileConstants) throws IOException {
-    Result<List<FileVo>> fileVoResult = getMapper().toAllVo(fileService.uploads(file, tenantId, fileConstants));
-    return fileVoResult;
-  }
+    @ApiOperation("Uploads file")
+    @PostMapping(value = "/uploads")
+    public Result<List<FileVo>> uploads(@RequestParam("file") List<MultipartFile> file, @RequestParam("tenantId") String tenantId, @RequestParam("type") FileConstants fileConstants) throws IOException {
+        Result<List<FileVo>> fileVoResult = getMapper().toAllVo(fileService.uploads(file, tenantId, fileConstants));
+        return fileVoResult;
+    }
 
 }
 

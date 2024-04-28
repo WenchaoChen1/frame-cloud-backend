@@ -68,87 +68,87 @@ import jakarta.annotation.Resource;
 @RequestMapping("/demo")
 public class DemoController extends BasePOJOController<DemoService, DemoVoMapper, DemoVo, DemoDto, DemoInsertInput, DemoUpdateInput, DemoPageQueryCriteria, DemoFindAllByQueryCriteria> {
 
-  @Resource
-  private DemoService demoService;
+    @Resource
+    private DemoService demoService;
 
-  @Resource
-  private DemoVoMapper demoVoMapper;
+    @Resource
+    private DemoVoMapper demoVoMapper;
 
-  public DemoController(DemoService demoService, DemoVoMapper demoVoMapper) {
-    super(demoService, demoVoMapper);
-    this.demoService = demoService;
-    this.demoVoMapper = demoVoMapper;
-  }
-
-  @PutMapping("/update-xxx-xxx")
-  public Result<Object> updatexxxxxx(@RequestBody DemoUpdateXXXXXXInput demoUpdateXXXXXXInput) {
-    try {
-      return demoService.updatexxxxxx(demoUpdateXXXXXXInput);
-    } catch (Exception e) {
-      e.printStackTrace();
-      return Result.failure("Delete failed");
+    public DemoController(DemoService demoService, DemoVoMapper demoVoMapper) {
+        super(demoService, demoVoMapper);
+        this.demoService = demoService;
+        this.demoVoMapper = demoVoMapper;
     }
-  }
 
-
-  /**
-   * 以下两个个接口demo我们平常几乎不会出现，我们使用page,或者findAll接口就可以满足，下面的接口在开发时可以删除
-   *
-   * @param name
-   * @return
-   */
-  @GetMapping("/find-by-name")
-  public Result<Object> findByName(String name) {
-    try {
-      return Result.success(demoService.findByName(name));
-    } catch (Exception e) {
-      e.printStackTrace();
-      return Result.failure("Delete failed");
+    @PutMapping("/update-xxx-xxx")
+    public Result<Object> updatexxxxxx(@RequestBody DemoUpdateXXXXXXInput demoUpdateXXXXXXInput) {
+        try {
+            return demoService.updatexxxxxx(demoUpdateXXXXXXInput);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.failure("Delete failed");
+        }
     }
-  }
 
-  @GetMapping("/find-by-name-and-code")
-  public Result<Object> findByNameAndCode(String name, String code) {
-    try {
-      return Result.success(demoService.findByNameAndCode(name, code));
-    } catch (Exception e) {
-      e.printStackTrace();
-      return Result.failure("Delete failed");
-    }
-  }
 
-  @GetMapping("/find-all-by-name")
-  public Result<Object> findAllByName(String name) {
-    try {
-      return Result.success(demoService.findAllByName(name));
-    } catch (Exception e) {
-      e.printStackTrace();
-      return Result.failure("Delete failed");
+    /**
+     * 以下两个个接口demo我们平常几乎不会出现，我们使用page,或者findAll接口就可以满足，下面的接口在开发时可以删除
+     *
+     * @param name
+     * @return
+     */
+    @GetMapping("/find-by-name")
+    public Result<Object> findByName(String name) {
+        try {
+            return Result.success(demoService.findByName(name));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.failure("Delete failed");
+        }
     }
-  }
 
-  /**
-   * 如果想抛出自己的异常内容的话写使用下面这种方式
-   * <p>
-   * 如果是多个表联查，你返回的dto是哪个就这对应的dto----controller写
-   * 原则上一个方法一个dto
-   * 实际使用中可以公用一个
-   *
-   * @param name
-   * @return
-   */
-  @GetMapping("/get-current-login-information")
-  public Result<Object> getCurrentLoginInformation(String name) {
-    try {
-      return Result.success(demoService.getCurrentLoginInformation(name));
-    } catch (CommonException commonException) {
-      commonException.printStackTrace();
-      return Result.failure(commonException.getMessage());
-    } catch (Exception e) {
-      e.printStackTrace();
-      return Result.failure("Delete failed");
+    @GetMapping("/find-by-name-and-code")
+    public Result<Object> findByNameAndCode(String name, String code) {
+        try {
+            return Result.success(demoService.findByNameAndCode(name, code));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.failure("Delete failed");
+        }
     }
-  }
+
+    @GetMapping("/find-all-by-name")
+    public Result<Object> findAllByName(String name) {
+        try {
+            return Result.success(demoService.findAllByName(name));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.failure("Delete failed");
+        }
+    }
+
+    /**
+     * 如果想抛出自己的异常内容的话写使用下面这种方式
+     * <p>
+     * 如果是多个表联查，你返回的dto是哪个就这对应的dto----controller写
+     * 原则上一个方法一个dto
+     * 实际使用中可以公用一个
+     *
+     * @param name
+     * @return
+     */
+    @GetMapping("/get-current-login-information")
+    public Result<Object> getCurrentLoginInformation(String name) {
+        try {
+            return Result.success(demoService.getCurrentLoginInformation(name));
+        } catch (CommonException commonException) {
+            commonException.printStackTrace();
+            return Result.failure(commonException.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.failure("Delete failed");
+        }
+    }
 
 
 }

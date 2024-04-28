@@ -13,11 +13,11 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ApiResult<T> {
-  private Boolean success;
-  private String message;
-  private String code;
-  private T data;
+    private Boolean success;
+    private String message;
+    private String code;
+    private T data;
 
-  public ApiResult() {
-  }
+    public ApiResult() {
+    }
 }

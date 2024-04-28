@@ -23,14 +23,14 @@ public interface DemoService extends BasePOJOService<DemoDto, DemoInsertInput, D
 
 //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 
-  DemoDto findByName(String name);
+    DemoDto findByName(String name);
 
-  DemoDto findByNameAndCode(String name, String code);
+    DemoDto findByNameAndCode(String name, String code);
 
 
-  List<DemoDto> findAllByName(String name);
+    List<DemoDto> findAllByName(String name);
 
-  Result<Object> updatexxxxxx(DemoUpdateXXXXXXInput demoUpdateXXXXXXInput);
+    Result<Object> updatexxxxxx(DemoUpdateXXXXXXInput demoUpdateXXXXXXInput);
 
-  DemoDto getCurrentLoginInformation(String name);
+    DemoDto getCurrentLoginInformation(String name);
 }

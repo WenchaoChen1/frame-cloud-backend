@@ -28,26 +28,26 @@ import java.util.List;
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 public class RTenantMenu extends BasePOJOEntity {
 
-  @Column(name = "tenantId", length = 36, nullable = false)
-  private String tenantId;
+    @Column(name = "tenantId", length = 36, nullable = false)
+    private String tenantId;
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "menu_id", referencedColumnName = "id")
-  private Menu menu;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "menu_id", referencedColumnName = "id")
+    private Menu menu;
 
-  @Column(name = "status")
-  private Integer status;
+    @Column(name = "status")
+    private Integer status;
 
-  /**
-   * 0半选 1全选
-   */
-  @Column(name = "checked", length = 1)
-  private Integer checked;
+    /**
+     * 0半选 1全选
+     */
+    @Column(name = "checked", length = 1)
+    private Integer checked;
 
 
-  @ManyToMany
-  @JoinTable(name = "sys_r_role_r_tenant_menu", joinColumns = {
-    @JoinColumn(name = "r_tenant_menu_id", referencedColumnName = "id")}, inverseJoinColumns = {
-    @JoinColumn(name = "role_id", referencedColumnName = "id")})
-  private List<Role> roles;
+    @ManyToMany
+    @JoinTable(name = "sys_r_role_r_tenant_menu", joinColumns = {
+        @JoinColumn(name = "r_tenant_menu_id", referencedColumnName = "id")}, inverseJoinColumns = {
+        @JoinColumn(name = "role_id", referencedColumnName = "id")})
+    private List<Role> roles;
 }

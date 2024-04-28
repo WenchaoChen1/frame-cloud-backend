@@ -19,31 +19,31 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class IdentityFeignService {
-  private final IdentityFeignClient identityFeignClient;
-  private final IdentityClient identityClient;
+    private final IdentityFeignClient identityFeignClient;
+    private final IdentityClient identityClient;
 
-  public UserDto save(IdentitySaveDto identitySaveDto) {
-    Result<UserDto> result = identityFeignClient.save(identitySaveDto);
-    if (null == result) {
-      throw new CommonException(500, "Call feign interface ---user.save exception --null");
+    public UserDto save(IdentitySaveDto identitySaveDto) {
+        Result<UserDto> result = identityFeignClient.save(identitySaveDto);
+        if (null == result) {
+            throw new CommonException(500, "Call feign interface ---user.save exception --null");
+        }
+        if (!result.getSuccess()) {
+            throw new CommonException(500, "Call the feign interface --- user.save exception ---" + result.getMessage());
+        }
+        UserDto dto = result.getData();
+        return dto;
     }
-    if (!result.getSuccess()) {
-      throw new CommonException(500, "Call the feign interface --- user.save exception ---" + result.getMessage());
+
+    public void deleteByUserId(String userId) {
+        identityFeignClient.deleteByUserId(userId);
     }
-    UserDto dto = result.getData();
-    return dto;
-  }
 
-  public void deleteByUserId(String userId) {
-    identityFeignClient.deleteByUserId(userId);
-  }
+    public Result<UserDto> updateEmail(IdentitySaveDto identitySaveDto) {
+        return identityFeignClient.updateEmail(identitySaveDto);
+    }
 
-  public Result<UserDto> updateEmail(IdentitySaveDto identitySaveDto) {
-    return identityFeignClient.updateEmail(identitySaveDto);
-  }
-
-  public Object login(String username, String password, Boolean rememberMe) {
-    return identityClient.login("Basic cGFzc3dvcmQtY2xpZW50OmJsYWNrMTIz", username, password, rememberMe, "password");
-  }
+    public Object login(String username, String password, Boolean rememberMe) {
+        return identityClient.login("Basic cGFzc3dvcmQtY2xpZW50OmJsYWNrMTIz", username, password, rememberMe, "password");
+    }
 
 }

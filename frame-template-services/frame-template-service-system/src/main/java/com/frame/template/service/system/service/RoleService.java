@@ -7,12 +7,12 @@ import com.gstdev.cloud.data.core.service.BaseTreeService;
 
 import java.util.List;
 
-public interface RoleService extends BaseTreeService<Role,String,RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> {
-  Result<List<String>> getAllByRoleId(String roleId);
+public interface RoleService extends BaseTreeService<Role, String, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> {
+    Result<List<String>> getAllByRoleId(String roleId);
 
-  Result<String> insertRoleMenu(RoleInsertInput roleInsertInput);
+    Result<String> insertRoleMenu(RoleInsertInput roleInsertInput);
 
-  Role insert(Role role);
+    Role insert(Role role);
 
 //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 }

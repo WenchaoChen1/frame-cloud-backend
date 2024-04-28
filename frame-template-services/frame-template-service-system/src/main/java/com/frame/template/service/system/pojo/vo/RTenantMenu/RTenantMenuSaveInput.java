@@ -19,8 +19,8 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class RTenantMenuSaveInput implements Serializable {
-  private String tenantId;
-  private Menu menu;
-  private Integer status;
+    private String tenantId;
+    private Menu menu;
+    private Integer status;
 }
 

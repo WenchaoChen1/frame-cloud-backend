@@ -15,28 +15,28 @@ import java.util.List;
 @Getter
 @Setter
 public class MenuLinkQueryDto implements Serializable {
-  String id;
-  String name;
-  String parentId;
-  String url;
-  String icon;
-  String path;
-  String permission;
-  Integer type;
-  Integer hidden;
-  Integer status;
-  Integer tenantEnable;
-  Integer sort;
-  String description;
-  Integer deleted;
-  Integer isLinkTenant;
-  List<MenuLinkQueryDto> children;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  private Date createdAt;
-  private String createdBy;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  private Date updatedAt;
-  private String updatedBy;
+    String id;
+    String name;
+    String parentId;
+    String url;
+    String icon;
+    String path;
+    String permission;
+    Integer type;
+    Integer hidden;
+    Integer status;
+    Integer tenantEnable;
+    Integer sort;
+    String description;
+    Integer deleted;
+    Integer isLinkTenant;
+    List<MenuLinkQueryDto> children;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createdAt;
+    private String createdBy;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updatedAt;
+    private String updatedBy;
 }

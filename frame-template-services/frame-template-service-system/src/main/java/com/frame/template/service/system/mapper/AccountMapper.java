@@ -9,9 +9,9 @@ import com.gstdev.cloud.data.core.mapper.BaseMapper;
 import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-  nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-  nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface AccountMapper extends BaseMapper<Account, AccountDto, AccountInsertInput, AccountUpdateInput> {
 
-  Account toSave(AccountSaveInput saveInput);
+    Account toSave(AccountSaveInput saveInput);
 }

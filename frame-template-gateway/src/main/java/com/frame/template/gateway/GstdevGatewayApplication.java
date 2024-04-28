@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Import;
 //@Import(value = EnableAutoConfigurationImportSelector.class)
 public class GstdevGatewayApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(GstdevGatewayApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(GstdevGatewayApplication.class, args);
+    }
 
 }

@@ -19,27 +19,27 @@ import java.util.List;
 
 public interface RTenantMenuRepository extends JpaRepository<RTenantMenu, String>, JpaSpecificationExecutor<RTenantMenu>, BaseRepository<RTenantMenu, String> {
 
-  RTenantMenu findByTenantIdAndMenu(String tenantId, Menu menu);
+    RTenantMenu findByTenantIdAndMenu(String tenantId, Menu menu);
 
-  /**
-   * 查询菜单主键
-   *
-   * @param tenantId
-   * @return
-   */
-  List<RTenantMenu> findByTenantId(String tenantId);
+    /**
+     * 查询菜单主键
+     *
+     * @param tenantId
+     * @return
+     */
+    List<RTenantMenu> findByTenantId(String tenantId);
 
-  /**
-   * 删除
-   *
-   * @param tenantId
-   */
-  void deleteByTenantId(String tenantId);
+    /**
+     * 删除
+     *
+     * @param tenantId
+     */
+    void deleteByTenantId(String tenantId);
 
-  RTenantMenu findByMenuIdAndTenantId(String id, String roleId);
+    RTenantMenu findByMenuIdAndTenantId(String id, String roleId);
 
 //  List<RTenantMenu> findAllByTenantIdAndInMenuId(String tenantId, List<String> menuIds);
 
-  List<RTenantMenu> findAllByTenantIdAndMenuIdIn(String tenantId, List<String> menuIds);
+    List<RTenantMenu> findAllByTenantIdAndMenuIdIn(String tenantId, List<String> menuIds);
 }
 

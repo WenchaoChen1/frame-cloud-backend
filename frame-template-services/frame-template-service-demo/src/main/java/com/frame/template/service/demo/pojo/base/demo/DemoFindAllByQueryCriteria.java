@@ -10,6 +10,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class DemoFindAllByQueryCriteria implements Serializable {
-  @Query(blurry = "name")
-  String name;
+    @Query(blurry = "name")
+    String name;
 }

@@ -13,13 +13,13 @@ import java.util.List;
 @Getter
 @Setter
 public class RRoleMenuBatchSaveInput {
-  private String roleId;
-  /**
-   * 全选
-   */
-  private List<String> checkedMenuId;
-  /**
-   * 半选
-   */
-  private List<String> halfCheckedMenuId;
+    private String roleId;
+    /**
+     * 全选
+     */
+    private List<String> checkedMenuId;
+    /**
+     * 半选
+     */
+    private List<String> halfCheckedMenuId;
 }

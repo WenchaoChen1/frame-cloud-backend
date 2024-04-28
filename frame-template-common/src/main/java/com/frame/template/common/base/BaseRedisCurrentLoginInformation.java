@@ -4,9 +4,9 @@ import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInfor
 
 public interface BaseRedisCurrentLoginInformation {
 
-  String getCurrentLoginAccountId();
+    String getCurrentLoginAccountId();
 
-  String getCurrentLoginTenantId();
+    String getCurrentLoginTenantId();
 
-  CurrentLoginInformation getCurrentLoginInformation();
+    CurrentLoginInformation getCurrentLoginInformation();
 }

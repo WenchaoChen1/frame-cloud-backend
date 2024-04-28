@@ -18,19 +18,19 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class IdentityFeignService {
-  private final IdentityFeignClient identityFeignClient;
+    private final IdentityFeignClient identityFeignClient;
 
-  public UserDto save(IdentitySaveDto identitySaveDto) {
-    log.debug("调用feign接口开始---user.save");
-    ApiResult<UserDto> result = identityFeignClient.save(identitySaveDto);
+    public UserDto save(IdentitySaveDto identitySaveDto) {
+        log.debug("调用feign接口开始---user.save");
+        ApiResult<UserDto> result = identityFeignClient.save(identitySaveDto);
 //    log.debug("Feign调用 areaClient.getAreaName end:{}", JSON.toJSONString(result));
-    if (null == result) {
-      throw new CommonException(500, "调用feign接口---user.save  异常 --null");
+        if (null == result) {
+            throw new CommonException(500, "调用feign接口---user.save  异常 --null");
+        }
+        if (!result.getSuccess()) {
+            throw new CommonException(500, "调用feign接口---user.save  异常--" + result.getMessage());
+        }
+        UserDto dto = result.getData();
+        return dto;
     }
-    if (!result.getSuccess()) {
-      throw new CommonException(500, "调用feign接口---user.save  异常--" + result.getMessage());
-    }
-    UserDto dto = result.getData();
-    return dto;
-  }
 }

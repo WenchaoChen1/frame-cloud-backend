@@ -19,13 +19,13 @@ import java.io.Serializable;
 @Setter
 public class DemoTemplateUpdateInput {
 
-  private String id;
-  private Date createdAt;
-  private String createdBy;
-  private Date updatedAt;
-  private String updatedBy;
-  private String code;
-  private String name;
+    private String id;
+    private Date createdAt;
+    private String createdBy;
+    private Date updatedAt;
+    private String updatedBy;
+    private String code;
+    private String name;
 
 
 }

@@ -23,23 +23,23 @@ import java.util.List;
 @Setter
 public class TenantDto implements Serializable {
 
-  List<TenantDto> children;
-  private String id;
-  @JsonFormat(timezone = "America/Chicago", pattern = "yyyy-MM-dd HH:mm:ss")
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  private Date createdAt;
-  private String createdBy;
-  @JsonFormat(timezone = "America/Chicago", pattern = "yyyy-MM-dd HH:mm:ss")
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  private Date updatedAt;
-  private String updatedBy;
-  private String tenantName;
-  private String description;
-  private Integer status;
-  private String parentId;
-  private String tenantCode;
-  private String logo;
-  private Integer type;
-  private String avatar;
+    List<TenantDto> children;
+    private String id;
+    @JsonFormat(timezone = "America/Chicago", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createdAt;
+    private String createdBy;
+    @JsonFormat(timezone = "America/Chicago", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updatedAt;
+    private String updatedBy;
+    private String tenantName;
+    private String description;
+    private Integer status;
+    private String parentId;
+    private String tenantCode;
+    private String logo;
+    private Integer type;
+    private String avatar;
 }
 

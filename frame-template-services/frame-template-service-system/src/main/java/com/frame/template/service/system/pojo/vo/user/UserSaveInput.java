@@ -6,10 +6,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserSaveInput {
-  String username;
-  String mobile;
-  String email;
-  String avatar;
-  Integer gender;
-  String password;
+    String username;
+    String mobile;
+    String email;
+    String avatar;
+    Integer gender;
+    String password;
 }

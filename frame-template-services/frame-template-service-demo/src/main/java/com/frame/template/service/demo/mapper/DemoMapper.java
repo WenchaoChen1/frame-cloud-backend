@@ -19,8 +19,8 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-  nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-  nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface DemoMapper extends BaseMapper<Demo, DemoDto, DemoInsertInput, DemoUpdateInput> {
 //
 //    Demo toEntitySave(DemoInsertInput demoInsertInput);
@@ -29,7 +29,7 @@ public interface DemoMapper extends BaseMapper<Demo, DemoDto, DemoInsertInput, D
 //
 //    void copyModify(DemoUpdateInput demoUpdateInput, @MappingTarget Demo depart);
 
-  Demo toEntityaaaSave(DemoInsertInput demoInsertInput);
+    Demo toEntityaaaSave(DemoInsertInput demoInsertInput);
 
 }
 

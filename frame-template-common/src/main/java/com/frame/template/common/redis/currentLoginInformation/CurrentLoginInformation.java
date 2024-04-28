@@ -9,11 +9,11 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class CurrentLoginInformation implements Serializable {
-  private String userId;
-  private String accountId;
-  private String tenantId;
-  private String accountType;
-  private JSON tenant;
-  private JSON currentLoginAccount;
-  private JSON currentLoginAccountUserPermissions;
+    private String userId;
+    private String accountId;
+    private String tenantId;
+    private String accountType;
+    private JSON tenant;
+    private JSON currentLoginAccount;
+    private JSON currentLoginAccountUserPermissions;
 }

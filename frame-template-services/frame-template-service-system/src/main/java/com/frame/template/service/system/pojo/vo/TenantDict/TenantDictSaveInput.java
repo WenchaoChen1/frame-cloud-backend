@@ -11,11 +11,11 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class TenantDictSaveInput implements Serializable {
-  String name;
-  String code;
-  String parentId;
-  String tenantId;
-  Integer status;
-  Integer sort;
-  String description;
+    String name;
+    String code;
+    String parentId;
+    String tenantId;
+    Integer status;
+    Integer sort;
+    String description;
 }

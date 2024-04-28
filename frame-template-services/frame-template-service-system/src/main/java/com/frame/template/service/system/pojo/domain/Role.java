@@ -30,29 +30,29 @@ import java.util.List;
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 public class Role extends BaseTreeEntity {
 
-  @Column(name = "tenant_id", length = 50, nullable = false)
-  private String tenantId;
+    @Column(name = "tenant_id", length = 50, nullable = false)
+    private String tenantId;
 
-  @Column(name = "parent_id", length = 36)
-  private String parentId;
+    @Column(name = "parent_id", length = 36)
+    private String parentId;
 
-  @Column(name = "role_name", length = 50, nullable = false)
-  private String roleName;
+    @Column(name = "role_name", length = 50, nullable = false)
+    private String roleName;
 
-  @Column(name = "code", length = 50, nullable = false)
-  private String code;
+    @Column(name = "code", length = 50, nullable = false)
+    private String code;
 
-  @Column(name = "status", nullable = false)
-  private Integer status = 1;
+    @Column(name = "status", nullable = false)
+    private Integer status = 1;
 
-  @Column(name = "sort")
-  private Integer sort;
+    @Column(name = "sort")
+    private Integer sort;
 
-  @Column(name = "description")
-  private String description;
+    @Column(name = "description")
+    private String description;
 
-  @Column(name = "deleted", nullable = false)
-  private Integer deleted = 0;
+    @Column(name = "deleted", nullable = false)
+    private Integer deleted = 0;
 
 //  @JsonIgnore
 //  @OneToMany(mappedBy = "role",cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
@@ -62,15 +62,15 @@ public class Role extends BaseTreeEntity {
 //  @JoinColumn(name = "account_id", referencedColumnName = "id")
 //  private Account account;
 
-  @JsonIgnore
-  @ManyToMany(mappedBy = "roles")
-  private List<RTenantMenu> rTenantMenus;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "roles")
+    private List<RTenantMenu> rTenantMenus;
 
-  @ManyToMany
-  @JoinTable(name = "sys_r_account_role", joinColumns = {
-    @JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {
-    @JoinColumn(name = "account_id", referencedColumnName = "id")})
-  private List<Account> accounts;
+    @ManyToMany
+    @JoinTable(name = "sys_r_account_role", joinColumns = {
+        @JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {
+        @JoinColumn(name = "account_id", referencedColumnName = "id")})
+    private List<Account> accounts;
 }
 
 

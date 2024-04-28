@@ -17,17 +17,16 @@ import java.util.List;
 
 /**
  * <p>Description: SysPermissionController </p>
-
  */
 @RestController
 @RequestMapping("/security/permission")
 @Tags({
-        @Tag(name = "用户安全管理接口"),
-        @Tag(name = "系统权限管理接口")
+    @Tag(name = "用户安全管理接口"),
+    @Tag(name = "系统权限管理接口")
 })
-public class SysPermissionController extends BaseController<SysPermission, String,SysPermissionService> {
+public class SysPermissionController extends BaseController<SysPermission, String, SysPermissionService> {
 
-    private  SysPermissionService sysPermissionService;
+    private SysPermissionService sysPermissionService;
 
     public SysPermissionController(SysPermissionService sysPermissionService) {
         super(sysPermissionService);

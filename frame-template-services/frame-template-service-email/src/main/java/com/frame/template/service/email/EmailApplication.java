@@ -19,16 +19,16 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableFeignClients
 @ComponentScan(value = {"com.frame.cloud.commons.utils",
-  "com.frame.template.service.email",
-  "com.frame.template.common.redis"})
+    "com.frame.template.service.email",
+    "com.frame.template.common.redis"})
 @EntityScan(value = {"com.frame.template.service.email"})
 @EnableJpaRepositories(value = {"com.frame.template.service.email"})
 @ConfigurationPropertiesScan("com.frame.template.service.email")
 @SpringBootApplication
 public class EmailApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(EmailApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(EmailApplication.class, args);
+    }
 
 }

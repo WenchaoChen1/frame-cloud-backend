@@ -20,14 +20,14 @@ import java.util.Date;
 @Setter
 public class DemoTreeUpdateInput extends BaseTreeUpdateInput {
 
-  private String id;
-  private Date createdAt;
-  private String createdBy;
-  private Date updatedAt;
-  private String updatedBy;
-  private String code;
-  private String name;
-  private String parentId;
+    private String id;
+    private Date createdAt;
+    private String createdBy;
+    private Date updatedAt;
+    private String updatedBy;
+    private String code;
+    private String name;
+    private String parentId;
 
 }
 

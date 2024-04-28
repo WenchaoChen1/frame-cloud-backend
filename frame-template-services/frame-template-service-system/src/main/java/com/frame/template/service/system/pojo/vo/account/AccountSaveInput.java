@@ -9,12 +9,12 @@ import java.util.List;
 @Getter
 @Setter
 public class AccountSaveInput {
-  String identity;
-  String tenantId;
+    String identity;
+    String tenantId;
 
-  UserSaveInput user;
+    UserSaveInput user;
 
-  List<String> depart;
+    List<String> depart;
 
-  List<String> role;
+    List<String> role;
 }

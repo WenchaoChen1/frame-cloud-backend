@@ -20,8 +20,8 @@ import java.io.Serializable;
 @Setter
 public class AccountFindAllByQueryCriteria extends BaseFindAllByQueryCriteria implements Serializable {
 
-  private static final long serialVersionUID = 3163118978801722144L;
-  @Query
-  private String tenantId;
+    private static final long serialVersionUID = 3163118978801722144L;
+    @Query
+    private String tenantId;
 }
 

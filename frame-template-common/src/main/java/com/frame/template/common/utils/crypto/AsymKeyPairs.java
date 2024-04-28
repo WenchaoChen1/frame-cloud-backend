@@ -7,22 +7,22 @@ package com.frame.template.common.utils.crypto;
  */
 public class AsymKeyPairs {
 
-  private String hexPublicKey;
-  private String hexPrivateKey;
+    private String hexPublicKey;
+    private String hexPrivateKey;
 
-  public String getHexPublicKey() {
-    return hexPublicKey;
-  }
+    public String getHexPublicKey() {
+        return hexPublicKey;
+    }
 
-  public void setHexPublicKey(String hexPublicKey) {
-    this.hexPublicKey = hexPublicKey;
-  }
+    public void setHexPublicKey(String hexPublicKey) {
+        this.hexPublicKey = hexPublicKey;
+    }
 
-  public String getHexPrivateKey() {
-    return hexPrivateKey;
-  }
+    public String getHexPrivateKey() {
+        return hexPrivateKey;
+    }
 
-  public void setHexPrivateKey(String hexPrivateKey) {
-    this.hexPrivateKey = hexPrivateKey;
-  }
+    public void setHexPrivateKey(String hexPrivateKey) {
+        this.hexPrivateKey = hexPrivateKey;
+    }
 }

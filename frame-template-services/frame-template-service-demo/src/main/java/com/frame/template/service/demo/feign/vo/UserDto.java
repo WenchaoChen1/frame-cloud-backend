@@ -20,11 +20,11 @@ import lombok.ToString;
 @AllArgsConstructor
 public class UserDto {
 
-  private String id;
-  private String username;
-  private String email;
-  private String password;
+    private String id;
+    private String username;
+    private String email;
+    private String password;
 
-  public UserDto() {
-  }
+    public UserDto() {
+    }
 }

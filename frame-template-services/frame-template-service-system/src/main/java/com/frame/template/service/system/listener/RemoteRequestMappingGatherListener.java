@@ -15,7 +15,6 @@ import java.util.List;
 
 /**
  * <p>Description: SecurityMetadata远程变更事件监听 </p>
- *
  */
 @Component
 public class RemoteRequestMappingGatherListener implements ApplicationListener<RemoteRequestMappingGatherEvent> {

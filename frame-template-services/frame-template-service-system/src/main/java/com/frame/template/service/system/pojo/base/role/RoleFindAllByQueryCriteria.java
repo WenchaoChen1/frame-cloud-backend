@@ -18,10 +18,10 @@ import lombok.Setter;
 @Setter
 public class RoleFindAllByQueryCriteria extends BaseTreeFindAllByQueryCriteria {
 
-  private static final long serialVersionUID = 3163118978801722144L;
+    private static final long serialVersionUID = 3163118978801722144L;
 
-  @Query
-  private String tenantId;
+    @Query
+    private String tenantId;
 
 }
 

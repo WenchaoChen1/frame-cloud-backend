@@ -19,9 +19,9 @@ import lombok.Setter;
 @Setter
 public class MenuFindAllByQueryCriteria extends BaseTreeFindAllByQueryCriteria {
 
-  private static final long serialVersionUID = 3163118978801722144L;
+    private static final long serialVersionUID = 3163118978801722144L;
 
-  @Query(propName = "tenantId", joinName = "rTenantMenus", join = Query.Join.LEFT)
-  String tenantId;
+    @Query(propName = "tenantId", joinName = "rTenantMenus", join = Query.Join.LEFT)
+    String tenantId;
 }
 

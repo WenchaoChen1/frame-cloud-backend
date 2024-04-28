@@ -15,21 +15,21 @@ import java.util.List;
 @Getter
 @Setter
 public class DictDto implements Serializable {
-  String id;
-  String name;
-  String code;
-  String parentId;
-  Integer status;
-  Integer sort;
-  String description;
-  Integer deleted;
-  List<DictDto> children;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  private Date createdAt;
-  private String createdBy;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-  private Date updatedAt;
-  private String updatedBy;
+    String id;
+    String name;
+    String code;
+    String parentId;
+    Integer status;
+    Integer sort;
+    String description;
+    Integer deleted;
+    List<DictDto> children;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createdAt;
+    private String createdBy;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updatedAt;
+    private String updatedBy;
 }

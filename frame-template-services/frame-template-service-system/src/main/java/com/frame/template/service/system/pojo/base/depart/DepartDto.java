@@ -22,24 +22,24 @@ import java.util.Date;
 @Setter
 public class DepartDto extends BaseTreeDto<DepartDto> {
 
-  private String id;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date createdAt;
-  private String createdBy;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date updatedAt;
-  private String updatedBy;
-  private String code;
-  private Integer deleted;
-  private String description;
-  private String name;
-  private String parentId;
-  private String shortName;
-  private Integer sort;
-  private Integer status;
-  private String tenantId;
+    private String id;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date createdAt;
+    private String createdBy;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date updatedAt;
+    private String updatedBy;
+    private String code;
+    private Integer deleted;
+    private String description;
+    private String name;
+    private String parentId;
+    private String shortName;
+    private Integer sort;
+    private Integer status;
+    private String tenantId;
 
 
 }

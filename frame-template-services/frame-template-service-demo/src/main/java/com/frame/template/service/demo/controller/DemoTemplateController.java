@@ -27,51 +27,51 @@ import java.util.List;
 @RequestMapping("/v1/demoTemplate")
 public class DemoTemplateController {
 
-  @Resource
-  private DemoTemplateService demoTemplateService;
+    @Resource
+    private DemoTemplateService demoTemplateService;
 
-  @Resource
-  private DemoTemplateVoMapper demoTemplateVoMapper;
+    @Resource
+    private DemoTemplateVoMapper demoTemplateVoMapper;
 
-  @PostMapping
-  @Operation(summary = "insert")
-  public Result<DemoTemplateVo> insert(@RequestBody DemoTemplateInsertInput demoTemplateInsertInput) {
-    return demoTemplateVoMapper.toVo(demoTemplateService.insert(demoTemplateInsertInput));
-  }
+    @PostMapping
+    @Operation(summary = "insert")
+    public Result<DemoTemplateVo> insert(@RequestBody DemoTemplateInsertInput demoTemplateInsertInput) {
+        return demoTemplateVoMapper.toVo(demoTemplateService.insert(demoTemplateInsertInput));
+    }
 
-  @PutMapping
-  @Operation(summary = "update")
-  public Result<DemoTemplateVo> update(@RequestBody DemoTemplateUpdateInput demoTemplateUpdateInput) {
-    return demoTemplateVoMapper.toVo(demoTemplateService.update(demoTemplateUpdateInput));
-  }
-
-
-  @Operation(summary = "删除")
-  @DeleteMapping
-  public Result<DemoTemplateVo> deleteById(String id) {
-    return demoTemplateVoMapper.toVo(demoTemplateService.deleteById(id));
-  }
-
-  @GetMapping("/page")
-  @Operation(summary = "page")
-  public Page<DemoTemplateVo> page(DemoTemplatePageQueryCriteria queryCriteria, Pageable pageable) {
-    return demoTemplateVoMapper.toVo(demoTemplateService.page(queryCriteria, pageable));
-  }
+    @PutMapping
+    @Operation(summary = "update")
+    public Result<DemoTemplateVo> update(@RequestBody DemoTemplateUpdateInput demoTemplateUpdateInput) {
+        return demoTemplateVoMapper.toVo(demoTemplateService.update(demoTemplateUpdateInput));
+    }
 
 
-  @GetMapping
-  @Operation(summary = "find-by-id")
-  public DemoTemplateVo findById(String id) {
-    return demoTemplateVoMapper.toVo(demoTemplateService.findById(id));
-  }
+    @Operation(summary = "删除")
+    @DeleteMapping
+    public Result<DemoTemplateVo> deleteById(String id) {
+        return demoTemplateVoMapper.toVo(demoTemplateService.deleteById(id));
+    }
 
-  @GetMapping("/find-all-by-query-criteria")
-  public List<DemoTemplateVo> findAllByQueryCriteria(DemoTemplateFindAllByQueryCriteria queryCriteria) {
-    return demoTemplateVoMapper.toVo(demoTemplateService.findAllByQueryCriteria(queryCriteria));
-  }
+    @GetMapping("/page")
+    @Operation(summary = "page")
+    public Page<DemoTemplateVo> page(DemoTemplatePageQueryCriteria queryCriteria, Pageable pageable) {
+        return demoTemplateVoMapper.toVo(demoTemplateService.page(queryCriteria, pageable));
+    }
 
 
-  //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
+    @GetMapping
+    @Operation(summary = "find-by-id")
+    public DemoTemplateVo findById(String id) {
+        return demoTemplateVoMapper.toVo(demoTemplateService.findById(id));
+    }
+
+    @GetMapping("/find-all-by-query-criteria")
+    public List<DemoTemplateVo> findAllByQueryCriteria(DemoTemplateFindAllByQueryCriteria queryCriteria) {
+        return demoTemplateVoMapper.toVo(demoTemplateService.findAllByQueryCriteria(queryCriteria));
+    }
+
+
+    //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 
 
 }

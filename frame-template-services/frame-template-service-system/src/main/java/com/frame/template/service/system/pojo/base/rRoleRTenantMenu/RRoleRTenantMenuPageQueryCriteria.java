@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Data
 public class RRoleRTenantMenuPageQueryCriteria implements Serializable {
 
-  private static final long serialVersionUID = 3163118978801722144L;
+    private static final long serialVersionUID = 3163118978801722144L;
 //  @Query(type = Query.Type.IN)
 // private Set<String> nailedType;
 }

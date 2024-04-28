@@ -19,10 +19,10 @@ import java.util.Set;
 @Data
 public class PostQueryCriteria implements Serializable {
 
-  private static final long serialVersionUID = 3163118978801722144L;
-  @Query(type = Query.Type.IN)
-  private Set<String> orgId;
+    private static final long serialVersionUID = 3163118978801722144L;
+    @Query(type = Query.Type.IN)
+    private Set<String> orgId;
 
-  @Query(blurry = "name")
-  private String name;
+    @Query(blurry = "name")
+    private String name;
 }

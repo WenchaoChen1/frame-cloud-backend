@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AccountQueryCriteria {
-  String mobile;
-  String email;
-  String tenantId;
+    String mobile;
+    String email;
+    String tenantId;
 }

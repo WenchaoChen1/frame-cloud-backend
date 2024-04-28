@@ -12,21 +12,21 @@ import java.util.List;
 
 @FeignClient(contextId = "tenantClientId", name = ServiceConstants.SERVICE_NAME_TENANT, path = "/tenant")
 public interface TenantFeignClient {
-  /**
-   * 查询
-   *
-   * @param tenantId
-   * @return
-   */
-  @GetMapping(value = "/findByTenantId")
-  List<TenantDto> findByTenantId(String tenantId);
+    /**
+     * 查询
+     *
+     * @param tenantId
+     * @return
+     */
+    @GetMapping(value = "/findByTenantId")
+    List<TenantDto> findByTenantId(String tenantId);
 
-  /**
-   * 主键查询
-   *
-   * @param tenantId
-   * @return
-   */
-  @GetMapping
-  ApiResult<TenantDto> findById(@RequestParam("id") String tenantId);
+    /**
+     * 主键查询
+     *
+     * @param tenantId
+     * @return
+     */
+    @GetMapping
+    ApiResult<TenantDto> findById(@RequestParam("id") String tenantId);
 }

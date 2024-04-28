@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserQueryCriteria {
-  String username;
-  String email;
+    String username;
+    String email;
 }

@@ -30,63 +30,63 @@ import jakarta.persistence.Table;
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 public class Tenant extends BaseTreeEntity {
 
-  @Column(name = "parent_id", length = 36, nullable = false)
-  private String parentId;
+    @Column(name = "parent_id", length = 36, nullable = false)
+    private String parentId;
 
-  @Column(name = "tenant_code", length = 50, nullable = false)
-  private String tenantCode;
+    @Column(name = "tenant_code", length = 50, nullable = false)
+    private String tenantCode;
 
-  @Column(name = "tenant_name", length = 100)
-  private String tenantName;
+    @Column(name = "tenant_name", length = 100)
+    private String tenantName;
 
-  @Column(name = "description", length = 1000)
-  private String description;
+    @Column(name = "description", length = 1000)
+    private String description;
 
-  @Column(name = "status")
-  private Integer status = 0;
+    @Column(name = "status")
+    private Integer status = 0;
 
-  @Column(name = "type")//comment 'development 0;platform 1;tenant 2'
-  private Integer type = 0;
+    @Column(name = "type")//comment 'development 0;platform 1;tenant 2'
+    private Integer type = 0;
 
-  @Column(name = "deleted")
-  private Integer deleted = 0;
+    @Column(name = "deleted")
+    private Integer deleted = 0;
 
 //-----------------自定义-----------
 
-  @Column(name = "website")
-  private String website;
+    @Column(name = "website")
+    private String website;
 
-  @Column(name = "address_line1")
-  private String addressLine1;
+    @Column(name = "address_line1")
+    private String addressLine1;
 
-  @Column(name = "address_line2")
-  private String addressLine2;
+    @Column(name = "address_line2")
+    private String addressLine2;
 
-  @Column(name = "city")
-  private String city;
+    @Column(name = "city")
+    private String city;
 
-  @Column(name = "state")
-  private String state;
+    @Column(name = "state")
+    private String state;
 
-  @Column(name = "country")
-  private String country;
+    @Column(name = "country")
+    private String country;
 
-  @Column(name = "zip_code")
-  private String zipCode;
+    @Column(name = "zip_code")
+    private String zipCode;
 
-  @Column(name = "first_name")
-  private String firstName;
+    @Column(name = "first_name")
+    private String firstName;
 
-  @Column(name = "last_name")
-  private String lastName;
+    @Column(name = "last_name")
+    private String lastName;
 
-  @Column(name = "email_address")
-  private String emailAddress;
+    @Column(name = "email_address")
+    private String emailAddress;
 
-  @Column(name = "phone_number")
-  private String phoneNumber;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
-  @Column(name = "logo")
-  private String logo;
+    @Column(name = "logo")
+    private String logo;
 
 }

@@ -22,11 +22,11 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class UserDto implements Serializable {
 
-  private String id;
-  private String username;
-  private String email;
-  private String password;
+    private String id;
+    private String username;
+    private String email;
+    private String password;
 
-  public UserDto() {
-  }
+    public UserDto() {
+    }
 }

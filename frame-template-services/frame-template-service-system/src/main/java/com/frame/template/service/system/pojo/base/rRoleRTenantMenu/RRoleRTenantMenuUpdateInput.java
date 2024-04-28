@@ -20,15 +20,15 @@ import java.util.Date;
 @Setter
 public class RRoleRTenantMenuUpdateInput extends BaseUpdateInput {
 
-  private String id;
-  private Date createdAt;
-  private String createdBy;
-  private Date updatedAt;
-  private String updatedBy;
-  private Integer checked;
-  private String tenantId;
-  private String menuId;
-  private String roleId;
+    private String id;
+    private Date createdAt;
+    private String createdBy;
+    private Date updatedAt;
+    private String updatedBy;
+    private Integer checked;
+    private String tenantId;
+    private String menuId;
+    private String roleId;
 
 
 }

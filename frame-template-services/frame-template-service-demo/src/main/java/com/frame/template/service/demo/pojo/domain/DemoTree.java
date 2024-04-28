@@ -17,9 +17,9 @@ import jakarta.persistence.Table;
 @Table(name = "demo_tree", schema = "public")
 public class DemoTree extends BaseTreeEntity {
 
-  @Column(name = "name", length = 100)
-  String name;
-  @Column(name = "code", length = 100)
-  String code;
+    @Column(name = "name", length = 100)
+    String name;
+    @Column(name = "code", length = 100)
+    String code;
 
 }

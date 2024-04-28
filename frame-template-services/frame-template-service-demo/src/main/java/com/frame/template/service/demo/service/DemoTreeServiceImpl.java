@@ -27,32 +27,32 @@ import jakarta.annotation.Resource;
 @Service
 @Transactional(readOnly = true)
 public class DemoTreeServiceImpl extends BaseTreeServiceImpl<DemoTreeRepository,
-  DemoTreeMapper,
-  DemoTree,
-  DemoTreeDto,
-  DemoTreeInsertInput,
-  DemoTreeUpdateInput,
-  DemoTreePageQueryCriteria,
-  DemoTreeFindAllByQueryCriteria,
-  RedisCurrentLoginInformation
-  >
-  implements DemoTreeService {
+    DemoTreeMapper,
+    DemoTree,
+    DemoTreeDto,
+    DemoTreeInsertInput,
+    DemoTreeUpdateInput,
+    DemoTreePageQueryCriteria,
+    DemoTreeFindAllByQueryCriteria,
+    RedisCurrentLoginInformation
+    >
+    implements DemoTreeService {
 
-  @Resource
-  private DemoTreeRepository demoTreeRepository;
-  @Resource
-  private DemoTreeMapper demoTreeMapper;
-  @Resource
-  private RedisCurrentLoginInformation redisCurrentLoginInformation;
+    @Resource
+    private DemoTreeRepository demoTreeRepository;
+    @Resource
+    private DemoTreeMapper demoTreeMapper;
+    @Resource
+    private RedisCurrentLoginInformation redisCurrentLoginInformation;
 
-  public DemoTreeServiceImpl(DemoTreeRepository demoTreeRepository, DemoTreeMapper demoTreeMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
-    super(demoTreeRepository, demoTreeMapper, redisCurrentLoginInformation);
-    this.demoTreeRepository = demoTreeRepository;
-    this.demoTreeMapper = demoTreeMapper;
-    this.redisCurrentLoginInformation = redisCurrentLoginInformation;
-  }
+    public DemoTreeServiceImpl(DemoTreeRepository demoTreeRepository, DemoTreeMapper demoTreeMapper, RedisCurrentLoginInformation redisCurrentLoginInformation) {
+        super(demoTreeRepository, demoTreeMapper, redisCurrentLoginInformation);
+        this.demoTreeRepository = demoTreeRepository;
+        this.demoTreeMapper = demoTreeMapper;
+        this.redisCurrentLoginInformation = redisCurrentLoginInformation;
+    }
 
 
-  /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
+    /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
 }
 

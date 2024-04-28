@@ -17,8 +17,8 @@ import jakarta.persistence.Table;
 @Table(name = "one_to_many", schema = "public")
 public class OneToMany extends AbstractAuditingEntity {
 
-  @Column(name = "name", length = 100)
-  String name;
-  @Column(name = "code", length = 100)
-  String code;
+    @Column(name = "name", length = 100)
+    String name;
+    @Column(name = "code", length = 100)
+    String code;
 }

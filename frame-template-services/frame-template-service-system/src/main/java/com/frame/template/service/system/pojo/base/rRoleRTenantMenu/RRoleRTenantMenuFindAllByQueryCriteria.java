@@ -20,10 +20,10 @@ import java.io.Serializable;
 @Setter
 public class RRoleRTenantMenuFindAllByQueryCriteria implements Serializable {
 
-  private static final long serialVersionUID = 3163118978801722144L;
-  //  @Query(type = Query.Type.IN)
+    private static final long serialVersionUID = 3163118978801722144L;
+    //  @Query(type = Query.Type.IN)
 // private Set<String> nailedType;
-  @Query
-  private String tenantId;
+    @Query
+    private String tenantId;
 }
 

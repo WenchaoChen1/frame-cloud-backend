@@ -22,19 +22,19 @@ import java.util.Date;
 @Setter
 public class RRoleRTenantMenuVo extends BaseVo {
 
-  private String id;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date createdAt;
-  private String createdBy;
-  @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date updatedAt;
-  private String updatedBy;
-  private Integer checked;
-  private String tenantId;
-  private String menuId;
-  private String roleId;
+    private String id;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date createdAt;
+    private String createdBy;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date updatedAt;
+    private String updatedBy;
+    private Integer checked;
+    private String tenantId;
+    private String menuId;
+    private String roleId;
 
 
 }

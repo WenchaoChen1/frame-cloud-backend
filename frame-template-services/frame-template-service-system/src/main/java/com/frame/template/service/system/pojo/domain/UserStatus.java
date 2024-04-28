@@ -10,42 +10,42 @@
 package com.frame.template.service.system.pojo.domain;
 
 public enum UserStatus {
-  /**
-   * Enabled Status
-   */
-  ENABLED("Enabled", 1),
-  /**
-   * Locked Status
-   */
-  LOCKED("Locked", 2),
-  /**
-   * Disabled Status
-   */
-  DISABLED("Disabled", 3),
+    /**
+     * Enabled Status
+     */
+    ENABLED("Enabled", 1),
+    /**
+     * Locked Status
+     */
+    LOCKED("Locked", 2),
+    /**
+     * Disabled Status
+     */
+    DISABLED("Disabled", 3),
 
-  INVITED("Invited", 4);
+    INVITED("Invited", 4);
 
-  private String name;
-  private Integer value;
+    private String name;
+    private Integer value;
 
-  UserStatus(String name, Integer value) {
-    this.name = name;
-    this.value = value;
-  }
+    UserStatus(String name, Integer value) {
+        this.name = name;
+        this.value = value;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public Integer getValue() {
-    return value;
-  }
+    public Integer getValue() {
+        return value;
+    }
 
-  public void setValue(Integer value) {
-    this.value = value;
-  }
+    public void setValue(Integer value) {
+        this.value = value;
+    }
 }
