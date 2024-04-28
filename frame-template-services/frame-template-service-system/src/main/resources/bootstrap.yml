@@ -35,10 +35,10 @@ spring:
                         group: common
                     -   data-id: gstdev-cloud-cache.yaml
                         group: common
-                    #                    -   data-id: gstdev-cloud-rest.yaml
-                    #                        group: common
-                    #                    -   data-id: gstdev-cloud-kafka.yaml
-                    #                        group: common
+                    -   data-id: gstdev-cloud-rest.yaml
+                        group: common
+                    -   data-id: gstdev-cloud-kafka.yaml
+                        group: common
                     #                    -   data-id: gstdev-cloud-social.yaml
                     #                        group: common
                     -   data-id: ${spring.application.name}.yaml
