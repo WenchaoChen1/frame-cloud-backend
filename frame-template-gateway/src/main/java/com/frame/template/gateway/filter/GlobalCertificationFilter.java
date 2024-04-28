@@ -58,8 +58,8 @@ public class GlobalCertificationFilter implements GlobalFilter, Ordered {
             return chain.filter(exchange);
         }
 
-        // 2.外部进入的请求，如果包含 X_HERODOTUS_FROM_IN 请求头，认为是非法请求，直接拦截。X_HERODOTUS_FROM_IN 只能用于内部 Feign 间忽略权限使用
-        String fromIn = exchange.getRequest().getHeaders().getFirst(HeaderUtils.X_HERODOTUS_FROM_IN);
+        // 2.外部进入的请求，如果包含 X_FRAME_FROM_IN 请求头，认为是非法请求，直接拦截。X_FRAME_FROM_IN 只能用于内部 Feign 间忽略权限使用
+        String fromIn = exchange.getRequest().getHeaders().getFirst(HeaderUtils.X_FRAME_FROM_IN);
         if (ObjectUtils.isNotEmpty(fromIn)) {
             log.warn("[Gstdev Cloud] |- Illegal request to disable access!");
             return WebFluxUtils.writeJsonResponse(exchange.getResponse(), new Result<String>().type(ErrorCodes.ACCESS_DENIED).status(HttpStatus.SC_FORBIDDEN));

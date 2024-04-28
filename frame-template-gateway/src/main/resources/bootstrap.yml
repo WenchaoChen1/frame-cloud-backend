@@ -38,11 +38,11 @@ server:
 #    oauth:
 #      use-pkce-with-authorization-code-grant: true
 #      app-name: ${spring.application.name}
-herodotus:
-    gateway:
-        white-list:
-            - "/oauth2/**"
-            - "/v3/api-docs/**"
-            - "/openapi*"
-            - "/open/**"
-            - "/swagger/**"
+#herodotus:
+#    gateway:
+#        white-list:
+#            - "/oauth2/**"
+#            - "/v3/api-docs/**"
+#            - "/openapi*"
+#            - "/open/**"
+#            - "/swagger/**"

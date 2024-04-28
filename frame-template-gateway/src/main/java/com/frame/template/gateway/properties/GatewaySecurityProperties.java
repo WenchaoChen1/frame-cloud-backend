@@ -13,7 +13,7 @@ import java.util.List;
  * @date : 2020/3/6 15:31
  */
 @Configuration
-@ConfigurationProperties(prefix = "herodotus.gateway")
+@ConfigurationProperties(prefix = "gstdev.cloud.gateway")
 public class GatewaySecurityProperties {
 
     private List<String> whiteList;
