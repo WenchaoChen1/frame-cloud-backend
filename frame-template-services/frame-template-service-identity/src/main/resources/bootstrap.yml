@@ -18,10 +18,26 @@ spring:
                 extension-configs:
                     -   data-id: common-config.yaml
                         group: ${NACOS_CONFIG_GROUP:common}
+                    -   data-id: gstdev-cloud-environment.yaml
+#                        group: ${PROFILE:@profile@}
+                        group: development
+                    -   data-id: gstdev-cloud-platform.yaml
+                        group: common
+#                    -   data-id: gstdev-cloud-database-${DATABASE:@database@}.yaml
+                    -   data-id: gstdev-cloud-database-postgresql.yaml
+                        group: common
+                    -   data-id: gstdev-cloud-database.yaml
+                        group: common
                     -   data-id: gstdev-cloud-redis.yaml
                         group: common
                     -   data-id: gstdev-cloud-cache.yaml
                         group: common
+                    -   data-id: gstdev-cloud-rest.yaml
+                        group: common
+                    -   data-id: gstdev-cloud-kafka.yaml
+                        group: common
+#                    -   data-id: gstdev-cloud-social.yaml
+#                        group: common
                     -   data-id: ${spring.application.name}.yaml
                         group: service
         #            refresh: true
@@ -33,23 +49,23 @@ spring:
 
 server:
     forward-headers-strategy: framework
-springdoc:
-    chche:
-        disabled: true
-    version: '@springdoc.version@'
-    api-docs:
-        version: openapi_3_1
-        resolve-schema-properties: true
-    swagger-ui:
-        use-root-path: true
-        enabled: ${gstdev.cloud.switch.swagger.enabled}
-        disable-swagger-default-url: true
-        operations-sorter: method
-        show-common-extensions: true
-        show-extensions: true
-        oauth:
-            use-pkce-with-authorization-code-grant: true
-            app-name: ${spring.application.name}
+#springdoc:
+#    chche:
+#        disabled: true
+#    version: '@springdoc.version@'
+#    api-docs:
+#        version: openapi_3_1
+#        resolve-schema-properties: true
+#    swagger-ui:
+#        use-root-path: true
+#        enabled: ${gstdev.cloud.switch.swagger.enabled}
+#        disable-swagger-default-url: true
+#        operations-sorter: method
+#        show-common-extensions: true
+#        show-extensions: true
+#        oauth:
+#            use-pkce-with-authorization-code-grant: true
+#            app-name: ${spring.application.name}
 logging:
     #  file:
     #    name: logs/${spring.application.name}.log
@@ -74,8 +90,3 @@ logging:
     #  main:
     #    allow-bean-definition-overriding: true # 意思是后来发现的bean会覆盖之前相同名称的bean
 
-gstdev:
-    cloud:
-        switch:
-            swagger:
-                enabled: true
