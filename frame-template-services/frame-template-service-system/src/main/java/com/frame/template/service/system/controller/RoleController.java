@@ -2,10 +2,9 @@ package com.frame.template.service.system.controller;
 
 import com.frame.template.service.system.mapper.vo.RoleVoMapper;
 import com.frame.template.service.system.pojo.base.role.*;
-import com.frame.template.service.system.pojo.domain.Role;
+import com.frame.template.service.system.pojo.entity.Role;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.service.system.service.RoleService;
-import com.gstdev.cloud.rest.core.controller.BaseTreeController;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;

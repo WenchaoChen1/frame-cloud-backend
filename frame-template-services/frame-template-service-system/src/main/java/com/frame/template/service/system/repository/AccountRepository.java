@@ -1,6 +1,6 @@
 package com.frame.template.service.system.repository;
 
-import com.frame.template.service.system.pojo.domain.Account;
+import com.frame.template.service.system.pojo.entity.Account;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 
 import java.util.List;

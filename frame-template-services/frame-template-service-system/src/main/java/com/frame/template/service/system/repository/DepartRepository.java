@@ -1,7 +1,7 @@
 package com.frame.template.service.system.repository;
 
 
-import com.frame.template.service.system.pojo.domain.Depart;
+import com.frame.template.service.system.pojo.entity.Depart;
 import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 import java.util.List;

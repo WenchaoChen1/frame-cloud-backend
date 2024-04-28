@@ -1,7 +1,7 @@
 package com.frame.template.service.system.service;
 
 import com.frame.template.service.system.pojo.base.dict.*;
-import com.frame.template.service.system.pojo.domain.Dict;
+import com.frame.template.service.system.pojo.entity.Dict;
 import com.gstdev.cloud.data.core.service.BaseTreeService;
 
 /**

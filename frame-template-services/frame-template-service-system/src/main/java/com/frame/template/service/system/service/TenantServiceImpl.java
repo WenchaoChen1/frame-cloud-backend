@@ -13,17 +13,14 @@ package com.frame.template.service.system.service;
 import cn.hutool.core.lang.UUID;
 import com.frame.template.service.system.mapper.TenantMapper;
 import com.frame.template.service.system.pojo.base.tenant.*;
-import com.frame.template.service.system.pojo.domain.Tenant;
+import com.frame.template.service.system.pojo.entity.Tenant;
 import com.frame.template.service.system.repository.TenantRepository;
-import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import jakarta.annotation.Resource;
 
 import java.util.List;
 

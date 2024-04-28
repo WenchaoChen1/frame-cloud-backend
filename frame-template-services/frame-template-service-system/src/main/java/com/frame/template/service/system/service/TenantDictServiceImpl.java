@@ -4,7 +4,7 @@ import cn.hutool.core.util.ObjectUtil;
 import com.frame.template.service.system.pojo.vo.TenantDict.TenantDictDto;
 import com.frame.template.service.system.pojo.vo.TenantDict.TenantDictModifyInput;
 import com.frame.template.service.system.pojo.vo.TenantDict.TenantDictSaveInput;
-import com.frame.template.service.system.pojo.domain.TenantDict;
+import com.frame.template.service.system.pojo.entity.TenantDict;
 import com.frame.template.service.system.mapper.TenantDictMapper;
 import com.frame.template.service.system.repository.TenantDictRepository;
 import lombok.RequiredArgsConstructor;

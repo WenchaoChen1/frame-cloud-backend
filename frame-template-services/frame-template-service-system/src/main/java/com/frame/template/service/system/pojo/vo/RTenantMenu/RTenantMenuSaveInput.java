@@ -9,7 +9,7 @@
 
 package com.frame.template.service.system.pojo.vo.RTenantMenu;
 
-import com.frame.template.service.system.pojo.domain.Menu;
+import com.frame.template.service.system.pojo.entity.Menu;
 import lombok.Getter;
 import lombok.Setter;
 

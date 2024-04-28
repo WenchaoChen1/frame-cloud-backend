@@ -1,7 +1,7 @@
 package com.frame.template.service.system.service;
 
 import com.frame.template.service.system.pojo.base.menu.*;
-import com.frame.template.service.system.pojo.domain.Menu;
+import com.frame.template.service.system.pojo.entity.Menu;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseTreeService;
 

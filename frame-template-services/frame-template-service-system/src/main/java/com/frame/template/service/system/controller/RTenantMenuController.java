@@ -11,13 +11,11 @@ package com.frame.template.service.system.controller;
 
 import com.frame.template.service.system.mapper.vo.RTenantMenuVoMapper;
 import com.frame.template.service.system.pojo.base.rTenantMenu.*;
-import com.frame.template.service.system.pojo.domain.RTenantMenu;
+import com.frame.template.service.system.pojo.entity.RTenantMenu;
 import com.frame.template.service.system.service.MenuService;
 import com.frame.template.service.system.service.RTenantMenuService;
 import com.gstdev.cloud.base.definition.domain.Result;
 
-import com.frame.template.service.system.pojo.base.rTenantMenu.*;
-import com.gstdev.cloud.rest.core.controller.BasePOJOController;
 import com.gstdev.cloud.rest.core.controller.POJOController;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;

@@ -13,7 +13,7 @@ package com.frame.template.service.system.service;
 import com.frame.template.service.system.pojo.base.rTenantMenu.*;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
-import com.frame.template.service.system.pojo.domain.RTenantMenu;
+import com.frame.template.service.system.pojo.entity.RTenantMenu;
 import com.frame.template.service.system.mapper.RTenantMenuMapper;
 import com.frame.template.service.system.repository.MenuRepository;
 import com.frame.template.service.system.repository.RTenantMenuRepository;

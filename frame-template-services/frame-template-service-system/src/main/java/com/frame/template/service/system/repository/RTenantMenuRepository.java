@@ -9,8 +9,8 @@
 
 package com.frame.template.service.system.repository;
 
-import com.frame.template.service.system.pojo.domain.Menu;
-import com.frame.template.service.system.pojo.domain.RTenantMenu;
+import com.frame.template.service.system.pojo.entity.Menu;
+import com.frame.template.service.system.pojo.entity.RTenantMenu;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

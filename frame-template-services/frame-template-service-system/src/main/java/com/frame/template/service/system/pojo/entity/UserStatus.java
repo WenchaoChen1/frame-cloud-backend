@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.frame.template.service.system.pojo.domain;
+package com.frame.template.service.system.pojo.entity;
 
 public enum UserStatus {
     /**

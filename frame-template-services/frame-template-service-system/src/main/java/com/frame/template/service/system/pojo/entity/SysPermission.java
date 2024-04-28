@@ -1,4 +1,4 @@
-package com.frame.template.service.system.pojo.domain;
+package com.frame.template.service.system.pojo.entity;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;

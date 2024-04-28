@@ -1,5 +1,6 @@
 package com.frame.template.service.system.listener;
 
+import com.frame.template.service.system.processor.RequestMappingStoreProcessor;
 import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
 import com.gstdev.cloud.oauth2.resource.server.autoconfigure.bus.RemoteRequestMappingGatherEvent;
@@ -21,12 +22,12 @@ public class RemoteRequestMappingGatherListener implements ApplicationListener<R
 
     private static final Logger log = LoggerFactory.getLogger(RemoteRequestMappingGatherListener.class);
 
-//    private final RequestMappingStoreProcessor requestMappingStoreProcessor;
-//
-//    @Autowired
-//    public RemoteRequestMappingGatherListener(RequestMappingStoreProcessor requestMappingStoreProcessor) {
-//        this.requestMappingStoreProcessor = requestMappingStoreProcessor;
-//    }
+    private final RequestMappingStoreProcessor requestMappingStoreProcessor;
+
+    @Autowired
+    public RemoteRequestMappingGatherListener(RequestMappingStoreProcessor requestMappingStoreProcessor) {
+        this.requestMappingStoreProcessor = requestMappingStoreProcessor;
+    }
 
     @Override
     public void onApplicationEvent(RemoteRequestMappingGatherEvent event) {
@@ -39,7 +40,7 @@ public class RemoteRequestMappingGatherListener implements ApplicationListener<R
             List<RequestMapping> requestMappings = Jackson2Utils.toList(requestMapping, RequestMapping.class);
             System.out.println(requestMappings.toString());
             if (CollectionUtils.isNotEmpty(requestMappings)) {
-//                requestMappingStoreProcessor.postProcess(requestMappings);
+                requestMappingStoreProcessor.postProcess(requestMappings);
             }
         }
     }

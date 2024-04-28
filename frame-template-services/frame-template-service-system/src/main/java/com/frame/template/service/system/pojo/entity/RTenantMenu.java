@@ -7,10 +7,9 @@
 //
 // ====================================================
 
-package com.frame.template.service.system.pojo.domain;
+package com.frame.template.service.system.pojo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.frame.template.common.persistence.AbstractAuditingEntity;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
 import lombok.Getter;
 import lombok.Setter;

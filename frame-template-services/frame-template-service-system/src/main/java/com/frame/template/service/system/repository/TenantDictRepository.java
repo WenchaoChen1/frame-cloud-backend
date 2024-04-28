@@ -1,6 +1,6 @@
 package com.frame.template.service.system.repository;
 
-import com.frame.template.service.system.pojo.domain.TenantDict;
+import com.frame.template.service.system.pojo.entity.TenantDict;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

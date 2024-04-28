@@ -10,7 +10,7 @@
 package com.frame.template.service.system.service;
 
 
-import com.frame.template.service.system.pojo.domain.User;
+import com.frame.template.service.system.pojo.entity.User;
 import com.frame.template.service.system.repository.UserRepository;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Service;

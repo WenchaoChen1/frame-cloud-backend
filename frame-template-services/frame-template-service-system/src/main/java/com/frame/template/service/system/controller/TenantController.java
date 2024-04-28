@@ -11,21 +11,18 @@ package com.frame.template.service.system.controller;
 
 import com.frame.template.service.system.mapper.vo.TenantVoMapper;
 import com.frame.template.service.system.pojo.base.tenant.*;
-import com.frame.template.service.system.pojo.domain.Tenant;
+import com.frame.template.service.system.pojo.entity.Tenant;
 import com.frame.template.service.system.service.TenantService;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.base.BaseRedisCurrentLoginInformation;
 import com.frame.template.service.system.pojo.base.tenant.TenantVo;
-import com.gstdev.cloud.rest.core.controller.BaseTreeController;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
-import lombok.Data;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

@@ -1,8 +1,8 @@
 package com.frame.template.service.system.pojo.vo.RAccountRole;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.frame.template.service.system.pojo.domain.Account;
-import com.frame.template.service.system.pojo.domain.Role;
+import com.frame.template.service.system.pojo.entity.Account;
+import com.frame.template.service.system.pojo.entity.Role;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;

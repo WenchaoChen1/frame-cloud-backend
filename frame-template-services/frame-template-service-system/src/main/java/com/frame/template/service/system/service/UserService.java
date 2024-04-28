@@ -3,7 +3,7 @@ package com.frame.template.service.system.service;
 import com.frame.template.service.system.pojo.base.user.UserDto;
 import com.frame.template.service.system.pojo.base.user.UserFindAllByQueryCriteria;
 import com.frame.template.service.system.pojo.base.user.UserPageQueryCriteria;
-import com.frame.template.service.system.pojo.domain.User;
+import com.frame.template.service.system.pojo.entity.User;
 import com.frame.template.service.system.pojo.vo.UserInsertInput;
 import com.frame.template.service.system.pojo.vo.UserUpdateInput;
 import com.frame.template.service.system.pojo.vo.user.AccountListDto;

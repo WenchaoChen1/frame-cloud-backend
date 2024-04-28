@@ -1,7 +1,7 @@
 package com.frame.template.service.system.pojo.vo.RAccountDepart;
 
-import com.frame.template.service.system.pojo.domain.Account;
-import com.frame.template.service.system.pojo.domain.Depart;
+import com.frame.template.service.system.pojo.entity.Account;
+import com.frame.template.service.system.pojo.entity.Depart;
 import lombok.Getter;
 import lombok.Setter;
 

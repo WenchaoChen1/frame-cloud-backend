@@ -1,7 +1,7 @@
 package com.frame.template.service.system.repository;
 
 
-import com.frame.template.service.system.pojo.domain.Menu;
+import com.frame.template.service.system.pojo.entity.Menu;
 import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 import java.util.List;

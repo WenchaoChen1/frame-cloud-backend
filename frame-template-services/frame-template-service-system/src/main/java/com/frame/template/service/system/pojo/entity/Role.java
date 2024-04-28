@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.frame.template.service.system.pojo.domain;
+package com.frame.template.service.system.pojo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntity;

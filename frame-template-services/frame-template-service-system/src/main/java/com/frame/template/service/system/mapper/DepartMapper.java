@@ -13,7 +13,7 @@ package com.frame.template.service.system.mapper;
 import com.frame.template.service.system.pojo.base.depart.DepartDto;
 import com.frame.template.service.system.pojo.base.depart.DepartInsertInput;
 import com.frame.template.service.system.pojo.base.depart.DepartUpdateInput;
-import com.frame.template.service.system.pojo.domain.Depart;
+import com.frame.template.service.system.pojo.entity.Depart;
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;

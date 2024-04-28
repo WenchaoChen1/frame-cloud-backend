@@ -1,16 +1,14 @@
 package com.frame.template.service.system.processor;
 
 
-import com.google.common.collect.ImmutableList;
+import com.frame.template.service.system.service.SysAttributeService;
 import com.gstdev.cloud.base.core.exception.transaction.TransactionalRollbackException;
 import com.gstdev.cloud.message.core.definition.strategy.StrategyEventManager;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
 import com.gstdev.cloud.oauth2.core.definition.domain.SecurityAttribute;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceAnalyzer;
-import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,14 +24,13 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
 
     //    private final Converter<List<SysInterface>, List<SysAttribute>> toSysAttributes;
 //    private final Converter<SysAttribute, SecurityAttribute> toSecurityAttribute;
-//
-//    private final SysAttributeService sysAttributeService;
-//    private final SysInterfaceService sysInterfaceService;
+
+    private final SysAttributeService sysAttributeService;
+    //    private final SysInterfaceService sysInterfaceService;
     private final SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer;
 
-    //    public SecurityMetadataDistributeProcessor(SysAttributeService sysAttributeService, SysInterfaceService sysInterfaceService, SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
-    public SecurityMetadataDistributeProcessor(SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
-//        this.sysAttributeService = sysAttributeService;
+    public SecurityMetadataDistributeProcessor(SysAttributeService sysAttributeService, SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
+        this.sysAttributeService = sysAttributeService;
 //        this.sysInterfaceService = sysInterfaceService;
         this.securityMetadataSourceAnalyzer = securityMetadataSourceAnalyzer;
 //        this.toSysAttributes = new SysInterfacesToSysAttributesConverter();
@@ -60,6 +57,17 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
         requestMappings.forEach(requestMapping -> {
             System.out.println(requestMapping);
         });
+//        List<SysAttribute> elements = toSysAttributes.convert(sysInterfaces);
+//        SysAttribute sysAttribute = new SysAttribute();
+//        sysAttribute.setAttributeId(requestMapping.getMappingId());
+//        sysAttribute.setAttributeCode(requestMapping.getMappingCode());
+//        sysAttribute.setRequestMethod(requestMapping.getRequestMethod());
+//        sysAttribute.setServiceId(requestMapping.getServiceId());
+//        sysAttribute.setClassName(requestMapping.getClassName());
+//        sysAttribute.setMethodName(requestMapping.getMethodName());
+//        sysAttribute.setUrl(requestMapping.getUrl());
+//        sysAttribute.setDescription(requestMapping.getDescription());
+//        List<SysAttribute> result = sysAttributeService.saveAllAndFlush(elements);
 //        List<SysInterface> storedInterfaces = sysInterfaceService.storeRequestMappings(requestMappings);
 //        if (CollectionUtils.isNotEmpty(storedInterfaces)) {
 //            log.debug("[Gstdev Cloud] |- [5] Request mapping store success, start to merge security metadata!");
@@ -77,7 +85,7 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
 //            } else {
 //                log.debug("[Gstdev Cloud] |- No security attribute requires merge, SKIP!");
 //            }
-//
+
 //            distributeServiceSecurityAttributes(storedInterfaces);
 //        }
     }

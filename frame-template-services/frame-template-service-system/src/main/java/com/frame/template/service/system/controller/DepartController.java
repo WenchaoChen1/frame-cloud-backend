@@ -10,13 +10,10 @@
 package com.frame.template.service.system.controller;
 
 import com.frame.template.service.system.mapper.vo.DepartVoMapper;
-import com.frame.template.service.system.mapper.vo.DictVoMapper;
 import com.frame.template.service.system.pojo.base.depart.*;
-import com.frame.template.service.system.pojo.domain.Depart;
-import com.frame.template.service.system.service.DictService;
+import com.frame.template.service.system.pojo.entity.Depart;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.service.system.service.DepartService;
-import com.gstdev.cloud.rest.core.controller.BaseTreeController;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;

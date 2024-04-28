@@ -14,13 +14,11 @@ import com.frame.template.service.system.pojo.base.rTenantMenu.RTenantMenuInsert
 import com.frame.template.service.system.pojo.base.rTenantMenu.RTenantMenuUpdateInput;
 import com.frame.template.service.system.pojo.vo.RTenantMenu.RTenantMenuModifyInput;
 import com.frame.template.service.system.pojo.vo.RTenantMenu.RTenantMenuSaveInput;
-import com.frame.template.service.system.pojo.domain.RTenantMenu;
+import com.frame.template.service.system.pojo.entity.RTenantMenu;
 import com.gstdev.cloud.data.core.mapper.BaseMapper;
 import org.mapstruct.*;
 
 import java.util.List;
-
-import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,

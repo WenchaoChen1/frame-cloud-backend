@@ -2,18 +2,16 @@ package com.frame.template.service.system.mapper;
 
 import com.frame.template.service.system.pojo.base.user.UserDto;
 import com.frame.template.service.system.pojo.base.user.UserLoginInferiorUpdateInput;
-import com.frame.template.service.system.pojo.domain.User;
+import com.frame.template.service.system.pojo.entity.User;
 import com.frame.template.service.system.pojo.vo.UserInsertInput;
 import com.frame.template.service.system.pojo.vo.UserUpdateInput;
 import com.frame.template.service.system.pojo.vo.user.AccountListDto;
 import com.frame.template.service.system.pojo.vo.user.UserModifyInput;
-import com.frame.template.service.system.pojo.domain.Account;
+import com.frame.template.service.system.pojo.entity.Account;
 import com.gstdev.cloud.data.core.mapper.BaseMapper;
 import org.mapstruct.*;
 
 import java.util.List;
-
-import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,

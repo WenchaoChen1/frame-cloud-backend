@@ -10,7 +10,7 @@
 package com.frame.template.service.system.repository;
 
 
-import com.frame.template.service.system.pojo.domain.Tenant;
+import com.frame.template.service.system.pojo.entity.Tenant;
 import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 

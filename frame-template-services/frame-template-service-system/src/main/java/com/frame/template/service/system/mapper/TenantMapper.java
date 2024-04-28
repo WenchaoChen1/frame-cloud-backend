@@ -13,7 +13,7 @@ package com.frame.template.service.system.mapper;
 import com.frame.template.service.system.pojo.base.tenant.TenantDto;
 import com.frame.template.service.system.pojo.base.tenant.TenantInsertInput;
 import com.frame.template.service.system.pojo.base.tenant.TenantUpdateInput;
-import com.frame.template.service.system.pojo.domain.Tenant;
+import com.frame.template.service.system.pojo.entity.Tenant;
 import com.frame.template.service.system.pojo.vo.tenant.TenantLoginInferiorUpdateInput;
 import org.mapstruct.*;
 

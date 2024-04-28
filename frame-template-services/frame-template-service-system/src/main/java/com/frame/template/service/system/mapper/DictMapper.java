@@ -15,7 +15,7 @@ import com.frame.template.service.system.pojo.base.dict.DictInsertInput;
 import com.frame.template.service.system.pojo.base.dict.DictUpdateInput;
 import com.frame.template.service.system.pojo.vo.menu.DictModifyInput;
 import com.frame.template.service.system.pojo.vo.menu.DictSaveInput;
-import com.frame.template.service.system.pojo.domain.Dict;
+import com.frame.template.service.system.pojo.entity.Dict;
 import org.mapstruct.*;
 
 import java.util.List;
