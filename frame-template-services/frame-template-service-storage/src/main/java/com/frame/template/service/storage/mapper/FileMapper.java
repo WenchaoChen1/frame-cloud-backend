@@ -23,6 +23,6 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface FileMapper extends BaseMapper<File, FileDto, FileInsertInput, FileUpdateInput> {
+public interface FileMapper extends BasePOJOMapper<File, FileDto, FileInsertInput, FileUpdateInput> {
 }
 

@@ -8,7 +8,7 @@ import com.frame.template.service.system.pojo.vo.UserUpdateInput;
 import com.frame.template.service.system.pojo.vo.user.AccountListDto;
 import com.frame.template.service.system.pojo.vo.user.UserModifyInput;
 import com.frame.template.service.system.pojo.entity.Account;
-import com.gstdev.cloud.data.core.mapper.BaseMapper;
+import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface UserMapper extends BaseMapper<User, UserDto, UserInsertInput, UserUpdateInput> {
+public interface UserMapper extends BasePOJOMapper<User, UserDto, UserInsertInput, UserUpdateInput> {
     /**
      * 复制
      *

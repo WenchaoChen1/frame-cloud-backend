@@ -21,7 +21,7 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface DemoMapper extends BaseMapper<Demo, DemoDto, DemoInsertInput, DemoUpdateInput> {
+public interface DemoMapper extends BasePOJOMapper<Demo, DemoDto, DemoInsertInput, DemoUpdateInput> {
 //
 //    Demo toEntitySave(DemoInsertInput demoInsertInput);
 //
