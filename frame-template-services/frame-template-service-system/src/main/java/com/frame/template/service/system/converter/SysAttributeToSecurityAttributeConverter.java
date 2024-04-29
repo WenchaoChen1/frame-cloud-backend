@@ -1,13 +1,3 @@
-/*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
- *
- * Copyright 2020-2030 ZHENGGENGWEI<码匠君>. All rights reserved.
- *
- *    Author: ZHENGGENGWEI<码匠君>
- *    Contact: <herodotus@aliyun.com>
- *    Blog and source code availability: <https://gitee.com/herodotus/herodotus-cloud>
- */
-
 package com.frame.template.service.system.converter;
 
 import com.frame.template.service.system.pojo.entity.SysAttribute;

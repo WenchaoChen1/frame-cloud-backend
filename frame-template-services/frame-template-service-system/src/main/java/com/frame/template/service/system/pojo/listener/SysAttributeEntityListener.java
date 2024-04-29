@@ -17,7 +17,7 @@ public class SysAttributeEntityListener extends AbstractApplicationContextAware 
 
     @PostUpdate
     protected void postUpdate(SysAttribute entity) {
-        log.debug("[Herodotus] |- [1] SysAttribute entity @PostUpdate activated, value is : [{}]. Trigger SysAttribute change event.", entity.toString());
+        log.debug("[GstDev Cloud] |- [1] SysAttribute entity @PostUpdate activated, value is : [{}]. Trigger SysAttribute change event.", entity.toString());
         publishEvent(new SysAttributeChangeEvent(entity));
     }
 }

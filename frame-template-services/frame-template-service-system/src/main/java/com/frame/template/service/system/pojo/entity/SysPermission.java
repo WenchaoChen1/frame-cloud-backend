@@ -1,5 +1,6 @@
 package com.frame.template.service.system.pojo.entity;
 
+import com.frame.template.service.system.constants.SystemConstants;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
@@ -7,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
 
 /**
@@ -17,8 +19,8 @@ import org.hibernate.annotations.UuidGenerator;
 @Setter
 @Entity
 @Table(name = "sys_permission", indexes = {@Index(name = "sys_permission_id_idx", columnList = "permission_id")})
-//@Cacheable
-//@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = UpmsConstants.REGION_SYS_PERMISSION)
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = SystemConstants.REGION_SYS_PERMISSION)
 public class SysPermission extends BaseEntity {
 
     @Schema(name = "权限ID")
