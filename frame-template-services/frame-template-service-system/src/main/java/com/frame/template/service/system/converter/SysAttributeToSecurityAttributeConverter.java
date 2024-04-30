@@ -1,7 +1,7 @@
 package com.frame.template.service.system.converter;
 
-import com.frame.template.service.system.pojo.entity.SysAttribute;
-import com.frame.template.service.system.pojo.entity.SysPermission;
+import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
+import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
 import com.gstdev.cloud.oauth2.core.definition.domain.SecurityAttribute;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.core.convert.converter.Converter;

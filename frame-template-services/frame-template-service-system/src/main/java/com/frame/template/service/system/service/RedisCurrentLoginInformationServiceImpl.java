@@ -2,19 +2,18 @@ package com.frame.template.service.system.service;
 
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
-import com.frame.template.service.system.pojo.base.account.AccountDto;
+import com.gstdev.cloud.service.system.pojo.base.account.AccountDto;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.exception.CommonException;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
-import com.frame.template.service.system.feign.IdentityFeignClient;
-import com.gstdev.cloud.base.definition.domain.oauth2.PrincipalDetails;
-import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
-import com.gstdev.cloud.oauth2.core.utils.PrincipalUtils;
+import com.gstdev.cloud.service.system.feign.IdentityFeignClient;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
+import com.gstdev.cloud.service.system.service.AccountService;
+import com.gstdev.cloud.service.system.service.MenuService;
+import com.gstdev.cloud.service.system.service.TenantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.Resource;
@@ -27,8 +26,8 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
 
     @Autowired
     private RedisCurrentLoginInformation redisCurrentLoginInformation;
-    @Autowired
-    private IdentityFeignClient identityFeignClient;
+//    @Autowired
+//    private IdentityFeignClient identityFeignClient;
 
     @Resource
     private AccountService accountService;

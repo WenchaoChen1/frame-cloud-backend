@@ -3,12 +3,11 @@ package com.frame.template.service.system.processor;
 
 import com.frame.template.service.system.converter.SysAttributeToSecurityAttributeConverter;
 import com.frame.template.service.system.converter.SysInterfacesToSysAttributesConverter;
-import com.frame.template.service.system.pojo.entity.SysAttribute;
-import com.frame.template.service.system.pojo.entity.SysInterface;
-import com.frame.template.service.system.pojo.entity.SysPermission;
-import com.frame.template.service.system.service.SysAttributeService;
-import com.frame.template.service.system.service.SysInterfaceService;
-import com.frame.template.service.system.service.SysPermissionService;
+import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
+import com.gstdev.cloud.service.system.pojo.entity.SysInterface;
+import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
+import com.gstdev.cloud.service.system.service.SysInterfaceService;
+import com.gstdev.cloud.service.system.service.SysPermissionService;
 import com.gstdev.cloud.base.core.exception.transaction.TransactionalRollbackException;
 import com.gstdev.cloud.message.core.definition.strategy.StrategyEventManager;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
@@ -16,6 +15,7 @@ import com.gstdev.cloud.oauth2.core.definition.domain.SecurityAttribute;
 import com.gstdev.cloud.oauth2.resource.server.autoconfigure.bus.RemoteSecurityMetadataSyncEvent;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceAnalyzer;
 import com.google.common.collect.ImmutableList;
+import com.gstdev.cloud.service.system.service.SysAttributeService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * <p>Description: SecurityMetadata数据处理器 </p>

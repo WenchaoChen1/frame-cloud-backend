@@ -1,8 +1,8 @@
 package com.frame.template.service.system.listener;
 
-import com.frame.template.service.system.pojo.entity.SysAttribute;
-import com.frame.template.service.system.pojo.event.SysAttributeChangeEvent;
 import com.frame.template.service.system.processor.SecurityMetadataDistributeProcessor;
+import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
+import com.gstdev.cloud.service.system.pojo.event.SysAttributeChangeEvent;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
