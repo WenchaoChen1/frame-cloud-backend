@@ -5,3 +5,5 @@ import com.gstdev.cloud.data.core.service.BaseService;
 
 public interface SysPermissionService extends BaseService<SysPermission, String> {
 }
+
+

@@ -5,8 +5,10 @@ import com.frame.template.service.system.converter.SysAttributeToSecurityAttribu
 import com.frame.template.service.system.converter.SysInterfacesToSysAttributesConverter;
 import com.frame.template.service.system.pojo.entity.SysAttribute;
 import com.frame.template.service.system.pojo.entity.SysInterface;
+import com.frame.template.service.system.pojo.entity.SysPermission;
 import com.frame.template.service.system.service.SysAttributeService;
 import com.frame.template.service.system.service.SysInterfaceService;
+import com.frame.template.service.system.service.SysPermissionService;
 import com.gstdev.cloud.base.core.exception.transaction.TransactionalRollbackException;
 import com.gstdev.cloud.message.core.definition.strategy.StrategyEventManager;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>Description: SecurityMetadata数据处理器 </p>
@@ -36,11 +39,13 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
 
     private final SysAttributeService sysAttributeService;
     private final SysInterfaceService sysInterfaceService;
+    private final SysPermissionService sysPermissionService;
     private final SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer;
 
-    public SecurityMetadataDistributeProcessor(SysAttributeService sysAttributeService, SysInterfaceService sysInterfaceService, SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
+    public SecurityMetadataDistributeProcessor(SysAttributeService sysAttributeService, SysInterfaceService sysInterfaceService,SysPermissionService sysPermissionService, SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
         this.sysAttributeService = sysAttributeService;
         this.sysInterfaceService = sysInterfaceService;
+        this.sysPermissionService = sysPermissionService;
         this.securityMetadataSourceAnalyzer = securityMetadataSourceAnalyzer;
         this.toSysAttributes = new SysInterfacesToSysAttributesConverter();
         this.toSecurityAttribute = new SysAttributeToSecurityAttributeConverter();
@@ -75,6 +80,11 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
 
             if (CollectionUtils.isNotEmpty(sysInterfaces)) {
                 List<SysAttribute> elements = toSysAttributes.convert(sysInterfaces);
+//                List<SysPermission> collect = elements.stream()
+//                    .flatMap(attribute -> attribute.getPermissions().stream())
+//                    .distinct()
+//                    .collect(Collectors.toList());
+//                List<SysPermission> sysPermissions = sysPermissionService.saveAllAndFlush(collect);
                 List<SysAttribute> result = sysAttributeService.saveAllAndFlush(elements);
                 if (CollectionUtils.isNotEmpty(result)) {
                     log.debug("[Gstdev Cloud] |- Merge security attribute SUCCESS and FINISHED!");

@@ -2,16 +2,18 @@ package com.frame.template.service.system.converter;
 
 import com.frame.template.service.system.pojo.entity.SysAttribute;
 import com.frame.template.service.system.pojo.entity.SysInterface;
+import com.frame.template.service.system.pojo.entity.SysPermission;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.core.convert.converter.Converter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
  * <p>Description: List<SysInterface> 转 List<SysAttribute> 转换器 </p>
- *
  */
 public class SysInterfacesToSysAttributesConverter implements Converter<List<SysInterface>, List<SysAttribute>> {
     @Override
@@ -32,6 +34,7 @@ public class SysInterfacesToSysAttributesConverter implements Converter<List<Sys
         sysAttribute.setClassName(sysInterface.getClassName());
         sysAttribute.setMethodName(sysInterface.getMethodName());
         sysAttribute.setUrl(sysInterface.getUrl());
+
 //        sysAttribute.setStatus(sysInterface.getStatus());
 //        sysAttribute.setReserved(sysInterface.getReserved());
         sysAttribute.setDescription(sysInterface.getDescription());
@@ -39,6 +42,22 @@ public class SysInterfacesToSysAttributesConverter implements Converter<List<Sys
 //        sysAttribute.setCreateTime(sysInterface.getCreateTime());
 //        sysAttribute.setUpdateTime(sysInterface.getUpdateTime());
 //        sysAttribute.setRanking(sysInterface.getRanking());
+
+        Set<SysPermission> sysPermissions = new HashSet<>();
+        SysPermission attributePermission = new SysPermission();
+        attributePermission.setPermissionId(sysAttribute.getAttributeId());
+        attributePermission.setPermissionCode(sysAttribute.getServiceId()+":"+sysAttribute.getAttributeCode());
+        attributePermission.setPermissionName(sysAttribute.getMethodName());
+        attributePermission.setPermissionType("attribute");
+        SysPermission servicePermission = new SysPermission();
+        servicePermission.setPermissionId(sysAttribute.getServiceId());
+        servicePermission.setPermissionCode(sysAttribute.getServiceId());
+        servicePermission.setPermissionName(sysAttribute.getServiceId());
+        servicePermission.setPermissionType("service");
+
+        sysPermissions.add(attributePermission);
+        sysPermissions.add(servicePermission);
+        sysAttribute.setPermissions(sysPermissions);
         return sysAttribute;
     }
 

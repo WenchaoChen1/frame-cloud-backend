@@ -1,6 +1,7 @@
 package com.frame.template.service.system.pojo.entity;
 
 import com.frame.template.service.system.constants.SystemConstants;
+import com.frame.template.service.system.pojo.generator.SysPermissionUuidGenerator;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
@@ -25,7 +26,7 @@ public class SysPermission extends BaseEntity {
 
     @Schema(name = "权限ID")
     @Id
-    @UuidGenerator
+    @SysPermissionUuidGenerator
     @Column(name = "permission_id", length = 64)
     private String permissionId;
 
@@ -37,6 +38,10 @@ public class SysPermission extends BaseEntity {
     @Column(name = "permission_name", length = 1024)
     private String permissionName;
 
+
+    @Schema(name = "权限类型")
+    @Column(name = "permission_type", length = 1024)
+    private String permissionType;
 
     @Override
     public boolean equals(Object o) {
