@@ -62,6 +62,7 @@
         <module>frame-template-autoconfigure</module>
         <module>frame-template-gateway</module>
         <module>frame-template-services</module>
+        <module>module</module>
     </modules>
 
     <!--  <distributionManagement>-->
