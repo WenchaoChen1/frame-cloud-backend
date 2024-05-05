@@ -9,7 +9,7 @@
 
 package com.frame.template.service.storage.domain.entity;
 
-import com.frame.template.common.persistence.AbstractAuditingEntity;
+import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,7 +31,7 @@ import java.util.Objects;
 @SQLDelete(sql = "UPDATE tenant SET deleted=1 WHERE id =?")
 @NoArgsConstructor
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-public class File extends AbstractAuditingEntity {
+public class File extends BasePOJOEntity {
 
     @Column(name = "hash", length = 1024)
     private String hash;

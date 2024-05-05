@@ -9,6 +9,7 @@
 
 package com.frame.template.service.storage.domain.base;
 
+import com.gstdev.cloud.data.core.pojo.BaseUpdateInput;
 import lombok.Getter;
 import lombok.Setter;
 

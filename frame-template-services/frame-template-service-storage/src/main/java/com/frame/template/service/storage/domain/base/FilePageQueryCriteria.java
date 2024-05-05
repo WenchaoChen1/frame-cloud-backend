@@ -9,12 +9,13 @@
 
 package com.frame.template.service.storage.domain.base;
 
+import com.gstdev.cloud.data.core.pojo.BasePageQueryCriteria;
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-public class FilePageQueryCriteria implements Serializable {
+public class FilePageQueryCriteria extends BasePageQueryCriteria implements Serializable {
 
     private static final long serialVersionUID = 3163118978801722144L;
 }

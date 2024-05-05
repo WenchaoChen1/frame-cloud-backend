@@ -10,9 +10,11 @@
 package com.frame.template.service.storage.repository;
 
 import com.frame.template.service.storage.domain.entity.File;
+import com.gstdev.cloud.data.core.repository.BaseRepository;
+import io.undertow.security.idm.Account;
 
 
-public interface FileRepository extends org.springframework.data.jpa.repository.JpaRepository<File, String>, org.springframework.data.jpa.repository.JpaSpecificationExecutor<File> {
+public interface FileRepository extends BaseRepository<File, String>{
 
 
 }

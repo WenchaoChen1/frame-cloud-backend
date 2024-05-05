@@ -10,6 +10,7 @@
 package com.frame.template.service.storage.domain.base;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gstdev.cloud.data.core.pojo.BaseDto;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;

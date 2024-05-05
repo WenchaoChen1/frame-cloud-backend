@@ -21,118 +21,42 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!--  <dependencies>-->
-
-    <!--    <dependency>-->
-    <!--      <groupId>com.gstdev.cloud</groupId>-->
-    <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
-    <!--    </dependency>-->
-
-    <!--    <dependency>-->
-    <!--      <groupId>com.gstdev.cloud</groupId>-->
-    <!--      <artifactId>gstdev-cloud-commons</artifactId>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.gstdev.cloud</groupId>-->
-    <!--      <artifactId>gstdev-cloud-starter-swagger</artifactId>-->
-    <!--    </dependency>-->
-
-
-    <!--    <dependency>-->
-    <!--      <groupId>com.gstdev.template</groupId>-->
-    <!--      <artifactId>gstdev-template-common</artifactId>-->
-    <!--    </dependency>-->
-
-
-    <!--    <dependency>-->
-    <!--      <groupId>org.springframework.cloud</groupId>-->
-    <!--      <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
-    <!--    </dependency>-->
-    <!--    &lt;!&ndash; 导入openFeign的依赖 &ndash;&gt;-->
-    <!--    &lt;!&ndash;    <dependency>&ndash;&gt;-->
-    <!--    &lt;!&ndash;      <groupId>org.springframework.cloud</groupId>&ndash;&gt;-->
-    <!--    &lt;!&ndash;      <artifactId>spring-cloud-starter-openfeign</artifactId>&ndash;&gt;-->
-    <!--    &lt;!&ndash;    </dependency>&ndash;&gt;-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.springframework.cloud</groupId>-->
-    <!--      <artifactId>spring-cloud-starter-loadbalancer</artifactId>-->
-    <!--    </dependency>-->
-
-    <!--    &lt;!&ndash;nacos &ndash;&gt;-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.alibaba.cloud</groupId>-->
-    <!--      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>com.alibaba.cloud</groupId>-->
-    <!--      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
-    <!--    </dependency>-->
-
-    <!--    <dependency>-->
-    <!--      <groupId>com.zaxxer</groupId>-->
-    <!--      <artifactId>HikariCP</artifactId>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.projectlombok</groupId>-->
-    <!--      <artifactId>lombok</artifactId>-->
-    <!--    </dependency>-->
-    <!--    &lt;!&ndash; MapStruct related dependencies &ndash;&gt;-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.mapstruct</groupId>-->
-    <!--      <artifactId>mapstruct</artifactId>-->
-    <!--    </dependency>-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.mapstruct</groupId>-->
-    <!--      <artifactId>mapstruct-processor</artifactId>-->
-    <!--    </dependency>-->
-
-    <!--    <dependency>-->
-    <!--      <groupId>com.alibaba</groupId>-->
-    <!--      <artifactId>fastjson</artifactId>-->
-    <!--      <version>1.2.83</version>-->
-    <!--      <scope>compile</scope>-->
-    <!--    </dependency>-->
-
-    <!--        <dependency>-->
-    <!--          <groupId>com.gstdev.cloud</groupId>-->
-    <!--          <artifactId>gstdev-cloud-starter-storage-minio</artifactId>-->
-    <!--        </dependency>-->
-
-    <!--  </dependencies>-->
-
     <dependencies>
-
-        <!--    <dependency>-->
-        <!--      <groupId>com.gstdev.cloud</groupId>-->
-        <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
-        <!--    </dependency>-->
-
-
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-commons</artifactId>
+            <artifactId>gstdev-cloud-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-starter-swagger</artifactId>
+            <artifactId>gstdev-cloud-web-server-spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-starter-storage-aws</artifactId>
+            <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
         </dependency>
-
-
         <dependency>
             <groupId>com.frame.template</groupId>
             <artifactId>frame-template-common</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-rest-core</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+        <!-- 导入openFeign的依赖 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -147,6 +71,35 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+
+
+
+        <!--    <dependency>-->
+        <!--      <groupId>com.gstdev.cloud</groupId>-->
+        <!--      <artifactId>gstdev-cloud-starter-web</artifactId>-->
+        <!--    </dependency>-->
+
+
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-commons</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-storage-aws</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.frame.template</groupId>
+            <artifactId>frame-template-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
 
         <dependency>
@@ -166,16 +119,7 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-codec-http</artifactId>

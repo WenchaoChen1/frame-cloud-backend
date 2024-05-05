@@ -35,9 +35,6 @@ public class UserController implements POJOController<User, String, UserService,
     private UserService userService;
 
     @Resource
-    private CommonService commonService;
-
-    @Resource
     private UserVoMapper userVoMapper;
 
 
@@ -53,7 +50,6 @@ public class UserController implements POJOController<User, String, UserService,
 
     public UserController(UserService userService, CommonService commonService, UserVoMapper userVoMapper) {
         this.userService = userService;
-        this.commonService = commonService;
         this.userVoMapper = userVoMapper;
     }
 

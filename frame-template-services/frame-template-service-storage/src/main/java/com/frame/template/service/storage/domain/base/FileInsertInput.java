@@ -9,6 +9,7 @@
 
 package com.frame.template.service.storage.domain.base;
 
+import com.gstdev.cloud.data.core.pojo.BaseInsertInput;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +17,7 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class FileInsertInput implements Serializable {
+public class FileInsertInput extends BaseInsertInput implements Serializable {
     private String bucketName;
     private String contentType;
     private String etag;
