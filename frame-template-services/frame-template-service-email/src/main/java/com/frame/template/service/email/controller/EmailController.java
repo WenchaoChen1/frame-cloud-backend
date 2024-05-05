@@ -22,19 +22,19 @@ public class EmailController {
     private EmailService emailService;
 
     @PostMapping("/send-email")
-    @ApiOperation("发送邮件")
+    @Operation(summary = "发送邮件")
     public void sendEmail(@RequestBody Email email, Context context, String templateName, EmailTypeEnum emailTypeEnum) throws Exception {
         emailService.sendEmail(email, context, templateName, emailTypeEnum);
     }
 
     @PostMapping("/invite-user")
-    @ApiOperation("创建用户时时发送邮件")
+    @Operation(summary = "创建用户时时发送邮件")
     public void inviteUser(@RequestBody UserDto userDto) {
         emailService.inviteUser(userDto);
     }
 
     @GetMapping("/a")
-    @ApiOperation("创建用户时时发送邮件")
+    @Operation(summary = "创建用户时时发送邮件")
     public void a() {
         System.out.println("aaaaaaaaaaaaaaaa");
 //    emailService.inviteUser(userDto);
