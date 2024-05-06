@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.base.user.UserFindAllByQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.user.UserPageQueryCriteria;
@@ -20,6 +21,8 @@ public interface UserService extends BasePOJOService<SysUser, String, UserDto, U
     Result<UserDto> insertUserInitializationToResult(UserInsertInput userInsertInput);
 
     List<AccountListDto> getByIdToAccount(String id);
+
+    DefaultSecurityUser signInFindByUsername(String username);
 }
 
 

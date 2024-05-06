@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.controller;
 
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.service.system.mapper.vo.UserVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
@@ -76,6 +77,12 @@ public class UserController implements POJOController<SysUser, String, UserServi
     @Operation(summary = "根据id获取实体数据")
     public Result<UserVo> getById(@RequestParam("id") String id) {
         return findByIdToResult(id);
+    }
+
+    @GetMapping("/security/sign-in/{username}")
+    @Operation(summary = "根据username获取实体数据")
+    Result<DefaultSecurityUser> signInFindByUsername(@PathVariable("username") String username) {
+        return Result.success(getService().signInFindByUsername(username));
     }
 
     @PostMapping

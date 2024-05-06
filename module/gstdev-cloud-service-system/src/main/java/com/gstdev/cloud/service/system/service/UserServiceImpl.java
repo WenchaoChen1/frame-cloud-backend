@@ -1,5 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
+import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
 import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
 import com.gstdev.cloud.service.system.mapper.UserMapper;
@@ -8,6 +10,7 @@ import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.base.user.UserFindAllByQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.user.UserPageQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
+import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
 import com.gstdev.cloud.service.system.pojo.entity.UserStatus;
 import com.gstdev.cloud.service.system.pojo.vo.UserInsertInput;
@@ -44,7 +47,8 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
     private AccountService accountService;
     @Resource
     private IdentityFeignService identityFeignService;
-
+    @Resource
+    private SysPermissionService sysPermissionService;
     //  @Resource
 //  private EmailFeignService emailFeignService;
     //
@@ -91,7 +95,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
     @Override
     @Transactional
     public SysUser insert(SysUser user) {
-        if (ObjectUtils.isEmpty(user.getPassword())){
+        if (ObjectUtils.isEmpty(user.getPassword())) {
             user.setPassword(randomPassword());
         }
         user.setPassword((SecurityUtils.encrypt(user.getPassword())));
@@ -270,6 +274,45 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
         }
 
         return userMapper.toDto(user);
+    }
+
+
+    @Override
+    public DefaultSecurityUser signInFindByUsername(String username) {
+        SysUser byUsername = getRepository().findByUsername(username);
+        if (byUsername == null) {
+            return null;
+        }
+        Set<FrameGrantedAuthority> authorities = new HashSet<>();
+        Set<String> roles = new HashSet<>();
+
+        List<SysPermission> all = sysPermissionService.findAll();
+        for (SysPermission sysPermission : all) {
+            authorities.add(new FrameGrantedAuthority(sysPermission.getPermissionCode()));
+        }
+
+        DefaultSecurityUser securityUser = new DefaultSecurityUser(byUsername.getId()
+            , byUsername.getId()
+            , byUsername.getPassword()
+            , true
+            , true
+            , true
+            , true
+            , authorities
+            , null
+            , "1"
+            , "1"
+        );
+
+
+        List<SysAccount> account = byUsername.getAccount();
+
+//        for (SysAccount sysAccount : account) {
+//            sysAccount.getRoles()
+//        }
+
+
+        return securityUser;
     }
 
 }
