@@ -1,6 +1,10 @@
 package com.frame.template.service.identity.controller;
 
 import com.frame.template.common.utils.SecurityUtils;
+import com.frame.template.service.identity.feign.FeignRemoteUserDetailsService;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
+import jakarta.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/test")
 public class aController {
+    @Resource
+    FeignRemoteUserDetailsService feignRemoteUserDetailsService;
     @GetMapping("/a")
     public String a() {
 //    ServletUtils.getRequest()
@@ -22,6 +28,7 @@ public class aController {
     }
     @GetMapping("/aaaa")
     public String aaa(Pageable pageable) {
+        Result<DefaultSecurityUser> aaa = feignRemoteUserDetailsService.findByUsername("aaa");
 //    ServletUtils.getRequest()
         System.out.println(SecurityUtils.getUserDetails());
         return "a";

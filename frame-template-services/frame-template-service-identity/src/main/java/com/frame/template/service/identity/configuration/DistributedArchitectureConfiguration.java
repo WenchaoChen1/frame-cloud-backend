@@ -62,6 +62,5 @@ public class DistributedArchitectureConfiguration {
 //            log.debug("[GstDev Cloud] |- Strategy [Remote User Details Service] Auto Configure.");
 //            return new RemoteUserDetailsService(feignRemoteUserDetailsService);
 //        }
-//
 //    }
 }

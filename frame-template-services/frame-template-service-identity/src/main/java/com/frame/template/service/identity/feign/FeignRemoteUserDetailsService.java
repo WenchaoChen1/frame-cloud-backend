@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 /**
  * <p>Description: 远程 User Details 服务 </p>
  */
-@FeignClient(contextId = "remoteUserDetailsService", value = ServiceConstants.SERVICE_NAME_SYSTEM)
+@FeignClient(contextId = "feignRemoteUserDetailsService", value = ServiceConstants.SERVICE_NAME_SYSTEM)
 public interface FeignRemoteUserDetailsService {
 
     @Inner

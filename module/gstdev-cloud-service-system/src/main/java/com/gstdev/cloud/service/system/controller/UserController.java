@@ -84,6 +84,11 @@ public class UserController implements POJOController<SysUser, String, UserServi
     Result<DefaultSecurityUser> signInFindByUsername(@PathVariable("username") String username) {
         return Result.success(getService().signInFindByUsername(username));
     }
+//    @GetMapping("/security/sign-in/{username}")
+//    @Operation(summary = "根据username获取实体数据")
+//    Result<DefaultSecurityUser> findByUsername(@PathVariable("username") String username) {
+//        return Result.success(getService().signInFindByUsername(username));
+//    }
 
     @PostMapping
     @Operation(summary = "新增一条数据")

@@ -79,7 +79,7 @@ logging:
     level:
         root: INFO
         #        root: DEBUG
-        #      root: trace
+        #        root: trace
         # 关闭不必要的日志
         org.reflections.Reflections: off
         com.alibaba.nacos.client: error
