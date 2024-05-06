@@ -32,7 +32,7 @@ public class DistributedArchitectureConfiguration {
     }
 
     @Configuration(proxyBeanMethods = false)
-//    @ConditionalOnLocalDataAccess
+    @ConditionalOnLocalDataAccess
     static class DataAccessStrategyLocalConfiguration {
 
         @Bean
@@ -50,17 +50,17 @@ public class DistributedArchitectureConfiguration {
 
     }
 
-//    @Configuration(proxyBeanMethods = false)
-//    @ConditionalOnRemoteDataAccess
-//    @EnableFeignClients(basePackages = {"com.frame.template.service.identity.feign"})
-//    static class DataAccessStrategyRemoteConfiguration {
-//
-//        @Bean
-//        @ConditionalOnMissingBean
-//        public StrategyUserDetailsService herodotusRemoteUserDetailsService(FeignRemoteUserDetailsService feignRemoteUserDetailsService) {
-////        public StrategyUserDetailsService herodotusRemoteUserDetailsService(RemoteUserDetailsService remoteUserDetailsService, RemoteSocialDetailsService remoteSocialDetailsService) {
-//            log.debug("[GstDev Cloud] |- Strategy [Remote User Details Service] Auto Configure.");
-//            return new RemoteUserDetailsService(feignRemoteUserDetailsService);
-//        }
-//    }
+    @Configuration(proxyBeanMethods = false)
+    @ConditionalOnRemoteDataAccess
+    @EnableFeignClients(basePackages = {"com.frame.template.service.identity.feign"})
+    static class DataAccessStrategyRemoteConfiguration {
+
+        @Bean
+        @ConditionalOnMissingBean
+        public StrategyUserDetailsService herodotusRemoteUserDetailsService(FeignRemoteUserDetailsService feignRemoteUserDetailsService) {
+//        public StrategyUserDetailsService herodotusRemoteUserDetailsService(RemoteUserDetailsService remoteUserDetailsService, RemoteSocialDetailsService remoteSocialDetailsService) {
+            log.debug("[GstDev Cloud] |- Strategy [Remote User Details Service] Auto Configure.");
+            return new RemoteUserDetailsService(feignRemoteUserDetailsService);
+        }
+    }
 }

@@ -299,7 +299,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
             , true
             , true
             , authorities
-            , null
+            , roles
             , "1"
             , "1"
         );
