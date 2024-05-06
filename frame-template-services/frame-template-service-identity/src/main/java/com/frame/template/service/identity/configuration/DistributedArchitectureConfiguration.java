@@ -48,15 +48,8 @@ public class DistributedArchitectureConfiguration {
 //            return new LocalUserDetailsService(sysUserService, socialAuthenticationHandler);
 //        }
 
-//        @Bean
-//        @ConditionalOnMissingBean
-//        public StrategyPermissionDetailsService herodotusLocalPermissionDetailsService(SysPermissionService sysPermissionService) {
-//            HerodotusLocalPermissionDetailsService herodotusLocalPermissionDetailsService = new HerodotusLocalPermissionDetailsService(sysPermissionService);
-//            log.debug("[GstDev Cloud] |- Strategy [Local Permission Details Service] Auto Configure.");
-//            return herodotusLocalPermissionDetailsService;
-//        }
     }
-//
+
 //    @Configuration(proxyBeanMethods = false)
 //    @ConditionalOnRemoteDataAccess
 //    @EnableFeignClients(basePackages = {"com.frame.template.service.identity.feign"})
@@ -70,12 +63,5 @@ public class DistributedArchitectureConfiguration {
 //            return new RemoteUserDetailsService(feignRemoteUserDetailsService);
 //        }
 //
-////        @Bean
-////        @ConditionalOnMissingBean
-////        public StrategyPermissionDetailsService HerodotusRemotePermissionDetailsService(RemoteAuthorityDetailsService remoteAuthorityDetailsService) {
-////            RemotePermissionDetailsService herodotusRemotePermissionDetailsService = new RemotePermissionDetailsService(remoteAuthorityDetailsService);
-////            log.debug("[GstDev Cloud] |- Strategy [Remote Permission Details Service] Auto Configure.");
-////            return herodotusRemotePermissionDetailsService;
-////        }
 //    }
 }

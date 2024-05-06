@@ -1,6 +1,7 @@
 package com.frame.template.service.system.feign;
 
 
+import com.frame.template.common.constant.ServiceConstants;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
 import com.gstdev.cloud.service.system.feign.vo.UserDto;

@@ -57,7 +57,6 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
 
     @Override
     public void postRemoteProcess(String data, String originService, String destinationService) {
-        System.out.println("11111111111111111111");
         publishEvent(new RemoteSecurityMetadataSyncEvent(data, originService, destinationService));
     }
 
@@ -66,11 +65,6 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
      */
     @Transactional(rollbackFor = TransactionalRollbackException.class)
     public void postRequestMappings(List<RequestMapping> requestMappings) {
-//        System.out.println("2222222222222222");
-//        requestMappings.forEach(requestMapping -> {
-//            System.out.println(requestMapping);
-//        });
-
         List<SysInterface> storedInterfaces = sysInterfaceService.storeRequestMappings(requestMappings);
         if (CollectionUtils.isNotEmpty(storedInterfaces)) {
             log.debug("[Gstdev Cloud] |- [5] Request mapping store success, start to merge security metadata!");

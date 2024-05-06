@@ -1,6 +1,7 @@
 package com.frame.template.service.system.feign;
 
 
+import com.frame.template.common.constant.ServiceConstants;
 import com.gstdev.cloud.service.system.feign.vo.UserDto;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.cloud.openfeign.FeignClient;

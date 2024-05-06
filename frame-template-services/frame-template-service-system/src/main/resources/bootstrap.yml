@@ -51,58 +51,26 @@ spring:
         #                        group: common
         #            refresh: true
 
-#jetcache:
-#    statIntervalMinutes: 15
-#    areaInCacheName: false
-#    local:
-#        default:
-#            type: caffeine
-#            keyConvertor: fastjson2
-#            limit: 10000
-#    remote:
-#        default:
-#            type: redis.lettuce
-#            keyConvertor: fastjson2
-#            broadcastChannel: herodotus
-#            valueEncoder: java
-#            valueDecoder: java
-#            #      poolConfig:
-#            #        minIdle: ${spring.data.redis.lettuce.pool.min-idle}
-#            #        maxIdle: ${spring.data.redis.lettuce.pool.max-idle}
-#            #        maxTotal: ${spring.data.redis.lettuce.pool.max-active}
-#            #        maxWait: ${spring.data.redis.lettuce.pool.max-wait}
-#            uri:
-#                #        - redis://${spring.data.redis.password}@${spring.data.redis.host}:${spring.data.redis.port}/${spring.data.redis.database}
-#                - redis://Black.123!@192.168.0.99:6379/0
-#    mail:
-#        email: cio_looking_glass@126.com
-#        host: smtp.126.com
-#        username: cio_looking_glass@126.com
-#        password: OUWORRYKRXUNYWJX
 server:
     forward-headers-strategy: framework
-springdoc:
-    chche:
-        disabled: true
-    version: '@springdoc.version@'
-    api-docs:
-        version: openapi_3_1
-        resolve-schema-properties: true
-    swagger-ui:
-        use-root-path: true
-        enabled: ${gstdev.cloud.switch.swagger.enabled}
-        disable-swagger-default-url: true
-        operations-sorter: method
-        show-common-extensions: true
-        show-extensions: true
-        oauth:
-            use-pkce-with-authorization-code-grant: true
-            app-name: ${spring.application.name}
-#gstdev:
-#    cloud:
-#        switch:
-#            swagger:
-#                enabled: true
+#springdoc:
+#    chche:
+#        disabled: true
+#    version: '@springdoc.version@'
+#    api-docs:
+#        version: openapi_3_1
+#        resolve-schema-properties: true
+#    swagger-ui:
+#        use-root-path: true
+#        enabled: ${gstdev.cloud.switch.swagger.enabled}
+#        disable-swagger-default-url: true
+#        operations-sorter: method
+#        show-common-extensions: true
+#        show-extensions: true
+#        oauth:
+#            use-pkce-with-authorization-code-grant: true
+#            app-name: ${spring.application.name}
+
 logging:
     #    file:
     #        name: logs/${spring.application.name}.log
