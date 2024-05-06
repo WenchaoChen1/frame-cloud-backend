@@ -7,8 +7,8 @@ import com.gstdev.cloud.service.system.pojo.base.account.AccountInsertInput;
 import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.base.user.UserFindAllByQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.user.UserPageQueryCriteria;
-import com.gstdev.cloud.service.system.pojo.entity.Account;
-import com.gstdev.cloud.service.system.pojo.entity.User;
+import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
+import com.gstdev.cloud.service.system.pojo.entity.SysUser;
 import com.gstdev.cloud.service.system.pojo.entity.UserStatus;
 import com.gstdev.cloud.service.system.pojo.vo.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.UserUpdateInput;
@@ -23,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import jakarta.annotation.Resource;
@@ -32,7 +33,7 @@ import java.util.*;
 @Slf4j
 @Service
 @Transactional(readOnly = true)
-public class UserServiceImpl extends BasePOJOServiceImpl<User, String, UserRepository, UserMapper, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> implements UserService {
+public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRepository, UserMapper, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> implements UserService {
 
     private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
     @Resource
@@ -89,21 +90,24 @@ public class UserServiceImpl extends BasePOJOServiceImpl<User, String, UserRepos
 
     @Override
     @Transactional
-    public User insert(User user) {
+    public SysUser insert(SysUser user) {
+        if (ObjectUtils.isEmpty(user.getPassword())){
+            user.setPassword(randomPassword());
+        }
         user.setPassword((SecurityUtils.encrypt(user.getPassword())));
-        User insert = super.insert(user);
+        SysUser insert = super.insert(user);
         return insert;
     }
 
     @Transactional
-    public User insertUserInitialization(UserInsertInput userInsertInput) {
-        User user = toEntityInsert(userInsertInput);
-        User insert = insert(user);
+    public SysUser insertUserInitialization(UserInsertInput userInsertInput) {
+        SysUser user = toEntityInsert(userInsertInput);
+        SysUser insert = insert(user);
         AccountInsertInput accountInsertInput = new AccountInsertInput();
         accountInsertInput.setTenantId(userInsertInput.getTenantId());
         accountInsertInput.setUserId(insert.getId());
         accountInsertInput.setAccountTypeConstants(userInsertInput.getAccountTypeConstants());
-        Account insertAccount = accountService.insertAccountInitialization(accountInsertInput);
+        SysAccount insertAccount = accountService.insertAccountInitialization(accountInsertInput);
         // 同步到identity模块
         IdentitySaveDto identitySaveDto = new IdentitySaveDto();
         identitySaveDto.setUserId(insert.getId());
@@ -167,7 +171,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<User, String, UserRepos
     @Override
     @Transactional
     public Result<UserDto> insertUserInitializationToResult(UserInsertInput userInsertInput) {
-        User user = insertUserInitialization(userInsertInput);
+        SysUser user = insertUserInitialization(userInsertInput);
         return Result.success(getMapper().toDto(user));
     }
 //
@@ -196,8 +200,8 @@ public class UserServiceImpl extends BasePOJOServiceImpl<User, String, UserRepos
 
     @Override
     public List<AccountListDto> getByIdToAccount(String id) {
-        User user = userRepository.findById(id).orElseGet(User::new);
-        List<Account> account = user.getAccount();
+        SysUser user = userRepository.findById(id).orElseGet(SysUser::new);
+        List<SysAccount> account = user.getAccount();
         List<AccountListDto> accountListDtos = userMapper.accountListToDto(account);
         return accountListDtos;
     }
@@ -218,7 +222,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<User, String, UserRepos
     @Transactional(rollbackFor = ServiceException.class)
     public UserDto create(UserDto userDto, String tenentId) {
 
-        User user = userMapper.toEntity(userDto);
+        SysUser user = userMapper.toEntity(userDto);
 
 //    this.checkPassword(user.getPassword());
         if (StringUtils.isEmpty(user.getUsername())) {

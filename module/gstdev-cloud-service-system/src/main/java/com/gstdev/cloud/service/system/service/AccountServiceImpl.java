@@ -3,8 +3,8 @@ package com.gstdev.cloud.service.system.service;
 import cn.hutool.core.util.ObjectUtil;
 import com.gstdev.cloud.service.system.mapper.AccountMapper;
 import com.gstdev.cloud.service.system.pojo.base.account.*;
-import com.gstdev.cloud.service.system.pojo.entity.Account;
-import com.gstdev.cloud.service.system.pojo.entity.User;
+import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
+import com.gstdev.cloud.service.system.pojo.entity.SysUser;
 import com.gstdev.cloud.service.system.repository.AccountRepository;
 import com.gstdev.cloud.service.system.repository.DepartRepository;
 import com.gstdev.cloud.service.system.repository.RoleRepository;
@@ -24,7 +24,7 @@ import java.util.List;
 //public class AccountServiceImpl implements AccountService {
 @Service
 @Transactional(readOnly = true)
-public class AccountServiceImpl extends BasePOJOServiceImpl<Account, String, AccountRepository, AccountMapper, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> implements AccountService {
+public class AccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, AccountRepository, AccountMapper, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> implements AccountService {
 
     @Resource
     private AccountRepository accountRepository;
@@ -46,16 +46,16 @@ public class AccountServiceImpl extends BasePOJOServiceImpl<Account, String, Acc
 
     @Override
     @Transactional
-    public Account insertAccountInitialization(AccountInsertInput accountInsertInput) {
-        Account account = toEntityInsert(accountInsertInput);
-        User user = userRepository.findById(accountInsertInput.getUserId()).get();
+    public SysAccount insertAccountInitialization(AccountInsertInput accountInsertInput) {
+        SysAccount account = toEntityInsert(accountInsertInput);
+        SysUser user = userRepository.findById(accountInsertInput.getUserId()).get();
         account.setUser(user);
         account.setType(accountInsertInput.getAccountTypeConstants().getCode());
         if (!ObjectUtils.isEmpty(accountInsertInput.getDepartIds()))
             account.setDeparts(departRepository.findAllById(accountInsertInput.getDepartIds()));
         if (!ObjectUtils.isEmpty(accountInsertInput.getRoleIds()))
             account.setRoles(roleRepository.findAllById(accountInsertInput.getRoleIds()));
-        Account insert = insert(account);
+        SysAccount insert = insert(account);
         return insert;
     }
 
@@ -71,7 +71,7 @@ public class AccountServiceImpl extends BasePOJOServiceImpl<Account, String, Acc
     }
 
     @Transactional()
-    public Account save(Account var) {
+    public SysAccount save(SysAccount var) {
 //        var.setUpdatedBy(redisCurrentLoginInformation.getCurrentLoginAccountId());
 //        if (redisCurrentLoginInformation.getCurrentLoginAccountId().equals(var.getId()) && !redisCurrentLoginInformation.getCurrentLoginInformation().getAccountType().equals(var.getType())) {
 //            throw new PlatformRuntimeException("This action is not available");
@@ -81,7 +81,7 @@ public class AccountServiceImpl extends BasePOJOServiceImpl<Account, String, Acc
 
     @Override
     public List<AccountDto> findAllByUserId(String userId) {
-        List<Account> allByUserId = accountRepository.findAllByUserId(userId);
+        List<SysAccount> allByUserId = accountRepository.findAllByUserId(userId);
         List<AccountDto> accountDtos = getMapper().toDto(allByUserId);
         return accountDtos;
     }
@@ -89,7 +89,7 @@ public class AccountServiceImpl extends BasePOJOServiceImpl<Account, String, Acc
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void deleteByTenantId(String tenantId) {
-        List<Account> accountList = accountRepository.findAllByTenantId(tenantId);
+        List<SysAccount> accountList = accountRepository.findAllByTenantId(tenantId);
         if (ObjectUtil.isNotEmpty(accountList)) {
             accountRepository.deleteAll(accountList);
         }

@@ -4,7 +4,7 @@ import com.gstdev.cloud.base.core.utils.treeUtils.TreeFactory;
 import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
 import com.gstdev.cloud.service.system.mapper.MenuMapper;
 import com.gstdev.cloud.service.system.pojo.base.menu.*;
-import com.gstdev.cloud.service.system.pojo.entity.Account;
+import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.service.system.pojo.entity.Menu;
 import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
 import com.gstdev.cloud.service.system.pojo.entity.Role;
@@ -13,7 +13,6 @@ import com.gstdev.cloud.service.system.repository.MenuRepository;
 import com.gstdev.cloud.service.system.repository.RoleRepository;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
-import com.gstdev.cloud.service.system.mapper.MenuMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -78,7 +77,7 @@ public class MenuServiceImpl extends BaseTreeServiceImpl<Menu, String, MenuRepos
     }
 
     public List<MenuDto> getAccountPermissions(String accountId) {
-        Account account = accountRepository.findById(accountId).get();
+        SysAccount account = accountRepository.findById(accountId).get();
         MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
         if (account.getType().equals(AccountTypeConstants.SUPER.getCode())) {
             return findAllByQueryCriteriaToDtoToTree(menuFindAllByQueryCriteria);

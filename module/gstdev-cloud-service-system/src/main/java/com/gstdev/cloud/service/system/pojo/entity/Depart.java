@@ -58,7 +58,7 @@ public class Depart extends BaseTreeEntity {
     @JoinTable(name = "sys_r_account_depart", joinColumns = {
         @JoinColumn(name = "depart_id", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "account_id", referencedColumnName = "id")})
-    private List<Account> accounts;
+    private List<SysAccount> accounts;
 }
 
 

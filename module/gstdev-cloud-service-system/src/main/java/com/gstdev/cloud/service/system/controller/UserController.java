@@ -6,7 +6,7 @@ import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.base.user.UserFindAllByQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.user.UserPageQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.user.UserVo;
-import com.gstdev.cloud.service.system.pojo.entity.User;
+import com.gstdev.cloud.service.system.pojo.entity.SysUser;
 import com.gstdev.cloud.service.system.pojo.vo.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.UserUpdateInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.AccountListDto;
@@ -29,7 +29,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/v1/user")
-public class UserController implements POJOController<User, String, UserService, UserVoMapper, UserVo, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> {
+public class UserController implements POJOController<SysUser, String, UserService, UserVoMapper, UserVo, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> {
 
     @Resource
     private UserService userService;

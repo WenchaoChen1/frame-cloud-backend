@@ -2,7 +2,7 @@ package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.service.system.mapper.vo.AccountVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.account.*;
-import com.gstdev.cloud.service.system.pojo.entity.Account;
+import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.service.system.service.AccountService;
 import com.gstdev.cloud.rest.core.controller.POJOController;
@@ -17,7 +17,7 @@ import jakarta.annotation.Resource;
 
 @RestController
 @RequestMapping("/v1/account")
-public class AccountController implements POJOController<Account, String, AccountService, AccountVoMapper, AccountVo, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
+public class AccountController implements POJOController<SysAccount, String, AccountService, AccountVoMapper, AccountVo, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
 
     @Resource
     private AccountService accountService;

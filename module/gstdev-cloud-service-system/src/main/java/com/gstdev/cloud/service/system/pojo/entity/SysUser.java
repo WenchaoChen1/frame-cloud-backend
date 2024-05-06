@@ -30,8 +30,8 @@ import java.util.List;
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 @Table(name = "sys_user", schema = "public")
 @Where(clause = "deleted = 0")
-@SQLDelete(sql = "UPDATE public.user SET deleted=1 WHERE id =?")
-public class User extends BasePOJOEntity {
+@SQLDelete(sql = "UPDATE public.sys_user SET deleted=1 WHERE id =?")
+public class SysUser extends BasePOJOEntity {
     @Schema(title = "用户名")
     @Column(name = "username", length = 128, nullable = false, unique = true)
     private String username;
@@ -71,7 +71,7 @@ public class User extends BasePOJOEntity {
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-    private List<Account> account;
+    private List<SysAccount> account;
 
     //-----------------自定义-----------
     @Column(name = "first_name", length = 60)

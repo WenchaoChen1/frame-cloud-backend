@@ -31,7 +31,7 @@ import java.util.List;
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 @Table(name = "sys_menu", schema = "public")
 @Where(clause = "deleted = 0")
-@SQLDelete(sql = "UPDATE menu SET deleted=1 WHERE id =?")
+@SQLDelete(sql = "UPDATE sys_menu SET deleted=1 WHERE id =?")
 public class Menu extends BaseTreeEntity {
 
     @Column(name = "deleted", nullable = false)

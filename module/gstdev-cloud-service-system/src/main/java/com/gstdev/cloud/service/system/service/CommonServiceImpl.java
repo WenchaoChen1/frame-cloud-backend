@@ -10,7 +10,7 @@
 package com.gstdev.cloud.service.system.service;
 
 
-import com.gstdev.cloud.service.system.pojo.entity.User;
+import com.gstdev.cloud.service.system.pojo.entity.SysUser;
 import com.gstdev.cloud.service.system.repository.UserRepository;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Service;
@@ -36,7 +36,7 @@ public class CommonServiceImpl implements CommonService {
     @Override
     public String checkIfUserExist(String emailAddress) {
         String validationMessage = null;
-        Optional<User> user = userRepository.findByEmail(emailAddress);
+        Optional<SysUser> user = userRepository.findByEmail(emailAddress);
         if (user.isPresent() && !ObjectUtils.isEmpty(user)) {
             validationMessage = "The email address already exists";
         }

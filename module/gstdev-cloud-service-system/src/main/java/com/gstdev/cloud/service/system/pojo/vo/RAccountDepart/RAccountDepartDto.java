@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.pojo.vo.RAccountDepart;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.gstdev.cloud.service.system.pojo.entity.Account;
+import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.service.system.pojo.entity.Depart;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +18,7 @@ import java.util.Date;
 @Setter
 public class RAccountDepartDto implements Serializable {
     private String id;
-    private Account account;
+    private SysAccount account;
     private Depart depart;
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

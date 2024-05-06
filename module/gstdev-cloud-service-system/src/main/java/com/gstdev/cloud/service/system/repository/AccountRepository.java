@@ -1,18 +1,18 @@
 package com.gstdev.cloud.service.system.repository;
 
-import com.gstdev.cloud.service.system.pojo.entity.Account;
+import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 
 import java.util.List;
 
-public interface AccountRepository extends BaseRepository<Account, String> {
+public interface AccountRepository extends BaseRepository<SysAccount, String> {
     /**
      * 通过登录名查账号和用户信息
      *
      * @param identity
      * @return
      */
-    Account findByIdentity(String identity);
+    SysAccount findByIdentity(String identity);
 
     /**
      * 查询
@@ -22,11 +22,11 @@ public interface AccountRepository extends BaseRepository<Account, String> {
      * @return
      */
 
-    Account findByUserIdAndTenantId(String userId, String tenantId);
+    SysAccount findByUserIdAndTenantId(String userId, String tenantId);
 
-    Account findAccountByType(String userId);
+    SysAccount findAccountByType(String userId);
 
-    List<Account> findAllByUserId(String userId);
+    List<SysAccount> findAllByUserId(String userId);
 
-    List<Account> findAllByTenantId(String tenantId);
+    List<SysAccount> findAllByTenantId(String tenantId);
 }

@@ -26,7 +26,7 @@ import java.util.List;
 @Entity
 @Table(name = "sys_role", schema = "public")
 @Where(clause = "deleted = 0")
-@SQLDelete(sql = "UPDATE role SET deleted=1 WHERE id =?")
+@SQLDelete(sql = "UPDATE sys_role SET deleted=1 WHERE id =?")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 public class Role extends BaseTreeEntity {
 
@@ -70,7 +70,7 @@ public class Role extends BaseTreeEntity {
     @JoinTable(name = "sys_r_account_role", joinColumns = {
         @JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "account_id", referencedColumnName = "id")})
-    private List<Account> accounts;
+    private List<SysAccount> accounts;
 }
 
 
