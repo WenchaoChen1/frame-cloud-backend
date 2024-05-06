@@ -11,17 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
-@FeignClient(contextId = "identityClient", name = ServiceConstants.SERVICE_NAME_IDENTITY, path = "/user")
+//@FeignClient(contextId = "identityClient", name = ServiceConstants.SERVICE_NAME_IDENTITY, path = "/user")
+@FeignClient(contextId = "identityClient", value = ServiceConstants.SERVICE_NAME_IDENTITY)
+//@FeignClient(contextId = "identityClient", name = ServiceConstants.SERVICE_NAME_IDENTITY, url = "http://127.0.0.1:8201/" + ServiceConstants.SERVICE_NAME_IDENTITY)
 public interface IdentityFeignClient {
 
 
     @Inner
-    @PostMapping("save")
+    @PostMapping("/user/save")
     Result<UserDto> save(@RequestBody IdentitySaveDto saveDto);
-
-
-
-
 
 
 //    @GetMapping(value = "/a")
