@@ -8,7 +8,6 @@ import com.frame.template.common.exception.CommonException;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
-import com.gstdev.cloud.service.system.feign.IdentityFeignClient;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.service.system.service.AccountService;
 import com.gstdev.cloud.service.system.service.MenuService;

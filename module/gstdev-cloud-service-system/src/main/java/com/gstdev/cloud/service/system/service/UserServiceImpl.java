@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
 import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
 import com.gstdev.cloud.service.system.mapper.UserMapper;
 import com.gstdev.cloud.service.system.pojo.base.account.AccountInsertInput;
@@ -40,8 +41,8 @@ public class UserServiceImpl extends BasePOJOServiceImpl<User, String, UserRepos
     private UserMapper userMapper;
     @Resource
     private AccountService accountService;
-//    @Resource
-//    private IdentityFeignService identityFeignService;
+    @Resource
+    private IdentityFeignService identityFeignService;
 
     //  @Resource
 //  private EmailFeignService emailFeignService;
@@ -109,7 +110,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<User, String, UserRepos
         identitySaveDto.setEmail(insert.getEmail());
         identitySaveDto.setUsername(insert.getUsername());
         identitySaveDto.setPassword(insert.getPassword());
-//        identityFeignService.save(identitySaveDto);
+        identityFeignService.save(identitySaveDto);
         return insert;
     }
 

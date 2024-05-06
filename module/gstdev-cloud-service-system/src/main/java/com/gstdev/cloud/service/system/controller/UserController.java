@@ -83,12 +83,12 @@ public class UserController implements POJOController<User, String, UserService,
     public Result<UserVo> insert(@RequestBody @Validated UserInsertInput userInsertInput) {
         return insertToResult(userInsertInput);
     }
-//
-//  @PostMapping("/insert-user-initialization")
-//  @Operation(summary = "新增一个用户并创建用户的账户以及角色,部门")
-//  public Result<UserVo> insertUserInitialization(@RequestBody @Validated UserInsertInput userInsertInput) {
-//    return getMapper().toVo(getService().insertUserInitializationToResult(userInsertInput));
-//  }
+
+    @PostMapping("/insert-user-initialization")
+    @Operation(summary = "新增一个用户并创建用户的账户以及角色,部门")
+    public Result<UserVo> insertUserInitialization(@RequestBody @Validated UserInsertInput userInsertInput) {
+        return getMapper().toVo(getService().insertUserInitializationToResult(userInsertInput));
+    }
 
     @PutMapping
     @Operation(summary = "修改一条数据")

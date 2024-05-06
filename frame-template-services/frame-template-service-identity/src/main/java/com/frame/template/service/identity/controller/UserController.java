@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
 
-//@Api(tags = "岗位管理")
 @RequestMapping("user")
 @RestController
 public class UserController {
@@ -37,25 +36,27 @@ public class UserController {
     }
 
     @PostMapping
-//  @ApiOperation(value = "添加新岗位")
     public Result<UserDto> create(@Validated @RequestBody UserInput userInput) {
         return userService.create(userInput);
     }
 
+    @PostMapping("/save")
+    public Result<UserDto> save(@Validated @RequestBody UserInput userInput) {
+        return userService.create(userInput);
+    }
+
+
     @PutMapping
-//  @ApiOperation(value = "编辑岗位")
     public Result<Object> update(@Validated @RequestBody UserInput userInput) {
         return userService.update(userInput);
     }
 
     @DeleteMapping("{userId}")
-//  @ApiOperation(value = "删除岗位")
     public Result<Object> delete(@PathVariable String userId) {
         return userService.delete(userId);
     }
 
     @GetMapping
-//  @ApiOperation(value = "岗位分页列表")
     public Result<Object> getUserData(PostQueryCriteria criteria, Pageable pageable) {
         Object userDetails = SecurityUtils.getUserDetails();
         return userService.getUserData(criteria, pageable);

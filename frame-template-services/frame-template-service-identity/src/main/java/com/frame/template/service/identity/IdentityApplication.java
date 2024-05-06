@@ -20,14 +20,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableFeignClients
 @ComponentScan(value = {
     "com.gstdev.cloud",
-
     "com.frame.template"
 })
 @EntityScan(value = {"com.frame.template.service.identity"})
 @EnableJpaRepositories(value = {"com.frame.template.service.identity"})
 //@ConfigurationPropertiesScan({"com.gstdev"})
 @SpringBootApplication
-
 public class IdentityApplication {
 
     public static void main(String[] args) {
