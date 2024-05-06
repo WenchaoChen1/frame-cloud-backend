@@ -5,7 +5,7 @@ import com.frame.template.service.email.service.EmailService;
 import com.frame.template.service.email.enums.EmailTypeEnum;
 import com.frame.template.service.email.pojo.domain.Email;
 import com.frame.template.service.email.pojo.domain.vo.UserDto;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.context.Context;
