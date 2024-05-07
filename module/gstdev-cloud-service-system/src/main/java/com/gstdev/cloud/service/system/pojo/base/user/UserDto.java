@@ -11,6 +11,7 @@ package com.gstdev.cloud.service.system.pojo.base.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.pojo.BaseDto;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,7 +24,37 @@ import java.util.List;
 @Setter
 public class UserDto extends BaseDto {
 
+
+
     private String id;
+    @Schema(title = "用户名")
+    private String username;
+    @Schema(title = "EMAIL")
+    private String email;
+    @Schema(title = "手机号码")
+    private String phoneNumber;
+    @Schema(title = "密码", description = "BCryptPasswordEncoder")
+    private String password;
+    @Schema(title = "昵称")
+    private String nickname;
+    @Schema(title = "头像")
+    private String avatar;
+    @Schema(title = "性别")
+    private Integer gender ;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date lastLoginTime;
+    private Integer deleted ;
+    private String firstName;
+    private String lastName;
+    private String activateToken;
+    private Integer status;
+
+    private String AccountType;
+    private String icon;
+
+    private List<String> roleIdlist;
+
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
@@ -32,22 +63,5 @@ public class UserDto extends BaseDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
     private String updatedBy;
-    private String avatar;
-    private Integer deleted;
-    private String email;
-    private Integer gender;
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date lastLoginTime;
-    private String mobile;
-    private String password;
-    private String username;
-    private String firstName;
-    private String lastName;
-    private List<String> roleIdlist;
-    private String icon;
-
-    private String AccountType;
-
 }
 

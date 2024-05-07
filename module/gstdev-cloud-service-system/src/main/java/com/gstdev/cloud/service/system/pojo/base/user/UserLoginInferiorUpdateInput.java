@@ -22,25 +22,29 @@ import java.util.Date;
 public class UserLoginInferiorUpdateInput extends BaseUpdateInput {
 
     private String id;
-    @Schema(title = "avatar 不能为空", required = true)
-    private String avatar;
-    @Schema(title = "deleted 不能为空", required = true)
-    private Integer deleted;
-    @Schema(title = "email 不能为空", required = true)
-    private String email;
-    @Schema(title = "gender 不能为空", required = true)
-    private Integer gender;
-    @Schema(title = "lastLoginTime 不能为空", required = true)
-    private Date lastLoginTime;
-    @Schema(title = "mobile 不能为空", required = true)
-    private String mobile;
-    @Schema(title = "password 不能为空", required = true)
-    private String password;
-    @Schema(title = "username 不能为空", required = true)
+    @Schema(title = "用户名")
     private String username;
-    private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
+    @Schema(title = "EMAIL")
+    private String email;
+    @Schema(title = "手机号码")
+    private String phoneNumber;
+    @Schema(title = "密码", description = "BCryptPasswordEncoder")
+    private String password;
+    @Schema(title = "昵称")
+    private String nickname;
+    @Schema(title = "头像")
+    private String avatar;
+    @Schema(title = "性别")
+    private Integer gender = 0;
+    private Date lastLoginTime;
+    private Integer deleted = 0;
     private String firstName;
     private String lastName;
+    private String activateToken;
+    private Integer status = 0;
+
+    @Schema(title = "accountTypeConstants 不能为空", required = true)
+    private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
     private String icon;
 }
 
