@@ -25,7 +25,7 @@ import java.util.List;
 @Where(clause = "deleted = 0")
 @SQLDelete(sql = "UPDATE sys_account SET deleted=1 WHERE id =?")
 public class SysAccount extends BasePOJOEntity {
-    
+
     @Column(name = "tenant_id", length = 36, nullable = false)
     private String tenantId;
 
