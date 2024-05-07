@@ -35,13 +35,6 @@ public class AccountController implements POJOController<SysAccount, String, Acc
         return accountVoMapper;
     }
 
-    //  @GetMapping("/get-all-account")
-//  @Operation(summary = "获取所有的账户")
-//  public Result<List<AccountVo>> getAllQueryCriteria(@RequestParam("tenantId") String tenantId) {
-//    AccountFindAllByQueryCriteria accountFindAllByQueryCriteria=new AccountFindAllByQueryCriteria();
-//    accountFindAllByQueryCriteria.setTenantId(tenantId);
-//    return findAllByQueryCriteriaToResult(accountFindAllByQueryCriteria);
-//  }
     @GetMapping("/get-account-page")
     @Operation(summary = "获取所有的账户,分页")
     public Result<Page<AccountVo>> getAllPageQueryCriteria(AccountPageQueryCriteria accountPageQueryCriteria, Pageable pageable) {
@@ -54,12 +47,12 @@ public class AccountController implements POJOController<SysAccount, String, Acc
         return findByIdToResult(id);
     }
 
-    //  @PostMapping
-//  @Operation(summary = "新增一条数据")
-//  public Result<AccountVo> insert(@RequestBody @Validated AccountInsertInput accountInsertInput) {
-//    return insertToResult(accountInsertInput);
-//  }
-//
+    @PostMapping
+    @Operation(summary = "新增一条数据")
+    public Result<AccountVo> insert(@RequestBody @Validated AccountInsertInput accountInsertInput) {
+        return insertToResult(accountInsertInput);
+    }
+
     @PutMapping
     @Operation(summary = "修改一条数据")
     public Result<AccountVo> update(@RequestBody @Validated AccountUpdateInput updateInput) {

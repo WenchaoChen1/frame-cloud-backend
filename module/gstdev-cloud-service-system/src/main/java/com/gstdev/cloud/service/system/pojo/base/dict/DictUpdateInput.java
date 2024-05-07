@@ -25,6 +25,5 @@ public class DictUpdateInput extends BaseTreeUpdateInput {
     private Integer sort;
     private Integer status;
 
-
 }
 

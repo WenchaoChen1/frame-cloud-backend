@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.controller;
 
+import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.DtoController;
 import com.gstdev.cloud.service.system.mapper.vo.SysPermissionVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionDto;
@@ -39,7 +40,6 @@ import java.util.Map;
     @Tag(name = "系统权限管理接口")
 })
 public class SysPermissionController implements DtoController<SysPermission, String, SysPermissionService, SysPermissionDto> {
-//public class SysPermissionController implements Controller<SysPermission, String, SysPermissionService> {
 
     @Resource
     private SysPermissionService sysPermissionService;
@@ -60,9 +60,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         })
     @GetMapping("/page")
     public Result<Page<SysPermissionVo>> findByPageToResult(SysPermissionPageQueryCriteria sysPermissionPageQueryCriteria, Pageable pageable) {
-        Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((Specification<SysPermission>) sysPermissionPageQueryCriteria, pageable);
-//        Page<SysPermission> byPage = getService().findByPage(sysPermissionPageQueryCriteria, pageable);
-//        Page<SysPermission> byPage = getService().findByPage(pageable);
+        Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysPermissionPageQueryCriteria, criteriaBuilder), pageable);
         Page<SysPermissionVo> SysPermissionVos = SysPermissionVoMapper.toVo(byPageToDto);
         return Result.success(SysPermissionVos);
     }

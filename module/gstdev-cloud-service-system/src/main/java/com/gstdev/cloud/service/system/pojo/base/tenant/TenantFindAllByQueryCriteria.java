@@ -23,8 +23,8 @@ public class TenantFindAllByQueryCriteria extends BaseTreeFindAllByQueryCriteria
     @Query(blurry = "tenantName", type = Query.Type.IN)
     private String tenantName;
     //  @Query
-//  private String tenantId;
-//  @Query(blurry = "tenantId", type = Query.Type.IN)
+    private String tenantId;
+    //  @Query(blurry = "tenantId", type = Query.Type.IN)
     @Query(type = Query.Type.IN)
 //    @Query(blurry = "id",type = Query.Type.EQUAL)
     private List<String> id;

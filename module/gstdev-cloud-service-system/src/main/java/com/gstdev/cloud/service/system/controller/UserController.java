@@ -13,7 +13,6 @@ import com.gstdev.cloud.service.system.pojo.vo.UserUpdateInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.AccountListDto;
 import com.gstdev.cloud.service.system.service.UserService;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.service.system.service.CommonService;
 import com.gstdev.cloud.rest.core.controller.POJOController;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +37,6 @@ public class UserController implements POJOController<SysUser, String, UserServi
     @Resource
     private UserVoMapper userVoMapper;
 
-
     @Override
     public UserService getService() {
         return userService;
@@ -49,7 +47,7 @@ public class UserController implements POJOController<SysUser, String, UserServi
         return userVoMapper;
     }
 
-    public UserController(UserService userService, CommonService commonService, UserVoMapper userVoMapper) {
+    public UserController(UserService userService,  UserVoMapper userVoMapper) {
         this.userService = userService;
         this.userVoMapper = userVoMapper;
     }
@@ -70,7 +68,7 @@ public class UserController implements POJOController<SysUser, String, UserServi
     @GetMapping("/page")
     @Operation(summary = "获取所有的用户,分页")
     public Result<Page<UserVo>> a(UserPageQueryCriteria userPageQueryCriteria, PageRequest pageable) {
-        return null;
+        return pageToResult(userPageQueryCriteria, pageable);
     }
 
     @GetMapping("/get-by-id")
@@ -84,11 +82,6 @@ public class UserController implements POJOController<SysUser, String, UserServi
     Result<DefaultSecurityUser> signInFindByUsername(@PathVariable("username") String username) {
         return Result.success(getService().signInFindByUsername(username));
     }
-//    @GetMapping("/security/sign-in/{username}")
-//    @Operation(summary = "根据username获取实体数据")
-//    Result<DefaultSecurityUser> findByUsername(@PathVariable("username") String username) {
-//        return Result.success(getService().signInFindByUsername(username));
-//    }
 
     @PostMapping
     @Operation(summary = "新增一条数据")
