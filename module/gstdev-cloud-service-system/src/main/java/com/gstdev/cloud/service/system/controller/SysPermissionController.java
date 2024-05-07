@@ -1,6 +1,9 @@
 package com.gstdev.cloud.service.system.controller;
 
+import com.gstdev.cloud.rest.core.controller.DtoController;
 import com.gstdev.cloud.service.system.mapper.vo.SysPermissionVoMapper;
+import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionDto;
+import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionPageQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
@@ -19,6 +22,7 @@ import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,7 +38,8 @@ import java.util.Map;
     @Tag(name = "用户安全管理接口"),
     @Tag(name = "系统权限管理接口")
 })
-public class SysPermissionController implements Controller<SysPermission, String, SysPermissionService> {
+public class SysPermissionController implements DtoController<SysPermission, String, SysPermissionService, SysPermissionDto> {
+//public class SysPermissionController implements Controller<SysPermission, String, SysPermissionService> {
 
     @Resource
     private SysPermissionService sysPermissionService;
@@ -54,9 +59,11 @@ public class SysPermissionController implements Controller<SysPermission, String
             @ApiResponse(responseCode = "500", description = "查询失败")
         })
     @GetMapping("/page")
-    public Result<Map<String, Object>> findByPage(Pageable pageable) {
-        Page<SysPermission> byPage = getService().findByPage(pageable);
-        Page<SysPermissionVo> SysPermissionVos = SysPermissionVoMapper.entityToVo(byPage);
-        return Result.success((Map<String, Object>) SysPermissionVos);
+    public Result<Page<SysPermissionVo>> findByPageToResult(SysPermissionPageQueryCriteria sysPermissionPageQueryCriteria, Pageable pageable) {
+        Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((Specification<SysPermission>) sysPermissionPageQueryCriteria, pageable);
+//        Page<SysPermission> byPage = getService().findByPage(sysPermissionPageQueryCriteria, pageable);
+//        Page<SysPermission> byPage = getService().findByPage(pageable);
+        Page<SysPermissionVo> SysPermissionVos = SysPermissionVoMapper.toVo(byPageToDto);
+        return Result.success(SysPermissionVos);
     }
 }

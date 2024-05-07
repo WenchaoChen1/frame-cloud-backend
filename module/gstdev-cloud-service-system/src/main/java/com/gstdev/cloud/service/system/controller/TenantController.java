@@ -58,7 +58,7 @@ public class TenantController implements TreeController<Tenant, String, TenantSe
     @Operation(summary = "获取当前租户以及当前租户的所有子租户，返回树状结构")
     public Result<List<TenantVo>> findByIdToTreeToResult(TenantFindAllByQueryCriteria tenantFindAllByQueryCriteria) {
         //TODO AAA
-        List<TenantDto> itselfAndSubsetsToDto = getService().findItselfAndSubsetsToDto("A");
+        List<TenantDto> itselfAndSubsetsToDto = getService().findItselfAndSubsetsToDto("1");
 //        List<TenantDto> itselfAndSubsetsToDto = getService().findItselfAndSubsetsToDto(redisCurrentLoginInformation.getCurrentLoginTenantId());
         List<String> tenantIds = itselfAndSubsetsToDto.stream().map(TenantDto::getId).toList();
         tenantFindAllByQueryCriteria.setTenantIds(tenantIds);
