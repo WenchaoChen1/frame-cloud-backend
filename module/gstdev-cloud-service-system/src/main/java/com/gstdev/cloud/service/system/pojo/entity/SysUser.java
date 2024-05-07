@@ -37,7 +37,7 @@ public class SysUser extends BasePOJOEntity {
     private String username;
 
     @Schema(title = "EMAIL")
-    @Column(name = "email", length = 100, unique = true)
+    @Column(name = "email", length = 100, nullable = false, unique = true)
     private String email;
 
     @Schema(title = "手机号码")

@@ -8,8 +8,8 @@ import com.gstdev.cloud.service.system.pojo.base.user.UserFindAllByQueryCriteria
 import com.gstdev.cloud.service.system.pojo.base.user.UserPageQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.user.UserVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
-import com.gstdev.cloud.service.system.pojo.vo.UserInsertInput;
-import com.gstdev.cloud.service.system.pojo.vo.UserUpdateInput;
+import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
+import com.gstdev.cloud.service.system.pojo.vo.user.UserUpdateInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.AccountListDto;
 import com.gstdev.cloud.service.system.service.UserService;
 import com.gstdev.cloud.base.definition.domain.Result;

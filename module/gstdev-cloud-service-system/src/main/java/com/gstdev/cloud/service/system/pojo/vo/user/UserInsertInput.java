@@ -7,30 +7,37 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.service.system.pojo.vo;
+package com.gstdev.cloud.service.system.pojo.vo.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.gstdev.cloud.data.core.pojo.BaseUpdateInput;
+import com.gstdev.cloud.data.core.pojo.BaseInsertInput;
 import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
-public class UserUpdateInput extends BaseUpdateInput {
+public class UserInsertInput extends BaseInsertInput implements Serializable {
 
-    private String id;
-    private String avatar;
-    private Integer deleted;
+    private String username;
     private String email;
-    private Integer gender;
+    private String phoneNumber;
+    private String password;
+    private String nickname;
+    private String avatar;
+    private Integer gender = 0;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date lastLoginTime;
-    private String mobile;
-    private String password;
-    private String username;
+
+
+    List<String> departIds;
+    List<String> roleIds;
+    private String accountName;
+    private String tenantId;
     private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
     private String firstName;
     private String lastName;
