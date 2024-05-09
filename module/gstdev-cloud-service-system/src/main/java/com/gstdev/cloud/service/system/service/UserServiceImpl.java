@@ -318,7 +318,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
 //        }
 
 
-        return securityUser;
+        return convert;
     }
 
 }

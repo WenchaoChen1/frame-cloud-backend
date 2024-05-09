@@ -2,6 +2,7 @@ package com.gstdev.cloud.service.system.pojo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
+import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -35,7 +36,7 @@ public class SysAccount extends BasePOJOEntity {
     //  super:0 看到所有数据最大权限,admin:1只能看到当前租户的所有权限，user：需要根据role来获取权限
     @Column(name = "type", length = 100)
     private String type = "user";
-
+//    private AccountTypeConstants type = AccountTypeConstants.USER;
     @Column(name = "name", nullable = false)
     private String name;
 

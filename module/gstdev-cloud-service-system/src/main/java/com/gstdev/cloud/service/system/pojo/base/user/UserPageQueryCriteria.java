@@ -9,6 +9,7 @@
 
 package com.gstdev.cloud.service.system.pojo.base.user;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BasePageQueryCriteria;
 import lombok.Data;
 
@@ -18,5 +19,6 @@ import java.io.Serializable;
 public class UserPageQueryCriteria extends BasePageQueryCriteria implements Serializable {
 
     private static final long serialVersionUID = 3163118978801722144L;
+    private DataItemStatus status;
 }
 

@@ -10,6 +10,7 @@
 package com.gstdev.cloud.service.system.pojo.vo.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseInsertInput;
 import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
 import lombok.Getter;
@@ -42,5 +43,7 @@ public class UserInsertInput extends BaseInsertInput implements Serializable {
     private String firstName;
     private String lastName;
     private String icon;
+
+    private DataItemStatus status;
 }
 

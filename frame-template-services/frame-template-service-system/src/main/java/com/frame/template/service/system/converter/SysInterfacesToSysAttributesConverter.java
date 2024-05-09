@@ -57,12 +57,12 @@ public class SysInterfacesToSysAttributesConverter implements Converter<List<Sys
 
 //        sysPermissions.add(attributePermission);
 //        sysPermissions.add(servicePermission);
-        SysPermission servicePermission = new SysPermission();
-        servicePermission.setPermissionId("6b492c39-f367-4e66-821c-f4dffacfaeff");
-        servicePermission.setPermissionCode("all");
-        servicePermission.setPermissionName("all");
-        servicePermission.setPermissionType("all");
-
+        SysPermission allPermission = new SysPermission();
+        allPermission.setPermissionId("6b492c39-f367-4e66-821c-f4dffacfaeff");
+        allPermission.setPermissionCode("all");
+        allPermission.setPermissionName("all");
+        allPermission.setPermissionType("all");
+        sysPermissions.add(allPermission);
         sysAttribute.setPermissions(sysPermissions);
         return sysAttribute;
     }

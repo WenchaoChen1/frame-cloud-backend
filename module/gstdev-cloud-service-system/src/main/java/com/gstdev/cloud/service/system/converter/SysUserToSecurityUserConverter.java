@@ -4,6 +4,7 @@ import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
+import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
 import com.gstdev.cloud.service.system.pojo.entity.SysRole;
@@ -30,18 +31,25 @@ public class SysUserToSecurityUserConverter implements Converter<SysUser, Defaul
         Set<FrameGrantedAuthority> authorities = new HashSet<>();
 
         Set<String> roles = new HashSet<>();
+
         List<SysRole> accountRoles = sysUser.getAccount().stream()
             .flatMap(account -> account.getRoles().stream())
             .collect(Collectors.toList());
+        for (SysAccount sysAccount : sysUser.getAccount()) {
+            if (sysAccount.getType().equals(AccountTypeConstants.SUPER.getCode())){
+                authorities.add(new FrameGrantedAuthority("all"));
+            }
+        }
 
         for (SysRole sysRole : accountRoles) {
             roles.add(sysRole.getCode());
             authorities.add(new FrameGrantedAuthority(SecurityUtils.wellFormRolePrefix(sysRole.getCode())));
-//            Set<SysPermission> sysPermissions = sysRole.getPermissions();
-//            if (CollectionUtils.isNotEmpty(sysPermissions)) {
-//                sysPermissions.forEach(sysAuthority -> authorities.add(new HerodotusGrantedAuthority((sysAuthority.getPermissionCode()))));
-//            }
+            Set<SysPermission> sysPermissions = sysRole.getPermissions();
+            if (CollectionUtils.isNotEmpty(sysPermissions)) {
+                sysPermissions.forEach(sysAuthority -> authorities.add(new FrameGrantedAuthority((sysAuthority.getPermissionCode()))));
+            }
         }
+
 
 //        String employeeId = ObjectUtils.isNotEmpty(sysUser.getEmployee()) ? sysUser.getEmployee().getEmployeeId() : null;
 
