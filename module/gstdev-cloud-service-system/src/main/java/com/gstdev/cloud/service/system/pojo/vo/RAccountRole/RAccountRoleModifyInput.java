@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.pojo.vo.RAccountRole;
 
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
-import com.gstdev.cloud.service.system.pojo.entity.Role;
+import com.gstdev.cloud.service.system.pojo.entity.SysRole;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,5 +16,5 @@ import java.io.Serializable;
 public class RAccountRoleModifyInput implements Serializable {
     private String id;
     private SysAccount account;
-    private Role role;
+    private SysRole role;
 }

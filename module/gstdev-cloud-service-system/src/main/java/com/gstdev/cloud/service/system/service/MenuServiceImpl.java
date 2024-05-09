@@ -7,7 +7,7 @@ import com.gstdev.cloud.service.system.pojo.base.menu.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.service.system.pojo.entity.Menu;
 import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
-import com.gstdev.cloud.service.system.pojo.entity.Role;
+import com.gstdev.cloud.service.system.pojo.entity.SysRole;
 import com.gstdev.cloud.service.system.repository.AccountRepository;
 import com.gstdev.cloud.service.system.repository.MenuRepository;
 import com.gstdev.cloud.service.system.repository.RoleRepository;
@@ -42,7 +42,7 @@ public class MenuServiceImpl extends BaseTreeServiceImpl<Menu, String, MenuRepos
 
     @Override
     public Result<List<MenuDto>> getAllByRoleMenuToTree(String roleId) {
-        Optional<Role> byId = roleRepository.findById(roleId);
+        Optional<SysRole> byId = roleRepository.findById(roleId);
         List<Menu> menus = byId.get().getRTenantMenus().stream().map(RTenantMenu::getMenu).toList();
         return Result.success(new TreeFactory<String, MenuDto>().buildTree(getMapper().toDto(menus)));
     }
@@ -86,7 +86,7 @@ public class MenuServiceImpl extends BaseTreeServiceImpl<Menu, String, MenuRepos
             return findAllByQueryCriteriaToDtoToTree(menuFindAllByQueryCriteria);
         } else if (account.getType().equals(AccountTypeConstants.USER.getCode())) {
             Map<String, Menu> collect = new HashMap<>();
-            for (Role role : account.getRoles()) {
+            for (SysRole role : account.getRoles()) {
                 List<Menu> menus = role.getRTenantMenus().stream().map(RTenantMenu::getMenu).toList();
                 Map<String, List<Menu>> collect2 = menus.stream().collect(Collectors.groupingBy(Menu::getId));
                 Map<String, Menu> collect1 = role.getRTenantMenus().stream().map(RTenantMenu::getMenu).collect(Collectors.groupingBy(Menu::getId,

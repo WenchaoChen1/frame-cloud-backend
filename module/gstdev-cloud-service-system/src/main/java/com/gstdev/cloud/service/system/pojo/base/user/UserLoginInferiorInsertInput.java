@@ -10,6 +10,7 @@
 package com.gstdev.cloud.service.system.pojo.base.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseUpdateInput;
 import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
@@ -48,7 +49,7 @@ public class UserLoginInferiorInsertInput extends BaseUpdateInput {
     private String firstName;
     private String lastName;
     private String activateToken;
-    private Integer status = 0;
+    private DataItemStatus status;
 
     @Schema(title = "accountTypeConstants 不能为空", required = true)
     private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;

@@ -28,7 +28,7 @@ import java.util.List;
 @Where(clause = "deleted = 0")
 @SQLDelete(sql = "UPDATE sys_role SET deleted=1 WHERE id =?")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-public class Role extends BaseTreeEntity {
+public class SysRole extends BaseTreeEntity {
 
     @Column(name = "tenant_id", length = 50, nullable = false)
     private String tenantId;

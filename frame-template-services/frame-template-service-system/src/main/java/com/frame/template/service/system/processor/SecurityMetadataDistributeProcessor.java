@@ -24,6 +24,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>Description: SecurityMetadata数据处理器 </p>
@@ -73,11 +74,11 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
 
             if (CollectionUtils.isNotEmpty(sysInterfaces)) {
                 List<SysAttribute> elements = toSysAttributes.convert(sysInterfaces);
-//                List<SysPermission> collect = elements.stream()
-//                    .flatMap(attribute -> attribute.getPermissions().stream())
-//                    .distinct()
-//                    .collect(Collectors.toList());
-//                List<SysPermission> sysPermissions = sysPermissionService.saveAllAndFlush(collect);
+                List<SysPermission> collect = elements.stream()
+                    .flatMap(attribute -> attribute.getPermissions().stream())
+                    .distinct()
+                    .collect(Collectors.toList());
+                List<SysPermission> sysPermissions = sysPermissionService.saveAllAndFlush(collect);
                 List<SysAttribute> result = sysAttributeService.saveAllAndFlush(elements);
                 if (CollectionUtils.isNotEmpty(result)) {
                     log.debug("[Gstdev Cloud] |- Merge security attribute SUCCESS and FINISHED!");

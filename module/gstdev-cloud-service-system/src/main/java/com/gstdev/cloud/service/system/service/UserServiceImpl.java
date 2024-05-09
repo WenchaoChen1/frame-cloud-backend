@@ -1,7 +1,9 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
+import com.gstdev.cloud.service.system.converter.SysUserToSecurityUserConverter;
 import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
 import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
 import com.gstdev.cloud.service.system.mapper.UserMapper;
@@ -232,7 +234,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
         if (StringUtils.isEmpty(user.getUsername())) {
             user.setUsername(user.getEmail());
         }
-        user.setStatus(UserStatus.INVITED.getValue());
+        user.setStatus(DataItemStatus.ENABLE);
 //    user.setActivateToken(TokenUtils.getInstance().encode());
         String password = randomPassword();
 //        user.setPassword(Base64.getEncoder().encodeToString(CryptoUtils.asymEncrypt(password, ServiceConstants.ASYM_PUBLIC_KEY)));
@@ -290,6 +292,9 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
         for (SysPermission sysPermission : all) {
             authorities.add(new FrameGrantedAuthority(sysPermission.getPermissionCode()));
         }
+        SysUserToSecurityUserConverter sysUserToSecurityUserConverter = new SysUserToSecurityUserConverter();
+        DefaultSecurityUser convert = sysUserToSecurityUserConverter.convert(byUsername);
+
 
         DefaultSecurityUser securityUser = new DefaultSecurityUser(byUsername.getId()
             , byUsername.getId()

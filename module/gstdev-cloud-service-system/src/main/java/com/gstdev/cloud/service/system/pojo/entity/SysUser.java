@@ -11,6 +11,7 @@ package com.gstdev.cloud.service.system.pojo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,8 @@ import org.hibernate.annotations.Where;
 
 import jakarta.persistence.*;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -56,18 +59,27 @@ public class SysUser extends BasePOJOEntity {
     @Column(name = "avatar", length = 36)
     private String avatar;
 
-//    @Column(name = "mobile", length = 20)
-//    private String mobile;
-
     @Schema(title = "性别")
     @Column(name = "gender", length = 1)
     private Integer gender = 0;
 
-    @Column(name = "last_login_time")
-    private Date lastLoginTime;
+    @Schema(title = "账户过期日期")
+    @Column(name = "account_expire_at")
+    private Instant accountExpireAt;
+
+    @Schema(title = "密码过期日期")
+    @Column(name = "credentials_expire_at")
+    private Instant credentialsExpireAt;
 
     @Column(name = "deleted", nullable = false)
     private Integer deleted = 0;
+
+
+    @Schema(name = "数据状态")
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private DataItemStatus status = DataItemStatus.ENABLE;
+
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
@@ -83,6 +95,5 @@ public class SysUser extends BasePOJOEntity {
     @Column(name = "activate_token", length = 255)
     private String activateToken;
 
-    @Column(name = "status")
-    private Integer status = 0;
+
 }

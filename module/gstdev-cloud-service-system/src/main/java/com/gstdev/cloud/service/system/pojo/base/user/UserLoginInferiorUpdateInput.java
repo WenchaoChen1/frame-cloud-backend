@@ -9,6 +9,7 @@
 
 package com.gstdev.cloud.service.system.pojo.base.user;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseUpdateInput;
 import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -41,7 +42,7 @@ public class UserLoginInferiorUpdateInput extends BaseUpdateInput {
     private String firstName;
     private String lastName;
     private String activateToken;
-    private Integer status = 0;
+    private DataItemStatus status;
 
     @Schema(title = "accountTypeConstants 不能为空", required = true)
     private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;

@@ -48,5 +48,5 @@ public class RTenantMenu extends BasePOJOEntity {
     @JoinTable(name = "sys_r_role_r_tenant_menu", joinColumns = {
         @JoinColumn(name = "r_tenant_menu_id", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "role_id", referencedColumnName = "id")})
-    private List<Role> roles;
+    private List<SysRole> roles;
 }

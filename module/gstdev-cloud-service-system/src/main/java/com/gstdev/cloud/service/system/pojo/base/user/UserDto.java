@@ -10,6 +10,7 @@
 package com.gstdev.cloud.service.system.pojo.base.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
@@ -48,7 +49,7 @@ public class UserDto extends BaseDto {
     private String firstName;
     private String lastName;
     private String activateToken;
-    private Integer status;
+    private DataItemStatus status;
 
     private String AccountType;
     private String icon;

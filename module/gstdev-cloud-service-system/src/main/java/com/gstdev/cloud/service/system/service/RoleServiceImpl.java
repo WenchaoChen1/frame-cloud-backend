@@ -4,7 +4,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.service.system.pojo.base.role.*;
 import com.gstdev.cloud.service.system.pojo.entity.Menu;
 import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
-import com.gstdev.cloud.service.system.pojo.entity.Role;
+import com.gstdev.cloud.service.system.pojo.entity.SysRole;
 import com.gstdev.cloud.service.system.mapper.RoleMapper;
 import com.gstdev.cloud.service.system.repository.RTenantMenuRepository;
 import com.gstdev.cloud.service.system.repository.RoleRepository;
@@ -19,7 +19,7 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class RoleServiceImpl extends BaseTreeServiceImpl<Role, String, RoleRepository, RoleMapper, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> implements RoleService {
+public class RoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, RoleRepository, RoleMapper, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> implements RoleService {
 
     @Resource
     private RoleRepository roleRepository;
@@ -42,7 +42,7 @@ public class RoleServiceImpl extends BaseTreeServiceImpl<Role, String, RoleRepos
 
     @Override
     public Result<String> insertRoleMenu(RoleInsertInput roleInsertInput) {
-        Role role = findById(roleInsertInput.getId());
+        SysRole role = findById(roleInsertInput.getId());
 
         role.setRTenantMenus(rTenantMenuRepository.findAllByTenantIdAndMenuIdIn(role.getTenantId(), roleInsertInput.getMenuIds()));
         update(role);
