@@ -64,4 +64,9 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         Page<SysPermissionVo> SysPermissionVos = SysPermissionVoMapper.toVo(byPageToDto);
         return Result.success(SysPermissionVos);
     }
+
+    @GetMapping("/a")
+    public void a() {
+        getService().permissionInit();
+    }
 }

@@ -288,10 +288,11 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
         Set<FrameGrantedAuthority> authorities = new HashSet<>();
         Set<String> roles = new HashSet<>();
 
-        List<SysPermission> all = sysPermissionService.findAll();
-        for (SysPermission sysPermission : all) {
-            authorities.add(new FrameGrantedAuthority(sysPermission.getPermissionCode()));
-        }
+//        List<SysPermission> all = sysPermissionService.findAll();
+//        for (SysPermission sysPermission : all) {
+//            authorities.add(new FrameGrantedAuthority(sysPermission.getPermissionCode()));
+//        }
+        authorities.add(new FrameGrantedAuthority("all"));
         SysUserToSecurityUserConverter sysUserToSecurityUserConverter = new SysUserToSecurityUserConverter();
         DefaultSecurityUser convert = sysUserToSecurityUserConverter.convert(byUsername);
 

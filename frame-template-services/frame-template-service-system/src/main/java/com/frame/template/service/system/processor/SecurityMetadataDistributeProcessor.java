@@ -80,6 +80,7 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
                     .collect(Collectors.toList());
                 List<SysPermission> sysPermissions = sysPermissionService.saveAllAndFlush(collect);
                 List<SysAttribute> result = sysAttributeService.saveAllAndFlush(elements);
+                sysPermissionService.permissionInit();
                 if (CollectionUtils.isNotEmpty(result)) {
                     log.debug("[Gstdev Cloud] |- Merge security attribute SUCCESS and FINISHED!");
                 } else {

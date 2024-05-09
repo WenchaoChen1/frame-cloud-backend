@@ -1,5 +1,7 @@
 package com.gstdev.cloud.service.system.pojo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.constants.SystemConstants;
 import com.gstdev.cloud.service.system.pojo.generator.SysPermissionUuidGenerator;
 import com.google.common.base.MoreObjects;
@@ -13,6 +15,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
+
+import java.util.List;
 
 /**
  * <p>Description: 系统权限实体 </p>
@@ -44,6 +48,18 @@ public class SysPermission extends BaseEntity {
     @Schema(name = "权限类型")
     @Column(name = "permission_type", length = 1024)
     private String permissionType;
+
+
+
+    @Schema(name = "数据状态")
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private DataItemStatus status = DataItemStatus.ENABLE;
+
+
+//    @JsonIgnore
+//    @ManyToMany(mappedBy = "permissions")
+//    private List<SysAttribute> sysAttributes;
 
     @Override
     public boolean equals(Object o) {

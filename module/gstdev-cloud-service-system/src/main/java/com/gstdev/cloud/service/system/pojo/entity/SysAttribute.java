@@ -77,4 +77,8 @@ public class SysAttribute extends BaseEntity {
         uniqueConstraints = {@UniqueConstraint(columnNames = {"attribute_id", "permission_id"})},
         indexes = {@Index(name = "sys_attribute_permission_aid_idx", columnList = "attribute_id"), @Index(name = "sys_attribute_permission_pid_idx", columnList = "permission_id")})
     private Set<SysPermission> permissions = new HashSet<>();
+
+    public void addPermissions(Set<SysPermission> permissions) {
+        this.permissions.addAll(permissions);
+    }
 }

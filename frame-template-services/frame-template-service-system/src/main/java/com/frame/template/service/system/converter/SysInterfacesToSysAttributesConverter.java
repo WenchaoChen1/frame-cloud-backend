@@ -44,19 +44,25 @@ public class SysInterfacesToSysAttributesConverter implements Converter<List<Sys
 //        sysAttribute.setRanking(sysInterface.getRanking());
 
         Set<SysPermission> sysPermissions = new HashSet<>();
-        SysPermission attributePermission = new SysPermission();
-        attributePermission.setPermissionId(sysAttribute.getAttributeId());
-        attributePermission.setPermissionCode(sysAttribute.getServiceId()+":"+sysAttribute.getAttributeCode());
-        attributePermission.setPermissionName(sysAttribute.getMethodName());
-        attributePermission.setPermissionType("attribute");
-        SysPermission servicePermission = new SysPermission();
-        servicePermission.setPermissionId(sysAttribute.getServiceId());
-        servicePermission.setPermissionCode(sysAttribute.getServiceId());
-        servicePermission.setPermissionName(sysAttribute.getServiceId());
-        servicePermission.setPermissionType("service");
+//        SysPermission attributePermission = new SysPermission();
+//        attributePermission.setPermissionId(sysAttribute.getAttributeId());
+//        attributePermission.setPermissionCode(sysAttribute.getServiceId()+":"+sysAttribute.getAttributeCode());
+//        attributePermission.setPermissionName(sysAttribute.getMethodName());
+//        attributePermission.setPermissionType("attribute");
+//        SysPermission servicePermission = new SysPermission();
+//        servicePermission.setPermissionId(sysAttribute.getServiceId());
+//        servicePermission.setPermissionCode(sysAttribute.getServiceId());
+//        servicePermission.setPermissionName(sysAttribute.getServiceId());
+//        servicePermission.setPermissionType("service");
 
-        sysPermissions.add(attributePermission);
-        sysPermissions.add(servicePermission);
+//        sysPermissions.add(attributePermission);
+//        sysPermissions.add(servicePermission);
+        SysPermission servicePermission = new SysPermission();
+        servicePermission.setPermissionId("6b492c39-f367-4e66-821c-f4dffacfaeff");
+        servicePermission.setPermissionCode("all");
+        servicePermission.setPermissionName("all");
+        servicePermission.setPermissionType("all");
+
         sysAttribute.setPermissions(sysPermissions);
         return sysAttribute;
     }
