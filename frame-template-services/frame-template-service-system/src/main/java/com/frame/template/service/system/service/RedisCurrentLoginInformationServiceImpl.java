@@ -13,6 +13,7 @@ import com.gstdev.cloud.service.system.service.AccountService;
 import com.gstdev.cloud.service.system.service.MenuService;
 import com.gstdev.cloud.service.system.service.TenantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.Resource;

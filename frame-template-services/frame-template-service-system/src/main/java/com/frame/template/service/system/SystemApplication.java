@@ -20,14 +20,20 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableFeignClients
-@ComponentScan(value = {"com.gstdev", "com.frame"})
+@ComponentScan(value = {
+    "com.gstdev.cloud",
+    "com.gstdev.cloud.service.system",
+    "com.gstdev.cloud.springframework.openfeign",
+    "com.gstdev.cloud.cache.jetcache",
+    "com.gstdev.cloud.oauth2",
+    "com.gstdev.cloud.rest.autoconfigure",
+    "com.frame"})
 //@EntityScan(value = {"com.frame.template"})
 //@EnableJpaRepositories(value = {"com.frame"})
 @ConfigurationPropertiesScan("com.frame")
 @EntityScan(value = {"com.frame.template.service.system"})
-@EnableJpaRepositories(value = {"com.frame.template.service.system"})
+//@EnableJpaRepositories(value = {"com.frame.template.service.system"})
 @SpringBootApplication
-
 @Import({FrameSystemConfiguration.class})
 public class SystemApplication {
 
