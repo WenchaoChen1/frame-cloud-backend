@@ -42,7 +42,7 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
             accountDto = accountService.findByIdToDto(redisCurrentLoginInformationInput.getAccountId());
         }
         if (accountDto == null || accountDto.getId() == null) {
-            List<AccountDto> accountDtos = accountService.findAllByUserId(SecurityUtils.getUsername());
+            List<AccountDto> accountDtos = accountService.findAllByUserId(SecurityUtils.getUserId());
             if (accountDtos.size() == 0) {
                 throw new CommonException("No account was found, please log in again");
             }
