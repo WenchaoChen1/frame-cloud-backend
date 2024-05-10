@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.system.constants;
+package com.gstdev.cloud.service.system.enums;
 
 public enum AccountTypeConstants {
 

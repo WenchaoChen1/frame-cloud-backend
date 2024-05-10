@@ -80,6 +80,7 @@ public class DepartController implements TreeController<Depart, String, DepartSe
     public Result<DepartVo> deleteById(String id) {
         return deleteByIdToResult(id);
     }
+
     /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
 
 }

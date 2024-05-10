@@ -10,7 +10,7 @@
 package com.gstdev.cloud.service.system.pojo.base.account;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
+import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
 import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.data.core.pojo.BaseDto;
 import lombok.Getter;

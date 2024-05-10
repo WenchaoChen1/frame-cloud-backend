@@ -35,9 +35,6 @@ public class RTenantMenuController implements POJOController<RTenantMenu, String
     @Resource
     private RTenantMenuVoMapper rTenantMenuVoMapper;
 
-    @Resource
-    private MenuService menuService;
-
     @Override
     public RTenantMenuService getService() {
         return rTenantMenuService;
@@ -48,10 +45,9 @@ public class RTenantMenuController implements POJOController<RTenantMenu, String
         return rTenantMenuVoMapper;
     }
 
-    public RTenantMenuController(RTenantMenuService rTenantMenuService, RTenantMenuVoMapper rTenantMenuVoMapper, MenuService menuService) {
+    public RTenantMenuController(RTenantMenuService rTenantMenuService, RTenantMenuVoMapper rTenantMenuVoMapper) {
         this.rTenantMenuService = rTenantMenuService;
         this.rTenantMenuVoMapper = rTenantMenuVoMapper;
-        this.menuService = menuService;
     }
 
     @PostMapping("/insertTenantMenu")

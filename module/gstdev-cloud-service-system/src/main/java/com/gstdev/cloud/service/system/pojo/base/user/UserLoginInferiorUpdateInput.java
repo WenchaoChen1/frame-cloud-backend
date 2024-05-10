@@ -11,7 +11,7 @@ package com.gstdev.cloud.service.system.pojo.base.user;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseUpdateInput;
-import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
+import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;

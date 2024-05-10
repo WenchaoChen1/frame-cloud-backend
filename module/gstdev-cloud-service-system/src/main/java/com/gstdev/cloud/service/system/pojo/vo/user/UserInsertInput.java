@@ -12,7 +12,7 @@ package com.gstdev.cloud.service.system.pojo.vo.user;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseInsertInput;
-import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
+import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
 import lombok.Getter;
 import lombok.Setter;
 

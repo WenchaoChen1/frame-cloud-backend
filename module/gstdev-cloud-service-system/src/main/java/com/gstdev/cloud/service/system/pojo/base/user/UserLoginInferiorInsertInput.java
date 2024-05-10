@@ -9,21 +9,14 @@
 
 package com.gstdev.cloud.service.system.pojo.base.user;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseUpdateInput;
-import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
-import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
+import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
-import java.util.List;
 
 @Getter
 @Setter

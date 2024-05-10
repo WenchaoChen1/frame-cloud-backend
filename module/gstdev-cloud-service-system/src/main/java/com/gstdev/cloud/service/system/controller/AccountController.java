@@ -16,7 +16,6 @@ import jakarta.annotation.Resource;
 
 
 @RestController
-@ResponseBody
 @RequestMapping("/v1/account")
 public class AccountController implements POJOController<SysAccount, String, AccountService, AccountVoMapper, AccountVo, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
 
@@ -71,7 +70,6 @@ public class AccountController implements POJOController<SysAccount, String, Acc
     public Result<AccountVo> insertAccountInitialization(@RequestBody @Validated AccountInsertInput accountInsertInput) {
         return getMapper().toVo(getService().insertAccountInitializationToResult(accountInsertInput));
     }
-
 
     // *********************************访问控制*******************************************
 

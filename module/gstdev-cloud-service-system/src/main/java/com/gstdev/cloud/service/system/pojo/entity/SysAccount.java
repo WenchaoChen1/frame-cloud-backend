@@ -2,7 +2,6 @@ package com.gstdev.cloud.service.system.pojo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
-import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;

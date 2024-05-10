@@ -10,7 +10,7 @@
 package com.gstdev.cloud.service.system.pojo.base.account;
 
 import com.gstdev.cloud.data.core.pojo.BaseInsertInput;
-import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
+import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
 import lombok.Getter;
 import lombok.Setter;
 

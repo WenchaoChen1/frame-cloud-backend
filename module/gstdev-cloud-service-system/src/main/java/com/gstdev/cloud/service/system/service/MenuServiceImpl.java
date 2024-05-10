@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.base.core.utils.treeUtils.TreeFactory;
-import com.gstdev.cloud.service.system.constants.AccountTypeConstants;
+import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
 import com.gstdev.cloud.service.system.mapper.MenuMapper;
 import com.gstdev.cloud.service.system.pojo.base.menu.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
@@ -13,7 +13,6 @@ import com.gstdev.cloud.service.system.repository.MenuRepository;
 import com.gstdev.cloud.service.system.repository.RoleRepository;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.Resource;
