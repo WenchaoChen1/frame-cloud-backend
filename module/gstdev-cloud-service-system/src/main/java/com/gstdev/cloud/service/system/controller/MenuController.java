@@ -9,7 +9,6 @@
 
 package com.gstdev.cloud.service.system.controller;
 
-import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.service.system.mapper.vo.MenuVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.menu.*;
 import com.gstdev.cloud.service.system.pojo.entity.Menu;
@@ -33,6 +32,7 @@ public class MenuController implements TreeController<Menu, String, MenuService,
 
     @Resource
     private MenuVoMapper menuVoMapper;
+
     @Resource
     private RoleService roleService;
 

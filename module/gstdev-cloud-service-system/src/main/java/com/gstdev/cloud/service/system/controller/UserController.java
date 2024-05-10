@@ -106,6 +106,7 @@ public class UserController implements POJOController<SysUser, String, UserServi
     public Result<UserVo> deleteById(@RequestParam("id") String id) {
         return deleteByIdToResult(id);
     }
+
     // *********************************访问控制*****************************************
 
     @GetMapping("/get-by-id-to-account")

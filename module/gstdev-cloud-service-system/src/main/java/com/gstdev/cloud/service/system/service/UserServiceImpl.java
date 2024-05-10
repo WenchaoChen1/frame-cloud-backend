@@ -1,8 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
-import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.service.system.converter.SysUserToSecurityUserConverter;
 import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
 import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
@@ -11,25 +9,18 @@ import com.gstdev.cloud.service.system.pojo.base.account.AccountInsertInput;
 import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.base.user.UserFindAllByQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.user.UserPageQueryCriteria;
-import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
-import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
-import com.gstdev.cloud.service.system.pojo.entity.UserStatus;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserUpdateInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.AccountListDto;
-import com.gstdev.cloud.service.system.repository.RoleRepository;
 import com.gstdev.cloud.service.system.repository.UserRepository;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.service.spi.ServiceException;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 
 import jakarta.annotation.Resource;
 
@@ -42,19 +33,9 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
     private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
     @Resource
     private AccountService accountService;
+
     @Resource
     private IdentityFeignService identityFeignService;
-    @Resource
-    private SysPermissionService sysPermissionService;
-    //  @Resource
-//  private EmailFeignService emailFeignService;
-    //
-//  @Resource
-//  private TenantFeignService tenantFeignService;
-    @Resource
-    private RoleRepository roleRepository;
-//  @Value(value = "${spring.mail.email}")
-//  private String senderEmil;
 
     public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         super(userRepository, userMapper);
@@ -94,8 +75,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
             user.setPassword(randomPassword());
         }
         user.setPassword((SecurityUtils.encrypt(user.getPassword())));
-        SysUser insert = super.insert(user);
-        return insert;
+        return super.insert(user);
     }
 
     @Transactional
@@ -106,7 +86,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
         accountInsertInput.setTenantId(userInsertInput.getTenantId());
         accountInsertInput.setUserId(insert.getId());
         accountInsertInput.setAccountTypeConstants(userInsertInput.getAccountTypeConstants());
-        SysAccount insertAccount = accountService.insertAccountInitialization(accountInsertInput);
+        accountService.insertAccountInitialization(accountInsertInput);
         // 同步到identity模块
         IdentitySaveDto identitySaveDto = new IdentitySaveDto();
         identitySaveDto.setUserId(insert.getId());
@@ -115,6 +95,29 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
         identitySaveDto.setPassword(insert.getPassword());
         identityFeignService.save(identitySaveDto);
         return insert;
+    }
+
+    /**
+     * 新增用户并且创建账户角色，关联部门
+     *
+     * @param userInsertInput
+     * @return
+     */
+    @Override
+    @Transactional
+    public Result<UserDto> insertUserInitializationToResult(UserInsertInput userInsertInput) {
+        SysUser user = insertUserInitialization(userInsertInput);
+        return Result.success(getMapper().toDto(user));
+    }
+
+    @Override
+    public DefaultSecurityUser signInFindByUsername(String username) {
+        SysUser byUsername = getRepository().findByUsername(username);
+        if (byUsername == null) {
+            return null;
+        }
+        SysUserToSecurityUserConverter sysUserToSecurityUserConverter = new SysUserToSecurityUserConverter();
+        return sysUserToSecurityUserConverter.convert(byUsername);
     }
 
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
@@ -161,18 +164,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
 //  }
 //
 
-    /**
-     * 新增用户并且创建账户角色，关联部门
-     *
-     * @param userInsertInput
-     * @return
-     */
-    @Override
-    @Transactional
-    public Result<UserDto> insertUserInitializationToResult(UserInsertInput userInsertInput) {
-        SysUser user = insertUserInitialization(userInsertInput);
-        return Result.success(getMapper().toDto(user));
-    }
+
 //
 //  @Override
 //  public String checkIfUserExist(String emailAddress){
@@ -200,15 +192,13 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
     @Override
     public List<AccountListDto> getByIdToAccount(String id) {
         SysUser user = getRepository().findById(id).orElseGet(SysUser::new);
-        List<SysAccount> account = user.getAccount();
-        List<AccountListDto> accountListDtos = getMapper().accountListToDto(account);
-        return accountListDtos;
+        return getMapper().accountListToDto(user.getAccount());
     }
 
     @Override
     @Transactional()
     public void deleteById(String id) {
-        if (id == null || id.length() == 0) {
+        if (ObjectUtils.isEmpty(id)) {
             throw new PlatformRuntimeException("The primary key cannot be empty");
         }
         if (id.equals(SecurityUtils.getUserId())) {
@@ -216,102 +206,4 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
         }
         getRepository().deleteById(id);
     }
-
-    @Override
-    @Transactional(rollbackFor = ServiceException.class)
-    public UserDto create(UserDto userDto, String tenentId) {
-
-        SysUser user = getMapper().toEntity(userDto);
-
-//    this.checkPassword(user.getPassword());
-        if (StringUtils.isEmpty(user.getUsername())) {
-            user.setUsername(user.getEmail());
-        }
-        user.setStatus(DataItemStatus.ENABLE);
-//    user.setActivateToken(TokenUtils.getInstance().encode());
-        String password = randomPassword();
-//        user.setPassword(Base64.getEncoder().encodeToString(CryptoUtils.asymEncrypt(password, ServiceConstants.ASYM_PUBLIC_KEY)));
-        try {
-            user = this.getRepository().save(user);
-
-//      com.gstdev.template.service.system.feign.vo.UserDto feignUserDto = new com.gstdev.template.service.system.feign.vo.UserDto();
-//      feignUserDto.setEmail(user.getEmail());
-//      feignUserDto.setFirstName(user.getFirstName());
-//      feignUserDto.setLastName(user.getLastName());
-//      feignUserDto.setPassword(password);
-//
-//      if(ObjectUtil.isNotEmpty(tenentId)){
-//        TenantDto tenantDto = tenantFeignService.findById(tenentId);
-//        if(ObjectUtil.isNotEmpty(tenantDto)){
-//          feignUserDto.setCustomerName(tenantDto.getTenantName());
-//        }
-//      }
-//
-//      emailFeignService.inviteUser(feignUserDto);
-//      Email email = new Email();
-//      email.setType(2);
-//      email.setReceiverEmail(user.getEmail());
-//      email.setSenderEmail(senderEmil);
-//      email.setSubject("Welcome");
-//      email.setBody("Welcome");
-//      email.setToken(user.getActivateToken());
-//
-//      Context context = new Context();
-//      context.setVariable("token", user.getActivateToken());
-//      context.setVariable("userEmail", user.getEmail());
-//      context.setVariable("username", user.getFirstName()+ user.getLastName());
-//      context.setVariable("emailAddress", senderEmil);
-//      context.setVariable("url", "/user/registered?");
-//      emailFeignService.sendEmail(email, context, "Welcome", EmailTypeEnum.Welcome);
-        } catch (Exception e) {
-            log.info(e.getMessage(), e);
-            throw new ServiceException(e.getMessage());
-        }
-
-        return getMapper().toDto(user);
-    }
-
-
-    @Override
-    public DefaultSecurityUser signInFindByUsername(String username) {
-        SysUser byUsername = getRepository().findByUsername(username);
-        if (byUsername == null) {
-            return null;
-        }
-        Set<FrameGrantedAuthority> authorities = new HashSet<>();
-        Set<String> roles = new HashSet<>();
-
-//        List<SysPermission> all = sysPermissionService.findAll();
-//        for (SysPermission sysPermission : all) {
-//            authorities.add(new FrameGrantedAuthority(sysPermission.getPermissionCode()));
-//        }
-        authorities.add(new FrameGrantedAuthority("all"));
-        SysUserToSecurityUserConverter sysUserToSecurityUserConverter = new SysUserToSecurityUserConverter();
-        DefaultSecurityUser convert = sysUserToSecurityUserConverter.convert(byUsername);
-
-
-        DefaultSecurityUser securityUser = new DefaultSecurityUser(byUsername.getId()
-            , byUsername.getId()
-            , byUsername.getPassword()
-            , true
-            , true
-            , true
-            , true
-            , authorities
-            , roles
-            , "1"
-            , "1"
-        );
-
-
-        List<SysAccount> account = byUsername.getAccount();
-
-//        for (SysAccount sysAccount : account) {
-//            sysAccount.getRoles()
-//        }
-
-
-        return convert;
-    }
-
 }

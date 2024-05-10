@@ -34,6 +34,7 @@ public class RTenantMenuController implements POJOController<RTenantMenu, String
 
     @Resource
     private RTenantMenuVoMapper rTenantMenuVoMapper;
+
     @Resource
     private MenuService menuService;
 

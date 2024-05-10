@@ -44,6 +44,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     @Resource
     private SysPermissionService sysPermissionService;
 
+    @Resource
     private SysPermissionVoMapper SysPermissionVoMapper;
 
     @Override

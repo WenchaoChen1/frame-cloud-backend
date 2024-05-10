@@ -20,6 +20,7 @@ import java.util.List;
 public class TenantFindAllByQueryCriteria extends BaseTreeFindAllByQueryCriteria {
 
     private static final long serialVersionUID = 3163118978801722144L;
+
     @Query(blurry = "tenantName", type = Query.Type.IN)
     private String tenantName;
     //  @Query
