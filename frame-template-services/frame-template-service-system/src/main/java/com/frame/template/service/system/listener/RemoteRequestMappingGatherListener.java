@@ -38,7 +38,6 @@ public class RemoteRequestMappingGatherListener implements ApplicationListener<R
         log.info("[Gstdev Cloud] |- Fetch data [{}]", requestMapping);
         if (ObjectUtils.isNotEmpty(requestMapping)) {
             List<RequestMapping> requestMappings = Jackson2Utils.toList(requestMapping, RequestMapping.class);
-            System.out.println(requestMappings.toString());
             if (CollectionUtils.isNotEmpty(requestMappings)) {
                 requestMappingStoreProcessor.postProcess(requestMappings);
             }

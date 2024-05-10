@@ -56,7 +56,6 @@ public class MenuController implements TreeController<Menu, String, MenuService,
     @GetMapping("/get-all-menu-to-tree")
     @Operation(summary = "获取所有菜单，返回树状结构")
     public Result<List<MenuVo>> findAllByQueryCriteriaToTree() {
-        System.out.println(SecurityUtils.getUserId());
         MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
         return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
     }

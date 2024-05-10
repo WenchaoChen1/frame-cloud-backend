@@ -9,6 +9,7 @@ import com.gstdev.cloud.rest.core.controller.POJOController;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import jakarta.annotation.Resource;
 
 
 @RestController
+@ResponseBody
 @RequestMapping("/v1/account")
 public class AccountController implements POJOController<SysAccount, String, AccountService, AccountVoMapper, AccountVo, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
 
