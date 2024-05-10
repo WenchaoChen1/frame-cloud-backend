@@ -22,14 +22,9 @@ import java.util.List;
 //@Service
 //@RequiredArgsConstructor
 //public class AccountServiceImpl implements AccountService {
-@Service
 @Transactional(readOnly = true)
 public class AccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, AccountRepository, AccountMapper, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> implements AccountService {
 
-    @Resource
-    private AccountRepository accountRepository;
-    @Resource
-    private AccountMapper accountMapper;
     @Resource
     private UserRepository userRepository;
     @Resource
@@ -39,8 +34,6 @@ public class AccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, 
 
     public AccountServiceImpl(AccountRepository accountRepository, AccountMapper accountMapper) {
         super(accountRepository, accountMapper);
-        this.accountRepository = accountRepository;
-        this.accountMapper = accountMapper;
     }
 
 
@@ -81,7 +74,7 @@ public class AccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, 
 
     @Override
     public List<AccountDto> findAllByUserId(String userId) {
-        List<SysAccount> allByUserId = accountRepository.findAllByUserId(userId);
+        List<SysAccount> allByUserId = getRepository().findAllByUserId(userId);
         List<AccountDto> accountDtos = getMapper().toDto(allByUserId);
         return accountDtos;
     }
@@ -89,9 +82,9 @@ public class AccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void deleteByTenantId(String tenantId) {
-        List<SysAccount> accountList = accountRepository.findAllByTenantId(tenantId);
+        List<SysAccount> accountList = getRepository().findAllByTenantId(tenantId);
         if (ObjectUtil.isNotEmpty(accountList)) {
-            accountRepository.deleteAll(accountList);
+            getRepository().deleteAll(accountList);
         }
     }
 //  @Override

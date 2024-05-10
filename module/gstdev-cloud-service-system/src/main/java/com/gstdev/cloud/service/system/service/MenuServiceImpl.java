@@ -21,14 +21,9 @@ import jakarta.annotation.Resource;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Service
 @Transactional(readOnly = true)
 public class MenuServiceImpl extends BaseTreeServiceImpl<Menu, String, MenuRepository, MenuMapper, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> implements MenuService {
 
-    @Resource
-    private MenuRepository menuRepository;
-    @Resource
-    private MenuMapper menuMapper;
     @Resource
     private RoleRepository roleRepository;
     @Resource
@@ -36,8 +31,6 @@ public class MenuServiceImpl extends BaseTreeServiceImpl<Menu, String, MenuRepos
 
     public MenuServiceImpl(MenuRepository menuRepository, MenuMapper menuMapper) {
         super(menuRepository, menuMapper);
-        this.menuRepository = menuRepository;
-        this.menuMapper = menuMapper;
     }
 
     @Override

@@ -36,15 +36,10 @@ import jakarta.annotation.Resource;
 import java.util.*;
 
 @Slf4j
-@Service
 @Transactional(readOnly = true)
 public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRepository, UserMapper, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> implements UserService {
 
     private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
-    @Resource
-    private UserRepository userRepository;
-    @Resource
-    private UserMapper userMapper;
     @Resource
     private AccountService accountService;
     @Resource
@@ -63,8 +58,6 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
 
     public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         super(userRepository, userMapper);
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
     }
 
     private static char nextChar(Random rnd) {
@@ -206,9 +199,9 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
 
     @Override
     public List<AccountListDto> getByIdToAccount(String id) {
-        SysUser user = userRepository.findById(id).orElseGet(SysUser::new);
+        SysUser user = getRepository().findById(id).orElseGet(SysUser::new);
         List<SysAccount> account = user.getAccount();
-        List<AccountListDto> accountListDtos = userMapper.accountListToDto(account);
+        List<AccountListDto> accountListDtos = getMapper().accountListToDto(account);
         return accountListDtos;
     }
 
@@ -228,7 +221,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
     @Transactional(rollbackFor = ServiceException.class)
     public UserDto create(UserDto userDto, String tenentId) {
 
-        SysUser user = userMapper.toEntity(userDto);
+        SysUser user = getMapper().toEntity(userDto);
 
 //    this.checkPassword(user.getPassword());
         if (StringUtils.isEmpty(user.getUsername())) {
@@ -239,7 +232,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
         String password = randomPassword();
 //        user.setPassword(Base64.getEncoder().encodeToString(CryptoUtils.asymEncrypt(password, ServiceConstants.ASYM_PUBLIC_KEY)));
         try {
-            user = this.userRepository.save(user);
+            user = this.getRepository().save(user);
 
 //      com.gstdev.template.service.system.feign.vo.UserDto feignUserDto = new com.gstdev.template.service.system.feign.vo.UserDto();
 //      feignUserDto.setEmail(user.getEmail());
@@ -275,7 +268,7 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
             throw new ServiceException(e.getMessage());
         }
 
-        return userMapper.toDto(user);
+        return getMapper().toDto(user);
     }
 
 

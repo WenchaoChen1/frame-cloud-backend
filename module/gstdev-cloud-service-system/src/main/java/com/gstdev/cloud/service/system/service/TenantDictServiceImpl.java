@@ -21,12 +21,18 @@ import org.springframework.util.CollectionUtils;
 import java.util.List;
 
 
-@Service
 @Transactional(rollbackFor = Exception.class)
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class TenantDictServiceImpl implements TenantDictService {
+
     private final TenantDictMapper tenantDictMapper;
     private final TenantDictRepository tenantDictRepository;
+
+
+    public TenantDictServiceImpl(TenantDictMapper tenantDictMapper, TenantDictRepository tenantDictRepository) {
+        this.tenantDictMapper = tenantDictMapper;
+        this.tenantDictRepository = tenantDictRepository;
+    }
 
     /**
      * 新增保存

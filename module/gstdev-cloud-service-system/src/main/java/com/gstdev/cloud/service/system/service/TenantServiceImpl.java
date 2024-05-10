@@ -16,6 +16,7 @@ import com.gstdev.cloud.service.system.pojo.base.tenant.*;
 import com.gstdev.cloud.service.system.pojo.entity.Tenant;
 import com.gstdev.cloud.service.system.repository.TenantRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,19 +24,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 
-@Service
 @Transactional(readOnly = true)
 public class TenantServiceImpl extends BaseTreeServiceImpl<Tenant, String, TenantRepository, TenantMapper, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> implements TenantService {
 
-    private TenantRepository tenantRepository;
-    private TenantMapper tenantMapper;
+    @Resource
     private AccountService accountService;
 
-    @Autowired
     public TenantServiceImpl(TenantRepository tenantRepository, TenantMapper tenantMapper) {
         super(tenantRepository, tenantMapper);
-        this.tenantRepository = tenantRepository;
-        this.tenantMapper = tenantMapper;
     }
 
 
@@ -94,7 +90,7 @@ public class TenantServiceImpl extends BaseTreeServiceImpl<Tenant, String, Tenan
 
 
     public List<TenantDto> findAllByIds(List<String> tenantIds) {
-        return tenantMapper.toDto(tenantRepository.findAllById(tenantIds));
+        return getMapper().toDto(getRepository().findAllById(tenantIds));
     }
 
 

@@ -19,7 +19,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, String, SysInterfaceRepository> implements SysInterfaceService {
 
     //    private  SysInterfaceRepository SysInterfaceRepository;

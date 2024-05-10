@@ -25,21 +25,14 @@ import jakarta.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
 @Transactional(readOnly = true)
 public class RTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, String, RTenantMenuRepository, RTenantMenuMapper, RTenantMenuDto, RTenantMenuInsertInput, RTenantMenuUpdateInput, RTenantMenuPageQueryCriteria, RTenantMenuFindAllByQueryCriteria> implements RTenantMenuService {
 
-    @Resource
-    private RTenantMenuRepository rTenantMenuRepository;
-    @Resource
-    private RTenantMenuMapper rTenantMenuMapper;
     @Resource
     private MenuRepository MenuRepository;
 
     public RTenantMenuServiceImpl(RTenantMenuRepository rTenantMenuRepository, RTenantMenuMapper rTenantMenuMapper) {
         super(rTenantMenuRepository, rTenantMenuMapper);
-        this.rTenantMenuRepository = rTenantMenuRepository;
-        this.rTenantMenuMapper = rTenantMenuMapper;
     }
 
     public List<RTenantMenu> findAllByTenantId(String tenantId) {

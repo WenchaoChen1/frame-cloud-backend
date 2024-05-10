@@ -17,21 +17,14 @@ import jakarta.annotation.Resource;
 import java.util.List;
 
 
-@Service
 @Transactional(readOnly = true)
 public class RoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, RoleRepository, RoleMapper, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> implements RoleService {
 
-    @Resource
-    private RoleRepository roleRepository;
-    @Resource
-    private RoleMapper roleMapper;
     @Resource
     private RTenantMenuRepository rTenantMenuRepository;
 
     public RoleServiceImpl(RoleRepository roleRepository, RoleMapper roleMapper) {
         super(roleRepository, roleMapper);
-        this.roleRepository = roleRepository;
-        this.roleMapper = roleMapper;
     }
 
     @Override
