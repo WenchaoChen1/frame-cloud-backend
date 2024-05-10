@@ -29,8 +29,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 })
 @ComponentScan(basePackages = {
 //    "com.gstdev.cloud.service.system.service",
-    "com.gstdev.cloud.service.system.feign",
-    "com.gstdev.cloud.service.system.feign.service",
+//    "com.gstdev.cloud.service.system.feign.service",
 })
 @Import({FrameSystemServiceConfiguration.class})
 public class FrameSystemConfiguration {
