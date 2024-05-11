@@ -9,7 +9,9 @@
 
 package com.frame.template.service.system;
 
+import com.gstdev.cloud.cache.jetcache.annotation.EnableFrameJetCache;
 import com.gstdev.cloud.service.system.configuration.FrameSystemConfiguration;
+import com.gstdev.cloud.starter.ouath2.resource.server.configuration.ResourceServerAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -21,18 +23,15 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableFeignClients
 @ComponentScan(value = {
-    "com.frame",
-    "com.gstdev.cloud.starter",
-    "com.gstdev.cloud.cache",
-    "com.gstdev.cloud.rest",
+    "com.frame.template.service.system",
+    "com.frame.template.common.redis.currentLoginInformation",
+    "com.gstdev.cloud.rest.protect.configuration",
+    "com.gstdev.cloud.rest.autoconfigure",
 })
-//@EntityScan(value = {"com.frame.template"})
-//@EnableJpaRepositories(value = {"com.frame"})
-@ConfigurationPropertiesScan("com.frame")
 @EntityScan(value = {"com.frame.template.service.system"})
-//@EnableJpaRepositories(value = {"com.frame.template.service.system"})
 @SpringBootApplication
-@Import({FrameSystemConfiguration.class})
+@EnableFrameJetCache
+@Import({FrameSystemConfiguration.class, ResourceServerAutoConfiguration.class})
 public class SystemApplication {
 
     public static void main(String[] args) {

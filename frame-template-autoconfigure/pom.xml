@@ -15,17 +15,4 @@
         <relativePath>../frame-template-parent</relativePath>
     </parent>
 
-    <!--  <dependencies>-->
-    <!--    &lt;!&ndash; SpringBoot related dependencies &ndash;&gt;-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.springframework.boot</groupId>-->
-    <!--      <artifactId>spring-boot-starter-web</artifactId>-->
-    <!--    </dependency>-->
-    <!--    &lt;!&ndash; Lombok related dependencies &ndash;&gt;-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.projectlombok</groupId>-->
-    <!--      <artifactId>lombok</artifactId>-->
-    <!--      <scope>provided</scope>-->
-    <!--    </dependency>-->
-    <!--  </dependencies>-->
 </project>
