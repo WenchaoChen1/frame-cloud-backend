@@ -25,13 +25,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan(value = {
     "com.frame.template.service.system",
     "com.frame.template.common.redis.currentLoginInformation",
-    "com.gstdev.cloud.rest.protect.configuration",
     "com.gstdev.cloud.rest.autoconfigure",
 })
 @EntityScan(value = {"com.frame.template.service.system"})
 @SpringBootApplication
 @EnableFrameJetCache
-@Import({FrameSystemConfiguration.class, ResourceServerAutoConfiguration.class})
+//@Import({FrameSystemConfiguration.class, ResourceServerAutoConfiguration.class})
+@Import({FrameSystemConfiguration.class})
 public class SystemApplication {
 
     public static void main(String[] args) {

@@ -26,15 +26,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
     "com.frame.template",
     "com.gstdev.cloud.oauth2.management",
     "com.gstdev.cloud.rest.autoconfigure",
-    "com.gstdev.cloud.starter.oauth2.authentication.server.configuration",
-    "com.gstdev.cloud.rest.protect.configuration",
 })
 @EntityScan(value = {"com.frame.template.service.identity"})
 @EnableJpaRepositories(value = {"com.frame.template.service.identity"})
-//@ConfigurationPropertiesScan({"com.gstdev"})
 @SpringBootApplication
 @EnableFrameJetCache
-//@Import({OAuth2AuthorizationServerAutoConfiguration.class})
 public class IdentityApplication {
 
     public static void main(String[] args) {
