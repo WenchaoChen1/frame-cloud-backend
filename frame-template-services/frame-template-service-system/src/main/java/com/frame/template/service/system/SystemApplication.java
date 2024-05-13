@@ -29,7 +29,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 })
 @EntityScan(value = {"com.frame.template.service.system"})
 @SpringBootApplication
-@EnableFrameJetCache
+//@EnableFrameJetCache
 @Import({FrameSystemConfiguration.class})
 public class SystemApplication {
 

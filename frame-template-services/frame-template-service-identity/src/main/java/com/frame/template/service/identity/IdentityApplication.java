@@ -29,7 +29,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(value = {"com.frame.template.service.identity"})
 @EnableJpaRepositories(value = {"com.frame.template.service.identity"})
 @SpringBootApplication
-@EnableFrameJetCache
+//@EnableFrameJetCache
 public class IdentityApplication {
 
     public static void main(String[] args) {
