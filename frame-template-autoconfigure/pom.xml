@@ -18,5 +18,6 @@
     <modules>
         <module>frame-template-autoconfigure-service</module>
         <module>frame-template-autoconfigure-service-identity</module>
+        <module>frame-template-autoconfigure-service-system</module>
     </modules>
 </project>

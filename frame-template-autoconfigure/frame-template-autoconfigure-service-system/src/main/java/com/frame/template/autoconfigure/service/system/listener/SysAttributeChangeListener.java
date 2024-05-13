@@ -1,6 +1,6 @@
-package com.frame.template.service.system.listener;
+package com.frame.template.autoconfigure.service.system.listener;
 
-import com.frame.template.service.system.processor.SecurityMetadataDistributeProcessor;
+import com.frame.template.autoconfigure.service.system.processor.SecurityMetadataDistributeProcessor;
 import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.pojo.event.SysAttributeChangeEvent;
 import org.apache.commons.lang3.ObjectUtils;

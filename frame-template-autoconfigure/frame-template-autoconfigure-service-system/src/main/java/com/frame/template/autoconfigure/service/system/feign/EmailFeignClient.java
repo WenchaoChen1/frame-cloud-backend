@@ -1,4 +1,4 @@
-package com.frame.template.service.system.feign;
+package com.frame.template.autoconfigure.service.system.feign;
 
 
 import com.frame.template.common.constant.ServiceConstants;

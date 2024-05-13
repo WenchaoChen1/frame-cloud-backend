@@ -1,8 +1,8 @@
-package com.frame.template.service.system.processor;
+package com.frame.template.autoconfigure.service.system.processor;
 
 
-import com.frame.template.service.system.converter.SysAttributeToSecurityAttributeConverter;
-import com.frame.template.service.system.converter.SysInterfacesToSysAttributesConverter;
+import com.frame.template.autoconfigure.service.system.converter.SysAttributeToSecurityAttributeConverter;
+import com.frame.template.autoconfigure.service.system.converter.SysInterfacesToSysAttributesConverter;
 import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.pojo.entity.SysInterface;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;

@@ -1,4 +1,4 @@
-package com.frame.template.service.system.feign.service;//package com.gstdev.cloud.service.system.feign.service;
+package com.frame.template.autoconfigure.service.system.feign.service;//package com.gstdev.cloud.service.system.feign.service;
 //
 //import com.gstdev.cloud.service.system.feign.TenantFeignClient;
 //import com.gstdev.cloud.service.system.feign.vo.TenantDto;

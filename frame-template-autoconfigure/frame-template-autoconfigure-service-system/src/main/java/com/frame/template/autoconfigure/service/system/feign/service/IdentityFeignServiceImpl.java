@@ -1,7 +1,7 @@
-package com.frame.template.service.system.feign.service;
+package com.frame.template.autoconfigure.service.system.feign.service;
 
 
-import com.frame.template.service.system.feign.IdentityFeignClient;
+import com.frame.template.autoconfigure.service.system.feign.IdentityFeignClient;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
 import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;

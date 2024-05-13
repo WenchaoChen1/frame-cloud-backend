@@ -1,4 +1,4 @@
-package com.frame.template.service.system.service;
+package com.frame.template.autoconfigure.service.system.service;
 
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;

@@ -1,6 +1,6 @@
-package com.frame.template.service.system.listener;
+package com.frame.template.autoconfigure.service.system.listener;
 
-import com.frame.template.service.system.processor.RequestMappingStoreProcessor;
+import com.frame.template.autoconfigure.service.system.processor.RequestMappingStoreProcessor;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
 import com.gstdev.cloud.message.core.logic.event.RequestMappingGatherEvent;
 import org.apache.commons.collections4.CollectionUtils;

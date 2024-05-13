@@ -1,4 +1,4 @@
-package com.frame.template.service.system.converter;
+package com.frame.template.autoconfigure.service.system.converter;
 
 import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.pojo.entity.SysInterface;

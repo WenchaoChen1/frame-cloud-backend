@@ -13,7 +13,6 @@
     <artifactId>frame-template-autoconfigure-service-identity</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-springframework-openfeign</artifactId>

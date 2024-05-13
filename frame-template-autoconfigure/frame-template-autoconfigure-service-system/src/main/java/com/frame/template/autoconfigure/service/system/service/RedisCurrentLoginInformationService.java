@@ -1,4 +1,4 @@
-package com.frame.template.service.system.service;
+package com.frame.template.autoconfigure.service.system.service;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;

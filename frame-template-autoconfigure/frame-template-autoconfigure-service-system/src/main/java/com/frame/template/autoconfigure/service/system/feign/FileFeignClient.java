@@ -1,4 +1,4 @@
-package com.frame.template.service.system.feign;//package com.gstdev.cloud.service.system.feign;
+package com.frame.template.autoconfigure.service.system.feign;//package com.gstdev.cloud.service.system.feign;
 //
 //
 //import com.gstdev.cloud.base.definition.domain.Result;

@@ -1,4 +1,4 @@
-package com.frame.template.service.system.processor;
+package com.frame.template.autoconfigure.service.system.processor;
 
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
 import org.slf4j.Logger;

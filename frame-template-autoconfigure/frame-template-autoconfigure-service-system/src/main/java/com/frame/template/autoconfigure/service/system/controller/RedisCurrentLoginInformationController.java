@@ -1,6 +1,6 @@
-package com.frame.template.service.system.contoller;
+package com.frame.template.autoconfigure.service.system.controller;
 
-import com.frame.template.service.system.service.RedisCurrentLoginInformationService;
+import com.frame.template.autoconfigure.service.system.service.RedisCurrentLoginInformationService;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;

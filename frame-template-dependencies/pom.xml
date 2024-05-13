@@ -39,6 +39,11 @@
             </dependency>
             <dependency>
                 <groupId>com.frame.template</groupId>
+                <artifactId>frame-template-autoconfigure-service-system</artifactId>
+                <version>${frame-template.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.frame.template</groupId>
                 <artifactId>frame-template-common</artifactId>
                 <version>${frame-template.version}</version>
             </dependency>
@@ -47,7 +52,6 @@
                 <artifactId>gstdev-cloud-service-system</artifactId>
                 <version>${frame-template.version}</version>
             </dependency>
-
 
 
             <dependency>
