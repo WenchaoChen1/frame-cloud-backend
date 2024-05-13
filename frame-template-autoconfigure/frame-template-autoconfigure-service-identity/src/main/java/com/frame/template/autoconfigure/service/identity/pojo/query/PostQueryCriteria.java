@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.frame.template.service.identity.contract.query;
+package com.frame.template.autoconfigure.service.identity.pojo.query;
 
 
 import com.gstdev.cloud.data.core.annotations.Query;

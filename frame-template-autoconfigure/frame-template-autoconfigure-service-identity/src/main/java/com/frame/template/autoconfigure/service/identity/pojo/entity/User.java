@@ -1,4 +1,4 @@
-package com.frame.template.service.identity.domain;
+package com.frame.template.autoconfigure.service.identity.pojo.entity;
 
 import lombok.Getter;
 import lombok.Setter;

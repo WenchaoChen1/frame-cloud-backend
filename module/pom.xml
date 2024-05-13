@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>gstdev-cloud-service-system</module>
+        <module>gstdev-cloud-service-identity</module>
     </modules>
 
 </project>

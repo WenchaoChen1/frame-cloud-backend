@@ -7,26 +7,23 @@
 //
 // ====================================================
 
-package com.frame.template.service.identity.contract;
+package com.frame.template.autoconfigure.service.identity.pojo;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.io.Serializable;
 
 @Setter
 @Getter
-@ToString
-@AllArgsConstructor
-public class UserDto implements Serializable {
+public class UserInput implements Serializable {
 
     private String id;
-    private String username;
-    private String email;
+
     private String password;
 
-    public UserDto() {
-    }
+    private String username;
+
+    private String email;
+    private String userId;
 }

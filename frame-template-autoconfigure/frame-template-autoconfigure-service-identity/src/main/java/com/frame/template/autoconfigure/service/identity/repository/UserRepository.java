@@ -7,9 +7,9 @@
 //
 // ====================================================
 
-package com.frame.template.service.identity.repository;
+package com.frame.template.autoconfigure.service.identity.repository;
 
-import com.frame.template.service.identity.domain.User;
+import com.frame.template.autoconfigure.service.identity.pojo.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;

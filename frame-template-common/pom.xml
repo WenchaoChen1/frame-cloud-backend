@@ -28,12 +28,6 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-cache-jetcache</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>com.frame.template</groupId>
-            <artifactId>frame-template-autoconfigure</artifactId>
-        </dependency>
-
         <!--         TODO 可能-->
         <!-- aspects切面 -->
         <dependency>

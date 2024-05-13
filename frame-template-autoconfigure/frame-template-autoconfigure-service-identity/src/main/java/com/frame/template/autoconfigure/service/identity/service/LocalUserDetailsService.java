@@ -1,15 +1,13 @@
-package com.frame.template.service.identity.service;
+package com.frame.template.autoconfigure.service.identity.service;
 
 import cn.hutool.core.util.ObjectUtil;
-import com.frame.template.service.identity.domain.User;
+import com.frame.template.autoconfigure.service.identity.pojo.entity.User;
 import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.definition.strategy.StrategyUserDetailsService;
-import jakarta.annotation.Resource;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.*;
 

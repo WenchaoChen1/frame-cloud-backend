@@ -1,11 +1,9 @@
-package com.frame.template.service.identity.domain.vo;
+package com.frame.template.autoconfigure.service.identity.pojo.vo;
 
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author: zcy
- * @date: 2022/12/7
  * @description:
  */
 @Getter

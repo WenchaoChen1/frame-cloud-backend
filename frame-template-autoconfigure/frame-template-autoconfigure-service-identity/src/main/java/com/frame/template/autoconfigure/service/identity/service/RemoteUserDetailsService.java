@@ -1,6 +1,6 @@
-package com.frame.template.service.identity.service;
+package com.frame.template.autoconfigure.service.identity.service;
 
-import com.frame.template.service.identity.feign.FeignRemoteUserDetailsService;
+import com.frame.template.autoconfigure.service.identity.feign.FeignRemoteUserDetailsService;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;

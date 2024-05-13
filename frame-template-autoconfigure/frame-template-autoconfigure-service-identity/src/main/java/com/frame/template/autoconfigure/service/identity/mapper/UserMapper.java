@@ -7,12 +7,12 @@
 //
 // ====================================================
 
-package com.frame.template.service.identity.mapper;
+package com.frame.template.autoconfigure.service.identity.mapper;
 
-import com.frame.template.service.identity.domain.User;
+import com.frame.template.autoconfigure.service.identity.pojo.UserInput;
+import com.frame.template.autoconfigure.service.identity.pojo.dto.UserDto;
+import com.frame.template.autoconfigure.service.identity.pojo.entity.User;
 
-import com.frame.template.service.identity.contract.UserDto;
-import com.frame.template.service.identity.contract.UserInput;
 import com.gstdev.cloud.data.core.mapper.AbstractMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;

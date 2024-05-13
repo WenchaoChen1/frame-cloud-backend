@@ -7,12 +7,12 @@
 //
 // ====================================================
 
-package com.frame.template.service.identity.service;
+package com.frame.template.autoconfigure.service.identity.service;
 
-import com.frame.template.service.identity.domain.User;
-import com.frame.template.service.identity.contract.UserDto;
-import com.frame.template.service.identity.contract.UserInput;
-import com.frame.template.service.identity.contract.query.PostQueryCriteria;
+import com.frame.template.autoconfigure.service.identity.pojo.UserInput;
+import com.frame.template.autoconfigure.service.identity.pojo.dto.UserDto;
+import com.frame.template.autoconfigure.service.identity.pojo.entity.User;
+import com.frame.template.autoconfigure.service.identity.pojo.query.PostQueryCriteria;
 import com.gstdev.cloud.base.definition.domain.Result;
 import org.springframework.data.domain.Pageable;
 

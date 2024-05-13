@@ -7,19 +7,18 @@
 //
 // ====================================================
 
-package com.frame.template.service.identity.service;
+package com.frame.template.autoconfigure.service.identity.service;
 
-import com.frame.template.service.identity.domain.User;
-import com.frame.template.service.identity.mapper.UserMapper;
+import com.frame.template.autoconfigure.service.identity.mapper.UserMapper;
+import com.frame.template.autoconfigure.service.identity.pojo.UserInput;
+import com.frame.template.autoconfigure.service.identity.pojo.dto.UserDto;
+import com.frame.template.autoconfigure.service.identity.pojo.entity.User;
+import com.frame.template.autoconfigure.service.identity.pojo.query.PostQueryCriteria;
+import com.frame.template.autoconfigure.service.identity.repository.UserRepository;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
-import com.frame.template.service.identity.contract.UserDto;
-import com.frame.template.service.identity.contract.UserInput;
-import com.frame.template.service.identity.contract.query.PostQueryCriteria;
-import com.frame.template.service.identity.repository.UserRepository;
 import com.gstdev.cloud.data.core.utils.PageUtils;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
-import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

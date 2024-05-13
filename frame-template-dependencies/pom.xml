@@ -34,9 +34,11 @@
             <!--当前库-->
             <dependency>
                 <groupId>com.frame.template</groupId>
-                <artifactId>frame-template-autoconfigure</artifactId>
+                <artifactId>frame-template-autoconfigure-service-identity</artifactId>
                 <version>${frame-template.version}</version>
             </dependency>
+
+
             <dependency>
                 <groupId>com.frame.template</groupId>
                 <artifactId>frame-template-common</artifactId>
@@ -47,6 +49,7 @@
                 <artifactId>gstdev-cloud-service-system</artifactId>
                 <version>${frame-template.version}</version>
             </dependency>
+
 
             <!-- Database related dependencies -->
             <dependency>

@@ -26,6 +26,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
     "com.frame.template.service.system",
     "com.frame.template.common.redis.currentLoginInformation",
     "com.gstdev.cloud.rest.autoconfigure",
+    "com.gstdev.cloud",
 })
 @EntityScan(value = {"com.frame.template.service.system"})
 @SpringBootApplication

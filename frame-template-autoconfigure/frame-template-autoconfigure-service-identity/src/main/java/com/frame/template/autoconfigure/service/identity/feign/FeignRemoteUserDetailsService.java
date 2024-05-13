@@ -1,4 +1,4 @@
-package com.frame.template.service.identity.feign;
+package com.frame.template.autoconfigure.service.identity.feign;
 
 import com.frame.template.common.constant.ServiceConstants;
 import com.gstdev.cloud.base.definition.domain.Result;
