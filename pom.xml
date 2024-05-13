@@ -63,6 +63,8 @@
         <module>frame-template-gateway</module>
         <module>frame-template-services</module>
         <module>module</module>
+        <module>frame-template-autoconfigure/frame-template-autoconfigure-service</module>
+        <module>module/gstdev-cloud-service-identity</module>
     </modules>
 
     <!--  <distributionManagement>-->
