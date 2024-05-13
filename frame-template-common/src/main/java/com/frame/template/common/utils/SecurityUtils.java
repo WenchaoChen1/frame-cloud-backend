@@ -12,9 +12,6 @@ import com.frame.template.common.constant.ServletConstants;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.gstdev.cloud.cache.redis.utils.RedisUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import jakarta.annotation.Resource;
 
@@ -25,28 +22,6 @@ public class SecurityUtils {
 //    private UserDetailService<User> userDetailService;
     @Resource
     private static RedisUtils redisUtils;
-
-
-    public static SecurityContext getSecurityContext() {
-        return SecurityContextHolder.getContext();
-    }
-
-    public static Authentication getAuthentication() {
-        return getSecurityContext().getAuthentication();
-    }
-
-    public static Object getUserDetails() {
-        Authentication authentication = getAuthentication();
-
-        return authentication.getName();
-    }
-
-
-    public static String getUserId() {
-        Authentication authentication = getAuthentication();
-        String name = getAuthentication().getName();
-        return name;
-    }
 
     public static String getAccountId() {
         SecurityUtils s = new SecurityUtils();

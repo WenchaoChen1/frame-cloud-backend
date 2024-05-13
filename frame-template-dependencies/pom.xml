@@ -37,8 +37,6 @@
                 <artifactId>frame-template-autoconfigure-service-identity</artifactId>
                 <version>${frame-template.version}</version>
             </dependency>
-
-
             <dependency>
                 <groupId>com.frame.template</groupId>
                 <artifactId>frame-template-common</artifactId>
@@ -51,33 +49,12 @@
             </dependency>
 
 
-            <!-- Database related dependencies -->
-            <dependency>
-                <groupId>com.zaxxer</groupId>
-                <artifactId>HikariCP</artifactId>
-                <version>${hikaricp.version}</version>
-            </dependency>
 
-            <!-- postgresq-->
-            <dependency>
-                <groupId>org.postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <version>${org.postgresql.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-core</artifactId>
-                <version>6.4.4.Final</version>
-                <type>pom</type>
-            </dependency>
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
                 <version>4.0.1</version> <!-- 或者适合你项目的其他版本 -->
             </dependency>
-
-
         </dependencies>
     </dependencyManagement>
 </project>
