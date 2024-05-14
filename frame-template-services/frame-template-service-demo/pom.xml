@@ -27,11 +27,6 @@
         </dependency>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>
         </dependency>
 

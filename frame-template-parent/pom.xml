@@ -15,6 +15,15 @@
         <relativePath>../frame-template-dependencies</relativePath>
     </parent>
     <dependencies>
+        <!--nacos -->
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-sentinel-alibaba</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>
