@@ -52,14 +52,4 @@ public class UserController {
     public Result<Object> getUserData(PostQueryCriteria criteria, Pageable pageable) {
         return userService.getUserData(criteria, pageable);
     }
-
-    @GetMapping("get_security_user_id")
-    public Result<String> getSecurityUserId() {
-        return Result.success(SecurityUtils.getUserId());
-    }
-
-    @GetMapping("get_user_id")
-    public Result<String> getUserId() {
-        return Result.success(SecurityUtils.getUserId());
-    }
 }
