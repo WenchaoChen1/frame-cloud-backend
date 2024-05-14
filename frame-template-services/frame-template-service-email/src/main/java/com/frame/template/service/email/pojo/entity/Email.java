@@ -1,4 +1,4 @@
-package com.frame.template.service.email.pojo.domain;
+package com.frame.template.service.email.pojo.entity;
 
 import com.frame.template.common.persistence.AbstractAuditingEntity;
 import lombok.Getter;

@@ -2,8 +2,8 @@ package com.frame.template.service.email.service;
 
 
 import com.frame.template.service.email.enums.EmailTypeEnum;
-import com.frame.template.service.email.pojo.domain.Email;
-import com.frame.template.service.email.pojo.domain.vo.UserDto;
+import com.frame.template.service.email.pojo.entity.Email;
+import com.frame.template.service.email.pojo.vo.UserDto;
 import com.frame.template.service.email.repository.EmailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

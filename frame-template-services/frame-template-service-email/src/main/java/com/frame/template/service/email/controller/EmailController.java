@@ -3,8 +3,8 @@ package com.frame.template.service.email.controller;
 
 import com.frame.template.service.email.service.EmailService;
 import com.frame.template.service.email.enums.EmailTypeEnum;
-import com.frame.template.service.email.pojo.domain.Email;
-import com.frame.template.service.email.pojo.domain.vo.UserDto;
+import com.frame.template.service.email.pojo.entity.Email;
+import com.frame.template.service.email.pojo.vo.UserDto;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

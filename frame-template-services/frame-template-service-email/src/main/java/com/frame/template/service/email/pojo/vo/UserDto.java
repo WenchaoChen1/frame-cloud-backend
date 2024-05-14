@@ -1,4 +1,4 @@
-package com.frame.template.service.email.pojo.domain.vo;
+package com.frame.template.service.email.pojo.vo;
 
 import lombok.Getter;
 import lombok.Setter;

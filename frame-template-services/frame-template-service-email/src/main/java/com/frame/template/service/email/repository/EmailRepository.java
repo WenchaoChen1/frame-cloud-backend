@@ -9,7 +9,7 @@
 
 package com.frame.template.service.email.repository;
 
-import com.frame.template.service.email.pojo.domain.Email;
+import com.frame.template.service.email.pojo.entity.Email;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
