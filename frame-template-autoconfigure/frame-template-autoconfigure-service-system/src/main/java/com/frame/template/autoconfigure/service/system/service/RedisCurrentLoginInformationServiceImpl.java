@@ -24,10 +24,8 @@ import java.util.List;
 public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLoginInformationService {
 
 
-    @Autowired
+    @Resource
     private RedisCurrentLoginInformation redisCurrentLoginInformation;
-//    @Autowired
-//    private IdentityFeignClient identityFeignClient;
 
     @Resource
     private AccountService accountService;
