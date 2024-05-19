@@ -14,6 +14,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.*;
 import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
 import com.gstdev.cloud.service.system.mapper.RTenantMenuMapper;
+import com.gstdev.cloud.service.system.repository.AccountRepository;
 import com.gstdev.cloud.service.system.repository.MenuRepository;
 import com.gstdev.cloud.service.system.repository.RTenantMenuRepository;
 import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
@@ -30,9 +31,15 @@ public class RTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, Str
 
     @Resource
     private MenuRepository MenuRepository;
+    @Resource
+    private RTenantMenuRepository rTenantMenuRepository;
 
     public RTenantMenuServiceImpl(RTenantMenuRepository rTenantMenuRepository, RTenantMenuMapper rTenantMenuMapper) {
         super(rTenantMenuRepository, rTenantMenuMapper);
+    }
+
+    public RTenantMenuRepository getRepository() {
+        return rTenantMenuRepository;
     }
 
     public List<RTenantMenu> findAllByTenantId(String tenantId) {

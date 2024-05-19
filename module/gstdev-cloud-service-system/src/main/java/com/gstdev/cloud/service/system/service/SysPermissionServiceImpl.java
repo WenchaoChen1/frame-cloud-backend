@@ -7,6 +7,7 @@ import com.gstdev.cloud.service.system.mapper.SysPermissionMapper;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionDto;
 import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
+import com.gstdev.cloud.service.system.repository.SysInterfaceRepository;
 import com.gstdev.cloud.service.system.repository.SysPermissionRepository;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import jakarta.annotation.Resource;
@@ -27,9 +28,15 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
 
     @Resource
     private SysAttributeService sysAttributeService;
+    @Resource
+    private SysPermissionRepository sysPermissionRepository;
 
     public SysPermissionServiceImpl(SysPermissionRepository sysPermissionRepository, SysPermissionMapper sysPermissionMapper) {
         super(sysPermissionRepository, sysPermissionMapper);
+    }
+
+    public SysPermissionRepository getRepository() {
+        return sysPermissionRepository;
     }
 
     public void permissionInit() {

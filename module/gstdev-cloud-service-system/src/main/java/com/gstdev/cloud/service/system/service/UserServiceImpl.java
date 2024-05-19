@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.service.system.converter.SysUserToSecurityUserConverter;
 import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
@@ -13,6 +14,7 @@ import com.gstdev.cloud.service.system.pojo.entity.SysUser;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserUpdateInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.AccountListDto;
+import com.gstdev.cloud.service.system.repository.SysPermissionRepository;
 import com.gstdev.cloud.service.system.repository.UserRepository;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.base.definition.domain.Result;
@@ -36,9 +38,15 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
 
     @Resource
     private IdentityFeignService identityFeignService;
+    @Resource
+    private UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         super(userRepository, userMapper);
+    }
+
+    public UserRepository getRepository() {
+        return userRepository;
     }
 
     private static char nextChar(Random rnd) {

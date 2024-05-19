@@ -11,9 +11,11 @@ package com.gstdev.cloud.service.system.service;
 
 
 import cn.hutool.core.lang.UUID;
+import com.gstdev.cloud.service.system.mapper.SysPermissionMapper;
 import com.gstdev.cloud.service.system.mapper.TenantMapper;
 import com.gstdev.cloud.service.system.pojo.base.tenant.*;
 import com.gstdev.cloud.service.system.pojo.entity.Tenant;
+import com.gstdev.cloud.service.system.repository.SysPermissionRepository;
 import com.gstdev.cloud.service.system.repository.TenantRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import jakarta.annotation.Resource;
@@ -29,9 +31,16 @@ public class TenantServiceImpl extends BaseTreeServiceImpl<Tenant, String, Tenan
 
     @Resource
     private AccountService accountService;
-
+    @Resource
+    private TenantRepository tenantRepository;
     public TenantServiceImpl(TenantRepository tenantRepository, TenantMapper tenantMapper) {
         super(tenantRepository, tenantMapper);
+        this.tenantRepository=tenantRepository;
+    }
+
+
+    public TenantRepository getRepository() {
+        return tenantRepository;
     }
 
 

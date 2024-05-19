@@ -5,6 +5,7 @@ import com.gstdev.cloud.service.system.pojo.entity.Dict;
 import com.gstdev.cloud.service.system.mapper.DictMapper;
 import com.gstdev.cloud.service.system.repository.DictRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
+import com.gstdev.cloud.service.system.repository.MenuRepository;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +26,15 @@ import jakarta.annotation.Resource;
 @Transactional(readOnly = true)
 public class DictServiceImpl extends BaseTreeServiceImpl<Dict, String, DictRepository, DictMapper, DictDto, DictInsertInput, DictUpdateInput, DictPageQueryCriteria, DictFindAllByQueryCriteria> implements DictService {
     private static final Logger log = LoggerFactory.getLogger(DictServiceImpl.class);
+    @Resource
+    private DictRepository dictRepository;
 
     public DictServiceImpl(DictRepository dictRepository, DictMapper dictMapper) {
         super(dictRepository, dictMapper);
+        this.dictRepository = dictRepository;
+    }
+
+    public DictRepository getRepository() {
+        return dictRepository;
     }
 }

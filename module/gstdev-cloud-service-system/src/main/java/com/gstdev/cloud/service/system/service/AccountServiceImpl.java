@@ -32,9 +32,16 @@ public class AccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, 
     @Resource
     private RoleRepository roleRepository;
 
+    @Resource
+    private AccountRepository accountRepository;
+
     public AccountServiceImpl(AccountRepository accountRepository, AccountMapper accountMapper) {
         super(accountRepository, accountMapper);
     }
+    public AccountRepository getRepository() {
+        return accountRepository;
+    }
+
 
 
     @Override

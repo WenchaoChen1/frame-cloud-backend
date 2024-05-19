@@ -3,9 +3,11 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.service.system.converter.RequestMappingToSysInterfaceConverter;
 import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.pojo.entity.SysInterface;
+import com.gstdev.cloud.service.system.repository.SysAttributeRepository;
 import com.gstdev.cloud.service.system.repository.SysInterfaceRepository;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
+import jakarta.annotation.Resource;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import jakarta.persistence.criteria.Subquery;
@@ -19,16 +21,19 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, String, SysInterfaceRepository> implements SysInterfaceService {
+public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, String> implements SysInterfaceService {
 
     //    private  SysInterfaceRepository SysInterfaceRepository;
     private final Converter<RequestMapping, SysInterface> toSysInterface;
-
+    @Resource
+    private SysInterfaceRepository sysInterfaceRepository;
     public SysInterfaceServiceImpl(SysInterfaceRepository sysInterfaceRepository) {
         super(sysInterfaceRepository);
         this.toSysInterface = new RequestMappingToSysInterfaceConverter();
     }
-
+    public SysInterfaceRepository getRepository() {
+        return sysInterfaceRepository;
+    }
     /**
      * 查找SysSecurityAttribute中不存在的SysAuthority
      *

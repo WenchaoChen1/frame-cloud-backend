@@ -9,6 +9,7 @@ import com.gstdev.cloud.service.system.mapper.RoleMapper;
 import com.gstdev.cloud.service.system.repository.RTenantMenuRepository;
 import com.gstdev.cloud.service.system.repository.RoleRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
+import com.gstdev.cloud.service.system.repository.SysInterfaceRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,12 +22,16 @@ import java.util.List;
 public class RoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, RoleRepository, RoleMapper, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> implements RoleService {
 
     @Resource
-    private RTenantMenuRepository rTenantMenuRepository;
+    private RTenantMenuRepository rTenantMenuRepository;    @Resource
+    private RoleRepository roleRepository;
 
     public RoleServiceImpl(RoleRepository roleRepository, RoleMapper roleMapper) {
         super(roleRepository, roleMapper);
+        this.roleRepository=roleRepository;
     }
-
+    public RoleRepository getRepository() {
+        return roleRepository;
+    }
     @Override
     public Result<List<String>> getAllByRoleId(String roleId) {
         List<String> strings = findById(roleId).getRTenantMenus().stream().map(RTenantMenu::getMenu).map(Menu::getId).toList();

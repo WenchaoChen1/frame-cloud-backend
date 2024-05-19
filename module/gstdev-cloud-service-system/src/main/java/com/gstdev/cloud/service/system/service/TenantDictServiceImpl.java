@@ -13,6 +13,7 @@ import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictDto;
 import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictModifyInput;
 import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictSaveInput;
 import com.gstdev.cloud.service.system.repository.TenantDictRepository;
+import com.gstdev.cloud.service.system.repository.TenantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,7 +34,9 @@ public class TenantDictServiceImpl implements TenantDictService {
         this.tenantDictMapper = tenantDictMapper;
         this.tenantDictRepository = tenantDictRepository;
     }
-
+    public TenantDictRepository getRepository() {
+        return tenantDictRepository;
+    }
     /**
      * 新增保存
      *
