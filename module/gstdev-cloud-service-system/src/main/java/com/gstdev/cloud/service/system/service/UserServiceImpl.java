@@ -10,6 +10,7 @@ import com.gstdev.cloud.service.system.pojo.base.account.AccountInsertInput;
 import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.base.user.UserFindAllByQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.user.UserPageQueryCriteria;
+import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserUpdateInput;
@@ -39,7 +40,8 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
     @Resource
     private IdentityFeignService identityFeignService;
     @Resource
-    private UserRepository userRepository;
+    private UserRepository userRepository;    @Resource
+    private SysAttributeService sysAttributeService;
 
     public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         super(userRepository, userMapper);
@@ -120,6 +122,8 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
 
     @Override
     public DefaultSecurityUser signInFindByUsername(String username) {
+        List<SysAttribute> all = sysAttributeService.getRepository().findAll();
+        List<SysAttribute> all1 = sysAttributeService.findAll();
         SysUser byUsername = getRepository().findByUsername(username);
         if (byUsername == null) {
             return null;

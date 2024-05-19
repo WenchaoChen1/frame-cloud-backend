@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.data.core.service.BaseServiceImplApi;
 import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
 import com.gstdev.cloud.service.system.repository.RTenantMenuRepository;
@@ -14,7 +15,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttribute, String> implements SysAttributeService {
+public class SysAttributeServiceImpl  implements SysAttributeService {
+//public class SysAttributeServiceImpl implements SysAttributeService, BaseServiceImplApi<SysAttribute, String> {
 
     @Resource
     private SysAttributeRepository sysAttributeRepository;
@@ -44,6 +46,7 @@ public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttribute, Strin
     }
 
     public List<SysAttribute> findAllByServiceId(String serviceId) {
+        System.out.println("aaaaaaaa"+getRepository().findAll().toString());
         return getRepository().findAllByServiceId(serviceId);
     }
 
