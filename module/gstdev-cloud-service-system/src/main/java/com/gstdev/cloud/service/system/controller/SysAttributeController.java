@@ -32,7 +32,7 @@ import java.util.Map;
 @Tags({
     @Tag(name = "元数据管理接口"),
 })
-public class SysAttributeController implements Controller<SysAttribute, String, SysAttributeService> {
+public class SysAttributeController implements Controller<SysAttribute, String> {
 
     @Resource
     private SysAttributeService sysAttributeService;
