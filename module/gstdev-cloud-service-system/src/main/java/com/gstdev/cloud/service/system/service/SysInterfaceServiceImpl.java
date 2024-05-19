@@ -28,7 +28,7 @@ public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, Strin
     @Resource
     private SysInterfaceRepository sysInterfaceRepository;
     public SysInterfaceServiceImpl(SysInterfaceRepository sysInterfaceRepository) {
-        super(sysInterfaceRepository);
+//        super(sysInterfaceRepository);
         this.toSysInterface = new RequestMappingToSysInterfaceConverter();
     }
     public SysInterfaceRepository getRepository() {

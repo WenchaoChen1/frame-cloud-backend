@@ -16,12 +16,11 @@ import java.util.Set;
 
 public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttribute, String> implements SysAttributeService {
 
-    //    private  SysPermissionRepository sysAttributeRepository;
     @Resource
     private SysAttributeRepository sysAttributeRepository;
 
     public SysAttributeServiceImpl(SysAttributeRepository sysAttributeRepository) {
-        super(sysAttributeRepository);
+//        super(sysAttributeRepository);
     }
 
     public SysAttributeRepository getRepository() {
