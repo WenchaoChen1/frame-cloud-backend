@@ -20,7 +20,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Transactional
-public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, String, SysPermissionRepository, SysPermissionMapper, SysPermissionDto> implements SysPermissionService {
+public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, String, SysPermissionDto> implements SysPermissionService {
 
     //    private  SysPermissionRepository sysPermissionRepository;
 //    @Resource
@@ -32,7 +32,7 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
     private SysPermissionRepository sysPermissionRepository;
 
     public SysPermissionServiceImpl(SysPermissionRepository sysPermissionRepository, SysPermissionMapper sysPermissionMapper) {
-        super(sysPermissionRepository, sysPermissionMapper);
+//        super(sysPermissionRepository, sysPermissionMapper);
     }
 
     public SysPermissionRepository getRepository() {
