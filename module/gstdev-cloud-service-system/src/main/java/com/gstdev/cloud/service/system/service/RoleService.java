@@ -12,8 +12,6 @@ public interface RoleService extends BaseTreeService<SysRole, String, RoleDto, R
 
     Result<String> insertRoleMenu(RoleInsertInput roleInsertInput);
 
-    SysRole insert(SysRole role);
-
 //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 }
 

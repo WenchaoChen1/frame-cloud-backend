@@ -12,7 +12,7 @@ public interface AccountService extends BasePOJOService<SysAccount, String, Acco
 
 //  boolean save(AccountSaveInput accountSaveInput);
 
-    SysAccount insert(SysAccount account);
+//    SysAccount insert(SysAccount account);
 
     SysAccount insertAccountInitialization(AccountInsertInput accountInsertInput);
 
