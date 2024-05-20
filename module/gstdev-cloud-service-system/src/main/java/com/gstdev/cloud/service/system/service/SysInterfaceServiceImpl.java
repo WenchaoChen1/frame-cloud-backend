@@ -21,14 +21,14 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, String> implements SysInterfaceService {
+public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, String,SysInterfaceRepository> implements SysInterfaceService {
 
     //    private  SysInterfaceRepository SysInterfaceRepository;
     private final Converter<RequestMapping, SysInterface> toSysInterface;
     @Resource
     private SysInterfaceRepository sysInterfaceRepository;
     public SysInterfaceServiceImpl(SysInterfaceRepository sysInterfaceRepository) {
-//        super(sysInterfaceRepository);
+        super(sysInterfaceRepository);
         this.toSysInterface = new RequestMappingToSysInterfaceConverter();
     }
     public SysInterfaceRepository getRepository() {

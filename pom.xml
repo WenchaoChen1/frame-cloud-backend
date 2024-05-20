@@ -118,10 +118,10 @@
                 <!--Spring Cloud Alibaba配置中心命名空间,用于支持多环境.这里必须使用ID，不能使用名称,默认为空-->
                 <alibaba.namespace>frame-cloud</alibaba.namespace>
                 <!--Spring Cloud Alibaba配置中心地址-->
-                <alibaba.config.server-addr>192.168.1.3:8848</alibaba.config.server-addr>
+                <alibaba.config.server-addr>192.168.0.99:8848</alibaba.config.server-addr>
                 <!--Spring Cloud Alibaba服务发现地址-->
-                <alibaba.discovery.server-addr>192.168.1.3:8848</alibaba.discovery.server-addr>
-                <alibaba.sentinel.server-addr>192.168.1.3:8858</alibaba.sentinel.server-addr>
+                <alibaba.discovery.server-addr>192.168.0.99:8848</alibaba.discovery.server-addr>
+                <alibaba.sentinel.server-addr>192.168.0.99:8858</alibaba.sentinel.server-addr>
             </properties>
         </profile>
 

@@ -1,6 +1,5 @@
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.data.core.service.BaseServiceImplApi;
 import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
 import com.gstdev.cloud.service.system.repository.RTenantMenuRepository;
@@ -15,14 +14,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class SysAttributeServiceImpl  implements SysAttributeService {
-//public class SysAttributeServiceImpl implements SysAttributeService, BaseServiceImplApi<SysAttribute, String> {
+public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttribute, String,SysAttributeRepository> implements SysAttributeService {
 
     @Resource
     private SysAttributeRepository sysAttributeRepository;
 
     public SysAttributeServiceImpl(SysAttributeRepository sysAttributeRepository) {
-//        super(sysAttributeRepository);
+        super(sysAttributeRepository);
     }
 
     public SysAttributeRepository getRepository() {
