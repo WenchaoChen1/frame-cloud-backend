@@ -7,7 +7,7 @@ import com.gstdev.cloud.service.system.pojo.base.account.*;
 
 import java.util.List;
 
-public interface AccountService extends BasePOJOService<SysAccount, String, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
+public interface AccountService extends BasePOJOService<SysAccount, String, AccountDto> {
     List<AccountDto> findAllByUserId(String message);
 
 //  boolean save(AccountSaveInput accountSaveInput);

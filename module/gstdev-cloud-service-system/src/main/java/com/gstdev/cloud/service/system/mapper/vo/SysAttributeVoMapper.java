@@ -30,7 +30,7 @@ import java.util.List;
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 //public interface SysAttributeVoMapper extends BaseVoMapper<AccountVo, AccountDto> {
 public interface SysAttributeVoMapper {
-    SysAttributeVo entityToVo(SysAttribute entity);
+//    SysAttributeVo entityToVo(SysAttribute entity);
 
     List<SysAttributeVo> entityToVo(List<SysAttribute> entity);
 

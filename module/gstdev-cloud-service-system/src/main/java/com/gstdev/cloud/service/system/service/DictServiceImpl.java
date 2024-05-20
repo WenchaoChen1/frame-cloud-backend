@@ -24,7 +24,7 @@ import jakarta.annotation.Resource;
 
 //@Service
 @Transactional(readOnly = true)
-public class DictServiceImpl extends BaseTreeServiceImpl<Dict, String, DictRepository, DictMapper, DictDto, DictInsertInput, DictUpdateInput, DictPageQueryCriteria, DictFindAllByQueryCriteria> implements DictService {
+public class DictServiceImpl extends BaseTreeServiceImpl<Dict, String, DictRepository, DictMapper, DictDto> implements DictService {
     private static final Logger log = LoggerFactory.getLogger(DictServiceImpl.class);
     @Resource
     private DictRepository dictRepository;

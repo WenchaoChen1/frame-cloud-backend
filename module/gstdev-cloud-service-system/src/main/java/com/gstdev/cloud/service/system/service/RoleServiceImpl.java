@@ -19,7 +19,7 @@ import java.util.List;
 
 
 @Transactional(readOnly = true)
-public class RoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, RoleRepository, RoleMapper, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> implements RoleService {
+public class RoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, RoleRepository, RoleMapper, RoleDto> implements RoleService {
 
     @Resource
     private RTenantMenuRepository rTenantMenuRepository;    @Resource

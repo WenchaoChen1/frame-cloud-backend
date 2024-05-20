@@ -18,7 +18,7 @@ import jakarta.annotation.Resource;
 //  private final DepartRepository departRepository;
 //  private final DepartMapper departMapper;
 @Transactional(readOnly = true)
-public class DepartServiceImpl extends BaseTreeServiceImpl<Depart, String, DepartRepository, DepartMapper, DepartDto, DepartInsertInput, DepartUpdateInput, DepartPageQueryCriteria, DepartFindAllByQueryCriteria> implements DepartService {
+public class DepartServiceImpl extends BaseTreeServiceImpl<Depart, String, DepartRepository, DepartMapper, DepartDto> implements DepartService {
 
     public DepartServiceImpl(DepartRepository departRepository, DepartMapper departMapper) {
         super(departRepository, departMapper);

@@ -39,13 +39,13 @@ import java.util.Map;
     @Tag(name = "用户安全管理接口"),
     @Tag(name = "系统权限管理接口")
 })
-public class SysPermissionController implements DtoController<SysPermission, String, SysPermissionService, SysPermissionDto> {
+public class SysPermissionController implements DtoController<SysPermission, String, SysPermissionDto> {
 
     @Resource
     private SysPermissionService sysPermissionService;
 
     @Resource
-    private SysPermissionVoMapper SysPermissionVoMapper;
+    private SysPermissionVoMapper sysPermissionVoMapper;
 
     @Override
     public SysPermissionService getService() {
@@ -62,7 +62,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     @GetMapping("/page")
     public Result<Page<SysPermissionVo>> findByPageToResult(SysPermissionPageQueryCriteria sysPermissionPageQueryCriteria, Pageable pageable) {
         Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysPermissionPageQueryCriteria, criteriaBuilder), pageable);
-        Page<SysPermissionVo> SysPermissionVos = SysPermissionVoMapper.toVo(byPageToDto);
+        Page<SysPermissionVo> SysPermissionVos = sysPermissionVoMapper.toVo(byPageToDto);
         return Result.success(SysPermissionVos);
     }
 

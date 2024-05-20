@@ -9,10 +9,12 @@
 
 package com.gstdev.cloud.service.system.mapper.vo;
 
+import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
 import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.base.user.UserLoginInferiorInsertInput;
 import com.gstdev.cloud.service.system.pojo.base.user.UserLoginInferiorUpdateInput;
 import com.gstdev.cloud.service.system.pojo.base.user.UserVo;
+import com.gstdev.cloud.service.system.pojo.entity.SysUser;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserUpdateInput;
 import com.gstdev.cloud.data.core.mapper.BaseVoMapper;
@@ -24,11 +26,11 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface UserVoMapper extends BaseVoMapper<UserVo, UserDto> {
+public interface UserVoMapper extends BasePOJOMapper<SysUser, UserDto, UserVo, UserInsertInput, UserUpdateInput>{
 
-    UserInsertInput toUserInsertInput(UserLoginInferiorInsertInput userLoginInferiorInsertInput);
-
-    UserUpdateInput toUserUpdateInput(UserLoginInferiorUpdateInput userLoginInferiorUpdateInput);
+//    UserInsertInput toUserInsertInput(UserLoginInferiorInsertInput userLoginInferiorInsertInput);
+//
+//    UserUpdateInput toUserUpdateInput(UserLoginInferiorUpdateInput userLoginInferiorUpdateInput);
 
 }
 

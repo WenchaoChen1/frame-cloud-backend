@@ -10,9 +10,11 @@
 package com.gstdev.cloud.service.system.mapper;
 
 
+import com.gstdev.cloud.data.core.mapper.BaseDtoMapper;
 import com.gstdev.cloud.service.system.pojo.base.role.RoleDto;
 import com.gstdev.cloud.service.system.pojo.base.role.RoleInsertInput;
 import com.gstdev.cloud.service.system.pojo.base.role.RoleUpdateInput;
+import com.gstdev.cloud.service.system.pojo.base.role.RoleVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysRole;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
@@ -24,6 +26,6 @@ import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface RoleMapper extends BaseTreeMapper<SysRole, RoleDto, RoleInsertInput, RoleUpdateInput> {
+public interface RoleMapper extends BaseDtoMapper<SysRole, RoleDto> {
 }
 

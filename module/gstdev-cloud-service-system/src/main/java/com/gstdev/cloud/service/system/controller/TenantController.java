@@ -25,7 +25,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/tenant")
-public class TenantController implements TreeController<Tenant, String, TenantService, TenantVoMapper, TenantVo, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
+public class TenantController implements TreeController<Tenant, String, TenantVo, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
 
 
     @Resource

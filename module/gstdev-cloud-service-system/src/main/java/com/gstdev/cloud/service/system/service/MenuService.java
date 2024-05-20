@@ -8,7 +8,7 @@ import com.gstdev.cloud.service.system.pojo.base.menu.*;
 import java.util.List;
 
 
-public interface MenuService extends BaseTreeService<Menu, String, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> {
+public interface MenuService extends BaseTreeService<Menu, String, MenuDto> {
     Result<List<MenuDto>> getAllByRoleMenuToTree(String roleId);
 
     Result<MenuDto> getAllTenantMenuIds(String tenantId);

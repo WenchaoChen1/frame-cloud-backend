@@ -44,7 +44,6 @@ public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttribute, Strin
     }
 
     public List<SysAttribute> findAllByServiceId(String serviceId) {
-        System.out.println("aaaaaaaa"+getRepository().findAll().toString());
         return getRepository().findAllByServiceId(serviceId);
     }
 

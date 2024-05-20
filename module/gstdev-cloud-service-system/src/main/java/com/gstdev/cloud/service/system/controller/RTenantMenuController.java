@@ -9,6 +9,7 @@
 
 package com.gstdev.cloud.service.system.controller;
 
+import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.service.system.mapper.vo.RTenantMenuVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.*;
 import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
@@ -27,7 +28,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/rTenantMenu")
-public class RTenantMenuController implements POJOController<RTenantMenu, String, RTenantMenuService, RTenantMenuVoMapper, RTenantMenuVo, RTenantMenuDto, RTenantMenuInsertInput, RTenantMenuUpdateInput, RTenantMenuPageQueryCriteria, RTenantMenuFindAllByQueryCriteria> {
+public class RTenantMenuController implements POJOController<RTenantMenu, String,  RTenantMenuVo, RTenantMenuDto, RTenantMenuInsertInput, RTenantMenuUpdateInput, RTenantMenuPageQueryCriteria, RTenantMenuFindAllByQueryCriteria> {
 
     @Resource
     private RTenantMenuService rTenantMenuService;
@@ -61,7 +62,8 @@ public class RTenantMenuController implements POJOController<RTenantMenu, String
     public Result<List<String>> getAllByTenantId(@RequestParam("tenantId") String tenantId) {
         RTenantMenuFindAllByQueryCriteria rTenantMenuFindAllByQueryCriteria = new RTenantMenuFindAllByQueryCriteria();
         rTenantMenuFindAllByQueryCriteria.setTenantId(tenantId);
-        List<String> strings = getService().findAllByQueryCriteriaToDto(rTenantMenuFindAllByQueryCriteria).stream().map(RTenantMenuDto::getMenuId).toList();
+        List<RTenantMenuDto> all = getService().findAllToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, rTenantMenuFindAllByQueryCriteria, criteriaBuilder));
+        List<String> strings = all.stream().map(RTenantMenuDto::getMenuId).toList();
         return Result.success(strings);
     }
 

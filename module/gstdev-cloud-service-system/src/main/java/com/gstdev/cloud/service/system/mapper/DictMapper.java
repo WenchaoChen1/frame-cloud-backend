@@ -10,9 +10,11 @@
 package com.gstdev.cloud.service.system.mapper;
 
 
+import com.gstdev.cloud.data.core.mapper.BaseDtoMapper;
 import com.gstdev.cloud.service.system.pojo.base.dict.DictDto;
 import com.gstdev.cloud.service.system.pojo.base.dict.DictInsertInput;
 import com.gstdev.cloud.service.system.pojo.base.dict.DictUpdateInput;
+import com.gstdev.cloud.service.system.pojo.base.dict.DictVo;
 import com.gstdev.cloud.service.system.pojo.vo.menu.DictModifyInput;
 import com.gstdev.cloud.service.system.pojo.vo.menu.DictSaveInput;
 import com.gstdev.cloud.service.system.pojo.entity.Dict;
@@ -26,7 +28,7 @@ import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface DictMapper extends BaseTreeMapper<Dict, DictDto, DictInsertInput, DictUpdateInput> {
+public interface DictMapper extends BaseDtoMapper<Dict, DictDto> {
     /**
      * 转换
      *

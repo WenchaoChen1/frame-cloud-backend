@@ -25,7 +25,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/depart")
-public class DepartController implements TreeController<Depart, String, DepartService, DepartVoMapper, DepartVo, DepartDto, DepartInsertInput, DepartUpdateInput, DepartPageQueryCriteria, DepartFindAllByQueryCriteria> {
+public class DepartController implements TreeController<Depart, String, DepartVo, DepartDto, DepartInsertInput, DepartUpdateInput, DepartPageQueryCriteria, DepartFindAllByQueryCriteria> {
 
     @Resource
     private DepartService departService;

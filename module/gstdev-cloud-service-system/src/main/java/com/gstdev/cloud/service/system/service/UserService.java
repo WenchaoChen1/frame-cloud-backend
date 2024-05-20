@@ -13,11 +13,11 @@ import com.gstdev.cloud.data.core.service.BasePOJOService;
 
 import java.util.List;
 
-public interface UserService extends BasePOJOService<SysUser, String, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> {
+public interface UserService extends BasePOJOService<SysUser, String, UserDto> {
 
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 
-    Result<UserDto> insertUserInitializationToResult(UserInsertInput userInsertInput);
+    UserDto insertUserInitializationToDto(SysUser usert, UserInsertInput userInsertInput);
 
     List<AccountListDto> getByIdToAccount(String id);
 

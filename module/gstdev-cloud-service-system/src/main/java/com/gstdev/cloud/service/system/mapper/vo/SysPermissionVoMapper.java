@@ -28,15 +28,16 @@ import java.util.List;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface SysPermissionVoMapper extends BaseVoMapper<SysPermissionVo, SysPermissionDto> {
+public interface SysPermissionVoMapper extends BaseVoMapper<SysPermissionDto,SysPermissionVo> {
 //public interface SysPermissionVoMapper {
-    SysPermissionVo entityToVo(SysPermission entity);
+//    SysPermissionVo entityToVo(SysPermission entity);
 
     List<SysPermissionVo> entityToVo(List<SysPermission> entity);
 
-    default Page<SysPermissionVo> entityToVo(Page<SysPermission> page) {
-        List<SysPermissionVo> responses = this.entityToVo(page.getContent());
-        return new PageImpl<>(responses, page.getPageable(), page.getTotalElements());
-    }
+//    default Page<SysPermissionVo> entityToVo(Page<SysPermission> page) {
+//        List<SysPermissionVo> responses = this.entityToVo(page.getContent());
+//        return new PageImpl<>(responses, page.getPageable(), page.getTotalElements());
+//    }
+
 }
 

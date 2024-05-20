@@ -5,5 +5,5 @@ import com.gstdev.cloud.service.system.pojo.entity.Dict;
 import com.gstdev.cloud.data.core.service.BaseTreeService;
 
 
-public interface DictService extends BaseTreeService<Dict, String, DictDto, DictInsertInput, DictUpdateInput, DictPageQueryCriteria, DictFindAllByQueryCriteria> {
+public interface DictService extends BaseTreeService<Dict, String, DictDto> {
 }

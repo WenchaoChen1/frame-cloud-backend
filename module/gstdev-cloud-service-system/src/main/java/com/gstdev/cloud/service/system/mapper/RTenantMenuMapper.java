@@ -9,9 +9,8 @@
 
 package com.gstdev.cloud.service.system.mapper;
 
-import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.RTenantMenuDto;
-import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.RTenantMenuInsertInput;
-import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.RTenantMenuUpdateInput;
+import com.gstdev.cloud.data.core.mapper.BaseDtoMapper;
+import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.*;
 import com.gstdev.cloud.service.system.pojo.vo.RTenantMenu.RTenantMenuModifyInput;
 import com.gstdev.cloud.service.system.pojo.vo.RTenantMenu.RTenantMenuSaveInput;
 import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
@@ -28,7 +27,7 @@ import java.util.List;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface RTenantMenuMapper extends BasePOJOMapper<RTenantMenu, RTenantMenuDto, RTenantMenuInsertInput, RTenantMenuUpdateInput> {
+public interface RTenantMenuMapper extends BaseDtoMapper<RTenantMenu, RTenantMenuDto> {
     RTenantMenu toEntity(RTenantMenuDto tenantDto);
 
     void copyModify(RTenantMenuSaveInput tenantSaveInput, @MappingTarget RTenantMenu tenant);

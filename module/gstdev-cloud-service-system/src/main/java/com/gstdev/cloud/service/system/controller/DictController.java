@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/dict")
-public class DictController implements TreeController<Dict, String, DictService, DictVoMapper, DictVo, DictDto, DictInsertInput, DictUpdateInput, DictPageQueryCriteria, DictFindAllByQueryCriteria> {
+public class DictController implements TreeController<Dict, String,  DictVo, DictDto, DictInsertInput, DictUpdateInput, DictPageQueryCriteria, DictFindAllByQueryCriteria> {
 
     @Resource
     private DictService dictService;

@@ -23,7 +23,7 @@ import java.util.List;
 //@RequiredArgsConstructor
 //public class AccountServiceImpl implements AccountService {
 @Transactional(readOnly = true)
-public  class AccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, AccountRepository, AccountMapper, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> implements AccountService {
+public  class AccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, AccountRepository, AccountMapper, AccountDto> implements AccountService {
 
     @Resource
     private UserRepository userRepository;
@@ -47,7 +47,10 @@ public  class AccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String,
     @Override
     @Transactional
     public SysAccount insertAccountInitialization(AccountInsertInput accountInsertInput) {
-        SysAccount account = toEntityInsert(accountInsertInput);
+        SysAccount account=new SysAccount();
+        account.setType(accountInsertInput.getType());
+        account.setTenantId(accountInsertInput.getTenantId());
+        account.setName(accountInsertInput.getName());
         SysUser user = userRepository.findById(accountInsertInput.getUserId()).get();
         account.setUser(user);
         account.setType(accountInsertInput.getAccountTypeConstants().getCode());

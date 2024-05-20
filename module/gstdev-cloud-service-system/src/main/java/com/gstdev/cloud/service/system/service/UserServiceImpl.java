@@ -31,7 +31,7 @@ import java.util.*;
 
 @Slf4j
 @Transactional(readOnly = true)
-public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRepository, UserMapper, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> implements UserService {
+public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRepository, UserMapper, UserDto> implements UserService {
 
     private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
     @Resource
@@ -72,10 +72,6 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
         return new String(chars);
     }
 
-    @Override
-    public Result<UserDto> insertToResult(UserInsertInput varInsertUpdate) {
-        return super.insertToResult(varInsertUpdate);
-    }
 
     @Override
     @Transactional
@@ -88,8 +84,8 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
     }
 
     @Transactional
-    public SysUser insertUserInitialization(UserInsertInput userInsertInput) {
-        SysUser user = toEntityInsert(userInsertInput);
+    public SysUser insertUserInitialization(SysUser user,UserInsertInput userInsertInput) {
+//        SysUser user = toEntityInsert(userInsertInput);
         SysUser insert = insert(user);
         AccountInsertInput accountInsertInput = new AccountInsertInput();
         accountInsertInput.setTenantId(userInsertInput.getTenantId());
@@ -114,9 +110,9 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
      */
     @Override
     @Transactional
-    public Result<UserDto> insertUserInitializationToResult(UserInsertInput userInsertInput) {
-        SysUser user = insertUserInitialization(userInsertInput);
-        return Result.success(getMapper().toDto(user));
+    public UserDto insertUserInitializationToDto(SysUser user,UserInsertInput userInsertInput) {
+        SysUser sysUser = insertUserInitialization(user,userInsertInput);
+        return getMapper().toDto(sysUser);
     }
 
     @Override

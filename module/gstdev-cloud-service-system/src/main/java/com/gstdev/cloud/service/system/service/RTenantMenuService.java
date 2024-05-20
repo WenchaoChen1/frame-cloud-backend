@@ -14,7 +14,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BasePOJOService;
 import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.*;
 
-public interface RTenantMenuService extends BasePOJOService<RTenantMenu, String, RTenantMenuDto, RTenantMenuInsertInput, RTenantMenuUpdateInput, RTenantMenuPageQueryCriteria, RTenantMenuFindAllByQueryCriteria> {
+public interface RTenantMenuService extends BasePOJOService<RTenantMenu, String, RTenantMenuDto> {
     Result<String> insertTenantMenu(RTenantMenuInsertInput rTenantMenuInsertInput);
 
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////

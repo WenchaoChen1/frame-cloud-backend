@@ -17,7 +17,7 @@ import jakarta.annotation.Resource;
 
 @RestController
 @RequestMapping("/v1/account")
-public class AccountController implements POJOController<SysAccount, String, AccountService, AccountVoMapper, AccountVo, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
+public class AccountController implements POJOController<SysAccount, String, AccountVo, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
 
     @Resource
     private AccountService accountService;

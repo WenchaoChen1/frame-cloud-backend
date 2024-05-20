@@ -29,7 +29,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/v1/user")
-public class UserController implements POJOController<SysUser, String, UserService, UserVoMapper, UserVo, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> {
+public class UserController implements POJOController<SysUser, String,UserVo, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> {
 
     @Resource
     private UserService userService;
@@ -92,7 +92,7 @@ public class UserController implements POJOController<SysUser, String, UserServi
     @PostMapping("/insert-user-initialization")
     @Operation(summary = "新增一个用户并创建用户的账户以及角色,部门")
     public Result<UserVo> insertUserInitialization(@RequestBody @Validated UserInsertInput userInsertInput) {
-        return getMapper().toVo(getService().insertUserInitializationToResult(userInsertInput));
+        return result(getMapper().toVo(getService().insertUserInitializationToDto(toEntityInsert(userInsertInput),userInsertInput)));
     }
 
     @PutMapping

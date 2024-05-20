@@ -27,7 +27,7 @@ import java.util.List;
 
 
 @Transactional(readOnly = true)
-public class TenantServiceImpl extends BaseTreeServiceImpl<Tenant, String, TenantRepository, TenantMapper, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> implements TenantService {
+public class TenantServiceImpl extends BaseTreeServiceImpl<Tenant, String, TenantRepository, TenantMapper, TenantDto> implements TenantService {
 
     @Resource
     private AccountService accountService;

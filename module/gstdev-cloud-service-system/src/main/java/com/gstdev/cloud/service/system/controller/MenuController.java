@@ -25,7 +25,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/menu")
-public class MenuController implements TreeController<Menu, String, MenuService, MenuVoMapper, MenuVo, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> {
+public class MenuController implements TreeController<Menu, String, MenuVo, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> {
 
     @Resource
     private MenuService menuService;

@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Transactional(readOnly = true)
-public class RTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, String, RTenantMenuRepository, RTenantMenuMapper, RTenantMenuDto, RTenantMenuInsertInput, RTenantMenuUpdateInput, RTenantMenuPageQueryCriteria, RTenantMenuFindAllByQueryCriteria> implements RTenantMenuService {
+public class RTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, String, RTenantMenuRepository, RTenantMenuMapper, RTenantMenuDto> implements RTenantMenuService {
 
     @Resource
     private MenuRepository MenuRepository;

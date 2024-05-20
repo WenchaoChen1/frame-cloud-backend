@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/role")
-public class RoleController implements TreeController<SysRole, String, RoleService, RoleVoMapper, RoleVo, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> {
+public class RoleController implements TreeController<SysRole, String, RoleVo, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> {
 
     @Resource
     private RoleService roleService;

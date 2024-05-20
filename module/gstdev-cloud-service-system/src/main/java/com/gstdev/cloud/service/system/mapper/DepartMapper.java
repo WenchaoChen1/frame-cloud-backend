@@ -10,9 +10,11 @@
 package com.gstdev.cloud.service.system.mapper;
 
 
+import com.gstdev.cloud.data.core.mapper.BaseDtoMapper;
 import com.gstdev.cloud.service.system.pojo.base.depart.DepartDto;
 import com.gstdev.cloud.service.system.pojo.base.depart.DepartInsertInput;
 import com.gstdev.cloud.service.system.pojo.base.depart.DepartUpdateInput;
+import com.gstdev.cloud.service.system.pojo.base.depart.DepartVo;
 import com.gstdev.cloud.service.system.pojo.entity.Depart;
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
 import org.mapstruct.Mapper;
@@ -23,7 +25,7 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface DepartMapper extends BaseTreeMapper<Depart, DepartDto, DepartInsertInput, DepartUpdateInput> {
+public interface DepartMapper extends BaseDtoMapper<Depart, DepartDto> {
 
 }
 

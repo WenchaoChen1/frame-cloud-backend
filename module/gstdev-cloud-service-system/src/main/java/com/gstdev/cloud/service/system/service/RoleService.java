@@ -7,7 +7,7 @@ import com.gstdev.cloud.service.system.pojo.base.role.*;
 
 import java.util.List;
 
-public interface RoleService extends BaseTreeService<SysRole, String, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> {
+public interface RoleService extends BaseTreeService<SysRole, String, RoleDto> {
     Result<List<String>> getAllByRoleId(String roleId);
 
     Result<String> insertRoleMenu(RoleInsertInput roleInsertInput);

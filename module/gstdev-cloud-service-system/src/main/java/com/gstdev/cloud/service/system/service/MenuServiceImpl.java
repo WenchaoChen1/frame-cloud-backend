@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.base.core.utils.treeUtils.TreeFactory;
+import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
 import com.gstdev.cloud.service.system.mapper.MenuMapper;
 import com.gstdev.cloud.service.system.pojo.base.menu.*;
@@ -13,6 +14,7 @@ import com.gstdev.cloud.service.system.repository.MenuRepository;
 import com.gstdev.cloud.service.system.repository.RoleRepository;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.Resource;
@@ -21,21 +23,24 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Transactional(readOnly = true)
-public class MenuServiceImpl extends BaseTreeServiceImpl<Menu, String, MenuRepository, MenuMapper, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> implements MenuService {
+public class MenuServiceImpl extends BaseTreeServiceImpl<Menu, String, MenuRepository, MenuMapper, MenuDto> implements MenuService {
 
     @Resource
     private RoleRepository roleRepository;
     @Resource
-    private AccountRepository accountRepository;    @Resource
+    private AccountRepository accountRepository;
+    @Resource
     private MenuRepository menuRepository;
 
     public MenuServiceImpl(MenuRepository menuRepository, MenuMapper menuMapper) {
         super(menuRepository, menuMapper);
-        this.menuRepository=menuRepository;
+        this.menuRepository = menuRepository;
     }
+
     public MenuRepository getRepository() {
         return menuRepository;
     }
+
     @Override
     public Result<List<MenuDto>> getAllByRoleMenuToTree(String roleId) {
         Optional<SysRole> byId = roleRepository.findById(roleId);
@@ -70,6 +75,10 @@ public class MenuServiceImpl extends BaseTreeServiceImpl<Menu, String, MenuRepos
         menu.setCheckedMenuId(checkedMenuIds);
         menu.setHalfCheckedMenuId(halfCheckedMenuIds);
         return menu;
+    }
+
+    List<MenuDto> findAllByQueryCriteriaToDtoToTree(MenuFindAllByQueryCriteria menuFindAllByQueryCriteria) {
+        return findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, menuFindAllByQueryCriteria, criteriaBuilder));
     }
 
     public List<MenuDto> getAccountPermissions(String accountId) {
