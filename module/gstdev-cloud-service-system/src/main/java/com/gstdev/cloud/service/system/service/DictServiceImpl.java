@@ -15,14 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import jakarta.annotation.Resource;
 
 
-//@Service
-//@Transactional(rollbackFor = Exception.class)
-//@RequiredArgsConstructor
-//public class DictServiceImpl implements DictService {
-//  private final DictMapper dictMapper;
-//  private final DictRepository dictRepository;
-
-//@Service
 @Transactional(readOnly = true)
 public class DictServiceImpl extends BaseTreeServiceImpl<Dict, String, DictRepository, DictMapper, DictDto> implements DictService {
     private static final Logger log = LoggerFactory.getLogger(DictServiceImpl.class);

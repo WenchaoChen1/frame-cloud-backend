@@ -23,7 +23,6 @@ import java.util.List;
 
 
 @Transactional(rollbackFor = Exception.class)
-//@RequiredArgsConstructor
 public class TenantDictServiceImpl implements TenantDictService {
 
     private final TenantDictMapper tenantDictMapper;

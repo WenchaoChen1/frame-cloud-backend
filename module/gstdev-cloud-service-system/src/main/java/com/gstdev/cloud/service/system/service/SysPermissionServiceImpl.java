@@ -22,10 +22,6 @@ import java.util.stream.Collectors;
 @Transactional
 public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, String,SysPermissionRepository,SysPermissionMapper, SysPermissionDto> implements SysPermissionService {
 
-    //    private  SysPermissionRepository sysPermissionRepository;
-//    @Resource
-//    private SysPermissionMapper sysPermissionMapper;
-
     @Resource
     private SysAttributeService sysAttributeService;
     @Resource

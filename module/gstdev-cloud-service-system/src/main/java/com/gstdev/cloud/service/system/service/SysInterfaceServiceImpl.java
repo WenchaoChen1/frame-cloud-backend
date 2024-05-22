@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
 
 public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, String,SysInterfaceRepository> implements SysInterfaceService {
 
-    //    private  SysInterfaceRepository SysInterfaceRepository;
     private final Converter<RequestMapping, SysInterface> toSysInterface;
     @Resource
     private SysInterfaceRepository sysInterfaceRepository;

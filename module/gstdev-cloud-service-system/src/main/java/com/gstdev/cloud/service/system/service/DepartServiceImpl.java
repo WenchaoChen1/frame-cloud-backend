@@ -10,13 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.Resource;
 
-
-//@Service
-//@Transactional(rollbackFor = Exception.class)
-//@RequiredArgsConstructor
-//public class DepartServiceImpl implements DepartService {
-//  private final DepartRepository departRepository;
-//  private final DepartMapper departMapper;
 @Transactional(readOnly = true)
 public class DepartServiceImpl extends BaseTreeServiceImpl<Depart, String, DepartRepository, DepartMapper, DepartDto> implements DepartService {
 

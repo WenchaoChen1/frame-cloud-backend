@@ -1,6 +1,5 @@
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.service.system.converter.SysUserToSecurityUserConverter;
 import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
@@ -8,17 +7,11 @@ import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
 import com.gstdev.cloud.service.system.mapper.UserMapper;
 import com.gstdev.cloud.service.system.pojo.base.account.AccountInsertInput;
 import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
-import com.gstdev.cloud.service.system.pojo.base.user.UserFindAllByQueryCriteria;
-import com.gstdev.cloud.service.system.pojo.base.user.UserPageQueryCriteria;
-import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
-import com.gstdev.cloud.service.system.pojo.vo.user.UserUpdateInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.AccountListDto;
-import com.gstdev.cloud.service.system.repository.SysPermissionRepository;
 import com.gstdev.cloud.service.system.repository.UserRepository;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
-import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -126,73 +119,6 @@ public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRe
     }
 
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
-
-//  @Transactional
-//  public Result<UserDto> insertCustomerUser(UserInsertInput userInsertInput) {
-//    //TODO 新增一个当前账户的角色
-//    Role role=new Role();
-//    role.setParentId(userInsertInput.getTenantId());
-//    role.setTenantId(userInsertInput.getTenantId());
-//    role.setCode(UUID.randomUUID().toString());
-//    role.setRoleName(userInsertInput.getFirstName());
-//    Role save = roleRepository.save(role);
-//
-//    ArrayList<String> roleIds = new ArrayList();
-//    roleIds.add(save.getId());
-//    userInsertInput.setRoleIds(roleIds);
-//    User user = insertUserInitialization(userInsertInput);
-//    //TODO 发送当前用户的邀请邮件
-//    this.create(getMapper().toDto(user),userInsertInput.getTenantId());
-//    return Result.success(getMapper().toDto(user));
-//  }
-
-//  @Override
-//  @Transactional
-//  public Result<UserDto> updateCustomerUser(UserLoginInferiorUpdateInput userLoginInferiorUpdateInput) {
-//    Optional<User> byId = userRepository.findById(userLoginInferiorUpdateInput.getId());
-//    User user = byId.get();
-//    List<Account> account1 = user.getAccount();
-//    account1.forEach(account -> {
-//      account.setType(userLoginInferiorUpdateInput.getAccountTypeConstants().getCode());
-//    });
-//    user.setAccount(account1);
-//    userMapper.copyModify(userLoginInferiorUpdateInput,user);
-//    User update = update(user);
-//    return Result.success(getMapper().toDto(update));
-//  }
-//
-//  @Override
-//  public List<UserDto> findAllByQueryCriteria(UserFindAllByQueryCriteria queryCriteria,String userId) {
-//    List<UserDto> allByQueryCriteriaToDto = findAllByQueryCriteriaToDto(new UserFindAllByQueryCriteria());
-//
-//    return  allByQueryCriteriaToDto;
-//  }
-//
-
-
-//
-//  @Override
-//  public String checkIfUserExist(String emailAddress){
-//    String validationMessage = null;
-//    Optional<User> user = userRepository.findByEmailAndDeletedFalse(emailAddress);
-//    if(user.isPresent() && !ObjectUtils.isEmpty(user)){
-//      validationMessage = "The email address already exists";
-//    }
-//    return validationMessage;
-//  }
-//
-//  public List<Role> getRoleEntity(List<String> list) {
-//    List<Role> roleList = new ArrayList<Role>();
-//    if (list != null && list.size() > 0) {
-//      for (String item : list) {
-//        Role role = new Role();
-//        role.setId(item);
-//        roleList.add(role);
-//      }
-//    }
-//    return roleList;
-//  }
-//
 
     @Override
     public List<AccountListDto> getByIdToAccount(String id) {

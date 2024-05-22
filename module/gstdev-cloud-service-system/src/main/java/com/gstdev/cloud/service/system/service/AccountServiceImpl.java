@@ -19,9 +19,6 @@ import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 
-//@Service
-//@RequiredArgsConstructor
-//public class AccountServiceImpl implements AccountService {
 @Transactional(readOnly = true)
 public  class AccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, AccountRepository, AccountMapper, AccountDto> implements AccountService {
 
@@ -81,11 +78,6 @@ public  class AccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String,
 //        }
         return getRepository().save(var);
     }
-
-//    @Override
-//    public SysAccount insert(SysAccount var) {
-//        return super.insert(var);
-//    }
 
     @Override
     public List<AccountDto> findAllByUserId(String userId) {
