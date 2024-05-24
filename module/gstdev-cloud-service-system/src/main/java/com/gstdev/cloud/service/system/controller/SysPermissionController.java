@@ -30,6 +30,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -90,5 +91,15 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     @DeleteMapping("/{id}")
     public Result<String> delete(@PathVariable String id) {
         return DtoController.super.delete(id);
+    }
+
+    @Operation(summary = "permissionType",
+        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
+        responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
+    @Parameters({
+    })
+    @GetMapping("/permissionType")
+    public Result<List<String>> findDistinctPermissionTypes() {
+        return result(getService().findDistinctPermissionTypes());
     }
 }

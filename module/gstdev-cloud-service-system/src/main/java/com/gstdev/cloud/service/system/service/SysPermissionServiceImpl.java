@@ -40,6 +40,11 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
         permissionInit(attributeList);
     }
 
+    @Override
+    public List<String> findDistinctPermissionTypes() {
+        return sysPermissionRepository.findDistinctPermissionTypes();
+    }
+
     public void permissionInit(List<SysAttribute> attributeList) {
         this.updateStatusByPermissionType(DataItemStatus.EXPIRED, "generateCorrelatedKeysService");
         Map<String, List<SysAttribute>> attributeMap = attributeList.stream()
