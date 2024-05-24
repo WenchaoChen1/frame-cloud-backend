@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.data.core.utils.QueryUtils;
+import com.gstdev.cloud.rest.core.annotation.Idempotent;
 import com.gstdev.cloud.rest.core.controller.DtoController;
 import com.gstdev.cloud.service.system.mapper.vo.SysPermissionVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionDto;
@@ -15,6 +16,9 @@ import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.controller.BaseController;
 import com.gstdev.cloud.rest.core.controller.Controller;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -24,9 +28,7 @@ import jakarta.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -35,10 +37,10 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/v1/permission")
-@Tags({
-    @Tag(name = "用户安全管理接口"),
-    @Tag(name = "系统权限管理接口")
-})
+//@Tags({
+//    @Tag(name = "用户安全管理接口"),
+//    @Tag(name = "系统权限管理接口")
+//})
 public class SysPermissionController implements DtoController<SysPermission, String, SysPermissionDto> {
 
     @Resource
@@ -66,8 +68,27 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         return Result.success(SysPermissionVos);
     }
 
-    @GetMapping("/a")
-    public void a() {
-        getService().permissionInit();
+    @Idempotent
+    @Operation(summary = "保存或更新数据", description = "接收JSON数据，转换为实体，进行保存或更新",
+        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
+        responses = {@ApiResponse(description = "已保存数据", content = @Content(mediaType = "application/json"))})
+    @Parameters({
+        @Parameter(name = "domain", required = true, description = "可转换为实体的json数据")
+    })
+    @PostMapping
+    public Result<SysPermissionVo> saveOrUpdatea(@RequestBody SysPermission domain) {
+        return result(sysPermissionVoMapper.toVo(getService().saveToDto(domain)));
+    }
+
+    @Idempotent
+    @Operation(summary = "删除数据", description = "根据实体ID删除数据，以及相关联的关联数据",
+        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
+        responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
+    @Parameters({
+        @Parameter(name = "id", required = true, in = ParameterIn.PATH, description = "实体ID，@Id注解对应的实体属性")
+    })
+    @DeleteMapping("/{id}")
+    public Result<String> delete(@PathVariable String id) {
+        return DtoController.super.delete(id);
     }
 }

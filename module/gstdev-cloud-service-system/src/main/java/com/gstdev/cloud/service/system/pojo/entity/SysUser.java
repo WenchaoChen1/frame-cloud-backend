@@ -75,7 +75,7 @@ public class SysUser extends BasePOJOEntity {
     private Integer deleted = 0;
 
 
-    @Schema(name = "数据状态")
+    @Schema(title = "数据状态")
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private DataItemStatus status = DataItemStatus.ENABLE;

@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * <p>Description: 系统权限实体 </p>
  */
-@Schema(name = "系统权限")
+@Schema(title = "系统权限")
 @Getter
 @Setter
 @Entity
@@ -30,28 +30,28 @@ import java.util.List;
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = SystemConstants.REGION_SYS_PERMISSION)
 public class SysPermission extends BaseEntity {
 
-    @Schema(name = "权限ID")
+    @Schema(title = "权限ID")
     @Id
     @SysPermissionUuidGenerator
     @Column(name = "permission_id", length = 64)
     private String permissionId;
 
-    @Schema(name = "权限代码")
+    @Schema(title = "权限代码")
     @Column(name = "permission_code", length = 128)
     private String permissionCode;
 
-    @Schema(name = "权限名称")
+    @Schema(title = "权限名称")
     @Column(name = "permission_name", length = 1024)
     private String permissionName;
 
 
-    @Schema(name = "权限类型")
+    @Schema(title = "权限类型")
     @Column(name = "permission_type", length = 1024)
     private String permissionType;
 
 
 
-    @Schema(name = "数据状态")
+    @Schema(title = "数据状态")
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private DataItemStatus status = DataItemStatus.ENABLE;

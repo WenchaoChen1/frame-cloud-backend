@@ -37,23 +37,23 @@ public class SysAttribute extends BaseEntity {
     @Column(name = "attribute_code", length = 128)
     private String attributeCode;
 
-    @Schema(name = "请求方法")
+    @Schema(title = "请求方法")
     @Column(name = "request_method", length = 20)
     private String requestMethod;
 
-    @Schema(name = "服务ID")
+    @Schema(title = "服务ID")
     @Column(name = "service_id", length = 128)
     private String serviceId;
 
-    @Schema(name = "接口所在类")
+    @Schema(title = "接口所在类")
     @Column(name = "class_name", length = 512)
     private String className;
 
-    @Schema(name = "接口对应方法")
+    @Schema(title = "接口对应方法")
     @Column(name = "method_name", length = 128)
     private String methodName;
 
-    @Schema(name = "请求URL")
+    @Schema(title = "请求URL")
     @Column(name = "url", length = 2048)
     private String url;
 
@@ -64,11 +64,11 @@ public class SysAttribute extends BaseEntity {
     /**
      * 角色描述,UI界面显示使用
      */
-    @Schema(name = "备注")
+    @Schema(title = "备注")
     @Column(name = "description", length = 512)
     private String description;
 
-    @Schema(name = "属性对应权限", title = "根据属性关联权限数据")
+    @Schema(title = "属性对应权限", description = "根据属性关联权限数据")
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "sys_attribute_permission",
