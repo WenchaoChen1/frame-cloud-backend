@@ -3,9 +3,6 @@ package com.gstdev.cloud.service.system.pojo.base.SysPermission;
 import com.gstdev.cloud.base.definition.domain.base.pojo.BaseDtoInterface;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.Getter;
 import lombok.Setter;
 

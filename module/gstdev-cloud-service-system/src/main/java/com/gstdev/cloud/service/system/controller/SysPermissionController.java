@@ -78,6 +78,12 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     })
     @PostMapping
     public Result<SysPermissionVo> saveOrUpdatea(@RequestBody SysPermission domain) {
+//        SysPermission sysPermission=new SysPermission();
+//        sysPermission.setPermissionId(domain.getPermissionId());
+//        sysPermission.setPermissionName(domain.getPermissionName());
+//        sysPermission.setPermissionCode(domain.getPermissionCode());
+//        sysPermission.setPermissionType(domain.getPermissionType());
+//        sysPermission.setStatus(domain.getStatus());
         return result(sysPermissionVoMapper.toVo(getService().saveToDto(domain)));
     }
 

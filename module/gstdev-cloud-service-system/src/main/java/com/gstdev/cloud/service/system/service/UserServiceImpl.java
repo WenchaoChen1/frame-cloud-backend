@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
-import com.gstdev.cloud.service.system.converter.SysUserToSecurityUserConverter;
+import com.gstdev.cloud.service.system.pojo.converter.SysUserToSecurityUserConverter;
 import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
 import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
 import com.gstdev.cloud.service.system.mapper.UserMapper;

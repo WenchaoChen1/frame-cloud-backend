@@ -1,22 +1,16 @@
 package com.gstdev.cloud.service.system.pojo.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.constants.SystemConstants;
 import com.gstdev.cloud.service.system.pojo.generator.SysPermissionUuidGenerator;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
-import com.gstdev.cloud.service.system.constants.SystemConstants;
-import com.gstdev.cloud.service.system.pojo.generator.SysPermissionUuidGenerator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.UuidGenerator;
-
-import java.util.List;
 
 /**
  * <p>Description: 系统权限实体 </p>

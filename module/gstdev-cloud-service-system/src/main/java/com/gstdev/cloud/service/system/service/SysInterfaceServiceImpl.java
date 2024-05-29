@@ -1,9 +1,8 @@
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.service.system.converter.RequestMappingToSysInterfaceConverter;
+import com.gstdev.cloud.service.system.pojo.converter.RequestMappingToSysInterfaceConverter;
 import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.pojo.entity.SysInterface;
-import com.gstdev.cloud.service.system.repository.SysAttributeRepository;
 import com.gstdev.cloud.service.system.repository.SysInterfaceRepository;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
@@ -14,7 +13,6 @@ import jakarta.persistence.criteria.Subquery;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;

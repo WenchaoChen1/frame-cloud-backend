@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.system.converter;
+package com.gstdev.cloud.service.system.pojo.converter;
 
 import org.springframework.core.convert.converter.Converter;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
