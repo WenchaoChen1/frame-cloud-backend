@@ -1,5 +1,7 @@
 package com.frame.template.gateway;
 
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -14,5 +16,11 @@ public class GstdevGatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(GstdevGatewayApplication.class, args);
     }
+    @Value("${spring.cloud.nacos.discovery.server-addr}")
+    private String serverAddr;
 
+    @PostConstruct
+    public void printConfig() {
+        System.out.println("Nacos server address: " + serverAddr);
+    }
 }
