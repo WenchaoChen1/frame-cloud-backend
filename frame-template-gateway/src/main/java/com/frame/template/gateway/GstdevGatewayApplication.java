@@ -16,11 +16,5 @@ public class GstdevGatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(GstdevGatewayApplication.class, args);
     }
-    @Value("${spring.cloud.nacos.discovery.server-addr}")
-    private String serverAddr;
 
-    @PostConstruct
-    public void printConfig() {
-        System.out.println("Nacos server address: " + serverAddr);
-    }
 }
