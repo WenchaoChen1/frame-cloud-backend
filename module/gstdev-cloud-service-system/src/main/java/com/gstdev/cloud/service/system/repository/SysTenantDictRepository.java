@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import java.util.List;
 
 
-public interface TenantDictRepository extends JpaRepository<TenantDict, String>, JpaSpecificationExecutor<TenantDict> {
+public interface SysTenantDictRepository extends JpaRepository<TenantDict, String>, JpaSpecificationExecutor<TenantDict> {
     /**
      * 父级主键查询
      *

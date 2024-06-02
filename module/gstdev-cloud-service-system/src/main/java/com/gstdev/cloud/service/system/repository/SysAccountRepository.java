@@ -5,7 +5,7 @@ import com.gstdev.cloud.data.core.repository.BaseRepository;
 
 import java.util.List;
 
-public interface AccountRepository extends BaseRepository<SysAccount, String> {
+public interface SysAccountRepository extends BaseRepository<SysAccount, String> {
     /**
      * 通过登录名查账号和用户信息
      *

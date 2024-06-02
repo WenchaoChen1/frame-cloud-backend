@@ -9,9 +9,9 @@ import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.service.system.pojo.entity.Menu;
 import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
 import com.gstdev.cloud.service.system.pojo.entity.SysRole;
-import com.gstdev.cloud.service.system.repository.AccountRepository;
-import com.gstdev.cloud.service.system.repository.MenuRepository;
-import com.gstdev.cloud.service.system.repository.RoleRepository;
+import com.gstdev.cloud.service.system.repository.SysAccountRepository;
+import com.gstdev.cloud.service.system.repository.SysMenuRepository;
+import com.gstdev.cloud.service.system.repository.SysRoleRepository;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,21 +22,21 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Transactional(readOnly = true)
-public class SysMenuServiceImpl extends BaseTreeServiceImpl<Menu, String, MenuRepository, MenuMapper, MenuDto> implements SysMenuService {
+public class SysMenuServiceImpl extends BaseTreeServiceImpl<Menu, String, SysMenuRepository, MenuMapper, MenuDto> implements SysMenuService {
 
     @Resource
-    private RoleRepository roleRepository;
+    private SysRoleRepository roleRepository;
     @Resource
-    private AccountRepository accountRepository;
+    private SysAccountRepository accountRepository;
     @Resource
-    private MenuRepository menuRepository;
+    private SysMenuRepository menuRepository;
 
-    public SysMenuServiceImpl(MenuRepository menuRepository, MenuMapper menuMapper) {
+    public SysMenuServiceImpl(SysMenuRepository menuRepository, MenuMapper menuMapper) {
         super(menuRepository, menuMapper);
         this.menuRepository = menuRepository;
     }
 
-    public MenuRepository getRepository() {
+    public SysMenuRepository getRepository() {
         return menuRepository;
     }
 

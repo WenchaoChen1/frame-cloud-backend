@@ -10,7 +10,7 @@ import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.AccountListDto;
-import com.gstdev.cloud.service.system.repository.UserRepository;
+import com.gstdev.cloud.service.system.repository.SysUserRepository;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
@@ -24,7 +24,7 @@ import java.util.*;
 
 @Slf4j
 @Transactional(readOnly = true)
-public class SysUserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRepository, UserMapper, UserDto> implements SysUserService {
+public class SysUserServiceImpl extends BasePOJOServiceImpl<SysUser, String, SysUserRepository, UserMapper, UserDto> implements SysUserService {
 
     private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
     @Resource
@@ -33,13 +33,13 @@ public class SysUserServiceImpl extends BasePOJOServiceImpl<SysUser, String, Use
     @Resource
     private IdentityFeignService identityFeignService;
     @Resource
-    private UserRepository userRepository;
+    private SysUserRepository userRepository;
 
-    public SysUserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
+    public SysUserServiceImpl(SysUserRepository userRepository, UserMapper userMapper) {
         super(userRepository, userMapper);
     }
 
-    public UserRepository getRepository() {
+    public SysUserRepository getRepository() {
         return userRepository;
     }
 

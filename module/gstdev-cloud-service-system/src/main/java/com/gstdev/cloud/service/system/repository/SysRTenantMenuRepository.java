@@ -17,7 +17,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.List;
 
-public interface RTenantMenuRepository extends JpaRepository<RTenantMenu, String>, JpaSpecificationExecutor<RTenantMenu>, BaseRepository<RTenantMenu, String> {
+public interface SysRTenantMenuRepository extends JpaRepository<RTenantMenu, String>, JpaSpecificationExecutor<RTenantMenu>, BaseRepository<RTenantMenu, String> {
 
     RTenantMenu findByTenantIdAndMenu(String tenantId, Menu menu);
 

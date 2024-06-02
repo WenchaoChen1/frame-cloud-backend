@@ -5,10 +5,10 @@ import com.gstdev.cloud.service.system.mapper.AccountMapper;
 import com.gstdev.cloud.service.system.pojo.base.account.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
-import com.gstdev.cloud.service.system.repository.AccountRepository;
-import com.gstdev.cloud.service.system.repository.DepartRepository;
-import com.gstdev.cloud.service.system.repository.RoleRepository;
-import com.gstdev.cloud.service.system.repository.UserRepository;
+import com.gstdev.cloud.service.system.repository.SysAccountRepository;
+import com.gstdev.cloud.service.system.repository.SysDepartRepository;
+import com.gstdev.cloud.service.system.repository.SysRoleRepository;
+import com.gstdev.cloud.service.system.repository.SysUserRepository;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,22 +19,22 @@ import org.springframework.util.ObjectUtils;
 import java.util.List;
 
 @Transactional(readOnly = true)
-public  class SysAccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, AccountRepository, AccountMapper, AccountDto> implements SysAccountService {
+public  class SysAccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, SysAccountRepository, AccountMapper, AccountDto> implements SysAccountService {
 
     @Resource
-    private UserRepository userRepository;
+    private SysUserRepository userRepository;
     @Resource
-    private DepartRepository departRepository;
+    private SysDepartRepository departRepository;
     @Resource
-    private RoleRepository roleRepository;
+    private SysRoleRepository roleRepository;
 
     @Resource
-    private AccountRepository accountRepository;
+    private SysAccountRepository accountRepository;
 
-    public SysAccountServiceImpl(AccountRepository accountRepository, AccountMapper accountMapper) {
+    public SysAccountServiceImpl(SysAccountRepository accountRepository, AccountMapper accountMapper) {
         super(accountRepository, accountMapper);
     }
-    public AccountRepository getRepository() {
+    public SysAccountRepository getRepository() {
         return accountRepository;
     }
 

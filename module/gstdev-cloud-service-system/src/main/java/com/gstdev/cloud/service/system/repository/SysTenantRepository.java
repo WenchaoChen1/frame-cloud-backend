@@ -16,7 +16,7 @@ import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 import java.util.List;
 
-public interface TenantRepository extends BaseTreeRepository<Tenant, String> {
+public interface SysTenantRepository extends BaseTreeRepository<Tenant, String> {
     List<Tenant> findAllByParentId(String parentId);
 
 }

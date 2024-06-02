@@ -7,7 +7,7 @@ import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 import java.util.List;
 
 
-public interface DictRepository extends BaseTreeRepository<Dict, String> {
+public interface SysDictRepository extends BaseTreeRepository<Dict, String> {
     /**
      * 父级主键查询
      *

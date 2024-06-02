@@ -7,7 +7,7 @@ import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 import java.util.List;
 
 
-public interface RoleRepository extends BaseTreeRepository<SysRole, String> {
+public interface SysRoleRepository extends BaseTreeRepository<SysRole, String> {
 
 
 

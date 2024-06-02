@@ -5,7 +5,7 @@ import com.gstdev.cloud.data.core.repository.BaseRepository;
 
 import java.util.Optional;
 
-public interface UserRepository extends BaseRepository<SysUser, String> {
+public interface SysUserRepository extends BaseRepository<SysUser, String> {
     /**
      * 查询
      *

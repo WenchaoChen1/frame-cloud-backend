@@ -26,42 +26,42 @@ public class FrameSystemServiceConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public SysTenantService sysTenantService(TenantRepository tenantRepository, TenantMapper tenantMapper) {
+    public SysTenantService sysTenantService(SysTenantRepository tenantRepository, TenantMapper tenantMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Tenant Service");
         return new SysTenantServiceImpl(tenantRepository, tenantMapper);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public SysUserService sysUserService(UserRepository userRepository, UserMapper userMappe) {
+    public SysUserService sysUserService(SysUserRepository userRepository, UserMapper userMappe) {
         log.debug("[GstDev Cloud] |- Frame Configure User Service");
         return new SysUserServiceImpl(userRepository, userMappe);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public SysAccountService sysAccountService(AccountRepository accountRepository, AccountMapper accountMapper) {
+    public SysAccountService sysAccountService(SysAccountRepository accountRepository, AccountMapper accountMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Account Service");
         return new SysAccountServiceImpl(accountRepository, accountMapper);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public SysRoleService sysRoleService(RoleRepository roleRepository, RoleMapper roleMapper) {
+    public SysRoleService sysRoleService(SysRoleRepository roleRepository, RoleMapper roleMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Role Service");
         return new SysRoleServiceImpl(roleRepository, roleMapper);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public SysMenuService sysMenuService(MenuRepository menuRepository, MenuMapper menuMapper) {
+    public SysMenuService sysMenuService(SysMenuRepository menuRepository, MenuMapper menuMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Menu Service");
         return new SysMenuServiceImpl(menuRepository, menuMapper);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public SysRTenantMenuService sysRTenantMenuService(RTenantMenuRepository rTenantMenuRepository, RTenantMenuMapper rTenantMenuMapper) {
+    public SysRTenantMenuService sysRTenantMenuService(SysRTenantMenuRepository rTenantMenuRepository, RTenantMenuMapper rTenantMenuMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure R Tenant Menu Service");
         return new SysRTenantMenuServiceImpl(rTenantMenuRepository, rTenantMenuMapper);
     }
@@ -88,21 +88,21 @@ public class FrameSystemServiceConfiguration {
     }
     @Bean
     @ConditionalOnMissingBean
-    public SysDepartService sysDepartService(DepartRepository departRepository, DepartMapper departMappe) {
+    public SysDepartService sysDepartService(SysDepartRepository departRepository, DepartMapper departMappe) {
         log.debug("[GstDev Cloud] |- Frame Configure Depart Service");
         return new SysDepartServiceImpl(departRepository,departMappe);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public SysDictService sysDictService(DictRepository dictRepository, DictMapper dictMapper) {
+    public SysDictService sysDictService(SysDictRepository dictRepository, DictMapper dictMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Dict Service");
         return new SysDictServiceImpl(dictRepository, dictMapper);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public SysTenantDictService sysTenantDictService(TenantDictMapper tenantDictMapper, TenantDictRepository tenantDictRepository) {
+    public SysTenantDictService sysTenantDictService(TenantDictMapper tenantDictMapper, SysTenantDictRepository tenantDictRepository) {
         log.debug("[GstDev Cloud] |- Frame Configure Tenant Dict Service");
         return new SysTenantDictServiceImpl(tenantDictMapper, tenantDictRepository);
     }

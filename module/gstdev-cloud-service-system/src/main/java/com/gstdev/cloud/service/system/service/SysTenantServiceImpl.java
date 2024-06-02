@@ -14,26 +14,26 @@ import cn.hutool.core.lang.UUID;
 import com.gstdev.cloud.service.system.mapper.TenantMapper;
 import com.gstdev.cloud.service.system.pojo.base.tenant.*;
 import com.gstdev.cloud.service.system.pojo.entity.Tenant;
-import com.gstdev.cloud.service.system.repository.TenantRepository;
+import com.gstdev.cloud.service.system.repository.SysTenantRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import jakarta.annotation.Resource;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Transactional(readOnly = true)
-public class SysTenantServiceImpl extends BaseTreeServiceImpl<Tenant, String, TenantRepository, TenantMapper, TenantDto> implements SysTenantService {
+public class SysTenantServiceImpl extends BaseTreeServiceImpl<Tenant, String, SysTenantRepository, TenantMapper, TenantDto> implements SysTenantService {
 
     @Resource
     private SysAccountService accountService;
     @Resource
-    private TenantRepository tenantRepository;
-    public SysTenantServiceImpl(TenantRepository tenantRepository, TenantMapper tenantMapper) {
+    private SysTenantRepository tenantRepository;
+    public SysTenantServiceImpl(SysTenantRepository tenantRepository, TenantMapper tenantMapper) {
         super(tenantRepository, tenantMapper);
         this.tenantRepository=tenantRepository;
     }
 
 
-    public TenantRepository getRepository() {
+    public SysTenantRepository getRepository() {
         return tenantRepository;
     }
 

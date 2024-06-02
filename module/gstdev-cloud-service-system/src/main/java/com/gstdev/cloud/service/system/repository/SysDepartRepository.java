@@ -6,7 +6,7 @@ import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 import java.util.List;
 
-public interface DepartRepository extends BaseTreeRepository<Depart, String> {
+public interface SysDepartRepository extends BaseTreeRepository<Depart, String> {
     /**
      * 父级主键查询
      *

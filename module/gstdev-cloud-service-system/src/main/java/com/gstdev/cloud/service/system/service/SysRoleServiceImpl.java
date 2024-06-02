@@ -6,8 +6,8 @@ import com.gstdev.cloud.service.system.pojo.entity.Menu;
 import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
 import com.gstdev.cloud.service.system.pojo.entity.SysRole;
 import com.gstdev.cloud.service.system.mapper.RoleMapper;
-import com.gstdev.cloud.service.system.repository.RTenantMenuRepository;
-import com.gstdev.cloud.service.system.repository.RoleRepository;
+import com.gstdev.cloud.service.system.repository.SysRTenantMenuRepository;
+import com.gstdev.cloud.service.system.repository.SysRoleRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,17 +17,17 @@ import java.util.List;
 
 
 @Transactional(readOnly = true)
-public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, RoleRepository, RoleMapper, RoleDto> implements SysRoleService {
+public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, SysRoleRepository, RoleMapper, RoleDto> implements SysRoleService {
 
     @Resource
-    private RTenantMenuRepository rTenantMenuRepository;    @Resource
-    private RoleRepository roleRepository;
+    private SysRTenantMenuRepository rTenantMenuRepository;    @Resource
+    private SysRoleRepository roleRepository;
 
-    public SysRoleServiceImpl(RoleRepository roleRepository, RoleMapper roleMapper) {
+    public SysRoleServiceImpl(SysRoleRepository roleRepository, RoleMapper roleMapper) {
         super(roleRepository, roleMapper);
         this.roleRepository=roleRepository;
     }
-    public RoleRepository getRepository() {
+    public SysRoleRepository getRepository() {
         return roleRepository;
     }
     @Override

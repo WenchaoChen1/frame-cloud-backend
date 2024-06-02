@@ -14,8 +14,8 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.*;
 import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
 import com.gstdev.cloud.service.system.mapper.RTenantMenuMapper;
-import com.gstdev.cloud.service.system.repository.MenuRepository;
-import com.gstdev.cloud.service.system.repository.RTenantMenuRepository;
+import com.gstdev.cloud.service.system.repository.SysMenuRepository;
+import com.gstdev.cloud.service.system.repository.SysRTenantMenuRepository;
 import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,18 +25,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Transactional(readOnly = true)
-public class SysRTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, String, RTenantMenuRepository, RTenantMenuMapper, RTenantMenuDto> implements SysRTenantMenuService {
+public class SysRTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, String, SysRTenantMenuRepository, RTenantMenuMapper, RTenantMenuDto> implements SysRTenantMenuService {
 
     @Resource
-    private MenuRepository MenuRepository;
+    private SysMenuRepository MenuRepository;
     @Resource
-    private RTenantMenuRepository rTenantMenuRepository;
+    private SysRTenantMenuRepository rTenantMenuRepository;
 
-    public SysRTenantMenuServiceImpl(RTenantMenuRepository rTenantMenuRepository, RTenantMenuMapper rTenantMenuMapper) {
+    public SysRTenantMenuServiceImpl(SysRTenantMenuRepository rTenantMenuRepository, RTenantMenuMapper rTenantMenuMapper) {
         super(rTenantMenuRepository, rTenantMenuMapper);
     }
 
-    public RTenantMenuRepository getRepository() {
+    public SysRTenantMenuRepository getRepository() {
         return rTenantMenuRepository;
     }
 

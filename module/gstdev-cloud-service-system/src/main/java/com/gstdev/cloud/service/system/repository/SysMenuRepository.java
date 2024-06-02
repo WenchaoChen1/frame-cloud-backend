@@ -6,7 +6,7 @@ import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 import java.util.List;
 
-public interface MenuRepository extends BaseTreeRepository<Menu, String> {
+public interface SysMenuRepository extends BaseTreeRepository<Menu, String> {
     /**
      * 父级主键查询
      *

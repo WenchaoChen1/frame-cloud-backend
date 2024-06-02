@@ -2,13 +2,9 @@ package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
-import com.gstdev.cloud.service.system.repository.RTenantMenuRepository;
 import com.gstdev.cloud.service.system.repository.SysAttributeRepository;
-import com.gstdev.cloud.service.system.repository.SysPermissionRepository;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.service.system.repository.SysAttributeRepository;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
