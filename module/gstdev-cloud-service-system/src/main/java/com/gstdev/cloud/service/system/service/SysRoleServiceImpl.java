@@ -9,8 +9,6 @@ import com.gstdev.cloud.service.system.mapper.RoleMapper;
 import com.gstdev.cloud.service.system.repository.RTenantMenuRepository;
 import com.gstdev.cloud.service.system.repository.RoleRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
-import com.gstdev.cloud.service.system.repository.SysInterfaceRepository;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.Resource;
@@ -19,13 +17,13 @@ import java.util.List;
 
 
 @Transactional(readOnly = true)
-public class RoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, RoleRepository, RoleMapper, RoleDto> implements RoleService {
+public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, RoleRepository, RoleMapper, RoleDto> implements SysRoleService {
 
     @Resource
     private RTenantMenuRepository rTenantMenuRepository;    @Resource
     private RoleRepository roleRepository;
 
-    public RoleServiceImpl(RoleRepository roleRepository, RoleMapper roleMapper) {
+    public SysRoleServiceImpl(RoleRepository roleRepository, RoleMapper roleMapper) {
         super(roleRepository, roleMapper);
         this.roleRepository=roleRepository;
     }

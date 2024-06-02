@@ -11,7 +11,7 @@ import com.gstdev.cloud.service.system.pojo.entity.SysUser;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserUpdateInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.AccountListDto;
-import com.gstdev.cloud.service.system.service.UserService;
+import com.gstdev.cloud.service.system.service.SysUserService;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.rest.core.controller.POJOController;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,16 +29,16 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/v1/user")
-public class UserController implements POJOController<SysUser, String,UserVo, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> {
+public class SysUserController implements POJOController<SysUser, String,UserVo, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> {
 
     @Resource
-    private UserService userService;
+    private SysUserService userService;
 
     @Resource
     private UserVoMapper userVoMapper;
 
     @Override
-    public UserService getService() {
+    public SysUserService getService() {
         return userService;
     }
 
@@ -47,7 +47,7 @@ public class UserController implements POJOController<SysUser, String,UserVo, Us
         return userVoMapper;
     }
 
-    public UserController(UserService userService,  UserVoMapper userVoMapper) {
+    public SysUserController(SysUserService userService, UserVoMapper userVoMapper) {
         this.userService = userService;
         this.userVoMapper = userVoMapper;
     }

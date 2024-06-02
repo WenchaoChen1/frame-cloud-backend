@@ -7,7 +7,7 @@ import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictSaveInput;
 import java.util.List;
 
 
-public interface TenantDictService {
+public interface SysTenantDictService {
     /**
      * 字典保存
      *

@@ -7,15 +7,6 @@ import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictSaveInput;
 import com.gstdev.cloud.service.system.pojo.entity.TenantDict;
 import com.gstdev.cloud.service.system.mapper.TenantDictMapper;
 import com.gstdev.cloud.service.system.repository.TenantDictRepository;
-import com.gstdev.cloud.service.system.mapper.TenantDictMapper;
-import com.gstdev.cloud.service.system.pojo.entity.TenantDict;
-import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictDto;
-import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictModifyInput;
-import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictSaveInput;
-import com.gstdev.cloud.service.system.repository.TenantDictRepository;
-import com.gstdev.cloud.service.system.repository.TenantRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
@@ -23,13 +14,13 @@ import java.util.List;
 
 
 @Transactional(rollbackFor = Exception.class)
-public class TenantDictServiceImpl implements TenantDictService {
+public class SysTenantDictServiceImpl implements SysTenantDictService {
 
     private final TenantDictMapper tenantDictMapper;
     private final TenantDictRepository tenantDictRepository;
 
 
-    public TenantDictServiceImpl(TenantDictMapper tenantDictMapper, TenantDictRepository tenantDictRepository) {
+    public SysTenantDictServiceImpl(TenantDictMapper tenantDictMapper, TenantDictRepository tenantDictRepository) {
         this.tenantDictMapper = tenantDictMapper;
         this.tenantDictRepository = tenantDictRepository;
     }

@@ -11,27 +11,23 @@ package com.gstdev.cloud.service.system.service;
 
 
 import cn.hutool.core.lang.UUID;
-import com.gstdev.cloud.service.system.mapper.SysPermissionMapper;
 import com.gstdev.cloud.service.system.mapper.TenantMapper;
 import com.gstdev.cloud.service.system.pojo.base.tenant.*;
 import com.gstdev.cloud.service.system.pojo.entity.Tenant;
-import com.gstdev.cloud.service.system.repository.SysPermissionRepository;
 import com.gstdev.cloud.service.system.repository.TenantRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import jakarta.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Transactional(readOnly = true)
-public class TenantServiceImpl extends BaseTreeServiceImpl<Tenant, String, TenantRepository, TenantMapper, TenantDto> implements TenantService {
+public class SysTenantServiceImpl extends BaseTreeServiceImpl<Tenant, String, TenantRepository, TenantMapper, TenantDto> implements SysTenantService {
 
     @Resource
-    private AccountService accountService;
+    private SysAccountService accountService;
     @Resource
     private TenantRepository tenantRepository;
-    public TenantServiceImpl(TenantRepository tenantRepository, TenantMapper tenantMapper) {
+    public SysTenantServiceImpl(TenantRepository tenantRepository, TenantMapper tenantMapper) {
         super(tenantRepository, tenantMapper);
         this.tenantRepository=tenantRepository;
     }

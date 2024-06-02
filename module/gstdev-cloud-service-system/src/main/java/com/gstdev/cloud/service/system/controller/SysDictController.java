@@ -3,7 +3,7 @@ package com.gstdev.cloud.service.system.controller;
 import com.gstdev.cloud.service.system.mapper.vo.DictVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.dict.*;
 import com.gstdev.cloud.service.system.pojo.entity.Dict;
-import com.gstdev.cloud.service.system.service.DictService;
+import com.gstdev.cloud.service.system.service.SysDictService;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,16 +15,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/dict")
-public class DictController implements TreeController<Dict, String,  DictVo, DictDto, DictInsertInput, DictUpdateInput, DictPageQueryCriteria, DictFindAllByQueryCriteria> {
+public class SysDictController implements TreeController<Dict, String,  DictVo, DictDto, DictInsertInput, DictUpdateInput, DictPageQueryCriteria, DictFindAllByQueryCriteria> {
 
     @Resource
-    private DictService dictService;
+    private SysDictService dictService;
 
     @Resource
     private DictVoMapper dictVoMapper;
 
     @Override
-    public DictService getService() {
+    public SysDictService getService() {
         return dictService;
     }
 

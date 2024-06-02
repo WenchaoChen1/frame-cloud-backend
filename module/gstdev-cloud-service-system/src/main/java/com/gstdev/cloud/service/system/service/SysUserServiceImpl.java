@@ -24,18 +24,18 @@ import java.util.*;
 
 @Slf4j
 @Transactional(readOnly = true)
-public class UserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRepository, UserMapper, UserDto> implements UserService {
+public class SysUserServiceImpl extends BasePOJOServiceImpl<SysUser, String, UserRepository, UserMapper, UserDto> implements SysUserService {
 
     private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
     @Resource
-    private AccountService accountService;
+    private SysAccountService accountService;
 
     @Resource
     private IdentityFeignService identityFeignService;
     @Resource
     private UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
+    public SysUserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         super(userRepository, userMapper);
     }
 

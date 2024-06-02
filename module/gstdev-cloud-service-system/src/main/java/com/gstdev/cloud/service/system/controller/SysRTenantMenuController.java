@@ -13,8 +13,7 @@ import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.service.system.mapper.vo.RTenantMenuVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.*;
 import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
-import com.gstdev.cloud.service.system.service.MenuService;
-import com.gstdev.cloud.service.system.service.RTenantMenuService;
+import com.gstdev.cloud.service.system.service.SysRTenantMenuService;
 import com.gstdev.cloud.base.definition.domain.Result;
 
 import com.gstdev.cloud.rest.core.controller.POJOController;
@@ -28,16 +27,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/rTenantMenu")
-public class RTenantMenuController implements POJOController<RTenantMenu, String,  RTenantMenuVo, RTenantMenuDto, RTenantMenuInsertInput, RTenantMenuUpdateInput, RTenantMenuPageQueryCriteria, RTenantMenuFindAllByQueryCriteria> {
+public class SysRTenantMenuController implements POJOController<RTenantMenu, String,  RTenantMenuVo, RTenantMenuDto, RTenantMenuInsertInput, RTenantMenuUpdateInput, RTenantMenuPageQueryCriteria, RTenantMenuFindAllByQueryCriteria> {
 
     @Resource
-    private RTenantMenuService rTenantMenuService;
+    private SysRTenantMenuService rTenantMenuService;
 
     @Resource
     private RTenantMenuVoMapper rTenantMenuVoMapper;
 
     @Override
-    public RTenantMenuService getService() {
+    public SysRTenantMenuService getService() {
         return rTenantMenuService;
     }
 
@@ -46,7 +45,7 @@ public class RTenantMenuController implements POJOController<RTenantMenu, String
         return rTenantMenuVoMapper;
     }
 
-    public RTenantMenuController(RTenantMenuService rTenantMenuService, RTenantMenuVoMapper rTenantMenuVoMapper) {
+    public SysRTenantMenuController(SysRTenantMenuService rTenantMenuService, RTenantMenuVoMapper rTenantMenuVoMapper) {
         this.rTenantMenuService = rTenantMenuService;
         this.rTenantMenuVoMapper = rTenantMenuVoMapper;
     }

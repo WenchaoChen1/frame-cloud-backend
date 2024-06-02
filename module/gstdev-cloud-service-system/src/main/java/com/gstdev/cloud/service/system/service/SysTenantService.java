@@ -14,7 +14,7 @@ import com.gstdev.cloud.data.core.service.BaseTreeService;
 import com.gstdev.cloud.service.system.pojo.base.tenant.*;
 
 
-public interface TenantService extends BaseTreeService<Tenant, String, TenantDto> {
+public interface SysTenantService extends BaseTreeService<Tenant, String, TenantDto> {
 //
 //  Result<List<TenantDto>> getTenantTree();
 //

@@ -4,7 +4,7 @@ import com.gstdev.cloud.service.system.mapper.vo.AccountVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.account.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.service.system.service.AccountService;
+import com.gstdev.cloud.service.system.service.SysAccountService;
 import com.gstdev.cloud.rest.core.controller.POJOController;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.data.domain.Page;
@@ -17,16 +17,16 @@ import jakarta.annotation.Resource;
 
 @RestController
 @RequestMapping("/v1/account")
-public class AccountController implements POJOController<SysAccount, String, AccountVo, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
+public class SysAccountController implements POJOController<SysAccount, String, AccountVo, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
 
     @Resource
-    private AccountService accountService;
+    private SysAccountService accountService;
 
     @Resource
     private AccountVoMapper accountVoMapper;
 
     @Override
-    public AccountService getService() {
+    public SysAccountService getService() {
         return accountService;
     }
 

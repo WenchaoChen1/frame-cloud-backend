@@ -12,7 +12,7 @@ package com.gstdev.cloud.service.system.controller;
 import com.gstdev.cloud.service.system.mapper.vo.TenantVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.tenant.*;
 import com.gstdev.cloud.service.system.pojo.entity.Tenant;
-import com.gstdev.cloud.service.system.service.TenantService;
+import com.gstdev.cloud.service.system.service.SysTenantService;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,17 +25,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/tenant")
-public class TenantController implements TreeController<Tenant, String, TenantVo, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
+public class SysTenantController implements TreeController<Tenant, String, TenantVo, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
 
 
     @Resource
-    private TenantService tenantService;
+    private SysTenantService tenantService;
 
     @Resource
     private TenantVoMapper tenantVoMapper;
 
     @Override
-    public TenantService getService() {
+    public SysTenantService getService() {
         return tenantService;
     }
 
@@ -44,7 +44,7 @@ public class TenantController implements TreeController<Tenant, String, TenantVo
         return tenantVoMapper;
     }
 
-    public TenantController(TenantService tenantService, TenantVoMapper tenantVoMapper) {
+    public SysTenantController(SysTenantService tenantService, TenantVoMapper tenantVoMapper) {
         this.tenantService = tenantService;
         this.tenantVoMapper = tenantVoMapper;
     }

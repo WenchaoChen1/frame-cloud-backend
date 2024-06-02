@@ -9,11 +9,9 @@ import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInfor
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
-import com.gstdev.cloud.service.system.service.AccountService;
-import com.gstdev.cloud.service.system.service.MenuService;
-import com.gstdev.cloud.service.system.service.TenantService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.DependsOn;
+import com.gstdev.cloud.service.system.service.SysAccountService;
+import com.gstdev.cloud.service.system.service.SysMenuService;
+import com.gstdev.cloud.service.system.service.SysTenantService;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.Resource;
@@ -28,11 +26,11 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
     private RedisCurrentLoginInformation redisCurrentLoginInformation;
 
     @Resource
-    private AccountService accountService;
+    private SysAccountService accountService;
     @Resource
-    private MenuService menuService;
+    private SysMenuService menuService;
     @Resource
-    private TenantService tenantService;
+    private SysTenantService tenantService;
 
     @Override
     public Result<Object> addByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput) {

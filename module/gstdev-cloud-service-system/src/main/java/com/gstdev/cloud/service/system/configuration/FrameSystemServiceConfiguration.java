@@ -8,11 +8,8 @@ import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * <p>Description:  模块配置 </p>
@@ -29,44 +26,44 @@ public class FrameSystemServiceConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public TenantService sysTenantService(TenantRepository tenantRepository, TenantMapper tenantMapper) {
+    public SysTenantService sysTenantService(TenantRepository tenantRepository, TenantMapper tenantMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Tenant Service");
-        return new TenantServiceImpl(tenantRepository, tenantMapper);
+        return new SysTenantServiceImpl(tenantRepository, tenantMapper);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public UserService sysUserService(UserRepository userRepository, UserMapper userMappe) {
+    public SysUserService sysUserService(UserRepository userRepository, UserMapper userMappe) {
         log.debug("[GstDev Cloud] |- Frame Configure User Service");
-        return new UserServiceImpl(userRepository, userMappe);
+        return new SysUserServiceImpl(userRepository, userMappe);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public AccountService sysAccountService(AccountRepository accountRepository, AccountMapper accountMapper) {
+    public SysAccountService sysAccountService(AccountRepository accountRepository, AccountMapper accountMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Account Service");
-        return new AccountServiceImpl(accountRepository, accountMapper);
+        return new SysAccountServiceImpl(accountRepository, accountMapper);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public RoleService sysRoleService(RoleRepository roleRepository, RoleMapper roleMapper) {
+    public SysRoleService sysRoleService(RoleRepository roleRepository, RoleMapper roleMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Role Service");
-        return new RoleServiceImpl(roleRepository, roleMapper);
+        return new SysRoleServiceImpl(roleRepository, roleMapper);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public MenuService sysMenuService(MenuRepository menuRepository, MenuMapper menuMapper) {
+    public SysMenuService sysMenuService(MenuRepository menuRepository, MenuMapper menuMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Menu Service");
-        return new MenuServiceImpl(menuRepository, menuMapper);
+        return new SysMenuServiceImpl(menuRepository, menuMapper);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public RTenantMenuService sysRTenantMenuService(RTenantMenuRepository rTenantMenuRepository, RTenantMenuMapper rTenantMenuMapper) {
+    public SysRTenantMenuService sysRTenantMenuService(RTenantMenuRepository rTenantMenuRepository, RTenantMenuMapper rTenantMenuMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure R Tenant Menu Service");
-        return new RTenantMenuServiceImpl(rTenantMenuRepository, rTenantMenuMapper);
+        return new SysRTenantMenuServiceImpl(rTenantMenuRepository, rTenantMenuMapper);
     }
 
     @Bean
@@ -91,22 +88,22 @@ public class FrameSystemServiceConfiguration {
     }
     @Bean
     @ConditionalOnMissingBean
-    public DepartService sysDepartService(DepartRepository departRepository, DepartMapper departMappe) {
+    public SysDepartService sysDepartService(DepartRepository departRepository, DepartMapper departMappe) {
         log.debug("[GstDev Cloud] |- Frame Configure Depart Service");
-        return new DepartServiceImpl(departRepository,departMappe);
+        return new SysDepartServiceImpl(departRepository,departMappe);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public DictService sysDictService(DictRepository dictRepository, DictMapper dictMapper) {
+    public SysDictService sysDictService(DictRepository dictRepository, DictMapper dictMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Dict Service");
-        return new DictServiceImpl(dictRepository, dictMapper);
+        return new SysDictServiceImpl(dictRepository, dictMapper);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public TenantDictService sysTenantDictService(TenantDictMapper tenantDictMapper, TenantDictRepository tenantDictRepository) {
+    public SysTenantDictService sysTenantDictService(TenantDictMapper tenantDictMapper, TenantDictRepository tenantDictRepository) {
         log.debug("[GstDev Cloud] |- Frame Configure Tenant Dict Service");
-        return new TenantDictServiceImpl(tenantDictMapper, tenantDictRepository);
+        return new SysTenantDictServiceImpl(tenantDictMapper, tenantDictRepository);
     }
 }

@@ -12,9 +12,9 @@ package com.gstdev.cloud.service.system.controller;
 import com.gstdev.cloud.service.system.mapper.vo.MenuVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.menu.*;
 import com.gstdev.cloud.service.system.pojo.entity.Menu;
-import com.gstdev.cloud.service.system.service.MenuService;
+import com.gstdev.cloud.service.system.service.SysMenuService;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.service.system.service.RoleService;
+import com.gstdev.cloud.service.system.service.SysRoleService;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
@@ -25,25 +25,25 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/menu")
-public class MenuController implements TreeController<Menu, String, MenuVo, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> {
+public class SysMenuController implements TreeController<Menu, String, MenuVo, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> {
 
     @Resource
-    private MenuService menuService;
+    private SysMenuService menuService;
 
     @Resource
     private MenuVoMapper menuVoMapper;
 
     @Resource
-    private RoleService roleService;
+    private SysRoleService roleService;
 
-    public MenuController(MenuService menuService, MenuVoMapper menuVoMapper, RoleService roleService) {
+    public SysMenuController(SysMenuService menuService, MenuVoMapper menuVoMapper, SysRoleService roleService) {
         this.menuService = menuService;
         this.menuVoMapper = menuVoMapper;
         this.roleService = roleService;
     }
 
     @Override
-    public MenuService getService() {
+    public SysMenuService getService() {
         return menuService;
     }
 

@@ -14,7 +14,6 @@ import com.gstdev.cloud.service.system.repository.MenuRepository;
 import com.gstdev.cloud.service.system.repository.RoleRepository;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.Resource;
@@ -23,7 +22,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Transactional(readOnly = true)
-public class MenuServiceImpl extends BaseTreeServiceImpl<Menu, String, MenuRepository, MenuMapper, MenuDto> implements MenuService {
+public class SysMenuServiceImpl extends BaseTreeServiceImpl<Menu, String, MenuRepository, MenuMapper, MenuDto> implements SysMenuService {
 
     @Resource
     private RoleRepository roleRepository;
@@ -32,7 +31,7 @@ public class MenuServiceImpl extends BaseTreeServiceImpl<Menu, String, MenuRepos
     @Resource
     private MenuRepository menuRepository;
 
-    public MenuServiceImpl(MenuRepository menuRepository, MenuMapper menuMapper) {
+    public SysMenuServiceImpl(MenuRepository menuRepository, MenuMapper menuMapper) {
         super(menuRepository, menuMapper);
         this.menuRepository = menuRepository;
     }

@@ -11,7 +11,6 @@ import com.gstdev.cloud.service.system.repository.RoleRepository;
 import com.gstdev.cloud.service.system.repository.UserRepository;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.Resource;
@@ -20,7 +19,7 @@ import org.springframework.util.ObjectUtils;
 import java.util.List;
 
 @Transactional(readOnly = true)
-public  class AccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, AccountRepository, AccountMapper, AccountDto> implements AccountService {
+public  class SysAccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, AccountRepository, AccountMapper, AccountDto> implements SysAccountService {
 
     @Resource
     private UserRepository userRepository;
@@ -32,7 +31,7 @@ public  class AccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String,
     @Resource
     private AccountRepository accountRepository;
 
-    public AccountServiceImpl(AccountRepository accountRepository, AccountMapper accountMapper) {
+    public SysAccountServiceImpl(AccountRepository accountRepository, AccountMapper accountMapper) {
         super(accountRepository, accountMapper);
     }
     public AccountRepository getRepository() {

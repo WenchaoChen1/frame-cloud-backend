@@ -4,7 +4,7 @@ import com.gstdev.cloud.service.system.mapper.vo.RoleVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.role.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysRole;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.service.system.service.RoleService;
+import com.gstdev.cloud.service.system.service.SysRoleService;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
@@ -16,21 +16,21 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/role")
-public class RoleController implements TreeController<SysRole, String, RoleVo, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> {
+public class SysRoleController implements TreeController<SysRole, String, RoleVo, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> {
 
     @Resource
-    private RoleService roleService;
+    private SysRoleService roleService;
 
     @Resource
     private RoleVoMapper roleVoMapper;
 
-    public RoleController(RoleService roleService, RoleVoMapper roleVoMapper) {
+    public SysRoleController(SysRoleService roleService, RoleVoMapper roleVoMapper) {
         this.roleService = roleService;
         this.roleVoMapper = roleVoMapper;
     }
 
     @Override
-    public RoleService getService() {
+    public SysRoleService getService() {
         return roleService;
     }
 

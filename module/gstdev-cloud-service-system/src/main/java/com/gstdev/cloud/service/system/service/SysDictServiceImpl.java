@@ -5,23 +5,20 @@ import com.gstdev.cloud.service.system.pojo.entity.Dict;
 import com.gstdev.cloud.service.system.mapper.DictMapper;
 import com.gstdev.cloud.service.system.repository.DictRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
-import com.gstdev.cloud.service.system.repository.MenuRepository;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.Resource;
 
 
 @Transactional(readOnly = true)
-public class DictServiceImpl extends BaseTreeServiceImpl<Dict, String, DictRepository, DictMapper, DictDto> implements DictService {
-    private static final Logger log = LoggerFactory.getLogger(DictServiceImpl.class);
+public class SysDictServiceImpl extends BaseTreeServiceImpl<Dict, String, DictRepository, DictMapper, DictDto> implements SysDictService {
+    private static final Logger log = LoggerFactory.getLogger(SysDictServiceImpl.class);
     @Resource
     private DictRepository dictRepository;
 
-    public DictServiceImpl(DictRepository dictRepository, DictMapper dictMapper) {
+    public SysDictServiceImpl(DictRepository dictRepository, DictMapper dictMapper) {
         super(dictRepository, dictMapper);
         this.dictRepository = dictRepository;
     }

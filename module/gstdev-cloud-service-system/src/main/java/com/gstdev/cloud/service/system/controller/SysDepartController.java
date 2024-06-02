@@ -13,7 +13,7 @@ import com.gstdev.cloud.service.system.mapper.vo.DepartVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.depart.*;
 import com.gstdev.cloud.service.system.pojo.entity.Depart;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.service.system.service.DepartService;
+import com.gstdev.cloud.service.system.service.SysDepartService;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
@@ -25,21 +25,21 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/depart")
-public class DepartController implements TreeController<Depart, String, DepartVo, DepartDto, DepartInsertInput, DepartUpdateInput, DepartPageQueryCriteria, DepartFindAllByQueryCriteria> {
+public class SysDepartController implements TreeController<Depart, String, DepartVo, DepartDto, DepartInsertInput, DepartUpdateInput, DepartPageQueryCriteria, DepartFindAllByQueryCriteria> {
 
     @Resource
-    private DepartService departService;
+    private SysDepartService departService;
 
     @Resource
     private DepartVoMapper departVoMapper;
 
-    public DepartController(DepartService departService, DepartVoMapper departVoMapper) {
+    public SysDepartController(SysDepartService departService, DepartVoMapper departVoMapper) {
         this.departService = departService;
         this.departVoMapper = departVoMapper;
     }
 
     @Override
-    public DepartService getService() {
+    public SysDepartService getService() {
         return departService;
     }
 
