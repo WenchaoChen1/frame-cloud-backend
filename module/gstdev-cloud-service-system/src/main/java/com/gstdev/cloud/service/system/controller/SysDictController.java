@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.annotation.Resource;
 
 import java.util.List;
-
+//@ResponseBody
 @RestController
 @RequestMapping("/v1/dict")
 public class SysDictController implements TreeController<Dict, String,  DictVo, DictDto, DictInsertInput, DictUpdateInput, DictPageQueryCriteria, DictFindAllByQueryCriteria> {

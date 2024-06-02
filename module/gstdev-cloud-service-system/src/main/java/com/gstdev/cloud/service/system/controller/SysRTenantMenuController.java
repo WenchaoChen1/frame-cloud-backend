@@ -24,7 +24,7 @@ import jakarta.annotation.Resource;
 
 import java.util.List;
 
-
+//@ResponseBody
 @RestController
 @RequestMapping("/v1/rTenantMenu")
 public class SysRTenantMenuController implements POJOController<RTenantMenu, String,  RTenantMenuVo, RTenantMenuDto, RTenantMenuInsertInput, RTenantMenuUpdateInput, RTenantMenuPageQueryCriteria, RTenantMenuFindAllByQueryCriteria> {
@@ -45,10 +45,10 @@ public class SysRTenantMenuController implements POJOController<RTenantMenu, Str
         return rTenantMenuVoMapper;
     }
 
-    public SysRTenantMenuController(SysRTenantMenuService rTenantMenuService, RTenantMenuVoMapper rTenantMenuVoMapper) {
-        this.rTenantMenuService = rTenantMenuService;
-        this.rTenantMenuVoMapper = rTenantMenuVoMapper;
-    }
+//    public SysRTenantMenuController(SysRTenantMenuService rTenantMenuService, RTenantMenuVoMapper rTenantMenuVoMapper) {
+//        this.rTenantMenuService = rTenantMenuService;
+//        this.rTenantMenuVoMapper = rTenantMenuVoMapper;
+//    }
 
     @PostMapping("/insertTenantMenu")
     @Operation(summary = "insertSave")

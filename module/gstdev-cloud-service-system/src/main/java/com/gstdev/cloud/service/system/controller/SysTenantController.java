@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.annotation.Resource;
 
 import java.util.List;
-
+//@ResponseBody
 @RestController
 @RequestMapping("/v1/tenant")
 public class SysTenantController implements TreeController<Tenant, String, TenantVo, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
@@ -44,10 +44,10 @@ public class SysTenantController implements TreeController<Tenant, String, Tenan
         return tenantVoMapper;
     }
 
-    public SysTenantController(SysTenantService tenantService, TenantVoMapper tenantVoMapper) {
-        this.tenantService = tenantService;
-        this.tenantVoMapper = tenantVoMapper;
-    }
+//    public SysTenantController(SysTenantService tenantService, TenantVoMapper tenantVoMapper) {
+//        this.tenantService = tenantService;
+//        this.tenantVoMapper = tenantVoMapper;
+//    }
 //  @GetMapping("/get-all-tenant-to-tree")
 //  @Operation(summary = "获取当前当前租户的所有子租户，返回树状结构")
 //  public Result<List<TenantVo>> findAllByQueryCriteriaToTree() {

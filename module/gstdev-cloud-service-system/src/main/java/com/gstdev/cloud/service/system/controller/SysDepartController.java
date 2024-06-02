@@ -22,7 +22,7 @@ import jakarta.annotation.Resource;
 
 import java.util.List;
 
-
+//@ResponseBody
 @RestController
 @RequestMapping("/v1/depart")
 public class SysDepartController implements TreeController<Depart, String, DepartVo, DepartDto, DepartInsertInput, DepartUpdateInput, DepartPageQueryCriteria, DepartFindAllByQueryCriteria> {
@@ -33,10 +33,10 @@ public class SysDepartController implements TreeController<Depart, String, Depar
     @Resource
     private DepartVoMapper departVoMapper;
 
-    public SysDepartController(SysDepartService departService, DepartVoMapper departVoMapper) {
-        this.departService = departService;
-        this.departVoMapper = departVoMapper;
-    }
+//    public SysDepartController(SysDepartService departService, DepartVoMapper departVoMapper) {
+//        this.departService = departService;
+//        this.departVoMapper = departVoMapper;
+//    }
 
     @Override
     public SysDepartService getService() {

@@ -27,6 +27,7 @@ import jakarta.annotation.Resource;
 import java.util.List;
 
 @Slf4j
+//@ResponseBody
 @RestController
 @RequestMapping("/v1/user")
 public class SysUserController implements POJOController<SysUser, String,UserVo, UserDto, UserInsertInput, UserUpdateInput, UserPageQueryCriteria, UserFindAllByQueryCriteria> {
@@ -47,10 +48,10 @@ public class SysUserController implements POJOController<SysUser, String,UserVo,
         return userVoMapper;
     }
 
-    public SysUserController(SysUserService userService, UserVoMapper userVoMapper) {
-        this.userService = userService;
-        this.userVoMapper = userVoMapper;
-    }
+//    public SysUserController(SysUserService userService, UserVoMapper userVoMapper) {
+//        this.userService = userService;
+//        this.userVoMapper = userVoMapper;
+//    }
 
     @GetMapping("/get-all-user")
     @Operation(summary = "获取所有的用户")

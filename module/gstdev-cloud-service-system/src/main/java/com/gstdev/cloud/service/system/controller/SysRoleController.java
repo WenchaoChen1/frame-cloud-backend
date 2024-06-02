@@ -13,7 +13,7 @@ import jakarta.annotation.Resource;
 
 import java.util.List;
 
-
+//@ResponseBody
 @RestController
 @RequestMapping("/v1/role")
 public class SysRoleController implements TreeController<SysRole, String, RoleVo, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> {
@@ -24,10 +24,10 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     @Resource
     private RoleVoMapper roleVoMapper;
 
-    public SysRoleController(SysRoleService roleService, RoleVoMapper roleVoMapper) {
-        this.roleService = roleService;
-        this.roleVoMapper = roleVoMapper;
-    }
+//    public SysRoleController(SysRoleService roleService, RoleVoMapper roleVoMapper) {
+//        this.roleService = roleService;
+//        this.roleVoMapper = roleVoMapper;
+//    }
 
     @Override
     public SysRoleService getService() {

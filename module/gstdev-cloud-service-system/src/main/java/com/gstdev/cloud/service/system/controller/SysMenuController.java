@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.annotation.Resource;
 
 import java.util.List;
-
+//@ResponseBody
 @RestController
 @RequestMapping("/v1/menu")
 public class SysMenuController implements TreeController<Menu, String, MenuVo, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> {
@@ -36,11 +36,11 @@ public class SysMenuController implements TreeController<Menu, String, MenuVo, M
     @Resource
     private SysRoleService roleService;
 
-    public SysMenuController(SysMenuService menuService, MenuVoMapper menuVoMapper, SysRoleService roleService) {
-        this.menuService = menuService;
-        this.menuVoMapper = menuVoMapper;
-        this.roleService = roleService;
-    }
+//    public SysMenuController(SysMenuService menuService, MenuVoMapper menuVoMapper, SysRoleService roleService) {
+//        this.menuService = menuService;
+//        this.menuVoMapper = menuVoMapper;
+//        this.roleService = roleService;
+//    }
 
     @Override
     public SysMenuService getService() {

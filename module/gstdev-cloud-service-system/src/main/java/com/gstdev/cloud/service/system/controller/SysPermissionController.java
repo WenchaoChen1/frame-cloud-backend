@@ -36,6 +36,7 @@ import java.util.Map;
 /**
  * <p>Description: SysPermissionController </p>
  */
+//@ResponseBody
 @RestController
 @RequestMapping("/v1/permission")
 //@Tags({

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
 
-
+//@ResponseBody
 @RestController
 @RequestMapping("/v1/account")
 public class SysAccountController implements POJOController<SysAccount, String, AccountVo, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
