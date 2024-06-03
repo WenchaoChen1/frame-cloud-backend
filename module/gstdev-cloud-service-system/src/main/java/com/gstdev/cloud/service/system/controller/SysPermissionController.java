@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.controller;
 
+import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.annotation.Idempotent;
 import com.gstdev.cloud.rest.core.controller.DtoController;
@@ -64,7 +65,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
             @ApiResponse(responseCode = "500", description = "查询失败")
         })
     @GetMapping("/page")
-    public Result<Page<SysPermissionVo>> findByPageToResult(SysPermissionPageQueryCriteria sysPermissionPageQueryCriteria, Pageable pageable) {
+    public Result<Page<SysPermissionVo>> findByPageToResult(SysPermissionPageQueryCriteria sysPermissionPageQueryCriteria, BasePage pageable) {
         Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysPermissionPageQueryCriteria, criteriaBuilder), pageable);
         Page<SysPermissionVo> SysPermissionVos = sysPermissionVoMapper.toVo(byPageToDto);
         return Result.success(SysPermissionVos);
