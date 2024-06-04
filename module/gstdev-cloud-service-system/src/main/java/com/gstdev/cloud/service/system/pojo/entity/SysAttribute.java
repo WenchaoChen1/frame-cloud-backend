@@ -17,7 +17,6 @@ import java.util.Set;
 
 /**
  * <p>Description: 系统安全属性实体 </p>
- *
  */
 @Schema(title = "系统安全属性数据")
 @Getter
@@ -80,5 +79,9 @@ public class SysAttribute extends BaseEntity {
 
     public void addPermissions(Set<SysPermission> permissions) {
         this.permissions.addAll(permissions);
+    }
+
+    public void addPermissions(SysPermission permissions) {
+        this.permissions.add(permissions);
     }
 }

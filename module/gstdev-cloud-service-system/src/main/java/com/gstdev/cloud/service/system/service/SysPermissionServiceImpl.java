@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Transactional
@@ -50,21 +51,41 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
         Map<String, List<SysAttribute>> attributeMap = attributeList.stream()
             .collect(Collectors.groupingBy(SysAttribute::getServiceId));
         List<SysPermission> permissionList = new ArrayList<>();
-
-        for (List<SysAttribute> value : attributeMap.values()) {
+        for (Map.Entry<String, List<SysAttribute>> stringListEntry : attributeMap.entrySet()) {
+            List<SysAttribute> value = stringListEntry.getValue();
+            String key = stringListEntry.getKey();
             Map<String, Set<SysPermission>> stringListMap = generateCorrelatedKeys(value);
             value.forEach(attribute -> attribute.addPermissions(stringListMap.get(attribute.getAttributeId())));
+
+            String key1 = generateKey(Collections.singletonList(key));
+            SysPermission sysPermission = new SysPermission();
+            sysPermission.setPermissionId(key1);
+            sysPermission.setPermissionCode(key1);
+            sysPermission.setPermissionType("service");
+            sysPermission.setPermissionName(key);
+            value.forEach(attribute -> attribute.addPermissions(sysPermission));
 
             permissionList.addAll(stringListMap.values().stream()
                 .flatMap(Set::stream)
                 .collect(Collectors.toList()));
+            permissionList.add(sysPermission);
         }
+        SysPermission allPermissionAll = new SysPermission();
+        allPermissionAll.setPermissionId(generateKey(Collections.singletonList("all")));
+        allPermissionAll.setPermissionCode("all");
+        allPermissionAll.setPermissionName("all");
+        allPermissionAll.setPermissionType("all");
+        permissionList.add(allPermissionAll);
+        // 去重处理，避免重复主键问题
+        Map<String, SysPermission> uniquePermissions = permissionList.stream()
+            .collect(Collectors.toMap(SysPermission::getPermissionId, Function.identity(), (existing, replacement) -> existing));
 
-        getRepository().saveAllAndFlush(permissionList);
+        getRepository().saveAllAndFlush(new ArrayList<>(uniquePermissions.values()));
         sysAttributeService.saveAllAndFlush(attributeList);
     }
 
-    void updateStatusByPermissionType(DataItemStatus status, String permissionType) {
+
+    public void updateStatusByPermissionType(DataItemStatus status, String permissionType) {
         getRepository().updateStatusByPermissionType(status, permissionType);
     }
 
