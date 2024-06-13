@@ -9,6 +9,7 @@ import com.gstdev.cloud.oauth2.core.definition.strategy.StrategyUserDetailsServi
 import com.gstdev.cloud.rest.condition.annotation.ConditionalOnDistributedArchitecture;
 import com.gstdev.cloud.rest.condition.annotation.ConditionalOnLocalDataAccess;
 import com.gstdev.cloud.rest.condition.annotation.ConditionalOnRemoteDataAccess;
+import com.gstdev.cloud.service.identity.autoconfigure.OAuth2AuthorizationServerAutoConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
@@ -25,7 +27,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnDistributedArchitecture
-
 @EnableFeignClients(basePackages = {"com.frame.template.autoconfigure.service.identity.feign"})
 @ComponentScan(value = {
     "com.gstdev.cloud.rest.autoconfigure",

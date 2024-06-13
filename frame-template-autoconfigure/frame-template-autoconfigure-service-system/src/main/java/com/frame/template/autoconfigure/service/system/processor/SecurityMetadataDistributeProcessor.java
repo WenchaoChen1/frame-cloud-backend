@@ -3,6 +3,7 @@ package com.frame.template.autoconfigure.service.system.processor;
 
 import com.frame.template.autoconfigure.service.system.converter.SysAttributeToSecurityAttributeConverter;
 import com.frame.template.autoconfigure.service.system.converter.SysInterfacesToSysAttributesConverter;
+import com.gstdev.cloud.service.common.autoconfigure.bus.RemoteSecurityMetadataSyncEvent;
 import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.pojo.entity.SysInterface;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
@@ -12,7 +13,7 @@ import com.gstdev.cloud.base.core.exception.transaction.TransactionalRollbackExc
 import com.gstdev.cloud.message.core.definition.strategy.StrategyEventManager;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
 import com.gstdev.cloud.oauth2.core.definition.domain.SecurityAttribute;
-import com.gstdev.cloud.oauth2.resource.server.autoconfigure.bus.RemoteSecurityMetadataSyncEvent;
+
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceAnalyzer;
 import com.google.common.collect.ImmutableList;
 import com.gstdev.cloud.service.system.service.SysAttributeService;
