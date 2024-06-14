@@ -84,12 +84,12 @@ public class Menu extends BaseTreeEntity {
 
 
 
-//    @Column(name = "hidden")
-//    private Integer hidden = 0;
-//    @Column(name = "url", length = 100)
-//    private String url;
-//    @Column(name = "permission", length = 50)
-//    private String permission;
+    @Column(name = "hidden")
+    private Integer hidden = 0;
+    @Column(name = "url", length = 100)
+    private String url;
+    @Column(name = "permission", length = 50)
+    private String permission;
 
 
     @JsonIgnore
