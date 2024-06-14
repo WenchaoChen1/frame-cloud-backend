@@ -6,7 +6,7 @@ spring:
     cloud:
         nacos:
             discovery:
-                server-addr: ${NACOS_DISCOVERY_HOST:192.168.0.99}:${NACOS_DISCOVERY_PORT:8848}
+                server-addr: ${NACOS_DISCOVERY_HOST:127.0.0.1}:${NACOS_DISCOVERY_PORT:8848}
                 namespace: ${NACOS_DISCOVERY_NAMESPACE:frame-cloud}
                 group: ${NACOS_DISCOVERY_GROUP:dev}
             #                server-addr: ${NACOS_DISCOVERY_HOST:@alibaba.config.server-addr@}
@@ -47,7 +47,7 @@ spring:
         sentinel:
             transport:
                 #                port: 8719
-                dashboard: 192.168.0.99:8858
+                dashboard: 127.0.0.1:8858
             eager: true #服务注启动，直接注册到dashboard
 
 server:
