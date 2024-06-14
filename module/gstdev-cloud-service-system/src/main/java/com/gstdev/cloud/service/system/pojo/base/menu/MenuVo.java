@@ -36,6 +36,7 @@ public class MenuVo extends BaseTreeVo {
     private String description;
     private Integer hidden;
     private String icon;
+    private String menuName;
     private String name;
     private String parentId;
     private String path;
