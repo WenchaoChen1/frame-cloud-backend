@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.data.core.service.BaseDtoServiceImpl;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.service.system.mapper.vo.SysUserMapper;
 import com.gstdev.cloud.service.system.pojo.converter.SysUserToSecurityUserConverter;
@@ -24,7 +25,7 @@ import java.util.*;
 
 @Slf4j
 @Transactional(readOnly = true)
-public class SysUserServiceImpl extends BasePOJOServiceImpl<SysUser, String, SysUserRepository, SysUserMapper, UserDto> implements SysUserService {
+public class SysUserServiceImpl extends BaseDtoServiceImpl<SysUser, String, SysUserRepository, SysUserMapper, UserDto> implements SysUserService {
 
     private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
     @Resource

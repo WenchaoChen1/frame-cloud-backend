@@ -9,7 +9,7 @@
 
 package com.gstdev.cloud.service.system.controller;
 
-import com.gstdev.cloud.service.system.mapper.vo.MenuVoMapper;
+import com.gstdev.cloud.service.system.mapper.vo.SysMenuMapper;
 import com.gstdev.cloud.service.system.pojo.base.menu.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
 import com.gstdev.cloud.service.system.service.SysMenuService;
@@ -31,7 +31,7 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     private SysMenuService menuService;
 
     @Resource
-    private MenuVoMapper menuVoMapper;
+    private SysMenuMapper menuVoMapper;
 
     @Resource
     private SysRoleService roleService;
@@ -48,7 +48,7 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     }
 
     @Override
-    public MenuVoMapper getMapper() {
+    public SysMenuMapper getMapper() {
         return menuVoMapper;
     }
 

@@ -3,7 +3,7 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.base.core.utils.treeUtils.TreeFactory;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
-import com.gstdev.cloud.service.system.mapper.MenuMapper;
+import com.gstdev.cloud.service.system.mapper.vo.SysMenuMapper;
 import com.gstdev.cloud.service.system.pojo.base.menu.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
@@ -22,7 +22,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Transactional(readOnly = true)
-public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, SysMenuRepository, MenuMapper, MenuDto> implements SysMenuService {
+public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, SysMenuRepository, SysMenuMapper, MenuDto> implements SysMenuService {
 
     @Resource
     private SysRoleRepository roleRepository;
@@ -31,7 +31,7 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
     @Resource
     private SysMenuRepository menuRepository;
 
-    public SysMenuServiceImpl(SysMenuRepository menuRepository, MenuMapper menuMapper) {
+    public SysMenuServiceImpl(SysMenuRepository menuRepository, SysMenuMapper menuMapper) {
         super(menuRepository, menuMapper);
         this.menuRepository = menuRepository;
     }

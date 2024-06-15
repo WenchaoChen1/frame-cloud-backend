@@ -1,7 +1,9 @@
 package com.gstdev.cloud.service.system.service;
 
 import cn.hutool.core.util.ObjectUtil;
-import com.gstdev.cloud.service.system.mapper.vo.AccountMapper;
+import com.gstdev.cloud.data.core.pojo.BaseDto;
+import com.gstdev.cloud.data.core.service.BaseDtoServiceImpl;
+import com.gstdev.cloud.service.system.mapper.vo.SysAccountMapper;
 import com.gstdev.cloud.service.system.pojo.base.account.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
@@ -19,7 +21,8 @@ import org.springframework.util.ObjectUtils;
 import java.util.List;
 
 @Transactional(readOnly = true)
-public  class SysAccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, SysAccountRepository, AccountMapper, AccountDto> implements SysAccountService {
+//public  class SysAccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, SysAccountRepository, SysAccountMapper, AccountDto> implements SysAccountService {
+public  class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String, SysAccountRepository, SysAccountMapper, AccountDto> implements SysAccountService {
 
     @Resource
     private SysUserRepository userRepository;
@@ -31,7 +34,7 @@ public  class SysAccountServiceImpl extends BasePOJOServiceImpl<SysAccount, Stri
     @Resource
     private SysAccountRepository accountRepository;
 
-    public SysAccountServiceImpl(SysAccountRepository accountRepository, AccountMapper accountMapper) {
+    public SysAccountServiceImpl(SysAccountRepository accountRepository, SysAccountMapper accountMapper) {
         super(accountRepository, accountMapper);
     }
     public SysAccountRepository getRepository() {

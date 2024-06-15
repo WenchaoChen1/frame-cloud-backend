@@ -2,10 +2,7 @@
 package com.gstdev.cloud.service.system.configuration;
 
 import com.gstdev.cloud.service.system.mapper.*;
-import com.gstdev.cloud.service.system.mapper.vo.AccountMapper;
-import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
-import com.gstdev.cloud.service.system.mapper.vo.SysTenantMapper;
-import com.gstdev.cloud.service.system.mapper.vo.SysUserMapper;
+import com.gstdev.cloud.service.system.mapper.vo.*;
 import com.gstdev.cloud.service.system.repository.*;
 import com.gstdev.cloud.service.system.service.*;
 import jakarta.annotation.PostConstruct;
@@ -44,7 +41,7 @@ public class FrameSystemServiceConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public SysAccountService sysAccountService(SysAccountRepository accountRepository, AccountMapper accountMapper) {
+    public SysAccountService sysAccountService(SysAccountRepository accountRepository, SysAccountMapper accountMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Account Service");
         return new SysAccountServiceImpl(accountRepository, accountMapper);
     }
@@ -58,7 +55,7 @@ public class FrameSystemServiceConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public SysMenuService sysMenuService(SysMenuRepository menuRepository, MenuMapper menuMapper) {
+    public SysMenuService sysMenuService(SysMenuRepository menuRepository, SysMenuMapper menuMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Menu Service");
         return new SysMenuServiceImpl(menuRepository, menuMapper);
     }

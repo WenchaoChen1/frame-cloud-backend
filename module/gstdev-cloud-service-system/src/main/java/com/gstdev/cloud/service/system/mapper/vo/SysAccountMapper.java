@@ -22,7 +22,7 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface AccountMapper extends BasePOJOMapper<SysAccount, AccountDto, AccountVo, AccountInsertInput, AccountUpdateInput> {
+public interface SysAccountMapper extends BasePOJOMapper<SysAccount, AccountDto, AccountVo, AccountInsertInput, AccountUpdateInput> {
     SysAccount toEntity(InsertAccountManageInitializationIO insertAccountManageInput);
 
     void copy(InsertAndUpdateAccountManageIO insertAndUpdateAccountManageIO, @MappingTarget SysAccount sysAccount);

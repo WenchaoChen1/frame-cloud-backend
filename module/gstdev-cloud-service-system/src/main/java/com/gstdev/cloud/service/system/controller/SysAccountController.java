@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.data.core.utils.QueryUtils;
-import com.gstdev.cloud.service.system.mapper.vo.AccountMapper;
+import com.gstdev.cloud.service.system.mapper.vo.SysAccountMapper;
 import com.gstdev.cloud.service.system.pojo.base.account.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.base.definition.domain.Result;
@@ -29,7 +29,7 @@ public class SysAccountController implements POJOController<SysAccount, String, 
     private SysAccountService accountService;
 
     @Resource
-    private AccountMapper accountVoMapper;
+    private SysAccountMapper accountVoMapper;
 
     @Override
     public SysAccountService getService() {
@@ -37,7 +37,7 @@ public class SysAccountController implements POJOController<SysAccount, String, 
     }
 
     @Override
-    public AccountMapper getMapper() {
+    public SysAccountMapper getMapper() {
         return accountVoMapper;
     }
 
