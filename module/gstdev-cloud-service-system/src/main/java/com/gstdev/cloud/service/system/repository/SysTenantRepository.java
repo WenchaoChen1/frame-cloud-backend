@@ -10,14 +10,14 @@
 package com.gstdev.cloud.service.system.repository;
 
 
-import com.gstdev.cloud.service.system.pojo.entity.Tenant;
+import com.gstdev.cloud.service.system.pojo.entity.SysTenant;
 import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 
 import java.util.List;
 
-public interface SysTenantRepository extends BaseTreeRepository<Tenant, String> {
-    List<Tenant> findAllByParentId(String parentId);
+public interface SysTenantRepository extends BaseTreeRepository<SysTenant, String> {
+    List<SysTenant> findAllByParentId(String parentId);
 
 }
 

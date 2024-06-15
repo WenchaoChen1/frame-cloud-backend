@@ -28,7 +28,7 @@ import jakarta.persistence.Table;
 @Where(clause = "deleted = 0")
 @SQLDelete(sql = "UPDATE tenant SET deleted=1 WHERE id =?")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-public class Tenant extends BaseTreeEntity {
+public class SysTenant extends BaseTreeEntity {
 
     @Column(name = "parent_id", length = 36, nullable = false)
     private String parentId;

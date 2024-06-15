@@ -9,30 +9,38 @@
 
 package com.gstdev.cloud.service.system.controller;
 
-import com.gstdev.cloud.service.system.mapper.vo.TenantVoMapper;
+import com.gstdev.cloud.data.core.utils.QueryUtils;
+import com.gstdev.cloud.service.system.mapper.vo.SysTenantMapper;
 import com.gstdev.cloud.service.system.pojo.base.tenant.*;
-import com.gstdev.cloud.service.system.pojo.entity.Tenant;
+import com.gstdev.cloud.service.system.pojo.entity.SysTenant;
+import com.gstdev.cloud.service.system.pojo.o.sysTenant.TenantByIdToTreeQO;
+import com.gstdev.cloud.service.system.pojo.o.sysTenant.TenantManageQO;
+import com.gstdev.cloud.service.system.pojo.o.sysTenant.InsertAndUpdateTenantManageIO;
 import com.gstdev.cloud.service.system.service.SysTenantService;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.data.domain.Pageable;
+import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
 
 import java.util.List;
+import java.util.Map;
+
 //@ResponseBody
 @RestController
 @RequestMapping("/v1/tenant")
-public class SysTenantController implements TreeController<Tenant, String, TenantVo, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
+public class SysTenantController implements TreeController<SysTenant, String, TenantVo, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
 
 
     @Resource
     private SysTenantService tenantService;
 
     @Resource
-    private TenantVoMapper tenantVoMapper;
+    private SysTenantMapper tenantVoMapper;
 
     @Override
     public SysTenantService getService() {
@@ -40,7 +48,7 @@ public class SysTenantController implements TreeController<Tenant, String, Tenan
     }
 
     @Override
-    public TenantVoMapper getMapper() {
+    public SysTenantMapper getMapper() {
         return tenantVoMapper;
     }
 
@@ -56,13 +64,16 @@ public class SysTenantController implements TreeController<Tenant, String, Tenan
 
     @GetMapping("/get-tenant-by-id-to-tree")
     @Operation(summary = "获取当前租户以及当前租户的所有子租户，返回树状结构")
-    public Result<List<TenantVo>> findByIdToTreeToResult(TenantFindAllByQueryCriteria tenantFindAllByQueryCriteria) {
+    public Result<List<TenantVo>> findByIdToTreeToResult(TenantByIdToTreeQO tenantFindAllByQueryCriteria) {
         if (tenantFindAllByQueryCriteria.getTenantId() != null){
             List<TenantDto> itselfAndSubsetsToDto = getService().findItselfAndSubsetsToDto(tenantFindAllByQueryCriteria.getTenantId());
             List<String> tenantIds = itselfAndSubsetsToDto.stream().map(TenantDto::getId).toList();
             tenantFindAllByQueryCriteria.setTenantIds(tenantIds);
         }
-        return findAllByQueryCriteriaToResultToTree(tenantFindAllByQueryCriteria);
+        return this.result(this.getMapper().toVo(this.getService().findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> {
+            return QueryUtils.getPredicate(root, tenantFindAllByQueryCriteria, criteriaBuilder);
+        })));
+//        return findAllByQueryCriteriaToResultToTree(tenantFindAllByQueryCriteria);
     }
 
     @GetMapping("/get-by-id")
@@ -70,18 +81,18 @@ public class SysTenantController implements TreeController<Tenant, String, Tenan
     public Result<TenantVo> getById(String id) {
         return findByIdToResult(id);
     }
-
-    @PostMapping
-    @Operation(summary = "新增一条数据")
-    public Result<TenantVo> insert(@RequestBody @Validated TenantInsertInput tenantInsertInput) {
-        return insertToResult(tenantInsertInput);
-    }
-
-    @PutMapping
-    @Operation(summary = "修改一条数据")
-    public Result<TenantVo> update(@RequestBody @Validated TenantUpdateInput updateInput) {
-        return updateToResult(updateInput);
-    }
+//
+//    @PostMapping
+//    @Operation(summary = "新增一条数据")
+//    public Result<TenantVo> insert(@RequestBody @Validated TenantInsertInput tenantInsertInput) {
+//        return insertToResult(tenantInsertInput);
+//    }
+//
+//    @PutMapping
+//    @Operation(summary = "修改一条数据")
+//    public Result<TenantVo> update(@RequestBody @Validated TenantUpdateInput updateInput) {
+//        return updateToResult(updateInput);
+//    }
 
     @Operation(summary = "")
     @DeleteMapping
@@ -91,7 +102,32 @@ public class SysTenantController implements TreeController<Tenant, String, Tenan
 
 
     /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
+    // ********************************* Tenant Manage *****************************************
+//    @GetMapping("/get-tenant-manage-page")
+//    @Operation(summary = "获取所有的用户,分页")
+//    public Result<Map<String, Object>> getTenantManagePage(TenantManageQO tenantManageQO, Pageable pageable) {
+//        return findByPageToVo((root, criteriaQuery, criteriaBuilder) -> {
+//            return QueryUtils.getPredicate(root, tenantManageQO, criteriaBuilder);
+//        }, pageable);
+//    }
 
+    @PostMapping("/insert-and-update-tenant-manage")
+    @Operation(summary = "新增一条数据")
+    public Result insertAndUpdateTenantManage(@RequestBody @Validated InsertAndUpdateTenantManageIO insertAndUpdateTenantManageIO) {
+        SysTenant sysTenant = new SysTenant();
+        if (!ObjectUtils.isEmpty(insertAndUpdateTenantManageIO.getId())) {
+            sysTenant = this.getService().findById(insertAndUpdateTenantManageIO.getId());
+        }
+        tenantVoMapper.copy(insertAndUpdateTenantManageIO, sysTenant);
+        this.getService().insertAndUpdate(sysTenant);
+        return result();
+    }
+//    @PostMapping("/insert-tenant-manage-initialization")
+//    @Operation(summary = "新增一个账户并创建角色,部门")
+//    public Result insertTenantManageInitialization(@RequestBody @Validated InsertTenantManageInitializationIO userInsertInput) {
+//        getService().insertTenantManageInitializationToDto(userInsertInput);
+//        return result();
+//    }
 
 }
 

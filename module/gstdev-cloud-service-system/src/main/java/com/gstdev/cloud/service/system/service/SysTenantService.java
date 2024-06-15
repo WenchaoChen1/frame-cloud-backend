@@ -9,12 +9,12 @@
 
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.service.system.pojo.entity.Tenant;
+import com.gstdev.cloud.service.system.pojo.entity.SysTenant;
 import com.gstdev.cloud.data.core.service.BaseTreeService;
 import com.gstdev.cloud.service.system.pojo.base.tenant.*;
 
 
-public interface SysTenantService extends BaseTreeService<Tenant, String, TenantDto> {
+public interface SysTenantService extends BaseTreeService<SysTenant, String, TenantDto> {
 //
 //  Result<List<TenantDto>> getTenantTree();
 //

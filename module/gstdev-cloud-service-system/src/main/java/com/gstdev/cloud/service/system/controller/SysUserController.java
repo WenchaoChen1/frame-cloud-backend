@@ -2,14 +2,14 @@ package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
-import com.gstdev.cloud.service.system.mapper.vo.UserVoMapper;
+import com.gstdev.cloud.service.system.mapper.vo.SysUserMapper;
 import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.base.user.UserFindAllByQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.user.UserPageQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.user.UserVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
 import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertUserManageInitializationIO;
-import com.gstdev.cloud.service.system.pojo.o.sysUser.SysUserUserManageQO;
+import com.gstdev.cloud.service.system.pojo.o.sysUser.UserManageQO;
 import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertAndUpdateUserManageIO;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserUpdateInput;
@@ -37,7 +37,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
     private SysUserService userService;
 
     @Resource
-    private UserVoMapper userVoMapper;
+    private SysUserMapper userVoMapper;
 
     @Override
     public SysUserService getService() {
@@ -45,7 +45,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
     }
 
     @Override
-    public UserVoMapper getMapper() {
+    public SysUserMapper getMapper() {
         return userVoMapper;
     }
 
@@ -114,7 +114,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
 
     @GetMapping("/get-user-manage-page")
     @Operation(summary = "获取所有的用户,分页")
-    public Result<Map<String, Object>> getUserManagePage(SysUserUserManageQO sysUserUserManageQO, Pageable pageable) {
+    public Result<Map<String, Object>> getUserManagePage(UserManageQO sysUserUserManageQO, Pageable pageable) {
         return findByPageToVo((root, criteriaQuery, criteriaBuilder) -> {
             return QueryUtils.getPredicate(root, sysUserUserManageQO, criteriaBuilder);
         }, pageable);
@@ -137,6 +137,8 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         getService().insertUserManageInitialization(userInsertInput);
         return result();
     }
+
+
 //    @GetMapping("/get-by-id-to-account")
 //    @Operation(summary = "根据id获取当前用户下的所有账户")
 //    public Result<List<AccountListDto>> getByIdToAccount() {

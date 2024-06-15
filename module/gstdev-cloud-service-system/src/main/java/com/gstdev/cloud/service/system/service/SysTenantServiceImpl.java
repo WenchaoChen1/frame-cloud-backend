@@ -11,9 +11,9 @@ package com.gstdev.cloud.service.system.service;
 
 
 import cn.hutool.core.lang.UUID;
-import com.gstdev.cloud.service.system.mapper.TenantMapper;
+import com.gstdev.cloud.service.system.mapper.vo.SysTenantMapper;
 import com.gstdev.cloud.service.system.pojo.base.tenant.*;
-import com.gstdev.cloud.service.system.pojo.entity.Tenant;
+import com.gstdev.cloud.service.system.pojo.entity.SysTenant;
 import com.gstdev.cloud.service.system.repository.SysTenantRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import jakarta.annotation.Resource;
@@ -21,13 +21,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Transactional(readOnly = true)
-public class SysTenantServiceImpl extends BaseTreeServiceImpl<Tenant, String, SysTenantRepository, TenantMapper, TenantDto> implements SysTenantService {
+public class SysTenantServiceImpl extends BaseTreeServiceImpl<SysTenant, String, SysTenantRepository, SysTenantMapper, TenantDto> implements SysTenantService {
 
     @Resource
     private SysAccountService accountService;
     @Resource
     private SysTenantRepository tenantRepository;
-    public SysTenantServiceImpl(SysTenantRepository tenantRepository, TenantMapper tenantMapper) {
+    public SysTenantServiceImpl(SysTenantRepository tenantRepository, SysTenantMapper tenantMapper) {
         super(tenantRepository, tenantMapper);
         this.tenantRepository=tenantRepository;
     }
@@ -40,11 +40,11 @@ public class SysTenantServiceImpl extends BaseTreeServiceImpl<Tenant, String, Sy
 
     @Override
     @Transactional
-    public Tenant insert(Tenant tenant) {
+    public SysTenant insert(SysTenant tenant) {
         if (tenant.getTenantCode() == null) {
             tenant.setTenantCode(UUID.fastUUID().toString());
         }
-        Tenant save = super.insert(tenant);
+        SysTenant save = super.insert(tenant);
         //新增租户的时候默认向组织里插入一条数据
 //    DepartSaveInput departSaveInput = new DepartSaveInput();
 //    departSaveInput.setName(save.getTenantName());

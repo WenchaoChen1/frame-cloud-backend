@@ -4,6 +4,7 @@ import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BasePOJOService;
 import com.gstdev.cloud.service.system.pojo.base.account.*;
+import com.gstdev.cloud.service.system.pojo.o.sysAccount.InsertAccountManageInitializationIO;
 
 import java.util.List;
 
@@ -14,9 +15,9 @@ public interface SysAccountService extends BasePOJOService<SysAccount, String, A
 
 //    SysAccount insert(SysAccount account);
 
-    SysAccount insertAccountInitialization(AccountInsertInput accountInsertInput);
+    SysAccount insertAccountManageInitialization(InsertAccountManageInitializationIO accountInsertInput);
 
-    Result<AccountDto> insertAccountInitializationToResult(AccountInsertInput accountInsertInput);
+    AccountDto insertAccountManageInitializationToDto(InsertAccountManageInitializationIO accountInsertInput);
 
 //    Integer findByTenantId(String tenantId);
 

@@ -2,6 +2,9 @@
 package com.gstdev.cloud.service.system.configuration;
 
 import com.gstdev.cloud.service.system.mapper.*;
+import com.gstdev.cloud.service.system.mapper.vo.AccountMapper;
+import com.gstdev.cloud.service.system.mapper.vo.SysTenantMapper;
+import com.gstdev.cloud.service.system.mapper.vo.SysUserMapper;
 import com.gstdev.cloud.service.system.repository.*;
 import com.gstdev.cloud.service.system.service.*;
 import jakarta.annotation.PostConstruct;
@@ -26,14 +29,14 @@ public class FrameSystemServiceConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public SysTenantService sysTenantService(SysTenantRepository tenantRepository, TenantMapper tenantMapper) {
+    public SysTenantService sysTenantService(SysTenantRepository tenantRepository, SysTenantMapper tenantMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Tenant Service");
         return new SysTenantServiceImpl(tenantRepository, tenantMapper);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public SysUserService sysUserService(SysUserRepository userRepository, UserMapper userMappe) {
+    public SysUserService sysUserService(SysUserRepository userRepository, SysUserMapper userMappe) {
         log.debug("[GstDev Cloud] |- Frame Configure User Service");
         return new SysUserServiceImpl(userRepository, userMappe);
     }

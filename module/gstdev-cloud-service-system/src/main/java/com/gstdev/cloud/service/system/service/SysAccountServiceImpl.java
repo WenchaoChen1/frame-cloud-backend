@@ -1,15 +1,15 @@
 package com.gstdev.cloud.service.system.service;
 
 import cn.hutool.core.util.ObjectUtil;
-import com.gstdev.cloud.service.system.mapper.AccountMapper;
+import com.gstdev.cloud.service.system.mapper.vo.AccountMapper;
 import com.gstdev.cloud.service.system.pojo.base.account.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
+import com.gstdev.cloud.service.system.pojo.o.sysAccount.InsertAccountManageInitializationIO;
 import com.gstdev.cloud.service.system.repository.SysAccountRepository;
 import com.gstdev.cloud.service.system.repository.SysDepartRepository;
 import com.gstdev.cloud.service.system.repository.SysRoleRepository;
 import com.gstdev.cloud.service.system.repository.SysUserRepository;
-import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,7 +42,7 @@ public  class SysAccountServiceImpl extends BasePOJOServiceImpl<SysAccount, Stri
 
     @Override
     @Transactional
-    public SysAccount insertAccountInitialization(AccountInsertInput accountInsertInput) {
+    public SysAccount insertAccountManageInitialization(InsertAccountManageInitializationIO accountInsertInput) {
         SysAccount account=new SysAccount();
         account.setType(accountInsertInput.getType());
         account.setTenantId(accountInsertInput.getTenantId());
@@ -59,15 +59,10 @@ public  class SysAccountServiceImpl extends BasePOJOServiceImpl<SysAccount, Stri
     }
 
     @Transactional
-    public AccountDto insertAccountInitializationToDto(AccountInsertInput accountInsertInput) {
-        return getMapper().toDto(insertAccountInitialization(accountInsertInput));
+    public AccountDto insertAccountManageInitializationToDto(InsertAccountManageInitializationIO accountInsertInput) {
+        return getMapper().toDto(insertAccountManageInitialization(accountInsertInput));
     }
 
-    @Override
-    @Transactional
-    public Result<AccountDto> insertAccountInitializationToResult(AccountInsertInput accountInsertInput) {
-        return Result.success(insertAccountInitializationToDto(accountInsertInput));
-    }
 
     @Transactional()
     public SysAccount save(SysAccount var) {

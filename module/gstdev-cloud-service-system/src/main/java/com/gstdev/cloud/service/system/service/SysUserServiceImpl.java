@@ -1,16 +1,15 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
-import com.gstdev.cloud.service.system.mapper.vo.UserVoMapper;
+import com.gstdev.cloud.service.system.mapper.vo.SysUserMapper;
 import com.gstdev.cloud.service.system.pojo.converter.SysUserToSecurityUserConverter;
 import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
 import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
-import com.gstdev.cloud.service.system.mapper.UserMapper;
 import com.gstdev.cloud.service.system.pojo.base.account.AccountInsertInput;
 import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
+import com.gstdev.cloud.service.system.pojo.o.sysAccount.InsertAccountManageInitializationIO;
 import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertUserManageInitializationIO;
-import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.AccountListDto;
 import com.gstdev.cloud.service.system.repository.SysUserRepository;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
@@ -26,7 +25,7 @@ import java.util.*;
 
 @Slf4j
 @Transactional(readOnly = true)
-public class SysUserServiceImpl extends BasePOJOServiceImpl<SysUser, String, SysUserRepository, UserMapper, UserDto> implements SysUserService {
+public class SysUserServiceImpl extends BasePOJOServiceImpl<SysUser, String, SysUserRepository, SysUserMapper, UserDto> implements SysUserService {
 
     private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
     @Resource
@@ -37,9 +36,9 @@ public class SysUserServiceImpl extends BasePOJOServiceImpl<SysUser, String, Sys
     @Resource
     private SysUserRepository userRepository;
     @Resource
-    private UserVoMapper userMapper;
+    private SysUserMapper userMapper;
 
-    public SysUserServiceImpl(SysUserRepository userRepository, UserMapper userMapper) {
+    public SysUserServiceImpl(SysUserRepository userRepository, SysUserMapper userMapper) {
         super(userRepository, userMapper);
     }
 
@@ -91,11 +90,11 @@ public class SysUserServiceImpl extends BasePOJOServiceImpl<SysUser, String, Sys
     public SysUser insertUserManageInitialization(InsertUserManageInitializationIO userInsertInput) {
         SysUser user = userMapper.toEntity(userInsertInput);
         SysUser insert = insert(user);
-        AccountInsertInput accountInsertInput = new AccountInsertInput();
+        InsertAccountManageInitializationIO accountInsertInput = new InsertAccountManageInitializationIO();
         accountInsertInput.setTenantId(userInsertInput.getTenantId());
         accountInsertInput.setUserId(insert.getId());
         accountInsertInput.setAccountTypeConstants(userInsertInput.getAccountTypeConstants());
-        accountService.insertAccountInitialization(accountInsertInput);
+        accountService.insertAccountManageInitialization(accountInsertInput);
         // 同步到identity模块
         IdentitySaveDto identitySaveDto = new IdentitySaveDto();
         identitySaveDto.setUserId(insert.getId());
