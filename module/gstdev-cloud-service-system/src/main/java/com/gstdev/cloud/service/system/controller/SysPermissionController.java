@@ -8,8 +8,12 @@ import com.gstdev.cloud.service.system.mapper.vo.SysPermissionVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionDto;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionPageQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionVo;
+import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
+import com.gstdev.cloud.service.system.pojo.o.sysAccount.AccountManageQO;
+import com.gstdev.cloud.service.system.pojo.o.sysPermission.InsertAndUpdatePermissionManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysPermission.PermissionManageQO;
 import com.gstdev.cloud.service.system.service.SysPermissionService;
 import com.gstdev.cloud.service.system.service.SysPermissionService;
 import com.gstdev.cloud.base.definition.domain.Result;
@@ -29,6 +33,8 @@ import jakarta.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.util.ObjectUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -57,18 +63,27 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         return sysPermissionService;
     }
 
+//    @AccessLimited
+//    @Operation(summary = "获取全部权限", description = "获取全部权限数据列表",
+//        responses = {
+//            @ApiResponse(description = "全部数据列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class))),
+//            @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
+//            @ApiResponse(responseCode = "500", description = "查询失败")
+//        })
+//    @GetMapping("/page")
+//    public Result<Page<SysPermissionVo>> findByPageToResult(SysPermissionPageQueryCriteria sysPermissionPageQueryCriteria, BasePage pageable) {
+//        Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysPermissionPageQueryCriteria, criteriaBuilder), pageable);
+//        Page<SysPermissionVo> SysPermissionVos = sysPermissionVoMapper.toVo(byPageToDto);
+//        return Result.success(SysPermissionVos);
+//    }
+
     @AccessLimited
-    @Operation(summary = "获取全部权限", description = "获取全部权限数据列表",
-        responses = {
-            @ApiResponse(description = "全部数据列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class))),
-            @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
-            @ApiResponse(responseCode = "500", description = "查询失败")
-        })
-    @GetMapping("/page")
-    public Result<Page<SysPermissionVo>> findByPageToResult(SysPermissionPageQueryCriteria sysPermissionPageQueryCriteria, BasePage pageable) {
-        Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysPermissionPageQueryCriteria, criteriaBuilder), pageable);
+    @GetMapping("/get-permission-manage-page")
+    @Operation(summary = "获取所有的用户,分页")
+    public Result<Map<String, Object>> getPermissionManagePage(PermissionManageQO permissionManageQO, Pageable pageable) {
+        Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, permissionManageQO, criteriaBuilder), pageable);
         Page<SysPermissionVo> SysPermissionVos = sysPermissionVoMapper.toVo(byPageToDto);
-        return Result.success(SysPermissionVos);
+        return result(SysPermissionVos);
     }
 
     @Idempotent
@@ -78,15 +93,16 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     @Parameters({
         @Parameter(name = "domain", required = true, description = "可转换为实体的json数据")
     })
-    @PostMapping
-    public Result<SysPermissionVo> saveOrUpdatea(@RequestBody SysPermission domain) {
-//        SysPermission sysPermission=new SysPermission();
-//        sysPermission.setPermissionId(domain.getPermissionId());
-//        sysPermission.setPermissionName(domain.getPermissionName());
-//        sysPermission.setPermissionCode(domain.getPermissionCode());
-//        sysPermission.setPermissionType(domain.getPermissionType());
-//        sysPermission.setStatus(domain.getStatus());
-        return result(sysPermissionVoMapper.toVo(getService().saveToDto(domain)));
+    @PostMapping("/insert-and-update-permission-manage")
+    public Result<SysPermissionVo> insertAndUpdatePermissionManage(@RequestBody @Validated InsertAndUpdatePermissionManageIO insertAndUpdatePermissionManageIO) {
+        SysPermission sysPermission = new SysPermission();
+        if (!ObjectUtils.isEmpty(insertAndUpdatePermissionManageIO.getPermissionId())) {
+            sysPermission = this.getService().findById(insertAndUpdatePermissionManageIO.getPermissionId());
+        }
+        sysPermissionVoMapper.copy(insertAndUpdatePermissionManageIO, sysPermission);
+        this.getService().insertAndUpdate(sysPermission);
+        return result();
+//        return result(sysPermissionVoMapper.toVo(getService().saveToDto(domain)));
     }
 
     @Idempotent
