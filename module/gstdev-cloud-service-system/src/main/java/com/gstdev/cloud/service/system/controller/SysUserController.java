@@ -8,8 +8,9 @@ import com.gstdev.cloud.service.system.pojo.base.user.UserFindAllByQueryCriteria
 import com.gstdev.cloud.service.system.pojo.base.user.UserPageQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.user.UserVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
+import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertUserManageInitializationIO;
 import com.gstdev.cloud.service.system.pojo.o.sysUser.SysUserUserManageQO;
-import com.gstdev.cloud.service.system.pojo.o.sysUser.insertAndUpdateUserManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertAndUpdateUserManageIO;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserUpdateInput;
 import com.gstdev.cloud.service.system.service.SysUserService;
@@ -17,8 +18,6 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.rest.core.controller.POJOController;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
@@ -26,7 +25,6 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
 
-import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -124,7 +122,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
 
     @PostMapping("/insert-and-update-user-manage")
     @Operation(summary = "新增一条数据")
-    public Result insertAndUpdateUserManage(@RequestBody @Validated insertAndUpdateUserManageIO insertAndUpdateUserManageIO) {
+    public Result insertAndUpdateUserManage(@RequestBody @Validated InsertAndUpdateUserManageIO insertAndUpdateUserManageIO) {
         SysUser sysUser = new SysUser();
         if (!ObjectUtils.isEmpty(insertAndUpdateUserManageIO.getId())) {
             sysUser = this.getService().findById(insertAndUpdateUserManageIO.getId());
@@ -133,10 +131,10 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         this.getService().insertAndUpdate(sysUser);
         return result();
     }
-    @PostMapping("/insert-user-initialization")
+    @PostMapping("/insert-user-manage-initialization")
     @Operation(summary = "新增一个用户并创建用户的账户以及角色,部门")
-    public Result insertUserInitialization(@RequestBody @Validated UserInsertInput userInsertInput) {
-        getService().insertUserInitializationToDto(toEntityInsert(userInsertInput),userInsertInput);
+    public Result insertUserManageInitialization(@RequestBody @Validated InsertUserManageInitializationIO userInsertInput) {
+        getService().insertUserManageInitialization(userInsertInput);
         return result();
     }
 //    @GetMapping("/get-by-id-to-account")

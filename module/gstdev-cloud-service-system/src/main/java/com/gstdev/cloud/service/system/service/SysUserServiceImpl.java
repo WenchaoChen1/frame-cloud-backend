@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
+import com.gstdev.cloud.service.system.mapper.vo.UserVoMapper;
 import com.gstdev.cloud.service.system.pojo.converter.SysUserToSecurityUserConverter;
 import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
 import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
@@ -8,6 +9,7 @@ import com.gstdev.cloud.service.system.mapper.UserMapper;
 import com.gstdev.cloud.service.system.pojo.base.account.AccountInsertInput;
 import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
+import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertUserManageInitializationIO;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.AccountListDto;
 import com.gstdev.cloud.service.system.repository.SysUserRepository;
@@ -34,6 +36,8 @@ public class SysUserServiceImpl extends BasePOJOServiceImpl<SysUser, String, Sys
     private IdentityFeignService identityFeignService;
     @Resource
     private SysUserRepository userRepository;
+    @Resource
+    private UserVoMapper userMapper;
 
     public SysUserServiceImpl(SysUserRepository userRepository, UserMapper userMapper) {
         super(userRepository, userMapper);
@@ -84,8 +88,8 @@ public class SysUserServiceImpl extends BasePOJOServiceImpl<SysUser, String, Sys
 //    }
 
     @Transactional
-    public SysUser insertUserInitialization(SysUser user,UserInsertInput userInsertInput) {
-//        SysUser user = toEntityInsert(userInsertInput);
+    public SysUser insertUserManageInitialization(InsertUserManageInitializationIO userInsertInput) {
+        SysUser user = userMapper.toEntity(userInsertInput);
         SysUser insert = insert(user);
         AccountInsertInput accountInsertInput = new AccountInsertInput();
         accountInsertInput.setTenantId(userInsertInput.getTenantId());
@@ -110,8 +114,8 @@ public class SysUserServiceImpl extends BasePOJOServiceImpl<SysUser, String, Sys
      */
     @Override
     @Transactional
-    public UserDto insertUserInitializationToDto(SysUser user,UserInsertInput userInsertInput) {
-        SysUser sysUser = insertUserInitialization(user,userInsertInput);
+    public UserDto insertUserManageInitializationToDto(InsertUserManageInitializationIO userInsertInput) {
+        SysUser sysUser = insertUserManageInitialization(userInsertInput);
         return getMapper().toDto(sysUser);
     }
 

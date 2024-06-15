@@ -11,7 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class insertAndUpdateUserManageIO {
+public class InsertAndUpdateUserManageIO {
 
     private String id;
     private String username;

@@ -12,10 +12,9 @@ package com.gstdev.cloud.service.system.mapper.vo;
 import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
 import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.base.user.UserVo;
-import com.gstdev.cloud.service.system.pojo.entity.Dict;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
-import com.gstdev.cloud.service.system.pojo.o.sysUser.insertAndUpdateUserManageIO;
-import com.gstdev.cloud.service.system.pojo.vo.menu.DictModifyInput;
+import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertAndUpdateUserManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertUserManageInitializationIO;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserUpdateInput;
 import org.mapstruct.*;
@@ -29,6 +28,7 @@ public interface UserVoMapper extends BasePOJOMapper<SysUser, UserDto, UserVo, U
 //
 //    UserUpdateInput toUserUpdateInput(UserLoginInferiorUpdateInput userLoginInferiorUpdateInput);
 //    SysUser toEntity(insertAndUpdateUserManageIO insertUserManageInput);
-    void copy(insertAndUpdateUserManageIO insertAndUpdateUserManageIO, @MappingTarget SysUser sysUser);
+    SysUser toEntity(InsertUserManageInitializationIO insertUserManageInput);
+    void copy(InsertAndUpdateUserManageIO insertAndUpdateUserManageIO, @MappingTarget SysUser sysUser);
 }
 
