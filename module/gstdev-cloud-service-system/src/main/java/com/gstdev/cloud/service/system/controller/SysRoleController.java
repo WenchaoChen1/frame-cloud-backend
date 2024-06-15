@@ -1,12 +1,15 @@
 package com.gstdev.cloud.service.system.controller;
 
-import com.gstdev.cloud.service.system.mapper.vo.RoleVoMapper;
+import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
 import com.gstdev.cloud.service.system.pojo.base.role.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysRole;
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.service.system.pojo.o.sysRole.InsertAndUpdateRoleManageIO;
 import com.gstdev.cloud.service.system.service.SysRoleService;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.util.ObjectUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
@@ -22,7 +25,7 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     private SysRoleService roleService;
 
     @Resource
-    private RoleVoMapper roleVoMapper;
+    private SysRoleMapper roleVoMapper;
 
 //    public SysRoleController(SysRoleService roleService, RoleVoMapper roleVoMapper) {
 //        this.roleService = roleService;
@@ -35,7 +38,7 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     }
 
     @Override
-    public RoleVoMapper getMapper() {
+    public SysRoleMapper getMapper() {
         return roleVoMapper;
     }
 
@@ -51,17 +54,17 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
         return findByIdToResult(id);
     }
 
-    @PostMapping
-    @Operation(summary = "新增一条数据")
-    public Result<RoleVo> insert(@RequestBody RoleInsertInput roleInsertInput) {
-        return insertToResult(roleInsertInput);
-    }
-
-    @PutMapping
-    @Operation(summary = "修改一条数据")
-    public Result<RoleVo> update(@RequestBody RoleUpdateInput roleUpdateInput) {
-        return updateToResult(roleUpdateInput);
-    }
+//    @PostMapping
+//    @Operation(summary = "新增一条数据")
+//    public Result<RoleVo> insert(@RequestBody RoleInsertInput roleInsertInput) {
+//        return insertToResult(roleInsertInput);
+//    }
+//
+//    @PutMapping
+//    @Operation(summary = "修改一条数据")
+//    public Result<RoleVo> update(@RequestBody RoleUpdateInput roleUpdateInput) {
+//        return updateToResult(roleUpdateInput);
+//    }
 
     @Operation(summary = "")
     @DeleteMapping
@@ -84,6 +87,20 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
 
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 
+    /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
+
+    // ********************************* Role Manage *****************************************
+    @PostMapping("/insert-and-update-role-manage")
+    @Operation(summary = "新增一条数据")
+    public Result insertAndUpdateRoleManage(@RequestBody @Validated InsertAndUpdateRoleManageIO insertAndUpdateRoleManageIO) {
+        SysRole sysRole = new SysRole();
+        if (!ObjectUtils.isEmpty(insertAndUpdateRoleManageIO.getId())) {
+            sysRole = this.getService().findById(insertAndUpdateRoleManageIO.getId());
+        }
+        roleVoMapper.copy(insertAndUpdateRoleManageIO, sysRole);
+        this.getService().insertAndUpdate(sysRole);
+        return result();
+    }
 
 }
 

@@ -3,6 +3,7 @@ package com.gstdev.cloud.service.system.configuration;
 
 import com.gstdev.cloud.service.system.mapper.*;
 import com.gstdev.cloud.service.system.mapper.vo.AccountMapper;
+import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
 import com.gstdev.cloud.service.system.mapper.vo.SysTenantMapper;
 import com.gstdev.cloud.service.system.mapper.vo.SysUserMapper;
 import com.gstdev.cloud.service.system.repository.*;
@@ -50,7 +51,7 @@ public class FrameSystemServiceConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public SysRoleService sysRoleService(SysRoleRepository roleRepository, RoleMapper roleMapper) {
+    public SysRoleService sysRoleService(SysRoleRepository roleRepository, SysRoleMapper roleMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure Role Service");
         return new SysRoleServiceImpl(roleRepository, roleMapper);
     }

@@ -2,22 +2,17 @@ package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseDtoServiceImpl;
-import com.gstdev.cloud.service.system.mapper.RoleMapper;
 import com.gstdev.cloud.service.system.mapper.SysPermissionMapper;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionDto;
 import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
-import com.gstdev.cloud.service.system.repository.SysInterfaceRepository;
 import com.gstdev.cloud.service.system.repository.SysPermissionRepository;
-import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Transactional
