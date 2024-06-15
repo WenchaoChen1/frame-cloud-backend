@@ -1,15 +1,14 @@
 package com.gstdev.cloud.service.system.controller;
 
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.rest.core.controller.TreeController;
 import com.gstdev.cloud.service.system.mapper.vo.DictVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.dict.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysDict;
 import com.gstdev.cloud.service.system.service.SysDictService;
-import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.*;
-
 import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 //@ResponseBody

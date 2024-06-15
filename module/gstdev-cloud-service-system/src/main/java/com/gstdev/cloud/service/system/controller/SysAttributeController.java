@@ -1,13 +1,11 @@
 package com.gstdev.cloud.service.system.controller;
 
-import com.gstdev.cloud.service.system.mapper.vo.SysAttributeVoMapper;
-import com.gstdev.cloud.service.system.pojo.base.SysAttribute.SysAttributeVo;
-import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
-import com.gstdev.cloud.service.system.service.SysAttributeService;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.controller.Controller;
+import com.gstdev.cloud.service.system.mapper.vo.SysAttributeVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.SysAttribute.SysAttributeVo;
+import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
 import com.gstdev.cloud.service.system.service.SysAttributeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -20,7 +18,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;

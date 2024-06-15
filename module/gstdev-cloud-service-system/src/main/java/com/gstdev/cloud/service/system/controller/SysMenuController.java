@@ -9,17 +9,16 @@
 
 package com.gstdev.cloud.service.system.controller;
 
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.rest.core.controller.TreeController;
 import com.gstdev.cloud.service.system.mapper.vo.SysMenuMapper;
 import com.gstdev.cloud.service.system.pojo.base.menu.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
 import com.gstdev.cloud.service.system.service.SysMenuService;
-import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.service.system.service.SysRoleService;
-import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.*;
-
 import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 //@ResponseBody
