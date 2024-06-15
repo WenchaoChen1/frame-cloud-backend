@@ -12,30 +12,25 @@ package com.gstdev.cloud.service.system.mapper;
 
 import com.gstdev.cloud.data.core.mapper.BaseDtoMapper;
 import com.gstdev.cloud.service.system.pojo.base.dict.DictDto;
-import com.gstdev.cloud.service.system.pojo.base.dict.DictInsertInput;
-import com.gstdev.cloud.service.system.pojo.base.dict.DictUpdateInput;
-import com.gstdev.cloud.service.system.pojo.base.dict.DictVo;
 import com.gstdev.cloud.service.system.pojo.vo.menu.DictModifyInput;
 import com.gstdev.cloud.service.system.pojo.vo.menu.DictSaveInput;
-import com.gstdev.cloud.service.system.pojo.entity.Dict;
+import com.gstdev.cloud.service.system.pojo.entity.SysDict;
 import org.mapstruct.*;
 
 import java.util.List;
-
-import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
 
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface DictMapper extends BaseDtoMapper<Dict, DictDto> {
+public interface DictMapper extends BaseDtoMapper<SysDict, DictDto> {
     /**
      * 转换
      *
      * @param dictSaveInput
      * @return 数据库实体类
      */
-    Dict toEntitySave(DictSaveInput dictSaveInput);
+    SysDict toEntitySave(DictSaveInput dictSaveInput);
 
     /**
      * 转换
@@ -43,7 +38,7 @@ public interface DictMapper extends BaseDtoMapper<Dict, DictDto> {
      * @param dictModifyInput
      * @return 数据库实体类
      */
-    Dict toEntityModify(DictModifyInput dictModifyInput);
+    SysDict toEntityModify(DictModifyInput dictModifyInput);
 
     /**
      * 转换
@@ -51,7 +46,7 @@ public interface DictMapper extends BaseDtoMapper<Dict, DictDto> {
      * @param dictModifyInput
      * @param dict
      */
-    void copyModify(DictModifyInput dictModifyInput, @MappingTarget Dict dict);
+    void copyModify(DictModifyInput dictModifyInput, @MappingTarget SysDict dict);
 
     /**
      * 转换
@@ -59,7 +54,7 @@ public interface DictMapper extends BaseDtoMapper<Dict, DictDto> {
      * @param dict
      * @return
      */
-    DictDto toDto(Dict dict);
+    DictDto toDto(SysDict dict);
 
     /**
      * 转换
@@ -67,7 +62,7 @@ public interface DictMapper extends BaseDtoMapper<Dict, DictDto> {
      * @param dicts
      * @return
      */
-    List<DictDto> toDto(List<Dict> dicts);
+    List<DictDto> toDto(List<SysDict> dicts);
 
 }
 

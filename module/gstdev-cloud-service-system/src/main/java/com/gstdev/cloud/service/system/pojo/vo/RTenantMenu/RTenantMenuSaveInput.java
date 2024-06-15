@@ -9,7 +9,7 @@
 
 package com.gstdev.cloud.service.system.pojo.vo.RTenantMenu;
 
-import com.gstdev.cloud.service.system.pojo.entity.Menu;
+import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +20,7 @@ import java.io.Serializable;
 @Setter
 public class RTenantMenuSaveInput implements Serializable {
     private String tenantId;
-    private Menu menu;
+    private SysMenu menu;
     private Integer status;
 }
 

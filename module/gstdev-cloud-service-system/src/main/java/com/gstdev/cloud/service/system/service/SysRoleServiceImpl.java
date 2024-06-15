@@ -2,7 +2,7 @@ package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.service.system.pojo.base.role.*;
-import com.gstdev.cloud.service.system.pojo.entity.Menu;
+import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
 import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
 import com.gstdev.cloud.service.system.pojo.entity.SysRole;
 import com.gstdev.cloud.service.system.mapper.RoleMapper;
@@ -32,7 +32,7 @@ public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, Sys
     }
     @Override
     public Result<List<String>> getAllByRoleId(String roleId) {
-        List<String> strings = findById(roleId).getRTenantMenus().stream().map(RTenantMenu::getMenu).map(Menu::getId).toList();
+        List<String> strings = findById(roleId).getRTenantMenus().stream().map(RTenantMenu::getMenu).map(SysMenu::getId).toList();
         return Result.success(strings);
     }
 

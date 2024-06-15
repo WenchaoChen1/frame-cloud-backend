@@ -48,7 +48,7 @@ public class SysAccount extends BasePOJOEntity {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "accounts")
-    private List<Depart> departs;
+    private List<SysDepart> departs;
     @JsonIgnore
     @ManyToMany(mappedBy = "accounts")
     private List<SysRole> roles;

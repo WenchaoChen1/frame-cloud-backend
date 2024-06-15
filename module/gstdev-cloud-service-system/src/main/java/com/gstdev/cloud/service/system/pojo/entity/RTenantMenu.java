@@ -32,7 +32,7 @@ public class RTenantMenu extends BasePOJOEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "menu_id", referencedColumnName = "id")
-    private Menu menu;
+    private SysMenu menu;
 
     @Column(name = "status")
     private Integer status;

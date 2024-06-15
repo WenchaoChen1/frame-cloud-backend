@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.service.system.pojo.base.dict.*;
-import com.gstdev.cloud.service.system.pojo.entity.Dict;
+import com.gstdev.cloud.service.system.pojo.entity.SysDict;
 import com.gstdev.cloud.service.system.mapper.DictMapper;
 import com.gstdev.cloud.service.system.repository.SysDictRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
@@ -13,7 +13,7 @@ import jakarta.annotation.Resource;
 
 
 @Transactional(readOnly = true)
-public class SysDictServiceImpl extends BaseTreeServiceImpl<Dict, String, SysDictRepository, DictMapper, DictDto> implements SysDictService {
+public class SysDictServiceImpl extends BaseTreeServiceImpl<SysDict, String, SysDictRepository, DictMapper, DictDto> implements SysDictService {
     private static final Logger log = LoggerFactory.getLogger(SysDictServiceImpl.class);
     @Resource
     private SysDictRepository dictRepository;

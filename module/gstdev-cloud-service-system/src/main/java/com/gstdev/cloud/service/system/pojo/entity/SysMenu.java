@@ -32,7 +32,7 @@ import java.util.List;
 @Table(name = "sys_menu", schema = "public")
 @Where(clause = "deleted = 0")
 @SQLDelete(sql = "UPDATE sys_menu SET deleted=1 WHERE id =?")
-public class Menu extends BaseTreeEntity {
+public class SysMenu extends BaseTreeEntity {
 
     @Column(name = "deleted", nullable = false)
     private Integer deleted = 0;

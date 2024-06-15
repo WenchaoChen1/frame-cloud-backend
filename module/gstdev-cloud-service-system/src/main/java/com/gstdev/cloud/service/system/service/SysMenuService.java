@@ -1,6 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.service.system.pojo.entity.Menu;
+import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseTreeService;
 import com.gstdev.cloud.service.system.pojo.base.menu.*;
@@ -8,7 +8,7 @@ import com.gstdev.cloud.service.system.pojo.base.menu.*;
 import java.util.List;
 
 
-public interface SysMenuService extends BaseTreeService<Menu, String, MenuDto> {
+public interface SysMenuService extends BaseTreeService<SysMenu, String, MenuDto> {
     Result<List<MenuDto>> getAllByRoleMenuToTree(String roleId);
 
     Result<MenuDto> getAllTenantMenuIds(String tenantId);

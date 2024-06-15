@@ -51,5 +51,5 @@ public class TenantDict extends BasePOJOEntity {
     private Integer deleted = 0;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dict_id", referencedColumnName = "id")
-    private Dict dict;
+    private SysDict dict;
 }

@@ -6,7 +6,7 @@ import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
 import com.gstdev.cloud.service.system.mapper.MenuMapper;
 import com.gstdev.cloud.service.system.pojo.base.menu.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
-import com.gstdev.cloud.service.system.pojo.entity.Menu;
+import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
 import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
 import com.gstdev.cloud.service.system.pojo.entity.SysRole;
 import com.gstdev.cloud.service.system.repository.SysAccountRepository;
@@ -22,7 +22,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Transactional(readOnly = true)
-public class SysMenuServiceImpl extends BaseTreeServiceImpl<Menu, String, SysMenuRepository, MenuMapper, MenuDto> implements SysMenuService {
+public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, SysMenuRepository, MenuMapper, MenuDto> implements SysMenuService {
 
     @Resource
     private SysRoleRepository roleRepository;
@@ -43,7 +43,7 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<Menu, String, SysMen
     @Override
     public Result<List<MenuDto>> getAllByRoleMenuToTree(String roleId) {
         Optional<SysRole> byId = roleRepository.findById(roleId);
-        List<Menu> menus = byId.get().getRTenantMenus().stream().map(RTenantMenu::getMenu).toList();
+        List<SysMenu> menus = byId.get().getRTenantMenus().stream().map(RTenantMenu::getMenu).toList();
         return Result.success(new TreeFactory<String, MenuDto>().buildTree(getMapper().toDto(menus)));
     }
 
@@ -89,15 +89,15 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<Menu, String, SysMen
             menuFindAllByQueryCriteria.setTenantId(account.getTenantId());
             return findAllByQueryCriteriaToDtoToTree(menuFindAllByQueryCriteria);
         } else if (account.getType().equals(AccountTypeConstants.USER.getCode())) {
-            Map<String, Menu> collect = new HashMap<>();
+            Map<String, SysMenu> collect = new HashMap<>();
             for (SysRole role : account.getRoles()) {
-                List<Menu> menus = role.getRTenantMenus().stream().map(RTenantMenu::getMenu).toList();
-                Map<String, List<Menu>> collect2 = menus.stream().collect(Collectors.groupingBy(Menu::getId));
-                Map<String, Menu> collect1 = role.getRTenantMenus().stream().map(RTenantMenu::getMenu).collect(Collectors.groupingBy(Menu::getId,
+                List<SysMenu> menus = role.getRTenantMenus().stream().map(RTenantMenu::getMenu).toList();
+                Map<String, List<SysMenu>> collect2 = menus.stream().collect(Collectors.groupingBy(SysMenu::getId));
+                Map<String, SysMenu> collect1 = role.getRTenantMenus().stream().map(RTenantMenu::getMenu).collect(Collectors.groupingBy(SysMenu::getId,
                     Collectors.collectingAndThen(Collectors.toList(), value -> value.get(0))));
                 collect.putAll(collect1);
             }
-            List<Menu> menus1 = collect.values().stream().toList();
+            List<SysMenu> menus1 = collect.values().stream().toList();
             return new TreeFactory<String, MenuDto>().buildTree(getMapper().toDto(menus1));
         }
         return null;

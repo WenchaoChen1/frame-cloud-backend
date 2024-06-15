@@ -1,19 +1,19 @@
 package com.gstdev.cloud.service.system.repository;
 
 
-import com.gstdev.cloud.service.system.pojo.entity.Depart;
+import com.gstdev.cloud.service.system.pojo.entity.SysDepart;
 import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 import java.util.List;
 
-public interface SysDepartRepository extends BaseTreeRepository<Depart, String> {
+public interface SysDepartRepository extends BaseTreeRepository<SysDepart, String> {
     /**
      * 父级主键查询
      *
      * @param parentId
      * @return
      */
-    List<Depart> findAllByParentIdOrderBySort(String parentId);
+    List<SysDepart> findAllByParentIdOrderBySort(String parentId);
 
     /**
      * 通过parentid 和小于指定的排序查询
@@ -22,7 +22,7 @@ public interface SysDepartRepository extends BaseTreeRepository<Depart, String> 
      * @param sort
      * @return
      */
-    List<Depart> findAllByParentIdAndSortLessThanOrderBySort(String parentId, int sort);
+    List<SysDepart> findAllByParentIdAndSortLessThanOrderBySort(String parentId, int sort);
 
     /**
      * 通过parentid 和大于指定的排序查询
@@ -31,7 +31,7 @@ public interface SysDepartRepository extends BaseTreeRepository<Depart, String> 
      * @param sort
      * @return
      */
-    List<Depart> findAllByParentIdAndSortGreaterThanOrderBySort(String parentId, int sort);
+    List<SysDepart> findAllByParentIdAndSortGreaterThanOrderBySort(String parentId, int sort);
 
-    List<Depart> findByTenantId(String tenantId);
+    List<SysDepart> findByTenantId(String tenantId);
 }

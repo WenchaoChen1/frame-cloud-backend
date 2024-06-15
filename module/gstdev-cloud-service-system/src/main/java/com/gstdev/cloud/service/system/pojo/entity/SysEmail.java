@@ -16,7 +16,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "email")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-public class Email extends BasePOJOEntity {
+public class SysEmail extends BasePOJOEntity {
 
     @Column(name = "type")
     private int type;

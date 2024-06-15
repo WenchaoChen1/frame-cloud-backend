@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.pojo.vo.RAccountDepart;
 
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
-import com.gstdev.cloud.service.system.pojo.entity.Depart;
+import com.gstdev.cloud.service.system.pojo.entity.SysDepart;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,5 +15,5 @@ import java.io.Serializable;
 @Setter
 public class RAccountDepartSaveInput implements Serializable {
     private SysAccount account;
-    private Depart depart;
+    private SysDepart depart;
 }
