@@ -65,16 +65,23 @@ public class SysUserServiceImpl extends BasePOJOServiceImpl<SysUser, String, Sys
         return new String(chars);
     }
 
-
     @Override
     @Transactional
-    public SysUser insert(SysUser user) {
+    public SysUser save(SysUser user) {
         if (ObjectUtils.isEmpty(user.getPassword())) {
-            user.setPassword(randomPassword());
+            user.setPassword(SecurityUtils.encrypt(randomPassword()));
         }
-        user.setPassword((SecurityUtils.encrypt(user.getPassword())));
-        return super.insert(user);
+        return super.save(user);
     }
+//    @Override
+//    @Transactional
+//    public SysUser insert(SysUser user) {
+//        if (ObjectUtils.isEmpty(user.getPassword())) {
+//            user.setPassword(randomPassword());
+//        }
+//        user.setPassword((SecurityUtils.encrypt(user.getPassword())));
+//        return super.insert(user);
+//    }
 
     @Transactional
     public SysUser insertUserInitialization(SysUser user,UserInsertInput userInsertInput) {

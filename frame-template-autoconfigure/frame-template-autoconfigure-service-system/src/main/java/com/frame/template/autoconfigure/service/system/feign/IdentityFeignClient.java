@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 //@FeignClient(contextId = "identityClient", name = ServiceConstants.SERVICE_NAME_IDENTITY, path = "/user")
 @FeignClient(contextId = "identityClient", value = ServiceConstants.SERVICE_NAME_IDENTITY)
-//@FeignClient(contextId = "identityClient", name = ServiceConstants.SERVICE_NAME_IDENTITY, url = "http://127.0.0.1:8201/" + ServiceConstants.SERVICE_NAME_IDENTITY)
+//@FeignClient(contextId = "identityClient", name = ServiceConstants.SERVICE_NAME_IDENTITY, url = "http://192.168.0.99:8201/" + ServiceConstants.SERVICE_NAME_IDENTITY)
 public interface IdentityFeignClient {
 
 

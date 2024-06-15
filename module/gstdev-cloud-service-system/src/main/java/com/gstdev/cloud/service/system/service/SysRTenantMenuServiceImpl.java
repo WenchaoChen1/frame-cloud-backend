@@ -67,7 +67,7 @@ public class SysRTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, 
                 rTenantMenus.add(rTenantMenu);
             });
         }
-        updateAll(rTenantMenus);
+        update(rTenantMenus);
         return Result.success();
     }
 

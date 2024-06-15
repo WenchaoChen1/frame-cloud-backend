@@ -16,19 +16,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
-@ComponentScan(basePackages = {
-    "com.frame.template.service.system.controller",
-})
+//@ComponentScan(basePackages = {
+//    "com.frame.template.service.system.controller",
+//})
 @SpringBootApplication
 @Import({AutoSystemConfiguration.class})
 public class SystemApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SystemApplication.class, args);
-    }
-    @PostConstruct
-    public void postConstruct() {
-        System.out.println("aaaaaaaaa3");
     }
 
 }
