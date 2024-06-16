@@ -107,7 +107,7 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
         return result();
     }
 
-    @PostMapping("/update-role-manage")
+    @PutMapping("/update-role-manage")
     @Operation(summary = "新增一条数据")
     public Result updateRoleManage(@RequestBody @Validated UpdateRoleManageIO updateRoleManageIO) {
         SysRole sysRole = this.getService().findById(updateRoleManageIO.getId());

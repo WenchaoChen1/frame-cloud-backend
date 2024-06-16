@@ -102,7 +102,7 @@ public class SysAccountController implements POJOController<SysAccount, String, 
         return result();
     }
 
-    @PostMapping("/update-account-manage")
+    @PutMapping("/update-account-manage")
     @Operation(summary = "新增一条数据")
     public Result updateAccountManage(@RequestBody @Validated UpdateAccountManageIO updateAccountManageIO) {
         SysAccount sysAccount = this.getService().findById(updateAccountManageIO.getId());

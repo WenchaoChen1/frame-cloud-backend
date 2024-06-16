@@ -130,7 +130,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         return result();
     }
 
-    @PostMapping("/update-user-manage")
+    @PutMapping("/update-user-manage")
     @Operation(summary = "新增一条数据")
     public Result updateUserManage(@RequestBody @Validated UpdateUserManageIO updateUserManageIO) {
         SysUser sysUser = this.getService().findById(updateUserManageIO.getId());

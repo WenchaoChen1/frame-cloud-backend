@@ -94,7 +94,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         return result();
     }
 
-    @PostMapping("/update-permission-manage")
+    @PutMapping("/update-permission-manage")
     public Result<SysPermissionVo> updatePermissionManage(@RequestBody @Validated UpdatePermissionManageIO updatePermissionManageIO) {
         SysPermission sysPermission = this.getService().findById(updatePermissionManageIO.getPermissionId());
         sysPermissionVoMapper.copy(updatePermissionManageIO, sysPermission);

@@ -103,7 +103,7 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
         return result();
     }
 
-    @PostMapping("/update-tenant-manage")
+    @PutMapping("/update-tenant-manage")
     @Operation(summary = "新增一条数据")
     public Result updateTenantManage(@RequestBody @Validated UpdateTenantManageIO updateTenantManageIO) {
         SysTenant sysTenant = this.getService().findById(updateTenantManageIO.getId());
