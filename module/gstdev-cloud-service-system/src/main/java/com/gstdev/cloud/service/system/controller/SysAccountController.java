@@ -79,7 +79,7 @@ public class SysAccountController implements POJOController<SysAccount, String, 
 //        return getMapper().toVo(getService().insertAccountInitializationToResult(accountInsertInput));
 //    }
 
-    // *********************************访问控制*******************************************
+
     // ********************************* Account Manage *****************************************
     @GetMapping("/get-account-manage-page")
     @Operation(summary = "获取所有的用户,分页")
@@ -117,15 +117,19 @@ public class SysAccountController implements POJOController<SysAccount, String, 
         getService().insertAccountManageInitializationToDto(userInsertInput);
         return result();
     }
+
     @Operation(summary = "删除一条数据")
     @DeleteMapping("delete-account-manage/{id}")
     public Result deleteAccountManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
+
     @Operation(summary = "删除多条数据")
     @DeleteMapping("delete-all-account-manage")
     public Result deleteAllAccountManage(List<String> id) {
         return deleteAllByIdToResult(id);
     }
+
+    /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
 
 }

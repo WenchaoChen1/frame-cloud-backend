@@ -25,6 +25,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 //@ResponseBody
 @RestController
 @RequestMapping("/v1/menu")
@@ -101,11 +102,19 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
 
 
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
+    // ********************************* menu Manage *****************************************
+
     @GetMapping("/get-menu-manage-to-tree")
     @Operation(summary = "获取所有菜单，返回树状结构")
     public Result<List<MenuVo>> getMenuManageMageToTree() {
         MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
         return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
+    }
+
+    @GetMapping("/get-menu-manage-detail/{id}")
+    @Operation(summary = "get-menu-manage-detail")
+    public Result<MenuVo> getMenuManageDetail(@PathVariable String id) {
+        return findByIdToResult(id);
     }
     @PostMapping("/insert-menu-manage")
     @Operation(summary = "insert-menu-manage")
@@ -113,6 +122,7 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
         this.getService().insertAndUpdate(menuMapper.toEntity(insertMenuManageIO));
         return result();
     }
+
     @PutMapping("/update-menu-manage")
     @Operation(summary = "update-menu-manage")
     public Result updateMenuManage(@RequestBody @Validated UpdateMenuManageIO updateMenuManageIO) {
@@ -121,19 +131,19 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
         this.getService().insertAndUpdate(sysMenu);
         return result();
     }
-    @GetMapping("/get-menu-manage-detail/{id}")
-    @Operation(summary = "get-menu-manage-detail")
-    public Result<MenuVo> getMenuManageDetail(@PathVariable String id) {
-        return findByIdToResult(id);
-    }
+
+
     @Operation(summary = "删除一条数据")
     @DeleteMapping("delete-menu-manage/{id}")
     public Result deleteMenuManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
+
     @Operation(summary = "删除多条数据")
     @DeleteMapping("delete-all-menu-manage")
     public Result deleteAllMenuManage(List<String> id) {
         return deleteAllByIdToResult(id);
     }
+
+    /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 }

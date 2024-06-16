@@ -8,9 +8,9 @@ import com.gstdev.cloud.rest.core.controller.DtoController;
 import com.gstdev.cloud.service.system.mapper.vo.SysPermissionVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionDto;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionVo;
-import com.gstdev.cloud.service.system.pojo.base.account.AccountVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
-import com.gstdev.cloud.service.system.pojo.o.sysPermission.InsertAndUpdatePermissionManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysPermission.InsertPermissionManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysPermission.UpdatePermissionManageIO;
 import com.gstdev.cloud.service.system.pojo.o.sysPermission.PermissionManageQO;
 import com.gstdev.cloud.service.system.service.SysPermissionService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -75,30 +75,31 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         return result(SysPermissionVos);
     }
 
+    @GetMapping("/get-account-manage-detail/{id}")
+    @Operation(summary = "get-account-manage-detail")
+    public Result<SysPermissionVo> getAccountManageDetail(@PathVariable String id) {
+        return result(sysPermissionVoMapper.toVo(this.getService().findById(id)));
+    }
+
     @Idempotent
-    @Operation(summary = "保存或更新数据", description = "接收JSON数据，转换为实体，进行保存或更新",
+    @Operation(summary = "保存数据", description = "接收JSON数据，转换为实体，进行保存或更新",
         requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
         responses = {@ApiResponse(description = "已保存数据", content = @Content(mediaType = "application/json"))})
     @Parameters({
         @Parameter(name = "domain", required = true, description = "可转换为实体的json数据")
     })
-    @PostMapping("/insert-and-update-permission-manage")
-    public Result<SysPermissionVo> insertAndUpdatePermissionManage(@RequestBody @Validated InsertAndUpdatePermissionManageIO insertAndUpdatePermissionManageIO) {
-        SysPermission sysPermission = new SysPermission();
-        if (!ObjectUtils.isEmpty(insertAndUpdatePermissionManageIO.getPermissionId())) {
-            sysPermission = this.getService().findById(insertAndUpdatePermissionManageIO.getPermissionId());
-        }
-        sysPermissionVoMapper.copy(insertAndUpdatePermissionManageIO, sysPermission);
-        this.getService().insertAndUpdate(sysPermission);
+    @PostMapping("/insert-permission-manage")
+    public Result<SysPermissionVo> insertAndUpdatePermissionManage(@RequestBody @Validated InsertPermissionManageIO insertPermissionManageIO) {
+        this.getService().insertAndUpdate(sysPermissionVoMapper.toEntity(insertPermissionManageIO));
         return result();
-//        return result(sysPermissionVoMapper.toVo(getService().saveToDto(domain)));
     }
 
-
-    @GetMapping("/get-account-manage-detail/{id}")
-    @Operation(summary = "get-account-manage-detail")
-    public Result<SysPermissionVo> getAccountManageDetail(@PathVariable String id) {
-        return result(sysPermissionVoMapper.toVo(this.getService().findById(id)));
+    @PostMapping("/update-permission-manage")
+    public Result<SysPermissionVo> updatePermissionManage(@RequestBody @Validated UpdatePermissionManageIO updatePermissionManageIO) {
+        SysPermission sysPermission = this.getService().findById(updatePermissionManageIO.getPermissionId());
+        sysPermissionVoMapper.copy(updatePermissionManageIO, sysPermission);
+        this.getService().insertAndUpdate(sysPermission);
+        return result();
     }
 
     @Idempotent
@@ -113,7 +114,6 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     public Result<String> delete(@PathVariable String id) {
         return DtoController.super.delete(id);
     }
-
 
     @Operation(summary = "删除一条数据")
     @DeleteMapping("delete-permission-manage/{id}")
@@ -131,10 +131,10 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     @Operation(summary = "permissionType",
         requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
         responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
-    @Parameters({
-    })
     @GetMapping("/permissionType")
     public Result<List<String>> findDistinctPermissionTypes() {
         return result(getService().findDistinctPermissionTypes());
     }
+
+    /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 }

@@ -44,11 +44,6 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
         return roleVoMapper;
     }
 
-    @GetMapping("/get-all-role-to-tree")
-    @Operation(summary = "根据筛选获取所有角色，返回树状结构")
-    public Result<List<RoleVo>> findAllByQueryCriteriaToTree(RoleFindAllByQueryCriteria roleFindAllByQueryCriteria) {
-        return findAllByQueryCriteriaToResultToTree(roleFindAllByQueryCriteria);
-    }
 
     @GetMapping("/get-by-id")
     @Operation(summary = "根据id获取实体数据")
@@ -92,6 +87,19 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
 
     // ********************************* Role Manage *****************************************
+
+    @GetMapping("/get-role-manage-tree")
+    @Operation(summary = "根据筛选获取所有角色，返回树状结构")
+    public Result<List<RoleVo>> getRoleManageTree(RoleFindAllByQueryCriteria roleFindAllByQueryCriteria) {
+        return findAllByQueryCriteriaToResultToTree(roleFindAllByQueryCriteria);
+    }
+
+    @GetMapping("/get-role-manage-detail/{id}")
+    @Operation(summary = "get-role-manage-detail")
+    public Result<RoleVo> getRoleManageDetail(@PathVariable String id) {
+        return findByIdToResult(id);
+    }
+
     @PostMapping("/insert-role-manage")
     @Operation(summary = "新增一条数据")
     public Result insertRoleManage(@RequestBody @Validated InsertRoleManageIO insertRoleManageIO) {
@@ -102,25 +110,24 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     @PostMapping("/update-role-manage")
     @Operation(summary = "新增一条数据")
     public Result updateRoleManage(@RequestBody @Validated UpdateRoleManageIO updateRoleManageIO) {
-        SysRole sysRole  = this.getService().findById(updateRoleManageIO.getId());
+        SysRole sysRole = this.getService().findById(updateRoleManageIO.getId());
         roleVoMapper.copy(updateRoleManageIO, sysRole);
         this.getService().insertAndUpdate(sysRole);
         return result();
     }
-    @GetMapping("/get-role-manage-detail/{id}")
-    @Operation(summary = "get-role-manage-detail")
-    public Result<RoleVo> getRoleManageDetail(@PathVariable String id) {
-        return findByIdToResult(id);
-    }
+
+
     @Operation(summary = "删除一条数据")
     @DeleteMapping("delete-role-manage/{id}")
     public Result deleteRoleManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
+
     @Operation(summary = "删除多条数据")
     @DeleteMapping("delete-all-role-manage")
     public Result deleteAllRoleManage(List<String> id) {
         return deleteAllByIdToResult(id);
     }
+    /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
 }
 

@@ -82,12 +82,6 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         return findByIdToResult(id);
     }
 
-    @GetMapping("/security/sign-in/{username}")
-    @Operation(summary = "根据username获取实体数据")
-    public Result<DefaultSecurityUser> signInFindByUsername(@PathVariable("username") String username) {
-        return Result.success(getService().signInFindByUsername(username));
-    }
-
 //    @PostMapping
 //    @Operation(summary = "新增一条数据")
 //    public Result<UserVo> insert(@RequestBody @Validated UserInsertInput userInsertInput) {
@@ -112,7 +106,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         return deleteByIdToResult(id);
     }
 
-    // *********************************访问控制*****************************************
+
     // ********************************* User Manage *****************************************
 
     @GetMapping("/get-user-manage-page")
@@ -121,6 +115,12 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         return findByPageToVo((root, criteriaQuery, criteriaBuilder) -> {
             return QueryUtils.getPredicate(root, sysUserUserManageQO, criteriaBuilder);
         }, pageable);
+    }
+
+    @GetMapping("/get-user-manage-detail/{id}")
+    @Operation(summary = "get-user-manage-detail")
+    public Result<UserVo> getUserManageDetail(@PathVariable String id) {
+        return findByIdToResult(id);
     }
 
     @PostMapping("/insert-user-manage")
@@ -146,11 +146,6 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         return result();
     }
 
-    @GetMapping("/get-user-manage-detail/{id}")
-    @Operation(summary = "get-user-manage-detail")
-    public Result<UserVo> getUserManageDetail(@PathVariable String id) {
-        return findByIdToResult(id);
-    }
 
     @Operation(summary = "删除一条数据")
     @DeleteMapping("delete-user-manage/{id}")
@@ -163,6 +158,17 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
     public Result deleteAllUserManage(List<String> id) {
         return deleteAllByIdToResult(id);
     }
+
+    // ********************************* 登录 *****************************************
+
+    @GetMapping("/security/sign-in/{username}")
+    @Operation(summary = "根据username获取实体数据")
+    public Result<DefaultSecurityUser> signInFindByUsername(@PathVariable("username") String username) {
+        return Result.success(getService().signInFindByUsername(username));
+    }
+
+    /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
+
 //    @GetMapping("/get-by-id-to-account")
 //    @Operation(summary = "根据id获取当前用户下的所有账户")
 //    public Result<List<AccountListDto>> getByIdToAccount() {

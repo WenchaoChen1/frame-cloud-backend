@@ -13,7 +13,8 @@ import com.gstdev.cloud.data.core.mapper.BaseVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionDto;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
-import com.gstdev.cloud.service.system.pojo.o.sysPermission.InsertAndUpdatePermissionManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysPermission.InsertPermissionManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysPermission.UpdatePermissionManageIO;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -26,8 +27,9 @@ public interface SysPermissionVoMapper extends BaseVoMapper<SysPermissionDto,Sys
 //    SysPermissionVo entityToVo(SysPermission entity);
 
     List<SysPermissionVo> entityToVo(List<SysPermission> entity);
+    SysPermission toEntity(InsertPermissionManageIO insertPermissionManageIO);
     SysPermissionVo toVo(SysPermission entity);
-    void copy(InsertAndUpdatePermissionManageIO insertAndUpdatePermissionManageIO, @MappingTarget SysPermission sysPermission);
+    void copy(UpdatePermissionManageIO updatePermissionManageIO, @MappingTarget SysPermission sysPermission);
 
 //    default Page<SysPermissionVo> entityToVo(Page<SysPermission> page) {
 //        List<SysPermissionVo> responses = this.entityToVo(page.getContent());
