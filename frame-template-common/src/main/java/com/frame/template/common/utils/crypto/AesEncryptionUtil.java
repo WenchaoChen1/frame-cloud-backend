@@ -38,8 +38,10 @@ public class AesEncryptionUtil {
         LocalDateTime now = LocalDateTime.now();
         System.out.println("now = " + now);
         System.out.println("now.isAfter(date) = " + now.isAfter(date));
-        Instant instant = Instant.now(); // Get the current timestamp
-        ZonedDateTime zonedDateTime = instant.atZone(ZoneId.systemDefault()); // Convert Timestamp to ZonedDateTime object
+        // Get the current timestamp
+        Instant instant = Instant.now();
+        // Convert Timestamp to ZonedDateTime object
+        ZonedDateTime zonedDateTime = instant.atZone(ZoneId.systemDefault());
         LocalDateTime localDateTime = zonedDateTime.toLocalDateTime();
         System.out.println("localDateTime = " + localDateTime);
     }

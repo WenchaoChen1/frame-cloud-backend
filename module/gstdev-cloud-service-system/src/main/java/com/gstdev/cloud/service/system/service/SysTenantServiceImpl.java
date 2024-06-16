@@ -33,6 +33,7 @@ public class SysTenantServiceImpl extends BaseTreeServiceImpl<SysTenant, String,
     }
 
 
+    @Override
     public SysTenantRepository getRepository() {
         return tenantRepository;
     }

@@ -54,20 +54,11 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     public SysMenuMapper getMapper() {
         return menuMapper;
     }
-
-
-    @GetMapping("/get-all-menu-to-tree")
-    @Operation(summary = "获取所有菜单，返回树状结构")
-    public Result<List<MenuVo>> findAllByQueryCriteriaToTree() {
-        MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
-        return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
-    }
-
-    @GetMapping("/get-by-id")
-    @Operation(summary = "根据id获取实体数据")
-    public Result<MenuVo> getById(String id) {
-        return findByIdToResult(id);
-    }
+//    @GetMapping("/get-by-id")
+//    @Operation(summary = "根据id获取实体数据")
+//    public Result<MenuVo> getById(String id) {
+//        return findByIdToResult(id);
+//    }
 
 //    @PostMapping
 //    @Operation(summary = "新增一条数据")
@@ -110,6 +101,12 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
 
 
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
+    @GetMapping("/get-menu-manage-to-tree")
+    @Operation(summary = "获取所有菜单，返回树状结构")
+    public Result<List<MenuVo>> getMenuManageMageToTree() {
+        MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
+        return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
+    }
     @PostMapping("/insert-menu-manage")
     @Operation(summary = "insert-menu-manage")
     public Result insertAMenuManage(@RequestBody @Validated InsertMenuManageIO insertMenuManageIO) {
@@ -123,5 +120,20 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
         menuMapper.copy(updateMenuManageIO, sysMenu);
         this.getService().insertAndUpdate(sysMenu);
         return result();
+    }
+    @GetMapping("/get-menu-manage-detail/{id}")
+    @Operation(summary = "get-menu-manage-detail")
+    public Result<MenuVo> getMenuManageDetail(@PathVariable String id) {
+        return findByIdToResult(id);
+    }
+    @Operation(summary = "删除一条数据")
+    @DeleteMapping("delete-menu-manage/{id}")
+    public Result deleteMenuManage(@PathVariable String id) {
+        return deleteByIdToResult(id);
+    }
+    @Operation(summary = "删除多条数据")
+    @DeleteMapping("delete-all-menu-manage")
+    public Result deleteAllMenuManage(List<String> id) {
+        return deleteAllByIdToResult(id);
     }
 }

@@ -36,6 +36,7 @@ public class SysRTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, 
         super(rTenantMenuRepository, rTenantMenuMapper);
     }
 
+    @Override
     public SysRTenantMenuRepository getRepository() {
         return rTenantMenuRepository;
     }

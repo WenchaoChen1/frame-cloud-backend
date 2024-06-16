@@ -28,6 +28,7 @@ import java.util.List;
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface RTenantMenuMapper extends BaseDtoMapper<RTenantMenu, RTenantMenuDto> {
+    @Override
     RTenantMenu toEntity(RTenantMenuDto tenantDto);
 
     void copyModify(RTenantMenuSaveInput tenantSaveInput, @MappingTarget RTenantMenu tenant);
@@ -37,7 +38,7 @@ public interface RTenantMenuMapper extends BaseDtoMapper<RTenantMenu, RTenantMen
     List<RTenantMenu> toEntitySave(List<RTenantMenuSaveInput> tenantSaveInputs);
 
     RTenantMenu toEntityModify(RTenantMenuModifyInput tenantModifyInput);
-
+    @Override
     RTenantMenuDto toDto(RTenantMenu tenant);
 
     List<RTenantMenuDto> toDtos(List<RTenantMenu> tenants);

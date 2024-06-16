@@ -5,6 +5,7 @@ import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.POJOController;
 import com.gstdev.cloud.service.system.mapper.vo.SysAccountMapper;
 import com.gstdev.cloud.service.system.pojo.base.account.*;
+import com.gstdev.cloud.service.system.pojo.base.role.RoleVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.service.system.pojo.o.sysAccount.AccountManageQO;
 import com.gstdev.cloud.service.system.pojo.o.sysAccount.InsertAccountManageInitializationIO;
@@ -18,6 +19,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 //@ResponseBody
@@ -87,12 +89,19 @@ public class SysAccountController implements POJOController<SysAccount, String, 
         }, pageable);
     }
 
+    @GetMapping("/get-account-manage-detail/{id}")
+    @Operation(summary = "get-account-manage-detail")
+    public Result<AccountVo> getAccountManageDetail(@PathVariable String id) {
+        return findByIdToResult(id);
+    }
+
     @PostMapping("/insert-account-manage")
     @Operation(summary = "新增一条数据")
     public Result insertAccountManage(@RequestBody @Validated InsertAccountManageIO insertAccountManageIO) {
         this.getService().insertAndUpdate(accountVoMapper.toEntity(insertAccountManageIO));
         return result();
     }
+
     @PostMapping("/update-account-manage")
     @Operation(summary = "新增一条数据")
     public Result updateAccountManage(@RequestBody @Validated UpdateAccountManageIO updateAccountManageIO) {
@@ -101,11 +110,22 @@ public class SysAccountController implements POJOController<SysAccount, String, 
         this.getService().insertAndUpdate(sysAccount);
         return result();
     }
+
     @PostMapping("/insert-account-manage-initialization")
     @Operation(summary = "新增一个账户并创建角色,部门")
     public Result insertAccountManageInitialization(@RequestBody @Validated InsertAccountManageInitializationIO userInsertInput) {
         getService().insertAccountManageInitializationToDto(userInsertInput);
         return result();
+    }
+    @Operation(summary = "删除一条数据")
+    @DeleteMapping("delete-account-manage/{id}")
+    public Result deleteAccountManage(@PathVariable String id) {
+        return deleteByIdToResult(id);
+    }
+    @Operation(summary = "删除多条数据")
+    @DeleteMapping("delete-all-account-manage")
+    public Result deleteAllAccountManage(List<String> id) {
+        return deleteAllByIdToResult(id);
     }
 
 }

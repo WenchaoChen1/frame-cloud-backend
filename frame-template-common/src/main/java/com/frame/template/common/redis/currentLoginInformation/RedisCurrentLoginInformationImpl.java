@@ -17,25 +17,27 @@ import java.util.concurrent.TimeUnit;
 //@DependsOn("redisUtils")
 public class RedisCurrentLoginInformationImpl implements RedisCurrentLoginInformation {
 
-//    @Resource
+    //    @Resource
 //    private RedisUtils redisUtils;
-
+    @Override
     public Result<Object> addByTokenCurrentLoginInformation(CurrentLoginInformation currentLoginInformation) {
         RedisUtils.set(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)), currentLoginInformation, RedisConstants.TIMEOUT, TimeUnit.HOURS);
         return Result.success();
     }
 
+    @Override
     //add和update一样的功能
     public Result<Object> updateByTokenCurrentLoginInformation(CurrentLoginInformation currentLoginInformation) {
         RedisUtils.set(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)), currentLoginInformation, RedisConstants.TIMEOUT, TimeUnit.HOURS);
         return Result.success();
     }
 
+    @Override
     public Result<Object> deleteByTokenCurrentLoginInformation() {
         RedisUtils.del(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
         return Result.success();
     }
-
+    @Override
     public CurrentLoginInformation getCurrentLoginInformation() {
         CurrentLoginInformation currentLogininformation = null;
         try {
@@ -46,7 +48,7 @@ public class RedisCurrentLoginInformationImpl implements RedisCurrentLoginInform
 //    CurrentLoginInformation currentLogininformation = (CurrentLoginInformation) redisUtils.get(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
         return currentLogininformation;
     }
-
+    @Override
     public String getCurrentLoginAccountId() {
         CurrentLoginInformation loginInformation = getCurrentLoginInformation();
         if (loginInformation == null) {
@@ -54,7 +56,7 @@ public class RedisCurrentLoginInformationImpl implements RedisCurrentLoginInform
         }
         return loginInformation.getUserId();
     }
-
+    @Override
     public String getCurrentLoginTenantId() {
         CurrentLoginInformation loginInformation = getCurrentLoginInformation();
         if (loginInformation == null) {

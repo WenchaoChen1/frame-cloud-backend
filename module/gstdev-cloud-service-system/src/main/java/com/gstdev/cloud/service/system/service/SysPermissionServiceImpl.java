@@ -27,10 +27,12 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
         super(sysPermissionRepository, sysPermissionMapper);
     }
 
+    @Override
     public SysPermissionRepository getRepository() {
         return sysPermissionRepository;
     }
 
+    @Override
     public void permissionInit() {
         List<SysAttribute> attributeList = sysAttributeService.findAll();
         permissionInit(attributeList);
@@ -77,7 +79,7 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
 //        allPermissionAll.setPermissionCode(generateKey(Collections.singletonList("all")));
 //        allPermissionAll.setPermissionName("all");
 //        allPermissionAll.setPermissionType("all");
-        if(!getRepository().existsById(allPermissionAll.getPermissionId())){
+        if (!getRepository().existsById(allPermissionAll.getPermissionId())) {
             permissionList.add(allPermissionAll);
         }
 //        // 去重处理，避免重复主键问题
@@ -130,15 +132,19 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
 
 
     public static String generateKey(List<String> input) {
-        Collections.sort(input); // 对字符串列表进行排序
-        String combinedInput = String.join("", input); // 连接排序后的字符串
+        // 对字符串列表进行排序
+        Collections.sort(input);
+        // 连接排序后的字符串
+        String combinedInput = String.join("", input);
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] hash = digest.digest(combinedInput.getBytes());
             StringBuilder hexString = new StringBuilder();
             for (byte b : hash) {
                 String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) hexString.append('0');
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
                 hexString.append(hex);
             }
             return hexString.toString();

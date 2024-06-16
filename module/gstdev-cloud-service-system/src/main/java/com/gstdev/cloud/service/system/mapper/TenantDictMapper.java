@@ -56,6 +56,7 @@ public interface TenantDictMapper extends AbstractMapper<TenantDictDto, TenantDi
      * @param tenantDict
      * @return
      */
+    @Override
     TenantDictDto toDto(TenantDict tenantDict);
 
     /**
@@ -64,6 +65,7 @@ public interface TenantDictMapper extends AbstractMapper<TenantDictDto, TenantDi
      * @param tenantDicts
      * @return
      */
+    @Override
     List<TenantDictDto> toDto(List<TenantDict> tenantDicts);
 
 }

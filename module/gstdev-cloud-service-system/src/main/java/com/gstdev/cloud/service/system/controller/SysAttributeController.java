@@ -43,7 +43,7 @@ public class SysAttributeController implements Controller<SysAttribute, String> 
     public SysAttributeService getService() {
         return sysAttributeService;
     }
-
+    @Override
     @AccessLimited
     @Operation(summary = "获取全部元数据", description = "获取全部元数据列表",
             responses = {

@@ -54,6 +54,7 @@ public interface DictMapper extends BaseDtoMapper<SysDict, DictDto> {
      * @param dict
      * @return
      */
+    @Override
     DictDto toDto(SysDict dict);
 
     /**
@@ -62,6 +63,7 @@ public interface DictMapper extends BaseDtoMapper<SysDict, DictDto> {
      * @param dicts
      * @return
      */
+    @Override
     List<DictDto> toDto(List<SysDict> dicts);
 
 }

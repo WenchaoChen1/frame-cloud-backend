@@ -3,6 +3,7 @@ package com.gstdev.cloud.service.system.controller;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.service.system.mapper.vo.SysUserMapper;
+import com.gstdev.cloud.service.system.pojo.base.menu.MenuVo;
 import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.base.user.UserFindAllByQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.user.UserPageQueryCriteria;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
 
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -127,6 +129,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         this.getService().insertAndUpdate(userVoMapper.toEntity(insertUserManageIO));
         return result();
     }
+
     @PostMapping("/update-user-manage")
     @Operation(summary = "新增一条数据")
     public Result updateUserManage(@RequestBody @Validated UpdateUserManageIO updateUserManageIO) {
@@ -135,6 +138,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         this.getService().insertAndUpdate(sysUser);
         return result();
     }
+
     @PostMapping("/insert-user-manage-initialization")
     @Operation(summary = "新增一个用户并创建用户的账户以及角色,部门")
     public Result insertUserManageInitialization(@RequestBody @Validated InsertUserManageInitializationIO userInsertInput) {
@@ -142,7 +146,23 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         return result();
     }
 
+    @GetMapping("/get-user-manage-detail/{id}")
+    @Operation(summary = "get-user-manage-detail")
+    public Result<UserVo> getUserManageDetail(@PathVariable String id) {
+        return findByIdToResult(id);
+    }
 
+    @Operation(summary = "删除一条数据")
+    @DeleteMapping("delete-user-manage/{id}")
+    public Result deleteUserManage(@PathVariable String id) {
+        return deleteByIdToResult(id);
+    }
+
+    @Operation(summary = "删除多条数据")
+    @DeleteMapping("delete-all-user-manage")
+    public Result deleteAllUserManage(List<String> id) {
+        return deleteAllByIdToResult(id);
+    }
 //    @GetMapping("/get-by-id-to-account")
 //    @Operation(summary = "根据id获取当前用户下的所有账户")
 //    public Result<List<AccountListDto>> getByIdToAccount() {

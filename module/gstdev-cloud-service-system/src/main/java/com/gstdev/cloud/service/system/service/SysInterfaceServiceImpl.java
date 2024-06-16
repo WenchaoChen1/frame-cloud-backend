@@ -28,6 +28,7 @@ public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, Strin
         super(sysInterfaceRepository);
         this.toSysInterface = new RequestMappingToSysInterfaceConverter();
     }
+    @Override
     public SysInterfaceRepository getRepository() {
         return sysInterfaceRepository;
     }
@@ -36,6 +37,7 @@ public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, Strin
      *
      * @return SysAuthority列表
      */
+    @Override
     public List<SysInterface> findAllocatable() {
 
         // exist sql 结构示例： SELECT * FROM article WHERE EXISTS (SELECT * FROM user WHERE article.uid = user.uid)
@@ -62,11 +64,13 @@ public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, Strin
         return this.findAll(specification);
     }
 
+    @Override
     public List<SysInterface> storeRequestMappings(Collection<RequestMapping> requestMappings) {
         List<SysInterface> sysAuthorities = toSysInterfaces(requestMappings);
         return saveAllAndFlush(sysAuthorities);
     }
 
+    @Override
     public List<SysInterface> toSysInterfaces(Collection<RequestMapping> requestMappings) {
         if (CollectionUtils.isNotEmpty(requestMappings)) {
             return requestMappings.stream().map(toSysInterface::convert).collect(Collectors.toList());

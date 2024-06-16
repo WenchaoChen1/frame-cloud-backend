@@ -26,6 +26,7 @@ public interface SysPermissionVoMapper extends BaseVoMapper<SysPermissionDto,Sys
 //    SysPermissionVo entityToVo(SysPermission entity);
 
     List<SysPermissionVo> entityToVo(List<SysPermission> entity);
+    SysPermissionVo toVo(SysPermission entity);
     void copy(InsertAndUpdatePermissionManageIO insertAndUpdatePermissionManageIO, @MappingTarget SysPermission sysPermission);
 
 //    default Page<SysPermissionVo> entityToVo(Page<SysPermission> page) {

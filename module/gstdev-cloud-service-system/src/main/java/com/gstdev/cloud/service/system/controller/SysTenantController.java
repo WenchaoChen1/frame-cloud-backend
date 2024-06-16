@@ -14,6 +14,7 @@ import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import com.gstdev.cloud.service.system.mapper.vo.SysTenantMapper;
 import com.gstdev.cloud.service.system.pojo.base.tenant.*;
+import com.gstdev.cloud.service.system.pojo.base.user.UserVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysTenant;
 import com.gstdev.cloud.service.system.pojo.o.sysTenant.InsertTenantManageIO;
 import com.gstdev.cloud.service.system.pojo.o.sysTenant.UpdateTenantManageIO;
@@ -109,6 +110,20 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
         this.getService().insertAndUpdate(sysTenant);
         return result();
     }
-
+    @GetMapping("/get-tenant-manage-detail/{id}")
+    @Operation(summary = "get-tenant-manage-detail")
+    public Result<TenantVo> getTenantManageDetail(@PathVariable String id) {
+        return findByIdToResult(id);
+    }
+    @Operation(summary = "删除一条数据")
+    @DeleteMapping("delete-tenant-manage/{id}")
+    public Result deleteTenantManage(@PathVariable String id) {
+        return deleteByIdToResult(id);
+    }
+    @Operation(summary = "删除多条数据")
+    @DeleteMapping("delete-all-tenant-manage")
+    public Result deleteAllTenantManage(List<String> id) {
+        return deleteAllByIdToResult(id);
+    }
 }
 

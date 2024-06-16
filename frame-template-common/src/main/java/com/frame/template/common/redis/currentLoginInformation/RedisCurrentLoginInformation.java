@@ -10,9 +10,12 @@ public interface RedisCurrentLoginInformation extends BaseRedisCurrentLoginInfor
 
     Result<Object> deleteByTokenCurrentLoginInformation();
 
+    @Override
     CurrentLoginInformation getCurrentLoginInformation();
 
+    @Override
     String getCurrentLoginAccountId();
 
+    @Override
     String getCurrentLoginTenantId();
 }

@@ -36,6 +36,7 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
         this.menuRepository = menuRepository;
     }
 
+    @Override
     public SysMenuRepository getRepository() {
         return menuRepository;
     }
@@ -80,6 +81,7 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
         return findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, menuFindAllByQueryCriteria, criteriaBuilder));
     }
 
+    @Override
     public List<MenuDto> getAccountPermissions(String accountId) {
         SysAccount account = accountRepository.findById(accountId).get();
         MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();

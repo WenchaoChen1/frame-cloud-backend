@@ -27,6 +27,7 @@ public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, Sys
         super(roleRepository, roleMapper);
         this.roleRepository=roleRepository;
     }
+    @Override
     public SysRoleRepository getRepository() {
         return roleRepository;
     }

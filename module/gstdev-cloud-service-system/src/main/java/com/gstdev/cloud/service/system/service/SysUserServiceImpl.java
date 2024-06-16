@@ -42,6 +42,7 @@ public class SysUserServiceImpl extends BaseDtoServiceImpl<SysUser, String, SysU
         super(userRepository, userMapper);
     }
 
+    @Override
     public SysUserRepository getRepository() {
         return userRepository;
     }
@@ -86,6 +87,7 @@ public class SysUserServiceImpl extends BaseDtoServiceImpl<SysUser, String, SysU
 //        return super.insert(user);
 //    }
 
+    @Override
     @Transactional
     public SysUser insertUserManageInitialization(InsertUserManageInitializationIO userInsertInput) {
         SysUser user = userMapper.toEntity(userInsertInput);

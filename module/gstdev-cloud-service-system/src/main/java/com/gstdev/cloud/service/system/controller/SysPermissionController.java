@@ -8,6 +8,7 @@ import com.gstdev.cloud.rest.core.controller.DtoController;
 import com.gstdev.cloud.service.system.mapper.vo.SysPermissionVoMapper;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionDto;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionVo;
+import com.gstdev.cloud.service.system.pojo.base.account.AccountVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
 import com.gstdev.cloud.service.system.pojo.o.sysPermission.InsertAndUpdatePermissionManageIO;
 import com.gstdev.cloud.service.system.pojo.o.sysPermission.PermissionManageQO;
@@ -93,6 +94,13 @@ public class SysPermissionController implements DtoController<SysPermission, Str
 //        return result(sysPermissionVoMapper.toVo(getService().saveToDto(domain)));
     }
 
+
+    @GetMapping("/get-account-manage-detail/{id}")
+    @Operation(summary = "get-account-manage-detail")
+    public Result<SysPermissionVo> getAccountManageDetail(@PathVariable String id) {
+        return result(sysPermissionVoMapper.toVo(this.getService().findById(id)));
+    }
+
     @Idempotent
     @Operation(summary = "删除数据", description = "根据实体ID删除数据，以及相关联的关联数据",
         requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
@@ -100,9 +108,24 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     @Parameters({
         @Parameter(name = "id", required = true, in = ParameterIn.PATH, description = "实体ID，@Id注解对应的实体属性")
     })
+    @Override
     @DeleteMapping("/{id}")
     public Result<String> delete(@PathVariable String id) {
         return DtoController.super.delete(id);
+    }
+
+
+    @Operation(summary = "删除一条数据")
+    @DeleteMapping("delete-permission-manage/{id}")
+    public Result deletePermissionManage(@PathVariable String id) {
+        return DtoController.super.delete(id);
+    }
+
+    @Operation(summary = "删除多条数据")
+    @DeleteMapping("delete-all-permission-manage")
+    public Result deleteAllPermissionManage(List<String> id) {
+        this.getService().deleteAllById(id);
+        return result();
     }
 
     @Operation(summary = "permissionType",

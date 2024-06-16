@@ -22,7 +22,7 @@ import java.util.List;
 
 @Transactional(readOnly = true)
 //public  class SysAccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, SysAccountRepository, SysAccountMapper, AccountDto> implements SysAccountService {
-public  class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String, SysAccountRepository, SysAccountMapper, AccountDto> implements SysAccountService {
+public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String, SysAccountRepository, SysAccountMapper, AccountDto> implements SysAccountService {
 
     @Resource
     private SysUserRepository userRepository;
@@ -37,36 +37,38 @@ public  class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, Strin
     public SysAccountServiceImpl(SysAccountRepository accountRepository, SysAccountMapper accountMapper) {
         super(accountRepository, accountMapper);
     }
+    @Override
     public SysAccountRepository getRepository() {
         return accountRepository;
     }
 
 
-
     @Override
     @Transactional
     public SysAccount insertAccountManageInitialization(InsertAccountManageInitializationIO accountInsertInput) {
-        SysAccount account=new SysAccount();
+        SysAccount account = new SysAccount();
         account.setType(accountInsertInput.getType());
         account.setTenantId(accountInsertInput.getTenantId());
         account.setName(accountInsertInput.getName());
         SysUser user = userRepository.findById(accountInsertInput.getUserId()).get();
         account.setUser(user);
         account.setType(accountInsertInput.getAccountTypeConstants().getCode());
-        if (!ObjectUtils.isEmpty(accountInsertInput.getDepartIds()))
+        if (!ObjectUtils.isEmpty(accountInsertInput.getDepartIds())) {
             account.setDeparts(departRepository.findAllById(accountInsertInput.getDepartIds()));
-        if (!ObjectUtils.isEmpty(accountInsertInput.getRoleIds()))
+        }
+        if (!ObjectUtils.isEmpty(accountInsertInput.getRoleIds())) {
             account.setRoles(roleRepository.findAllById(accountInsertInput.getRoleIds()));
+        }
         SysAccount insert = insert(account);
         return insert;
     }
-
+    @Override
     @Transactional
     public AccountDto insertAccountManageInitializationToDto(InsertAccountManageInitializationIO accountInsertInput) {
         return getMapper().toDto(insertAccountManageInitialization(accountInsertInput));
     }
 
-
+    @Override
     @Transactional()
     public SysAccount save(SysAccount var) {
 //        var.setUpdatedBy(redisCurrentLoginInformation.getCurrentLoginAccountId());

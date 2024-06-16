@@ -2,6 +2,7 @@ package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
 import com.gstdev.cloud.service.system.pojo.base.role.*;
+import com.gstdev.cloud.service.system.pojo.base.tenant.TenantVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysRole;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.service.system.pojo.o.sysRole.InsertRoleManageIO;
@@ -106,6 +107,20 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
         this.getService().insertAndUpdate(sysRole);
         return result();
     }
-
+    @GetMapping("/get-role-manage-detail/{id}")
+    @Operation(summary = "get-role-manage-detail")
+    public Result<RoleVo> getRoleManageDetail(@PathVariable String id) {
+        return findByIdToResult(id);
+    }
+    @Operation(summary = "删除一条数据")
+    @DeleteMapping("delete-role-manage/{id}")
+    public Result deleteRoleManage(@PathVariable String id) {
+        return deleteByIdToResult(id);
+    }
+    @Operation(summary = "删除多条数据")
+    @DeleteMapping("delete-all-role-manage")
+    public Result deleteAllRoleManage(List<String> id) {
+        return deleteAllByIdToResult(id);
+    }
 }
 
