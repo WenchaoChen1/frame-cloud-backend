@@ -8,9 +8,10 @@ import com.gstdev.cloud.service.system.pojo.base.user.UserFindAllByQueryCriteria
 import com.gstdev.cloud.service.system.pojo.base.user.UserPageQueryCriteria;
 import com.gstdev.cloud.service.system.pojo.base.user.UserVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
+import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertUserManageIO;
 import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertUserManageInitializationIO;
 import com.gstdev.cloud.service.system.pojo.o.sysUser.UserManageQO;
-import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertAndUpdateUserManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysUser.UpdateUserManageIO;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserUpdateInput;
 import com.gstdev.cloud.service.system.service.SysUserService;
@@ -120,14 +121,17 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         }, pageable);
     }
 
-    @PostMapping("/insert-and-update-user-manage")
+    @PostMapping("/insert-user-manage")
     @Operation(summary = "新增一条数据")
-    public Result insertAndUpdateUserManage(@RequestBody @Validated InsertAndUpdateUserManageIO insertAndUpdateUserManageIO) {
-        SysUser sysUser = new SysUser();
-        if (!ObjectUtils.isEmpty(insertAndUpdateUserManageIO.getId())) {
-            sysUser = this.getService().findById(insertAndUpdateUserManageIO.getId());
-        }
-        userVoMapper.copy(insertAndUpdateUserManageIO, sysUser);
+    public Result insertUserManage(@RequestBody @Validated InsertUserManageIO insertUserManageIO) {
+        this.getService().insertAndUpdate(userVoMapper.toEntity(insertUserManageIO));
+        return result();
+    }
+    @PostMapping("/update-user-manage")
+    @Operation(summary = "新增一条数据")
+    public Result updateUserManage(@RequestBody @Validated UpdateUserManageIO updateUserManageIO) {
+        SysUser sysUser = this.getService().findById(updateUserManageIO.getId());
+        userVoMapper.copy(updateUserManageIO, sysUser);
         this.getService().insertAndUpdate(sysUser);
         return result();
     }

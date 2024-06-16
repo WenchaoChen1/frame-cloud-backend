@@ -8,7 +8,8 @@ import com.gstdev.cloud.service.system.pojo.base.account.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.service.system.pojo.o.sysAccount.AccountManageQO;
 import com.gstdev.cloud.service.system.pojo.o.sysAccount.InsertAccountManageInitializationIO;
-import com.gstdev.cloud.service.system.pojo.o.sysAccount.InsertAndUpdateAccountManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysAccount.InsertAccountManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysAccount.UpdateAccountManageIO;
 import com.gstdev.cloud.service.system.service.SysAccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
@@ -86,14 +87,17 @@ public class SysAccountController implements POJOController<SysAccount, String, 
         }, pageable);
     }
 
-    @PostMapping("/insert-and-update-account-manage")
+    @PostMapping("/insert-account-manage")
     @Operation(summary = "新增一条数据")
-    public Result insertAndUpdateAccountManage(@RequestBody @Validated InsertAndUpdateAccountManageIO insertAndUpdateAccountManageIO) {
-        SysAccount sysAccount = new SysAccount();
-        if (!ObjectUtils.isEmpty(insertAndUpdateAccountManageIO.getId())) {
-            sysAccount = this.getService().findById(insertAndUpdateAccountManageIO.getId());
-        }
-        accountVoMapper.copy(insertAndUpdateAccountManageIO, sysAccount);
+    public Result insertAccountManage(@RequestBody @Validated InsertAccountManageIO insertAccountManageIO) {
+        this.getService().insertAndUpdate(accountVoMapper.toEntity(insertAccountManageIO));
+        return result();
+    }
+    @PostMapping("/update-account-manage")
+    @Operation(summary = "新增一条数据")
+    public Result updateAccountManage(@RequestBody @Validated UpdateAccountManageIO updateAccountManageIO) {
+        SysAccount sysAccount = this.getService().findById(updateAccountManageIO.getId());
+        accountVoMapper.copy(updateAccountManageIO, sysAccount);
         this.getService().insertAndUpdate(sysAccount);
         return result();
     }

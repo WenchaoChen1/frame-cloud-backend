@@ -14,10 +14,11 @@ import com.gstdev.cloud.service.system.pojo.base.tenant.TenantDto;
 import com.gstdev.cloud.service.system.pojo.base.tenant.TenantInsertInput;
 import com.gstdev.cloud.service.system.pojo.base.tenant.TenantUpdateInput;
 import com.gstdev.cloud.service.system.pojo.base.tenant.TenantVo;
+import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
 import com.gstdev.cloud.service.system.pojo.entity.SysTenant;
-import com.gstdev.cloud.service.system.pojo.entity.SysUser;
-import com.gstdev.cloud.service.system.pojo.o.sysTenant.InsertAndUpdateTenantManageIO;
-import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertAndUpdateUserManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysMenu.InsertMenuManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysTenant.InsertTenantManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysTenant.UpdateTenantManageIO;
 import org.mapstruct.*;
 
 
@@ -25,11 +26,13 @@ import org.mapstruct.*;
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface SysTenantMapper extends BaseTreeMapper<SysTenant, TenantDto, TenantVo, TenantInsertInput, TenantUpdateInput> {
-//    TenantInsertInput toTenantInsertInput(TenantLoginInferiorInsertInput tenantLoginInferiorInsertInput);
+    //    TenantInsertInput toTenantInsertInput(TenantLoginInferiorInsertInput tenantLoginInferiorInsertInput);
 //
 //    TenantUpdateInput toTenantInsertUpdate(TenantLoginInferiorUpdateInput tenantLoginInferiorUpdateInput);
 //
-void copy(InsertAndUpdateTenantManageIO insertAndUpdateTenantManageIO, @MappingTarget SysTenant sysTenant);
+    SysTenant toEntity(InsertTenantManageIO insertTenantManageIO);
+
+    void copy(UpdateTenantManageIO updateTenantManageIO, @MappingTarget SysTenant sysTenant);
 
 }
 

@@ -14,7 +14,8 @@ import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
 import com.gstdev.cloud.service.system.pojo.base.user.UserVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
 import com.gstdev.cloud.service.system.pojo.entity.SysUser;
-import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertAndUpdateUserManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertUserManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysUser.UpdateUserManageIO;
 import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertUserManageInitializationIO;
 import com.gstdev.cloud.service.system.pojo.vo.user.AccountListDto;
 import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
@@ -32,9 +33,10 @@ public interface SysUserMapper extends BasePOJOMapper<SysUser, UserDto, UserVo, 
 //
 //    UserUpdateInput toUserUpdateInput(UserLoginInferiorUpdateInput userLoginInferiorUpdateInput);
 //    SysUser toEntity(insertAndUpdateUserManageIO insertUserManageInput);
-    SysUser toEntity(InsertUserManageInitializationIO insertUserManageInput);
+    SysUser toEntity(InsertUserManageIO insertUserManageInput);
+    SysUser toEntity(InsertUserManageInitializationIO insertUserManageInitializationIO);
 
-    void copy(InsertAndUpdateUserManageIO insertAndUpdateUserManageIO, @MappingTarget SysUser sysUser);
+    void copy(UpdateUserManageIO updateUserManageIO, @MappingTarget SysUser sysUser);
 
     List<AccountListDto> accountListToDto(List<SysAccount> accountList);
 }

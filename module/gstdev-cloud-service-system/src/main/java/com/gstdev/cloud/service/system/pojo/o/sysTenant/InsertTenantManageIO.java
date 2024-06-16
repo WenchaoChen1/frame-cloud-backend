@@ -1,6 +1,5 @@
 package com.gstdev.cloud.service.system.pojo.o.sysTenant;
 
-import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
@@ -8,9 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class InsertAndUpdateTenantManageIO {
-    private String id;
-
+public class InsertTenantManageIO {
     @Schema(title = "parentId 不能为空", required = true)
     @NotEmpty
     private String parentId;

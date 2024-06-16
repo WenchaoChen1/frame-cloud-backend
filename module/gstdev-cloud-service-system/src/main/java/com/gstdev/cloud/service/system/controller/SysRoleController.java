@@ -4,7 +4,8 @@ import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
 import com.gstdev.cloud.service.system.pojo.base.role.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysRole;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.service.system.pojo.o.sysRole.InsertAndUpdateRoleManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysRole.InsertRoleManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysRole.UpdateRoleManageIO;
 import com.gstdev.cloud.service.system.service.SysRoleService;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
@@ -90,14 +91,18 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
 
     // ********************************* Role Manage *****************************************
-    @PostMapping("/insert-and-update-role-manage")
+    @PostMapping("/insert-role-manage")
     @Operation(summary = "新增一条数据")
-    public Result insertAndUpdateRoleManage(@RequestBody @Validated InsertAndUpdateRoleManageIO insertAndUpdateRoleManageIO) {
-        SysRole sysRole = new SysRole();
-        if (!ObjectUtils.isEmpty(insertAndUpdateRoleManageIO.getId())) {
-            sysRole = this.getService().findById(insertAndUpdateRoleManageIO.getId());
-        }
-        roleVoMapper.copy(insertAndUpdateRoleManageIO, sysRole);
+    public Result insertRoleManage(@RequestBody @Validated InsertRoleManageIO insertRoleManageIO) {
+        this.getService().insertAndUpdate(roleVoMapper.toEntity(insertRoleManageIO));
+        return result();
+    }
+
+    @PostMapping("/update-role-manage")
+    @Operation(summary = "新增一条数据")
+    public Result updateRoleManage(@RequestBody @Validated UpdateRoleManageIO updateRoleManageIO) {
+        SysRole sysRole  = this.getService().findById(updateRoleManageIO.getId());
+        roleVoMapper.copy(updateRoleManageIO, sysRole);
         this.getService().insertAndUpdate(sysRole);
         return result();
     }

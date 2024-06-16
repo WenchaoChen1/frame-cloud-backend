@@ -15,7 +15,8 @@ import com.gstdev.cloud.rest.core.controller.TreeController;
 import com.gstdev.cloud.service.system.mapper.vo.SysTenantMapper;
 import com.gstdev.cloud.service.system.pojo.base.tenant.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysTenant;
-import com.gstdev.cloud.service.system.pojo.o.sysTenant.InsertAndUpdateTenantManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysTenant.InsertTenantManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysTenant.UpdateTenantManageIO;
 import com.gstdev.cloud.service.system.pojo.o.sysTenant.TenantByIdToTreeQO;
 import com.gstdev.cloud.service.system.service.SysTenantService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -94,14 +95,17 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
 //        }, pageable);
 //    }
 
-    @PostMapping("/insert-and-update-tenant-manage")
+    @PostMapping("/insert-tenant-manage")
     @Operation(summary = "新增一条数据")
-    public Result insertAndUpdateTenantManage(@RequestBody @Validated InsertAndUpdateTenantManageIO insertAndUpdateTenantManageIO) {
-        SysTenant sysTenant = new SysTenant();
-        if (!ObjectUtils.isEmpty(insertAndUpdateTenantManageIO.getId())) {
-            sysTenant = this.getService().findById(insertAndUpdateTenantManageIO.getId());
-        }
-        tenantVoMapper.copy(insertAndUpdateTenantManageIO, sysTenant);
+    public Result insertTenantManage(@RequestBody @Validated InsertTenantManageIO insertTenantManageIO) {
+        this.getService().insertAndUpdate(tenantVoMapper.toEntity(insertTenantManageIO));
+        return result();
+    }
+    @PostMapping("/update-tenant-manage")
+    @Operation(summary = "新增一条数据")
+    public Result updateTenantManage(@RequestBody @Validated UpdateTenantManageIO updateTenantManageIO) {
+        SysTenant sysTenant = this.getService().findById(updateTenantManageIO.getId());
+        tenantVoMapper.copy(updateTenantManageIO, sysTenant);
         this.getService().insertAndUpdate(sysTenant);
         return result();
     }

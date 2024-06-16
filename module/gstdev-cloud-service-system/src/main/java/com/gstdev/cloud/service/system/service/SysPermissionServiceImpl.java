@@ -42,6 +42,12 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
     }
 
     public void permissionInit(List<SysAttribute> attributeList) {
+        SysPermission allPermissionAll = new SysPermission();
+        allPermissionAll.setPermissionId(generateKey(Collections.singletonList("all")));
+        allPermissionAll.setPermissionCode(generateKey(Collections.singletonList("all")));
+        allPermissionAll.setPermissionName("all");
+        allPermissionAll.setPermissionType("all");
+        getRepository().saveAndFlush(allPermissionAll);
         this.updateStatusByPermissionType(DataItemStatus.EXPIRED, "generateCorrelatedKeysService");
         Map<String, List<SysAttribute>> attributeMap = attributeList.stream()
             .collect(Collectors.groupingBy(SysAttribute::getServiceId));
@@ -62,14 +68,15 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
             sysPermission.setPermissionType("service");
             sysPermission.setPermissionName(key);
             value.forEach(attribute -> attribute.addPermissions(sysPermission));
+            value.forEach(attribute -> attribute.addPermissions(allPermissionAll));
             permissionList.add(sysPermission);
         }
 
-        SysPermission allPermissionAll = new SysPermission();
-        allPermissionAll.setPermissionId(generateKey(Collections.singletonList("all")));
-        allPermissionAll.setPermissionCode(generateKey(Collections.singletonList("all")));
-        allPermissionAll.setPermissionName("all");
-        allPermissionAll.setPermissionType("all");
+//        SysPermission allPermissionAll = new SysPermission();
+//        allPermissionAll.setPermissionId(generateKey(Collections.singletonList("all")));
+//        allPermissionAll.setPermissionCode(generateKey(Collections.singletonList("all")));
+//        allPermissionAll.setPermissionName("all");
+//        allPermissionAll.setPermissionType("all");
         if(!getRepository().existsById(allPermissionAll.getPermissionId())){
             permissionList.add(allPermissionAll);
         }

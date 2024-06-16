@@ -14,10 +14,14 @@ import com.gstdev.cloud.rest.core.controller.TreeController;
 import com.gstdev.cloud.service.system.mapper.vo.SysMenuMapper;
 import com.gstdev.cloud.service.system.pojo.base.menu.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
+import com.gstdev.cloud.service.system.pojo.o.sysMenu.InsertMenuManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysMenu.UpdateMenuManageIO;
 import com.gstdev.cloud.service.system.service.SysMenuService;
 import com.gstdev.cloud.service.system.service.SysRoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
+import org.springframework.util.ObjectUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,7 +34,7 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     private SysMenuService menuService;
 
     @Resource
-    private SysMenuMapper menuVoMapper;
+    private SysMenuMapper menuMapper;
 
     @Resource
     private SysRoleService roleService;
@@ -48,7 +52,7 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
 
     @Override
     public SysMenuMapper getMapper() {
-        return menuVoMapper;
+        return menuMapper;
     }
 
 
@@ -65,17 +69,17 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
         return findByIdToResult(id);
     }
 
-    @PostMapping
-    @Operation(summary = "新增一条数据")
-    public Result<MenuVo> insert(@RequestBody MenuInsertInput menuInsertInput) {
-        return insertToResult(menuInsertInput);
-    }
-
-    @PutMapping
-    @Operation(summary = "修改一条数据")
-    public Result<MenuVo> update(@RequestBody MenuUpdateInput menuUpdateInput) {
-        return updateToResult(menuUpdateInput);
-    }
+//    @PostMapping
+//    @Operation(summary = "新增一条数据")
+//    public Result<MenuVo> insert(@RequestBody MenuInsertInput menuInsertInput) {
+//        return insertToResult(menuInsertInput);
+//    }
+//
+//    @PutMapping
+//    @Operation(summary = "修改一条数据")
+//    public Result<MenuVo> update(@RequestBody MenuUpdateInput menuUpdateInput) {
+//        return updateToResult(menuUpdateInput);
+//    }
 
     @Operation(summary = "")
     @DeleteMapping
@@ -106,6 +110,18 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
 
 
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
-
-
+    @PostMapping("/insert-menu-manage")
+    @Operation(summary = "insert-menu-manage")
+    public Result insertAMenuManage(@RequestBody @Validated InsertMenuManageIO insertMenuManageIO) {
+        this.getService().insertAndUpdate(menuMapper.toEntity(insertMenuManageIO));
+        return result();
+    }
+    @PutMapping("/update-menu-manage")
+    @Operation(summary = "update-menu-manage")
+    public Result updateMenuManage(@RequestBody @Validated UpdateMenuManageIO updateMenuManageIO) {
+        SysMenu sysMenu = this.getService().findById(updateMenuManageIO.getId());
+        menuMapper.copy(updateMenuManageIO, sysMenu);
+        this.getService().insertAndUpdate(sysMenu);
+        return result();
+    }
 }

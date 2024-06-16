@@ -37,6 +37,7 @@ public class SysUserToSecurityUserConverter implements Converter<SysUser, Defaul
         for (SysAccount sysAccount : sysUser.getAccount()) {
             if (sysAccount.getType().equals(AccountTypeConstants.SUPER.getCode())){
                 authorities.add(new FrameGrantedAuthority("all"));
+                authorities.add(new FrameGrantedAuthority("5ef5ef0364b6939c4ca61f34b393f7b368d1be8619647aaf83d5b395919ab629"));
             }
         }
 
