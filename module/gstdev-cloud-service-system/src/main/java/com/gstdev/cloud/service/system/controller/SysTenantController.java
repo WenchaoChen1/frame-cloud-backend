@@ -9,26 +9,22 @@
 
 package com.gstdev.cloud.service.system.controller;
 
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
+import com.gstdev.cloud.rest.core.controller.TreeController;
 import com.gstdev.cloud.service.system.mapper.vo.SysTenantMapper;
 import com.gstdev.cloud.service.system.pojo.base.tenant.*;
 import com.gstdev.cloud.service.system.pojo.entity.SysTenant;
-import com.gstdev.cloud.service.system.pojo.o.sysTenant.TenantByIdToTreeQO;
-import com.gstdev.cloud.service.system.pojo.o.sysTenant.TenantManageQO;
 import com.gstdev.cloud.service.system.pojo.o.sysTenant.InsertAndUpdateTenantManageIO;
+import com.gstdev.cloud.service.system.pojo.o.sysTenant.TenantByIdToTreeQO;
 import com.gstdev.cloud.service.system.service.SysTenantService;
-import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.data.domain.Pageable;
+import jakarta.annotation.Resource;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.annotation.Resource;
-
 import java.util.List;
-import java.util.Map;
 
 //@ResponseBody
 @RestController
@@ -81,25 +77,12 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
     public Result<TenantVo> getById(String id) {
         return findByIdToResult(id);
     }
-//
-//    @PostMapping
-//    @Operation(summary = "新增一条数据")
-//    public Result<TenantVo> insert(@RequestBody @Validated TenantInsertInput tenantInsertInput) {
-//        return insertToResult(tenantInsertInput);
-//    }
-//
-//    @PutMapping
-//    @Operation(summary = "修改一条数据")
-//    public Result<TenantVo> update(@RequestBody @Validated TenantUpdateInput updateInput) {
-//        return updateToResult(updateInput);
-//    }
 
     @Operation(summary = "")
     @DeleteMapping
     public Result<TenantVo> deleteById(String id) {
         return deleteByIdToResult(id);
     }
-
 
     /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
     // ********************************* Tenant Manage *****************************************
@@ -122,12 +105,6 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
         this.getService().insertAndUpdate(sysTenant);
         return result();
     }
-//    @PostMapping("/insert-tenant-manage-initialization")
-//    @Operation(summary = "新增一个账户并创建角色,部门")
-//    public Result insertTenantManageInitialization(@RequestBody @Validated InsertTenantManageInitializationIO userInsertInput) {
-//        getService().insertTenantManageInitializationToDto(userInsertInput);
-//        return result();
-//    }
 
 }
 
