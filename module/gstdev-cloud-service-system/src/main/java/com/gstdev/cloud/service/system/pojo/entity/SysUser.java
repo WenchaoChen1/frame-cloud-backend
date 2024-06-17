@@ -13,17 +13,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
-
-import jakarta.persistence.*;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 
@@ -32,8 +27,8 @@ import java.util.List;
 @Entity
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 @Table(name = "sys_user", schema = "public")
-@Where(clause = "deleted = 0")
-@SQLDelete(sql = "UPDATE public.sys_user SET deleted=1 WHERE id =?")
+//@Where(clause = "deleted = 0")
+//@SQLDelete(sql = "UPDATE public.sys_user SET deleted=1 WHERE id =?")
 public class SysUser extends BasePOJOEntity {
     @Schema(title = "用户名")
     @Column(name = "username", length = 128, nullable = false, unique = true)

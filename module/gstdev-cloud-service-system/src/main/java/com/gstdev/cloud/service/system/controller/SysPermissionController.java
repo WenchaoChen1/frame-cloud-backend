@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.annotation.Idempotent;
@@ -10,8 +11,8 @@ import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionDto;
 import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionVo;
 import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
 import com.gstdev.cloud.service.system.pojo.o.sysPermission.InsertPermissionManageIO;
-import com.gstdev.cloud.service.system.pojo.o.sysPermission.UpdatePermissionManageIO;
 import com.gstdev.cloud.service.system.pojo.o.sysPermission.PermissionManageQO;
+import com.gstdev.cloud.service.system.pojo.o.sysPermission.UpdatePermissionManageIO;
 import com.gstdev.cloud.service.system.service.SysPermissionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -21,8 +22,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.annotation.Resource;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -68,9 +67,9 @@ public class SysPermissionController implements DtoController<SysPermission, Str
 
     @AccessLimited
     @GetMapping("/get-permission-manage-page")
-    @Operation(summary = "获取所有的用户,分页")
-    public Result<Map<String, Object>> getPermissionManagePage(PermissionManageQO permissionManageQO, Pageable pageable) {
-        Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, permissionManageQO, criteriaBuilder), pageable);
+    @Operation(summary = "获取所有的权限,分页")
+    public Result<Map<String, Object>> getPermissionManagePage(PermissionManageQO permissionManageQO, BasePage basePage) {
+        Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, permissionManageQO, criteriaBuilder), basePage);
         Page<SysPermissionVo> SysPermissionVos = sysPermissionVoMapper.toVo(byPageToDto);
         return result(SysPermissionVos);
     }
