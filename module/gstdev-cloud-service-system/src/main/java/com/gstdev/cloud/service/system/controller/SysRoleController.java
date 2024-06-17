@@ -1,18 +1,20 @@
 package com.gstdev.cloud.service.system.controller;
 
-import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.data.core.utils.QueryUtils;
+import com.gstdev.cloud.rest.core.controller.TreeController;
 import com.gstdev.cloud.service.system.domain.base.role.*;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
-import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.InsertRoleManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysRole.RoleManageTreeQO;
+import com.gstdev.cloud.service.system.domain.pojo.sysRole.RoleManageTreeVo;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.UpdateRoleManageIO;
+import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
 import com.gstdev.cloud.service.system.service.SysRoleService;
-import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.annotation.Resource;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import jakarta.annotation.Resource;
 
 import java.util.List;
 
@@ -88,8 +90,9 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
 
     @GetMapping("/get-role-manage-tree")
     @Operation(summary = "根据筛选获取所有角色，返回树状结构")
-    public Result<List<RoleVo>> getRoleManageTree(RoleFindAllByQueryCriteria roleFindAllByQueryCriteria) {
-        return findAllByQueryCriteriaToResultToTree(roleFindAllByQueryCriteria);
+    public Result<List<RoleManageTreeVo>> getRoleManageTree(RoleManageTreeQO queryCriteria) {
+        List<RoleDto> allByQueryCriteriaToDtoToTree = this.getService().findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
+        return this.result(this.getMapper().toRoleManageTreeVo(allByQueryCriteriaToDtoToTree));
     }
 
     @GetMapping("/get-role-manage-detail/{id}")
