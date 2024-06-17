@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @Configuration(proxyBeanMethods = false)
 @EntityScan(basePackages = {
-    "com.gstdev.cloud.service.system.pojo.entity",
+    "com.gstdev.cloud.service.system.domain.entity",
 })
 @EnableJpaRepositories(basePackages = {
     "com.gstdev.cloud.service.system.repository",
