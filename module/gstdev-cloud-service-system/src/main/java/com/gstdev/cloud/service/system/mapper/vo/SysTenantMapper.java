@@ -10,15 +10,13 @@
 package com.gstdev.cloud.service.system.mapper.vo;
 
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
-import com.gstdev.cloud.service.system.pojo.base.tenant.TenantDto;
-import com.gstdev.cloud.service.system.pojo.base.tenant.TenantInsertInput;
-import com.gstdev.cloud.service.system.pojo.base.tenant.TenantUpdateInput;
-import com.gstdev.cloud.service.system.pojo.base.tenant.TenantVo;
-import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
-import com.gstdev.cloud.service.system.pojo.entity.SysTenant;
-import com.gstdev.cloud.service.system.pojo.o.sysMenu.InsertMenuManageIO;
-import com.gstdev.cloud.service.system.pojo.o.sysTenant.InsertTenantManageIO;
-import com.gstdev.cloud.service.system.pojo.o.sysTenant.UpdateTenantManageIO;
+import com.gstdev.cloud.service.system.domain.base.tenant.TenantDto;
+import com.gstdev.cloud.service.system.domain.base.tenant.TenantInsertInput;
+import com.gstdev.cloud.service.system.domain.base.tenant.TenantUpdateInput;
+import com.gstdev.cloud.service.system.domain.base.tenant.TenantVo;
+import com.gstdev.cloud.service.system.domain.entity.SysTenant;
+import com.gstdev.cloud.service.system.domain.pojo.sysTenant.InsertTenantManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysTenant.UpdateTenantManageIO;
 import org.mapstruct.*;
 
 

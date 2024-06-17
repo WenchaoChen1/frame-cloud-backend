@@ -12,8 +12,8 @@ package com.gstdev.cloud.service.system.service;
 
 import cn.hutool.core.lang.UUID;
 import com.gstdev.cloud.service.system.mapper.vo.SysTenantMapper;
-import com.gstdev.cloud.service.system.pojo.base.tenant.*;
-import com.gstdev.cloud.service.system.pojo.entity.SysTenant;
+import com.gstdev.cloud.service.system.domain.base.tenant.*;
+import com.gstdev.cloud.service.system.domain.entity.SysTenant;
 import com.gstdev.cloud.service.system.repository.SysTenantRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import jakarta.annotation.Resource;

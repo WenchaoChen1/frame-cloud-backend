@@ -2,10 +2,10 @@ package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
-import com.gstdev.cloud.service.system.pojo.base.role.*;
-import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
-import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
-import com.gstdev.cloud.service.system.pojo.entity.SysRole;
+import com.gstdev.cloud.service.system.domain.base.role.*;
+import com.gstdev.cloud.service.system.domain.entity.SysMenu;
+import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.repository.SysRTenantMenuRepository;
 import com.gstdev.cloud.service.system.repository.SysRoleRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;

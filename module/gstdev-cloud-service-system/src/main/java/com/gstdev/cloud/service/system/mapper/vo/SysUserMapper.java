@@ -10,16 +10,16 @@
 package com.gstdev.cloud.service.system.mapper.vo;
 
 import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
-import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
-import com.gstdev.cloud.service.system.pojo.base.user.UserVo;
-import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
-import com.gstdev.cloud.service.system.pojo.entity.SysUser;
-import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertUserManageIO;
-import com.gstdev.cloud.service.system.pojo.o.sysUser.UpdateUserManageIO;
-import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertUserManageInitializationIO;
-import com.gstdev.cloud.service.system.pojo.vo.user.AccountListDto;
-import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
-import com.gstdev.cloud.service.system.pojo.vo.user.UserUpdateInput;
+import com.gstdev.cloud.service.system.domain.base.user.UserDto;
+import com.gstdev.cloud.service.system.domain.base.user.UserVo;
+import com.gstdev.cloud.service.system.domain.entity.SysAccount;
+import com.gstdev.cloud.service.system.domain.entity.SysUser;
+import com.gstdev.cloud.service.system.domain.pojo.sysUser.InsertUserManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysUser.UpdateUserManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysUser.InsertUserManageInitializationIO;
+import com.gstdev.cloud.service.system.domain.vo.user.AccountListDto;
+import com.gstdev.cloud.service.system.domain.vo.user.UserInsertInput;
+import com.gstdev.cloud.service.system.domain.vo.user.UserUpdateInput;
 import org.mapstruct.*;
 
 import java.util.List;

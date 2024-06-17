@@ -1,9 +1,9 @@
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseTreeService;
-import com.gstdev.cloud.service.system.pojo.base.menu.*;
+import com.gstdev.cloud.service.system.domain.base.menu.*;
 
 import java.util.List;
 

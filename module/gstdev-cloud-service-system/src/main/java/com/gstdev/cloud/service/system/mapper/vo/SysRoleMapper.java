@@ -10,13 +10,13 @@
 package com.gstdev.cloud.service.system.mapper.vo;
 
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
-import com.gstdev.cloud.service.system.pojo.base.role.RoleDto;
-import com.gstdev.cloud.service.system.pojo.base.role.RoleInsertInput;
-import com.gstdev.cloud.service.system.pojo.base.role.RoleUpdateInput;
-import com.gstdev.cloud.service.system.pojo.base.role.RoleVo;
-import com.gstdev.cloud.service.system.pojo.entity.SysRole;
-import com.gstdev.cloud.service.system.pojo.o.sysRole.InsertRoleManageIO;
-import com.gstdev.cloud.service.system.pojo.o.sysRole.UpdateRoleManageIO;
+import com.gstdev.cloud.service.system.domain.base.role.RoleDto;
+import com.gstdev.cloud.service.system.domain.base.role.RoleInsertInput;
+import com.gstdev.cloud.service.system.domain.base.role.RoleUpdateInput;
+import com.gstdev.cloud.service.system.domain.base.role.RoleVo;
+import com.gstdev.cloud.service.system.domain.entity.SysRole;
+import com.gstdev.cloud.service.system.domain.pojo.sysRole.InsertRoleManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysRole.UpdateRoleManageIO;
 import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,

@@ -10,11 +10,11 @@
 package com.gstdev.cloud.service.system.mapper.vo;
 
 import com.gstdev.cloud.data.core.mapper.BaseVoMapper;
-import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionDto;
-import com.gstdev.cloud.service.system.pojo.base.SysPermission.SysPermissionVo;
-import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
-import com.gstdev.cloud.service.system.pojo.o.sysPermission.InsertPermissionManageIO;
-import com.gstdev.cloud.service.system.pojo.o.sysPermission.UpdatePermissionManageIO;
+import com.gstdev.cloud.service.system.domain.base.SysPermission.SysPermissionDto;
+import com.gstdev.cloud.service.system.domain.base.SysPermission.SysPermissionVo;
+import com.gstdev.cloud.service.system.domain.entity.SysPermission;
+import com.gstdev.cloud.service.system.domain.pojo.sysPermission.InsertPermissionManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysPermission.UpdatePermissionManageIO;
 import org.mapstruct.*;
 
 import java.util.List;

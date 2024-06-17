@@ -4,9 +4,8 @@ package com.frame.template.autoconfigure.service.system.processor;
 import com.frame.template.autoconfigure.service.system.converter.SysAttributeToSecurityAttributeConverter;
 import com.frame.template.autoconfigure.service.system.converter.SysInterfacesToSysAttributesConverter;
 import com.gstdev.cloud.service.common.autoconfigure.bus.RemoteSecurityMetadataSyncEvent;
-import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
-import com.gstdev.cloud.service.system.pojo.entity.SysInterface;
-import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
+import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
+import com.gstdev.cloud.service.system.domain.entity.SysInterface;
 import com.gstdev.cloud.service.system.service.SysInterfaceService;
 import com.gstdev.cloud.service.system.service.SysPermissionService;
 import com.gstdev.cloud.base.core.exception.transaction.TransactionalRollbackException;
@@ -25,7 +24,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * <p>Description: SecurityMetadata数据处理器 </p>

@@ -10,7 +10,7 @@
 package com.gstdev.cloud.service.system.repository;
 
 
-import com.gstdev.cloud.service.system.pojo.entity.SysTenant;
+import com.gstdev.cloud.service.system.domain.entity.SysTenant;
 import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 

@@ -9,14 +9,11 @@
 
 package com.gstdev.cloud.service.system.mapper;
 
-import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictDto;
-import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictModifyInput;
-import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictSaveInput;
+import com.gstdev.cloud.service.system.domain.vo.TenantDict.TenantDictDto;
+import com.gstdev.cloud.service.system.domain.vo.TenantDict.TenantDictModifyInput;
+import com.gstdev.cloud.service.system.domain.vo.TenantDict.TenantDictSaveInput;
 import com.gstdev.cloud.data.core.mapper.AbstractMapper;
-import com.gstdev.cloud.service.system.pojo.entity.TenantDict;
-import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictDto;
-import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictModifyInput;
-import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictSaveInput;
+import com.gstdev.cloud.service.system.domain.entity.TenantDict;
 import org.mapstruct.*;
 
 import java.util.List;

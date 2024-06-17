@@ -9,13 +9,8 @@
 
 package com.gstdev.cloud.service.system.mapper.vo;
 
-import com.gstdev.cloud.service.system.pojo.base.SysAttribute.SysAttributeVo;
-import com.gstdev.cloud.service.system.pojo.base.account.AccountDto;
-import com.gstdev.cloud.service.system.pojo.base.account.AccountVo;
-import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
-import com.gstdev.cloud.data.core.mapper.BaseVoMapper;
-import com.gstdev.cloud.service.system.pojo.base.SysAttribute.SysAttributeVo;
-import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
+import com.gstdev.cloud.service.system.domain.base.SysAttribute.SysAttributeVo;
+import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;

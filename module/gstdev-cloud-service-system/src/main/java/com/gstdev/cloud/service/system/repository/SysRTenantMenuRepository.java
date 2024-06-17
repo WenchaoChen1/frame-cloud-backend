@@ -9,8 +9,8 @@
 
 package com.gstdev.cloud.service.system.repository;
 
-import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
-import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysMenu;
+import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

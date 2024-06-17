@@ -10,10 +10,10 @@
 package com.gstdev.cloud.service.system.mapper.vo;
 
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
-import com.gstdev.cloud.service.system.pojo.base.depart.*;
-import com.gstdev.cloud.service.system.pojo.base.depart.DepartDto;
-import com.gstdev.cloud.service.system.pojo.base.depart.DepartVo;
-import com.gstdev.cloud.service.system.pojo.entity.SysDepart;
+import com.gstdev.cloud.service.system.domain.base.depart.*;
+import com.gstdev.cloud.service.system.domain.base.depart.DepartDto;
+import com.gstdev.cloud.service.system.domain.base.depart.DepartVo;
+import com.gstdev.cloud.service.system.domain.entity.SysDepart;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;

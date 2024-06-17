@@ -11,8 +11,8 @@ package com.gstdev.cloud.service.system.mapper;
 
 
 import com.gstdev.cloud.data.core.mapper.BaseDtoMapper;
-import com.gstdev.cloud.service.system.pojo.base.depart.DepartDto;
-import com.gstdev.cloud.service.system.pojo.entity.SysDepart;
+import com.gstdev.cloud.service.system.domain.base.depart.DepartDto;
+import com.gstdev.cloud.service.system.domain.entity.SysDepart;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;

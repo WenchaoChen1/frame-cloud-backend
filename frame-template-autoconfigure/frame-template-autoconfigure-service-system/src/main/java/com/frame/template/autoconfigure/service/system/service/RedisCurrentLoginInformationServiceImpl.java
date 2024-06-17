@@ -2,7 +2,7 @@ package com.frame.template.autoconfigure.service.system.service;
 
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
-import com.gstdev.cloud.service.system.pojo.base.account.AccountDto;
+import com.gstdev.cloud.service.system.domain.base.account.AccountDto;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.exception.CommonException;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;

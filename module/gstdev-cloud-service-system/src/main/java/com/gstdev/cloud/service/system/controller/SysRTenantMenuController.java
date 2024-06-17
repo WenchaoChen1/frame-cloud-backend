@@ -11,8 +11,8 @@ package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.service.system.mapper.vo.RTenantMenuVoMapper;
-import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.*;
-import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.domain.base.rTenantMenu.*;
+import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
 import com.gstdev.cloud.service.system.service.SysRTenantMenuService;
 import com.gstdev.cloud.base.definition.domain.Result;
 

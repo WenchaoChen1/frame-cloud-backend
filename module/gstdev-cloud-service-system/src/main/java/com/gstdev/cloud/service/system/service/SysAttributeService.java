@@ -1,6 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
+import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.data.core.service.BaseService;
 
 import java.util.List;

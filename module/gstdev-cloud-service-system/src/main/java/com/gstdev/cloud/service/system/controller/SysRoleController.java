@@ -1,16 +1,14 @@
 package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
-import com.gstdev.cloud.service.system.pojo.base.role.*;
-import com.gstdev.cloud.service.system.pojo.base.tenant.TenantVo;
-import com.gstdev.cloud.service.system.pojo.entity.SysRole;
+import com.gstdev.cloud.service.system.domain.base.role.*;
+import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.service.system.pojo.o.sysRole.InsertRoleManageIO;
-import com.gstdev.cloud.service.system.pojo.o.sysRole.UpdateRoleManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysRole.InsertRoleManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysRole.UpdateRoleManageIO;
 import com.gstdev.cloud.service.system.service.SysRoleService;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

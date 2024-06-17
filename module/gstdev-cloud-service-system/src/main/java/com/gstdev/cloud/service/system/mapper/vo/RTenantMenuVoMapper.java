@@ -10,18 +10,14 @@
 package com.gstdev.cloud.service.system.mapper.vo;
 
 import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
-import com.gstdev.cloud.service.system.pojo.base.menu.MenuDto;
-import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.*;
-import com.gstdev.cloud.data.core.mapper.BaseVoMapper;
-import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.RTenantMenuDto;
-import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.RTenantMenuVo;
-import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.domain.base.rTenantMenu.*;
+import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuDto;
+import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuVo;
+import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.ReportingPolicy;
-
-import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,

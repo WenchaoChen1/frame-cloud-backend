@@ -1,6 +1,6 @@
 package com.gstdev.cloud.service.system.repository;
 
-import com.gstdev.cloud.service.system.pojo.entity.SysUser;
+import com.gstdev.cloud.service.system.domain.entity.SysUser;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 
 import java.util.Optional;

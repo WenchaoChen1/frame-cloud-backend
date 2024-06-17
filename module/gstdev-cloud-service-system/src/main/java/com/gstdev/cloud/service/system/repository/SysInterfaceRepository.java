@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.repository;
 
 
-import com.gstdev.cloud.service.system.pojo.entity.SysInterface;
+import com.gstdev.cloud.service.system.domain.entity.SysInterface;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 
 /**

@@ -10,16 +10,10 @@
 package com.gstdev.cloud.service.system.mapper;
 
 import com.gstdev.cloud.data.core.mapper.BaseDtoMapper;
-import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.*;
-import com.gstdev.cloud.service.system.pojo.vo.RTenantMenu.RTenantMenuModifyInput;
-import com.gstdev.cloud.service.system.pojo.vo.RTenantMenu.RTenantMenuSaveInput;
-import com.gstdev.cloud.service.system.pojo.entity.RTenantMenu;
-import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
-import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.RTenantMenuDto;
-import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.RTenantMenuInsertInput;
-import com.gstdev.cloud.service.system.pojo.base.rTenantMenu.RTenantMenuUpdateInput;
-import com.gstdev.cloud.service.system.pojo.vo.RTenantMenu.RTenantMenuModifyInput;
-import com.gstdev.cloud.service.system.pojo.vo.RTenantMenu.RTenantMenuSaveInput;
+import com.gstdev.cloud.service.system.domain.vo.RTenantMenu.RTenantMenuModifyInput;
+import com.gstdev.cloud.service.system.domain.vo.RTenantMenu.RTenantMenuSaveInput;
+import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuDto;
 import org.mapstruct.*;
 
 import java.util.List;

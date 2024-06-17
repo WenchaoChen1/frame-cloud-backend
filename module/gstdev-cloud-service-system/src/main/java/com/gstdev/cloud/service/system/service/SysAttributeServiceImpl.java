@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
-import com.gstdev.cloud.service.system.pojo.entity.SysPermission;
+import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
+import com.gstdev.cloud.service.system.domain.entity.SysPermission;
 import com.gstdev.cloud.service.system.repository.SysAttributeRepository;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import jakarta.annotation.Resource;

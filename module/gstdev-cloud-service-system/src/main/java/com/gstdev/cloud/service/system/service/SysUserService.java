@@ -1,11 +1,10 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
-import com.gstdev.cloud.service.system.pojo.base.user.UserDto;
-import com.gstdev.cloud.service.system.pojo.entity.SysUser;
-import com.gstdev.cloud.service.system.pojo.o.sysUser.InsertUserManageInitializationIO;
-import com.gstdev.cloud.service.system.pojo.vo.user.UserInsertInput;
-import com.gstdev.cloud.service.system.pojo.vo.user.AccountListDto;
+import com.gstdev.cloud.service.system.domain.base.user.UserDto;
+import com.gstdev.cloud.service.system.domain.entity.SysUser;
+import com.gstdev.cloud.service.system.domain.pojo.sysUser.InsertUserManageInitializationIO;
+import com.gstdev.cloud.service.system.domain.vo.user.AccountListDto;
 import com.gstdev.cloud.data.core.service.BasePOJOService;
 
 import java.util.List;

@@ -10,14 +10,14 @@
 package com.gstdev.cloud.service.system.mapper.vo;
 
 import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
-import com.gstdev.cloud.service.system.pojo.base.account.AccountDto;
-import com.gstdev.cloud.service.system.pojo.base.account.AccountInsertInput;
-import com.gstdev.cloud.service.system.pojo.base.account.AccountUpdateInput;
-import com.gstdev.cloud.service.system.pojo.base.account.AccountVo;
-import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
-import com.gstdev.cloud.service.system.pojo.o.sysAccount.InsertAccountManageInitializationIO;
-import com.gstdev.cloud.service.system.pojo.o.sysAccount.InsertAccountManageIO;
-import com.gstdev.cloud.service.system.pojo.o.sysAccount.UpdateAccountManageIO;
+import com.gstdev.cloud.service.system.domain.base.account.AccountDto;
+import com.gstdev.cloud.service.system.domain.base.account.AccountInsertInput;
+import com.gstdev.cloud.service.system.domain.base.account.AccountUpdateInput;
+import com.gstdev.cloud.service.system.domain.base.account.AccountVo;
+import com.gstdev.cloud.service.system.domain.entity.SysAccount;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageInitializationIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.UpdateAccountManageIO;
 import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,

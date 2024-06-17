@@ -10,15 +10,13 @@
 package com.gstdev.cloud.service.system.mapper.vo;
 
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
-import com.gstdev.cloud.service.system.pojo.base.menu.MenuDto;
-import com.gstdev.cloud.service.system.pojo.base.menu.MenuInsertInput;
-import com.gstdev.cloud.service.system.pojo.base.menu.MenuUpdateInput;
-import com.gstdev.cloud.service.system.pojo.base.menu.MenuVo;
-import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
-import com.gstdev.cloud.service.system.pojo.entity.SysMenu;
-import com.gstdev.cloud.service.system.pojo.o.sysAccount.InsertAccountManageInitializationIO;
-import com.gstdev.cloud.service.system.pojo.o.sysMenu.InsertMenuManageIO;
-import com.gstdev.cloud.service.system.pojo.o.sysMenu.UpdateMenuManageIO;
+import com.gstdev.cloud.service.system.domain.base.menu.MenuDto;
+import com.gstdev.cloud.service.system.domain.base.menu.MenuInsertInput;
+import com.gstdev.cloud.service.system.domain.base.menu.MenuUpdateInput;
+import com.gstdev.cloud.service.system.domain.base.menu.MenuVo;
+import com.gstdev.cloud.service.system.domain.entity.SysMenu;
+import com.gstdev.cloud.service.system.domain.pojo.sysMenu.InsertMenuManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysMenu.UpdateMenuManageIO;
 import org.mapstruct.*;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,

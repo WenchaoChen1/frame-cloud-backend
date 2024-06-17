@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.repository;
 
 
-import com.gstdev.cloud.service.system.pojo.entity.SysDepart;
+import com.gstdev.cloud.service.system.domain.entity.SysDepart;
 import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 
 import java.util.List;

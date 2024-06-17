@@ -1,8 +1,8 @@
 package com.frame.template.autoconfigure.service.system.listener;
 
 import com.frame.template.autoconfigure.service.system.processor.SecurityMetadataDistributeProcessor;
-import com.gstdev.cloud.service.system.pojo.entity.SysAttribute;
-import com.gstdev.cloud.service.system.pojo.event.SysAttributeChangeEvent;
+import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
+import com.gstdev.cloud.service.system.domain.event.SysAttributeChangeEvent;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

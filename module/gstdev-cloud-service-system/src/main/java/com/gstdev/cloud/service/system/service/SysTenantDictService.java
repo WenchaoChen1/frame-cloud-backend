@@ -1,8 +1,8 @@
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictDto;
-import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictModifyInput;
-import com.gstdev.cloud.service.system.pojo.vo.TenantDict.TenantDictSaveInput;
+import com.gstdev.cloud.service.system.domain.vo.TenantDict.TenantDictDto;
+import com.gstdev.cloud.service.system.domain.vo.TenantDict.TenantDictModifyInput;
+import com.gstdev.cloud.service.system.domain.vo.TenantDict.TenantDictSaveInput;
 
 import java.util.List;
 

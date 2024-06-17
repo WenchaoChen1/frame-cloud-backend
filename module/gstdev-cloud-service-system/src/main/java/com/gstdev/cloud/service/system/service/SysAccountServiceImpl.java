@@ -1,18 +1,16 @@
 package com.gstdev.cloud.service.system.service;
 
 import cn.hutool.core.util.ObjectUtil;
-import com.gstdev.cloud.data.core.pojo.BaseDto;
 import com.gstdev.cloud.data.core.service.BaseDtoServiceImpl;
 import com.gstdev.cloud.service.system.mapper.vo.SysAccountMapper;
-import com.gstdev.cloud.service.system.pojo.base.account.*;
-import com.gstdev.cloud.service.system.pojo.entity.SysAccount;
-import com.gstdev.cloud.service.system.pojo.entity.SysUser;
-import com.gstdev.cloud.service.system.pojo.o.sysAccount.InsertAccountManageInitializationIO;
+import com.gstdev.cloud.service.system.domain.base.account.*;
+import com.gstdev.cloud.service.system.domain.entity.SysAccount;
+import com.gstdev.cloud.service.system.domain.entity.SysUser;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageInitializationIO;
 import com.gstdev.cloud.service.system.repository.SysAccountRepository;
 import com.gstdev.cloud.service.system.repository.SysDepartRepository;
 import com.gstdev.cloud.service.system.repository.SysRoleRepository;
 import com.gstdev.cloud.service.system.repository.SysUserRepository;
-import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.annotation.Resource;

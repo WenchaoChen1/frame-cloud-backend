@@ -11,11 +11,12 @@ package com.gstdev.cloud.service.system.mapper;
 
 
 import com.gstdev.cloud.data.core.mapper.BaseDtoMapper;
-import com.gstdev.cloud.service.system.pojo.base.dict.DictDto;
-import com.gstdev.cloud.service.system.pojo.vo.menu.DictModifyInput;
-import com.gstdev.cloud.service.system.pojo.vo.menu.DictSaveInput;
-import com.gstdev.cloud.service.system.pojo.entity.SysDict;
-import org.mapstruct.*;
+import com.gstdev.cloud.service.system.domain.base.dict.DictDto;
+import com.gstdev.cloud.service.system.domain.entity.SysDict;
+import org.mapstruct.Mapper;
+import org.mapstruct.NullValueCheckStrategy;
+import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
@@ -24,29 +25,29 @@ import java.util.List;
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface DictMapper extends BaseDtoMapper<SysDict, DictDto> {
-    /**
-     * 转换
-     *
-     * @param dictSaveInput
-     * @return 数据库实体类
-     */
-    SysDict toEntitySave(DictSaveInput dictSaveInput);
-
-    /**
-     * 转换
-     *
-     * @param dictModifyInput
-     * @return 数据库实体类
-     */
-    SysDict toEntityModify(DictModifyInput dictModifyInput);
-
-    /**
-     * 转换
-     *
-     * @param dictModifyInput
-     * @param dict
-     */
-    void copyModify(DictModifyInput dictModifyInput, @MappingTarget SysDict dict);
+//    /**
+//     * 转换
+//     *
+//     * @param dictSaveInput
+//     * @return 数据库实体类
+//     */
+//    SysDict toEntitySave(DictSaveInput dictSaveInput);
+//
+//    /**
+//     * 转换
+//     *
+//     * @param dictModifyInput
+//     * @return 数据库实体类
+//     */
+//    SysDict toEntityModify(DictModifyInput dictModifyInput);
+//
+//    /**
+//     * 转换
+//     *
+//     * @param dictModifyInput
+//     * @param dict
+//     */
+//    void copyModify(DictModifyInput dictModifyInput, @MappingTarget SysDict dict);
 
     /**
      * 转换

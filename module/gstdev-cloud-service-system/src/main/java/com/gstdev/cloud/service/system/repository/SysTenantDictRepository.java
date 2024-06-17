@@ -1,6 +1,6 @@
 package com.gstdev.cloud.service.system.repository;
 
-import com.gstdev.cloud.service.system.pojo.entity.TenantDict;
+import com.gstdev.cloud.service.system.domain.entity.TenantDict;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
