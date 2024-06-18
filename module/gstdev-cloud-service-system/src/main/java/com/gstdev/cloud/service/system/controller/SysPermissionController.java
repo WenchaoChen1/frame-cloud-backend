@@ -6,13 +6,14 @@ import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.annotation.Idempotent;
 import com.gstdev.cloud.rest.core.controller.DtoController;
-import com.gstdev.cloud.service.system.mapper.vo.SysPermissionVoMapper;
 import com.gstdev.cloud.service.system.domain.base.SysPermission.SysPermissionDto;
 import com.gstdev.cloud.service.system.domain.base.SysPermission.SysPermissionVo;
 import com.gstdev.cloud.service.system.domain.entity.SysPermission;
 import com.gstdev.cloud.service.system.domain.pojo.sysPermission.InsertPermissionManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysPermission.PermissionManageDetailVo;
 import com.gstdev.cloud.service.system.domain.pojo.sysPermission.PermissionManageQO;
 import com.gstdev.cloud.service.system.domain.pojo.sysPermission.UpdatePermissionManageIO;
+import com.gstdev.cloud.service.system.mapper.vo.SysPermissionMapper;
 import com.gstdev.cloud.service.system.service.SysPermissionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -44,26 +45,28 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     private SysPermissionService sysPermissionService;
 
     @Resource
-    private SysPermissionVoMapper sysPermissionVoMapper;
+    private SysPermissionMapper sysPermissionMapper;
 
     @Override
     public SysPermissionService getService() {
         return sysPermissionService;
     }
 
+    public SysPermissionMapper getMapper() {
+        return sysPermissionMapper;
+    }
     @AccessLimited
     @GetMapping("/get-permission-manage-page")
     @Operation(summary = "获取所有的权限,分页")
     public Result<Map<String, Object>> getPermissionManagePage(PermissionManageQO permissionManageQO, BasePage basePage) {
-        Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, permissionManageQO, criteriaBuilder), basePage);
-        Page<SysPermissionVo> SysPermissionVos = sysPermissionVoMapper.toVo(byPageToDto);
-        return result(SysPermissionVos);
+        Page<SysPermission> byPage = this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, permissionManageQO, criteriaBuilder), basePage);
+        return this.result(this.getMapper().toPermissionManagePageVo(byPage));
     }
 
     @GetMapping("/get-permission-manage-detail/{id}")
     @Operation(summary = "get-permission-manage-detail")
-    public Result<SysPermissionVo> getAccountManageDetail(@PathVariable String id) {
-        return result(sysPermissionVoMapper.toVo(this.getService().findById(id)));
+    public Result<PermissionManageDetailVo> getPermissionManageDetail(@PathVariable String id) {
+        return result(getMapper().toPermissionManageDetailVo(getService().findById(id)));
     }
 
     @Idempotent
@@ -75,14 +78,14 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     })
     @PostMapping("/insert-permission-manage")
     public Result<SysPermissionVo> insertAndUpdatePermissionManage(@RequestBody @Validated InsertPermissionManageIO insertPermissionManageIO) {
-        this.getService().insertAndUpdate(sysPermissionVoMapper.toEntity(insertPermissionManageIO));
+        this.getService().insertAndUpdate(getMapper().toEntity(insertPermissionManageIO));
         return result();
     }
 
     @PutMapping("/update-permission-manage")
     public Result<SysPermissionVo> updatePermissionManage(@RequestBody @Validated UpdatePermissionManageIO updatePermissionManageIO) {
         SysPermission sysPermission = this.getService().findById(updatePermissionManageIO.getPermissionId());
-        sysPermissionVoMapper.copy(updatePermissionManageIO, sysPermission);
+        getMapper().copy(updatePermissionManageIO, sysPermission);
         this.getService().insertAndUpdate(sysPermission);
         return result();
     }
@@ -116,8 +119,8 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     @Operation(summary = "permissionType",
         requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
         responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
-    @GetMapping("/permissionType")
-    public Result<List<String>> findDistinctPermissionTypes() {
+    @GetMapping("/get-all-distinct-permission-type")
+    public Result<List<String>> getAllDistinctPermissionType() {
         return result(getService().findDistinctPermissionTypes());
     }
 

@@ -13,16 +13,14 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.TreeController;
-import com.gstdev.cloud.service.system.mapper.vo.SysTenantMapper;
 import com.gstdev.cloud.service.system.domain.base.tenant.*;
 import com.gstdev.cloud.service.system.domain.entity.SysTenant;
-import com.gstdev.cloud.service.system.domain.pojo.sysTenant.InsertTenantManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysTenant.TenantManageQO;
-import com.gstdev.cloud.service.system.domain.pojo.sysTenant.UpdateTenantManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysTenant.TenantByIdToTreeQO;
+import com.gstdev.cloud.service.system.domain.pojo.sysTenant.*;
+import com.gstdev.cloud.service.system.mapper.vo.SysTenantMapper;
 import com.gstdev.cloud.service.system.service.SysTenantService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
+import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,24 +54,25 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
     @GetMapping("/get-tenant-manage-page")
     @Operation(summary = "获取所有的用户,分页")
     public Result<Map<String, Object>> getTenantManagePage(TenantManageQO tenantManageQO, BasePage basePage) {
-        return this.findByPageToVo((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, tenantManageQO, criteriaBuilder), basePage);
+        Page<SysTenant> byPage = this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, tenantManageQO, criteriaBuilder), basePage);
+        return this.result(this.getMapper().toTenantManagePageVo(byPage));
     }
 
     @GetMapping("/get-tenant-manage-tree")
     @Operation(summary = "获取当前租户以及当前租户的所有子租户，返回树状结构")
-    public Result<List<TenantVo>> getTenantManageTree(TenantByIdToTreeQO tenantFindAllByQueryCriteria) {
+    public Result<List<TenantManageTreeVo>> getTenantManageTree(TenantByIdToTreeQO tenantFindAllByQueryCriteria) {
         if (tenantFindAllByQueryCriteria.getTenantId() != null) {
             List<TenantDto> itselfAndSubsetsToDto = getService().findItselfAndSubsetsToDto(tenantFindAllByQueryCriteria.getTenantId());
             List<String> tenantIds = itselfAndSubsetsToDto.stream().map(TenantDto::getId).toList();
             tenantFindAllByQueryCriteria.setTenantIds(tenantIds);
         }
-        return this.result(this.getMapper().toVo(this.getService().findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, tenantFindAllByQueryCriteria, criteriaBuilder))));
+        return this.result(this.getMapper().toTenantManageTreeVo(this.getService().findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, tenantFindAllByQueryCriteria, criteriaBuilder))));
     }
 
     @GetMapping("/get-tenant-manage-detail/{id}")
     @Operation(summary = "get-tenant-manage-detail")
-    public Result<TenantVo> getTenantManageDetail(@PathVariable String id) {
-        return findByIdToResult(id);
+    public Result<TenantManageDetailVo> getTenantManageDetail(@PathVariable String id) {
+        return result(this.getMapper().toTenantManageDetailVo(getService().findById(id)));
     }
 
     @PostMapping("/insert-tenant-manage")

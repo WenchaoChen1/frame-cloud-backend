@@ -2,7 +2,7 @@ package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseDtoServiceImpl;
-import com.gstdev.cloud.service.system.mapper.SysPermissionMapper;
+import com.gstdev.cloud.service.system.mapper.vo.SysPermissionMapper;
 import com.gstdev.cloud.service.system.domain.base.SysPermission.SysPermissionDto;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysPermission;
