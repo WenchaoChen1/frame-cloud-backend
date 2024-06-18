@@ -51,30 +51,6 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
         return tenantVoMapper;
     }
 
-//    public SysTenantController(SysTenantService tenantService, TenantVoMapper tenantVoMapper) {
-//        this.tenantService = tenantService;
-//        this.tenantVoMapper = tenantVoMapper;
-//    }
-//  @GetMapping("/get-all-tenant-to-tree")
-//  @Operation(summary = "获取当前当前租户的所有子租户，返回树状结构")
-//  public Result<List<TenantVo>> findAllByQueryCriteriaToTree() {
-//    return findByParentIdIdToTreeToResult(redisCurrentLoginInformation.getCurrentLoginTenantId());
-//  }
-
-
-    @GetMapping("/get-by-id")
-    @Operation(summary = "根据id获取实体数据")
-    public Result<TenantVo> getById(String id) {
-        return findByIdToResult(id);
-    }
-
-    @Operation(summary = "")
-    @DeleteMapping
-    public Result<TenantVo> deleteById(String id) {
-        return deleteByIdToResult(id);
-    }
-
-    /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
     // ********************************* Tenant Manage *****************************************
 
     @GetMapping("/get-tenant-manage-page")
@@ -127,5 +103,32 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
     public Result deleteAllTenantManage(List<String> id) {
         return deleteAllByIdToResult(id);
     }
+
+
+    /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
+
+    //    public SysTenantController(SysTenantService tenantService, TenantVoMapper tenantVoMapper) {
+//        this.tenantService = tenantService;
+//        this.tenantVoMapper = tenantVoMapper;
+//    }
+//  @GetMapping("/get-all-tenant-to-tree")
+//  @Operation(summary = "获取当前当前租户的所有子租户，返回树状结构")
+//  public Result<List<TenantVo>> findAllByQueryCriteriaToTree() {
+//    return findByParentIdIdToTreeToResult(redisCurrentLoginInformation.getCurrentLoginTenantId());
+//  }
+//
+//
+//    @GetMapping("/get-by-id")
+//    @Operation(summary = "根据id获取实体数据")
+//    public Result<TenantVo> getById(String id) {
+//        return findByIdToResult(id);
+//    }
+//
+//    @Operation(summary = "")
+//    @DeleteMapping
+//    public Result<TenantVo> deleteById(String id) {
+//        return deleteByIdToResult(id);
+//    }
+
 }
 

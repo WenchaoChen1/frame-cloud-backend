@@ -41,50 +41,11 @@ public class SysAccountController implements POJOController<SysAccount, String, 
         return accountVoMapper;
     }
 
-//    @GetMapping("/get-account-page")
-//    @Operation(summary = "获取所有的账户,分页")
-//    public Result<Page<AccountVo>> getAllPageQueryCriteria(AccountPageQueryCriteria accountPageQueryCriteria, Pageable pageable) {
-//        return pageToResult(accountPageQueryCriteria, pageable);
-//    }
-
-    @GetMapping("/get-by-id")
-    @Operation(summary = "根据id获取实体数据")
-    public Result<AccountVo> getById(@RequestParam("id") String id) {
-        return findByIdToResult(id);
-    }
-//
-//    @PostMapping
-//    @Operation(summary = "新增一条数据")
-//    public Result<AccountVo> insert(@RequestBody @Validated AccountInsertInput accountInsertInput) {
-//        return insertToResult(accountInsertInput);
-//    }
-//
-//    @PutMapping
-//    @Operation(summary = "修改一条数据")
-//    public Result<AccountVo> update(@RequestBody @Validated AccountUpdateInput updateInput) {
-//        return updateToResult(updateInput);
-//    }
-
-    @Operation(summary = "删除一条数据")
-    @DeleteMapping
-    public Result<AccountVo> deleteById(String id) {
-        return deleteByIdToResult(id);
-    }
-//
-//    @PostMapping("/insert-account-initialization")
-//    @Operation(summary = "新增一个账户并创建角色,部门")
-//    public Result<AccountVo> insertAccountInitialization(@RequestBody @Validated AccountInsertInput accountInsertInput) {
-//        return getMapper().toVo(getService().insertAccountInitializationToResult(accountInsertInput));
-//    }
-
-
     // ********************************* Account Manage *****************************************
     @GetMapping("/get-account-manage-page")
     @Operation(summary = "获取所有的用户,分页")
     public Result<Map<String, Object>> getAccountManagePage(AccountManageQO accountManageQO, Pageable pageable) {
-        return findByPageToVo((root, criteriaQuery, criteriaBuilder) -> {
-            return QueryUtils.getPredicate(root, accountManageQO, criteriaBuilder);
-        }, pageable);
+        return findByPageToVo((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, accountManageQO, criteriaBuilder), pageable);
     }
 
     @GetMapping("/get-account-manage-detail/{id}")
@@ -128,6 +89,45 @@ public class SysAccountController implements POJOController<SysAccount, String, 
         return deleteAllByIdToResult(id);
     }
 
+
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
+
+
+
+    //    @GetMapping("/get-account-page")
+//    @Operation(summary = "获取所有的账户,分页")
+//    public Result<Page<AccountVo>> getAllPageQueryCriteria(AccountPageQueryCriteria accountPageQueryCriteria, Pageable pageable) {
+//        return pageToResult(accountPageQueryCriteria, pageable);
+//    }
+
+//    @GetMapping("/get-by-id")
+//    @Operation(summary = "根据id获取实体数据")
+//    public Result<AccountVo> getById(@RequestParam("id") String id) {
+//        return findByIdToResult(id);
+//    }
+//
+//    @PostMapping
+//    @Operation(summary = "新增一条数据")
+//    public Result<AccountVo> insert(@RequestBody @Validated AccountInsertInput accountInsertInput) {
+//        return insertToResult(accountInsertInput);
+//    }
+//
+//    @PutMapping
+//    @Operation(summary = "修改一条数据")
+//    public Result<AccountVo> update(@RequestBody @Validated AccountUpdateInput updateInput) {
+//        return updateToResult(updateInput);
+//    }
+
+//    @Operation(summary = "删除一条数据")
+//    @DeleteMapping
+//    public Result<AccountVo> deleteById(String id) {
+//        return deleteByIdToResult(id);
+//    }
+//
+//    @PostMapping("/insert-account-initialization")
+//    @Operation(summary = "新增一个账户并创建角色,部门")
+//    public Result<AccountVo> insertAccountInitialization(@RequestBody @Validated AccountInsertInput accountInsertInput) {
+//        return getMapper().toVo(getService().insertAccountInitializationToResult(accountInsertInput));
+//    }
 
 }

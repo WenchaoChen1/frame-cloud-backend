@@ -51,20 +51,6 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         return sysPermissionService;
     }
 
-//    @AccessLimited
-//    @Operation(summary = "获取全部权限", description = "获取全部权限数据列表",
-//        responses = {
-//            @ApiResponse(description = "全部数据列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class))),
-//            @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
-//            @ApiResponse(responseCode = "500", description = "查询失败")
-//        })
-//    @GetMapping("/page")
-//    public Result<Page<SysPermissionVo>> findByPageToResult(SysPermissionPageQueryCriteria sysPermissionPageQueryCriteria, BasePage pageable) {
-//        Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysPermissionPageQueryCriteria, criteriaBuilder), pageable);
-//        Page<SysPermissionVo> SysPermissionVos = sysPermissionVoMapper.toVo(byPageToDto);
-//        return Result.success(SysPermissionVos);
-//    }
-
     @AccessLimited
     @GetMapping("/get-permission-manage-page")
     @Operation(summary = "获取所有的权限,分页")
@@ -136,4 +122,19 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     }
 
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
+
+
+    //    @AccessLimited
+//    @Operation(summary = "获取全部权限", description = "获取全部权限数据列表",
+//        responses = {
+//            @ApiResponse(description = "全部数据列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class))),
+//            @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
+//            @ApiResponse(responseCode = "500", description = "查询失败")
+//        })
+//    @GetMapping("/page")
+//    public Result<Page<SysPermissionVo>> findByPageToResult(SysPermissionPageQueryCriteria sysPermissionPageQueryCriteria, BasePage pageable) {
+//        Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysPermissionPageQueryCriteria, criteriaBuilder), pageable);
+//        Page<SysPermissionVo> SysPermissionVos = sysPermissionVoMapper.toVo(byPageToDto);
+//        return Result.success(SysPermissionVos);
+//    }
 }

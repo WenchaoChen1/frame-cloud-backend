@@ -11,11 +11,11 @@ package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.rest.core.controller.TreeController;
-import com.gstdev.cloud.service.system.mapper.vo.SysMenuMapper;
 import com.gstdev.cloud.service.system.domain.base.menu.*;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.InsertMenuManageIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.UpdateMenuManageIO;
+import com.gstdev.cloud.service.system.mapper.vo.SysMenuMapper;
 import com.gstdev.cloud.service.system.service.SysMenuService;
 import com.gstdev.cloud.service.system.service.SysRoleService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,12 +39,6 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     @Resource
     private SysRoleService roleService;
 
-//    public SysMenuController(SysMenuService menuService, MenuVoMapper menuVoMapper, SysRoleService roleService) {
-//        this.menuService = menuService;
-//        this.menuVoMapper = menuVoMapper;
-//        this.roleService = roleService;
-//    }
-
     @Override
     public SysMenuService getService() {
         return menuService;
@@ -54,7 +48,57 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     public SysMenuMapper getMapper() {
         return menuMapper;
     }
-//    @GetMapping("/get-by-id")
+
+    // ********************************* menu Manage *****************************************
+
+    @GetMapping("/get-menu-manage-to-tree")
+    @Operation(summary = "获取所有菜单，返回树状结构")
+    public Result<List<MenuVo>> getMenuManageMageToTree() {
+        MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
+        return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
+    }
+
+    @GetMapping("/get-menu-manage-detail/{id}")
+    @Operation(summary = "get-menu-manage-detail")
+    public Result<MenuVo> getMenuManageDetail(@PathVariable String id) {
+        return findByIdToResult(id);
+    }
+    @PostMapping("/insert-menu-manage")
+    @Operation(summary = "insert-menu-manage")
+    public Result insertAMenuManage(@RequestBody @Validated InsertMenuManageIO insertMenuManageIO) {
+        this.getService().insertAndUpdate(menuMapper.toEntity(insertMenuManageIO));
+        return result();
+    }
+
+    @PutMapping("/update-menu-manage")
+    @Operation(summary = "update-menu-manage")
+    public Result updateMenuManage(@RequestBody @Validated UpdateMenuManageIO updateMenuManageIO) {
+        SysMenu sysMenu = this.getService().findById(updateMenuManageIO.getId());
+        menuMapper.copy(updateMenuManageIO, sysMenu);
+        this.getService().insertAndUpdate(sysMenu);
+        return result();
+    }
+
+    @Operation(summary = "删除一条数据")
+    @DeleteMapping("delete-menu-manage/{id}")
+    public Result deleteMenuManage(@PathVariable String id) {
+        return deleteByIdToResult(id);
+    }
+
+    @Operation(summary = "删除多条数据")
+    @DeleteMapping("delete-all-menu-manage")
+    public Result deleteAllMenuManage(List<String> id) {
+        return deleteAllByIdToResult(id);
+    }
+
+    /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
+
+//    public SysMenuController(SysMenuService menuService, MenuVoMapper menuVoMapper, SysRoleService roleService) {
+//        this.menuService = menuService;
+//        this.menuVoMapper = menuVoMapper;
+//        this.roleService = roleService;
+//    }
+    //    @GetMapping("/get-by-id")
 //    @Operation(summary = "根据id获取实体数据")
 //    public Result<MenuVo> getById(String id) {
 //        return findByIdToResult(id);
@@ -99,49 +143,4 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
         return getMapper().toVo(getService().getAllTenantMenuIds(tenantId));
     }
 
-
-    /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
-    // ********************************* menu Manage *****************************************
-
-    @GetMapping("/get-menu-manage-to-tree")
-    @Operation(summary = "获取所有菜单，返回树状结构")
-    public Result<List<MenuVo>> getMenuManageMageToTree() {
-        MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
-        return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
-    }
-
-    @GetMapping("/get-menu-manage-detail/{id}")
-    @Operation(summary = "get-menu-manage-detail")
-    public Result<MenuVo> getMenuManageDetail(@PathVariable String id) {
-        return findByIdToResult(id);
-    }
-    @PostMapping("/insert-menu-manage")
-    @Operation(summary = "insert-menu-manage")
-    public Result insertAMenuManage(@RequestBody @Validated InsertMenuManageIO insertMenuManageIO) {
-        this.getService().insertAndUpdate(menuMapper.toEntity(insertMenuManageIO));
-        return result();
-    }
-
-    @PutMapping("/update-menu-manage")
-    @Operation(summary = "update-menu-manage")
-    public Result updateMenuManage(@RequestBody @Validated UpdateMenuManageIO updateMenuManageIO) {
-        SysMenu sysMenu = this.getService().findById(updateMenuManageIO.getId());
-        menuMapper.copy(updateMenuManageIO, sysMenu);
-        this.getService().insertAndUpdate(sysMenu);
-        return result();
-    }
-
-    @Operation(summary = "删除一条数据")
-    @DeleteMapping("delete-menu-manage/{id}")
-    public Result deleteMenuManage(@PathVariable String id) {
-        return deleteByIdToResult(id);
-    }
-
-    @Operation(summary = "删除多条数据")
-    @DeleteMapping("delete-all-menu-manage")
-    public Result deleteAllMenuManage(List<String> id) {
-        return deleteAllByIdToResult(id);
-    }
-
-    /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 }
