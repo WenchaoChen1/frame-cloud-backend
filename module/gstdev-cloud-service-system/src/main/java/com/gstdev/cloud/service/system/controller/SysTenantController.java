@@ -70,6 +70,12 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
         return this.result(this.getMapper().toVo(this.getService().findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, tenantFindAllByQueryCriteria, criteriaBuilder))));
     }
 
+    @GetMapping("/get-tenant-manage-detail/{id}")
+    @Operation(summary = "get-tenant-manage-detail")
+    public Result<TenantVo> getTenantManageDetail(@PathVariable String id) {
+        return findByIdToResult(id);
+    }
+
     @PostMapping("/insert-tenant-manage")
     @Operation(summary = "新增一条数据")
     public Result insertTenantManage(@RequestBody @Validated InsertTenantManageIO insertTenantManageIO) {
@@ -84,12 +90,6 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
         tenantVoMapper.copy(updateTenantManageIO, sysTenant);
         this.getService().insertAndUpdate(sysTenant);
         return result();
-    }
-
-    @GetMapping("/get-tenant-manage-detail/{id}")
-    @Operation(summary = "get-tenant-manage-detail")
-    public Result<TenantVo> getTenantManageDetail(@PathVariable String id) {
-        return findByIdToResult(id);
     }
 
     @Operation(summary = "删除一条数据")
