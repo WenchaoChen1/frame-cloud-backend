@@ -1,19 +1,17 @@
 package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.POJOController;
-import com.gstdev.cloud.service.system.mapper.vo.SysAccountMapper;
 import com.gstdev.cloud.service.system.domain.base.account.*;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
-import com.gstdev.cloud.service.system.domain.pojo.sysAccount.AccountManageQO;
-import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageInitializationIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysAccount.UpdateAccountManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.*;
+import com.gstdev.cloud.service.system.mapper.vo.SysAccountMapper;
 import com.gstdev.cloud.service.system.service.SysAccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,14 +42,15 @@ public class SysAccountController implements POJOController<SysAccount, String, 
     // ********************************* Account Manage *****************************************
     @GetMapping("/get-account-manage-page")
     @Operation(summary = "获取所有的用户,分页")
-    public Result<Map<String, Object>> getAccountManagePage(AccountManageQO accountManageQO, Pageable pageable) {
-        return findByPageToVo((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, accountManageQO, criteriaBuilder), pageable);
+    public Result<Map<String, Object>> getAccountManagePage(AccountManageQO accountManageQO, BasePage basePage) {
+        Page<SysAccount> byPage = this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, accountManageQO, criteriaBuilder), basePage);
+        return this.result(this.getMapper().toAccountManagePageVo(byPage));
     }
 
     @GetMapping("/get-account-manage-detail/{id}")
     @Operation(summary = "get-account-manage-detail")
-    public Result<AccountVo> getAccountManageDetail(@PathVariable String id) {
-        return findByIdToResult(id);
+    public Result<AccountManageDetailVo> getAccountManageDetail(@PathVariable String id) {
+        return result(accountVoMapper.toAccountManageDetailVo(getService().findById(id)));
     }
 
     @PostMapping("/insert-account-manage")

@@ -10,7 +10,7 @@ import lombok.Setter;
 public class InsertTenantManageIO {
     @Schema(title = "parentId 不能为空", required = true)
     @NotEmpty
-    private String parentId;
+    private String parentId="0";
     private String tenantCode;
     private String tenantName;
     private String description;
@@ -19,17 +19,17 @@ public class InsertTenantManageIO {
 
     //-----------------自定义-----------
 
-    private String companyName = "";
-    private String website = "";
-    private String addressLine1 = "";
-    private String addressLine2 = "";
-    private String city = "";
-    private String state = "";
-    private String country = "";
-    private String zipCode = "";
-    private String firstName = "";
-    private String lastName = "";
-    private String emailAddress = "";
-    private String phoneNumber = "";
-    private String logo = "";
+//    private String companyName = "";
+//    private String website = "";
+//    private String addressLine1 = "";
+//    private String addressLine2 = "";
+//    private String city = "";
+//    private String state = "";
+//    private String country = "";
+//    private String zipCode = "";
+//    private String firstName = "";
+//    private String lastName = "";
+//    private String emailAddress = "";
+//    private String phoneNumber = "";
+//    private String logo = "";
 }
