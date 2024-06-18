@@ -6,10 +6,7 @@ import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import com.gstdev.cloud.service.system.domain.base.role.*;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
-import com.gstdev.cloud.service.system.domain.pojo.sysRole.InsertRoleManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysRole.RoleManageTreeQO;
-import com.gstdev.cloud.service.system.domain.pojo.sysRole.RoleManageTreeVo;
-import com.gstdev.cloud.service.system.domain.pojo.sysRole.UpdateRoleManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysRole.*;
 import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
 import com.gstdev.cloud.service.system.service.SysRoleService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -47,7 +44,7 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
 
     @GetMapping("/get-role-manage-page")
 //    @Operation(summary = "根据筛选获取所有角色")
-    public  Result<Map<String, Object>> getRoleManagePage(RoleManageTreeQO queryCriteria, BasePage basePage){
+    public  Result<Map<String, Object>> getRoleManagePage(RoleManagePageQO queryCriteria, BasePage basePage){
         Page<SysRole> byPage = this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder), basePage);
         return this.result(this.getMapper().toRoleManagePageVo(byPage));
     }

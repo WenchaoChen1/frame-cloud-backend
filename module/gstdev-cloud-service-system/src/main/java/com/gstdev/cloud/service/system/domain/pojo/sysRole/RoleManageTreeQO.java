@@ -11,5 +11,6 @@ public class RoleManageTreeQO {
 
     @Query
     private String tenantId;
-
+    @Query(type = Query.Type.INNER_LIKE)
+    private String roleName;
 }

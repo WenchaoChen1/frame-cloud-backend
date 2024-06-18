@@ -9,10 +9,10 @@ import java.io.Serializable;
 public class UserManageQO implements Serializable {
 
     private static final long serialVersionUID = 3163118978801722144L;
-    @Query
+    @Query(type=Query.Type.INNER_LIKE)
     private String username;
-    @Query
+    @Query(type=Query.Type.INNER_LIKE)
     private String email;
-    @Query
+    @Query(type=Query.Type.INNER_LIKE)
     private String phoneNumber;
 }
