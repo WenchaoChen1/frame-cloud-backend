@@ -11,7 +11,7 @@ package com.gstdev.cloud.service.system.domain.base.account;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.pojo.BaseVo;
-import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -37,7 +37,7 @@ public class AccountVo extends BaseVo {
     private String tenantId;
     private String userId;
     private String name;
-    private AccountTypeConstants accountTypeConstants;
+    private SysAccountType type ;
 
 
 }

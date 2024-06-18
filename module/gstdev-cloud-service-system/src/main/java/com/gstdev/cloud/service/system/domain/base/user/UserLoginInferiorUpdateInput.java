@@ -11,7 +11,7 @@ package com.gstdev.cloud.service.system.domain.base.user;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseUpdateInput;
-import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,7 +45,8 @@ public class UserLoginInferiorUpdateInput extends BaseUpdateInput {
     private DataItemStatus status;
 
     @Schema(title = "accountTypeConstants 不能为空", required = true)
-    private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
+    private SysAccountType type = SysAccountType.USER;
+
     private String icon;
 }
 

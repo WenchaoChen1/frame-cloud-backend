@@ -11,7 +11,7 @@ package com.gstdev.cloud.service.system.domain.vo.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.pojo.BaseUpdateInput;
-import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,7 +31,7 @@ public class UserUpdateInput extends BaseUpdateInput {
     private String mobile;
     private String password;
     private String username;
-    private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
+    private SysAccountType type = SysAccountType.USER;
     private String firstName;
     private String lastName;
     private String icon;

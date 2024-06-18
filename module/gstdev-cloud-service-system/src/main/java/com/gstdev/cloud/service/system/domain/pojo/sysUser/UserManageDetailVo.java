@@ -20,9 +20,11 @@ public class UserManageDetailVo {
 
     private String id;
     private String username;
-    private String email;
     private String phoneNumber;
+    private String email;
     private Integer gender;
+    private String nickname;
+    private String avatar;
     private DataItemStatus status;
 
 }

@@ -50,7 +50,7 @@ public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String
         account.setName(accountInsertInput.getName());
         SysUser user = userRepository.findById(accountInsertInput.getUserId()).get();
         account.setUser(user);
-        account.setType(accountInsertInput.getAccountTypeConstants().getCode());
+        account.setType(accountInsertInput.getType());
         if (!ObjectUtils.isEmpty(accountInsertInput.getDepartIds())) {
             account.setDeparts(departRepository.findAllById(accountInsertInput.getDepartIds()));
         }

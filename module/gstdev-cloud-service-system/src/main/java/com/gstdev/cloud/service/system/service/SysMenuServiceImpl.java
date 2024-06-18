@@ -1,22 +1,22 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.base.core.utils.treeUtils.TreeFactory;
+import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
-import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
-import com.gstdev.cloud.service.system.mapper.vo.SysMenuMapper;
-import com.gstdev.cloud.service.system.domain.base.menu.*;
+import com.gstdev.cloud.service.system.domain.base.menu.MenuDto;
+import com.gstdev.cloud.service.system.domain.base.menu.MenuFindAllByQueryCriteria;
+import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
-import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
+import com.gstdev.cloud.service.system.mapper.vo.SysMenuMapper;
 import com.gstdev.cloud.service.system.repository.SysAccountRepository;
 import com.gstdev.cloud.service.system.repository.SysMenuRepository;
 import com.gstdev.cloud.service.system.repository.SysRoleRepository;
-import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
-import org.springframework.transaction.annotation.Transactional;
-
 import jakarta.annotation.Resource;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -85,12 +85,12 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
     public List<MenuDto> getAccountPermissions(String accountId) {
         SysAccount account = accountRepository.findById(accountId).get();
         MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
-        if (account.getType().equals(AccountTypeConstants.SUPER.getCode())) {
+        if (account.getType().equals(SysAccountType.SUPER)) {
             return findAllByQueryCriteriaToDtoToTree(menuFindAllByQueryCriteria);
-        } else if (account.getType().equals(AccountTypeConstants.ADMIN.getCode())) {
+        } else if (account.getType().equals(SysAccountType.ADMIN)) {
             menuFindAllByQueryCriteria.setTenantId(account.getTenantId());
             return findAllByQueryCriteriaToDtoToTree(menuFindAllByQueryCriteria);
-        } else if (account.getType().equals(AccountTypeConstants.USER.getCode())) {
+        } else if (account.getType().equals(SysAccountType.USER)) {
             Map<String, SysMenu> collect = new HashMap<>();
             for (SysRole role : account.getRoles()) {
                 List<SysMenu> menus = role.getRTenantMenus().stream().map(RTenantMenu::getMenu).toList();

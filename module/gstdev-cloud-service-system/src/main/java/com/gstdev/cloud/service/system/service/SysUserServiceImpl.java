@@ -94,7 +94,7 @@ public class SysUserServiceImpl extends BaseDtoServiceImpl<SysUser, String, SysU
         InsertAccountManageInitializationIO accountInsertInput = new InsertAccountManageInitializationIO();
         accountInsertInput.setTenantId(userInsertInput.getTenantId());
         accountInsertInput.setUserId(insert.getId());
-        accountInsertInput.setAccountTypeConstants(userInsertInput.getAccountTypeConstants());
+        accountInsertInput.setType(userInsertInput.getType());
         accountService.insertAccountManageInitialization(accountInsertInput);
         // 同步到identity模块
         IdentitySaveDto identitySaveDto = new IdentitySaveDto();

@@ -10,7 +10,7 @@
 package com.gstdev.cloud.service.system.domain.base.account;
 
 import com.gstdev.cloud.data.core.pojo.BaseUpdateInput;
-import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,11 +20,6 @@ public class AccountUpdateInput extends BaseUpdateInput {
 
     private String id;
     private String name;
-    //  private String type;
-    private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
-
-    public String getType() {
-        return accountTypeConstants.getCode();
-    }
+    private SysAccountType type;
 }
 

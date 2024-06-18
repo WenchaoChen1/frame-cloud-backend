@@ -1,37 +1,32 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysUser;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
-import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
 import java.util.List;
 
 @Getter
 @Setter
 public class InsertUserManageInitializationIO {
 
-        private String username;
-        private String email;
-        private String phoneNumber;
-        private String password;
-        private String nickname;
-        private String avatar;
-        private Integer gender = 0;
-        @JsonFormat(pattern = "yyyy-MM-dd")
-        private Date lastLoginTime;
+    private String username;
+    private String phoneNumber;
+    private String email;
+    private Integer gender = 0;
+    private String nickname;
+    private String avatar;
+    private DataItemStatus status;
 
 
-        List<String> departIds;
-        List<String> roleIds;
-        private String accountName;
-        private String tenantId;
-        private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
-        private String firstName;
-        private String lastName;
-        private String icon;
+    List<String> departIds;
+    List<String> roleIds;
+    private String accountName;
+    private String tenantId;
+    private SysAccountType type = SysAccountType.USER;
+    private String firstName;
+    private String lastName;
+    private String icon;
 
-        private DataItemStatus status;
 }

@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.domain.vo.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,10 +23,5 @@ public class AccountListDto {
     private String updatedBy;
     private String identity;
     private String name;
-    private String type;
-    private AccountTypeConstants accountTypeConstants;
-
-    public AccountTypeConstants getAccountTypeConstants() {
-        return AccountTypeConstants.getAccountTypeConstants(this.type);
-    }
+    private SysAccountType type;
 }

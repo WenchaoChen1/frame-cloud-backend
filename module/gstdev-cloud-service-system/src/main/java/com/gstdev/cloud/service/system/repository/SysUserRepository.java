@@ -1,9 +1,7 @@
 package com.gstdev.cloud.service.system.repository;
 
-import com.gstdev.cloud.service.system.domain.entity.SysUser;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
-
-import java.util.Optional;
+import com.gstdev.cloud.service.system.domain.entity.SysUser;
 
 public interface SysUserRepository extends BaseRepository<SysUser, String> {
     /**
@@ -13,8 +11,8 @@ public interface SysUserRepository extends BaseRepository<SysUser, String> {
      * @return
      */
     SysUser findByUsername(String username);
-
-    Optional<SysUser> findByEmail(String email);
-
-    Optional<SysUser> findByEmailAndDeletedFalse(String email);
+//
+//    Optional<SysUser> findByEmail(String email);
+//
+//    Optional<SysUser> findByEmailAndDeletedFalse(String email);
 }

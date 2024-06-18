@@ -12,7 +12,7 @@ public interface SysAccountRepository extends BaseRepository<SysAccount, String>
      * @param identity
      * @return
      */
-    SysAccount findByIdentity(String identity);
+//    SysAccount findByIdentity(String identity);
 
     /**
      * 查询
@@ -22,9 +22,9 @@ public interface SysAccountRepository extends BaseRepository<SysAccount, String>
      * @return
      */
 
-    SysAccount findByUserIdAndTenantId(String userId, String tenantId);
-
-    SysAccount findAccountByType(String userId);
+//    SysAccount findByUserIdAndTenantId(String userId, String tenantId);
+//
+//    SysAccount findAccountByType(String userId);
 
     List<SysAccount> findAllByUserId(String userId);
 

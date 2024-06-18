@@ -4,11 +4,11 @@ import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
-import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.entity.SysPermission;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
@@ -35,7 +35,7 @@ public class SysUserToSecurityUserConverter implements Converter<SysUser, Defaul
             .flatMap(account -> account.getRoles().stream())
             .collect(Collectors.toList());
         for (SysAccount sysAccount : sysUser.getAccount()) {
-            if (sysAccount.getType().equals(AccountTypeConstants.SUPER.getCode())){
+            if (sysAccount.getType().equals(SysAccountType.SUPER)){
                 authorities.add(new FrameGrantedAuthority("all"));
                 authorities.add(new FrameGrantedAuthority("5ef5ef0364b6939c4ca61f34b393f7b368d1be8619647aaf83d5b395919ab629"));
             }

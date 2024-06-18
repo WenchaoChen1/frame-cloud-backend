@@ -1,6 +1,6 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysAccount;
 
-import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,10 +12,5 @@ public class UpdateAccountManageIO {
     private String id;
     private String name;
     private String tenantId;
-    //  private String type;
-    private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
-
-    public String getType() {
-        return accountTypeConstants.getCode();
-    }
+    private SysAccountType type;
 }

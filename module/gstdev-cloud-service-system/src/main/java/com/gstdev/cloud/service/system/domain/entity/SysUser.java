@@ -66,9 +66,8 @@ public class SysUser extends BasePOJOEntity {
     @Column(name = "credentials_expire_at")
     private Instant credentialsExpireAt;
 
-    @Column(name = "deleted", nullable = false)
-    private Integer deleted = 0;
-
+//    @Column(name = "deleted", nullable = false)
+//    private Integer deleted = 0;
 
     @Schema(title = "数据状态")
     @Column(name = "status", nullable = false)
@@ -86,9 +85,5 @@ public class SysUser extends BasePOJOEntity {
 
     @Column(name = "last_name", length = 60)
     private String lastName;
-
-    @Column(name = "activate_token", length = 255)
-    private String activateToken;
-
 
 }

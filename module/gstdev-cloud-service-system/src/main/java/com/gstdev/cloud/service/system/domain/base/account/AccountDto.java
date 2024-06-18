@@ -10,9 +10,9 @@
 package com.gstdev.cloud.service.system.domain.base.account;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.gstdev.cloud.service.system.enums.AccountTypeConstants;
-import com.gstdev.cloud.service.system.domain.base.user.UserDto;
 import com.gstdev.cloud.data.core.pojo.BaseDto;
+import com.gstdev.cloud.service.system.domain.base.user.UserDto;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -37,15 +37,13 @@ public class AccountDto extends BaseDto {
     private String identity;
     private String tenantId;
     private String name;
-    private String type;
+    private SysAccountType type;
     private UserDto user;
 
     public String getUserId() {
         return user.getId();
     }
 
-    public AccountTypeConstants getAccountTypeConstants() {
-        return AccountTypeConstants.getAccountTypeConstants(this.type);
-    }
+
 }
 

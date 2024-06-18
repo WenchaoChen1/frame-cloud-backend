@@ -12,7 +12,7 @@ public class CurrentLoginInformation implements Serializable {
     private String userId;
     private String accountId;
     private String tenantId;
-    private String accountType;
+    private Integer type;
     private JSON tenant;
     private JSON currentLoginAccount;
     private JSON currentLoginAccountUserPermissions;

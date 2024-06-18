@@ -10,6 +10,7 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysAccount;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,8 +31,8 @@ public class AccountManagePageVo {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
     private String updatedBy;
-    private String type ;
     private String name;
     private String identity;
+    private SysAccountType type;
 }
 
