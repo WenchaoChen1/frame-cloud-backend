@@ -105,6 +105,14 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
     }
 
 
+    // ********************************* other Manage *****************************************
+
+//  @GetMapping("/get-all-tenant-to-tree")
+//  @Operation(summary = "获取当前当前租户的所有子租户，返回树状结构")
+//  public Result<List<TenantVo>> findAllByQueryCriteriaToTree() {
+//    return findByParentIdIdToTreeToResult(redisCurrentLoginInformation.getCurrentLoginTenantId());
+//  }
+
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
 
     //    public SysTenantController(SysTenantService tenantService, TenantVoMapper tenantVoMapper) {

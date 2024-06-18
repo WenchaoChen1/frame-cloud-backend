@@ -11,6 +11,7 @@ public class UpdateAccountManageIO {
 
     private String id;
     private String name;
+    private String tenantId;
     //  private String type;
     private AccountTypeConstants accountTypeConstants = AccountTypeConstants.USER;
 
