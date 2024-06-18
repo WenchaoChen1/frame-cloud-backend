@@ -9,10 +9,7 @@ import com.gstdev.cloud.service.system.domain.base.user.UserFindAllByQueryCriter
 import com.gstdev.cloud.service.system.domain.base.user.UserPageQueryCriteria;
 import com.gstdev.cloud.service.system.domain.base.user.UserVo;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
-import com.gstdev.cloud.service.system.domain.pojo.sysUser.InsertUserManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysUser.InsertUserManageInitializationIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysUser.UpdateUserManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysUser.UserManageQO;
+import com.gstdev.cloud.service.system.domain.pojo.sysUser.*;
 import com.gstdev.cloud.service.system.domain.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.domain.vo.user.UserUpdateInput;
 import com.gstdev.cloud.service.system.mapper.vo.SysUserMapper;
@@ -55,13 +52,13 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
     @GetMapping("/get-user-manage-page")
     @Operation(summary = "获取所有的用户,分页")
     public Result<Map<String, Object>> getUserManagePage(UserManageQO sysUserUserManageQO, Pageable pageable) {
-        return findByPageToVo((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysUserUserManageQO, criteriaBuilder), pageable);
+        return this.result(this.getMapper().toUserManagePageVo(this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysUserUserManageQO, criteriaBuilder), pageable)));
     }
 
     @GetMapping("/get-user-manage-detail/{id}")
     @Operation(summary = "get-user-manage-detail")
-    public Result<UserVo> getUserManageDetail(@PathVariable String id) {
-        return findByIdToResult(id);
+    public Result<UserManageDetailVo> getUserManageDetail(@PathVariable String id) {
+        return result(getMapper().toUserManageDetailVo(getService().findById(id)));
     }
 
     @PostMapping("/insert-user-manage")
@@ -86,7 +83,6 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         getService().insertUserManageInitialization(userInsertInput);
         return result();
     }
-
 
     @Operation(summary = "删除一条数据")
     @DeleteMapping("delete-user-manage/{id}")

@@ -14,13 +14,13 @@ import com.gstdev.cloud.service.system.domain.base.user.UserDto;
 import com.gstdev.cloud.service.system.domain.base.user.UserVo;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
-import com.gstdev.cloud.service.system.domain.pojo.sysUser.InsertUserManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysUser.UpdateUserManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysUser.InsertUserManageInitializationIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysUser.*;
 import com.gstdev.cloud.service.system.domain.vo.user.AccountListDto;
 import com.gstdev.cloud.service.system.domain.vo.user.UserInsertInput;
 import com.gstdev.cloud.service.system.domain.vo.user.UserUpdateInput;
 import org.mapstruct.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 
 import java.util.List;
 
@@ -35,6 +35,14 @@ public interface SysUserMapper extends BasePOJOMapper<SysUser, UserDto, UserVo, 
 //    SysUser toEntity(insertAndUpdateUserManageIO insertUserManageInput);
     SysUser toEntity(InsertUserManageIO insertUserManageInput);
     SysUser toEntity(InsertUserManageInitializationIO insertUserManageInitializationIO);
+
+    UserManageDetailVo toUserManageDetailVo(SysUser sysUser);
+    List<UserManagePageVo> toUserManagePageVo(List<SysUser> sysUser);
+
+    default Page<UserManagePageVo> toUserManagePageVo(Page<SysUser> page) {
+        List<UserManagePageVo> responses = this.toUserManagePageVo(page.getContent());
+        return new PageImpl(responses, page.getPageable(), page.getTotalElements());
+    }
 
     void copy(UpdateUserManageIO updateUserManageIO, @MappingTarget SysUser sysUser);
 
