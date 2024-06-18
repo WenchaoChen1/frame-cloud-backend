@@ -61,7 +61,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     }
 
     @GetMapping("/get-account-manage-detail/{id}")
-    @Operation(summary = "get-account-manage-detail")
+    @Operation(summary = "get-permission-manage-detail")
     public Result<SysPermissionVo> getAccountManageDetail(@PathVariable String id) {
         return result(sysPermissionVoMapper.toVo(this.getService().findById(id)));
     }
