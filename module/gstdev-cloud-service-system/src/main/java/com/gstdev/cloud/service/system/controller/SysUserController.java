@@ -85,13 +85,13 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
     }
 
     @Operation(summary = "删除一条数据")
-    @DeleteMapping("delete-user-manage/{id}")
+    @DeleteMapping("/delete-user-manage/{id}")
     public Result deleteUserManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
 
     @Operation(summary = "删除多条数据")
-    @DeleteMapping("delete-all-user-manage")
+    @DeleteMapping("/delete-all-user-manage")
     public Result deleteAllUserManage(List<String> id) {
         return deleteAllByIdToResult(id);
     }

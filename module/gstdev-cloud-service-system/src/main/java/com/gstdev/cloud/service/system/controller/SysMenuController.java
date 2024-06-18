@@ -80,13 +80,13 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     }
 
     @Operation(summary = "删除一条数据")
-    @DeleteMapping("delete-menu-manage/{id}")
+    @DeleteMapping("/delete-menu-manage/{id}")
     public Result deleteMenuManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
 
     @Operation(summary = "删除多条数据")
-    @DeleteMapping("delete-all-menu-manage")
+    @DeleteMapping("/delete-all-menu-manage")
     public Result deleteAllMenuManage(List<String> id) {
         return deleteAllByIdToResult(id);
     }

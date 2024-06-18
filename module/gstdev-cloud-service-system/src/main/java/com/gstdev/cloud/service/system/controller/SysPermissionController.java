@@ -104,13 +104,13 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     }
 
     @Operation(summary = "删除一条数据")
-    @DeleteMapping("delete-permission-manage/{id}")
+    @DeleteMapping("/delete-permission-manage/{id}")
     public Result deletePermissionManage(@PathVariable String id) {
         return DtoController.super.delete(id);
     }
 
     @Operation(summary = "删除多条数据")
-    @DeleteMapping("delete-all-permission-manage")
+    @DeleteMapping("/delete-all-permission-manage")
     public Result deleteAllPermissionManage(List<String> id) {
         this.getService().deleteAllById(id);
         return result();

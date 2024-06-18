@@ -77,13 +77,13 @@ public class SysAccountController implements POJOController<SysAccount, String, 
     }
 
     @Operation(summary = "删除一条数据")
-    @DeleteMapping("delete-account-manage/{id}")
+    @DeleteMapping("/delete-account-manage/{id}")
     public Result deleteAccountManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
 
     @Operation(summary = "删除多条数据")
-    @DeleteMapping("delete-all-account-manage")
+    @DeleteMapping("/delete-all-account-manage")
     public Result deleteAllAccountManage(List<String> id) {
         return deleteAllByIdToResult(id);
     }

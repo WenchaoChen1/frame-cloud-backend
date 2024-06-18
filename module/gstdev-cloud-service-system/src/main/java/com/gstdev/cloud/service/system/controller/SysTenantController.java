@@ -92,13 +92,13 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
     }
 
     @Operation(summary = "删除一条数据")
-    @DeleteMapping("delete-tenant-manage/{id}")
+    @DeleteMapping("/delete-tenant-manage/{id}")
     public Result deleteTenantManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
 
     @Operation(summary = "删除多条数据")
-    @DeleteMapping("delete-all-tenant-manage")
+    @DeleteMapping("/delete-all-tenant-manage")
     public Result deleteAllTenantManage(List<String> id) {
         return deleteAllByIdToResult(id);
     }

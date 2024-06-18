@@ -79,13 +79,13 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     }
 
 //    @Operation(summary = "删除一条数据")
-    @DeleteMapping("delete-role-manage/{id}")
+    @DeleteMapping("/delete-role-manage/{id}")
     public Result deleteRoleManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
 
 //    @Operation(summary = "删除多条数据")
-    @DeleteMapping("delete-all-role-manage")
+    @DeleteMapping("/delete-all-role-manage")
     public Result deleteAllRoleManage(List<String> id) {
         return deleteAllByIdToResult(id);
     }

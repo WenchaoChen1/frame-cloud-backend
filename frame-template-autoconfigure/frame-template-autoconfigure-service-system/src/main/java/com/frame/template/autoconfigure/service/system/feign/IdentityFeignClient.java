@@ -33,7 +33,7 @@ public interface IdentityFeignClient {
 //    @GetMapping("get_user_id")
 //    Result<String> getUserIdHerder(@RequestHeader("authorization") String authorization);
 //
-//    @DeleteMapping("delete-by-userId/{userId}")
+//    @DeleteMapping("/delete-by-userId/{userId}")
 //    void deleteByUserId(@RequestParam("userId") String userId);
 //
 //    @PostMapping("update-email")
