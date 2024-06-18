@@ -46,9 +46,9 @@ public class SysMenu extends BaseTreeEntity {
     private String code;
 
 
-    @Column(name = "name", length = 64, nullable = false, unique = true)
+    @Column(name = "name", length = 150)
     private String name;
-    @Column(name = "path", length = 200)
+    @Column(name = "path", length = 250)
     private String path;
     @Column(name = "icon", length = 100)
     private String icon;

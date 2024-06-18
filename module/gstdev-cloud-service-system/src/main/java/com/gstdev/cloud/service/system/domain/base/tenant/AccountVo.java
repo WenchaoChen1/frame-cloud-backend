@@ -25,12 +25,14 @@
 //  private String id;
 //  @JsonFormat(timezone = "America/Chicago", pattern = "yyyy-MM-dd")
 //  @DateTimeFormat(pattern = "yyyy-MM-dd")
-//  private Date createdAt;
-//  private String createdBy;
+//  private Date createdDate;
+//  private String createdUser;
+//private String createdAccount;
 //  @JsonFormat(timezone = "America/Chicago", pattern = "yyyy-MM-dd")
 //  @DateTimeFormat(pattern = "yyyy-MM-dd")
-//  private Date updatedAt;
-//  private String updatedBy;
+//  private Date updatedDate;
+//  private String updatedUser;
+//private String updatedAccount;
 //  private Integer deleted;
 //  private String identity;
 //  private String tenantId;

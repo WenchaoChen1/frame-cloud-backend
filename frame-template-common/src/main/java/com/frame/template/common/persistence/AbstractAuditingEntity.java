@@ -36,7 +36,8 @@ public abstract class AbstractAuditingEntity extends AbstractEntity {
     private Instant createdAt;
     @JsonIgnore
     @Column(name = "created_by", length = 36)
-    private String createdBy;
+    private String createdUser;
+private String createdAccount;
 
     @JsonIgnore
     @JsonSerialize(using = InstantSerializer.class)
@@ -45,7 +46,8 @@ public abstract class AbstractAuditingEntity extends AbstractEntity {
     //这里存的是我们的登录账户id-------acount表主键
     @JsonIgnore
     @Column(name = "updated_by", length = 36)
-    private String updatedBy;
+    private String updatedUser;
+private String updatedAccount;
 
     @PrePersist
     public void addAuditInfo() {

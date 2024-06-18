@@ -21,10 +21,11 @@ import java.io.Serializable;
 public class DemoTemplateInsertInput {
 
     private String id;
-    private Date createdAt;
-    private String createdBy;
-    private Date updatedAt;
-    private String updatedBy;
+    private Date createdDate;
+    private String createdUser;
+    private Date updatedDate;
+    private String updatedUser;
+private String updatedAccount;
     private String code;
     private String name;
 

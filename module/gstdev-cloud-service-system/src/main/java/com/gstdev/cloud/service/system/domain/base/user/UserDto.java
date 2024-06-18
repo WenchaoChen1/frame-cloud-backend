@@ -58,11 +58,13 @@ public class UserDto extends BaseDto {
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date createdAt;
-    private String createdBy;
+    private Date createdDate;
+    private String createdUser;
+private String createdAccount;
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date updatedAt;
-    private String updatedBy;
+    private Date updatedDate;
+    private String updatedUser;
+private String updatedAccount;
 }
 

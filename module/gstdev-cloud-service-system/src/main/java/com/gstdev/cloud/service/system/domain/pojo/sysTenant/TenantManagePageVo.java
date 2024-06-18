@@ -23,11 +23,13 @@ public class TenantManagePageVo extends BaseTreeVo {
 
     private String id;
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date createdAt;
-    private String createdBy;
+    private Date createdDate;
+    private String createdUser;
+private String createdAccount;
     @JsonFormat( pattern = "yyyy-MM-dd")
-    private Date updatedAt;
-    private String updatedBy;
+    private Date updatedDate;
+    private String updatedUser;
+private String updatedAccount;
     private String parentId;
     private String tenantCode;
     private String tenantName;

@@ -21,10 +21,12 @@ import java.util.Date;
 public class DemoTreeUpdateInput extends BaseTreeUpdateInput {
 
     private String id;
-    private Date createdAt;
-    private String createdBy;
-    private Date updatedAt;
-    private String updatedBy;
+    private Date createdDate;
+    private String createdUser;
+private String createdAccount;
+    private Date updatedDate;
+    private String updatedUser;
+private String updatedAccount;
     private String code;
     private String name;
     private String parentId;

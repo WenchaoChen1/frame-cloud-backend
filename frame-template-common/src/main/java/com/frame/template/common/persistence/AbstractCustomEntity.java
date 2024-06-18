@@ -36,7 +36,8 @@ public abstract class AbstractCustomEntity {
     private Instant createdAt;
     @JsonIgnore
     @Column(name = "created_by", length = 36, updatable = false)
-    private String createdBy;
+    private String createdUser;
+private String createdAccount;
 
     @JsonIgnore
     @JsonSerialize(using = InstantSerializer.class)
@@ -44,7 +45,8 @@ public abstract class AbstractCustomEntity {
     private Instant updatedAt;
     @JsonIgnore
     @Column(name = "updated_by", length = 36)
-    private String updatedBy;
+    private String updatedUser;
+private String updatedAccount;
 
     @PrePersist
     public void addAuditInfo() {
