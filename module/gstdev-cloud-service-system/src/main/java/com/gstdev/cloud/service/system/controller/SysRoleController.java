@@ -58,8 +58,8 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
 
     @GetMapping("/get-role-manage-detail/{id}")
     @Operation(summary = "get-role-manage-detail")
-    public Result<RoleVo> getRoleManageDetail(@PathVariable String id) {
-        return findByIdToResult(id);
+    public Result<RoleManageDetailVo> getRoleManageDetail(@PathVariable String id) {
+        return result(this.getMapper().toRoleManageDetailVo(getService().findById(id)));
     }
 
     @PostMapping("/insert-role-manage")
