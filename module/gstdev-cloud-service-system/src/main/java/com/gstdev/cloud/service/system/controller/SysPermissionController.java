@@ -21,6 +21,7 @@ import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
@@ -55,6 +56,9 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     public SysPermissionMapper getMapper() {
         return sysPermissionMapper;
     }
+
+    // ********************************* Permission Manage *****************************************
+    @Tag(name = "Permission Manage")
     @AccessLimited
     @GetMapping("/get-permission-manage-page")
     @Operation(summary = "获取所有的权限,分页")
@@ -63,12 +67,13 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         return this.result(this.getMapper().toPermissionManagePageVo(byPage));
     }
 
+    @Tag(name = "Permission Manage")
     @GetMapping("/get-permission-manage-detail/{id}")
     @Operation(summary = "get-permission-manage-detail")
     public Result<PermissionManageDetailVo> getPermissionManageDetail(@PathVariable String id) {
         return result(getMapper().toPermissionManageDetailVo(getService().findById(id)));
     }
-
+    @Tag(name = "Permission Manage")
     @Idempotent
     @Operation(summary = "保存数据", description = "接收JSON数据，转换为实体，进行保存或更新",
         requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
@@ -82,6 +87,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         return result();
     }
 
+    @Tag(name = "Permission Manage")
     @PutMapping("/update-permission-manage")
     public Result<SysPermissionVo> updatePermissionManage(@RequestBody @Validated UpdatePermissionManageIO updatePermissionManageIO) {
         SysPermission sysPermission = this.getService().findById(updatePermissionManageIO.getPermissionId());
@@ -90,6 +96,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         return result();
     }
 
+    @Tag(name = "Permission Manage")
     @Idempotent
     @Operation(summary = "删除数据", description = "根据实体ID删除数据，以及相关联的关联数据",
         requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
@@ -103,12 +110,14 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         return DtoController.super.delete(id);
     }
 
+    @Tag(name = "Permission Manage")
     @Operation(summary = "删除一条数据")
     @DeleteMapping("/delete-permission-manage/{id}")
     public Result deletePermissionManage(@PathVariable String id) {
         return DtoController.super.delete(id);
     }
 
+    @Tag(name = "Permission Manage")
     @Operation(summary = "删除多条数据")
     @DeleteMapping("/delete-all-permission-manage")
     public Result deleteAllPermissionManage(List<String> id) {
@@ -116,6 +125,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         return result();
     }
 
+    @Tag(name = "Permission Manage")
     @Operation(summary = "permissionType",
         requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
         responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})

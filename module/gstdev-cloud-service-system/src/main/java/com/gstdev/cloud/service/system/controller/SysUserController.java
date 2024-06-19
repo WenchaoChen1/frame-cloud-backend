@@ -15,6 +15,7 @@ import com.gstdev.cloud.service.system.domain.vo.user.UserUpdateInput;
 import com.gstdev.cloud.service.system.mapper.vo.SysUserMapper;
 import com.gstdev.cloud.service.system.service.SysUserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -49,18 +50,21 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
 
     // ********************************* User Manage *****************************************
 
+    @Tag(name = "User Manage")
     @GetMapping("/get-user-manage-page")
     @Operation(summary = "获取所有的用户,分页")
     public Result<Map<String, Object>> getUserManagePage(UserManageQO sysUserUserManageQO, Pageable pageable) {
         return this.result(this.getMapper().toUserManagePageVo(this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysUserUserManageQO, criteriaBuilder), pageable)));
     }
 
+    @Tag(name = "User Manage")
     @GetMapping("/get-user-manage-detail/{id}")
     @Operation(summary = "get-user-manage-detail")
     public Result<UserManageDetailVo> getUserManageDetail(@PathVariable String id) {
         return result(getMapper().toUserManageDetailVo(getService().findById(id)));
     }
 
+    @Tag(name = "User Manage")
     @PostMapping("/insert-user-manage")
     @Operation(summary = "新增一条数据")
     public Result insertUserManage(@RequestBody @Validated InsertUserManageIO insertUserManageIO) {
@@ -68,6 +72,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         return result();
     }
 
+    @Tag(name = "User Manage")
     @PutMapping("/update-user-manage")
     @Operation(summary = "新增一条数据")
     public Result updateUserManage(@RequestBody @Validated UpdateUserManageIO updateUserManageIO) {
@@ -77,6 +82,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         return result();
     }
 
+    @Tag(name = "User Manage")
     @PostMapping("/insert-user-manage-initialization")
     @Operation(summary = "新增一个用户并创建用户的账户以及角色,部门")
     public Result insertUserManageInitialization(@RequestBody @Validated InsertUserManageInitializationIO userInsertInput) {
@@ -84,12 +90,14 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
         return result();
     }
 
+    @Tag(name = "User Manage")
     @Operation(summary = "删除一条数据")
     @DeleteMapping("/delete-user-manage/{id}")
     public Result deleteUserManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
 
+    @Tag(name = "User Manage")
     @Operation(summary = "删除多条数据")
     @DeleteMapping("/delete-all-user-manage")
     public Result deleteAllUserManage(List<String> id) {
@@ -98,6 +106,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
 
     // ********************************* 登录 *****************************************
 
+    @Tag(name = "security sign-in")
     @GetMapping("/security/sign-in/{username}")
     @Operation(summary = "根据username获取实体数据")
     public Result<DefaultSecurityUser> signInFindByUsername(@PathVariable("username") String username) {

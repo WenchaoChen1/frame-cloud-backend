@@ -9,18 +9,17 @@
 
 package com.gstdev.cloud.service.system.controller;
 
+import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
-import com.gstdev.cloud.service.system.mapper.vo.RTenantMenuVoMapper;
+import com.gstdev.cloud.rest.core.controller.POJOController;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.*;
 import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.mapper.vo.RTenantMenuVoMapper;
 import com.gstdev.cloud.service.system.service.SysRTenantMenuService;
-import com.gstdev.cloud.base.definition.domain.Result;
-
-import com.gstdev.cloud.rest.core.controller.POJOController;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.*;
-
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -50,12 +49,14 @@ public class SysRTenantMenuController implements POJOController<RTenantMenu, Str
 //        this.rTenantMenuVoMapper = rTenantMenuVoMapper;
 //    }
 
+    @Tag(name = "Tenant Manage")
     @PostMapping("/insertTenantMenu")
     @Operation(summary = "insertSave")
     public Result<String> insertTenantMenu(@RequestBody RTenantMenuInsertInput rTenantMenuInsertInput) {
         return rTenantMenuService.insertTenantMenu(rTenantMenuInsertInput);
     }
 
+    @Tag(name = "Tenant Manage")
     @GetMapping("/get-all-by-tenant-id")
     @Operation(summary = "获取指定租户的所有菜单，返回id")
     public Result<List<String>> getAllByTenantId(@RequestParam("tenantId") String tenantId) {

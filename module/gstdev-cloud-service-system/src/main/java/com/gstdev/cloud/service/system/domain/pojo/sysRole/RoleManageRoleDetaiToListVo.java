@@ -9,16 +9,19 @@
 
 package com.gstdev.cloud.service.system.domain.pojo.sysRole;
 
-import com.gstdev.cloud.data.core.pojo.BaseTreeVo;
+import com.gstdev.cloud.service.system.TreeNode;
 import lombok.Getter;
 import lombok.Setter;
 
 
 @Getter
 @Setter
-public class RoleManageDetailRoleVo extends BaseTreeVo {
+public class RoleManageRoleDetaiToListVo extends TreeNode<String,RoleManageRoleDetaiToListVo> {
 
     private String id;
     private String roleName;
+    private String parentId;
+    private Integer sort;
+//    List<RoleManageRoleDetaiToListVo> children;
 }
 

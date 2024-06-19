@@ -10,8 +10,7 @@
 package com.gstdev.cloud.service.system.mapper.vo;
 
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
-import com.gstdev.cloud.service.system.TreeBuilder;
-import com.gstdev.cloud.service.system.TreeNode;
+import com.gstdev.cloud.service.system.TreeUtils;
 import com.gstdev.cloud.service.system.domain.base.role.RoleDto;
 import com.gstdev.cloud.service.system.domain.base.role.RoleInsertInput;
 import com.gstdev.cloud.service.system.domain.base.role.RoleUpdateInput;
@@ -32,17 +31,19 @@ public interface SysRoleMapper extends BaseTreeMapper<SysRole, RoleDto, RoleVo, 
     SysRole toEntity(InsertRoleManageIO insertRoleManageIO);
     RoleManageDetailVo toRoleManageDetailVo(SysRole sysRole);
 
-    List<TreeNode<RoleManageDetailRoleVo>> toRoleManageDetailRoleTreeNodeVo(List<TreeNode<SysRole>> sysRole);
+    List<RoleManageRoleDetaiToListVo> toRoleManageRoleDetaiToListVo(List<SysRole> sysRole);
 
-    default List<TreeNode<RoleManageDetailRoleVo>> toRoleManageDetailRoleTreeNodeVoDefault(List<SysRole> sysRole) {
-        List<TreeNode<SysRole>> tree = TreeBuilder.buildTree(
-            sysRole,
-            SysRole::getId,
-            SysRole::getParentId,
-            Comparator.comparingInt((SysRole item) -> item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+    default List<RoleManageRoleDetaiToListVo> toRoleManageRoleDetaiToTreeVo(List<SysRole> sysRole) {
+        List<RoleManageRoleDetaiToListVo> roleManageRoleDetaiToListVo = toRoleManageRoleDetaiToListVo(sysRole);
+        return TreeUtils.buildTree(
+            roleManageRoleDetaiToListVo,
+            RoleManageRoleDetaiToListVo::getId,
+            RoleManageRoleDetaiToListVo::getParentId,
+            Comparator.comparingInt((RoleManageRoleDetaiToListVo item) ->
+                item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
         );
-        return this.toRoleManageDetailRoleTreeNodeVo(tree);
     }
+
     List<RoleManageTreeVo> toRoleManageTreeVo(List<RoleDto> sysRole);
     List<RoleManagePageVo> toRoleManagePageVo(List<SysRole> sysRole);
     default Page<RoleManagePageVo> toRoleManagePageVo(Page<SysRole> page) {

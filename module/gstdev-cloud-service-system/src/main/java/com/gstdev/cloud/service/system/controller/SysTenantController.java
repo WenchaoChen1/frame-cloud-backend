@@ -19,6 +19,7 @@ import com.gstdev.cloud.service.system.domain.pojo.sysTenant.*;
 import com.gstdev.cloud.service.system.mapper.vo.SysTenantMapper;
 import com.gstdev.cloud.service.system.service.SysTenantService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
@@ -51,6 +52,7 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
 
     // ********************************* Tenant Manage *****************************************
 
+    @Tag(name = "Tenant Manage")
     @GetMapping("/get-tenant-manage-page")
     @Operation(summary = "获取所有的用户,分页")
     public Result<Map<String, Object>> getTenantManagePage(TenantManageQO tenantManageQO, BasePage basePage) {
@@ -58,6 +60,7 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
         return this.result(this.getMapper().toTenantManagePageVo(byPage));
     }
 
+    @Tag(name = "Tenant Manage")
     @GetMapping("/get-tenant-manage-tree")
     @Operation(summary = "获取当前租户以及当前租户的所有子租户，返回树状结构")
     public Result<List<TenantManageTreeVo>> getTenantManageTree(TenantByIdToTreeQO tenantFindAllByQueryCriteria) {
@@ -69,12 +72,14 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
         return this.result(this.getMapper().toTenantManageTreeVo(this.getService().findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, tenantFindAllByQueryCriteria, criteriaBuilder))));
     }
 
+    @Tag(name = "Tenant Manage")
     @GetMapping("/get-tenant-manage-detail/{id}")
     @Operation(summary = "get-tenant-manage-detail")
     public Result<TenantManageDetailVo> getTenantManageDetail(@PathVariable String id) {
         return result(this.getMapper().toTenantManageDetailVo(getService().findById(id)));
     }
 
+    @Tag(name = "Tenant Manage")
     @PostMapping("/insert-tenant-manage")
     @Operation(summary = "新增一条数据")
     public Result insertTenantManage(@RequestBody @Validated InsertTenantManageIO insertTenantManageIO) {
@@ -82,6 +87,7 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
         return result();
     }
 
+    @Tag(name = "Tenant Manage")
     @PutMapping("/update-tenant-manage")
     @Operation(summary = "新增一条数据")
     public Result updateTenantManage(@RequestBody @Validated UpdateTenantManageIO updateTenantManageIO) {
@@ -91,12 +97,14 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
         return result();
     }
 
+    @Tag(name = "Tenant Manage")
     @Operation(summary = "删除一条数据")
     @DeleteMapping("/delete-tenant-manage/{id}")
     public Result deleteTenantManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
 
+    @Tag(name = "Tenant Manage")
     @Operation(summary = "删除多条数据")
     @DeleteMapping("/delete-all-tenant-manage")
     public Result deleteAllTenantManage(List<String> id) {
@@ -106,6 +114,34 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
 
     // ********************************* other Manage *****************************************
 
+
+    @Tag(name = "Role Manage")
+    @GetMapping("/get-role-manage-tenant-detail-to-list")
+    public Result<List<RoleManageTenantDetaiToListVo>> getRoleManageTenantDetaiToListAll(RoleManageTenantDetaiToListQO queryCriteria) {
+        List<SysTenant> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
+        return result(getMapper().toRoleManageTenantDetaiToTreeVo(all));
+    }
+
+    @Tag(name = "User Manage")
+    @GetMapping("/get-user-manage-tenant-detail-to-list")
+    public Result<List<UserManageTenantDetaiToListVo>> getUserManageTenantDetaiToListAll(UserManageTenantDetaiToListQO queryCriteria) {
+        List<SysTenant> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
+        return result(getMapper().toUserManageTenantDetaiToTreeVo(all));
+    }
+
+    @Tag(name = "Account Manage")
+    @GetMapping("/get-account-manage-tenant-detail-to-list")
+    public Result<List<AccountManageTenantDetaiToListVo>> getAccountManageTenantDetaiToListAll(AccountManageTenantDetaiToListQO queryCriteria) {
+        List<SysTenant> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
+        return result(getMapper().toAccountManageTenantDetaiToTreeVo(all));
+    }
+
+    @Tag(name = "Menu Manage")
+    @GetMapping("/get-menu-manage-tenant-detail-to-list")
+    public Result<List<MenuManageTenantDetaiToListVo>> getMenuManageTenantDetaiToListAll(MenuManageTenantDetaiToListQO queryCriteria) {
+        List<SysTenant> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
+        return result(getMapper().toMenuManageTenantDetaiToTreeVo(all));
+    }
 //  @GetMapping("/get-all-tenant-to-tree")
 //  @Operation(summary = "获取当前当前租户的所有子租户，返回树状结构")
 //  public Result<List<TenantVo>> findAllByQueryCriteriaToTree() {

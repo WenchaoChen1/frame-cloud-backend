@@ -10,6 +10,7 @@ import com.gstdev.cloud.service.system.domain.pojo.sysAccount.*;
 import com.gstdev.cloud.service.system.mapper.vo.SysAccountMapper;
 import com.gstdev.cloud.service.system.service.SysAccountService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
@@ -40,6 +41,8 @@ public class SysAccountController implements POJOController<SysAccount, String, 
     }
 
     // ********************************* Account Manage *****************************************
+
+    @Tag(name = "Account Manage")
     @GetMapping("/get-account-manage-page")
     @Operation(summary = "获取所有的用户,分页")
     public Result<Map<String, Object>> getAccountManagePage(AccountManageQO accountManageQO, BasePage basePage) {
@@ -47,12 +50,14 @@ public class SysAccountController implements POJOController<SysAccount, String, 
         return this.result(this.getMapper().toAccountManagePageVo(byPage));
     }
 
+    @Tag(name = "Account Manage")
     @GetMapping("/get-account-manage-detail/{id}")
     @Operation(summary = "get-account-manage-detail")
     public Result<AccountManageDetailVo> getAccountManageDetail(@PathVariable String id) {
         return result(accountVoMapper.toAccountManageDetailVo(getService().findById(id)));
     }
 
+    @Tag(name = "Account Manage")
     @PostMapping("/insert-account-manage")
     @Operation(summary = "新增一条数据")
     public Result insertAccountManage(@RequestBody @Validated InsertAccountManageIO insertAccountManageIO) {
@@ -60,6 +65,7 @@ public class SysAccountController implements POJOController<SysAccount, String, 
         return result();
     }
 
+    @Tag(name = "Account Manage")
     @PutMapping("/update-account-manage")
     @Operation(summary = "新增一条数据")
     public Result updateAccountManage(@RequestBody @Validated UpdateAccountManageIO updateAccountManageIO) {
@@ -69,6 +75,7 @@ public class SysAccountController implements POJOController<SysAccount, String, 
         return result();
     }
 
+    @Tag(name = "Account Manage")
     @PostMapping("/insert-account-manage-initialization")
     @Operation(summary = "新增一个账户并创建角色,部门")
     public Result insertAccountManageInitialization(@RequestBody @Validated InsertAccountManageInitializationIO userInsertInput) {
@@ -76,12 +83,14 @@ public class SysAccountController implements POJOController<SysAccount, String, 
         return result();
     }
 
+    @Tag(name = "Account Manage")
     @Operation(summary = "删除一条数据")
     @DeleteMapping("/delete-account-manage/{id}")
     public Result deleteAccountManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
 
+    @Tag(name = "Account Manage")
     @Operation(summary = "删除多条数据")
     @DeleteMapping("/delete-all-account-manage")
     public Result deleteAllAccountManage(List<String> id) {
