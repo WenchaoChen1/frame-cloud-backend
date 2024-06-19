@@ -4,6 +4,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.TreeController;
+import com.gstdev.cloud.service.system.TreeNode;
 import com.gstdev.cloud.service.system.domain.base.role.*;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.*;
@@ -54,6 +55,15 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     public Result<List<RoleManageTreeVo>> getRoleManageTree(RoleManageTreeQO queryCriteria) {
         List<RoleDto> allByQueryCriteriaToDtoToTree = this.getService().findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
         return this.result(this.getMapper().toRoleManageTreeVo(allByQueryCriteriaToDtoToTree));
+    }
+
+    @GetMapping("/get-role-manage-detail-role")
+//    @Operation(summary = "根据筛选获取所有角色，返回树状结构")
+    public Result<List<TreeNode<RoleManageDetailRoleVo>>> getRoleManageDetailRole(RoleManageDetailRoleQO queryCriteria) {
+
+        List<SysRole> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
+        List<TreeNode<RoleManageDetailRoleVo>> roleManageDetailRoleVo = getMapper().toRoleManageDetailRoleTreeNodeVoDefault(all);
+        return result(roleManageDetailRoleVo);
     }
 
     @GetMapping("/get-role-manage-detail/{id}")
