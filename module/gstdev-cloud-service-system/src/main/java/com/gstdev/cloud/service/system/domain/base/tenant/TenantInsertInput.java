@@ -9,6 +9,7 @@
 
 package com.gstdev.cloud.service.system.domain.base.tenant;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseTreeInsertInput;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -27,23 +28,23 @@ public class TenantInsertInput extends BaseTreeInsertInput {
     private String tenantCode;
     private String tenantName;
     private String description;
-    private Integer status;
+    private DataItemStatus status;
     private Integer type;
 
     //-----------------自定义-----------
 
-    private String companyName = "";
-    private String website = "";
-    private String addressLine1 = "";
-    private String addressLine2 = "";
-    private String city = "";
-    private String state = "";
-    private String country = "";
-    private String zipCode = "";
-    private String firstName = "";
-    private String lastName = "";
-    private String emailAddress = "";
-    private String phoneNumber = "";
-    private String logo = "";
+//    private String companyName = "";
+//    private String website = "";
+//    private String addressLine1 = "";
+//    private String addressLine2 = "";
+//    private String city = "";
+//    private String state = "";
+//    private String country = "";
+//    private String zipCode = "";
+//    private String firstName = "";
+//    private String lastName = "";
+//    private String emailAddress = "";
+//    private String phoneNumber = "";
+//    private String logo = "";
 }
 

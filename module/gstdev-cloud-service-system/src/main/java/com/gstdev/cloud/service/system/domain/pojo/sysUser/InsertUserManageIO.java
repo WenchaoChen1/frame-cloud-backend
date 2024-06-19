@@ -14,6 +14,8 @@ public class InsertUserManageIO {
     private Integer gender = 0;
     private String nickname;
     private String avatar;
-    private DataItemStatus status;
+    private DataItemStatus status = DataItemStatus.ENABLE;
 
+    private String firstName;
+    private String lastName;
 }

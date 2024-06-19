@@ -9,6 +9,7 @@
 
 package com.gstdev.cloud.service.system.domain.base.role;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseTreeInsertInput;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +27,7 @@ public class RoleInsertInput extends BaseTreeInsertInput {
     private String parentId;
     private String roleName;
     private Integer sort;
-    private Integer status;
+    private DataItemStatus status;
     private String tenantId;
 
 }

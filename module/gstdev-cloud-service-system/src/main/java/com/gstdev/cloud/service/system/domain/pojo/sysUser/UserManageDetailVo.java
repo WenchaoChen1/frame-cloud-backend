@@ -27,4 +27,6 @@ public class UserManageDetailVo {
     private String avatar;
     private DataItemStatus status;
 
+    private String firstName;
+    private String lastName;
 }

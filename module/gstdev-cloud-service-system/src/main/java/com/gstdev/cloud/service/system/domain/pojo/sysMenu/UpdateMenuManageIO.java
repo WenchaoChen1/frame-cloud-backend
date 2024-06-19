@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysMenu;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +15,7 @@ public class UpdateMenuManageIO {
     private Integer type;
     private String location;
     private String description;
-    private Integer status;
+    private DataItemStatus status;
 
 
     private String name;

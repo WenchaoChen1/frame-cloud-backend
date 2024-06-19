@@ -52,9 +52,9 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
 
     // ********************************* menu Manage *****************************************
 
-    @GetMapping("/get-menu-manage-to-tree")
+    @GetMapping("/get-menu-manage-tree")
     @Operation(summary = "获取所有菜单，返回树状结构")
-    public Result<List<MenuVo>> getMenuManageMageToTree() {
+    public Result<List<MenuVo>> getMenuManageMageTree() {
         MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
         return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
     }
@@ -64,6 +64,7 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     public Result<MenuVo> getMenuManageDetail(@PathVariable String id) {
         return findByIdToResult(id);
     }
+
     @PostMapping("/insert-menu-manage")
     @Operation(summary = "insert-menu-manage")
     public Result insertAMenuManage(@RequestBody @Validated InsertMenuManageIO insertMenuManageIO) {

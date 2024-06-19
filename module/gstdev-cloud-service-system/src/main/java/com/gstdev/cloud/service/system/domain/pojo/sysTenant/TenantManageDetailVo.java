@@ -9,6 +9,7 @@
 
 package com.gstdev.cloud.service.system.domain.pojo.sysTenant;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +23,6 @@ public class TenantManageDetailVo {
     private String tenantCode;
     private String tenantName;
     private String description;
-    private Integer status;
+    private DataItemStatus status;
     private Integer type;
 }

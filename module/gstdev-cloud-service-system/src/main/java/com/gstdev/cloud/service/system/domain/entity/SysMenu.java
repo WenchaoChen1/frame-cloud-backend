@@ -11,6 +11,8 @@ package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -62,10 +64,13 @@ public class SysMenu extends BaseTreeEntity {
     private Integer type = 0;
     @Column(name = "location", length = 16)
     private String location = "LEFT-MENU";
+    @Schema(title = "数据状态")
     @Column(name = "status", nullable = false)
-    private Integer status = 0;
-    @Column(name = "tenant_enable")
-    private Integer tenantEnable = 0;
+    @Enumerated(EnumType.ORDINAL)
+    private DataItemStatus status = DataItemStatus.ENABLE;
+
+//    @Column(name = "tenant_enable")
+//    private Integer tenantEnable = 0;
 
 //    //可以在菜单中不展示这个路由，包括子路由
 //    private Boolean ideInMenu = true;

@@ -19,14 +19,14 @@ public class InsertUserManageInitializationIO {
     private String avatar;
     private DataItemStatus status;
 
+    private String firstName;
+    private String lastName;
 
     List<String> departIds;
     List<String> roleIds;
     private String accountName;
     private String tenantId;
     private SysAccountType type = SysAccountType.USER;
-    private String firstName;
-    private String lastName;
     private String icon;
 
 }

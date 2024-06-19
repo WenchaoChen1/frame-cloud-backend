@@ -11,6 +11,7 @@ package com.gstdev.cloud.service.system.domain.base.menu;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.base.core.utils.treeUtils.TreeNode;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseTreeDto;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,7 +46,7 @@ private String updatedAccount;
     private String path;
     private String permission;
     private Integer sort;
-    private Integer status;
+    private DataItemStatus status;
     private Integer tenantEnable;
     private Integer type;
     private String url;

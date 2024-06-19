@@ -7,26 +7,24 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.service.system.domain.base.role;
+package com.gstdev.cloud.service.system.domain.pojo.sysMenu;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
-import com.gstdev.cloud.data.core.pojo.BaseTreeUpdateInput;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
-public class RoleUpdateInput extends BaseTreeUpdateInput {
+public class MenuManageDetailVo {
 
     private String id;
-    private String code;
-    private String description;
-    private String parentId;
     private String roleName;
+    private String code;
+    private String tenantId;
+    private String parentId;
     private Integer sort;
     private DataItemStatus status;
-    private String tenantId;
-
+    private String description;
 
 }
-

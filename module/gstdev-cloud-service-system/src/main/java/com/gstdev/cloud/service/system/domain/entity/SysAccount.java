@@ -2,7 +2,9 @@ package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,6 +39,11 @@ public class SysAccount extends BasePOJOEntity {
     @Column(name = "type", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private SysAccountType type = SysAccountType.USER;
+
+    @Schema(title = "数据状态")
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private DataItemStatus status = DataItemStatus.ENABLE;
 
     @Column(name = "deleted", nullable = false)
     private Integer deleted = 0;

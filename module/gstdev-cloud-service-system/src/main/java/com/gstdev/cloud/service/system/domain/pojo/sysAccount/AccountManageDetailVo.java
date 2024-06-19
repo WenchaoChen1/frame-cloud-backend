@@ -9,6 +9,7 @@
 
 package com.gstdev.cloud.service.system.domain.pojo.sysAccount;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +23,7 @@ public class AccountManageDetailVo {
     private String name;
     private String identity;
     private String tenantId;
+    private DataItemStatus status;
     private SysUser user;
     @Getter
     @Setter

@@ -9,6 +9,7 @@
 
 package com.gstdev.cloud.service.system.domain.base.menu;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseTreeUpdateInput;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +28,7 @@ public class MenuUpdateInput extends BaseTreeUpdateInput {
     private String path;
     private String permission;
     private Integer sort;
-    private Integer status;
+    private DataItemStatus status;
     private Integer tenantEnable;
     private Integer type;
     private String url;

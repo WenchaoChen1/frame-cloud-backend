@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysAccount;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,5 +16,6 @@ public class InsertAccountManageInitializationIO {
     private String tenantId;
     private String userId;
     private String name;
+    private DataItemStatus status;
     private SysAccountType type;
 }

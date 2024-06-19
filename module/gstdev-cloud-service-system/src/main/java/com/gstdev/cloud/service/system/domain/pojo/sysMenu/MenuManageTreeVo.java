@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.service.system.domain.pojo.sysTenant;
+package com.gstdev.cloud.service.system.domain.pojo.sysMenu;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
@@ -20,21 +20,24 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class TenantManageTreeVo extends BaseTreeVo<TenantManageTreeVo> {
+public class MenuManageTreeVo extends BaseTreeVo {
+
     private String id;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date createdDate;
     private String createdUser;
-private String createdAccount;
+    private String createdAccount;
     @JsonFormat( pattern = "yyyy-MM-dd")
     private Date updatedDate;
     private String updatedUser;
-private String updatedAccount;
+    private String updatedAccount;
+
+    private String roleName;
+    private String code;
+    private String tenantId;
     private String parentId;
-    private String tenantCode;
-    private String tenantName;
-    private String description;
+    private Integer sort;
     private DataItemStatus status;
-    private Integer type;
+    private String description;
 }
 

@@ -9,12 +9,9 @@
 
 package com.gstdev.cloud.service.system.domain.pojo.sysRole;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.util.Date;
 
 
 @Getter
@@ -27,7 +24,7 @@ public class RoleManageDetailVo {
     private String tenantId;
     private String parentId;
     private Integer sort;
-    private Integer status;
+    private DataItemStatus status;
     private String description;
 
 }

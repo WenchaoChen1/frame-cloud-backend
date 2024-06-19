@@ -11,6 +11,8 @@ package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -44,8 +46,10 @@ public class SysRole extends BaseTreeEntity {
     @Column(name = "code", length = 50, nullable = false)
     private String code;
 
+    @Schema(title = "数据状态")
     @Column(name = "status", nullable = false)
-    private Integer status = 1;
+    @Enumerated(EnumType.ORDINAL)
+    private DataItemStatus status = DataItemStatus.ENABLE;
 
     @Column(name = "sort")
     private Integer sort;

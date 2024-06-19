@@ -16,4 +16,7 @@ public class UpdateUserManageIO {
     private String nickname;
     private String avatar;
     private DataItemStatus status;
+
+    private String firstName;
+    private String lastName;
 }

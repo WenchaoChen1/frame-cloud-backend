@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysTenant;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
@@ -14,7 +15,7 @@ public class InsertTenantManageIO {
     private String tenantCode;
     private String tenantName;
     private String description;
-    private Integer status;
+    private DataItemStatus status = DataItemStatus.ENABLE;
     private Integer type;
 
     //-----------------自定义-----------

@@ -10,6 +10,7 @@
 package com.gstdev.cloud.service.system.domain.base.tenant;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseTreeDto;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,7 +38,7 @@ private String createdAccount;
 private String updatedAccount;
     private String tenantName;
     private String description;
-    private Integer status;
+    private DataItemStatus status;
     private String parentId;
     private String tenantCode;
     private Integer type;

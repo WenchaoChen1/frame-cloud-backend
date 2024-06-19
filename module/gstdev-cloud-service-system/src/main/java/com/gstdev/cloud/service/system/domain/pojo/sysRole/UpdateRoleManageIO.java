@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysRole;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,6 @@ public class UpdateRoleManageIO {
     private String parentId;
     private String roleName;
     private Integer sort;
-    private Integer status;
+    private DataItemStatus status;
     private String tenantId;
 }
