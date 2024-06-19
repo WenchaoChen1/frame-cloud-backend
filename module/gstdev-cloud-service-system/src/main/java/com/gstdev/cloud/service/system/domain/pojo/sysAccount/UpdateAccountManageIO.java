@@ -12,5 +12,6 @@ public class UpdateAccountManageIO {
     private String id;
     private String name;
     private String tenantId;
+    private String userId;
     private SysAccountType type;
 }

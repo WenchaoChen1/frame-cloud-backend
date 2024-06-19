@@ -38,10 +38,10 @@ public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, Sys
     }
 
     @Override
-    public Result<String> insertRoleMenu(RoleInsertInput roleInsertInput) {
-        SysRole role = findById(roleInsertInput.getId());
+    public Result<String> insertRoleMenu(String roleId, List<String> menuIds) {
+        SysRole role = findById(roleId);
 
-        role.setRTenantMenus(rTenantMenuRepository.findAllByTenantIdAndMenuIdIn(role.getTenantId(), roleInsertInput.getMenuIds()));
+        role.setRTenantMenus(rTenantMenuRepository.findAllByTenantIdAndMenuIdIn(role.getTenantId(), menuIds));
         update(role);
         return Result.success();
     }

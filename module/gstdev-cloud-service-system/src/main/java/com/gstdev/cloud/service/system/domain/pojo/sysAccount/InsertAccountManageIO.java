@@ -10,6 +10,7 @@ public class InsertAccountManageIO {
 
     private String name;
     private String tenantId;
+    private String userId;
     private SysAccountType type;
 
 }
