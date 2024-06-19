@@ -19,6 +19,7 @@ import com.gstdev.cloud.service.system.mapper.vo.SysMenuMapper;
 import com.gstdev.cloud.service.system.service.SysMenuService;
 import com.gstdev.cloud.service.system.service.SysRoleService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -122,7 +123,7 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
         return deleteByIdToResult(id);
     }
 
-
+    @Tag(name = "Role Manage")
     @GetMapping("/get-all-by-tenant-menu-to-tree")
     @Operation(summary = "获取指定租户的所有菜单，返回树状结构")
     public Result<List<MenuVo>> getAllByTenantMenuToTree(@RequestParam("tenantId") String tenantId) {
@@ -136,7 +137,6 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     public Result<List<MenuVo>> getAllByRoleMenuToTree(@RequestParam("roleId") String roleId) {
         return getMapper().toAllVo(getService().getAllByRoleMenuToTree(roleId));
     }
-
     @GetMapping("/get-all-tenant-menu-id")
     @Operation(summary = "获取指定租户的所有菜单id")
     public Result<MenuVo> getAllTenantMenuIds(@RequestParam("tenantId") String tenantId) {

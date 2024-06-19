@@ -9,6 +9,7 @@ import lombok.Setter;
 public class InsertAccountManageIO {
 
     private String name;
+    private String identity;
     private String tenantId;
     private String userId;
     private SysAccountType type;

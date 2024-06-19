@@ -9,13 +9,16 @@
 
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BasePOJOService;
-import com.gstdev.cloud.service.system.domain.base.rTenantMenu.*;
+import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuDto;
+import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuInsertInput;
+import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
+
+import java.util.List;
 
 public interface SysRTenantMenuService extends BasePOJOService<RTenantMenu, String, RTenantMenuDto> {
-    Result<String> insertTenantMenu(RTenantMenuInsertInput rTenantMenuInsertInput);
+    Result<String> insertTenantMenu(String tenantId, List<String> menuIds);
 
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 }

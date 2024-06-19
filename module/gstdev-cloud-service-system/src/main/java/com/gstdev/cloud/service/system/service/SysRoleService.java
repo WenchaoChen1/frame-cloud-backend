@@ -8,7 +8,7 @@ import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import java.util.List;
 
 public interface SysRoleService extends BaseTreeService<SysRole, String, RoleDto> {
-    Result<List<String>> getAllByRoleId(String roleId);
+    Result<List<String>> getAllTenantByRoleId(String roleId);
 
     Result<String> insertRoleMenu(String roleId, List<String> menuIds);
 

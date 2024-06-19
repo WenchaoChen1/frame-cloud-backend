@@ -113,15 +113,15 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
 
     @Tag(name = "Role Manage")
-    @GetMapping("/get-all-by-role-id/{roleId}")
+    @GetMapping("/get-all-tenant-by-role-id/{roleId}")
     @Operation(summary = "获取指定角色的所有菜单，返回id")
-    public Result<List<String>> getAllByRoleId(@PathVariable @RequestParam("roleId") String roleId) {
-        return getService().getAllByRoleId(roleId);
+    public Result<List<String>> getAllTenantByRoleId(@PathVariable @RequestParam("roleId") String roleId) {
+        return getService().getAllTenantByRoleId(roleId);
     }
 
     @Tag(name = "Role Manage")
     @PostMapping("/insert-role-menu")
-    @Operation(summary = "insertSave")
+//    @Operation(summary = "insertSave")
     public Result<String> insertRoleMenu( @RequestParam("roleId") String roleId, @RequestParam("menuIds") List<String> menuIds) {
         return getService().insertRoleMenu(roleId,menuIds);
     }

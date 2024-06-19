@@ -50,11 +50,12 @@ public class SysRTenantMenuController implements POJOController<RTenantMenu, Str
 //    }
 
     @Tag(name = "Tenant Manage")
-    @PostMapping("/insertTenantMenu")
-    @Operation(summary = "insertSave")
-    public Result<String> insertTenantMenu(@RequestBody RTenantMenuInsertInput rTenantMenuInsertInput) {
-        return rTenantMenuService.insertTenantMenu(rTenantMenuInsertInput);
+    @PostMapping("/insert-tenant-menu")
+    @Operation(summary = "insert-tenant-menu")
+    public Result<String> insertTenantMenu( @RequestParam("tenantId") String tenantId, @RequestParam("menuIds") List<String> menuIds) {
+        return rTenantMenuService.insertTenantMenu(tenantId, menuIds);
     }
+
 
     @Tag(name = "Tenant Manage")
     @GetMapping("/get-all-by-tenant-id")

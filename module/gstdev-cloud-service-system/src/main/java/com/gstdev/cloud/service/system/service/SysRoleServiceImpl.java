@@ -32,7 +32,7 @@ public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, Sys
         return roleRepository;
     }
     @Override
-    public Result<List<String>> getAllByRoleId(String roleId) {
+    public Result<List<String>> getAllTenantByRoleId(String roleId) {
         List<String> strings = findById(roleId).getRTenantMenus().stream().map(RTenantMenu::getMenu).map(SysMenu::getId).toList();
         return Result.success(strings);
     }

@@ -48,9 +48,8 @@ public class SysRTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, 
 
     @Override
     @Transactional
-    public Result<String> insertTenantMenu(RTenantMenuInsertInput rTenantMenuInsertInput) {
-        List<RTenantMenu> allByTenantId = findAllByTenantId(rTenantMenuInsertInput.getTenantId());
-        List<String> menuIds = rTenantMenuInsertInput.getMenuIds();
+    public Result<String> insertTenantMenu(String tenantId, List<String> menuIds) {
+        List<RTenantMenu> allByTenantId = findAllByTenantId(tenantId);
         List<RTenantMenu> rTenantMenus = new ArrayList<>();
         allByTenantId.forEach(rTenantMenu -> {
             if (menuIds.contains(rTenantMenu.getMenu().getId())) {
@@ -63,7 +62,7 @@ public class SysRTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, 
         if (menuIds.size() > 0) {
             menuIds.forEach(id -> {
                 RTenantMenu rTenantMenu = new RTenantMenu();
-                rTenantMenu.setTenantId(rTenantMenuInsertInput.getTenantId());
+                rTenantMenu.setTenantId(tenantId);
                 rTenantMenu.setMenu(MenuRepository.findById(id).get());
                 rTenantMenus.add(rTenantMenu);
             });
