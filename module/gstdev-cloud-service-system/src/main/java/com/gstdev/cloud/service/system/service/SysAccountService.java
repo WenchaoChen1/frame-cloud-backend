@@ -3,7 +3,9 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.data.core.service.BasePOJOService;
 import com.gstdev.cloud.service.system.domain.base.account.*;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageInitializationIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.UpdateAccountManageIO;
 
 import java.util.List;
 
@@ -22,4 +24,7 @@ public interface SysAccountService extends BasePOJOService<SysAccount, String, A
 
     void deleteByTenantId(String tenantId);
 
+    void insertAccountManage(InsertAccountManageIO insertAccountManageIO);
+
+    void updateAccountManage(UpdateAccountManageIO updateAccountManageIO);
 }

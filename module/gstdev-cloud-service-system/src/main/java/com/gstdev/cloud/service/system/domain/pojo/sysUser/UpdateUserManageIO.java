@@ -19,4 +19,5 @@ public class UpdateUserManageIO {
 
     private String firstName;
     private String lastName;
+    private String description;
 }

@@ -29,4 +29,5 @@ public class UserManageDetailVo {
 
     private String firstName;
     private String lastName;
+    private String description;
 }

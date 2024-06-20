@@ -2,18 +2,19 @@ package com.gstdev.cloud.service.system.service;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.gstdev.cloud.data.core.service.BaseDtoServiceImpl;
-import com.gstdev.cloud.service.system.mapper.vo.SysAccountMapper;
-import com.gstdev.cloud.service.system.domain.base.account.*;
+import com.gstdev.cloud.service.system.domain.base.account.AccountDto;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageInitializationIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.UpdateAccountManageIO;
+import com.gstdev.cloud.service.system.mapper.vo.SysAccountMapper;
 import com.gstdev.cloud.service.system.repository.SysAccountRepository;
 import com.gstdev.cloud.service.system.repository.SysDepartRepository;
 import com.gstdev.cloud.service.system.repository.SysRoleRepository;
 import com.gstdev.cloud.service.system.repository.SysUserRepository;
-import org.springframework.transaction.annotation.Transactional;
-
 import jakarta.annotation.Resource;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
 import java.util.List;
@@ -28,7 +29,8 @@ public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String
     private SysDepartRepository departRepository;
     @Resource
     private SysRoleRepository roleRepository;
-
+    @Resource
+    private SysAccountMapper accountVoMapper;
     @Resource
     private SysAccountRepository accountRepository;
 
@@ -90,6 +92,21 @@ public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String
         if (ObjectUtil.isNotEmpty(accountList)) {
             getRepository().deleteAll(accountList);
         }
+    }
+
+    @Override
+    public void insertAccountManage(InsertAccountManageIO insertAccountManageIO) {
+        SysAccount entity = accountVoMapper.toEntity(insertAccountManageIO);
+        entity.setUser(userRepository.findById(insertAccountManageIO.getUserId()).get());
+        insertAndUpdate(entity);
+    }
+
+    @Override
+    public void updateAccountManage(UpdateAccountManageIO updateAccountManageIO) {
+        SysAccount entity = findById(updateAccountManageIO.getId());
+        accountVoMapper.copy(updateAccountManageIO, entity);
+        entity.setUser(userRepository.findById(updateAccountManageIO.getUserId()).get());
+        insertAndUpdate(entity);
     }
 //  @Override
 //  public Integer findByTenantId(String tenantId) {

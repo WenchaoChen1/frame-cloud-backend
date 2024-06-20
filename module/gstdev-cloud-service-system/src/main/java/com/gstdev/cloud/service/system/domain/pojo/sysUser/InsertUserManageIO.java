@@ -18,4 +18,5 @@ public class InsertUserManageIO {
 
     private String firstName;
     private String lastName;
+    private String description;
 }

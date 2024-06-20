@@ -73,7 +73,8 @@ public class SysUser extends BasePOJOEntity {
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private DataItemStatus status = DataItemStatus.ENABLE;
-
+    @Column(name = "description")
+    private String description;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)

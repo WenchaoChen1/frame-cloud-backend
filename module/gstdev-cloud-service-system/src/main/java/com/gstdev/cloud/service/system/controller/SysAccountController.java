@@ -61,7 +61,8 @@ public class SysAccountController implements POJOController<SysAccount, String, 
     @PostMapping("/insert-account-manage")
     @Operation(summary = "新增一条数据")
     public Result insertAccountManage(@RequestBody @Validated InsertAccountManageIO insertAccountManageIO) {
-        this.getService().insertAndUpdate(accountVoMapper.toEntity(insertAccountManageIO));
+
+        this.getService().insertAccountManage(insertAccountManageIO);
         return result();
     }
 
@@ -69,9 +70,8 @@ public class SysAccountController implements POJOController<SysAccount, String, 
     @PutMapping("/update-account-manage")
     @Operation(summary = "新增一条数据")
     public Result updateAccountManage(@RequestBody @Validated UpdateAccountManageIO updateAccountManageIO) {
-        SysAccount sysAccount = this.getService().findById(updateAccountManageIO.getId());
-        accountVoMapper.copy(updateAccountManageIO, sysAccount);
-        this.getService().insertAndUpdate(sysAccount);
+
+        this.getService().updateAccountManage(updateAccountManageIO);
         return result();
     }
 

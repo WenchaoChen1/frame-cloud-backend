@@ -23,5 +23,6 @@ public class UserManagePageVo {
     private String email;
     private String phoneNumber;
     private DataItemStatus status;
+    private String description;
 }
 

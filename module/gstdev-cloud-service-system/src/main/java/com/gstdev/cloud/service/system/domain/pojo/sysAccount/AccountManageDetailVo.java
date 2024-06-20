@@ -31,6 +31,9 @@ public class AccountManageDetailVo {
         private String id;
     }
     public String getUserId() {
+        if(user==null){
+            return null;
+        }
         return user.getId();
     }
 

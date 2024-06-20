@@ -28,5 +28,5 @@ public class InsertUserManageInitializationIO {
     private String tenantId;
     private SysAccountType type = SysAccountType.USER;
     private String icon;
-
+    private String description;
 }
