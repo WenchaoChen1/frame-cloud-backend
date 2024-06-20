@@ -147,10 +147,10 @@ public Result<List<MenuManageTreeVo>> getTenantManageMenuTree(MenuManageTreeQO q
     public Result<List<MenuVo>> getAllByRoleMenuToTree(@NotBlank @RequestParam("roleId") String roleId) {
         return getMapper().toAllVo(getService().getAllByRoleMenuToTree(roleId));
     }
-    @GetMapping("/get-all-tenant-menu-id")
-    @Operation(summary = "获取指定租户的所有菜单id")
-    public Result<MenuVo> getAllTenantMenuIds(@NotBlank @RequestParam("tenantId") String tenantId) {
-        return getMapper().toVo(getService().getAllTenantMenuIds(tenantId));
-    }
+//    @GetMapping("/get-all-tenant-menu-id/{tenantId}")
+//    @Operation(summary = "获取指定租户的所有菜单")
+//    public Result<MenuVo> getAllTenantMenuIds(@NotBlank @RequestParam("tenantId") String tenantId) {
+//        return getMapper().toVo(getService().getAllTenantMenuIds(tenantId));
+//    }
 
 }

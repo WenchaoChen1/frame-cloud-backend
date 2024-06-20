@@ -115,7 +115,7 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     @Tag(name = "Role Manage")
     @GetMapping("/get-all-tenant-by-role-id/{roleId}")
     @Operation(summary = "获取指定角色的所有菜单，返回id")
-    public Result<List<String>> getAllTenantByRoleId(@PathVariable @RequestParam("roleId") String roleId) {
+    public Result<List<String>> getAllTenantByRoleId(@PathVariable String roleId) {
         return getService().getAllTenantByRoleId(roleId);
     }
 
