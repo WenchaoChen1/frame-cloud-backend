@@ -12,6 +12,7 @@ import com.gstdev.cloud.service.system.service.SysRoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -122,7 +123,7 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     @Tag(name = "Role Manage")
     @PostMapping("/insert-role-menu")
 //    @Operation(summary = "insertSave")
-    public Result<String> insertRoleMenu( @RequestParam("roleId") String roleId, @RequestParam("menuIds") List<String> menuIds) {
+    public Result<String> insertRoleMenu(@NotBlank @RequestParam("roleId") String roleId, @RequestParam("menuIds") List<String> menuIds) {
         return getService().insertRoleMenu(roleId,menuIds);
     }
 

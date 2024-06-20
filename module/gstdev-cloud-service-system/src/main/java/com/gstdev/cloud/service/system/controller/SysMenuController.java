@@ -21,6 +21,7 @@ import com.gstdev.cloud.service.system.service.SysRoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -117,6 +118,14 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
 //    public Result<MenuVo> update(@RequestBody MenuUpdateInput menuUpdateInput) {
 //        return updateToResult(menuUpdateInput);
 //    }
+@Tag(name = "Tenant Manage")
+@GetMapping("/get-tenant-manage-menu-tree")
+@Operation(summary = "获取所有菜单，返回树状结构")
+public Result<List<MenuManageTreeVo>> getTenantManageMenuTree(MenuManageTreeQO queryCriteria) {
+    List<SysMenu> byPage = this.getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
+    return this.result(this.getMapper().toMenuManageTreeVoToTree(byPage));
+}
+
 
     @Operation(summary = "")
     @DeleteMapping
@@ -127,7 +136,7 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     @Tag(name = "Role Manage")
     @GetMapping("/get-all-by-tenant-menu-to-tree")
     @Operation(summary = "获取指定租户的所有菜单，返回树状结构")
-    public Result<List<MenuVo>> getAllByTenantMenuToTree(@RequestParam("tenantId") String tenantId) {
+    public Result<List<MenuVo>> getAllByTenantMenuToTree(@NotBlank @RequestParam("tenantId") String tenantId) {
         MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
         menuFindAllByQueryCriteria.setTenantId(tenantId);
         return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
@@ -135,12 +144,12 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
 
     @GetMapping("/get-all-by-role-menu-to-tree")
     @Operation(summary = "获取指定role的所有菜单，返回树状结构")
-    public Result<List<MenuVo>> getAllByRoleMenuToTree(@RequestParam("roleId") String roleId) {
+    public Result<List<MenuVo>> getAllByRoleMenuToTree(@NotBlank @RequestParam("roleId") String roleId) {
         return getMapper().toAllVo(getService().getAllByRoleMenuToTree(roleId));
     }
     @GetMapping("/get-all-tenant-menu-id")
     @Operation(summary = "获取指定租户的所有菜单id")
-    public Result<MenuVo> getAllTenantMenuIds(@RequestParam("tenantId") String tenantId) {
+    public Result<MenuVo> getAllTenantMenuIds(@NotBlank @RequestParam("tenantId") String tenantId) {
         return getMapper().toVo(getService().getAllTenantMenuIds(tenantId));
     }
 

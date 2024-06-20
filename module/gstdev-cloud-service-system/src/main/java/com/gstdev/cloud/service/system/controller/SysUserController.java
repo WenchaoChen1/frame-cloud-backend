@@ -17,6 +17,7 @@ import com.gstdev.cloud.service.system.service.SysUserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotBlank;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
@@ -60,7 +61,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
     @Tag(name = "User Manage")
     @GetMapping("/get-user-manage-detail/{id}")
     @Operation(summary = "get-user-manage-detail")
-    public Result<UserManageDetailVo> getUserManageDetail(@PathVariable String id) {
+    public Result<UserManageDetailVo> getUserManageDetail(@NotBlank @PathVariable String id) {
         return result(getMapper().toUserManageDetailVo(getService().findById(id)));
     }
 
@@ -109,7 +110,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
     @Tag(name = "security sign-in")
     @GetMapping("/security/sign-in/{username}")
     @Operation(summary = "根据username获取实体数据")
-    public Result<DefaultSecurityUser> signInFindByUsername(@PathVariable("username") String username) {
+    public Result<DefaultSecurityUser> signInFindByUsername(@NotBlank @PathVariable("username") String username) {
         return Result.success(getService().signInFindByUsername(username));
     }
 
