@@ -33,7 +33,7 @@ public interface SysRoleMapper extends BaseTreeMapper<SysRole, RoleDto, RoleVo, 
 
     List<RoleManageRoleDetaiToListVo> toRoleManageRoleDetaiToListVo(List<SysRole> sysRole);
 
-    default List<RoleManageRoleDetaiToListVo> toRoleManageRoleDetaiToTreeVo(List<SysRole> sysRole) {
+    default List<RoleManageRoleDetaiToListVo> toRoleManageRoleDetaiToListVoToTree(List<SysRole> sysRole) {
         List<RoleManageRoleDetaiToListVo> roleManageRoleDetaiToListVo = toRoleManageRoleDetaiToListVo(sysRole);
         return TreeUtils.buildTree(
             roleManageRoleDetaiToListVo,

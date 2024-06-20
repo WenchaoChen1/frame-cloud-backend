@@ -19,12 +19,15 @@ import lombok.Setter;
 public class MenuManageDetailVo {
 
     private String id;
-    private String roleName;
     private String code;
-    private String tenantId;
     private String parentId;
     private Integer sort;
     private DataItemStatus status;
     private String description;
-
+    private String name;
+    private String menuName;
+    private Integer type;
+    private String location;
+    private String path;
+    private String icon;
 }

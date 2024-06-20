@@ -11,7 +11,7 @@ package com.gstdev.cloud.service.system.domain.pojo.sysMenu;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
-import com.gstdev.cloud.data.core.pojo.BaseTreeVo;
+import com.gstdev.cloud.service.system.TreeNode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +20,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class MenuManageTreeVo extends BaseTreeVo {
+public class MenuManageTreeVo extends TreeNode<String, MenuManageTreeVo> {
 
     private String id;
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -32,12 +32,16 @@ public class MenuManageTreeVo extends BaseTreeVo {
     private String updatedUser;
     private String updatedAccount;
 
-    private String roleName;
+    private String name;
+    private String menuName;
     private String code;
-    private String tenantId;
     private String parentId;
     private Integer sort;
     private DataItemStatus status;
     private String description;
+    private Integer type;
+    private String location;
+    private String path;
+    private String icon;
 }
 

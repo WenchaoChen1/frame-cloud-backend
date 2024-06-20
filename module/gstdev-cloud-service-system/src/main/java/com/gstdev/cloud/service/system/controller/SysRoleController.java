@@ -61,7 +61,7 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     @GetMapping("/get-role-manage-role-detail-to-list")
     public Result<List<RoleManageRoleDetaiToListVo>> getRoleManageTenantDetaiToListAll(RoleManageRoleDetaiToListQO queryCriteria) {
         List<SysRole> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
-        return result(getMapper().toRoleManageRoleDetaiToTreeVo(all));
+        return result(getMapper().toRoleManageRoleDetaiToListVoToTree(all));
     }
 //    @Operation(summary = "根据筛选获取所有角色，返回树状结构")
 //    public Result<List<TreeNode<RoleManageRoleDetaiToListVo>>> getRoleManageRoleDetaiToListAll(RoleManageRoleDetaiToListQO queryCriteria) {

@@ -57,7 +57,7 @@ public interface SysTenantMapper extends BaseTreeMapper<SysTenant, TenantDto, Te
 
     List<RoleManageTenantDetaiToListVo> toRoleManageTenantDetaiToListVo(List<SysTenant> sysTenant);
 
-    default List<RoleManageTenantDetaiToListVo> toRoleManageTenantDetaiToTreeVo(List<SysTenant> sysTenant) {
+    default List<RoleManageTenantDetaiToListVo> toRoleManageTenantDetaiToListVoToTree(List<SysTenant> sysTenant) {
         List<RoleManageTenantDetaiToListVo> roleManageTenantDetaiToListVo = toRoleManageTenantDetaiToListVo(sysTenant);
         return TreeUtils.buildTree(
             roleManageTenantDetaiToListVo,
@@ -70,7 +70,7 @@ public interface SysTenantMapper extends BaseTreeMapper<SysTenant, TenantDto, Te
 
     List<AccountManageTenantDetaiToListVo> toAccountManageTenantDetaiToListVo(List<SysTenant> sysTenant);
 
-    default List<AccountManageTenantDetaiToListVo> toAccountManageTenantDetaiToTreeVo(List<SysTenant> sysTenant) {
+    default List<AccountManageTenantDetaiToListVo> toAccountManageTenantDetaiToListVoToTree(List<SysTenant> sysTenant) {
         List<AccountManageTenantDetaiToListVo> roleManageTenantDetaiToListVo = toAccountManageTenantDetaiToListVo(sysTenant);
         return TreeUtils.buildTree(
             roleManageTenantDetaiToListVo,
@@ -83,7 +83,7 @@ public interface SysTenantMapper extends BaseTreeMapper<SysTenant, TenantDto, Te
 
     List<UserManageTenantDetaiToListVo> toUserManageTenantDetaiToListVo(List<SysTenant> sysTenant);
 
-    default List<UserManageTenantDetaiToListVo> toUserManageTenantDetaiToTreeVo(List<SysTenant> sysTenant) {
+    default List<UserManageTenantDetaiToListVo> toUserManageTenantDetaiToListVoToTree(List<SysTenant> sysTenant) {
         List<UserManageTenantDetaiToListVo> roleManageTenantDetaiToListVo = toUserManageTenantDetaiToListVo(sysTenant);
         return TreeUtils.buildTree(
             roleManageTenantDetaiToListVo,
@@ -96,7 +96,7 @@ public interface SysTenantMapper extends BaseTreeMapper<SysTenant, TenantDto, Te
 
     List<MenuManageTenantDetaiToListVo> toMenuManageTenantDetaiToListVo(List<SysTenant> sysTenant);
 
-    default List<MenuManageTenantDetaiToListVo> toMenuManageTenantDetaiToTreeVo(List<SysTenant> sysTenant) {
+    default List<MenuManageTenantDetaiToListVo> toMenuManageTenantDetaiToListVoToTree(List<SysTenant> sysTenant) {
         List<MenuManageTenantDetaiToListVo> roleManageTenantDetaiToListVo = toMenuManageTenantDetaiToListVo(sysTenant);
         return TreeUtils.buildTree(
             roleManageTenantDetaiToListVo,

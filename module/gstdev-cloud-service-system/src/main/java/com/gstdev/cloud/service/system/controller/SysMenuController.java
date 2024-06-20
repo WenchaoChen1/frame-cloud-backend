@@ -10,11 +10,11 @@
 package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import com.gstdev.cloud.service.system.domain.base.menu.*;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
-import com.gstdev.cloud.service.system.domain.pojo.sysMenu.InsertMenuManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysMenu.UpdateMenuManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysMenu.*;
 import com.gstdev.cloud.service.system.mapper.vo.SysMenuMapper;
 import com.gstdev.cloud.service.system.service.SysMenuService;
 import com.gstdev.cloud.service.system.service.SysRoleService;
@@ -54,15 +54,15 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
 
     @GetMapping("/get-menu-manage-tree")
     @Operation(summary = "获取所有菜单，返回树状结构")
-    public Result<List<MenuVo>> getMenuManageMageTree() {
-        MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
-        return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
+    public Result<List<MenuManageTreeVo>> getMenuManageMageTree(MenuManageTreeQO queryCriteria) {
+        List<SysMenu> byPage = this.getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
+        return this.result(this.getMapper().toMenuManageTreeVoToTree(byPage));
     }
 
     @GetMapping("/get-menu-manage-detail/{id}")
     @Operation(summary = "get-menu-manage-detail")
-    public Result<MenuVo> getMenuManageDetail(@PathVariable String id) {
-        return findByIdToResult(id);
+    public Result<MenuManageDetailVo> getMenuManageDetail(@PathVariable String id) {
+        return result(this.getMapper().toMenuManageDetailVo(getService().findById(id)));
     }
 
     @PostMapping("/insert-menu-manage")

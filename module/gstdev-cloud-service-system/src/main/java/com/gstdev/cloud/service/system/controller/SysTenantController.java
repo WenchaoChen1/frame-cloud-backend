@@ -119,28 +119,28 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
     @GetMapping("/get-role-manage-tenant-detail-to-list")
     public Result<List<RoleManageTenantDetaiToListVo>> getRoleManageTenantDetaiToListAll(RoleManageTenantDetaiToListQO queryCriteria) {
         List<SysTenant> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
-        return result(getMapper().toRoleManageTenantDetaiToTreeVo(all));
+        return result(getMapper().toRoleManageTenantDetaiToListVoToTree(all));
     }
 
     @Tag(name = "User Manage")
     @GetMapping("/get-user-manage-tenant-detail-to-list")
     public Result<List<UserManageTenantDetaiToListVo>> getUserManageTenantDetaiToListAll(UserManageTenantDetaiToListQO queryCriteria) {
         List<SysTenant> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
-        return result(getMapper().toUserManageTenantDetaiToTreeVo(all));
+        return result(getMapper().toUserManageTenantDetaiToListVoToTree(all));
     }
 
     @Tag(name = "Account Manage")
     @GetMapping("/get-account-manage-tenant-detail-to-list")
     public Result<List<AccountManageTenantDetaiToListVo>> getAccountManageTenantDetaiToListAll(AccountManageTenantDetaiToListQO queryCriteria) {
         List<SysTenant> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
-        return result(getMapper().toAccountManageTenantDetaiToTreeVo(all));
+        return result(getMapper().toAccountManageTenantDetaiToListVoToTree(all));
     }
 
     @Tag(name = "Menu Manage")
     @GetMapping("/get-menu-manage-tenant-detail-to-list")
     public Result<List<MenuManageTenantDetaiToListVo>> getMenuManageTenantDetaiToListAll(MenuManageTenantDetaiToListQO queryCriteria) {
         List<SysTenant> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
-        return result(getMapper().toMenuManageTenantDetaiToTreeVo(all));
+        return result(getMapper().toMenuManageTenantDetaiToListVoToTree(all));
     }
 //  @GetMapping("/get-all-tenant-to-tree")
 //  @Operation(summary = "获取当前当前租户的所有子租户，返回树状结构")

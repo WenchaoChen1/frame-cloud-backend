@@ -21,5 +21,4 @@ public class UpdateMenuManageIO {
     private String name;
     private String path;
     private String icon;
-
 }
