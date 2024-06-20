@@ -13,6 +13,7 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.*;
 import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuIO;
 import com.gstdev.cloud.service.system.mapper.RTenantMenuMapper;
 import com.gstdev.cloud.service.system.repository.SysMenuRepository;
 import com.gstdev.cloud.service.system.repository.SysRTenantMenuRepository;
@@ -48,8 +49,9 @@ public class SysRTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, 
 
     @Override
     @Transactional
-    public Result<String> insertTenantMenu(String tenantId, List<String> menuIds) {
-        List<RTenantMenu> allByTenantId = findAllByTenantId(tenantId);
+    public Result<String> insertTenantMenu(InsertTenantMenuIO insertTenantMenuIO) {
+        List<RTenantMenu> allByTenantId = findAllByTenantId(insertTenantMenuIO.getTenantId());
+        List<String> menuIds = insertTenantMenuIO.getMenuIds();
         List<RTenantMenu> rTenantMenus = new ArrayList<>();
         allByTenantId.forEach(rTenantMenu -> {
             if (menuIds.contains(rTenantMenu.getMenu().getId())) {
@@ -62,7 +64,7 @@ public class SysRTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, 
         if (menuIds.size() > 0) {
             menuIds.forEach(id -> {
                 RTenantMenu rTenantMenu = new RTenantMenu();
-                rTenantMenu.setTenantId(tenantId);
+                rTenantMenu.setTenantId(insertTenantMenuIO.getTenantId());
                 rTenantMenu.setMenu(MenuRepository.findById(id).get());
                 rTenantMenus.add(rTenantMenu);
             });

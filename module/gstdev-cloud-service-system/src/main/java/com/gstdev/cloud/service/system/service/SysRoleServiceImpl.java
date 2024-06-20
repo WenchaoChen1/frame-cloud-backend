@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.service.system.domain.pojo.sysRole.InsertRoleMenuIO;
 import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
 import com.gstdev.cloud.service.system.domain.base.role.*;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
@@ -38,10 +39,10 @@ public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, Sys
     }
 
     @Override
-    public Result<String> insertRoleMenu(String roleId, List<String> menuIds) {
-        SysRole role = findById(roleId);
+    public Result<String> insertRoleMenu(InsertRoleMenuIO insertRoleMenuIO) {
+        SysRole role = findById(insertRoleMenuIO.getRoleId());
 
-        role.setRTenantMenus(rTenantMenuRepository.findAllByTenantIdAndMenuIdIn(role.getTenantId(), menuIds));
+        role.setRTenantMenus(rTenantMenuRepository.findAllByTenantIdAndMenuIdIn(role.getTenantId(), insertRoleMenuIO.getMenuIds()));
         update(role);
         return Result.success();
     }

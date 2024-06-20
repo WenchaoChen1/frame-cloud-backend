@@ -14,12 +14,15 @@ import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.POJOController;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.*;
 import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysMenu;
+import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuIO;
 import com.gstdev.cloud.service.system.mapper.vo.RTenantMenuVoMapper;
 import com.gstdev.cloud.service.system.service.SysRTenantMenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotBlank;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -53,8 +56,8 @@ public class SysRTenantMenuController implements POJOController<RTenantMenu, Str
     @Tag(name = "Tenant Manage")
     @PostMapping("/insert-tenant-menu")
     @Operation(summary = "insert-tenant-menu")
-    public Result<String> insertTenantMenu(@NotBlank @RequestParam("tenantId") String tenantId, @RequestParam("menuIds") List<String> menuIds) {
-        return rTenantMenuService.insertTenantMenu(tenantId, menuIds);
+    public Result<String> insertTenantMenu(@RequestBody @Validated InsertTenantMenuIO insertTenantMenuIO) {
+        return rTenantMenuService.insertTenantMenu(insertTenantMenuIO);
     }
 
 
@@ -64,8 +67,11 @@ public class SysRTenantMenuController implements POJOController<RTenantMenu, Str
     public Result<List<String>> getAllByTenantId(@NotBlank @RequestParam("tenantId") String tenantId) {
         RTenantMenuFindAllByQueryCriteria rTenantMenuFindAllByQueryCriteria = new RTenantMenuFindAllByQueryCriteria();
         rTenantMenuFindAllByQueryCriteria.setTenantId(tenantId);
-        List<RTenantMenuDto> all = getService().findAllToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, rTenantMenuFindAllByQueryCriteria, criteriaBuilder));
-        List<String> strings = all.stream().map(RTenantMenuDto::getMenuId).toList();
+        List<RTenantMenu> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, rTenantMenuFindAllByQueryCriteria, criteriaBuilder));
+        List<String> strings = all.stream()
+            .map(RTenantMenu::getMenu).map(SysMenu::getId)
+            .toList();
+
         return Result.success(strings);
     }
 
