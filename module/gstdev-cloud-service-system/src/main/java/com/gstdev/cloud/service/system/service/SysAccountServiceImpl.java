@@ -93,8 +93,8 @@ public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String
             getRepository().deleteAll(accountList);
         }
     }
-
     @Override
+    @Transactional
     public void insertAccountManage(InsertAccountManageIO insertAccountManageIO) {
         SysAccount entity = accountVoMapper.toEntity(insertAccountManageIO);
         entity.setUser(userRepository.findById(insertAccountManageIO.getUserId()).get());
@@ -102,6 +102,7 @@ public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String
     }
 
     @Override
+    @Transactional
     public void updateAccountManage(UpdateAccountManageIO updateAccountManageIO) {
         SysAccount entity = findById(updateAccountManageIO.getId());
         accountVoMapper.copy(updateAccountManageIO, entity);

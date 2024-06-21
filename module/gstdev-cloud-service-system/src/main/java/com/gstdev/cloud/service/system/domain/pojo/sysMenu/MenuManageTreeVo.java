@@ -23,11 +23,11 @@ import java.util.Date;
 public class MenuManageTreeVo extends TreeNode<String, MenuManageTreeVo> {
 
     private String id;
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdDate;
     private String createdUser;
     private String createdAccount;
-    @JsonFormat( pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updatedDate;
     private String updatedUser;
     private String updatedAccount;

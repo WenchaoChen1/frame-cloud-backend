@@ -23,12 +23,12 @@ import java.util.Date;
 public class TenantManagePageVo extends BaseTreeVo {
 
     private String id;
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdDate;
     private String createdUser;
 private String createdAccount;
-    @JsonFormat( pattern = "yyyy-MM-dd")
     private Date updatedDate;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private String updatedUser;
 private String updatedAccount;
     private String parentId;

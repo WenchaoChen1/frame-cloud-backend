@@ -20,7 +20,6 @@ import com.gstdev.cloud.service.system.mapper.vo.RTenantMenuVoMapper;
 import com.gstdev.cloud.service.system.service.SysRTenantMenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.validation.annotation.Validated;

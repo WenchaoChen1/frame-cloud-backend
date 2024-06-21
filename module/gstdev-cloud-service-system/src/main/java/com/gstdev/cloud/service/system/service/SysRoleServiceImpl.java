@@ -38,6 +38,7 @@ public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, Sys
         return Result.success(strings);
     }
 
+    @Transactional
     @Override
     public Result<String> insertRoleMenu(InsertRoleMenuIO insertRoleMenuIO) {
         SysRole role = findById(insertRoleMenuIO.getRoleId());

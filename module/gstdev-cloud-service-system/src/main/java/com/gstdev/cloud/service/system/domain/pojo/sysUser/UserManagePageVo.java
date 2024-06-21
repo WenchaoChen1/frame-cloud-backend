@@ -9,9 +9,12 @@
 
 package com.gstdev.cloud.service.system.domain.pojo.sysUser;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Date;
 
 
 @Getter
@@ -19,6 +22,14 @@ import lombok.Setter;
 public class UserManagePageVo {
 
     private String id;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createdDate;
+    private String createdUser;
+    private String createdAccount;
+    private Date updatedDate;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private String updatedUser;
+    private String updatedAccount;
     private String username;
     private String email;
     private String phoneNumber;

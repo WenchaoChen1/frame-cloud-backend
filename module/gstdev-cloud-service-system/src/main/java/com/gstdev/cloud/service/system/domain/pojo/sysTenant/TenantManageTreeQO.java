@@ -1,16 +1,23 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysTenant;
 
 import com.gstdev.cloud.data.core.annotations.Query;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Data
-public class TenantByIdToTreeQO implements Serializable {
+public class TenantManageTreeQO implements Serializable {
     private static final long serialVersionUID = 3163118978801722144L;
 
-    @Query(blurry = "tenantName", type = Query.Type.IN)
+    @Query(type=Query.Type.EQUAL)
+    private Integer type;
+
+    @Query(type = Query.Type.IN)
+    private Set<DataItemStatus> status;
+    @Query(blurry = "tenantName", type = Query.Type.INNER_LIKE)
     private String tenantName;
     //  @Query
     private String tenantId;

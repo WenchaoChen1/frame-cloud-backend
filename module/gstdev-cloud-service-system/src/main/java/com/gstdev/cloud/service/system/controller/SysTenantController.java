@@ -63,7 +63,7 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
     @Tag(name = "Tenant Manage")
     @GetMapping("/get-tenant-manage-tree")
     @Operation(summary = "获取当前租户以及当前租户的所有子租户，返回树状结构")
-    public Result<List<TenantManageTreeVo>> getTenantManageTree(TenantByIdToTreeQO tenantFindAllByQueryCriteria) {
+    public Result<List<TenantManageTreeVo>> getTenantManageTree(TenantManageTreeQO tenantFindAllByQueryCriteria) {
         if (tenantFindAllByQueryCriteria.getTenantId() != null) {
             List<TenantDto> itselfAndSubsetsToDto = getService().findItselfAndSubsetsToDto(tenantFindAllByQueryCriteria.getTenantId());
             List<String> tenantIds = itselfAndSubsetsToDto.stream().map(TenantDto::getId).toList();

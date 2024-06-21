@@ -1,7 +1,10 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysAccount;
 
 import com.gstdev.cloud.data.core.annotations.Query;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 public class AccountManageQO {
@@ -12,4 +15,7 @@ public class AccountManageQO {
     private String name;
     @Query(type= Query.Type.INNER_LIKE)
     private String identity;
+
+    @Query(type = Query.Type.IN)
+    private Set<DataItemStatus> status;
 }
