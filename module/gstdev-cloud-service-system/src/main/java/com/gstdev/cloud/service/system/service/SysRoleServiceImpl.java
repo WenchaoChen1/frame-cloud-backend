@@ -1,23 +1,23 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
+import com.gstdev.cloud.service.system.domain.base.role.RoleDto;
+import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.InsertRoleMenuIO;
 import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
-import com.gstdev.cloud.service.system.domain.base.role.*;
-import com.gstdev.cloud.service.system.domain.entity.SysMenu;
-import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
-import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.repository.SysRTenantMenuRepository;
 import com.gstdev.cloud.service.system.repository.SysRoleRepository;
-import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
-import org.springframework.transaction.annotation.Transactional;
-
 import jakarta.annotation.Resource;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 
-@Transactional(readOnly = true)
+@Transactional
+//@Transactional(readOnly = true)
 public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, SysRoleRepository, SysRoleMapper, RoleDto> implements SysRoleService {
 
     @Resource

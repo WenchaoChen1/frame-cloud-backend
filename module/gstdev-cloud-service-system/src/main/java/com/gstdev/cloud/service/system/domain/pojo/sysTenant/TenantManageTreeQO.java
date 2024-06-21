@@ -14,7 +14,10 @@ public class TenantManageTreeQO implements Serializable {
 
     @Query(type=Query.Type.EQUAL)
     private Integer type;
-
+    @Query(type = Query.Type.INNER_LIKE)
+    private String tenantCode;
+    @Query(type = Query.Type.INNER_LIKE)
+    private String description;
     @Query(type = Query.Type.IN)
     private Set<DataItemStatus> status;
     @Query(blurry = "tenantName", type = Query.Type.INNER_LIKE)
