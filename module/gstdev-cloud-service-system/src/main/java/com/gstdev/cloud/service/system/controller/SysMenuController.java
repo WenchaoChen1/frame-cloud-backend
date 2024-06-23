@@ -102,25 +102,25 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
         return this.result(this.getMapper().toMenuManageTreeVoToTree(byPage));
     }
 
-    /**
-     * 获取指定租户的所有菜单，返回树状结构
-     * @param tenantId
-     * @return
-     */
-    @Tag(name = "Role Manage")
-    @GetMapping("/get-all-by-tenant-menu-to-tree")
-    @Operation(summary = "get-all-by-tenant-menu-to-tree")
-    public Result<List<MenuVo>> getAllByTenantMenuToTree(@NotBlank @RequestParam("tenantId") String tenantId) {
-        MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
-        menuFindAllByQueryCriteria.setTenantId(tenantId);
-        return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
-    }
-
-    @GetMapping("/get-all-by-role-menu-to-tree")
-    @Operation(summary = "/get-all-by-role-menu-to-tree")
-    public Result<List<MenuVo>> getAllByRoleMenuToTree(@NotBlank @RequestParam("roleId") String roleId) {
-        return getMapper().toAllVo(getService().getAllByRoleMenuToTree(roleId));
-    }
+//    /**
+//     * 获取指定租户的所有菜单，返回树状结构
+//     * @param tenantId
+//     * @return
+//     */
+//    @Tag(name = "Role Manage")
+//    @GetMapping("/get-all-by-tenant-menu-to-tree")
+//    @Operation(summary = "get-all-by-tenant-menu-to-tree")
+//    public Result<List<MenuVo>> getAllByTenantMenuToTree(@NotBlank @RequestParam("tenantId") String tenantId) {
+//        MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
+//        menuFindAllByQueryCriteria.setTenantId(tenantId);
+//        return findAllByQueryCriteriaToResultToTree(menuFindAllByQueryCriteria);
+//    }
+//
+//    @GetMapping("/get-all-by-role-menu-to-tree")
+//    @Operation(summary = "/get-all-by-role-menu-to-tree")
+//    public Result<List<MenuVo>> getAllByRoleMenuToTree(@NotBlank @RequestParam("roleId") String roleId) {
+//        return getMapper().toAllVo(getService().getAllByRoleMenuToTree(roleId));
+//    }
 //    @GetMapping("/get-all-tenant-menu-id/{tenantId}")
 //    @Operation(summary = "获取指定租户的所有菜单")
 //    public Result<MenuVo> getAllTenantMenuIds(@NotBlank @RequestParam("tenantId") String tenantId) {

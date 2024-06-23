@@ -49,7 +49,7 @@ public class SysRTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, 
 
     @Override
     @Transactional
-    public Result<String> insertTenantMenu(InsertTenantMenuIO insertTenantMenuIO) {
+    public void insertTenantMenu(InsertTenantMenuIO insertTenantMenuIO) {
         List<RTenantMenu> allByTenantId = findAllByTenantId(insertTenantMenuIO.getTenantId());
         List<String> menuIds = insertTenantMenuIO.getMenuIds();
         List<RTenantMenu> rTenantMenus = new ArrayList<>();
@@ -70,7 +70,6 @@ public class SysRTenantMenuServiceImpl extends BasePOJOServiceImpl<RTenantMenu, 
             });
         }
         update(rTenantMenus);
-        return Result.success();
     }
 
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
