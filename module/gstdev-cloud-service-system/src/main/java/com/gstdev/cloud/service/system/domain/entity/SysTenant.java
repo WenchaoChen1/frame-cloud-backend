@@ -24,8 +24,8 @@ import org.hibernate.annotations.Where;
 @Setter
 @Entity
 @Table(name = "sys_tenant", schema = "public")
-@Where(clause = "deleted = 0")
-@SQLDelete(sql = "UPDATE tenant SET deleted=1 WHERE id =?")
+//@Where(clause = "deleted = 0")
+//@SQLDelete(sql = "UPDATE tenant SET deleted=1 WHERE id =?")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 public class SysTenant extends BaseTreeEntity {
 
@@ -49,8 +49,8 @@ public class SysTenant extends BaseTreeEntity {
     @Column(name = "type")//comment 'development 0;platform 1;tenant 2'
     private Integer type = 0;
 
-    @Column(name = "deleted")
-    private Integer deleted = 0;
+//    @Column(name = "deleted")
+//    private Integer deleted = 0;
 
 //-----------------自定义-----------
 

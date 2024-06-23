@@ -32,12 +32,12 @@ import java.util.List;
 @Entity
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 @Table(name = "sys_menu", schema = "public")
-@Where(clause = "deleted = 0")
-@SQLDelete(sql = "UPDATE sys_menu SET deleted=1 WHERE id =?")
+//@Where(clause = "deleted = 0")
+//@SQLDelete(sql = "UPDATE sys_menu SET deleted=1 WHERE id =?")
 public class SysMenu extends BaseTreeEntity {
 
-    @Column(name = "deleted", nullable = false)
-    private Integer deleted = 0;
+//    @Column(name = "deleted", nullable = false)
+//    private Integer deleted = 0;
 
     @Column(name = "parent_id", length = 36, nullable = false)
     private String parentId;

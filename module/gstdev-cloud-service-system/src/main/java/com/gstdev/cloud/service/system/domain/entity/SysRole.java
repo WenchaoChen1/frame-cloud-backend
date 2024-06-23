@@ -29,8 +29,8 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "sys_role", schema = "public")
-@Where(clause = "deleted = 0")
-@SQLDelete(sql = "UPDATE sys_role SET deleted=1 WHERE id =?")
+//@Where(clause = "deleted = 0")
+//@SQLDelete(sql = "UPDATE sys_role SET deleted=1 WHERE id =?")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 public class SysRole extends BaseTreeEntity {
 
@@ -57,8 +57,8 @@ public class SysRole extends BaseTreeEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "deleted", nullable = false)
-    private Integer deleted = 0;
+//    @Column(name = "deleted", nullable = false)
+//    private Integer deleted = 0;
 
 //  @JsonIgnore
 //  @OneToMany(mappedBy = "role",cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)

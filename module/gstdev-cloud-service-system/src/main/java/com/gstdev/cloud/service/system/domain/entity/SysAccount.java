@@ -24,8 +24,8 @@ import java.util.List;
 @Entity
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 @Table(name = "sys_account", schema = "public")
-@Where(clause = "deleted = 0")
-@SQLDelete(sql = "UPDATE sys_account SET deleted=1 WHERE id =?")
+@Where(clause = "is_deleted = false")
+@SQLDelete(sql = "UPDATE sys_account SET is_deleted=true WHERE id =?")
 public class SysAccount extends BasePOJOEntity {
 
     @Column(name = "tenant_id", length = 36, nullable = false)
@@ -45,8 +45,8 @@ public class SysAccount extends BasePOJOEntity {
     @Enumerated(EnumType.ORDINAL)
     private DataItemStatus status = DataItemStatus.ENABLE;
 
-    @Column(name = "deleted", nullable = false)
-    private Integer deleted = 0;
+    @Column(name = "is_deleted", nullable = false)
+    private Boolean isDeleted = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
