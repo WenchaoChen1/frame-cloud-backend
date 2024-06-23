@@ -17,6 +17,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.time.Instant;
 import java.util.List;
@@ -27,8 +29,8 @@ import java.util.List;
 @Entity
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 @Table(name = "sys_user", schema = "public")
-//@Where(clause = "deleted = 0")
-//@SQLDelete(sql = "UPDATE public.sys_user SET deleted=1 WHERE id =?")
+@Where(clause = "deleted = 0")
+@SQLDelete(sql = "UPDATE public.sys_user SET deleted=1 WHERE id =?")
 public class SysUser extends BasePOJOEntity {
     @Schema(title = "用户名")
     @Column(name = "username", length = 128, nullable = false, unique = true)
@@ -66,13 +68,14 @@ public class SysUser extends BasePOJOEntity {
     @Column(name = "credentials_expire_at")
     private Instant credentialsExpireAt;
 
-//    @Column(name = "deleted", nullable = false)
-//    private Integer deleted = 0;
+    @Column(name = "deleted", nullable = false)
+    private Integer deleted = 0;
 
     @Schema(title = "数据状态")
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private DataItemStatus status = DataItemStatus.ENABLE;
+
     @Column(name = "description")
     private String description;
 

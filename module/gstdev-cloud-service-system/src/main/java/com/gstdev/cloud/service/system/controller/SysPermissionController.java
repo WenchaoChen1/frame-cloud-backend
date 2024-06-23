@@ -33,13 +33,9 @@ import java.util.Map;
 /**
  * <p>Description: SysPermissionController </p>
  */
-//@ResponseBody
+
 @RestController
 @RequestMapping("/v1/permission")
-//@Tags({
-//    @Tag(name = "用户安全管理接口"),
-//    @Tag(name = "系统权限管理接口")
-//})
 public class SysPermissionController implements DtoController<SysPermission, String, SysPermissionDto> {
 
     @Resource

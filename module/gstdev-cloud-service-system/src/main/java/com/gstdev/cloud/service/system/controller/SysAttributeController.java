@@ -25,7 +25,7 @@ import java.util.Map;
 /**
  * <p>Description: SysAttributeController </p>
  */
-//@ResponseBody
+
 @RestController
 @RequestMapping("/v1/attribute")
 @Tags({

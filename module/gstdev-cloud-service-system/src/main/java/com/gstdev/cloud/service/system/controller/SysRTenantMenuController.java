@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@ResponseBody
+
 @RestController
 @RequestMapping("/v1/rTenantMenu")
 public class SysRTenantMenuController implements POJOController<RTenantMenu, String, RTenantMenuVo, RTenantMenuDto, RTenantMenuInsertInput, RTenantMenuUpdateInput, RTenantMenuPageQueryCriteria, RTenantMenuFindAllByQueryCriteria> {

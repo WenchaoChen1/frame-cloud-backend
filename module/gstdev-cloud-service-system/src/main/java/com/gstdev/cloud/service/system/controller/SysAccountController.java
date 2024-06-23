@@ -3,8 +3,7 @@ package com.gstdev.cloud.service.system.controller;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
-import com.gstdev.cloud.rest.core.controller.POJOController;
-import com.gstdev.cloud.service.system.domain.base.account.*;
+import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.*;
 import com.gstdev.cloud.service.system.mapper.vo.SysAccountMapper;
@@ -19,10 +18,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-//@ResponseBody
 @RestController
 @RequestMapping("/v1/account")
-public class SysAccountController implements POJOController<SysAccount, String, AccountVo, AccountDto, AccountInsertInput, AccountUpdateInput, AccountPageQueryCriteria, AccountFindAllByQueryCriteria> {
+public class SysAccountController implements ResultController {
 
     @Resource
     private SysAccountService accountService;
@@ -30,12 +28,10 @@ public class SysAccountController implements POJOController<SysAccount, String, 
     @Resource
     private SysAccountMapper accountVoMapper;
 
-    @Override
     public SysAccountService getService() {
         return accountService;
     }
 
-    @Override
     public SysAccountMapper getMapper() {
         return accountVoMapper;
     }
@@ -85,14 +81,16 @@ public class SysAccountController implements POJOController<SysAccount, String, 
     @DeleteMapping("/delete-account-manage/{id}")
     @Operation(summary = "delete-account-manage")
     public Result deleteAccountManage(@PathVariable String id) {
-        return deleteByIdToResult(id);
+        getService().deleteById(id);
+        return result();
     }
 
     @Tag(name = "Account Manage")
     @Operation(summary = "delete-all-account-manage")
     @DeleteMapping("/delete-all-account-manage")
     public Result deleteAllAccountManage(List<String> id) {
-        return deleteAllByIdToResult(id);
+        getService().deleteAllById(id);
+        return result();
     }
 
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
