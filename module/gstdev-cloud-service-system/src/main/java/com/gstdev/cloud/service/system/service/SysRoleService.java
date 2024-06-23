@@ -9,7 +9,7 @@ import com.gstdev.cloud.service.system.domain.pojo.sysRole.InsertRoleMenuIO;
 import java.util.List;
 
 public interface SysRoleService extends BaseTreeService<SysRole, String, RoleDto> {
-    Result<List<String>> getAllTenantByRoleId(String roleId);
+    Result<List<String>> getAllMenuIdByRoleId(String roleId);
 
     Result<String> insertRoleMenu(InsertRoleMenuIO insertRoleMenuIO);
 

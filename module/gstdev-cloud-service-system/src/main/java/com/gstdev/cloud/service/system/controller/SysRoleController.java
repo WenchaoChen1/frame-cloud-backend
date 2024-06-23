@@ -103,12 +103,12 @@ public class SysRoleController implements ResultController {
         return result();
     }
 
-    // 角色关联菜单
+    // 角色关联菜单获取这个角色的menu id
     @Tag(name = "Role Manage")
-    @GetMapping("/get-all-tenant-by-role-id/{roleId}")
-    @Operation(summary = "get-all-tenant-by-role-id")
-    public Result<List<String>> getAllTenantByRoleId(@PathVariable String roleId) {
-        return getService().getAllTenantByRoleId(roleId);
+    @GetMapping("/get-all-menu-id-by-role-id/{roleId}")
+    @Operation(summary = "get-all-menu-id-by-role-id")
+    public Result<List<String>> getAllMenuIdByRoleId(@PathVariable String roleId) {
+        return getService().getAllMenuIdByRoleId(roleId);
     }
 
     // 角色关联菜单
