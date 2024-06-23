@@ -21,15 +21,10 @@
         </dependency>
 
 
-
-
-
-
-
-<!--        <dependency>-->
-<!--            <groupId>com.gstdev.cloud</groupId>-->
-<!--            <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.gstdev.cloud</groupId>-->
+        <!--            <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-web-server-spring-boot-starter</artifactId>

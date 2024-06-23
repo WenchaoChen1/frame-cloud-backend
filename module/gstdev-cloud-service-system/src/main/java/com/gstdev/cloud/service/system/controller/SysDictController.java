@@ -11,10 +11,11 @@ import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 //@ResponseBody
 @RestController
 @RequestMapping("/v1/dict")
-public class SysDictController implements TreeController<SysDict, String,  DictVo, DictDto, DictInsertInput, DictUpdateInput, DictPageQueryCriteria, DictFindAllByQueryCriteria> {
+public class SysDictController implements TreeController<SysDict, String, DictVo, DictDto, DictInsertInput, DictUpdateInput, DictPageQueryCriteria, DictFindAllByQueryCriteria> {
 
     @Resource
     private SysDictService dictService;

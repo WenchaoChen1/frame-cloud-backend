@@ -41,7 +41,7 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
     private final SysPermissionService sysPermissionService;
     private final SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer;
 
-    public SecurityMetadataDistributeProcessor(SysAttributeService sysAttributeService, SysInterfaceService sysInterfaceService,SysPermissionService sysPermissionService, SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
+    public SecurityMetadataDistributeProcessor(SysAttributeService sysAttributeService, SysInterfaceService sysInterfaceService, SysPermissionService sysPermissionService, SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer) {
         this.sysAttributeService = sysAttributeService;
         this.sysInterfaceService = sysInterfaceService;
         this.sysPermissionService = sysPermissionService;
@@ -70,7 +70,7 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
             log.debug("[Gstdev Cloud] |- [5] Request mapping store success, start to merge security metadata!");
 
             List<SysInterface> sysInterfaces = sysInterfaceService.findAllocatable();
-
+            System.out.println(CollectionUtils.isNotEmpty(sysInterfaces));
             if (CollectionUtils.isNotEmpty(sysInterfaces)) {
                 List<SysAttribute> elements = toSysAttributes.convert(sysInterfaces);
 //                List<SysPermission> collect = elements.stream()

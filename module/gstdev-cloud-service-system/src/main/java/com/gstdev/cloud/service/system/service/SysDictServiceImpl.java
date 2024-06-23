@@ -22,7 +22,8 @@ public class SysDictServiceImpl extends BaseTreeServiceImpl<SysDict, String, Sys
         super(dictRepository, dictMapper);
         this.dictRepository = dictRepository;
     }
-   @Override
+
+    @Override
     public SysDictRepository getRepository() {
         return dictRepository;
     }

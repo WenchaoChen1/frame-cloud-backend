@@ -23,10 +23,10 @@ public class RRoleRTenantMenuUpdateInput extends BaseUpdateInput {
     private String id;
     private Date createdDate;
     private String createdUser;
-private String createdAccount;
+    private String createdAccount;
     private Date updatedDate;
     private String updatedUser;
-private String updatedAccount;
+    private String updatedAccount;
     private Integer checked;
     private String tenantId;
     private String menuId;

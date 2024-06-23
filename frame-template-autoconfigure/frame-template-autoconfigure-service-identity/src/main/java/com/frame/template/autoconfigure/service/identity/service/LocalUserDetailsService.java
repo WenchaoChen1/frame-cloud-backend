@@ -13,7 +13,6 @@ import java.util.*;
 
 /**
  * <p>Description: UserDetail本地直联服务 </p>
- *
  */
 public class LocalUserDetailsService implements StrategyUserDetailsService {
 

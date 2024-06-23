@@ -101,7 +101,6 @@ public class SysAccountController implements POJOController<SysAccount, String, 
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
 
 
-
     //    @GetMapping("/get-account-page")
 //    @Operation(summary = "获取所有的账户,分页")
 //    public Result<Page<AccountVo>> getAllPageQueryCriteria(AccountPageQueryCriteria accountPageQueryCriteria, Pageable pageable) {

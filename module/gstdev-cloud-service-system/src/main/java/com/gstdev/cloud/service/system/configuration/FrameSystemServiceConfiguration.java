@@ -87,11 +87,12 @@ public class FrameSystemServiceConfiguration {
         log.debug("[GstDev Cloud] |- Frame Configure Attribute Service");
         return new SysAttributeServiceImpl(sysAttributeRepository);
     }
+
     @Bean
     @ConditionalOnMissingBean
     public SysDepartService sysDepartService(SysDepartRepository departRepository, DepartMapper departMappe) {
         log.debug("[GstDev Cloud] |- Frame Configure Depart Service");
-        return new SysDepartServiceImpl(departRepository,departMappe);
+        return new SysDepartServiceImpl(departRepository, departMappe);
     }
 
     @Bean

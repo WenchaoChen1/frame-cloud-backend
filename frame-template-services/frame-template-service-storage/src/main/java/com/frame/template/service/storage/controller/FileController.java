@@ -43,25 +43,25 @@
 //    }
 //
 //    @GetMapping("/get-by-id")
-//    @Operation(summary = "根据id获取实体数据")
+@Operation(summary = "根据id获取实体数据")
 //    public Result<FileVo> getById(String id) {
 //        return findByIdToResult(id);
 //    }
 //
 //    @PostMapping
-//    @Operation(summary = "新增一条数据")
+@Operation(summary = "新增一条数据")
 //    public Result<FileVo> insert(FileInsertInput fileInsertInput, @RequestParam("file") MultipartFile file) {
 //        return insertToResult(fileInsertInput);
 //    }
 //
 //
-//    @Operation(summary = "Delete file")
+@Operation(summary = "Delete file")
 //    @DeleteMapping
 //    public Result delete(@PathVariable final String id) {
 //        return deleteByIdToResult(id);
 //    }
 //
-//    @Operation(summary = "Upload file")
+@Operation(summary = "Upload file")
 //    @PostMapping(value = "/upload")
 //    public Result<FileVo> upload(@RequestParam("file") MultipartFile file, @RequestParam("tenantId") String tenantId, @RequestParam("type") FileConstants fileConstants) throws IOException {
 //        if (fileConstants == null) {
@@ -72,7 +72,7 @@
 //
 //    }
 //
-//    @Operation(summary = "Uploads file")
+@Operation(summary = "Uploads file")
 //    @PostMapping(value = "/uploads")
 //    public Result<List<FileVo>> uploads(@RequestParam("file") List<MultipartFile> file, @RequestParam("tenantId") String tenantId, @RequestParam("type") FileConstants fileConstants) throws IOException {
 //        Result<List<FileVo>> fileVoResult = getMapper().toAllVo(fileService.uploads(file, tenantId, fileConstants));

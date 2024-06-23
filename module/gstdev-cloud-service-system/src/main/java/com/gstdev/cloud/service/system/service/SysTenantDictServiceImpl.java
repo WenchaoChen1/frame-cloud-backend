@@ -24,9 +24,11 @@ public class SysTenantDictServiceImpl implements SysTenantDictService {
         this.tenantDictMapper = tenantDictMapper;
         this.tenantDictRepository = tenantDictRepository;
     }
+
     public SysTenantDictRepository getRepository() {
         return tenantDictRepository;
     }
+
     /**
      * 新增保存
      *

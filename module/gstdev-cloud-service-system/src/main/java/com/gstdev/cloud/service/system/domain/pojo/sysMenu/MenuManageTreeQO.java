@@ -11,11 +11,11 @@ import java.util.Set;
  */
 @Data
 public class MenuManageTreeQO {
-    @Query(type=Query.Type.INNER_LIKE)
+    @Query(type = Query.Type.INNER_LIKE)
     private String menuName;
-    @Query(type=Query.Type.INNER_LIKE)
+    @Query(type = Query.Type.INNER_LIKE)
     private String path;
-    @Query(type=Query.Type.EQUAL)
+    @Query(type = Query.Type.EQUAL)
     private Integer type;
 
     @Query(type = Query.Type.IN)

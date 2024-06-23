@@ -12,7 +12,7 @@ import java.util.Set;
 public class TenantManageTreeQO implements Serializable {
     private static final long serialVersionUID = 3163118978801722144L;
 
-    @Query(type=Query.Type.EQUAL)
+    @Query(type = Query.Type.EQUAL)
     private Integer type;
     @Query(type = Query.Type.INNER_LIKE)
     private String tenantCode;

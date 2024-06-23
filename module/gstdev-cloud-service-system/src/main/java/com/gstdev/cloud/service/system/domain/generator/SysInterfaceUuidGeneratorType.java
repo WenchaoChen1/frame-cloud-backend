@@ -12,7 +12,6 @@ import java.lang.reflect.Member;
 
 /**
  * <p>Description: 自定义UUID生成器，使得保存实体类时可以在保留主键生成策略的情况下自定义表的主键 </p>
- *
  */
 public class SysInterfaceUuidGeneratorType extends AbstractUuidGenerator {
 

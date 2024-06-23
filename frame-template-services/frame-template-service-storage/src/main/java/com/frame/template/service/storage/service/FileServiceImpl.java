@@ -35,64 +35,64 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class FileServiceImpl extends BasePOJOServiceImpl<File, String, FileRepository, FileMapper, FileDto, FileInsertInput, FileUpdateInput, FilePageQueryCriteria, FileFindAllByQueryCriteria> implements FileService {
 
-        @Resource
-        private FileRepository fileRepository;
-        @Resource
-        private FileMapper fileMapper;
-        @Resource
-        private RedisCurrentLoginInformation redisCurrentLoginInformation;
+    @Resource
+    private FileRepository fileRepository;
+    @Resource
+    private FileMapper fileMapper;
+    @Resource
+    private RedisCurrentLoginInformation redisCurrentLoginInformation;
 
 //  @Resource
 //  private StorageProperties storageProperties;
 
-        @Resource
-        private StorageService storageService;
+    @Resource
+    private StorageService storageService;
 
 
-        public FileServiceImpl(FileRepository fileRepository, FileMapper fileMapper) {
-            super(fileRepository, fileMapper);
+    public FileServiceImpl(FileRepository fileRepository, FileMapper fileMapper) {
+        super(fileRepository, fileMapper);
 //        this.fileRepository = fileRepository;
 //        this.fileMapper = fileMapper;
-        }
+    }
 
-        @Override
-        public FileDto findByIdToDto(String id) {
-            FileDto byId = super.findByIdToDto(id);
-            String url = storageService.getObjectURL(byId.getBucketName(), byId.getName(), 2);
-            byId.setLink(url);
-            return byId;
-        }
+    @Override
+    public FileDto findByIdToDto(String id) {
+        FileDto byId = super.findByIdToDto(id);
+        String url = storageService.getObjectURL(byId.getBucketName(), byId.getName(), 2);
+        byId.setLink(url);
+        return byId;
+    }
 
-        @Override
-        @Transactional
-        public Result<FileDto> upload(MultipartFile file, String tenantId, FileConstants fileConstants) {
-            File fileEntity = upload(file);
+    @Override
+    @Transactional
+    public Result<FileDto> upload(MultipartFile file, String tenantId, FileConstants fileConstants) {
+        File fileEntity = upload(file);
+        fileEntity.setTenantId(tenantId);
+        fileEntity.setServices(fileConstants.getService());
+        fileEntity.setTableCode(fileConstants.getCode());
+        FileDto fileDto = insertToDto(fileEntity);
+        return Result.success(fileDto);
+    }
+
+    @Override
+    @Transactional
+    public Result<List<FileDto>> uploads(List<MultipartFile> file, String tenantId, FileConstants fileConstants) {
+        if (file.size() == 0) {
+            throw new PlatformRuntimeException("文件不能为空");
+        }
+        List<FileDto> fileDtos = new ArrayList<>();
+        for (MultipartFile multipartFile : file) {
+            File fileEntity = upload(multipartFile);
             fileEntity.setTenantId(tenantId);
             fileEntity.setServices(fileConstants.getService());
             fileEntity.setTableCode(fileConstants.getCode());
             FileDto fileDto = insertToDto(fileEntity);
-            return Result.success(fileDto);
+            fileDtos.add(fileDto);
         }
+        return Result.success(fileDtos);
+    }
 
-        @Override
-        @Transactional
-        public Result<List<FileDto>> uploads(List<MultipartFile> file, String tenantId, FileConstants fileConstants) {
-            if (file.size() == 0) {
-                throw new PlatformRuntimeException("文件不能为空");
-            }
-            List<FileDto> fileDtos = new ArrayList<>();
-            for (MultipartFile multipartFile : file) {
-                File fileEntity = upload(multipartFile);
-                fileEntity.setTenantId(tenantId);
-                fileEntity.setServices(fileConstants.getService());
-                fileEntity.setTableCode(fileConstants.getCode());
-                FileDto fileDto = insertToDto(fileEntity);
-                fileDtos.add(fileDto);
-            }
-            return Result.success(fileDtos);
-        }
-
-        public File upload(MultipartFile multipartFile) {
+    public File upload(MultipartFile multipartFile) {
 //    FileUtils.checkSize(1024, multipartFile.getSize());
 //    String suffix = FileUtils.getExtensionName(multipartFile.getOriginalFilename());
 //    InputStream stream = null;
@@ -123,11 +123,11 @@ public class FileServiceImpl extends BasePOJOServiceImpl<File, String, FileRepos
 //    fileEntity.setLink(url);
 //    fileEntity.setName(objectName);
 //    return fileEntity;
-            return null;
-        }
-
-
-
-        /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
+        return null;
     }
+
+
+
+    /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
+}
 

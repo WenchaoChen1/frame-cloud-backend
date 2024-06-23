@@ -14,7 +14,7 @@ import com.gstdev.cloud.data.core.repository.BaseRepository;
 import io.undertow.security.idm.Account;
 
 
-public interface FileRepository extends BaseRepository<File, String>{
+public interface FileRepository extends BaseRepository<File, String> {
 
 
 }

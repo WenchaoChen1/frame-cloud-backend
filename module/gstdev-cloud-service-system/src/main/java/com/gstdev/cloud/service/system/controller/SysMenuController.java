@@ -96,7 +96,7 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
 
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 
-//    public SysMenuController(SysMenuService menuService, MenuVoMapper menuVoMapper, SysRoleService roleService) {
+    //    public SysMenuController(SysMenuService menuService, MenuVoMapper menuVoMapper, SysRoleService roleService) {
 //        this.menuService = menuService;
 //        this.menuVoMapper = menuVoMapper;
 //        this.roleService = roleService;
@@ -118,13 +118,13 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
 //    public Result<MenuVo> update(@RequestBody MenuUpdateInput menuUpdateInput) {
 //        return updateToResult(menuUpdateInput);
 //    }
-@Tag(name = "Tenant Manage")
-@GetMapping("/get-tenant-manage-menu-tree")
-@Operation(summary = "获取所有菜单，返回树状结构")
-public Result<List<MenuManageTreeVo>> getTenantManageMenuTree(MenuManageTreeQO queryCriteria) {
-    List<SysMenu> byPage = this.getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
-    return this.result(this.getMapper().toMenuManageTreeVoToTree(byPage));
-}
+    @Tag(name = "Tenant Manage")
+    @GetMapping("/get-tenant-manage-menu-tree")
+    @Operation(summary = "获取所有菜单，返回树状结构")
+    public Result<List<MenuManageTreeVo>> getTenantManageMenuTree(MenuManageTreeQO queryCriteria) {
+        List<SysMenu> byPage = this.getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
+        return this.result(this.getMapper().toMenuManageTreeVoToTree(byPage));
+    }
 
 
     @Operation(summary = "")

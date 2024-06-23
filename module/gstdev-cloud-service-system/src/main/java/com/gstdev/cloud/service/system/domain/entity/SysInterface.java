@@ -11,7 +11,6 @@ import lombok.Setter;
 
 /**
  * <p>Description: 系统应用程序接口实体 </p>
- *
  */
 @Schema(title = "系统应用接口")
 @Entity
@@ -77,13 +76,13 @@ public class SysInterface extends BaseEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("interfaceId", interfaceId)
-                .add("interfaceCode", interfaceCode)
-                .add("requestMethod", requestMethod)
-                .add("serviceId", serviceId)
-                .add("className", className)
-                .add("methodName", methodName)
-                .add("url", url)
-                .toString();
+            .add("interfaceId", interfaceId)
+            .add("interfaceCode", interfaceCode)
+            .add("requestMethod", requestMethod)
+            .add("serviceId", serviceId)
+            .add("className", className)
+            .add("methodName", methodName)
+            .add("url", url)
+            .toString();
     }
 }

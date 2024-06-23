@@ -29,6 +29,7 @@ import java.util.List;
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface SysRoleMapper extends BaseTreeMapper<SysRole, RoleDto, RoleVo, RoleInsertInput, RoleUpdateInput> {
     SysRole toEntity(InsertRoleManageIO insertRoleManageIO);
+
     RoleManageDetailVo toRoleManageDetailVo(SysRole sysRole);
 
     List<RoleManageRoleDetaiToListVo> toRoleManageRoleDetaiToListVo(List<SysRole> sysRole);
@@ -45,7 +46,9 @@ public interface SysRoleMapper extends BaseTreeMapper<SysRole, RoleDto, RoleVo, 
     }
 
     List<RoleManageTreeVo> toRoleManageTreeVo(List<RoleDto> sysRole);
+
     List<RoleManagePageVo> toRoleManagePageVo(List<SysRole> sysRole);
+
     default Page<RoleManagePageVo> toRoleManagePageVo(Page<SysRole> page) {
         List<RoleManagePageVo> responses = this.toRoleManagePageVo(page.getContent());
         return new PageImpl(responses, page.getPageable(), page.getTotalElements());

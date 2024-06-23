@@ -9,6 +9,7 @@
 
 package com.gstdev.cloud.service.system.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
 import lombok.Getter;
@@ -43,10 +44,7 @@ public class RTenantMenu extends BasePOJOEntity {
     @Column(name = "checked", length = 1)
     private Integer checked;
 
-
-    @ManyToMany
-    @JoinTable(name = "sys_r_role_r_tenant_menu", joinColumns = {
-        @JoinColumn(name = "r_tenant_menu_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "role_id", referencedColumnName = "id")})
+    @JsonIgnore
+    @ManyToMany(mappedBy = "rTenantMenus")
     private List<SysRole> roles;
 }

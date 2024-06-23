@@ -27,12 +27,12 @@ public class DepartDto extends BaseTreeDto<DepartDto> {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdDate;
     private String createdUser;
-private String createdAccount;
+    private String createdAccount;
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedDate;
     private String updatedUser;
-private String updatedAccount;
+    private String updatedAccount;
     private String code;
     private Integer deleted;
     private String description;

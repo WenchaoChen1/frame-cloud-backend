@@ -37,6 +37,7 @@ public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String
     public SysAccountServiceImpl(SysAccountRepository accountRepository, SysAccountMapper accountMapper) {
         super(accountRepository, accountMapper);
     }
+
     @Override
     public SysAccountRepository getRepository() {
         return accountRepository;
@@ -62,6 +63,7 @@ public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String
         SysAccount insert = insert(account);
         return insert;
     }
+
     @Override
     @Transactional
     public AccountDto insertAccountManageInitializationToDto(InsertAccountManageInitializationIO accountInsertInput) {
@@ -93,6 +95,7 @@ public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String
             getRepository().deleteAll(accountList);
         }
     }
+
     @Override
     @Transactional
     public void insertAccountManage(InsertAccountManageIO insertAccountManageIO) {

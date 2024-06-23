@@ -37,6 +37,7 @@ public class RedisCurrentLoginInformationImpl implements RedisCurrentLoginInform
         RedisUtils.del(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
         return Result.success();
     }
+
     @Override
     public CurrentLoginInformation getCurrentLoginInformation() {
         CurrentLoginInformation currentLogininformation = null;
@@ -48,6 +49,7 @@ public class RedisCurrentLoginInformationImpl implements RedisCurrentLoginInform
 //    CurrentLoginInformation currentLogininformation = (CurrentLoginInformation) redisUtils.get(RedisConstants.buildKey(RedisConstants.KET_CURRENT_LOGIN_ACCOUNT_ID, ServletUtils.getHeader(ServletConstants.AUTHORIZATION)));
         return currentLogininformation;
     }
+
     @Override
     public String getCurrentLoginAccountId() {
         CurrentLoginInformation loginInformation = getCurrentLoginInformation();
@@ -56,6 +58,7 @@ public class RedisCurrentLoginInformationImpl implements RedisCurrentLoginInform
         }
         return loginInformation.getUserId();
     }
+
     @Override
     public String getCurrentLoginTenantId() {
         CurrentLoginInformation loginInformation = getCurrentLoginInformation();

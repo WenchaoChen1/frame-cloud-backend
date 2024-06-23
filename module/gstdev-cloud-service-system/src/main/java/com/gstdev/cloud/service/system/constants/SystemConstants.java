@@ -5,7 +5,6 @@ import com.gstdev.cloud.base.definition.constants.BaseConstants;
 
 /**
  * <p>Description: System 模块常量 </p>
- *
  */
 public interface SystemConstants extends BaseConstants {
 

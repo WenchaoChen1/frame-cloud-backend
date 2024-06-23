@@ -30,6 +30,7 @@ import java.util.List;
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface SysMenuMapper extends BaseTreeMapper<SysMenu, MenuDto, MenuVo, MenuInsertInput, MenuUpdateInput> {
     void copy(UpdateMenuManageIO updateMenuManageIO, @MappingTarget SysMenu sysMenu);
+
     SysMenu toEntity(InsertMenuManageIO insertMenuManageIO);
 
     MenuManageDetailVo toMenuManageDetailVo(SysMenu byId);

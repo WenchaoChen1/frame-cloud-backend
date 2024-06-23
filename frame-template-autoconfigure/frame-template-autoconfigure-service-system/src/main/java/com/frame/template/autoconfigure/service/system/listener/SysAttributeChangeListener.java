@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 
 /**
  * <p>Description: SysSecurityAttribute变更事件监听 </p>
- *
  */
 @Component
 public class SysAttributeChangeListener implements ApplicationListener<SysAttributeChangeEvent> {

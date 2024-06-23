@@ -14,7 +14,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
  * <p>Description: UserDetail远程调用服务 </p>
- *
  */
 public class RemoteUserDetailsService implements StrategyUserDetailsService {
 

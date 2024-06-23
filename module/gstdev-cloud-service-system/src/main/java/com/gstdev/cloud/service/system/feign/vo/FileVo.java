@@ -27,12 +27,12 @@ public class FileVo extends BaseVo {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdDate;
     private String createdUser;
-private String createdAccount;
+    private String createdAccount;
     @JsonFormat(timezone = "America/Chicago", pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedDate;
     private String updatedUser;
-private String updatedAccount;
+    private String updatedAccount;
     private String bucketName;
     private String contentType;
     private String etag;

@@ -27,12 +27,12 @@ public class RTenantMenuVo extends BaseVo {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdDate;
     private String createdUser;
-private String createdAccount;
+    private String createdAccount;
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedDate;
     private String updatedUser;
-private String updatedAccount;
+    private String updatedAccount;
     private Integer checked;
     private Integer status;
     private String tenantId;

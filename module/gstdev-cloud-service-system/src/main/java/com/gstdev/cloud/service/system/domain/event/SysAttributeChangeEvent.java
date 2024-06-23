@@ -8,7 +8,6 @@ import java.time.Clock;
 
 /**
  * <p>Description: SysSecurityAttribute实体数据变更事件 </p>
- *
  */
 public class SysAttributeChangeEvent extends AbstractApplicationEvent<SysAttribute> {
 

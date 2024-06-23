@@ -20,6 +20,7 @@ import jakarta.annotation.Resource;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Transactional(readOnly = true)
 public class SysTenantServiceImpl extends BaseTreeServiceImpl<SysTenant, String, SysTenantRepository, SysTenantMapper, TenantDto> implements SysTenantService {
 
@@ -27,9 +28,10 @@ public class SysTenantServiceImpl extends BaseTreeServiceImpl<SysTenant, String,
     private SysAccountService accountService;
     @Resource
     private SysTenantRepository tenantRepository;
+
     public SysTenantServiceImpl(SysTenantRepository tenantRepository, SysTenantMapper tenantMapper) {
         super(tenantRepository, tenantMapper);
-        this.tenantRepository=tenantRepository;
+        this.tenantRepository = tenantRepository;
     }
 
 

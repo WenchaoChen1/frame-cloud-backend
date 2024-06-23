@@ -21,17 +21,20 @@ import java.util.List;
 public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, SysRoleRepository, SysRoleMapper, RoleDto> implements SysRoleService {
 
     @Resource
-    private SysRTenantMenuRepository rTenantMenuRepository;    @Resource
+    private SysRTenantMenuRepository rTenantMenuRepository;
+    @Resource
     private SysRoleRepository roleRepository;
 
     public SysRoleServiceImpl(SysRoleRepository roleRepository, SysRoleMapper roleMapper) {
         super(roleRepository, roleMapper);
-        this.roleRepository=roleRepository;
+        this.roleRepository = roleRepository;
     }
+
     @Override
     public SysRoleRepository getRepository() {
         return roleRepository;
     }
+
     @Override
     public Result<List<String>> getAllTenantByRoleId(String roleId) {
         List<String> strings = findById(roleId).getRTenantMenus().stream().map(RTenantMenu::getMenu).map(SysMenu::getId).toList();

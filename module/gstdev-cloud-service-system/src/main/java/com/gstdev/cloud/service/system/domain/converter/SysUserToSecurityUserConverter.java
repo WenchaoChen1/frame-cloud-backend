@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 
 /**
  * <p>Description: SysUser 转 SecurityUser 转换器 </p>
- *
  */
 public class SysUserToSecurityUserConverter implements Converter<SysUser, DefaultSecurityUser> {
     @Override
@@ -35,7 +34,7 @@ public class SysUserToSecurityUserConverter implements Converter<SysUser, Defaul
             .flatMap(account -> account.getRoles().stream())
             .collect(Collectors.toList());
         for (SysAccount sysAccount : sysUser.getAccount()) {
-            if (sysAccount.getType().equals(SysAccountType.SUPER)){
+            if (sysAccount.getType().equals(SysAccountType.SUPER)) {
                 authorities.add(new FrameGrantedAuthority("all"));
                 authorities.add(new FrameGrantedAuthority("5ef5ef0364b6939c4ca61f34b393f7b368d1be8619647aaf83d5b395919ab629"));
             }
@@ -54,11 +53,11 @@ public class SysUserToSecurityUserConverter implements Converter<SysUser, Defaul
 //        String employeeId = ObjectUtils.isNotEmpty(sysUser.getEmployee()) ? sysUser.getEmployee().getEmployeeId() : null;
 
         return new DefaultSecurityUser(sysUser.getId(), sysUser.getUsername(), sysUser.getPassword(),
-                isEnabled(sysUser),
-                isAccountNonExpired(sysUser),
-                isCredentialsNonExpired(sysUser),
-                isNonLocked(sysUser),
-                authorities, roles, null, sysUser.getAvatar());
+            isEnabled(sysUser),
+            isAccountNonExpired(sysUser),
+            isCredentialsNonExpired(sysUser),
+            isNonLocked(sysUser),
+            authorities, roles, null, sysUser.getAvatar());
     }
 
     private boolean isEnabled(SysUser sysUser) {

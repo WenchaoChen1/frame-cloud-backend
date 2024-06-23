@@ -43,14 +43,15 @@ public class SysAttributeController implements Controller<SysAttribute, String> 
     public SysAttributeService getService() {
         return sysAttributeService;
     }
+
     @Override
     @AccessLimited
     @Operation(summary = "获取全部元数据", description = "获取全部元数据列表",
-            responses = {
-                    @ApiResponse(description = "全部数据列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class))),
-                    @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
-                    @ApiResponse(responseCode = "500", description = "查询失败")
-            })
+        responses = {
+            @ApiResponse(description = "全部数据列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class))),
+            @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
+            @ApiResponse(responseCode = "500", description = "查询失败")
+        })
     @GetMapping("/page")
     public Result<Map<String, Object>> findByPage(Pageable pageable) {
         Page<SysAttribute> byPage = getService().findByPage(pageable);

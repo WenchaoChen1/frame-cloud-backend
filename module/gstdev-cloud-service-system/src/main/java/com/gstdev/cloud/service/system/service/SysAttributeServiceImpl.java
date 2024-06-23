@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttribute, String,SysAttributeRepository> implements SysAttributeService {
+public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttribute, String, SysAttributeRepository> implements SysAttributeService {
 
     @Resource
     private SysAttributeRepository sysAttributeRepository;
@@ -18,6 +18,7 @@ public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttribute, Strin
     public SysAttributeServiceImpl(SysAttributeRepository sysAttributeRepository) {
         super(sysAttributeRepository);
     }
+
     @Override
     public SysAttributeRepository getRepository() {
         return sysAttributeRepository;
@@ -38,10 +39,12 @@ public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttribute, Strin
 
         return saveAndFlush(sysAttribute);
     }
+
     @Override
     public List<SysAttribute> findAllByServiceId(String serviceId) {
         return getRepository().findAllByServiceId(serviceId);
     }
+
     @Override
     public List<SysAttribute> findByAttributeIdIn(List<String> ids) {
         return getRepository().findByAttributeIdIn(ids);

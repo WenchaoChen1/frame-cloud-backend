@@ -84,6 +84,7 @@ public class FrameSystemControllerConfiguration {
         log.debug("[GstDev Cloud] |- Frame Configure Attribute Controller");
         return new SysAttributeController();
     }
+
     @Bean
     @ConditionalOnMissingBean
     public SysDepartController sysDepartController() {

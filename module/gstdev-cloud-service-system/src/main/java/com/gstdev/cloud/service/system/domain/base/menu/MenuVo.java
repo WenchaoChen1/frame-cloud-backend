@@ -30,12 +30,12 @@ public class MenuVo extends BaseTreeVo {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdDate;
     private String createdUser;
-private String createdAccount;
+    private String createdAccount;
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedDate;
     private String updatedUser;
-private String updatedAccount;
+    private String updatedAccount;
     private String description;
     private Integer hidden;
     private String icon;

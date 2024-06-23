@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 public class IdentityFeignServiceImpl implements IdentityFeignService {
 
     private final IdentityFeignClient identityFeignClient;
+
     @Override
     public UserDto save(IdentitySaveDto identitySaveDto) {
         Result<UserDto> result = identityFeignClient.save(identitySaveDto);

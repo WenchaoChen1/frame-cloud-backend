@@ -6,7 +6,6 @@ import com.gstdev.cloud.service.system.domain.entity.SysInterface;
 
 /**
  * <p>Description: RequestMapping 转 SysInterface 转换器 </p>
- *
  */
 public class RequestMappingToSysInterfaceConverter implements Converter<RequestMapping, SysInterface> {
 

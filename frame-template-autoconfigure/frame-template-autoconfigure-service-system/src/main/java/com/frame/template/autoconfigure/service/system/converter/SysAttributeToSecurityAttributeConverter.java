@@ -12,7 +12,6 @@ import java.util.Set;
 
 /**
  * <p>Description: SysAttribute 转 SecurityAttribute 转换器 </p>
- *
  */
 public class SysAttributeToSecurityAttributeConverter implements Converter<SysAttribute, SecurityAttribute> {
     @Override

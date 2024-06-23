@@ -32,6 +32,7 @@ public interface RTenantMenuMapper extends BaseDtoMapper<RTenantMenu, RTenantMen
     List<RTenantMenu> toEntitySave(List<RTenantMenuSaveInput> tenantSaveInputs);
 
     RTenantMenu toEntityModify(RTenantMenuModifyInput tenantModifyInput);
+
     @Override
     RTenantMenuDto toDto(RTenantMenu tenant);
 

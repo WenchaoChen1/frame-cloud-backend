@@ -16,7 +16,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RoleManageRoleDetaiToListVo extends TreeNode<String,RoleManageRoleDetaiToListVo> {
+public class RoleManageRoleDetaiToListVo extends TreeNode<String, RoleManageRoleDetaiToListVo> {
 
     private String id;
     private String roleName;

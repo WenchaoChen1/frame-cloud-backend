@@ -44,7 +44,6 @@ public class SysPermission extends BaseEntity {
     private String permissionType;
 
 
-
     @Schema(title = "数据状态")
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.ORDINAL)

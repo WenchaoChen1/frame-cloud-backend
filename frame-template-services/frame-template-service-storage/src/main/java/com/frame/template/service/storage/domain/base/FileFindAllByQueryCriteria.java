@@ -17,7 +17,7 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class FileFindAllByQueryCriteria extends BaseFindAllByQueryCriteria implements Serializable{
+public class FileFindAllByQueryCriteria extends BaseFindAllByQueryCriteria implements Serializable {
 
     private static final long serialVersionUID = 3163118978801722144L;
 }

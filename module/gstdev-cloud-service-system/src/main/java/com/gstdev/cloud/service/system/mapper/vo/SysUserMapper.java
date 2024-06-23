@@ -34,9 +34,11 @@ public interface SysUserMapper extends BasePOJOMapper<SysUser, UserDto, UserVo, 
 //    UserUpdateInput toUserUpdateInput(UserLoginInferiorUpdateInput userLoginInferiorUpdateInput);
 //    SysUser toEntity(insertAndUpdateUserManageIO insertUserManageInput);
     SysUser toEntity(InsertUserManageIO insertUserManageInput);
+
     SysUser toEntity(InsertUserManageInitializationIO insertUserManageInitializationIO);
 
     UserManageDetailVo toUserManageDetailVo(SysUser sysUser);
+
     List<UserManagePageVo> toUserManagePageVo(List<SysUser> sysUser);
 
     default Page<UserManagePageVo> toUserManagePageVo(Page<SysUser> page) {

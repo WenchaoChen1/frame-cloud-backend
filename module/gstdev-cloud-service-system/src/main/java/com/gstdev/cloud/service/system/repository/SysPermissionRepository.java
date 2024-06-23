@@ -18,6 +18,7 @@ public interface SysPermissionRepository extends BaseRepository<SysPermission, S
     @Transactional
     @Query("UPDATE SysPermission p SET p.status = :status WHERE p.permissionType = :permissionType")
     void updateStatusByPermissionType(@Param("status") DataItemStatus status, @Param("permissionType") String permissionType);
+
     @Query("SELECT DISTINCT e.permissionType FROM SysPermission e")
     List<String> findDistinctPermissionTypes();
 }

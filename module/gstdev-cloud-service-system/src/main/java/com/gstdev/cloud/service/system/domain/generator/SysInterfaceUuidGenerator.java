@@ -11,7 +11,6 @@ import static java.lang.annotation.ElementType.METHOD;
 
 /**
  * <p>Description: SysInterfaceUuid </p>
- *
  */
 @IdGeneratorType(SysInterfaceUuidGeneratorType.class)
 @Retention(RetentionPolicy.RUNTIME)

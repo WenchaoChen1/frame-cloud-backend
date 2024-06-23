@@ -18,7 +18,7 @@ public class SysPermissionDto implements BaseDtoInterface<String> {
     @Schema(title = "权限名称")
     private String permissionName;
     private String permissionType;
-//    @Enumerated(EnumType.ORDINAL)
+    //    @Enumerated(EnumType.ORDINAL)
     private DataItemStatus status;
 
     @Override

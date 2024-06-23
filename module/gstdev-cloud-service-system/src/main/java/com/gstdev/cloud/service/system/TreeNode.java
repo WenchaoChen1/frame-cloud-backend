@@ -3,12 +3,13 @@ package com.gstdev.cloud.service.system;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class TreeNode<ID,T extends com.gstdev.cloud.base.core.utils.treeUtils.TreeNode<ID, T>> implements com.gstdev.cloud.base.core.utils.treeUtils.TreeNode<ID, T> {
+public class TreeNode<ID, T extends com.gstdev.cloud.base.core.utils.treeUtils.TreeNode<ID, T>> implements com.gstdev.cloud.base.core.utils.treeUtils.TreeNode<ID, T> {
 
     private ID id;
     private ID parentId;
     // 子节点列表
     private List<T> children = new CopyOnWriteArrayList<>();
+
     @Override
     // 获取子节点列表
     public List<T> getChildren() {
@@ -19,7 +20,7 @@ public class TreeNode<ID,T extends com.gstdev.cloud.base.core.utils.treeUtils.Tr
     // 添加子节点
     public void addChild(T child) {
         if (children == null) {
-            children =  new CopyOnWriteArrayList<>();
+            children = new CopyOnWriteArrayList<>();
         }
         children.add(child);
     }
@@ -28,7 +29,7 @@ public class TreeNode<ID,T extends com.gstdev.cloud.base.core.utils.treeUtils.Tr
     // 设置子节点列表
     public void setChildren(List<T> children) {
         if (children == null) {
-            children =  new CopyOnWriteArrayList<>();
+            children = new CopyOnWriteArrayList<>();
         }
         this.children = new CopyOnWriteArrayList<>(children);
     }

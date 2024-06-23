@@ -25,7 +25,7 @@ public class DemoTemplateInsertInput {
     private String createdUser;
     private Date updatedDate;
     private String updatedUser;
-private String updatedAccount;
+    private String updatedAccount;
     private String code;
     private String name;
 

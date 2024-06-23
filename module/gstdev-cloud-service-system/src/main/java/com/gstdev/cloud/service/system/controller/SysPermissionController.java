@@ -73,6 +73,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     public Result<PermissionManageDetailVo> getPermissionManageDetail(@PathVariable String id) {
         return result(getMapper().toPermissionManageDetailVo(getService().findById(id)));
     }
+
     @Tag(name = "Permission Manage")
     @Idempotent
     @Operation(summary = "保存数据", description = "接收JSON数据，转换为实体，进行保存或更新",

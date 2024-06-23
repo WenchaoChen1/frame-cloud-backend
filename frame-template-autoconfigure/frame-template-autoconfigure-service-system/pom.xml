@@ -13,13 +13,13 @@
     <artifactId>frame-template-autoconfigure-service-system</artifactId>
 
     <dependencies>
-<!--        <dependency>-->
+        <!--        <dependency>-->
         <!--            <groupId>com.gstdev.cloud</groupId>-->
         <!--            <artifactId>gstdev-cloud-starter-oauth2-resource-server</artifactId>-->
         <!--        </dependency>-->
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
-           <artifactId>gstdev-cloud-starter-service-common</artifactId>
+            <artifactId>gstdev-cloud-starter-service-common</artifactId>
         </dependency>
         <dependency>
             <groupId>com.gstdev.cloud</groupId>

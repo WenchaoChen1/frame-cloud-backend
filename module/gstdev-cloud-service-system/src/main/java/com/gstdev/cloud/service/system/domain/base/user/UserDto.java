@@ -26,7 +26,6 @@ import java.util.List;
 public class UserDto extends BaseDto {
 
 
-
     private String id;
     @Schema(title = "用户名")
     private String username;
@@ -41,11 +40,11 @@ public class UserDto extends BaseDto {
     @Schema(title = "头像")
     private String avatar;
     @Schema(title = "性别")
-    private Integer gender ;
+    private Integer gender;
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date lastLoginTime;
-    private Integer deleted ;
+    private Integer deleted;
     private String firstName;
     private String lastName;
     private String activateToken;
@@ -60,11 +59,11 @@ public class UserDto extends BaseDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdDate;
     private String createdUser;
-private String createdAccount;
+    private String createdAccount;
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedDate;
     private String updatedUser;
-private String updatedAccount;
+    private String updatedAccount;
 }
 

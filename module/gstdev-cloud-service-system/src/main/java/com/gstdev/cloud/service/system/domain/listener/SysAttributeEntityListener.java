@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * <p>Description: SysAttribute实体数据变更监听 </p>
- *
  */
 public class SysAttributeEntityListener extends AbstractApplicationContextAware {
 

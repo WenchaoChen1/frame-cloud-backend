@@ -19,19 +19,22 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, String,SysInterfaceRepository> implements SysInterfaceService {
+public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, String, SysInterfaceRepository> implements SysInterfaceService {
 
     private final Converter<RequestMapping, SysInterface> toSysInterface;
     @Resource
     private SysInterfaceRepository sysInterfaceRepository;
+
     public SysInterfaceServiceImpl(SysInterfaceRepository sysInterfaceRepository) {
         super(sysInterfaceRepository);
         this.toSysInterface = new RequestMappingToSysInterfaceConverter();
     }
+
     @Override
     public SysInterfaceRepository getRepository() {
         return sysInterfaceRepository;
     }
+
     /**
      * 查找SysSecurityAttribute中不存在的SysAuthority
      *
