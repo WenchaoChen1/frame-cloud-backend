@@ -1,5 +1,6 @@
 package com.frame.template.autoconfigure.service.system.converter;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysPermission;
 import com.gstdev.cloud.oauth2.core.definition.domain.SecurityAttribute;
@@ -32,7 +33,7 @@ public class SysAttributeToSecurityAttributeConverter implements Converter<SysAt
 
     private String permissionToCommaDelimitedString(Set<SysPermission> sysAuthorities) {
         if (CollectionUtils.isNotEmpty(sysAuthorities)) {
-            List<String> codes = sysAuthorities.stream().map(SysPermission::getPermissionCode).toList();
+            List<String> codes = sysAuthorities.stream().filter(item -> DataItemStatus.ENABLE.equals(item.getStatus())).map(SysPermission::getPermissionCode).toList();
             return StringUtils.collectionToCommaDelimitedString(codes);
         } else {
             return "";
