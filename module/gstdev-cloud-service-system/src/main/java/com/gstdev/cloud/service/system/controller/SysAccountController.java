@@ -44,7 +44,7 @@ public class SysAccountController implements POJOController<SysAccount, String, 
 
     @Tag(name = "Account Manage")
     @GetMapping("/get-account-manage-page")
-    @Operation(summary = "获取所有的用户,分页")
+    @Operation(summary = "get-account-manage-page")
     public Result<Map<String, Object>> getAccountManagePage(AccountManageQO accountManageQO, BasePage basePage) {
         Page<SysAccount> byPage = this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, accountManageQO, criteriaBuilder), basePage);
         return this.result(this.getMapper().toAccountManagePageVo(byPage));
@@ -59,7 +59,7 @@ public class SysAccountController implements POJOController<SysAccount, String, 
 
     @Tag(name = "Account Manage")
     @PostMapping("/insert-account-manage")
-    @Operation(summary = "新增一条数据")
+    @Operation(summary = "insert-account-manage")
     public Result insertAccountManage(@RequestBody @Validated InsertAccountManageIO insertAccountManageIO) {
 
         this.getService().insertAccountManage(insertAccountManageIO);
@@ -68,7 +68,7 @@ public class SysAccountController implements POJOController<SysAccount, String, 
 
     @Tag(name = "Account Manage")
     @PutMapping("/update-account-manage")
-    @Operation(summary = "新增一条数据")
+    @Operation(summary = "update-account-manage")
     public Result updateAccountManage(@RequestBody @Validated UpdateAccountManageIO updateAccountManageIO) {
 
         this.getService().updateAccountManage(updateAccountManageIO);
@@ -77,21 +77,21 @@ public class SysAccountController implements POJOController<SysAccount, String, 
 
     @Tag(name = "Account Manage")
     @PostMapping("/insert-account-manage-initialization")
-    @Operation(summary = "新增一个账户并创建角色,部门")
+    @Operation(summary = "insert-account-manage-initialization")
     public Result insertAccountManageInitialization(@RequestBody @Validated InsertAccountManageInitializationIO userInsertInput) {
         getService().insertAccountManageInitializationToDto(userInsertInput);
         return result();
     }
 
     @Tag(name = "Account Manage")
-    @Operation(summary = "删除一条数据")
     @DeleteMapping("/delete-account-manage/{id}")
+    @Operation(summary = "delete-account-manage")
     public Result deleteAccountManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
 
     @Tag(name = "Account Manage")
-    @Operation(summary = "删除多条数据")
+    @Operation(summary = "delete-all-account-manage")
     @DeleteMapping("/delete-all-account-manage")
     public Result deleteAllAccountManage(List<String> id) {
         return deleteAllByIdToResult(id);

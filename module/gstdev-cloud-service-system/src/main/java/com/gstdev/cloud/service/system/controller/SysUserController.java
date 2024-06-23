@@ -53,7 +53,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
 
     @Tag(name = "User Manage")
     @GetMapping("/get-user-manage-page")
-    @Operation(summary = "获取所有的用户,分页")
+    @Operation(summary = "get-user-manage-page")
     public Result<Map<String, Object>> getUserManagePage(UserManageQO sysUserUserManageQO, Pageable pageable) {
         return this.result(this.getMapper().toUserManagePageVo(this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysUserUserManageQO, criteriaBuilder), pageable)));
     }
@@ -67,7 +67,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
 
     @Tag(name = "User Manage")
     @PostMapping("/insert-user-manage")
-    @Operation(summary = "新增一条数据")
+    @Operation(summary = "insert-user-manage")
     public Result insertUserManage(@RequestBody @Validated InsertUserManageIO insertUserManageIO) {
         this.getService().insertAndUpdate(userVoMapper.toEntity(insertUserManageIO));
         return result();
@@ -75,7 +75,7 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
 
     @Tag(name = "User Manage")
     @PutMapping("/update-user-manage")
-    @Operation(summary = "新增一条数据")
+    @Operation(summary = "update-user-manage")
     public Result updateUserManage(@RequestBody @Validated UpdateUserManageIO updateUserManageIO) {
         SysUser sysUser = this.getService().findById(updateUserManageIO.getId());
         userVoMapper.copy(updateUserManageIO, sysUser);
@@ -85,21 +85,21 @@ public class SysUserController implements POJOController<SysUser, String, UserVo
 
     @Tag(name = "User Manage")
     @PostMapping("/insert-user-manage-initialization")
-    @Operation(summary = "新增一个用户并创建用户的账户以及角色,部门")
+    @Operation(summary = "insert-user-manage-initialization")
     public Result insertUserManageInitialization(@RequestBody @Validated InsertUserManageInitializationIO userInsertInput) {
         getService().insertUserManageInitialization(userInsertInput);
         return result();
     }
 
     @Tag(name = "User Manage")
-    @Operation(summary = "删除一条数据")
+    @Operation(summary = "delete-user-manage")
     @DeleteMapping("/delete-user-manage/{id}")
     public Result deleteUserManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
 
     @Tag(name = "User Manage")
-    @Operation(summary = "删除多条数据")
+    @Operation(summary = "/delete-all-user-manage")
     @DeleteMapping("/delete-all-user-manage")
     public Result deleteAllUserManage(List<String> id) {
         return deleteAllByIdToResult(id);
