@@ -11,13 +11,13 @@ package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
+import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.rest.core.controller.TreeController;
 import com.gstdev.cloud.service.system.domain.base.menu.*;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.*;
 import com.gstdev.cloud.service.system.mapper.vo.SysMenuMapper;
 import com.gstdev.cloud.service.system.service.SysMenuService;
-import com.gstdev.cloud.service.system.service.SysRoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
@@ -31,6 +31,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/menu")
 public class SysMenuController implements TreeController<SysMenu, String, MenuVo, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> {
+//public class SysMenuController implements ResultController {
 
     @Resource
     private SysMenuService menuService;
@@ -38,15 +39,10 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     @Resource
     private SysMenuMapper menuMapper;
 
-    @Resource
-    private SysRoleService roleService;
-
-    @Override
     public SysMenuService getService() {
         return menuService;
     }
 
-    @Override
     public SysMenuMapper getMapper() {
         return menuMapper;
     }
@@ -85,39 +81,19 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     @Operation(summary = "delete-menu-manage")
     @DeleteMapping("/delete-menu-manage/{id}")
     public Result deleteMenuManage(@PathVariable String id) {
-        return deleteByIdToResult(id);
+        getService().deleteById(id);
+        return result();
     }
 
     @Operation(summary = "delete-all-menu-manage")
     @DeleteMapping("/delete-all-menu-manage")
     public Result deleteAllMenuManage(List<String> id) {
-        return deleteAllByIdToResult(id);
+        getService().deleteAllById(id);
+        return result();
     }
 
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 
-    //    public SysMenuController(SysMenuService menuService, MenuVoMapper menuVoMapper, SysRoleService roleService) {
-//        this.menuService = menuService;
-//        this.menuVoMapper = menuVoMapper;
-//        this.roleService = roleService;
-//    }
-    //    @GetMapping("/get-by-id")
-//    @Operation(summary = "根据id获取实体数据")
-//    public Result<MenuVo> getById(String id) {
-//        return findByIdToResult(id);
-//    }
-
-//    @PostMapping
-//    @Operation(summary = "新增一条数据")
-//    public Result<MenuVo> insert(@RequestBody MenuInsertInput menuInsertInput) {
-//        return insertToResult(menuInsertInput);
-//    }
-//
-//    @PutMapping
-//    @Operation(summary = "修改一条数据")
-//    public Result<MenuVo> update(@RequestBody MenuUpdateInput menuUpdateInput) {
-//        return updateToResult(menuUpdateInput);
-//    }
     @Tag(name = "Tenant Manage")
     @GetMapping("/get-tenant-manage-menu-tree")
     @Operation(summary = "get-tenant-manage-menu-tree获取所有菜单，返回树状结构")
@@ -125,13 +101,6 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
         List<SysMenu> byPage = this.getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
         return this.result(this.getMapper().toMenuManageTreeVoToTree(byPage));
     }
-
-//
-//    @Operation(summary = "")
-//    @DeleteMapping
-//    public Result<MenuVo> deleteById(String id) {
-//        return deleteByIdToResult(id);
-//    }
 
     /**
      * 获取指定租户的所有菜单，返回树状结构

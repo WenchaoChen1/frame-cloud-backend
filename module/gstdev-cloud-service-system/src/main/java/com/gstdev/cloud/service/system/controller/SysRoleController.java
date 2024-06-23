@@ -3,7 +3,7 @@ package com.gstdev.cloud.service.system.controller;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
-import com.gstdev.cloud.rest.core.controller.TreeController;
+import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.base.role.*;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.*;
@@ -21,7 +21,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/v1/role")
-public class SysRoleController implements TreeController<SysRole, String, RoleVo, RoleDto, RoleInsertInput, RoleUpdateInput, RolePageQueryCriteria, RoleFindAllByQueryCriteria> {
+public class SysRoleController implements ResultController {
 
     @Resource
     private SysRoleService roleService;
@@ -29,12 +29,10 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     @Resource
     private SysRoleMapper roleVoMapper;
 
-    @Override
     public SysRoleService getService() {
         return roleService;
     }
 
-    @Override
     public SysRoleMapper getMapper() {
         return roleVoMapper;
     }
@@ -63,13 +61,6 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
         List<SysRole> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
         return result(getMapper().toRoleManageRoleDetaiToListVoToTree(all));
     }
-
-//    @Operation(summary = "根据筛选获取所有角色，返回树状结构")
-//    public Result<List<TreeNode<RoleManageRoleDetaiToListVo>>> getRoleManageRoleDetaiToListAll(RoleManageRoleDetaiToListQO queryCriteria) {
-//
-//        List<SysRole> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
-//        return result( getMapper().toRoleManageDetailRoleTreeNodeVoDefault(all));
-//    }
 
     @Tag(name = "Role Manage")
     @GetMapping("/get-role-manage-detail/{id}")
@@ -100,19 +91,19 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     @Operation(summary = "delete-role-manage")
     @DeleteMapping("/delete-role-manage/{id}")
     public Result deleteRoleManage(@PathVariable String id) {
-        return deleteByIdToResult(id);
+        getService().deleteById(id);
+        return result();
     }
 
     @Tag(name = "Role Manage")
     @Operation(summary = "delete-all-role-manage")
     @DeleteMapping("/delete-all-role-manage")
     public Result deleteAllRoleManage(List<String> id) {
-        return deleteAllByIdToResult(id);
+        getService().deleteAllById(id);
+        return result();
     }
 
-
-    /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
-
+    // 角色关联菜单
     @Tag(name = "Role Manage")
     @GetMapping("/get-all-tenant-by-role-id/{roleId}")
     @Operation(summary = "get-all-tenant-by-role-id")
@@ -120,6 +111,7 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
         return getService().getAllTenantByRoleId(roleId);
     }
 
+    // 角色关联菜单
     @Tag(name = "Role Manage")
     @PostMapping("/insert-role-menu")
     @Operation(summary = "insertSave")
@@ -127,34 +119,8 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
         return getService().insertRoleMenu(insertRoleMenuIO);
     }
 
-    //    public SysRoleController(SysRoleService roleService, RoleVoMapper roleVoMapper) {
-//        this.roleService = roleService;
-//        this.roleVoMapper = roleVoMapper;
-//    }
-//
-//    @GetMapping("/get-by-id")
-//    @Operation(summary = "根据id获取实体数据")
-//    public Result<RoleVo> getById(String id) {
-//        return findByIdToResult(id);
-//    }
+    /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
 
-//    @PostMapping
-//    @Operation(summary = "新增一条数据")
-//    public Result<RoleVo> insert(@RequestBody RoleInsertInput roleInsertInput) {
-//        return insertToResult(roleInsertInput);
-//    }
-//
-//    @PutMapping
-//    @Operation(summary = "修改一条数据")
-//    public Result<RoleVo> update(@RequestBody RoleUpdateInput roleUpdateInput) {
-//        return updateToResult(roleUpdateInput);
-//    }
-
-//    @Operation(summary = "")
-//    @DeleteMapping
-//    public Result<RoleVo> deleteById(String id) {
-//        return deleteByIdToResult(id);
-//    }
 
 
 }

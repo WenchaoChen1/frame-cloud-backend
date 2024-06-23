@@ -31,6 +31,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/v1/tenant")
+//public class SysTenantController implements TreeController<SysTenant, String, TenantVo, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
 public class SysTenantController implements TreeController<SysTenant, String, TenantVo, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
 
 

@@ -6,6 +6,7 @@ import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.annotation.Idempotent;
 import com.gstdev.cloud.rest.core.controller.DtoController;
+import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.base.SysPermission.SysPermissionDto;
 import com.gstdev.cloud.service.system.domain.base.SysPermission.SysPermissionVo;
 import com.gstdev.cloud.service.system.domain.entity.SysPermission;
@@ -36,7 +37,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/v1/permission")
-public class SysPermissionController implements DtoController<SysPermission, String, SysPermissionDto> {
+public class SysPermissionController implements ResultController {
 
     @Resource
     private SysPermissionService sysPermissionService;
@@ -44,7 +45,6 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     @Resource
     private SysPermissionMapper sysPermissionMapper;
 
-    @Override
     public SysPermissionService getService() {
         return sysPermissionService;
     }
@@ -72,12 +72,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
 
     @Tag(name = "Permission Manage")
     @Idempotent
-    @Operation(summary = "insert-permission-manage", description = "接收JSON数据，转换为实体，进行保存或更新",
-        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
-        responses = {@ApiResponse(description = "已保存数据", content = @Content(mediaType = "application/json"))})
-    @Parameters({
-        @Parameter(name = "domain", required = true, description = "可转换为实体的json数据")
-    })
+    @Operation(summary = "insert-permission-manage")
     @PostMapping("/insert-permission-manage")
     public Result<SysPermissionVo> insertAndUpdatePermissionManage(@RequestBody @Validated InsertPermissionManageIO insertPermissionManageIO) {
         this.getService().insertAndUpdate(getMapper().toEntity(insertPermissionManageIO));
@@ -94,27 +89,14 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         return result();
     }
 
-//    @Tag(name = "Permission Manage")
-//    @Idempotent
-//    @Operation(summary = "删除数据", description = "根据实体ID删除数据，以及相关联的关联数据",
-//        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
-//        responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
-//    @Parameters({
-//        @Parameter(name = "id", required = true, in = ParameterIn.PATH, description = "实体ID，@Id注解对应的实体属性")
-//    })
-//    @Override
-//    @DeleteMapping("/{id}")
-//    public Result<String> delete(@PathVariable String id) {
-//        return DtoController.super.delete(id);
-//    }
 
     @Tag(name = "Permission Manage")
     @Operation(summary = "delete-permission-manage")
     @DeleteMapping("/delete-permission-manage/{id}")
     public Result deletePermissionManage(@PathVariable String id) {
-        return DtoController.super.delete(id);
+        this.getService().deleteById(id);
+        return result();
     }
-
     @Tag(name = "Permission Manage")
     @Operation(summary = "delete-all-permission-manage")
     @DeleteMapping("/delete-all-permission-manage")
@@ -124,9 +106,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     }
 
     @Tag(name = "Permission Manage")
-    @Operation(summary = "get-all-distinct-permission-type",
-        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
-        responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
+    @Operation(summary = "get-all-distinct-permission-type")
     @GetMapping("/get-all-distinct-permission-type")
     public Result<List<String>> getAllDistinctPermissionType() {
         return result(getService().findDistinctPermissionTypes());
