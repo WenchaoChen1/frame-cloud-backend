@@ -48,11 +48,6 @@ public class SysRTenantMenuController implements POJOController<RTenantMenu, Str
         return rTenantMenuVoMapper;
     }
 
-//    public SysRTenantMenuController(SysRTenantMenuService rTenantMenuService, RTenantMenuVoMapper rTenantMenuVoMapper) {
-//        this.rTenantMenuService = rTenantMenuService;
-//        this.rTenantMenuVoMapper = rTenantMenuVoMapper;
-//    }
-
     @Tag(name = "Tenant Manage")
     @PostMapping("/insert-tenant-menu")
     @Operation(summary = "insert-tenant-menu")
@@ -60,10 +55,9 @@ public class SysRTenantMenuController implements POJOController<RTenantMenu, Str
         return rTenantMenuService.insertTenantMenu(insertTenantMenuIO);
     }
 
-
     @Tag(name = "Tenant Manage")
     @GetMapping("/get-all-by-tenant-id")
-    @Operation(summary = "获取指定租户的所有菜单，返回id")
+    @Operation(summary = "get-all-by-tenant-id")
     public Result<List<String>> getAllByTenantId(@NotBlank @RequestParam("tenantId") String tenantId) {
         RTenantMenuFindAllByQueryCriteria rTenantMenuFindAllByQueryCriteria = new RTenantMenuFindAllByQueryCriteria();
         rTenantMenuFindAllByQueryCriteria.setTenantId(tenantId);

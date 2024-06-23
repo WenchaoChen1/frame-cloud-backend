@@ -61,7 +61,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     @Tag(name = "Permission Manage")
     @AccessLimited
     @GetMapping("/get-permission-manage-page")
-    @Operation(summary = "获取所有的权限,分页")
+    @Operation(summary = "get-permission-manage-page")
     public Result<Map<String, Object>> getPermissionManagePage(PermissionManageQO permissionManageQO, BasePage basePage) {
         Page<SysPermission> byPage = this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, permissionManageQO, criteriaBuilder), basePage);
         return this.result(this.getMapper().toPermissionManagePageVo(byPage));
@@ -76,7 +76,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
 
     @Tag(name = "Permission Manage")
     @Idempotent
-    @Operation(summary = "保存数据", description = "接收JSON数据，转换为实体，进行保存或更新",
+    @Operation(summary = "insert-permission-manage", description = "接收JSON数据，转换为实体，进行保存或更新",
         requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
         responses = {@ApiResponse(description = "已保存数据", content = @Content(mediaType = "application/json"))})
     @Parameters({
@@ -90,6 +90,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
 
     @Tag(name = "Permission Manage")
     @PutMapping("/update-permission-manage")
+    @Operation(summary = "update-permission-manage")
     public Result<SysPermissionVo> updatePermissionManage(@RequestBody @Validated UpdatePermissionManageIO updatePermissionManageIO) {
         SysPermission sysPermission = this.getService().findById(updatePermissionManageIO.getPermissionId());
         getMapper().copy(updatePermissionManageIO, sysPermission);
@@ -97,29 +98,29 @@ public class SysPermissionController implements DtoController<SysPermission, Str
         return result();
     }
 
-    @Tag(name = "Permission Manage")
-    @Idempotent
-    @Operation(summary = "删除数据", description = "根据实体ID删除数据，以及相关联的关联数据",
-        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
-        responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
-    @Parameters({
-        @Parameter(name = "id", required = true, in = ParameterIn.PATH, description = "实体ID，@Id注解对应的实体属性")
-    })
-    @Override
-    @DeleteMapping("/{id}")
-    public Result<String> delete(@PathVariable String id) {
-        return DtoController.super.delete(id);
-    }
+//    @Tag(name = "Permission Manage")
+//    @Idempotent
+//    @Operation(summary = "删除数据", description = "根据实体ID删除数据，以及相关联的关联数据",
+//        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
+//        responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
+//    @Parameters({
+//        @Parameter(name = "id", required = true, in = ParameterIn.PATH, description = "实体ID，@Id注解对应的实体属性")
+//    })
+//    @Override
+//    @DeleteMapping("/{id}")
+//    public Result<String> delete(@PathVariable String id) {
+//        return DtoController.super.delete(id);
+//    }
 
     @Tag(name = "Permission Manage")
-    @Operation(summary = "删除一条数据")
+    @Operation(summary = "delete-permission-manage")
     @DeleteMapping("/delete-permission-manage/{id}")
     public Result deletePermissionManage(@PathVariable String id) {
         return DtoController.super.delete(id);
     }
 
     @Tag(name = "Permission Manage")
-    @Operation(summary = "删除多条数据")
+    @Operation(summary = "delete-all-permission-manage")
     @DeleteMapping("/delete-all-permission-manage")
     public Result deleteAllPermissionManage(List<String> id) {
         this.getService().deleteAllById(id);
@@ -127,7 +128,7 @@ public class SysPermissionController implements DtoController<SysPermission, Str
     }
 
     @Tag(name = "Permission Manage")
-    @Operation(summary = "permissionType",
+    @Operation(summary = "get-all-distinct-permission-type",
         requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
         responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
     @GetMapping("/get-all-distinct-permission-type")
@@ -137,18 +138,4 @@ public class SysPermissionController implements DtoController<SysPermission, Str
 
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 
-
-    //    @AccessLimited
-//    @Operation(summary = "获取全部权限", description = "获取全部权限数据列表",
-//        responses = {
-//            @ApiResponse(description = "全部数据列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class))),
-//            @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
-//            @ApiResponse(responseCode = "500", description = "查询失败")
-//        })
-//    @GetMapping("/page")
-//    public Result<Page<SysPermissionVo>> findByPageToResult(SysPermissionPageQueryCriteria sysPermissionPageQueryCriteria, BasePage pageable) {
-//        Page<SysPermissionDto> byPageToDto = getService().findByPageToDto((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysPermissionPageQueryCriteria, criteriaBuilder), pageable);
-//        Page<SysPermissionVo> SysPermissionVos = sysPermissionVoMapper.toVo(byPageToDto);
-//        return Result.success(SysPermissionVos);
-//    }
 }

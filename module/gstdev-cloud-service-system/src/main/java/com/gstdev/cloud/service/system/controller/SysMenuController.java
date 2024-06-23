@@ -54,7 +54,7 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     // ********************************* menu Manage *****************************************
 
     @GetMapping("/get-menu-manage-tree")
-    @Operation(summary = "获取所有菜单，返回树状结构")
+    @Operation(summary = "get-menu-manage-tree")
     public Result<List<MenuManageTreeVo>> getMenuManageMageTree(MenuManageTreeQO queryCriteria) {
         List<SysMenu> byPage = this.getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
         return this.result(this.getMapper().toMenuManageTreeVoToTree(byPage));
@@ -82,13 +82,13 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
         return result();
     }
 
-    @Operation(summary = "删除一条数据")
+    @Operation(summary = "delete-menu-manage")
     @DeleteMapping("/delete-menu-manage/{id}")
     public Result deleteMenuManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
 
-    @Operation(summary = "删除多条数据")
+    @Operation(summary = "delete-all-menu-manage")
     @DeleteMapping("/delete-all-menu-manage")
     public Result deleteAllMenuManage(List<String> id) {
         return deleteAllByIdToResult(id);
@@ -120,22 +120,27 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
 //    }
     @Tag(name = "Tenant Manage")
     @GetMapping("/get-tenant-manage-menu-tree")
-    @Operation(summary = "获取所有菜单，返回树状结构")
+    @Operation(summary = "get-tenant-manage-menu-tree获取所有菜单，返回树状结构")
     public Result<List<MenuManageTreeVo>> getTenantManageMenuTree(MenuManageTreeQO queryCriteria) {
         List<SysMenu> byPage = this.getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
         return this.result(this.getMapper().toMenuManageTreeVoToTree(byPage));
     }
 
+//
+//    @Operation(summary = "")
+//    @DeleteMapping
+//    public Result<MenuVo> deleteById(String id) {
+//        return deleteByIdToResult(id);
+//    }
 
-    @Operation(summary = "")
-    @DeleteMapping
-    public Result<MenuVo> deleteById(String id) {
-        return deleteByIdToResult(id);
-    }
-
+    /**
+     * 获取指定租户的所有菜单，返回树状结构
+     * @param tenantId
+     * @return
+     */
     @Tag(name = "Role Manage")
     @GetMapping("/get-all-by-tenant-menu-to-tree")
-    @Operation(summary = "获取指定租户的所有菜单，返回树状结构")
+    @Operation(summary = "get-all-by-tenant-menu-to-tree")
     public Result<List<MenuVo>> getAllByTenantMenuToTree(@NotBlank @RequestParam("tenantId") String tenantId) {
         MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
         menuFindAllByQueryCriteria.setTenantId(tenantId);
@@ -143,7 +148,7 @@ public class SysMenuController implements TreeController<SysMenu, String, MenuVo
     }
 
     @GetMapping("/get-all-by-role-menu-to-tree")
-    @Operation(summary = "获取指定role的所有菜单，返回树状结构")
+    @Operation(summary = "/get-all-by-role-menu-to-tree")
     public Result<List<MenuVo>> getAllByRoleMenuToTree(@NotBlank @RequestParam("roleId") String roleId) {
         return getMapper().toAllVo(getService().getAllByRoleMenuToTree(roleId));
     }

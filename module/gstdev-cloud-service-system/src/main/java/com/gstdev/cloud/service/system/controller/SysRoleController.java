@@ -43,7 +43,7 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     // ********************************* Role Manage *****************************************
     @Tag(name = "Role Manage")
     @GetMapping("/get-role-manage-page")
-    @Operation(summary = "根据筛选获取所有角色")
+    @Operation(summary = "get-role-manage-page")
     public Result<Map<String, Object>> getRoleManagePage(RoleManagePageQO queryCriteria, BasePage basePage) {
         Page<SysRole> byPage = this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder), basePage);
         return this.result(this.getMapper().toRoleManagePageVo(byPage));
@@ -51,7 +51,7 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
 
     @Tag(name = "Role Manage")
     @GetMapping("/get-role-manage-tree")
-    @Operation(summary = "根据筛选获取所有角色，返回树状结构")
+    @Operation(summary = "get-role-manage-tree")
     public Result<List<RoleManageTreeVo>> getRoleManageTree(RoleManageTreeQO queryCriteria) {
         List<RoleDto> allByQueryCriteriaToDtoToTree = this.getService().findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
         return this.result(this.getMapper().toRoleManageTreeVo(allByQueryCriteriaToDtoToTree));
@@ -59,7 +59,6 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
 
     @Tag(name = "Role Manage")
     @Operation(summary = "get-role-manage-role-detail-to-list")
-    //    @GetMapping("/get-role-manage-detail-role")
     @GetMapping("/get-role-manage-role-detail-to-list")
     public Result<List<RoleManageRoleDetaiToListVo>> getRoleManageTenantDetaiToListAll(RoleManageRoleDetaiToListQO queryCriteria) {
         List<SysRole> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
@@ -82,7 +81,7 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
 
     @Tag(name = "Role Manage")
     @PostMapping("/insert-role-manage")
-    @Operation(summary = "新增一条数据")
+    @Operation(summary = "insert-role-manage")
     public Result insertRoleManage(@RequestBody @Validated InsertRoleManageIO insertRoleManageIO) {
         this.getService().insertAndUpdate(roleVoMapper.toEntity(insertRoleManageIO));
         return result();
@@ -90,7 +89,7 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
 
     @Tag(name = "Role Manage")
     @PutMapping("/update-role-manage")
-    @Operation(summary = "新增一条数据")
+    @Operation(summary = "update-role-manage")
     public Result updateRoleManage(@RequestBody @Validated UpdateRoleManageIO updateRoleManageIO) {
         SysRole sysRole = this.getService().findById(updateRoleManageIO.getId());
         roleVoMapper.copy(updateRoleManageIO, sysRole);
@@ -99,14 +98,14 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
     }
 
     @Tag(name = "Role Manage")
-    @Operation(summary = "删除一条数据")
+    @Operation(summary = "delete-role-manage")
     @DeleteMapping("/delete-role-manage/{id}")
     public Result deleteRoleManage(@PathVariable String id) {
         return deleteByIdToResult(id);
     }
 
     @Tag(name = "Role Manage")
-    @Operation(summary = "删除多条数据")
+    @Operation(summary = "delete-all-role-manage")
     @DeleteMapping("/delete-all-role-manage")
     public Result deleteAllRoleManage(List<String> id) {
         return deleteAllByIdToResult(id);
@@ -117,7 +116,7 @@ public class SysRoleController implements TreeController<SysRole, String, RoleVo
 
     @Tag(name = "Role Manage")
     @GetMapping("/get-all-tenant-by-role-id/{roleId}")
-    @Operation(summary = "获取指定角色的所有菜单，返回id")
+    @Operation(summary = "get-all-tenant-by-role-id")
     public Result<List<String>> getAllTenantByRoleId(@PathVariable String roleId) {
         return getService().getAllTenantByRoleId(roleId);
     }
