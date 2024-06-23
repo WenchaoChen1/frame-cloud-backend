@@ -77,7 +77,7 @@ public class SysUser extends BasePOJOEntity {
     private String description;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user",  fetch = FetchType.LAZY)
     private List<SysAccount> account;
 
     //-----------------自定义-----------

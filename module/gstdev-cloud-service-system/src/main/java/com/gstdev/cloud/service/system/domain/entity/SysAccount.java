@@ -56,6 +56,9 @@ public class SysAccount extends BasePOJOEntity {
     @ManyToMany(mappedBy = "accounts")
     private List<SysDepart> departs;
     @JsonIgnore
-    @ManyToMany(mappedBy = "accounts")
+    @ManyToMany
+    @JoinTable(name = "sys_r_account_role", joinColumns = {
+        @JoinColumn(name = "account_id", referencedColumnName = "id")}, inverseJoinColumns = {
+        @JoinColumn(name = "role_id", referencedColumnName = "id")})
     private List<SysRole> roles;
 }

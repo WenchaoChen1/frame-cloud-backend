@@ -74,10 +74,7 @@ public class SysRole extends BaseTreeEntity {
         @JoinColumn(name = "r_tenant_menu_id", referencedColumnName = "id")})
     private List<RTenantMenu> rTenantMenus;
 
-    @ManyToMany
-    @JoinTable(name = "sys_r_account_role", joinColumns = {
-        @JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "account_id", referencedColumnName = "id")})
+    @ManyToMany(mappedBy = "roles")
     private List<SysAccount> accounts;
 
 
