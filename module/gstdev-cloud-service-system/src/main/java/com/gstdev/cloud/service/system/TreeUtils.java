@@ -1,14 +1,19 @@
 package com.gstdev.cloud.service.system;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class TreeUtils {
     // 构建树的方法
+    public static <ID, T extends TreeNode<ID, T>> List<T> buildTree(
+        List<T> items,
+        Function<T, ID> idGetter,
+        Function<T, ID> pidGetter) {
+        return buildTree(items, idGetter, pidGetter, null);
+    }  // 构建树的方法
+
     public static <ID, T extends TreeNode<ID, T>> List<T> buildTree(
         List<T> items,
         Function<T, ID> idGetter,
@@ -44,5 +49,50 @@ public class TreeUtils {
 
         // 对根节点列表返回
         return rootNodes;
+    }
+
+    // 查找指定节点
+    public static <ID, T extends TreeNode<ID, T>> T findNodeById(T root, ID id) {
+        if (root == null || id == null) {
+            return null;
+        }
+        if (id.equals(root.getId())) {
+            return root;
+        }
+        return findNodeById(root.getChildren(), id);
+    }
+
+    public static <ID, T extends TreeNode<ID, T>> T findNodeById(List<T> children, ID id) {
+        if (children == null || id == null) {
+            return null;
+        }
+        for (T child : children) {
+            T result = findNodeById(child, id);
+            if (result != null) {
+                return result;
+            }
+        }
+        return null;
+    }
+    // 查找多个节点
+    public static <ID, T extends TreeNode<ID, T>> List<T> findNodesById(List<T> rootNodes, List<ID> ids) {
+        Set<ID> idSet = new HashSet<>(ids); // 使用 Set 以提高查找速度
+        List<T> resultNodes = new ArrayList<>();
+        for (T root : rootNodes) {
+            findNodesById(root, idSet, resultNodes);
+        }
+        return resultNodes;
+    }
+
+    private static <ID, T extends TreeNode<ID, T>> void findNodesById(T root, Set<ID> ids, List<T> resultNodes) {
+        if (root == null || ids == null || resultNodes == null) {
+            return;
+        }
+        if (ids.contains(root.getId())) {
+            resultNodes.add(root);
+        }
+        for (T child : root.getChildren()) {
+            findNodesById(child, ids, resultNodes);
+        }
     }
 }

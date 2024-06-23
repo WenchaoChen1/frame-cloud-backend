@@ -12,6 +12,7 @@ package com.gstdev.cloud.service.system.domain.pojo.sysTenant;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseTreeVo;
+import com.gstdev.cloud.service.system.TreeNode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +21,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class TenantManageTreeVo extends BaseTreeVo<TenantManageTreeVo> {
+public class TenantManageTreeVo extends TreeNode<String, TenantManageTreeVo> {
     private String id;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdDate;

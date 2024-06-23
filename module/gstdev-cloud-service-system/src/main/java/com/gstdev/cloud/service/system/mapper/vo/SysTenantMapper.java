@@ -37,8 +37,6 @@ public interface SysTenantMapper extends BaseTreeMapper<SysTenant, TenantDto, Te
 
     TenantManageDetailVo toTenantManageDetailVo(SysTenant sysTenant);
 
-    List<TenantManageTreeVo> toTenantManageTreeVo(List<TenantDto> sysTenant);
-
     List<TenantManagePageVo> toTenantManagePageVo(List<SysTenant> sysTenant);
 
     default Page<TenantManagePageVo> toTenantManagePageVo(Page<SysTenant> page) {
@@ -50,6 +48,16 @@ public interface SysTenantMapper extends BaseTreeMapper<SysTenant, TenantDto, Te
     void copy(UpdateTenantManageIO updateTenantManageIO, @MappingTarget SysTenant sysTenant);
 
 
+    List<TenantManageTreeVo> toTenantManageTreeVo(List<SysTenant> sysTenant);
+
+    default List<TenantManageTreeVo> toTenantManageTreeVoToTree(List<SysTenant> sysTenant) {
+        List<TenantManageTreeVo> roleManageTenantDetaiToListVo = toTenantManageTreeVo(sysTenant);
+        return TreeUtils.buildTree(
+            roleManageTenantDetaiToListVo,
+            TenantManageTreeVo::getId,
+            TenantManageTreeVo::getParentId
+        );
+    }
     List<RoleManageTenantDetaiToListVo> toRoleManageTenantDetaiToListVo(List<SysTenant> sysTenant);
 
     default List<RoleManageTenantDetaiToListVo> toRoleManageTenantDetaiToListVoToTree(List<SysTenant> sysTenant) {

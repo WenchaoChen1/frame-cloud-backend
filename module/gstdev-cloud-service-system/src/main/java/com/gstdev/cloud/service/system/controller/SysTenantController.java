@@ -12,7 +12,9 @@ package com.gstdev.cloud.service.system.controller;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
+import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.rest.core.controller.TreeController;
+import com.gstdev.cloud.service.system.TreeUtils;
 import com.gstdev.cloud.service.system.domain.base.tenant.*;
 import com.gstdev.cloud.service.system.domain.entity.SysTenant;
 import com.gstdev.cloud.service.system.domain.pojo.sysTenant.*;
@@ -22,6 +24,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.data.domain.Page;
+import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +35,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/v1/tenant")
 //public class SysTenantController implements TreeController<SysTenant, String, TenantVo, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
-public class SysTenantController implements TreeController<SysTenant, String, TenantVo, TenantDto, TenantInsertInput, TenantUpdateInput, TenantPageQueryCriteria, TenantFindAllByQueryCriteria> {
+public class SysTenantController implements ResultController {
 
 
     @Resource
@@ -41,12 +44,10 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
     @Resource
     private SysTenantMapper tenantVoMapper;
 
-    @Override
     public SysTenantService getService() {
         return tenantService;
     }
 
-    @Override
     public SysTenantMapper getMapper() {
         return tenantVoMapper;
     }
@@ -63,19 +64,26 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
 
     /**
      * 获取当前租户以及当前租户的所有子租户，返回树状结构
+     *
      * @param tenantFindAllByQueryCriteria
      * @return
      */
     @Tag(name = "Tenant Manage")
     @GetMapping("/get-tenant-manage-tree")
     @Operation(summary = "get-tenant-manage-tree")
-    public Result<List<TenantManageTreeVo>> getTenantManageTree(TenantManageTreeQO tenantFindAllByQueryCriteria) {
-        if (tenantFindAllByQueryCriteria.getTenantId() != null) {
-            List<TenantDto> itselfAndSubsetsToDto = getService().findItselfAndSubsetsToDto(tenantFindAllByQueryCriteria.getTenantId());
-            List<String> tenantIds = itselfAndSubsetsToDto.stream().map(TenantDto::getId).toList();
-            tenantFindAllByQueryCriteria.setTenantIds(tenantIds);
+    public Result getTenantManageTree(TenantManageTreeQO tenantFindAllByQueryCriteria) {
+//        if (tenantFindAllByQueryCriteria.getTenantId() != null) {
+//            List<TenantDto> itselfAndSubsetsToDto = getService().findItselfAndSubsetsToDto(tenantFindAllByQueryCriteria.getTenantId());
+//            List<String> tenantIds = itselfAndSubsetsToDto.stream().map(TenantDto::getId).toList();
+//            tenantFindAllByQueryCriteria.setTenantIds(tenantIds);
+//        }
+        List<SysTenant> all = this.getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, tenantFindAllByQueryCriteria, criteriaBuilder));
+        List<TenantManageTreeVo> tenantManageTreeVoToTree = this.getMapper().toTenantManageTreeVoToTree(all);
+        if (ObjectUtils.isEmpty(tenantFindAllByQueryCriteria.getTenantId())) {
+            return result(tenantManageTreeVoToTree);
         }
-        return this.result(this.getMapper().toTenantManageTreeVo(this.getService().findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, tenantFindAllByQueryCriteria, criteriaBuilder))));
+        TenantManageTreeVo nodeById = TreeUtils.findNodeById(tenantManageTreeVoToTree, tenantFindAllByQueryCriteria.getTenantId());
+        return this.result(nodeById);
     }
 
     @Tag(name = "Tenant Manage")
@@ -107,14 +115,16 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
     @Operation(summary = "delete-tenant-manage")
     @DeleteMapping("/delete-tenant-manage/{id}")
     public Result deleteTenantManage(@PathVariable String id) {
-        return deleteByIdToResult(id);
+        getService().deleteById(id);
+        return result();
     }
 
     @Tag(name = "Tenant Manage")
     @Operation(summary = "delete-all-tenant-manage")
     @DeleteMapping("/delete-all-tenant-manage")
     public Result deleteAllTenantManage(List<String> id) {
-        return deleteAllByIdToResult(id);
+        getService().deleteAllById(id);
+        return result();
     }
 
 
@@ -159,29 +169,5 @@ public class SysTenantController implements TreeController<SysTenant, String, Te
 //  }
 
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
-
-    //    public SysTenantController(SysTenantService tenantService, TenantVoMapper tenantVoMapper) {
-//        this.tenantService = tenantService;
-//        this.tenantVoMapper = tenantVoMapper;
-//    }
-//  @GetMapping("/get-all-tenant-to-tree")
-//  @Operation(summary = "获取当前当前租户的所有子租户，返回树状结构")
-//  public Result<List<TenantVo>> findAllByQueryCriteriaToTree() {
-//    return findByParentIdIdToTreeToResult(redisCurrentLoginInformation.getCurrentLoginTenantId());
-//  }
-//
-//
-//    @GetMapping("/get-by-id")
-//    @Operation(summary = "根据id获取实体数据")
-//    public Result<TenantVo> getById(String id) {
-//        return findByIdToResult(id);
-//    }
-//
-//    @Operation(summary = "")
-//    @DeleteMapping
-//    public Result<TenantVo> deleteById(String id) {
-//        return deleteByIdToResult(id);
-//    }
-
 }
 
