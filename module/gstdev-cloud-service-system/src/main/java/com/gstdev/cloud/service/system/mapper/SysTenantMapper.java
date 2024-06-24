@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.service.system.mapper.vo;
+package com.gstdev.cloud.service.system.mapper;
 
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
 import com.gstdev.cloud.service.system.TreeUtils;

@@ -11,7 +11,7 @@ package com.gstdev.cloud.service.system.service;
 
 
 import cn.hutool.core.lang.UUID;
-import com.gstdev.cloud.service.system.mapper.vo.SysTenantMapper;
+import com.gstdev.cloud.service.system.mapper.SysTenantMapper;
 import com.gstdev.cloud.service.system.domain.base.tenant.*;
 import com.gstdev.cloud.service.system.domain.entity.SysTenant;
 import com.gstdev.cloud.service.system.repository.SysTenantRepository;

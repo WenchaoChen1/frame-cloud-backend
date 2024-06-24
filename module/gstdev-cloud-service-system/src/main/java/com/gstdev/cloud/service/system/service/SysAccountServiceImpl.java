@@ -8,7 +8,7 @@ import com.gstdev.cloud.service.system.domain.entity.SysUser;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageInitializationIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.UpdateAccountManageIO;
-import com.gstdev.cloud.service.system.mapper.vo.SysAccountMapper;
+import com.gstdev.cloud.service.system.mapper.SysAccountMapper;
 import com.gstdev.cloud.service.system.repository.SysAccountRepository;
 import com.gstdev.cloud.service.system.repository.SysDepartRepository;
 import com.gstdev.cloud.service.system.repository.SysRoleRepository;

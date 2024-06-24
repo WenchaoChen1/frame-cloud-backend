@@ -1,4 +1,4 @@
-package com.gstdev.cloud.service.system.mapper.vo;
+package com.gstdev.cloud.service.system.mapper;
 
 import com.gstdev.cloud.data.core.mapper.BaseDtoMapper;
 import com.gstdev.cloud.service.system.domain.base.SysPermission.SysPermissionDto;

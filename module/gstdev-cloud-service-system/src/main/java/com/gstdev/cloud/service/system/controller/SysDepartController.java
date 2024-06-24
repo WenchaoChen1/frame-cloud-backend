@@ -11,7 +11,7 @@ package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.rest.core.controller.TreeController;
-import com.gstdev.cloud.service.system.mapper.vo.DepartVoMapper;
+import com.gstdev.cloud.service.system.mapper.DepartVoMapper;
 import com.gstdev.cloud.service.system.domain.base.depart.*;
 import com.gstdev.cloud.service.system.domain.entity.SysDepart;
 import com.gstdev.cloud.service.system.service.SysDepartService;

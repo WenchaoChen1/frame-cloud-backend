@@ -25,47 +25,5 @@ import java.util.List;
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface DictMapper extends BaseDtoMapper<SysDict, DictDto> {
-//    /**
-//     * 转换
-//     *
-//     * @param dictSaveInput
-//     * @return 数据库实体类
-//     */
-//    SysDict toEntitySave(DictSaveInput dictSaveInput);
-//
-//    /**
-//     * 转换
-//     *
-//     * @param dictModifyInput
-//     * @return 数据库实体类
-//     */
-//    SysDict toEntityModify(DictModifyInput dictModifyInput);
-//
-//    /**
-//     * 转换
-//     *
-//     * @param dictModifyInput
-//     * @param dict
-//     */
-//    void copyModify(DictModifyInput dictModifyInput, @MappingTarget SysDict dict);
-
-    /**
-     * 转换
-     *
-     * @param dict
-     * @return
-     */
-    @Override
-    DictDto toDto(SysDict dict);
-
-    /**
-     * 转换
-     *
-     * @param dicts
-     * @return
-     */
-    @Override
-    List<DictDto> toDto(List<SysDict> dicts);
-
 }
 

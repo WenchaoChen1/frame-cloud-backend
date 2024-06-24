@@ -10,17 +10,15 @@
 package com.gstdev.cloud.service.system.service;
 
 
-import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.service.system.domain.base.rTenantMenu.*;
+import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
+import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuDto;
 import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuIO;
 import com.gstdev.cloud.service.system.mapper.RTenantMenuMapper;
 import com.gstdev.cloud.service.system.repository.SysMenuRepository;
 import com.gstdev.cloud.service.system.repository.SysRTenantMenuRepository;
-import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
-import org.springframework.transaction.annotation.Transactional;
-
 import jakarta.annotation.Resource;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;

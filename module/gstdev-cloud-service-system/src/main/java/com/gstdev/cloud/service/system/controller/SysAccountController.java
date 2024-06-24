@@ -6,7 +6,7 @@ import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.*;
-import com.gstdev.cloud.service.system.mapper.vo.SysAccountMapper;
+import com.gstdev.cloud.service.system.mapper.SysAccountMapper;
 import com.gstdev.cloud.service.system.service.SysAccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

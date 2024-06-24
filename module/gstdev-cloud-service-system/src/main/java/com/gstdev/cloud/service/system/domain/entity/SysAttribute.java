@@ -1,8 +1,9 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
+import com.gstdev.cloud.data.core.entity.BaseEntity;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.generator.SysAttributeUuidGenerator;
 import com.gstdev.cloud.service.system.domain.listener.SysAttributeEntityListener;
-import com.gstdev.cloud.data.core.entity.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -64,6 +65,11 @@ public class SysAttribute extends BaseEntity {
     @Schema(title = "备注")
     @Column(name = "description", length = 512)
     private String description;
+
+    @Schema(title = "数据状态")
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private DataItemStatus status = DataItemStatus.ENABLE;
 
     @Schema(title = "属性对应权限", description = "根据属性关联权限数据")
     @ManyToMany(fetch = FetchType.EAGER)

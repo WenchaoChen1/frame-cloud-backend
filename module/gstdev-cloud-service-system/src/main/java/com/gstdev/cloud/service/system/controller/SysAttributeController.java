@@ -1,24 +1,21 @@
 package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.rest.core.annotation.AccessLimited;
-import com.gstdev.cloud.rest.core.controller.Controller;
-import com.gstdev.cloud.service.system.mapper.vo.SysAttributeVoMapper;
-import com.gstdev.cloud.service.system.domain.base.SysAttribute.SysAttributeVo;
+import com.gstdev.cloud.data.core.utils.QueryUtils;
+import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
+import com.gstdev.cloud.service.system.domain.pojo.sysAttribute.AttributeManageDetailVo;
+import com.gstdev.cloud.service.system.domain.pojo.sysAttribute.AttributeManageQO;
+import com.gstdev.cloud.service.system.domain.pojo.sysAttribute.UpdateAttributeManageIO;
+import com.gstdev.cloud.service.system.mapper.SysAttributeMapper;
 import com.gstdev.cloud.service.system.service.SysAttributeService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.annotation.Resource;
-import org.springframework.data.domain.Page;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -28,34 +25,71 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/v1/attribute")
-@Tags({
-    @Tag(name = "元数据管理接口"),
-})
-public class SysAttributeController implements Controller<SysAttribute, String> {
+//@Tags({
+//    @Tag(name = "元数据管理接口"),
+//})
+public class SysAttributeController implements ResultController {
 
     @Resource
     private SysAttributeService sysAttributeService;
 
     @Resource
-    private SysAttributeVoMapper sysAttributeVoMapper;
+    private SysAttributeMapper sysAttributeMapper;
 
-    @Override
     public SysAttributeService getService() {
         return sysAttributeService;
     }
-
-    @Override
-    @AccessLimited
-    @Operation(summary = "获取全部元数据", description = "获取全部元数据列表",
-        responses = {
-            @ApiResponse(description = "全部数据列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class))),
-            @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
-            @ApiResponse(responseCode = "500", description = "查询失败")
-        })
-    @GetMapping("/page")
-    public Result<Map<String, Object>> findByPage(Pageable pageable) {
-        Page<SysAttribute> byPage = getService().findByPage(pageable);
-        Page<SysAttributeVo> sysAttributeVos = sysAttributeVoMapper.entityToVo(byPage);
-        return Result.success((Map<String, Object>) sysAttributeVos);
+    public SysAttributeMapper getMapper() {
+        return sysAttributeMapper;
     }
+    // ********************************* Attribute Manage *****************************************
+
+    @Tag(name = "Attribute Manage")
+    @GetMapping("/get-attribute-manage-page")
+    @Operation(summary = "get-attribute-manage-page")
+    public Result<Map<String, Object>> getAttributeManagePage(AttributeManageQO sysAttributeAttributeManageQO, Pageable pageable) {
+        return this.result(this.getMapper().toAttributeManagePageVo(this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysAttributeAttributeManageQO, criteriaBuilder), pageable)));
+    }
+
+    @Tag(name = "Attribute Manage")
+    @GetMapping("/get-attribute-manage-detail/{id}")
+    @Operation(summary = "get-attribute-manage-detail")
+    public Result<AttributeManageDetailVo> getAttributeManageDetail(@NotBlank @PathVariable String id) {
+        return result(getMapper().toAttributeManageDetailVo(getService().findById(id)));
+    }
+
+//    @Tag(name = "Attribute Manage")
+//    @PostMapping("/insert-attribute-manage")
+//    @Operation(summary = "insert-attribute-manage")
+//    public Result insertAttributeManage(@RequestBody @Validated InsertAttributeManageIO insertAttributeManageIO) {
+//        this.getService().insertAndUpdate(attributeVoMapper.toEntity(insertAttributeManageIO));
+//        return result();
+//    }
+
+    @Tag(name = "Attribute Manage")
+    @PutMapping("/update-attribute-manage")
+    @Operation(summary = "update-attribute-manage")
+    public Result updateAttributeManage(@RequestBody @Validated UpdateAttributeManageIO updateAttributeManageIO) {
+        SysAttribute sysAttribute = this.getService().findById(updateAttributeManageIO.getAttributeId());
+        getMapper().copy(updateAttributeManageIO, sysAttribute);
+        this.getService().insertAndUpdate(sysAttribute);
+        return result();
+    }
+
+
+//    @Tag(name = "Attribute Manage")
+//    @Operation(summary = "delete-attribute-manage")
+//    @DeleteMapping("/delete-attribute-manage/{id}")
+//    public Result deleteAttributeManage(@PathVariable String id) {
+//        getService().deleteById(id);
+//        return result();
+//    }
+//
+//    @Tag(name = "Attribute Manage")
+//    @Operation(summary = "/delete-all-attribute-manage")
+//    @DeleteMapping("/delete-all-attribute-manage")
+//    public Result deleteAllAttributeManage(List<String> id) {
+//        getService().deleteAllById(id);
+//        return result();
+//    }
 }

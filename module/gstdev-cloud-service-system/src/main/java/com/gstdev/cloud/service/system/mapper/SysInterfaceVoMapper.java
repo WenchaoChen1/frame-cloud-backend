@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.service.system.mapper.vo;
+package com.gstdev.cloud.service.system.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;

@@ -7,7 +7,7 @@ import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.base.role.*;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.*;
-import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
+import com.gstdev.cloud.service.system.mapper.SysRoleMapper;
 import com.gstdev.cloud.service.system.service.SysRoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

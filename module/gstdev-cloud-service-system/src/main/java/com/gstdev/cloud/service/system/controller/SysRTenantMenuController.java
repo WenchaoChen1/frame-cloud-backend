@@ -18,7 +18,7 @@ import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuIO;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.RoleManageTenantMenuTreeQO;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.RoleManageTenantMenuTreeVO;
-import com.gstdev.cloud.service.system.mapper.vo.RTenantMenuVoMapper;
+import com.gstdev.cloud.service.system.mapper.RTenantMenuMapper;
 import com.gstdev.cloud.service.system.service.SysRTenantMenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -38,7 +38,7 @@ public class SysRTenantMenuController implements POJOController<RTenantMenu, Str
     private SysRTenantMenuService rTenantMenuService;
 
     @Resource
-    private RTenantMenuVoMapper rTenantMenuVoMapper;
+    private RTenantMenuMapper rTenantMenuVoMapper;
 
     @Override
     public SysRTenantMenuService getService() {
@@ -46,7 +46,7 @@ public class SysRTenantMenuController implements POJOController<RTenantMenu, Str
     }
 
     @Override
-    public RTenantMenuVoMapper getMapper() {
+    public RTenantMenuMapper getMapper() {
         return rTenantMenuVoMapper;
     }
 

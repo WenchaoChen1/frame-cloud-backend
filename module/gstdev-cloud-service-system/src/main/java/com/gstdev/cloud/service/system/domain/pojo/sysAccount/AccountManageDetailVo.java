@@ -10,6 +10,7 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysAccount;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +20,7 @@ import lombok.Setter;
 public class AccountManageDetailVo {
 
     private String id;
-    private String type;
+    private SysAccountType type;
     private String name;
     private String identity;
     private String tenantId;

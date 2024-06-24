@@ -7,7 +7,7 @@ import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.InsertRoleMenuIO;
-import com.gstdev.cloud.service.system.mapper.vo.SysRoleMapper;
+import com.gstdev.cloud.service.system.mapper.SysRoleMapper;
 import com.gstdev.cloud.service.system.repository.SysRTenantMenuRepository;
 import com.gstdev.cloud.service.system.repository.SysRoleRepository;
 import jakarta.annotation.Resource;

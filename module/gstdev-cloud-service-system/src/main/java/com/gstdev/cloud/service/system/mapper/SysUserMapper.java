@@ -7,7 +7,7 @@
 //
 // ====================================================
 
-package com.gstdev.cloud.service.system.mapper.vo;
+package com.gstdev.cloud.service.system.mapper;
 
 import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
 import com.gstdev.cloud.service.system.domain.base.user.UserDto;
@@ -29,10 +29,6 @@ import java.util.List;
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface SysUserMapper extends BasePOJOMapper<SysUser, UserDto, UserVo, UserInsertInput, UserUpdateInput> {
 
-    //    UserInsertInput toUserInsertInput(UserLoginInferiorInsertInput userLoginInferiorInsertInput);
-//
-//    UserUpdateInput toUserUpdateInput(UserLoginInferiorUpdateInput userLoginInferiorUpdateInput);
-//    SysUser toEntity(insertAndUpdateUserManageIO insertUserManageInput);
     SysUser toEntity(InsertUserManageIO insertUserManageInput);
 
     SysUser toEntity(InsertUserManageInitializationIO insertUserManageInitializationIO);

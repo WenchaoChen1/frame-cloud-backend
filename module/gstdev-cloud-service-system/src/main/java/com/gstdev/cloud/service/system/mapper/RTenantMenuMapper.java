@@ -2,40 +2,45 @@
 //
 // This file is part of the GstDev Cloud Platform.
 //
-// Create by GstDev Cloud <support@gstdev.com>
-// Copyright (c) 2022-2025 gstdev.com
+// Create by gstdev Tech <support@gstdev.com>
+// Copyright (c) 2020-2025 gstdev.com
 //
 // ====================================================
 
 package com.gstdev.cloud.service.system.mapper;
 
-import com.gstdev.cloud.data.core.mapper.BaseDtoMapper;
-import com.gstdev.cloud.service.system.domain.vo.RTenantMenu.RTenantMenuModifyInput;
-import com.gstdev.cloud.service.system.domain.vo.RTenantMenu.RTenantMenuSaveInput;
-import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
+import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
+import com.gstdev.cloud.service.system.TreeUtils;
+import com.gstdev.cloud.service.system.domain.base.rTenantMenu.*;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuDto;
-import org.mapstruct.*;
+import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuVo;
+import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysMenu;
+import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.RoleManageTenantMenuTreeVO;
+import org.mapstruct.Mapper;
+import org.mapstruct.NullValueCheckStrategy;
+import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.ReportingPolicy;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface RTenantMenuMapper extends BaseDtoMapper<RTenantMenu, RTenantMenuDto> {
-    @Override
-    RTenantMenu toEntity(RTenantMenuDto tenantDto);
+public interface RTenantMenuMapper extends BasePOJOMapper<RTenantMenu, RTenantMenuDto, RTenantMenuVo, RTenantMenuInsertInput, RTenantMenuUpdateInput> {
+    List<RoleManageTenantMenuTreeVO> toRoleManageRTenantMenuTreeVO(List<SysMenu> sysRole);
 
-    void copyModify(RTenantMenuSaveInput tenantSaveInput, @MappingTarget RTenantMenu tenant);
+    default List<RoleManageTenantMenuTreeVO> toRoleManageRTenantMenuTreeVOToTree(List<SysMenu> sysRole) {
+        List<RoleManageTenantMenuTreeVO> roleManageRoleDetaiToListVo = toRoleManageRTenantMenuTreeVO(sysRole);
+        return TreeUtils.buildTree(
+            roleManageRoleDetaiToListVo,
+            RoleManageTenantMenuTreeVO::getId,
+            RoleManageTenantMenuTreeVO::getParentId,
+            Comparator.comparingInt((RoleManageTenantMenuTreeVO item) ->
+                item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+        );
+    }
 
-    RTenantMenu toEntitySave(RTenantMenuSaveInput tenantSaveInput);
-
-    List<RTenantMenu> toEntitySave(List<RTenantMenuSaveInput> tenantSaveInputs);
-
-    RTenantMenu toEntityModify(RTenantMenuModifyInput tenantModifyInput);
-
-    @Override
-    RTenantMenuDto toDto(RTenantMenu tenant);
-
-    List<RTenantMenuDto> toDtos(List<RTenantMenu> tenants);
 }
 

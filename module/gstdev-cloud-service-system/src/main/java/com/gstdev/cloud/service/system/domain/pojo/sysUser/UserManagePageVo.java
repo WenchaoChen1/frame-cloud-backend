@@ -26,8 +26,8 @@ public class UserManagePageVo {
     private Date createdDate;
     private String createdUser;
     private String createdAccount;
-    private Date updatedDate;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updatedDate;
     private String updatedUser;
     private String updatedAccount;
     private String username;

@@ -6,7 +6,7 @@ import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
 import com.gstdev.cloud.service.system.domain.pojo.sysUser.*;
-import com.gstdev.cloud.service.system.mapper.vo.SysUserMapper;
+import com.gstdev.cloud.service.system.mapper.SysUserMapper;
 import com.gstdev.cloud.service.system.service.SysUserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

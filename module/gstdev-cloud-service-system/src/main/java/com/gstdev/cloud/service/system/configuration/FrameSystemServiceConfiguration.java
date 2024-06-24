@@ -2,7 +2,6 @@
 package com.gstdev.cloud.service.system.configuration;
 
 import com.gstdev.cloud.service.system.mapper.*;
-import com.gstdev.cloud.service.system.mapper.vo.*;
 import com.gstdev.cloud.service.system.repository.*;
 import com.gstdev.cloud.service.system.service.*;
 import jakarta.annotation.PostConstruct;
