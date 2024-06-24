@@ -2,9 +2,9 @@ package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.rest.core.controller.TreeController;
-import com.gstdev.cloud.service.system.mapper.DictVoMapper;
 import com.gstdev.cloud.service.system.domain.base.dict.*;
 import com.gstdev.cloud.service.system.domain.entity.SysDict;
+import com.gstdev.cloud.service.system.mapper.DictVoMapper;
 import com.gstdev.cloud.service.system.service.SysDictService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;

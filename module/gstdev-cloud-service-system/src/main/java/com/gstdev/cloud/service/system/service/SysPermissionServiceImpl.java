@@ -2,17 +2,20 @@ package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseDtoServiceImpl;
-import com.gstdev.cloud.service.system.mapper.SysPermissionMapper;
 import com.gstdev.cloud.service.system.domain.base.SysPermission.SysPermissionDto;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysPermission;
+import com.gstdev.cloud.service.system.mapper.SysPermissionMapper;
 import com.gstdev.cloud.service.system.repository.SysPermissionRepository;
 import jakarta.annotation.Resource;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Transactional
@@ -25,6 +28,30 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
 
     public SysPermissionServiceImpl(SysPermissionRepository sysPermissionRepository, SysPermissionMapper sysPermissionMapper) {
         super(sysPermissionRepository, sysPermissionMapper);
+    }
+
+    public static String generateKey(List<String> input) {
+        // 对字符串列表进行排序
+        Collections.sort(input);
+        // 连接排序后的字符串
+        String combinedInput = String.join("", input);
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(combinedInput.getBytes());
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     @Override
@@ -52,7 +79,7 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
         getRepository().saveAndFlush(allPermissionAll);
         this.updateStatusByPermissionType(DataItemStatus.EXPIRED, "generateCorrelatedKeysService");
         Map<String, List<SysAttribute>> attributeMap = attributeList.stream()
-            .collect(Collectors.groupingBy(SysAttribute::getServiceId));
+                .collect(Collectors.groupingBy(SysAttribute::getServiceId));
         List<SysPermission> permissionList = new ArrayList<>();
         for (Map.Entry<String, List<SysAttribute>> stringListEntry : attributeMap.entrySet()) {
             List<SysAttribute> value = stringListEntry.getValue();
@@ -88,10 +115,6 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
 //        getRepository().saveAll(new ArrayList<>(uniquePermissions.values()));
         getRepository().saveAllAndFlush(permissionList);
         sysAttributeService.saveAllAndFlush(attributeList);
-    }
-
-    public void updateStatusByPermissionType(DataItemStatus status, String permissionType) {
-        getRepository().updateStatusByPermissionType(status, permissionType);
     }
 
 //    public static Map<String, Set<SysPermission>> generateCorrelatedKeys(List<SysAttribute> sysAttributes) {
@@ -130,29 +153,8 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
 //        return permissionMap;
 //    }
 
-
-    public static String generateKey(List<String> input) {
-        // 对字符串列表进行排序
-        Collections.sort(input);
-        // 连接排序后的字符串
-        String combinedInput = String.join("", input);
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(combinedInput.getBytes());
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : hash) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) {
-                    hexString.append('0');
-                }
-                hexString.append(hex);
-            }
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
-        }
-
+    public void updateStatusByPermissionType(DataItemStatus status, String permissionType) {
+        getRepository().updateStatusByPermissionType(status, permissionType);
     }
 
 //    public static Map<String, Set<SysPermission>> generateCorrelatedKeys(List<SysAttribute> sysAttributes) {

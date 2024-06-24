@@ -25,8 +25,8 @@ import java.util.Comparator;
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+        nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface SysRoleMapper extends BaseTreeMapper<SysRole, RoleDto, RoleVo, RoleInsertInput, RoleUpdateInput> {
     SysRole toEntity(InsertRoleManageIO insertRoleManageIO);
 
@@ -37,11 +37,11 @@ public interface SysRoleMapper extends BaseTreeMapper<SysRole, RoleDto, RoleVo, 
     default List<RoleManageRoleDetaiToListVo> toRoleManageRoleDetaiToListVoToTree(List<SysRole> sysRole) {
         List<RoleManageRoleDetaiToListVo> roleManageRoleDetaiToListVo = toRoleManageRoleDetaiToListVo(sysRole);
         return TreeUtils.buildTree(
-            roleManageRoleDetaiToListVo,
-            RoleManageRoleDetaiToListVo::getId,
-            RoleManageRoleDetaiToListVo::getParentId,
-            Comparator.comparingInt((RoleManageRoleDetaiToListVo item) ->
-                item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+                roleManageRoleDetaiToListVo,
+                RoleManageRoleDetaiToListVo::getId,
+                RoleManageRoleDetaiToListVo::getParentId,
+                Comparator.comparingInt((RoleManageRoleDetaiToListVo item) ->
+                        item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
         );
     }
 

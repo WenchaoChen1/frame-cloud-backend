@@ -11,11 +11,11 @@ package com.gstdev.cloud.service.system.service;
 
 
 import cn.hutool.core.lang.UUID;
-import com.gstdev.cloud.service.system.mapper.SysTenantMapper;
-import com.gstdev.cloud.service.system.domain.base.tenant.*;
-import com.gstdev.cloud.service.system.domain.entity.SysTenant;
-import com.gstdev.cloud.service.system.repository.SysTenantRepository;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
+import com.gstdev.cloud.service.system.domain.base.tenant.TenantDto;
+import com.gstdev.cloud.service.system.domain.entity.SysTenant;
+import com.gstdev.cloud.service.system.mapper.SysTenantMapper;
+import com.gstdev.cloud.service.system.repository.SysTenantRepository;
 import jakarta.annotation.Resource;
 import org.springframework.transaction.annotation.Transactional;
 

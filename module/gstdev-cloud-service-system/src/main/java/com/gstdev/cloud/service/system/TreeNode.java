@@ -17,21 +17,21 @@ public class TreeNode<ID, T extends com.gstdev.cloud.base.core.utils.treeUtils.T
     }
 
     @Override
-    // 添加子节点
-    public void addChild(T child) {
-        if (children == null) {
-            children = new CopyOnWriteArrayList<>();
-        }
-        children.add(child);
-    }
-
-    @Override
     // 设置子节点列表
     public void setChildren(List<T> children) {
         if (children == null) {
             children = new CopyOnWriteArrayList<>();
         }
         this.children = new CopyOnWriteArrayList<>(children);
+    }
+
+    @Override
+    // 添加子节点
+    public void addChild(T child) {
+        if (children == null) {
+            children = new CopyOnWriteArrayList<>();
+        }
+        children.add(child);
     }
 
     public ID getId() {

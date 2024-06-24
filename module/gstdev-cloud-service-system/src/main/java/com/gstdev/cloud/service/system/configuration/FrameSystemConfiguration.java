@@ -1,4 +1,3 @@
-
 package com.gstdev.cloud.service.system.configuration;
 
 import jakarta.annotation.PostConstruct;
@@ -15,13 +14,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @Configuration(proxyBeanMethods = false)
 @EntityScan(basePackages = {
-    "com.gstdev.cloud.service.system.domain.entity",
+        "com.gstdev.cloud.service.system.domain.entity",
 })
 @EnableJpaRepositories(basePackages = {
-    "com.gstdev.cloud.service.system.repository",
+        "com.gstdev.cloud.service.system.repository",
 })
 @ComponentScan(basePackages = {
-    "com.gstdev.cloud.service.system.mapper",
+        "com.gstdev.cloud.service.system.mapper",
 //    "com.gstdev.cloud.service.system.controller",
 })
 @Import({FrameSystemServiceConfiguration.class, FrameSystemControllerConfiguration.class})

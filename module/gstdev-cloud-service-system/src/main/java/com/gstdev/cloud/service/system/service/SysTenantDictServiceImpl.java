@@ -1,10 +1,10 @@
 package com.gstdev.cloud.service.system.service;
 
 import cn.hutool.core.util.ObjectUtil;
+import com.gstdev.cloud.service.system.domain.entity.TenantDict;
 import com.gstdev.cloud.service.system.domain.vo.TenantDict.TenantDictDto;
 import com.gstdev.cloud.service.system.domain.vo.TenantDict.TenantDictModifyInput;
 import com.gstdev.cloud.service.system.domain.vo.TenantDict.TenantDictSaveInput;
-import com.gstdev.cloud.service.system.domain.entity.TenantDict;
 import com.gstdev.cloud.service.system.mapper.TenantDictMapper;
 import com.gstdev.cloud.service.system.repository.SysTenantDictRepository;
 import org.springframework.transaction.annotation.Transactional;

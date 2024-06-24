@@ -1,8 +1,8 @@
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.service.system.domain.entity.SysInterface;
 import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
+import com.gstdev.cloud.service.system.domain.entity.SysInterface;
 
 import java.util.Collection;
 import java.util.List;

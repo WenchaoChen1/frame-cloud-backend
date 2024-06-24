@@ -3,10 +3,10 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.service.system.domain.base.menu.MenuDto;
-import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
+import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.AccountMenuPermissionsDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.AccountMenuPermissionsQO;
@@ -92,7 +92,7 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
     public List<AccountMenuPermissionsDto> getAccountMenuPermissions(String accountId) {
         SysAccount account = accountRepository.findById(accountId).get();
         AccountMenuPermissionsQO accountMenuPermissionsQO = new AccountMenuPermissionsQO();
-        List<SysMenu> sysMenuList=null;
+        List<SysMenu> sysMenuList = null;
         if (account.getType().equals(SysAccountType.SUPER)) {
             sysMenuList = findAll();
         } else if (account.getType().equals(SysAccountType.ADMIN)) {
@@ -104,7 +104,7 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
                 List<SysMenu> menus = role.getTenantMenus().stream().map(SysTenantMenu::getMenu).toList();
                 Map<String, List<SysMenu>> collect2 = menus.stream().collect(Collectors.groupingBy(SysMenu::getId));
                 Map<String, SysMenu> collect1 = role.getTenantMenus().stream().map(SysTenantMenu::getMenu).collect(Collectors.groupingBy(SysMenu::getId,
-                    Collectors.collectingAndThen(Collectors.toList(), value -> value.get(0))));
+                        Collectors.collectingAndThen(Collectors.toList(), value -> value.get(0))));
                 collect.putAll(collect1);
             }
             sysMenuList = collect.values().stream().toList();

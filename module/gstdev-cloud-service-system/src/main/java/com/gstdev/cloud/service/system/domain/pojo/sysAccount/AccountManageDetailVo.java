@@ -27,17 +27,17 @@ public class AccountManageDetailVo {
     private DataItemStatus status;
     private SysUser user;
 
-    @Getter
-    @Setter
-    public static class SysUser {
-        private String id;
-    }
-
     public String getUserId() {
         if (user == null) {
             return null;
         }
         return user.getId();
+    }
+
+    @Getter
+    @Setter
+    public static class SysUser {
+        private String id;
     }
 
 }

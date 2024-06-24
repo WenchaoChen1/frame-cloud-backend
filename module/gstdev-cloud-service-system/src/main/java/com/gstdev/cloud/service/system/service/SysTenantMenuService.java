@@ -15,7 +15,7 @@ import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuIO;
 
 public interface SysTenantMenuService extends BasePOJOService<SysTenantMenu, String, RTenantMenuDto> {
-   void insertTenantMenu(InsertTenantMenuIO insertTenantMenuIO);
+    void insertTenantMenu(InsertTenantMenuIO insertTenantMenuIO);
 
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 }

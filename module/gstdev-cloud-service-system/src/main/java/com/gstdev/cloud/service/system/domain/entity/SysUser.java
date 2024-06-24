@@ -17,8 +17,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import java.time.Instant;
 import java.util.List;
@@ -80,7 +78,7 @@ public class SysUser extends BasePOJOEntity {
     private String description;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user",  fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<SysAccount> account;
 
     //-----------------自定义-----------

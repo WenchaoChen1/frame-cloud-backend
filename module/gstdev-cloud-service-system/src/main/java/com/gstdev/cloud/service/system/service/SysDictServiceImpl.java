@@ -1,15 +1,14 @@
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.service.system.domain.base.dict.*;
+import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
+import com.gstdev.cloud.service.system.domain.base.dict.DictDto;
 import com.gstdev.cloud.service.system.domain.entity.SysDict;
 import com.gstdev.cloud.service.system.mapper.DictMapper;
 import com.gstdev.cloud.service.system.repository.SysDictRepository;
-import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
+import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
-
-import jakarta.annotation.Resource;
 
 
 @Transactional(readOnly = true)

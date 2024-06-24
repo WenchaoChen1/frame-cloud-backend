@@ -49,9 +49,9 @@ public class SysPermissionController implements ResultController {
 
     // ********************************* Permission Manage *****************************************
     @Tags({
-        @Tag(name = "Permission Manage"),
-        @Tag(name = "Scope Manage"),
-        @Tag(name = "Attribute Manage")
+            @Tag(name = "Permission Manage"),
+            @Tag(name = "Scope Manage"),
+            @Tag(name = "Attribute Manage")
     })
     @AccessLimited
     @GetMapping("/get-permission-manage-page")
@@ -95,6 +95,7 @@ public class SysPermissionController implements ResultController {
         this.getService().deleteById(id);
         return result();
     }
+
     @Tag(name = "Permission Manage")
     @Operation(summary = "delete-all-permission-manage")
     @DeleteMapping("/delete-all-permission-manage")

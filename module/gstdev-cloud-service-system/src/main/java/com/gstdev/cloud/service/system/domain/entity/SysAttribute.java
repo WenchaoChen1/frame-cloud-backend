@@ -75,10 +75,10 @@ public class SysAttribute extends BaseEntity {
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "sys_attribute_permission",
-        joinColumns = {@JoinColumn(name = "attribute_id")},
-        inverseJoinColumns = {@JoinColumn(name = "permission_id")},
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"attribute_id", "permission_id"})},
-        indexes = {@Index(name = "sys_attribute_permission_aid_idx", columnList = "attribute_id"), @Index(name = "sys_attribute_permission_pid_idx", columnList = "permission_id")})
+            joinColumns = {@JoinColumn(name = "attribute_id")},
+            inverseJoinColumns = {@JoinColumn(name = "permission_id")},
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"attribute_id", "permission_id"})},
+            indexes = {@Index(name = "sys_attribute_permission_aid_idx", columnList = "attribute_id"), @Index(name = "sys_attribute_permission_pid_idx", columnList = "permission_id")})
     private Set<SysPermission> permissions = new HashSet<>();
 
     public void addPermissions(Set<SysPermission> permissions) {

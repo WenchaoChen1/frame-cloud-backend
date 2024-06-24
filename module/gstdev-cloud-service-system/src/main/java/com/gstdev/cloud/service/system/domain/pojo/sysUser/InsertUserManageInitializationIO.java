@@ -11,6 +11,8 @@ import java.util.List;
 @Setter
 public class InsertUserManageInitializationIO {
 
+    List<String> departIds;
+    List<String> roleIds;
     private String username;
     private String phoneNumber;
     private String email;
@@ -18,12 +20,8 @@ public class InsertUserManageInitializationIO {
     private String nickname;
     private String avatar;
     private DataItemStatus status;
-
     private String firstName;
     private String lastName;
-
-    List<String> departIds;
-    List<String> roleIds;
     private String accountName;
     private String tenantId;
     private SysAccountType type = SysAccountType.USER;

@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.domain.generator;
 
-import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.data.core.identifier.AbstractUuidGenerator;
+import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.HibernateException;

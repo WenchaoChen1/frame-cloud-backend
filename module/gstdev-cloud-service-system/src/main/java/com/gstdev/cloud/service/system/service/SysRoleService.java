@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface SysRoleService extends BaseTreeService<SysRole, String, RoleDto> {
     Result<List<String>> getAllMenuIdByRoleId(String roleId);
+
     List<SysRole> getAllByTenantId(String roleId);
 
     Result<String> insertRoleMenu(InsertRoleMenuIO insertRoleMenuIO);

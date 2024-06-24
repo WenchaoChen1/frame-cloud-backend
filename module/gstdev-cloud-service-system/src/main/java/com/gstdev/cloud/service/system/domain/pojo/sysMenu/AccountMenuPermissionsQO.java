@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AccountMenuPermissionsQO{
+public class AccountMenuPermissionsQO {
 
     @Query(propName = "tenantId", joinName = "rTenantMenus", join = Query.Join.LEFT)
     String tenantId;

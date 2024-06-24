@@ -31,8 +31,8 @@ public class SysUserToSecurityUserConverter implements Converter<SysUser, Defaul
         Set<String> roles = new HashSet<>();
 
         List<SysRole> accountRoles = sysUser.getAccount().stream()
-            .flatMap(account -> account.getRoles().stream())
-            .collect(Collectors.toList());
+                .flatMap(account -> account.getRoles().stream())
+                .collect(Collectors.toList());
         for (SysAccount sysAccount : sysUser.getAccount()) {
             if (sysAccount.getType().equals(SysAccountType.SUPER)) {
                 authorities.add(new FrameGrantedAuthority("all"));
@@ -53,11 +53,11 @@ public class SysUserToSecurityUserConverter implements Converter<SysUser, Defaul
 //        String employeeId = ObjectUtils.isNotEmpty(sysUser.getEmployee()) ? sysUser.getEmployee().getEmployeeId() : null;
 
         return new DefaultSecurityUser(sysUser.getId(), sysUser.getUsername(), sysUser.getPassword(),
-            isEnabled(sysUser),
-            isAccountNonExpired(sysUser),
-            isCredentialsNonExpired(sysUser),
-            isNonLocked(sysUser),
-            authorities, roles, null, sysUser.getAvatar());
+                isEnabled(sysUser),
+                isAccountNonExpired(sysUser),
+                isCredentialsNonExpired(sysUser),
+                isNonLocked(sysUser),
+                authorities, roles, null, sysUser.getAvatar());
     }
 
     private boolean isEnabled(SysUser sysUser) {

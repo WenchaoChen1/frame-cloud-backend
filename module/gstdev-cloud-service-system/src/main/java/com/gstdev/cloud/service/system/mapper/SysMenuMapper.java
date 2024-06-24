@@ -23,8 +23,8 @@ import java.util.Comparator;
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+        nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface SysMenuMapper extends BaseTreeMapper<SysMenu, MenuDto, MenuVo, MenuInsertInput, MenuUpdateInput> {
     void copy(UpdateMenuManageIO updateMenuManageIO, @MappingTarget SysMenu sysMenu);
 
@@ -38,23 +38,24 @@ public interface SysMenuMapper extends BaseTreeMapper<SysMenu, MenuDto, MenuVo, 
     default List<MenuManageTreeVo> toMenuManageTreeVoToTree(List<SysMenu> byPage) {
         List<MenuManageTreeVo> menuManageTreeVo = toMenuManageTreeVo(byPage);
         return TreeUtils.buildTree(
-            menuManageTreeVo,
-            MenuManageTreeVo::getId,
-            MenuManageTreeVo::getParentId,
-            Comparator.comparingInt((MenuManageTreeVo item) ->
-                item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+                menuManageTreeVo,
+                MenuManageTreeVo::getId,
+                MenuManageTreeVo::getParentId,
+                Comparator.comparingInt((MenuManageTreeVo item) ->
+                        item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
         );
     }
+
     List<AccountMenuPermissionsDto> toAccountMenuPermissionsDto(List<SysMenu> sysMenus);
 
     default List<AccountMenuPermissionsDto> toAccountMenuPermissionsDtoToTree(List<SysMenu> sysMenus) {
         List<AccountMenuPermissionsDto> accountMenuPermissionsDto = toAccountMenuPermissionsDto(sysMenus);
         return TreeUtils.buildTree(
-            accountMenuPermissionsDto,
-            AccountMenuPermissionsDto::getId,
-            AccountMenuPermissionsDto::getParentId,
-            Comparator.comparingInt((AccountMenuPermissionsDto item) ->
-                item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+                accountMenuPermissionsDto,
+                AccountMenuPermissionsDto::getId,
+                AccountMenuPermissionsDto::getParentId,
+                Comparator.comparingInt((AccountMenuPermissionsDto item) ->
+                        item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
         );
     }
 

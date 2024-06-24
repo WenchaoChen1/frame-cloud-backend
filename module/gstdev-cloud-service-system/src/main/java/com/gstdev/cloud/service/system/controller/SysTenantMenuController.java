@@ -13,8 +13,8 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.POJOController;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.*;
-import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuIO;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.RoleManageTenantMenuTreeQO;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.RoleManageTenantMenuTreeVO;
@@ -66,8 +66,8 @@ public class SysTenantMenuController implements POJOController<SysTenantMenu, St
         rTenantMenuFindAllByQueryCriteria.setTenantId(tenantId);
         List<SysTenantMenu> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, rTenantMenuFindAllByQueryCriteria, criteriaBuilder));
         List<String> strings = all.stream()
-            .map(SysTenantMenu::getMenu).map(SysMenu::getId)
-            .toList();
+                .map(SysTenantMenu::getMenu).map(SysMenu::getId)
+                .toList();
 
         return Result.success(strings);
     }

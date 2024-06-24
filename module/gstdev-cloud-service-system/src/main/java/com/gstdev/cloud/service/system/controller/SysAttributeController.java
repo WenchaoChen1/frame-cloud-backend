@@ -41,6 +41,7 @@ public class SysAttributeController implements ResultController {
     public SysAttributeService getService() {
         return sysAttributeService;
     }
+
     public SysAttributeMapper getMapper() {
         return sysAttributeMapper;
     }

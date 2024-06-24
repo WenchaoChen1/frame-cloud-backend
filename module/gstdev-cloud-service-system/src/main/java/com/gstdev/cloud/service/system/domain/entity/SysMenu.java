@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-
-import jakarta.persistence.*;
 
 import java.util.List;
 

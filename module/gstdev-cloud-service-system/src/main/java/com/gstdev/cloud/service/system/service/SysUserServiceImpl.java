@@ -1,26 +1,26 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.service.BaseDtoServiceImpl;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
-import com.gstdev.cloud.service.system.mapper.SysUserMapper;
-import com.gstdev.cloud.service.system.domain.converter.SysUserToSecurityUserConverter;
-import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
-import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
+import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.service.system.domain.base.user.UserDto;
+import com.gstdev.cloud.service.system.domain.converter.SysUserToSecurityUserConverter;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageInitializationIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysUser.InsertUserManageInitializationIO;
 import com.gstdev.cloud.service.system.domain.vo.user.AccountListDto;
+import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
+import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
+import com.gstdev.cloud.service.system.mapper.SysUserMapper;
 import com.gstdev.cloud.service.system.repository.SysUserRepository;
-import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
-import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
-import jakarta.annotation.Resource;
-
-import java.util.*;
+import java.util.List;
+import java.util.Random;
 
 @Slf4j
 @Transactional(readOnly = true)
@@ -39,11 +39,6 @@ public class SysUserServiceImpl extends BaseDtoServiceImpl<SysUser, String, SysU
 
     public SysUserServiceImpl(SysUserRepository userRepository, SysUserMapper userMapper) {
         super(userRepository, userMapper);
-    }
-
-    @Override
-    public SysUserRepository getRepository() {
-        return userRepository;
     }
 
     private static char nextChar(Random rnd) {
@@ -66,6 +61,11 @@ public class SysUserServiceImpl extends BaseDtoServiceImpl<SysUser, String, SysU
             chars[i] = nextChar(rnd);
         }
         return new String(chars);
+    }
+
+    @Override
+    public SysUserRepository getRepository() {
+        return userRepository;
     }
 
     @Override

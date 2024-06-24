@@ -12,11 +12,10 @@ package com.gstdev.cloud.service.system.domain.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-
-import jakarta.persistence.*;
 
 import java.util.List;
 

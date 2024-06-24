@@ -1,8 +1,8 @@
 package com.gstdev.cloud.service.system.repository;
 
 
-import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
+import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 
 import java.util.List;
 

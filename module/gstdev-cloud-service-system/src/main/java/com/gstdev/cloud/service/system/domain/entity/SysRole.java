@@ -12,13 +12,12 @@ package com.gstdev.cloud.service.system.domain.entity;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Index;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.*;
-
-import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.HashSet;
 import java.util.List;
@@ -69,8 +68,8 @@ public class SysRole extends BaseTreeEntity {
 
     @ManyToMany
     @JoinTable(name = "sys_r_role_tenant_menu", joinColumns = {
-        @JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "tenant_menu_id", referencedColumnName = "id")})
+            @JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {
+            @JoinColumn(name = "tenant_menu_id", referencedColumnName = "id")})
     private List<SysTenantMenu> tenantMenus;
 
     @ManyToMany(mappedBy = "roles")
@@ -93,10 +92,10 @@ public class SysRole extends BaseTreeEntity {
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "sys_r_role_r_permission",
-        joinColumns = {@JoinColumn(name = "role_id")},
-        inverseJoinColumns = {@JoinColumn(name = "permission_id")},
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"role_id", "permission_id"})},
-        indexes = {@Index(name = "sys_role_permission_rid_idx", columnList = "role_id"), @Index(name = "sys_role_permission_pid_idx", columnList = "permission_id")})
+            joinColumns = {@JoinColumn(name = "role_id")},
+            inverseJoinColumns = {@JoinColumn(name = "permission_id")},
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"role_id", "permission_id"})},
+            indexes = {@Index(name = "sys_role_permission_rid_idx", columnList = "role_id"), @Index(name = "sys_role_permission_pid_idx", columnList = "permission_id")})
     private Set<SysPermission> permissions = new HashSet<>();
 
 }

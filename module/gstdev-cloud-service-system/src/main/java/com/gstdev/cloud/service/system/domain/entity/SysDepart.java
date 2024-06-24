@@ -11,11 +11,10 @@ package com.gstdev.cloud.service.system.domain.entity;
 
 
 import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-
-import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -56,8 +55,8 @@ public class SysDepart extends BaseTreeEntity {
 
     @ManyToMany
     @JoinTable(name = "sys_r_account_depart", joinColumns = {
-        @JoinColumn(name = "depart_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "account_id", referencedColumnName = "id")})
+            @JoinColumn(name = "depart_id", referencedColumnName = "id")}, inverseJoinColumns = {
+            @JoinColumn(name = "account_id", referencedColumnName = "id")})
     private List<SysAccount> accounts;
 }
 

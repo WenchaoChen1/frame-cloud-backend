@@ -4,7 +4,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
-import com.gstdev.cloud.service.system.domain.base.role.*;
+import com.gstdev.cloud.service.system.domain.base.role.RoleDto;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.*;
 import com.gstdev.cloud.service.system.mapper.SysRoleMapper;
@@ -120,7 +120,6 @@ public class SysRoleController implements ResultController {
     }
 
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
-
 
 
 }

@@ -9,9 +9,9 @@
 
 package com.gstdev.cloud.service.system.repository;
 
+import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
-import com.gstdev.cloud.data.core.repository.BaseRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

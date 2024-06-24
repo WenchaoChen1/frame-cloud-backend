@@ -15,8 +15,8 @@ import org.springframework.data.domain.PageImpl;
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+        nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface SysPermissionMapper extends BaseDtoMapper<SysPermission, SysPermissionDto> {
     List<SysPermissionVo> entityToVo(List<SysPermission> entity);
 

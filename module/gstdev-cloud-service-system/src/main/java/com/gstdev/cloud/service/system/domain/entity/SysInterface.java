@@ -1,9 +1,9 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
-import com.gstdev.cloud.service.system.domain.generator.SysInterfaceUuidGenerator;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
+import com.gstdev.cloud.service.system.domain.generator.SysInterfaceUuidGenerator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -76,13 +76,13 @@ public class SysInterface extends BaseEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("interfaceId", interfaceId)
-            .add("interfaceCode", interfaceCode)
-            .add("requestMethod", requestMethod)
-            .add("serviceId", serviceId)
-            .add("className", className)
-            .add("methodName", methodName)
-            .add("url", url)
-            .toString();
+                .add("interfaceId", interfaceId)
+                .add("interfaceCode", interfaceCode)
+                .add("requestMethod", requestMethod)
+                .add("serviceId", serviceId)
+                .add("className", className)
+                .add("methodName", methodName)
+                .add("url", url)
+                .toString();
     }
 }

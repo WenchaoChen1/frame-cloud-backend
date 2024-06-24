@@ -10,8 +10,8 @@
 package com.gstdev.cloud.service.system.domain.base.rTenantMenu;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.gstdev.cloud.service.system.domain.base.menu.MenuDto;
 import com.gstdev.cloud.data.core.pojo.BaseDto;
+import com.gstdev.cloud.service.system.domain.base.menu.MenuDto;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;

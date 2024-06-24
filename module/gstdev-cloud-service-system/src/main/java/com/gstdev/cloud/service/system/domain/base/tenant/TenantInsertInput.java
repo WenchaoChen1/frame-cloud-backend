@@ -12,9 +12,8 @@ package com.gstdev.cloud.service.system.domain.base.tenant;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseTreeInsertInput;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
-
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Data;
 
 
 @Data

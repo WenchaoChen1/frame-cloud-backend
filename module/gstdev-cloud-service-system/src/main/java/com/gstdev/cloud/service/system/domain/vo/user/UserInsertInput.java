@@ -24,6 +24,8 @@ import java.util.List;
 @Setter
 public class UserInsertInput extends BaseInsertInput implements Serializable {
 
+    List<String> departIds;
+    List<String> roleIds;
     private String username;
     private String email;
     private String phoneNumber;
@@ -33,10 +35,6 @@ public class UserInsertInput extends BaseInsertInput implements Serializable {
     private Integer gender = 0;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date lastLoginTime;
-
-
-    List<String> departIds;
-    List<String> roleIds;
     private String accountName;
     private String tenantId;
     private SysAccountType type = SysAccountType.USER;

@@ -9,8 +9,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import java.util.List;
 
@@ -58,7 +56,7 @@ public class SysAccount extends BasePOJOEntity {
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "sys_r_account_role", joinColumns = {
-        @JoinColumn(name = "account_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "role_id", referencedColumnName = "id")})
+            @JoinColumn(name = "account_id", referencedColumnName = "id")}, inverseJoinColumns = {
+            @JoinColumn(name = "role_id", referencedColumnName = "id")})
     private List<SysRole> roles;
 }

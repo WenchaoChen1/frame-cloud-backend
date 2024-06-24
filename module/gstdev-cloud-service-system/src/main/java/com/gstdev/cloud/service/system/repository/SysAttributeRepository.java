@@ -1,9 +1,8 @@
-
 package com.gstdev.cloud.service.system.repository;
 
 
-import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
+import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.jpa.repository.QueryHints;

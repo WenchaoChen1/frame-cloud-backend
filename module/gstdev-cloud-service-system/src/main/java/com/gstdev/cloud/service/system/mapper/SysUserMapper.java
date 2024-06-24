@@ -25,8 +25,8 @@ import org.springframework.data.domain.PageImpl;
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+        nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface SysUserMapper extends BasePOJOMapper<SysUser, UserDto, UserVo, UserInsertInput, UserUpdateInput> {
 
     SysUser toEntity(InsertUserManageIO insertUserManageInput);

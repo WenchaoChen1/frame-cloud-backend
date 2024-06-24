@@ -26,8 +26,8 @@ import java.util.List;
 
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
-    nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-    nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+        nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
 public interface SysTenantMapper extends BaseTreeMapper<SysTenant, TenantDto, TenantVo, TenantInsertInput, TenantUpdateInput> {
     //    TenantInsertInput toTenantInsertInput(TenantLoginInferiorInsertInput tenantLoginInferiorInsertInput);
 //
@@ -53,21 +53,22 @@ public interface SysTenantMapper extends BaseTreeMapper<SysTenant, TenantDto, Te
     default List<TenantManageTreeVo> toTenantManageTreeVoToTree(List<SysTenant> sysTenant) {
         List<TenantManageTreeVo> roleManageTenantDetaiToListVo = toTenantManageTreeVo(sysTenant);
         return TreeUtils.buildTree(
-            roleManageTenantDetaiToListVo,
-            TenantManageTreeVo::getId,
-            TenantManageTreeVo::getParentId
+                roleManageTenantDetaiToListVo,
+                TenantManageTreeVo::getId,
+                TenantManageTreeVo::getParentId
         );
     }
+
     List<RoleManageTenantDetaiToListVo> toRoleManageTenantDetaiToListVo(List<SysTenant> sysTenant);
 
     default List<RoleManageTenantDetaiToListVo> toRoleManageTenantDetaiToListVoToTree(List<SysTenant> sysTenant) {
         List<RoleManageTenantDetaiToListVo> roleManageTenantDetaiToListVo = toRoleManageTenantDetaiToListVo(sysTenant);
         return TreeUtils.buildTree(
-            roleManageTenantDetaiToListVo,
-            RoleManageTenantDetaiToListVo::getId,
-            RoleManageTenantDetaiToListVo::getParentId,
-            Comparator.comparingInt((RoleManageTenantDetaiToListVo item) ->
-                item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+                roleManageTenantDetaiToListVo,
+                RoleManageTenantDetaiToListVo::getId,
+                RoleManageTenantDetaiToListVo::getParentId,
+                Comparator.comparingInt((RoleManageTenantDetaiToListVo item) ->
+                        item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
         );
     }
 
@@ -76,11 +77,11 @@ public interface SysTenantMapper extends BaseTreeMapper<SysTenant, TenantDto, Te
     default List<AccountManageTenantDetaiToListVo> toAccountManageTenantDetaiToListVoToTree(List<SysTenant> sysTenant) {
         List<AccountManageTenantDetaiToListVo> roleManageTenantDetaiToListVo = toAccountManageTenantDetaiToListVo(sysTenant);
         return TreeUtils.buildTree(
-            roleManageTenantDetaiToListVo,
-            AccountManageTenantDetaiToListVo::getId,
-            AccountManageTenantDetaiToListVo::getParentId,
-            Comparator.comparingInt((AccountManageTenantDetaiToListVo item) ->
-                item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+                roleManageTenantDetaiToListVo,
+                AccountManageTenantDetaiToListVo::getId,
+                AccountManageTenantDetaiToListVo::getParentId,
+                Comparator.comparingInt((AccountManageTenantDetaiToListVo item) ->
+                        item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
         );
     }
 
@@ -89,11 +90,11 @@ public interface SysTenantMapper extends BaseTreeMapper<SysTenant, TenantDto, Te
     default List<UserManageTenantDetaiToListVo> toUserManageTenantDetaiToListVoToTree(List<SysTenant> sysTenant) {
         List<UserManageTenantDetaiToListVo> roleManageTenantDetaiToListVo = toUserManageTenantDetaiToListVo(sysTenant);
         return TreeUtils.buildTree(
-            roleManageTenantDetaiToListVo,
-            UserManageTenantDetaiToListVo::getId,
-            UserManageTenantDetaiToListVo::getParentId,
-            Comparator.comparingInt((UserManageTenantDetaiToListVo item) ->
-                item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+                roleManageTenantDetaiToListVo,
+                UserManageTenantDetaiToListVo::getId,
+                UserManageTenantDetaiToListVo::getParentId,
+                Comparator.comparingInt((UserManageTenantDetaiToListVo item) ->
+                        item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
         );
     }
 
@@ -102,11 +103,11 @@ public interface SysTenantMapper extends BaseTreeMapper<SysTenant, TenantDto, Te
     default List<MenuManageTenantDetaiToListVo> toMenuManageTenantDetaiToListVoToTree(List<SysTenant> sysTenant) {
         List<MenuManageTenantDetaiToListVo> roleManageTenantDetaiToListVo = toMenuManageTenantDetaiToListVo(sysTenant);
         return TreeUtils.buildTree(
-            roleManageTenantDetaiToListVo,
-            MenuManageTenantDetaiToListVo::getId,
-            MenuManageTenantDetaiToListVo::getParentId,
-            Comparator.comparingInt((MenuManageTenantDetaiToListVo item) ->
-                item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+                roleManageTenantDetaiToListVo,
+                MenuManageTenantDetaiToListVo::getId,
+                MenuManageTenantDetaiToListVo::getParentId,
+                Comparator.comparingInt((MenuManageTenantDetaiToListVo item) ->
+                        item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
         );
     }
 }

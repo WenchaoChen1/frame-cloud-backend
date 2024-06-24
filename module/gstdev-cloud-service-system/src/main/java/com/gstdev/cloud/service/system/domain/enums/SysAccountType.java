@@ -40,11 +40,11 @@ public enum SysAccountType implements BaseUiEnum<Integer> {
         for (SysAccountType dataItemStatus : SysAccountType.values()) {
             INDEX_MAP.put(dataItemStatus.getValue(), dataItemStatus);
             JSON_STRUCTURE.add(dataItemStatus.getValue(),
-                ImmutableMap.<String, Object>builder()
-                    .put("value", dataItemStatus.getValue())
-                    .put("key", dataItemStatus.name())
-                    .put("description", dataItemStatus.getDescription())
-                    .build());
+                    ImmutableMap.<String, Object>builder()
+                            .put("value", dataItemStatus.getValue())
+                            .put("key", dataItemStatus.name())
+                            .put("description", dataItemStatus.getDescription())
+                            .build());
         }
     }
 

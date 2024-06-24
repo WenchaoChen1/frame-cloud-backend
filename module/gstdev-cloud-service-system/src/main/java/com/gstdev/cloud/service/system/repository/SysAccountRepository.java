@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.repository;
 
-import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
+import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 
 import java.util.List;
 

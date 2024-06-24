@@ -11,7 +11,6 @@ package com.gstdev.cloud.service.system.domain.pojo.sysTenant;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
-import com.gstdev.cloud.data.core.pojo.BaseTreeVo;
 import com.gstdev.cloud.service.system.TreeNode;
 import lombok.Getter;
 import lombok.Setter;

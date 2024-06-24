@@ -10,13 +10,12 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
 import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-
-import jakarta.persistence.*;
 
 @Getter
 @Setter

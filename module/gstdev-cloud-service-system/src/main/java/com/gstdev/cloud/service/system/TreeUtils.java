@@ -8,21 +8,21 @@ import java.util.stream.Collectors;
 public class TreeUtils {
     // 构建树的方法
     public static <ID, T extends TreeNode<ID, T>> List<T> buildTree(
-        List<T> items,
-        Function<T, ID> idGetter,
-        Function<T, ID> pidGetter) {
+            List<T> items,
+            Function<T, ID> idGetter,
+            Function<T, ID> pidGetter) {
         return buildTree(items, idGetter, pidGetter, null);
     }  // 构建树的方法
 
     public static <ID, T extends TreeNode<ID, T>> List<T> buildTree(
-        List<T> items,
-        Function<T, ID> idGetter,
-        Function<T, ID> pidGetter,
-        Comparator<T> comparator) {
+            List<T> items,
+            Function<T, ID> idGetter,
+            Function<T, ID> pidGetter,
+            Comparator<T> comparator) {
 
         // 用于存储所有节点的映射关系
         Map<ID, T> nodeMap = items.stream()
-            .collect(Collectors.toConcurrentMap(idGetter, Function.identity()));
+                .collect(Collectors.toConcurrentMap(idGetter, Function.identity()));
 
         // 用于存储根节点列表
         List<T> rootNodes = new CopyOnWriteArrayList<>();
@@ -74,6 +74,7 @@ public class TreeUtils {
         }
         return null;
     }
+
     // 查找多个节点
     public static <ID, T extends TreeNode<ID, T>> List<T> findNodesById(List<T> rootNodes, List<ID> ids) {
         Set<ID> idSet = new HashSet<>(ids); // 使用 Set 以提高查找速度
