@@ -104,7 +104,8 @@ public class SysUserController implements ResultController {
     @GetMapping("/security/sign-in/{username}")
     @Operation(summary = "根据username获取实体数据")
     public Result<DefaultSecurityUser> signInFindByUsername(@NotBlank @PathVariable("username") String username) {
-        return Result.success(getService().signInFindByUsername(username));
+        DefaultSecurityUser defaultSecurityUser = getService().signInFindByUsername(username);
+        return Result.success(defaultSecurityUser);
     }
 
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/

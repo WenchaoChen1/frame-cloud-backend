@@ -61,6 +61,7 @@ public class SysUserToSecurityUserConverter implements Converter<SysUser, Defaul
         if(firstAccount.isPresent()){
             defaultSecurityUser.setAccountId(firstAccount.get().getId());
             defaultSecurityUser.setAccountName(firstAccount.get().getName());
+            defaultSecurityUser.setEmployeeId(firstAccount.get().getId());
         }
         return defaultSecurityUser;
     }
