@@ -4,6 +4,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
+import com.gstdev.cloud.service.system.domain.pojo.sysAttribute.AttributeManageAssignedPermissionIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysAttribute.AttributeManageDetailVo;
 import com.gstdev.cloud.service.system.domain.pojo.sysAttribute.AttributeManageQO;
 import com.gstdev.cloud.service.system.domain.pojo.sysAttribute.UpdateAttributeManageIO;
@@ -18,6 +19,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Set;
 
 /**
  * <p>Description: SysAttributeController </p>
@@ -76,6 +78,18 @@ public class SysAttributeController implements ResultController {
         return result();
     }
 
+    @Tag(name = "Attribute Manage")
+    @PostMapping("/attribute-manage-assigned-permission")
+    public Result attributeManageAssignedPermission(@RequestBody AttributeManageAssignedPermissionIO attributeManageAssignedPermissionIO) {
+        this.getService().attributeManageAssignedPermission(attributeManageAssignedPermissionIO);
+        return result();
+    }
+
+    @Tag(name = "Attribute Manage")
+    @PostMapping("/get-attribute-permission-id-by-attribute-id/{id}")
+    public Result<Set<String>> getAttributePermissionIdByAttributeId(@PathVariable String id) {
+        return result(this.getService().getAttributePermissionIdByAttributeId(id));
+    }
 
 //    @Tag(name = "Attribute Manage")
 //    @Operation(summary = "delete-attribute-manage")
