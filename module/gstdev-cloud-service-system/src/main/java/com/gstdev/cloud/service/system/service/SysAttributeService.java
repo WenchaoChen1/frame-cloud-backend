@@ -15,7 +15,7 @@ public interface SysAttributeService extends BaseService<SysAttribute, String> {
 
     List<SysAttribute> findByAttributeIdIn(List<String> ids);
 
-    void attributeManageAssignedPermission(AttributeManageAssignedPermissionIO attributeManageAssignedPermissionIO);
+    void updateAttributeManageAssignedPermission(AttributeManageAssignedPermissionIO attributeManageAssignedPermissionIO);
 
     Set<String> getAttributePermissionIdByAttributeId(String id);
 }

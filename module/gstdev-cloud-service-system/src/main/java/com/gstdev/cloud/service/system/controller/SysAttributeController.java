@@ -80,10 +80,10 @@ public class SysAttributeController implements ResultController {
     }
 
     @Tag(name = "Attribute Manage")
-    @PostMapping("/attribute-manage-assigned-permission")
-    @Operation(summary = "attribute-manage-assigned-permission")
-    public Result attributeManageAssignedPermission(@RequestBody AttributeManageAssignedPermissionIO attributeManageAssignedPermissionIO) {
-        this.getService().attributeManageAssignedPermission(attributeManageAssignedPermissionIO);
+    @PostMapping("/update-attribute-manage-assigned-permission")
+    @Operation(summary = "update-attribute-manage-assigned-permission")
+    public Result updateAttributeManageAssignedPermission(@RequestBody AttributeManageAssignedPermissionIO attributeManageAssignedPermissionIO) {
+        this.getService().updateAttributeManageAssignedPermission(attributeManageAssignedPermissionIO);
         return result();
     }
 

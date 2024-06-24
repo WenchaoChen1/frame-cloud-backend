@@ -58,7 +58,7 @@ public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttribute, Strin
     }
 
     @Override
-    public void attributeManageAssignedPermission(AttributeManageAssignedPermissionIO attributeManageAssignedPermissionIO) {
+    public void updateAttributeManageAssignedPermission(AttributeManageAssignedPermissionIO attributeManageAssignedPermissionIO) {
         SysAttribute sysAttribute = findById(attributeManageAssignedPermissionIO.getAttributeId());
         Set<SysPermission> sysPermissions = new HashSet<>();
         for (String permissionId : attributeManageAssignedPermissionIO.getPermissionId()) {
