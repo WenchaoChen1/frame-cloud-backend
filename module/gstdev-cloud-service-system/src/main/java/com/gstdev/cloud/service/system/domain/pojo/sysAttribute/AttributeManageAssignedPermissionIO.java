@@ -9,5 +9,5 @@ import java.util.Set;
 @Setter
 public class AttributeManageAssignedPermissionIO {
     private String attributeId;
-    private Set<String> permissionId;
+    private Set<String> permissionIds;
 }
