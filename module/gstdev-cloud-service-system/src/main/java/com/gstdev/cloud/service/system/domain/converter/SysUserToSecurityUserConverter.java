@@ -16,6 +16,7 @@ import org.springframework.core.convert.converter.Converter;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -49,15 +50,19 @@ public class SysUserToSecurityUserConverter implements Converter<SysUser, Defaul
             }
         }
 
-
-//        String employeeId = ObjectUtils.isNotEmpty(sysUser.getEmployee()) ? sysUser.getEmployee().getEmployeeId() : null;
-
-        return new DefaultSecurityUser(sysUser.getId(), sysUser.getUsername(), sysUser.getPassword(),
+        DefaultSecurityUser defaultSecurityUser = new DefaultSecurityUser(sysUser.getId(), sysUser.getUsername(), sysUser.getPassword(),
                 isEnabled(sysUser),
                 isAccountNonExpired(sysUser),
                 isCredentialsNonExpired(sysUser),
                 isNonLocked(sysUser),
                 authorities, roles, null, sysUser.getAvatar());
+//        String employeeId = ObjectUtils.isNotEmpty(sysUser.getEmployee()) ? sysUser.getEmployee().getEmployeeId() : null;
+        Optional<SysAccount> firstAccount = sysUser.getAccount().stream().findFirst();
+        if(firstAccount.isPresent()){
+            defaultSecurityUser.setAccountId(firstAccount.get().getId());
+            defaultSecurityUser.setAccountName(firstAccount.get().getName());
+        }
+        return defaultSecurityUser;
     }
 
     private boolean isEnabled(SysUser sysUser) {
