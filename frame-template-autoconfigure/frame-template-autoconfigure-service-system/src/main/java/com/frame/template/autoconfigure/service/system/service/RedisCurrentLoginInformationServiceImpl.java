@@ -15,6 +15,7 @@ import com.gstdev.cloud.service.system.service.SysTenantService;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.Resource;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 
@@ -35,9 +36,10 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
     @Override
     public Result<Object> addByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput) {
         AccountDto accountDto = null;
-        if (redisCurrentLoginInformationInput.getAccountId() != null) {
+        if (!ObjectUtils.isEmpty(redisCurrentLoginInformationInput.getAccountId())) {
             accountDto = accountService.findByIdToDto(redisCurrentLoginInformationInput.getAccountId());
         }
+        System.out.println(SecurityUtils.getUserId());
         if (accountDto == null || accountDto.getId() == null) {
             List<AccountDto> accountDtos = accountService.findAllByUserId(SecurityUtils.getUserId());
             if (accountDtos.size() == 0) {
@@ -53,7 +55,7 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
         currentLoginInformation.setTenant(new JSONObject(tenantService.findByIdToDto(accountDto.getTenantId())));
 //    currentLoginInformation.setCurrentLoginAccount(accountDto.toString());
         currentLoginInformation.setCurrentLoginAccount(new JSONObject(accountDto));
-        currentLoginInformation.setCurrentLoginAccountUserPermissions(new JSONArray(menuService.getAccountPermissions(accountDto.getId())));
+        currentLoginInformation.setCurrentLoginAccountUserPermissions(new JSONArray(menuService.getAccountMenuPermissions(accountDto.getId())));
         redisCurrentLoginInformation.addByTokenCurrentLoginInformation(currentLoginInformation);
         return Result.success(currentLoginInformation);
     }

@@ -16,10 +16,7 @@ import com.gstdev.cloud.service.system.domain.base.menu.MenuInsertInput;
 import com.gstdev.cloud.service.system.domain.base.menu.MenuUpdateInput;
 import com.gstdev.cloud.service.system.domain.base.menu.MenuVo;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
-import com.gstdev.cloud.service.system.domain.pojo.sysMenu.InsertMenuManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysMenu.MenuManageDetailVo;
-import com.gstdev.cloud.service.system.domain.pojo.sysMenu.MenuManageTreeVo;
-import com.gstdev.cloud.service.system.domain.pojo.sysMenu.UpdateMenuManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysMenu.*;
 import org.mapstruct.*;
 
 import java.util.Comparator;
@@ -48,7 +45,18 @@ public interface SysMenuMapper extends BaseTreeMapper<SysMenu, MenuDto, MenuVo, 
                 item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
         );
     }
+    List<AccountMenuPermissionsDto> toAccountMenuPermissionsDto(List<SysMenu> sysMenus);
 
+    default List<AccountMenuPermissionsDto> toAccountMenuPermissionsDtoToTree(List<SysMenu> sysMenus) {
+        List<AccountMenuPermissionsDto> accountMenuPermissionsDto = toAccountMenuPermissionsDto(sysMenus);
+        return TreeUtils.buildTree(
+            accountMenuPermissionsDto,
+            AccountMenuPermissionsDto::getId,
+            AccountMenuPermissionsDto::getParentId,
+            Comparator.comparingInt((AccountMenuPermissionsDto item) ->
+                item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+        );
+    }
 
 }
 
