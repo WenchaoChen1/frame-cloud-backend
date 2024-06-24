@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
@@ -24,6 +25,7 @@ import java.util.List;
 @Entity
 @Table(name = "sys_permission", indexes = {@Index(name = "sys_permission_id_idx", columnList = "permission_id")})
 @Cacheable
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "permissions"})
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = SystemConstants.REGION_SYS_PERMISSION)
 public class SysPermission extends BaseEntity {
 
