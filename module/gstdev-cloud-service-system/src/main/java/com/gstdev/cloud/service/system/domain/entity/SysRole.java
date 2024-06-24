@@ -9,7 +9,6 @@
 
 package com.gstdev.cloud.service.system.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -69,10 +68,10 @@ public class SysRole extends BaseTreeEntity {
 //  private Account account;
 
     @ManyToMany
-    @JoinTable(name = "sys_r_role_r_tenant_menu", joinColumns = {
+    @JoinTable(name = "sys_r_role_tenant_menu", joinColumns = {
         @JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "r_tenant_menu_id", referencedColumnName = "id")})
-    private List<RTenantMenu> rTenantMenus;
+        @JoinColumn(name = "tenant_menu_id", referencedColumnName = "id")})
+    private List<SysTenantMenu> tenantMenus;
 
     @ManyToMany(mappedBy = "roles")
     private List<SysAccount> accounts;

@@ -3,7 +3,7 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.service.system.domain.base.menu.MenuDto;
-import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
@@ -101,9 +101,9 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
         } else if (account.getType().equals(SysAccountType.USER)) {
             Map<String, SysMenu> collect = new HashMap<>();
             for (SysRole role : account.getRoles()) {
-                List<SysMenu> menus = role.getRTenantMenus().stream().map(RTenantMenu::getMenu).toList();
+                List<SysMenu> menus = role.getTenantMenus().stream().map(SysTenantMenu::getMenu).toList();
                 Map<String, List<SysMenu>> collect2 = menus.stream().collect(Collectors.groupingBy(SysMenu::getId));
-                Map<String, SysMenu> collect1 = role.getRTenantMenus().stream().map(RTenantMenu::getMenu).collect(Collectors.groupingBy(SysMenu::getId,
+                Map<String, SysMenu> collect1 = role.getTenantMenus().stream().map(SysTenantMenu::getMenu).collect(Collectors.groupingBy(SysMenu::getId,
                     Collectors.collectingAndThen(Collectors.toList(), value -> value.get(0))));
                 collect.putAll(collect1);
             }

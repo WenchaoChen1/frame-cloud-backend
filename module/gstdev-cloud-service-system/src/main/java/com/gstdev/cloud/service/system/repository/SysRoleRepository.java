@@ -21,5 +21,5 @@ public interface SysRoleRepository extends BaseTreeRepository<SysRole, String> {
      * @return
      */
     List<SysRole> findAllByParentIdOrderBySort(String parentId);
-
+    List<SysRole> findAllByTenantId(String tenantId);
 }

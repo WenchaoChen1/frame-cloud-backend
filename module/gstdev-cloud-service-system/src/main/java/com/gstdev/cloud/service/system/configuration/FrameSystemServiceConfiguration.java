@@ -61,9 +61,9 @@ public class FrameSystemServiceConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public SysRTenantMenuService sysRTenantMenuService(SysRTenantMenuRepository rTenantMenuRepository, RTenantMenuMapper rTenantMenuMapper) {
+    public SysTenantMenuService sysTenantMenuService(SysTenantMenuRepository rTenantMenuRepository, RTenantMenuMapper rTenantMenuMapper) {
         log.debug("[GstDev Cloud] |- Frame Configure R Tenant Menu Service");
-        return new SysRTenantMenuServiceImpl(rTenantMenuRepository, rTenantMenuMapper);
+        return new SysTenantMenuServiceImpl(rTenantMenuRepository, rTenantMenuMapper);
     }
 
     @Bean

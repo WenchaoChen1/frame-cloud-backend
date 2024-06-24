@@ -16,8 +16,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import jakarta.persistence.*;
 
@@ -99,7 +97,7 @@ public class SysMenu extends BaseTreeEntity {
 
     @JsonIgnore
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
-    private List<RTenantMenu> rTenantMenus;
+    private List<SysTenantMenu> rTenantMenus;
 //
 //  @JsonIgnore
 //  @OneToMany(mappedBy = "menu",cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)

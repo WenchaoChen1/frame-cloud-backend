@@ -24,9 +24,9 @@ import java.util.List;
 @Setter
 @Entity
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
-@Table(name = "sys_r_tenant_menu", schema = "public")
+@Table(name = "sys_tenant_menu", schema = "public")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-public class RTenantMenu extends BasePOJOEntity {
+public class SysTenantMenu extends BasePOJOEntity {
 
     @Column(name = "tenantId", length = 36, nullable = false)
     private String tenantId;
@@ -45,6 +45,6 @@ public class RTenantMenu extends BasePOJOEntity {
     private Integer checked;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "rTenantMenus")
+    @ManyToMany(mappedBy = "tenantMenus")
     private List<SysRole> roles;
 }

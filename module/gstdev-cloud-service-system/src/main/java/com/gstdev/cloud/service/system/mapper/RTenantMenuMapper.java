@@ -14,7 +14,7 @@ import com.gstdev.cloud.service.system.TreeUtils;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.*;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuDto;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuVo;
-import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.RoleManageTenantMenuTreeVO;
 import org.mapstruct.Mapper;
@@ -28,7 +28,7 @@ import java.util.List;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
     nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
     nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
-public interface RTenantMenuMapper extends BasePOJOMapper<RTenantMenu, RTenantMenuDto, RTenantMenuVo, RTenantMenuInsertInput, RTenantMenuUpdateInput> {
+public interface RTenantMenuMapper extends BasePOJOMapper<SysTenantMenu, RTenantMenuDto, RTenantMenuVo, RTenantMenuInsertInput, RTenantMenuUpdateInput> {
     List<RoleManageTenantMenuTreeVO> toRoleManageRTenantMenuTreeVO(List<SysMenu> sysRole);
 
     default List<RoleManageTenantMenuTreeVO> toRoleManageRTenantMenuTreeVOToTree(List<SysMenu> sysRole) {

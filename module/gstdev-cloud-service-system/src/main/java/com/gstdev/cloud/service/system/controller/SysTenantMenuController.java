@@ -13,13 +13,13 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.POJOController;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.*;
-import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuIO;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.RoleManageTenantMenuTreeQO;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.RoleManageTenantMenuTreeVO;
 import com.gstdev.cloud.service.system.mapper.RTenantMenuMapper;
-import com.gstdev.cloud.service.system.service.SysRTenantMenuService;
+import com.gstdev.cloud.service.system.service.SysTenantMenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
@@ -32,29 +32,29 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/rTenantMenu")
-public class SysRTenantMenuController implements POJOController<RTenantMenu, String, RTenantMenuVo, RTenantMenuDto, RTenantMenuInsertInput, RTenantMenuUpdateInput, RTenantMenuPageQueryCriteria, RTenantMenuFindAllByQueryCriteria> {
+public class SysTenantMenuController implements POJOController<SysTenantMenu, String, RTenantMenuVo, RTenantMenuDto, RTenantMenuInsertInput, RTenantMenuUpdateInput, RTenantMenuPageQueryCriteria, RTenantMenuFindAllByQueryCriteria> {
 
     @Resource
-    private SysRTenantMenuService rTenantMenuService;
+    private SysTenantMenuService tenantMenuService;
 
     @Resource
-    private RTenantMenuMapper rTenantMenuVoMapper;
+    private RTenantMenuMapper rTenantMenuMapper;
 
     @Override
-    public SysRTenantMenuService getService() {
-        return rTenantMenuService;
+    public SysTenantMenuService getService() {
+        return tenantMenuService;
     }
 
     @Override
     public RTenantMenuMapper getMapper() {
-        return rTenantMenuVoMapper;
+        return rTenantMenuMapper;
     }
 
     @Tag(name = "Tenant Manage")
     @PostMapping("/insert-tenant-menu")
     @Operation(summary = "insert-tenant-menu")
     public Result insertTenantMenu(@RequestBody @Validated InsertTenantMenuIO insertTenantMenuIO) {
-        rTenantMenuService.insertTenantMenu(insertTenantMenuIO);
+        getService().insertTenantMenu(insertTenantMenuIO);
         return result();
     }
 
@@ -64,9 +64,9 @@ public class SysRTenantMenuController implements POJOController<RTenantMenu, Str
     public Result<List<String>> getAllByTenantId(@NotBlank @RequestParam("tenantId") String tenantId) {
         RTenantMenuFindAllByQueryCriteria rTenantMenuFindAllByQueryCriteria = new RTenantMenuFindAllByQueryCriteria();
         rTenantMenuFindAllByQueryCriteria.setTenantId(tenantId);
-        List<RTenantMenu> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, rTenantMenuFindAllByQueryCriteria, criteriaBuilder));
+        List<SysTenantMenu> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, rTenantMenuFindAllByQueryCriteria, criteriaBuilder));
         List<String> strings = all.stream()
-            .map(RTenantMenu::getMenu).map(SysMenu::getId)
+            .map(SysTenantMenu::getMenu).map(SysMenu::getId)
             .toList();
 
         return Result.success(strings);
@@ -84,8 +84,8 @@ public class SysRTenantMenuController implements POJOController<RTenantMenu, Str
     @Operation(summary = "get-role-manage-tenant-menu-tree")
     public Result<List<RoleManageTenantMenuTreeVO>> getRoleManageTenantMenuTree(RoleManageTenantMenuTreeQO roleManageTenantMenuTreeQO, @NotBlank @RequestParam("tenantId") String tenantId) {
         roleManageTenantMenuTreeQO.setTenantId(tenantId);
-        List<RTenantMenu> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, roleManageTenantMenuTreeQO, criteriaBuilder));
-        List<SysMenu> list = all.stream().map(RTenantMenu::getMenu).toList();
+        List<SysTenantMenu> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, roleManageTenantMenuTreeQO, criteriaBuilder));
+        List<SysMenu> list = all.stream().map(SysTenantMenu::getMenu).toList();
         List<RoleManageTenantMenuTreeVO> roleManageRTenantMenuTreeVOToTree = getMapper().toRoleManageRTenantMenuTreeVOToTree(list);
         return result(roleManageRTenantMenuTreeVOToTree);
     }

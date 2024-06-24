@@ -10,16 +10,16 @@
 package com.gstdev.cloud.service.system.repository;
 
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
-import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.List;
 
-public interface SysRTenantMenuRepository extends JpaRepository<RTenantMenu, String>, JpaSpecificationExecutor<RTenantMenu>, BaseRepository<RTenantMenu, String> {
+public interface SysTenantMenuRepository extends JpaRepository<SysTenantMenu, String>, JpaSpecificationExecutor<SysTenantMenu>, BaseRepository<SysTenantMenu, String> {
 
-    RTenantMenu findByTenantIdAndMenu(String tenantId, SysMenu menu);
+    SysTenantMenu findByTenantIdAndMenu(String tenantId, SysMenu menu);
 
     /**
      * 查询菜单主键
@@ -27,7 +27,7 @@ public interface SysRTenantMenuRepository extends JpaRepository<RTenantMenu, Str
      * @param tenantId
      * @return
      */
-    List<RTenantMenu> findByTenantId(String tenantId);
+    List<SysTenantMenu> findByTenantId(String tenantId);
 
     /**
      * 删除
@@ -36,10 +36,10 @@ public interface SysRTenantMenuRepository extends JpaRepository<RTenantMenu, Str
      */
     void deleteByTenantId(String tenantId);
 
-    RTenantMenu findByMenuIdAndTenantId(String id, String roleId);
+    SysTenantMenu findByMenuIdAndTenantId(String id, String roleId);
 
 //  List<RTenantMenu> findAllByTenantIdAndInMenuId(String tenantId, List<String> menuIds);
 
-    List<RTenantMenu> findAllByTenantIdAndMenuIdIn(String tenantId, List<String> menuIds);
+    List<SysTenantMenu> findAllByTenantIdAndMenuIdIn(String tenantId, List<String> menuIds);
 }
 

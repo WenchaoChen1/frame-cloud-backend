@@ -3,13 +3,13 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import com.gstdev.cloud.service.system.domain.base.role.RoleDto;
-import com.gstdev.cloud.service.system.domain.entity.RTenantMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
+import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.InsertRoleMenuIO;
 import com.gstdev.cloud.service.system.mapper.SysRoleMapper;
-import com.gstdev.cloud.service.system.repository.SysRTenantMenuRepository;
 import com.gstdev.cloud.service.system.repository.SysRoleRepository;
+import com.gstdev.cloud.service.system.repository.SysTenantMenuRepository;
 import jakarta.annotation.Resource;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +21,7 @@ import java.util.List;
 public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, SysRoleRepository, SysRoleMapper, RoleDto> implements SysRoleService {
 
     @Resource
-    private SysRTenantMenuRepository rTenantMenuRepository;
+    private SysTenantMenuRepository rTenantMenuRepository;
     @Resource
     private SysRoleRepository roleRepository;
 
@@ -37,8 +37,13 @@ public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, Sys
 
     @Override
     public Result<List<String>> getAllMenuIdByRoleId(String roleId) {
-        List<String> strings = findById(roleId).getRTenantMenus().stream().map(RTenantMenu::getMenu).map(SysMenu::getId).toList();
+        List<String> strings = findById(roleId).getTenantMenus().stream().map(SysTenantMenu::getMenu).map(SysMenu::getId).toList();
         return Result.success(strings);
+    }
+
+    @Override
+    public List<SysRole> getAllByTenantId(String tenantId) {
+        return getRepository().findAllByTenantId(tenantId);
     }
 
     @Transactional
@@ -46,7 +51,7 @@ public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, Sys
     public Result<String> insertRoleMenu(InsertRoleMenuIO insertRoleMenuIO) {
         SysRole role = findById(insertRoleMenuIO.getRoleId());
 
-        role.setRTenantMenus(rTenantMenuRepository.findAllByTenantIdAndMenuIdIn(role.getTenantId(), insertRoleMenuIO.getMenuIds()));
+        role.setTenantMenus(rTenantMenuRepository.findAllByTenantIdAndMenuIdIn(role.getTenantId(), insertRoleMenuIO.getMenuIds()));
         update(role);
         return Result.success();
     }

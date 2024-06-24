@@ -59,9 +59,9 @@ public class FrameSystemControllerConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public SysRTenantMenuController sysRTenantMenuController() {
+    public SysTenantMenuController sysTenantMenuController() {
         log.debug("[GstDev Cloud] |- Frame Configure R Tenant Menu Controller");
-        return new SysRTenantMenuController();
+        return new SysTenantMenuController();
     }
 
     @Bean
