@@ -14,9 +14,9 @@ import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplateFindAllB
 import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplateInsertInput;
 import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplatePageQueryCriteria;
 import com.frame.template.service.demo.pojo.vo.demoTemplate.DemoTemplateUpdateInput;
-import org.springframework.data.domain.Pageable;
 import com.gstdev.cloud.base.definition.domain.Result;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 

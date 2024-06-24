@@ -10,33 +10,30 @@
 package com.frame.template.service.demo.service;
 
 
-import com.gstdev.cloud.data.core.pojo.BaseTreeServiceImpl;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
-
 import com.frame.template.service.demo.mapper.DemoTreeMapper;
-import com.frame.template.service.demo.pojo.base.demoTree.*;
 import com.frame.template.service.demo.pojo.base.demoTree.*;
 import com.frame.template.service.demo.pojo.domain.DemoTree;
 import com.frame.template.service.demo.repository.DemoTreeRepository;
+import com.gstdev.cloud.data.core.pojo.BaseTreeServiceImpl;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import jakarta.annotation.Resource;
 
 
 @Service
 @Transactional(readOnly = true)
 public class DemoTreeServiceImpl extends BaseTreeServiceImpl<DemoTreeRepository,
-    DemoTreeMapper,
-    DemoTree,
-    DemoTreeDto,
-    DemoTreeInsertInput,
-    DemoTreeUpdateInput,
-    DemoTreePageQueryCriteria,
-    DemoTreeFindAllByQueryCriteria,
-    RedisCurrentLoginInformation
-    >
-    implements DemoTreeService {
+        DemoTreeMapper,
+        DemoTree,
+        DemoTreeDto,
+        DemoTreeInsertInput,
+        DemoTreeUpdateInput,
+        DemoTreePageQueryCriteria,
+        DemoTreeFindAllByQueryCriteria,
+        RedisCurrentLoginInformation
+        >
+        implements DemoTreeService {
 
     @Resource
     private DemoTreeRepository demoTreeRepository;

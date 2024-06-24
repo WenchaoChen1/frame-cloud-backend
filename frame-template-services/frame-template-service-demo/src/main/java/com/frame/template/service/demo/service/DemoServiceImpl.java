@@ -1,17 +1,16 @@
 package com.frame.template.service.demo.service;
 
 
+import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 import com.frame.template.service.demo.mapper.DemoMapper;
 import com.frame.template.service.demo.pojo.base.demo.*;
-import com.gstdev.cloud.base.definition.domain.Result;
-import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
 import com.frame.template.service.demo.pojo.domain.Demo;
 import com.frame.template.service.demo.pojo.dto.demo.DemoUpdateXXXXXXInput;
 import com.frame.template.service.demo.repository.DemoRepository;
+import com.gstdev.cloud.base.definition.domain.Result;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import jakarta.annotation.Resource;
 
 import java.util.List;
 

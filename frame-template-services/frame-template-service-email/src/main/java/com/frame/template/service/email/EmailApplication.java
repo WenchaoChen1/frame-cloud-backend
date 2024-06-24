@@ -13,8 +13,6 @@ import com.gstdev.cloud.starter.ouath2.resource.server.configuration.ResourceSer
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
@@ -24,9 +22,9 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 //@EnableFeignClients
 @ComponentScan(value = {
-    "com.gstdev.cloud.rest.autoconfigure",
-    "com.frame.template.service.email.service",
-    "com.frame.template.service.email.controller"})
+        "com.gstdev.cloud.rest.autoconfigure",
+        "com.frame.template.service.email.service",
+        "com.frame.template.service.email.controller"})
 @EntityScan(value = {"com.frame.template.service.email.pojo.entity"})
 @EnableJpaRepositories(value = {"com.frame.template.service.email.repository"})
 @SpringBootApplication

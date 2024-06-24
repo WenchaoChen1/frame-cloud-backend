@@ -1,16 +1,15 @@
 package com.frame.template.service.email.controller;
 
 
-import com.frame.template.service.email.service.EmailService;
 import com.frame.template.service.email.enums.EmailTypeEnum;
 import com.frame.template.service.email.pojo.entity.Email;
 import com.frame.template.service.email.pojo.vo.UserDto;
+import com.frame.template.service.email.service.EmailService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.context.Context;
-
-import jakarta.annotation.Resource;
 
 
 @Slf4j

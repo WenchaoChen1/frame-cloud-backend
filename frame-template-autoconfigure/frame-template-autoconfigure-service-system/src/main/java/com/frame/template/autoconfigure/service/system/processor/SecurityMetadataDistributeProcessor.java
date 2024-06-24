@@ -3,19 +3,18 @@ package com.frame.template.autoconfigure.service.system.processor;
 
 import com.frame.template.autoconfigure.service.system.converter.SysAttributeToSecurityAttributeConverter;
 import com.frame.template.autoconfigure.service.system.converter.SysInterfacesToSysAttributesConverter;
-import com.gstdev.cloud.service.common.autoconfigure.bus.RemoteSecurityMetadataSyncEvent;
-import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
-import com.gstdev.cloud.service.system.domain.entity.SysInterface;
-import com.gstdev.cloud.service.system.service.SysInterfaceService;
-import com.gstdev.cloud.service.system.service.SysPermissionService;
+import com.google.common.collect.ImmutableList;
 import com.gstdev.cloud.base.core.exception.transaction.TransactionalRollbackException;
 import com.gstdev.cloud.message.core.definition.strategy.StrategyEventManager;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
 import com.gstdev.cloud.oauth2.core.definition.domain.SecurityAttribute;
-
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceAnalyzer;
-import com.google.common.collect.ImmutableList;
+import com.gstdev.cloud.service.common.autoconfigure.bus.RemoteSecurityMetadataSyncEvent;
+import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
+import com.gstdev.cloud.service.system.domain.entity.SysInterface;
 import com.gstdev.cloud.service.system.service.SysAttributeService;
+import com.gstdev.cloud.service.system.service.SysInterfaceService;
+import com.gstdev.cloud.service.system.service.SysPermissionService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

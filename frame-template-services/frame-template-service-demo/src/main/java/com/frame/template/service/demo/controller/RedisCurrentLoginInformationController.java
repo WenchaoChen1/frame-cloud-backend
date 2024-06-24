@@ -1,16 +1,15 @@
 package com.frame.template.service.demo.controller;
 
-import com.frame.template.service.demo.service.RedisCurrentLoginInformationService;
-import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
+import com.frame.template.service.demo.service.RedisCurrentLoginInformationService;
+import com.gstdev.cloud.base.definition.domain.Result;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import jakarta.annotation.Resource;
 
 @RestController
 @RequestMapping("/current_login_information")

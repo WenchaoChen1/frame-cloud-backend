@@ -1,8 +1,8 @@
 package com.frame.template.autoconfigure.service.system.service;
 
-import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
+import com.gstdev.cloud.base.definition.domain.Result;
 
 public interface RedisCurrentLoginInformationService {
 

@@ -1,22 +1,22 @@
 spring:
-    cloud:
-        nacos:
-            discovery:
-                server-addr: ${NACOS_DISCOVERY_HOST:192.168.0.99}:${NACOS_DISCOVERY_PORT:8848}
-                namespace: ${NACOS_DISCOVERY_NAMESPACE:frame-cloud}
-                group: ${NACOS_DISCOVERY_GROUP:dev}
-            config:
-                namespace: ${spring.cloud.nacos.discovery.namespace}
-                server-addr: ${spring.cloud.nacos.discovery.server-addr}
-                file-extension: yml
-                group: ${NACOS_CONFIG_GROUP:dev}
-                #指定共享配置，且支持动态刷新
-                extension-configs:
-                    -   data-id: common-config.yml
-                        group: ${NACOS_CONFIG_GROUP:dev}
-                        refresh: true
-    application:
-        name: gstdev-storage
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_DISCOVERY_HOST:192.168.0.99}:${NACOS_DISCOVERY_PORT:8848}
+        namespace: ${NACOS_DISCOVERY_NAMESPACE:frame-cloud}
+        group: ${NACOS_DISCOVERY_GROUP:dev}
+      config:
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        group: ${NACOS_CONFIG_GROUP:dev}
+        #指定共享配置，且支持动态刷新
+        extension-configs:
+          - data-id: common-config.yml
+            group: ${NACOS_CONFIG_GROUP:dev}
+            refresh: true
+  application:
+    name: gstdev-storage
 
 
 

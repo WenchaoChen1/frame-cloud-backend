@@ -1,10 +1,9 @@
 package com.frame.template.autoconfigure.service.identity.pojo.entity;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-
-import jakarta.persistence.*;
 
 @Getter
 @Setter

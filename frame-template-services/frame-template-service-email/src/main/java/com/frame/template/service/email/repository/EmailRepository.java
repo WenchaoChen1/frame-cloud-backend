@@ -10,12 +10,11 @@
 package com.frame.template.service.email.repository;
 
 import com.frame.template.service.email.pojo.entity.Email;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-
-import jakarta.transaction.Transactional;
 
 
 public interface EmailRepository extends JpaRepository<Email, String>, JpaSpecificationExecutor<Email> {

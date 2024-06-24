@@ -9,11 +9,6 @@
 
 package com.frame.template.service.demo.pojo.vo.demoTemplate;
 
-import lombok.Data;
-
-import java.io.Serializable;
-import java.util.Set;
-
 import lombok.Getter;
 import lombok.Setter;
 

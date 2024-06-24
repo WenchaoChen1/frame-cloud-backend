@@ -1,13 +1,12 @@
 package com.frame.template.autoconfigure.service.system.controller;
 
 import com.frame.template.autoconfigure.service.system.service.RedisCurrentLoginInformationService;
-import com.gstdev.cloud.base.definition.domain.Result;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
+import com.gstdev.cloud.base.definition.domain.Result;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.*;
-
 import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/current-login-information")

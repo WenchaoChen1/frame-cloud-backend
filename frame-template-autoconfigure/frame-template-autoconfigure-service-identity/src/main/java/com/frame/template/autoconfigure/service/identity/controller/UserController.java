@@ -9,17 +9,15 @@
 
 package com.frame.template.autoconfigure.service.identity.controller;
 
-import com.frame.template.autoconfigure.service.identity.pojo.dto.UserDto;
 import com.frame.template.autoconfigure.service.identity.pojo.UserInput;
+import com.frame.template.autoconfigure.service.identity.pojo.dto.UserDto;
 import com.frame.template.autoconfigure.service.identity.pojo.query.PostQueryCriteria;
 import com.frame.template.autoconfigure.service.identity.service.UserService;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
+import jakarta.annotation.Resource;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import jakarta.annotation.Resource;
 
 @RequestMapping("user")
 @RestController

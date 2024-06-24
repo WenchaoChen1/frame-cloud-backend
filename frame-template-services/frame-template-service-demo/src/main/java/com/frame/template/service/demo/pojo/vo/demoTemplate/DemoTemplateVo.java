@@ -15,7 +15,6 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-import java.io.Serializable;
 
 
 @Getter

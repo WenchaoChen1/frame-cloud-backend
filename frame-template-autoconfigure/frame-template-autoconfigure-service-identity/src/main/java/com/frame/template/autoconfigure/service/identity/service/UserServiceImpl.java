@@ -19,13 +19,12 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.utils.PageUtils;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import jakarta.annotation.Resource;
 
 import java.util.Objects;
 

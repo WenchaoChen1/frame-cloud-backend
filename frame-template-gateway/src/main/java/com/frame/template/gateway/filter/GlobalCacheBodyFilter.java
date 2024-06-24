@@ -33,31 +33,31 @@ public class GlobalCacheBodyFilter implements GlobalFilter, Ordered {
         String contentType = headers.getFirst(HttpHeaders.CONTENT_TYPE);
         if (method == HttpMethod.POST || method == HttpMethod.PUT) {
             if (MediaType.APPLICATION_FORM_URLENCODED_VALUE.equalsIgnoreCase(contentType)
-                || MediaType.APPLICATION_JSON_VALUE.equalsIgnoreCase(contentType)
-                || MediaType.APPLICATION_JSON_UTF8_VALUE.equals(contentType)) {
+                    || MediaType.APPLICATION_JSON_VALUE.equalsIgnoreCase(contentType)
+                    || MediaType.APPLICATION_JSON_UTF8_VALUE.equals(contentType)) {
                 return DataBufferUtils.join(exchange.getRequest().getBody())
-                    .flatMap(dataBuffer -> {
-                        byte[] bytes = new byte[dataBuffer.readableByteCount()];
-                        dataBuffer.read(bytes);
-                        // 释放堆外内存
-                        DataBufferUtils.release(dataBuffer);
-                        ServerHttpRequest mutatedRequest = new ServerHttpRequestDecorator(exchange.getRequest()) {
-                            @Override
-                            public Flux<DataBuffer> getBody() {
-                                return Flux.defer(() -> {
-                                    DataBuffer buffer = exchange.getResponse().bufferFactory().wrap(bytes);
-                                    DataBufferUtils.retain(buffer);
-                                    return Mono.just(buffer);
-                                });
-                            }
+                        .flatMap(dataBuffer -> {
+                            byte[] bytes = new byte[dataBuffer.readableByteCount()];
+                            dataBuffer.read(bytes);
+                            // 释放堆外内存
+                            DataBufferUtils.release(dataBuffer);
+                            ServerHttpRequest mutatedRequest = new ServerHttpRequestDecorator(exchange.getRequest()) {
+                                @Override
+                                public Flux<DataBuffer> getBody() {
+                                    return Flux.defer(() -> {
+                                        DataBuffer buffer = exchange.getResponse().bufferFactory().wrap(bytes);
+                                        DataBufferUtils.retain(buffer);
+                                        return Mono.just(buffer);
+                                    });
+                                }
 
-                            @Override
-                            public HttpHeaders getHeaders() {
-                                return headers;
-                            }
-                        };
-                        return chain.filter(exchange.mutate().request(mutatedRequest).build());
-                    });
+                                @Override
+                                public HttpHeaders getHeaders() {
+                                    return headers;
+                                }
+                            };
+                            return chain.filter(exchange.mutate().request(mutatedRequest).build());
+                        });
             }
 
         }

@@ -1,7 +1,7 @@
 package com.frame.template.service.demo.service;
 
 import com.frame.template.service.demo.pojo.base.demo.*;
-import com.frame.template.service.demo.pojo.dto.demo.*;
+import com.frame.template.service.demo.pojo.dto.demo.DemoUpdateXXXXXXInput;
 import com.gstdev.cloud.base.definition.domain.Result;
 
 import java.util.List;

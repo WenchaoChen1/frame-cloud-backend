@@ -47,16 +47,16 @@ public class LocalUserDetailsService implements StrategyUserDetailsService {
         User user = userService.findByEmail(username);
         Set<String> role = new HashSet<>();
         DefaultSecurityUser defaultSecurityUser = new DefaultSecurityUser(user.getUserId()
-            , user.getUserId()
-            , user.getPassword()
-            , true
-            , true
-            , true
-            , true
-            , getAuthorities(new ArrayList<>(List.of("USER")))
-            , role
-            , "123123"
-            , "ava123213"
+                , user.getUserId()
+                , user.getPassword()
+                , true
+                , true
+                , true
+                , true
+                , getAuthorities(new ArrayList<>(List.of("USER")))
+                , role
+                , "123123"
+                , "ava123213"
         );
         if (ObjectUtil.isNotNull(user) && ObjectUtil.isNotNull(user.getUsername())) {
 //            defaultSecurityUser.setUsername(user.getUserId());

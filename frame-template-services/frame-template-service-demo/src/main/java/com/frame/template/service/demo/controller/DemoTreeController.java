@@ -9,14 +9,13 @@
 
 package com.frame.template.service.demo.controller;
 
-import com.gstdev.cloud.data.core.pojo.BaseTreeController;
 import com.frame.template.service.demo.mapper.vo.DemoTreeVoMapper;
 import com.frame.template.service.demo.pojo.base.demoTree.*;
 import com.frame.template.service.demo.service.DemoTreeService;
+import com.gstdev.cloud.data.core.pojo.BaseTreeController;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import jakarta.annotation.Resource;
 
 
 @RestController

@@ -15,13 +15,13 @@ import org.springframework.context.annotation.Import;
 @Configuration(proxyBeanMethods = false)
 @EnableFeignClients(basePackages = {"com.frame.template.autoconfigure.service.system.feign"})
 @ComponentScan(value = {
-    "com.gstdev.cloud.rest.autoconfigure",
-    "com.frame.template.common.redis.currentLoginInformation",
-    "com.frame.template.autoconfigure.service.system.controller",
-    "com.frame.template.autoconfigure.service.system.service",
-    "com.frame.template.autoconfigure.service.system.feign.service",
-    "com.frame.template.autoconfigure.service.system.listener",
-    "com.frame.template.autoconfigure.service.system.processor",
+        "com.gstdev.cloud.rest.autoconfigure",
+        "com.frame.template.common.redis.currentLoginInformation",
+        "com.frame.template.autoconfigure.service.system.controller",
+        "com.frame.template.autoconfigure.service.system.service",
+        "com.frame.template.autoconfigure.service.system.feign.service",
+        "com.frame.template.autoconfigure.service.system.listener",
+        "com.frame.template.autoconfigure.service.system.processor",
 //    "com.gstdev.cloud",
 //    "com.gstdev.cloud.service.system",
 //    "com.gstdev.cloud.springframework.openfeign",

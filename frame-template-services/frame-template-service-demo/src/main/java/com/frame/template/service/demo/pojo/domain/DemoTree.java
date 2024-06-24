@@ -2,13 +2,12 @@ package com.frame.template.service.demo.pojo.domain;
 
 
 import com.gstdev.cloud.data.core.pojo.BaseTreeEntity;
-import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 @Getter
 @Setter

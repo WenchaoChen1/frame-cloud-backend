@@ -3,7 +3,6 @@ package com.frame.template.gateway.configuration;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.SentinelGatewayFilter;
 import com.alibaba.csp.sentinel.adapter.gateway.sc.exception.SentinelGatewayBlockExceptionHandler;
 import com.frame.template.gateway.handler.RefreshRoutesListener;
-import com.gstdev.cloud.base.core.annotation.ConditionalOnSwaggerEnabled;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springdoc.core.properties.SwaggerUiConfigParameters;
@@ -83,6 +82,19 @@ public class GatewayConfiguration {
         };
     }
 
+    @Bean
+    @Order(Ordered.HIGHEST_PRECEDENCE)
+    public SentinelGatewayBlockExceptionHandler sentinelGatewayBlockExceptionHandler() {
+        // Register the block exception handler for Spring Cloud Gateway.
+        return new SentinelGatewayBlockExceptionHandler(viewResolvers, serverCodecConfigurer);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(SentinelGatewayFilter.class)
+    public SentinelGatewayFilter sentinelGatewayFilter() {
+        return new SentinelGatewayFilter();
+    }
+
     @Configuration(proxyBeanMethods = false)
 //    @ConditionalOnSwaggerEnabled
     static class GatewaySwaggerConfiguration {
@@ -103,18 +115,5 @@ public class GatewayConfiguration {
             // 返回 RefreshRoutesListener 实例
             return refreshRoutesListener;
         }
-    }
-
-    @Bean
-    @Order(Ordered.HIGHEST_PRECEDENCE)
-    public SentinelGatewayBlockExceptionHandler sentinelGatewayBlockExceptionHandler() {
-        // Register the block exception handler for Spring Cloud Gateway.
-        return new SentinelGatewayBlockExceptionHandler(viewResolvers, serverCodecConfigurer);
-    }
-
-    @Bean
-    @ConditionalOnMissingBean(SentinelGatewayFilter.class)
-    public SentinelGatewayFilter sentinelGatewayFilter() {
-        return new SentinelGatewayFilter();
     }
 }

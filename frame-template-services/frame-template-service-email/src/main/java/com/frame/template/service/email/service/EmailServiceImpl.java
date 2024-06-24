@@ -5,6 +5,8 @@ import com.frame.template.service.email.enums.EmailTypeEnum;
 import com.frame.template.service.email.pojo.entity.Email;
 import com.frame.template.service.email.pojo.vo.UserDto;
 import com.frame.template.service.email.repository.EmailRepository;
+import jakarta.annotation.Resource;
+import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheConfig;
@@ -13,10 +15,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.thymeleaf.context.Context;
 import org.thymeleaf.TemplateEngine;
-import jakarta.annotation.Resource;
-import jakarta.mail.internet.MimeMessage;
+import org.thymeleaf.context.Context;
 
 
 @Service

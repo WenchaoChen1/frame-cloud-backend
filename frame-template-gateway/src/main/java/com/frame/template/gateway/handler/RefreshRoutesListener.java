@@ -26,10 +26,8 @@ import java.util.stream.Collectors;
  */
 public class RefreshRoutesListener implements ApplicationListener<RefreshRoutesEvent> {
 
-    private static final Logger log = LoggerFactory.getLogger(RefreshRoutesListener.class);
-
     public static final String API_URI = "/v3/api-docs";
-
+    private static final Logger log = LoggerFactory.getLogger(RefreshRoutesListener.class);
     /**
      * 网关应用名称
      */
@@ -58,8 +56,8 @@ public class RefreshRoutesListener implements ApplicationListener<RefreshRoutesE
         List<String> routes = new ArrayList<>();
         // 获取路由信息并过滤出 lb 协议的路由
         routeLocator.getRoutes()
-            .filter(route -> route.getUri().getHost() != null && Objects.equals(route.getUri().getScheme(), "lb") && !self.equalsIgnoreCase(route.getUri().getHost()))
-            .subscribe(route -> routes.add(route.getUri().getHost()));
+                .filter(route -> route.getUri().getHost() != null && Objects.equals(route.getUri().getScheme(), "lb") && !self.equalsIgnoreCase(route.getUri().getHost()))
+                .subscribe(route -> routes.add(route.getUri().getHost()));
 
         // 根据路由服务名创建 Swagger 文档的 URL 配置
         Set<AbstractSwaggerUiConfigProperties.SwaggerUrl> swaggerUrls = routes.stream().map(this::createSwaggerUrl).collect(Collectors.toSet());

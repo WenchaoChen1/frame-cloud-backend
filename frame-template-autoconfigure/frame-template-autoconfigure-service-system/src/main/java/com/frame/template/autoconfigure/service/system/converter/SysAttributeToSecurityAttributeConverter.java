@@ -1,9 +1,9 @@
 package com.frame.template.autoconfigure.service.system.converter;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.oauth2.core.definition.domain.SecurityAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysPermission;
-import com.gstdev.cloud.oauth2.core.definition.domain.SecurityAttribute;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.util.StringUtils;

@@ -10,10 +10,10 @@
 package com.frame.template.service.storage.service;
 
 
+import com.frame.template.common.constant.FileConstants;
 import com.frame.template.service.storage.domain.base.*;
 import com.frame.template.service.storage.domain.entity.File;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.frame.template.common.constant.FileConstants;
 import com.gstdev.cloud.data.core.service.BasePOJOService;
 import org.springframework.web.multipart.MultipartFile;
 
