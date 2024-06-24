@@ -16,6 +16,7 @@ import com.gstdev.cloud.service.system.mapper.SysPermissionMapper;
 import com.gstdev.cloud.service.system.service.SysPermissionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
@@ -47,7 +48,11 @@ public class SysPermissionController implements ResultController {
     }
 
     // ********************************* Permission Manage *****************************************
-    @Tag(name = "Permission Manage")
+    @Tags({
+        @Tag(name = "Permission Manage"),
+        @Tag(name = "Scope Manage"),
+        @Tag(name = "Attribute Manage")
+    })
     @AccessLimited
     @GetMapping("/get-permission-manage-page")
     @Operation(summary = "get-permission-manage-page")

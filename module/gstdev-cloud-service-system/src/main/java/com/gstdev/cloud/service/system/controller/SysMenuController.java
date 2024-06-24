@@ -11,8 +11,7 @@ package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
-import com.gstdev.cloud.rest.core.controller.TreeController;
-import com.gstdev.cloud.service.system.domain.base.menu.*;
+import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.*;
 import com.gstdev.cloud.service.system.mapper.SysMenuMapper;
@@ -28,8 +27,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/menu")
-public class SysMenuController implements TreeController<SysMenu, String, MenuVo, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> {
-//public class SysMenuController implements ResultController {
+//public class SysMenuController implements TreeController<SysMenu, String, MenuVo, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> {
+public class SysMenuController implements ResultController {
 
     @Resource
     private SysMenuService menuService;
