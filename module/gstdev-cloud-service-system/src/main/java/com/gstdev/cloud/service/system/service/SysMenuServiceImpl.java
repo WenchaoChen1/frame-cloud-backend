@@ -132,17 +132,18 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
     @Override
     @Transactional
     public void insertAMenuManage(InsertMenuManageIO insertMenuManageIO) {
-        SysMenu sysMenu = saveAndFlush(getMapper().toEntity(insertMenuManageIO));
-        sysRAttributeMenuRepository.saveAndFlush(sysMenu,sysAttributeRepository.findAllById(insertMenuManageIO.getAttributeIds()));
+        SysMenu entity = getMapper().toEntity(insertMenuManageIO);
+//        sysRAttributeMenuRepository.saveAndFlush(entity,sysAttributeRepository.findAllById(insertMenuManageIO.getAttributeIds()));
+        entity.setSysAttributes(sysAttributeRepository.findAllById(insertMenuManageIO.getAttributeIds()));
+        saveAndFlush(entity);
     }
 
     @Override
     public void updateMenuManage(UpdateMenuManageIO updateMenuManageIO) {
         SysMenu sysMenu = findById(updateMenuManageIO.getId());
         menuMapper.copy(updateMenuManageIO, sysMenu);
+        sysMenu.setSysAttributes(sysAttributeRepository.findAllById(updateMenuManageIO.getAttributeIds()));
         SysMenu sysMenu1 = saveAndFlush(sysMenu);
-        sysRAttributeMenuRepository.deleteAllByMenuId(sysMenu1.getId());
-        sysRAttributeMenuRepository.saveAndFlush(sysMenu1,sysAttributeRepository.findAllById(updateMenuManageIO.getAttributeIds()));
     }
 
 

@@ -18,8 +18,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.checkerframework.checker.units.qual.A;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -77,6 +79,21 @@ public class SysMenu extends BaseTreeEntity {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<SysRAttributeMenu> rAttributeMenus;
+
+
+    public void setSysAttributes(List<SysAttribute> sysAttributes) {
+        if (sysAttributes != null) {
+            List<SysRAttributeMenu> sysRAttributeMenus = new ArrayList<>();
+            for (SysAttribute sysAttribute : sysAttributes) {
+                SysRAttributeMenu sysRAttributeMenu = new SysRAttributeMenu();
+                sysRAttributeMenu.setMenu(this);
+                sysRAttributeMenu.setAttribute(sysAttribute);
+                sysRAttributeMenu.setId(this.getId() + sysAttribute.getAttributeId());
+                sysRAttributeMenus.add(sysRAttributeMenu);
+            }
+            this.rAttributeMenus = sysRAttributeMenus;
+        }
+    }
 }
