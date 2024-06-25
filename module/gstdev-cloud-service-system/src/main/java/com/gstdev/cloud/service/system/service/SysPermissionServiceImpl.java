@@ -86,9 +86,6 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
             Map<String, Set<SysPermission>> stringListMap = generateCorrelatedKeys(value);
             value.forEach(attribute -> attribute.addPermissions(stringListMap.get(attribute.getAttributeId())));
             for (Set<SysPermission> sysPermissions : stringListMap.values()) {
-                for (SysPermission sysPermission : sysPermissions) {
-                    System.out.println(sysPermission.getPermissionId());
-                }
                 permissionList.addAll(sysPermissions);
             }
             String key1 = generateKey(Collections.singletonList(key));
@@ -105,33 +102,22 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
         if (!getRepository().existsById(allPermissionAll.getPermissionId())) {
             permissionList.add(allPermissionAll);
         }
-//        // 去重处理，避免重复主键问题
-//        Map<String, SysPermission> uniquePermissions = permissionList.stream()
-//            .collect(Collectors.toMap(SysPermission::getPermissionId, Function.identity(), (existing, replacement) -> existing));
-//        getRepository().saveAll(new ArrayList<>(uniquePermissions.values()));
+
         getRepository().saveAllAndFlush(permissionList);
-        sysAttributeService.saveAll(attributeList);
-//        sysAttributeService.saveAllAndFlush(attributeList);
+        sysAttributeService.saveAllAndFlush(attributeList);
+
     }
 
     public static Map<String, Set<SysPermission>> generateCorrelatedKeys(List<SysAttribute> sysAttributes) {
         Map<String, Set<SysPermission>> permissionMap = new HashMap<>();
         for (int i = 0; i < sysAttributes.size(); i++) {
             SysAttribute attribute1 = sysAttributes.get(i);
-            String attributeId = attribute1.getAttributeId();// Assuming SysAttribute has a method getId() to get its ID
+            String attributeId = attribute1.getAttributeId();
 
             Set<SysPermission> sysPermissions = new HashSet<>();
             List<String> combinedCodes = new ArrayList<>();
-            combinedCodes.add(attribute1.getServiceId() + attribute1.getAttributeCode());
-            String key1 = generateKey(combinedCodes);
-            SysPermission sysPermission = new SysPermission();
-            sysPermission.setPermissionId(key1);
-            sysPermission.setPermissionCode(key1);
-            sysPermission.setPermissionType(attribute1.getServiceId() + ":generateCorrelatedKeysService");
-            sysPermission.setPermissionName(attribute1.getServiceId() + ":" + attribute1.getAttributeCode()+i);
-            sysPermissions.add(sysPermission);
 
-            for (int j = i + 1; j < sysAttributes.size(); j++) {
+            for (int j = i; j < sysAttributes.size(); j++) {
                 SysAttribute attribute2 = sysAttributes.get(j);
                 combinedCodes.add(attribute2.getServiceId() + attribute2.getAttributeCode());
                 String key2 = generateKey(combinedCodes);
@@ -139,7 +125,7 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
                 sysPermission1.setPermissionId(key2);
                 sysPermission1.setPermissionCode(key2);
                 sysPermission1.setPermissionType(attribute2.getServiceId() + ":generateCorrelatedKeysService");
-                sysPermission1.setPermissionName(attribute2.getServiceId() + ":" + attribute2.getAttributeCode() + j);
+                sysPermission1.setPermissionName(attribute2.getServiceId() + ":" + combinedCodes.size() + ":" + attribute1.getClassName() + j);
                 sysPermissions.add(sysPermission1);
             }
 
