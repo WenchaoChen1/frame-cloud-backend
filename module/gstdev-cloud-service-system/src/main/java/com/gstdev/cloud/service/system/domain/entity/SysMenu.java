@@ -12,6 +12,7 @@ package com.gstdev.cloud.service.system.domain.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.service.system.domain.enums.SysMenuLocation;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -60,8 +61,8 @@ public class SysMenu extends BaseTreeEntity {
 
     @Column(name = "type", nullable = false)
     private SysMenuType type;
-    @Column(name = "location", length = 16)
-    private String location = "LEFT-MENU";
+    @Column(name = "location", nullable = false)
+    private SysMenuLocation location;
 
     @Schema(title = "数据状态")
     @Column(name = "status", nullable = false)

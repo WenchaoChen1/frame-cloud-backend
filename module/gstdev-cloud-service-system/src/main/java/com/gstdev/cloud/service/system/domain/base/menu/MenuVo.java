@@ -12,6 +12,7 @@ package com.gstdev.cloud.service.system.domain.base.menu;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseTreeVo;
+import com.gstdev.cloud.service.system.domain.enums.SysMenuLocation;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
 import lombok.Getter;
 import lombok.Setter;
@@ -50,7 +51,7 @@ public class MenuVo extends BaseTreeVo {
     private Integer tenantEnable;
     private SysMenuType type;
     private String url;
-    private String location;
+    private SysMenuLocation location;
 
     private List<String> checkedMenuId;
     private List<String> halfCheckedMenuId;

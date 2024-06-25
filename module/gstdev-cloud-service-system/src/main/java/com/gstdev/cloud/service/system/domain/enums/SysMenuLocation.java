@@ -16,27 +16,24 @@ import java.util.Map;
  */
 @Schema(title = "数据状态")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum SysMenuType implements BaseUiEnum<Integer> {
+public enum SysMenuLocation implements BaseUiEnum<Integer> {
 
     /**
-     * 目录
+     * 左侧菜单
      */
-    CATALOGUE(0, "catalogue"),
+    LEFT_MENU(0, "left menu"),
     /**
-     * 页面
+     * 其他菜单
      */
-    PAGE(1, "page"),
-    /**
-     * 按钮
-     */
-    BUTTON(2, "button");
+    OTHER(1, "other");
 
 
-    private static final Map<Integer, SysMenuType> INDEX_MAP = new HashMap<>();
+
+    private static final Map<Integer, SysMenuLocation> INDEX_MAP = new HashMap<>();
     private static final List<Map<String, Object>> JSON_STRUCTURE = new ArrayList<>();
 
     static {
-        for (SysMenuType dataItemStatus : SysMenuType.values()) {
+        for (SysMenuLocation dataItemStatus : SysMenuLocation.values()) {
             INDEX_MAP.put(dataItemStatus.getValue(), dataItemStatus);
             JSON_STRUCTURE.add(dataItemStatus.getValue(),
                     ImmutableMap.<String, Object>builder()
@@ -52,12 +49,12 @@ public enum SysMenuType implements BaseUiEnum<Integer> {
     @Schema(title = "文字")
     private final String description;
 
-    SysMenuType(Integer value, String description) {
+    SysMenuLocation(Integer value, String description) {
         this.value = value;
         this.description = description;
     }
 
-    public static SysMenuType get(Integer index) {
+    public static SysMenuLocation get(Integer index) {
         return INDEX_MAP.get(index);
     }
 

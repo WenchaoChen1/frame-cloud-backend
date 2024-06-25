@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysMenu;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.service.system.domain.enums.SysMenuLocation;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +15,7 @@ public class UpdateMenuManageIO {
     private String code;
     private Integer sort;
     private SysMenuType type;
-    private String location;
+    private SysMenuLocation location;
     private String description;
     private DataItemStatus status;
 

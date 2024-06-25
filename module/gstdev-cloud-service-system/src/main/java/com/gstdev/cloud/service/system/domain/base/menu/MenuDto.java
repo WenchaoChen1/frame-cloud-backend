@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.base.core.utils.treeUtils.TreeNode;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseTreeDto;
+import com.gstdev.cloud.service.system.domain.enums.SysMenuLocation;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
 import lombok.Getter;
 import lombok.Setter;
@@ -51,7 +52,7 @@ public class MenuDto extends BaseTreeDto<MenuDto> implements TreeNode<String, Me
     private Integer tenantEnable;
     private SysMenuType type;
     private String url;
-    private String location;
+    private SysMenuLocation location;
 
 
     private List<String> checkedMenuId = new ArrayList<>();

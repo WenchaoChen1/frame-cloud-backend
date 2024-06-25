@@ -12,6 +12,7 @@ package com.gstdev.cloud.service.system.domain.pojo.sysMenu;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.TreeNode;
+import com.gstdev.cloud.service.system.domain.enums.SysMenuLocation;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,7 +42,7 @@ public class MenuManageTreeVo extends TreeNode<String, MenuManageTreeVo> {
     private DataItemStatus status;
     private String description;
     private SysMenuType type;
-    private String location;
+    private SysMenuLocation location;
     private String path;
     private String icon;
 }

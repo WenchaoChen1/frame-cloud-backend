@@ -9,8 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class InsertTenantManageIO {
-    @Schema(title = "parentId 不能为空", required = true)
-    @NotEmpty
     private String parentId = "0";
     private String tenantCode;
     private String tenantName;
