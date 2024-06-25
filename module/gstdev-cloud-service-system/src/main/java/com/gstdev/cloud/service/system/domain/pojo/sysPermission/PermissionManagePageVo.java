@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.Set;
 
 
 @Getter
@@ -33,5 +34,23 @@ public class PermissionManagePageVo {
     private String permissionName;
     private String permissionType;
     private DataItemStatus status;
+    private Set<AttributeManagePageVo> sysAttributes;
+
+    @Getter
+    @Setter
+    public static class AttributeManagePageVo {
+        private String attributeId;
+        private String attributeCode;
+        private String requestMethod;
+        private String serviceId;
+        private String className;
+        private String methodName;
+        private String url;
+        private String webExpression;
+        private String description;
+        private DataItemStatus status;
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        private Date updatedDate;
+    }
 }
 
