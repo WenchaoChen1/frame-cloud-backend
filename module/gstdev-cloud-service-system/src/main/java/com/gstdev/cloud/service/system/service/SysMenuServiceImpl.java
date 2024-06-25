@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.service.system.domain.base.menu.MenuDto;
@@ -109,6 +110,12 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
             }
             sysMenuList = collect.values().stream().toList();
         }
+         sysMenuList = sysMenuList.stream().filter(sysMenu -> {
+           if (sysMenu.getStatus().equals(DataItemStatus.ENABLE)){
+               return true;
+           }
+            return false;
+        }).collect(Collectors.toList());
         return getMapper().toAccountMenuPermissionsDtoToTree(sysMenuList);
     }
 

@@ -30,6 +30,7 @@ import java.util.List;
 //@Where(clause = "deleted = 0")
 //@SQLDelete(sql = "UPDATE public.sys_user SET deleted=1 WHERE id =?")
 public class SysUser extends BasePOJOEntity {
+
     @Schema(title = "用户名")
     @Column(name = "username", length = 128, nullable = false, unique = true)
     private String username;

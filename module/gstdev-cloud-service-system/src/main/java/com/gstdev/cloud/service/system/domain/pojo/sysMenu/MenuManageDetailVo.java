@@ -10,6 +10,7 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysMenu;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,7 +27,7 @@ public class MenuManageDetailVo {
     private String description;
     private String name;
     private String menuName;
-    private Integer type;
+    private SysMenuType type;
     private String location;
     private String path;
     private String icon;

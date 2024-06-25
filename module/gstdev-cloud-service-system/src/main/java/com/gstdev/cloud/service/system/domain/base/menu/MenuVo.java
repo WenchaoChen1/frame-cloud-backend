@@ -12,6 +12,7 @@ package com.gstdev.cloud.service.system.domain.base.menu;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseTreeVo;
+import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -47,7 +48,7 @@ public class MenuVo extends BaseTreeVo {
     private Integer sort;
     private DataItemStatus status;
     private Integer tenantEnable;
-    private Integer type;
+    private SysMenuType type;
     private String url;
     private String location;
 

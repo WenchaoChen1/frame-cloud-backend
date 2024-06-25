@@ -11,6 +11,7 @@ package com.gstdev.cloud.service.system.domain.base.menu;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseTreeInsertInput;
+import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,7 +30,7 @@ public class MenuInsertInput extends BaseTreeInsertInput {
     private Integer sort;
     private DataItemStatus status;
     private Integer tenantEnable;
-    private Integer type;
+    private SysMenuType type;
     private String url;
     private String location;
 

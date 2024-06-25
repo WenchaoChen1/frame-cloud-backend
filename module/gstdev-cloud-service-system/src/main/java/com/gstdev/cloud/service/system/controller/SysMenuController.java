@@ -27,7 +27,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/menu")
-//public class SysMenuController implements TreeController<SysMenu, String, MenuVo, MenuDto, MenuInsertInput, MenuUpdateInput, MenuPageQueryCriteria, MenuFindAllByQueryCriteria> {
 public class SysMenuController implements ResultController {
 
     @Resource

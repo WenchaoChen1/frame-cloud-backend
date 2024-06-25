@@ -58,13 +58,7 @@ public class SysRole extends BaseTreeEntity {
 //    @Column(name = "deleted", nullable = false)
 //    private Integer deleted = 0;
 
-//  @JsonIgnore
-//  @OneToMany(mappedBy = "role",cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-//  private List<RRoleRTenantMenu> rRoleRTenantMenus;
 
-//  @ManyToOne(fetch = FetchType.LAZY)
-//  @JoinColumn(name = "account_id", referencedColumnName = "id")
-//  private Account account;
 
     @ManyToMany
     @JoinTable(name = "sys_r_role_tenant_menu", joinColumns = {
