@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
@@ -14,7 +15,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,7 +50,7 @@ public class SysAttributeController implements ResultController {
     @Tag(name = "Attribute Manage")
     @GetMapping("/get-attribute-manage-page")
     @Operation(summary = "get-attribute-manage-page")
-    public Result<Map<String, Object>> getAttributeManagePage(AttributeManageQO sysAttributeAttributeManageQO, Pageable pageable) {
+    public Result<Map<String, Object>> getAttributeManagePage(AttributeManageQO sysAttributeAttributeManageQO, BasePage pageable) {
         return this.result(this.getMapper().toAttributeManagePageVo(this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysAttributeAttributeManageQO, criteriaBuilder), pageable)));
     }
 

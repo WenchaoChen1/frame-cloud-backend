@@ -40,7 +40,10 @@ public class TreeUtils {
         // 如果 comparator 不为 null，则对所有节点的子节点进行排序
         if (comparator != null) {
             nodeMap.values().parallelStream().forEach(node -> {
-                node.setChildren(node.getChildren().stream().sorted(comparator).collect(Collectors.toList()));
+                List<T> children = node.getChildren();
+                if (children != null) {
+                    node.setChildren(children.stream().sorted(comparator).collect(Collectors.toList()));
+                }
             });
 
             // 对根节点列表进行排序

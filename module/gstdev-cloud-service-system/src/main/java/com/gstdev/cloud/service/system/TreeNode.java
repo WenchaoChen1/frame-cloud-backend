@@ -8,7 +8,7 @@ public class TreeNode<ID, T extends com.gstdev.cloud.base.core.utils.treeUtils.T
     private ID id;
     private ID parentId;
     // 子节点列表
-    private List<T> children = new CopyOnWriteArrayList<>();
+    private List<T> children = null;
 
     @Override
     // 获取子节点列表

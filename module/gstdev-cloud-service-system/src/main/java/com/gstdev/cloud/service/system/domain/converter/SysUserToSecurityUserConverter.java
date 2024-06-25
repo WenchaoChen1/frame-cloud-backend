@@ -49,20 +49,18 @@ public class SysUserToSecurityUserConverter implements Converter<SysUser, Defaul
                 sysPermissions.forEach(sysAuthority -> authorities.add(new FrameGrantedAuthority((sysAuthority.getPermissionCode()))));
             }
         }
-
-        DefaultSecurityUser defaultSecurityUser = new DefaultSecurityUser(sysUser.getId(), sysUser.getUsername(), sysUser.getPassword(),
+        Optional<SysAccount> firstAccount = sysUser.getAccount().stream().findFirst();
+        DefaultSecurityUser defaultSecurityUser = new DefaultSecurityUser(
+                sysUser.getId(),
+                sysUser.getUsername(),
+                firstAccount.get().getId(),
+                firstAccount.get().getName(),
+                sysUser.getPassword(),
                 isEnabled(sysUser),
                 isAccountNonExpired(sysUser),
                 isCredentialsNonExpired(sysUser),
                 isNonLocked(sysUser),
-                authorities, roles, null, sysUser.getAvatar());
-//        String employeeId = ObjectUtils.isNotEmpty(sysUser.getEmployee()) ? sysUser.getEmployee().getEmployeeId() : null;
-        Optional<SysAccount> firstAccount = sysUser.getAccount().stream().findFirst();
-        if(firstAccount.isPresent()){
-            defaultSecurityUser.setAccountId(firstAccount.get().getId());
-            defaultSecurityUser.setAccountName(firstAccount.get().getName());
-            defaultSecurityUser.setEmployeeId(firstAccount.get().getId());
-        }
+                authorities, roles, "null", sysUser.getAvatar());
         return defaultSecurityUser;
     }
 
