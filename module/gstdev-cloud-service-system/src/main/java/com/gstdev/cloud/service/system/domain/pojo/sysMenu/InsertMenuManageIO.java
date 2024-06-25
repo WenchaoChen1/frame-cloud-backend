@@ -6,6 +6,8 @@ import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 public class InsertMenuManageIO {
@@ -18,9 +20,10 @@ public class InsertMenuManageIO {
     private String description;
     private DataItemStatus status;
 
-
     private String name;
     private String path;
     private String icon;
+
+    private Set<String> attributeIds;
 
 }

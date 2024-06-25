@@ -20,7 +20,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -73,4 +75,8 @@ public class SysMenu extends BaseTreeEntity {
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
     private List<SysTenantMenu> rTenantMenus;
 
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
+    private List<SysRAttributeMenu> rAttributeMenus;
 }

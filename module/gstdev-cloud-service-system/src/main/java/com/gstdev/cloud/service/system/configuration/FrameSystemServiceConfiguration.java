@@ -106,4 +106,11 @@ public class FrameSystemServiceConfiguration {
         log.debug("[GstDev Cloud] |- Frame Configure Tenant Dict Service");
         return new SysTenantDictServiceImpl(tenantDictMapper, tenantDictRepository);
     }
+
+//    @Bean
+//    @ConditionalOnMissingBean
+//    public SysRAttributeMenuService sysRAttributeMenuService(SysRAttributeMenuRepository tenantDictRepository) {
+//        log.debug("[GstDev Cloud] |- Frame Configure R Attribute Service");
+//        return new SysRAttributeMenuServiceImpl(tenantDictRepository);
+//    }
 }

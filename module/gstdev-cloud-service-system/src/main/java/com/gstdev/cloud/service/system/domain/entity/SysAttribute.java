@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.generator.SysAttributeUuidGenerator;
@@ -10,6 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -69,14 +71,19 @@ public class SysAttribute extends BaseEntity {
     @Enumerated(EnumType.ORDINAL)
     private DataItemStatus status = DataItemStatus.ENABLE;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "attribute", fetch = FetchType.LAZY)
+    private List<SysRAttributeMenu> rAttributeMenus;
+
+
     @Schema(title = "属性对应权限", description = "根据属性关联权限数据")
     @ManyToMany(fetch = FetchType.LAZY)
 //    @Fetch(FetchMode.SUBSELECT)
-    @JoinTable(name = "sys_attribute_permission",
-            joinColumns = {@JoinColumn(name = "attribute_id")},
-            inverseJoinColumns = {@JoinColumn(name = "permission_id")},
-            uniqueConstraints = {@UniqueConstraint(columnNames = {"attribute_id", "permission_id"})},
-            indexes = {@Index(name = "sys_attribute_permission_aid_idx", columnList = "attribute_id"), @Index(name = "sys_attribute_permission_pid_idx", columnList = "permission_id")})
+    @JoinTable(name = "sys_r_attribute_permission",
+        joinColumns = {@JoinColumn(name = "attribute_id")},
+        inverseJoinColumns = {@JoinColumn(name = "permission_id")},
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"attribute_id", "permission_id"})},
+        indexes = {@Index(name = "sys_attribute_permission_aid_idx", columnList = "attribute_id"), @Index(name = "sys_attribute_permission_pid_idx", columnList = "permission_id")})
     private Set<SysPermission> permissions = new HashSet<>();
 
     public void addPermissions(Set<SysPermission> permissions) {

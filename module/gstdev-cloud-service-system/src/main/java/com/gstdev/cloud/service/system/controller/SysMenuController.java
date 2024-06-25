@@ -61,16 +61,14 @@ public class SysMenuController implements ResultController {
     @PostMapping("/insert-menu-manage")
     @Operation(summary = "insert-menu-manage")
     public Result insertAMenuManage(@RequestBody @Validated InsertMenuManageIO insertMenuManageIO) {
-        this.getService().insertAndUpdate(menuMapper.toEntity(insertMenuManageIO));
+        this.getService().insertAMenuManage(insertMenuManageIO);
         return result();
     }
 
     @PutMapping("/update-menu-manage")
     @Operation(summary = "update-menu-manage")
     public Result updateMenuManage(@RequestBody @Validated UpdateMenuManageIO updateMenuManageIO) {
-        SysMenu sysMenu = this.getService().findById(updateMenuManageIO.getId());
-        menuMapper.copy(updateMenuManageIO, sysMenu);
-        this.getService().insertAndUpdate(sysMenu);
+        this.getService().updateMenuManage(updateMenuManageIO);
         return result();
     }
 

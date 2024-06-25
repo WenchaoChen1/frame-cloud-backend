@@ -11,10 +11,10 @@ import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.AccountMenuPermissionsDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.AccountMenuPermissionsQO;
+import com.gstdev.cloud.service.system.domain.pojo.sysMenu.InsertMenuManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysMenu.UpdateMenuManageIO;
 import com.gstdev.cloud.service.system.mapper.SysMenuMapper;
-import com.gstdev.cloud.service.system.repository.SysAccountRepository;
-import com.gstdev.cloud.service.system.repository.SysMenuRepository;
-import com.gstdev.cloud.service.system.repository.SysRoleRepository;
+import com.gstdev.cloud.service.system.repository.*;
 import jakarta.annotation.Resource;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +32,13 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
     private SysAccountRepository accountRepository;
     @Resource
     private SysMenuRepository menuRepository;
+    @Resource
+    private SysAttributeRepository sysAttributeRepository;
+    @Resource
+    private SysRAttributeMenuRepository sysRAttributeMenuRepository;
+    @Resource
+    private SysMenuMapper menuMapper;
+
 
     public SysMenuServiceImpl(SysMenuRepository menuRepository, SysMenuMapper menuMapper) {
         super(menuRepository, menuMapper);
@@ -43,6 +50,9 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
         return menuRepository;
     }
 
+    public SysMenuMapper getMapper() {
+        return menuMapper;
+    }
 
 //    @Override
 //    public Result<List<MenuDto>> getAllByRoleMenuToTree(String roleId) {
@@ -105,19 +115,36 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
                 List<SysMenu> menus = role.getTenantMenus().stream().map(SysTenantMenu::getMenu).toList();
                 Map<String, List<SysMenu>> collect2 = menus.stream().collect(Collectors.groupingBy(SysMenu::getId));
                 Map<String, SysMenu> collect1 = role.getTenantMenus().stream().map(SysTenantMenu::getMenu).collect(Collectors.groupingBy(SysMenu::getId,
-                        Collectors.collectingAndThen(Collectors.toList(), value -> value.get(0))));
+                    Collectors.collectingAndThen(Collectors.toList(), value -> value.get(0))));
                 collect.putAll(collect1);
             }
             sysMenuList = collect.values().stream().toList();
         }
-         sysMenuList = sysMenuList.stream().filter(sysMenu -> {
-           if (sysMenu.getStatus().equals(DataItemStatus.ENABLE)){
-               return true;
-           }
+        sysMenuList = sysMenuList.stream().filter(sysMenu -> {
+            if (sysMenu.getStatus().equals(DataItemStatus.ENABLE)) {
+                return true;
+            }
             return false;
         }).collect(Collectors.toList());
         return getMapper().toAccountMenuPermissionsDtoToTree(sysMenuList);
     }
+
+    @Override
+    @Transactional
+    public void insertAMenuManage(InsertMenuManageIO insertMenuManageIO) {
+        SysMenu sysMenu = saveAndFlush(getMapper().toEntity(insertMenuManageIO));
+        sysRAttributeMenuRepository.saveAndFlush(sysMenu,sysAttributeRepository.findAllById(insertMenuManageIO.getAttributeIds()));
+    }
+
+    @Override
+    public void updateMenuManage(UpdateMenuManageIO updateMenuManageIO) {
+        SysMenu sysMenu = findById(updateMenuManageIO.getId());
+        menuMapper.copy(updateMenuManageIO, sysMenu);
+        SysMenu sysMenu1 = saveAndFlush(sysMenu);
+        sysRAttributeMenuRepository.deleteAllByMenuId(sysMenu1.getId());
+        sysRAttributeMenuRepository.saveAndFlush(sysMenu1,sysAttributeRepository.findAllById(updateMenuManageIO.getAttributeIds()));
+    }
+
 
     /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
 
