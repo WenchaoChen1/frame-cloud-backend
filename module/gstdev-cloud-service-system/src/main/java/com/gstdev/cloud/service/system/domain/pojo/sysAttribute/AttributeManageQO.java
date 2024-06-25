@@ -15,7 +15,18 @@ public class AttributeManageQO implements Serializable {
     private String attributeCode;
     @Query(type = Query.Type.INNER_LIKE)
     private String requestMethod;
-
+    @Query(type = Query.Type.INNER_LIKE)
+    private String url;
+    @Query(type = Query.Type.INNER_LIKE)
+    private String serviceId;
+    @Query(type = Query.Type.INNER_LIKE)
+    private String className;
+    @Query(type = Query.Type.INNER_LIKE)
+    private String methodName;
+    @Query(type = Query.Type.INNER_LIKE)
+    private String webExpression;
+    @Query(type = Query.Type.INNER_LIKE)
+    private String description;
     @Query(type = Query.Type.IN)
     private Set<DataItemStatus> status;
 }

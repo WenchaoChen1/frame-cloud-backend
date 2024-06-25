@@ -68,6 +68,7 @@ public class SysPermissionController implements ResultController {
         return result(getMapper().toPermissionManageDetailVo(getService().findById(id)));
     }
 
+
     @Tag(name = "Permission Manage")
     @Idempotent
     @Operation(summary = "insert-permission-manage")
@@ -110,7 +111,13 @@ public class SysPermissionController implements ResultController {
     public Result<List<String>> getAllDistinctPermissionType() {
         return result(getService().findDistinctPermissionTypes());
     }
-
+    @Tag(name = "Permission Manage")
+    @GetMapping("/permissionInit")
+    @Operation(summary = "permissionInit")
+    public Result<PermissionManageDetailVo> permissionInit() {
+        getService().permissionInit();
+        return result();
+    }
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 
 }

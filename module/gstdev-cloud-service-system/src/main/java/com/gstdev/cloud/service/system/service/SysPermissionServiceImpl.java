@@ -12,10 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Transactional
@@ -70,6 +67,7 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
         return sysPermissionRepository.findDistinctPermissionTypes();
     }
 
+    @Transactional
     public void permissionInit(List<SysAttribute> attributeList) {
         SysPermission allPermissionAll = new SysPermission();
         allPermissionAll.setPermissionId(generateKey(Collections.singletonList("all")));
@@ -77,19 +75,22 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
         allPermissionAll.setPermissionName("all");
         allPermissionAll.setPermissionType("all");
         getRepository().saveAndFlush(allPermissionAll);
-        this.updateStatusByPermissionType(DataItemStatus.EXPIRED, "generateCorrelatedKeysService");
         Map<String, List<SysAttribute>> attributeMap = attributeList.stream()
                 .collect(Collectors.groupingBy(SysAttribute::getServiceId));
-        List<SysPermission> permissionList = new ArrayList<>();
+        Set<SysPermission> permissionList = new HashSet<>();
         for (Map.Entry<String, List<SysAttribute>> stringListEntry : attributeMap.entrySet()) {
             List<SysAttribute> value = stringListEntry.getValue();
             String key = stringListEntry.getKey();
-//            Map<String, Set<SysPermission>> stringListMap = generateCorrelatedKeys(value);
-//            value.forEach(attribute -> attribute.addPermissions(stringListMap.get(attribute.getAttributeId())));
-//            permissionList.addAll(stringListMap.values().stream()
-//                .flatMap(Set::stream)
-//                .collect(Collectors.toList()));
-
+            this.updateStatusByPermissionType(DataItemStatus.EXPIRED, "service");
+            this.updateStatusByPermissionType(DataItemStatus.EXPIRED, key + ":generateCorrelatedKeysService");
+            Map<String, Set<SysPermission>> stringListMap = generateCorrelatedKeys(value);
+            value.forEach(attribute -> attribute.addPermissions(stringListMap.get(attribute.getAttributeId())));
+            for (Set<SysPermission> sysPermissions : stringListMap.values()) {
+                for (SysPermission sysPermission : sysPermissions) {
+                    System.out.println(sysPermission.getPermissionId());
+                }
+                permissionList.addAll(sysPermissions);
+            }
             String key1 = generateKey(Collections.singletonList(key));
             SysPermission sysPermission = new SysPermission();
             sysPermission.setPermissionId(key1);
@@ -101,11 +102,6 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
             permissionList.add(sysPermission);
         }
 
-//        SysPermission allPermissionAll = new SysPermission();
-//        allPermissionAll.setPermissionId(generateKey(Collections.singletonList("all")));
-//        allPermissionAll.setPermissionCode(generateKey(Collections.singletonList("all")));
-//        allPermissionAll.setPermissionName("all");
-//        allPermissionAll.setPermissionType("all");
         if (!getRepository().existsById(allPermissionAll.getPermissionId())) {
             permissionList.add(allPermissionAll);
         }
@@ -114,131 +110,92 @@ public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, 
 //            .collect(Collectors.toMap(SysPermission::getPermissionId, Function.identity(), (existing, replacement) -> existing));
 //        getRepository().saveAll(new ArrayList<>(uniquePermissions.values()));
         getRepository().saveAllAndFlush(permissionList);
-        sysAttributeService.saveAllAndFlush(attributeList);
+        sysAttributeService.saveAll(attributeList);
+//        sysAttributeService.saveAllAndFlush(attributeList);
     }
 
-//    public static Map<String, Set<SysPermission>> generateCorrelatedKeys(List<SysAttribute> sysAttributes) {
-//        Map<String, Set<SysPermission>> permissionMap = new HashMap<>();
-//        for (int i = 0; i < sysAttributes.size(); i++) {
-//            SysAttribute attribute1 = sysAttributes.get(i);
-//            String attributeId = attribute1.getAttributeId();// Assuming SysAttribute has a method getId() to get its ID
-//
-//            Set<SysPermission> sysPermissions = new HashSet<>();
-//
-//            String key1 = generateKey(Collections.singletonList(attribute1.getServiceId() + attribute1.getAttributeCode()));
-//            SysPermission sysPermission = new SysPermission();
-//            sysPermission.setPermissionId(key1);
-//            sysPermission.setPermissionCode(key1);
-//            sysPermission.setPermissionType("generateCorrelatedKeysService");
-//            sysPermission.setPermissionName(attribute1.getServiceId() + ":" + attribute1.getAttributeCode());
-//            sysPermissions.add(sysPermission);
-//
-//            for (int j = i + 1; j < sysAttributes.size(); j++) {
-//                SysAttribute attribute2 = sysAttributes.get(j);
-//                List<String> combinedCodes = new ArrayList<>();
-//                combinedCodes.add(attribute1.getServiceId() + attribute1.getAttributeCode());
-//                combinedCodes.add(attribute2.getServiceId() + attribute2.getAttributeCode());
-//                String key2 = generateKey(combinedCodes);
-//                SysPermission sysPermission1 = new SysPermission();
-//                sysPermission1.setPermissionId(key2);
-//                sysPermission1.setPermissionCode(key2);
-//                sysPermission1.setPermissionType("generateCorrelatedKeysService");
-//                sysPermission1.setPermissionName(attribute2.getServiceId() + ":" + attribute2.getAttributeCode());
-//                sysPermissions.add(sysPermission1);
-//                sysPermissions.add(sysPermission1);
-//            }
-//
-//            permissionMap.put(attributeId, sysPermissions);
-//        }
-//        return permissionMap;
-//    }
+    public static Map<String, Set<SysPermission>> generateCorrelatedKeys(List<SysAttribute> sysAttributes) {
+        Map<String, Set<SysPermission>> permissionMap = new HashMap<>();
+        for (int i = 0; i < sysAttributes.size(); i++) {
+            SysAttribute attribute1 = sysAttributes.get(i);
+            String attributeId = attribute1.getAttributeId();// Assuming SysAttribute has a method getId() to get its ID
+
+            Set<SysPermission> sysPermissions = new HashSet<>();
+            List<String> combinedCodes = new ArrayList<>();
+            combinedCodes.add(attribute1.getServiceId() + attribute1.getAttributeCode());
+            String key1 = generateKey(combinedCodes);
+            SysPermission sysPermission = new SysPermission();
+            sysPermission.setPermissionId(key1);
+            sysPermission.setPermissionCode(key1);
+            sysPermission.setPermissionType(attribute1.getServiceId() + ":generateCorrelatedKeysService");
+            sysPermission.setPermissionName(attribute1.getServiceId() + ":" + attribute1.getAttributeCode()+i);
+            sysPermissions.add(sysPermission);
+
+            for (int j = i + 1; j < sysAttributes.size(); j++) {
+                SysAttribute attribute2 = sysAttributes.get(j);
+                combinedCodes.add(attribute2.getServiceId() + attribute2.getAttributeCode());
+                String key2 = generateKey(combinedCodes);
+                SysPermission sysPermission1 = new SysPermission();
+                sysPermission1.setPermissionId(key2);
+                sysPermission1.setPermissionCode(key2);
+                sysPermission1.setPermissionType(attribute2.getServiceId() + ":generateCorrelatedKeysService");
+                sysPermission1.setPermissionName(attribute2.getServiceId() + ":" + attribute2.getAttributeCode() + j);
+                sysPermissions.add(sysPermission1);
+            }
+
+            permissionMap.put(attributeId, sysPermissions);
+        }
+        return permissionMap;
+    }
 
     public void updateStatusByPermissionType(DataItemStatus status, String permissionType) {
         getRepository().updateStatusByPermissionType(status, permissionType);
     }
 
-//    public static Map<String, Set<SysPermission>> generateCorrelatedKeys(List<SysAttribute> sysAttributes) {
-//        Map<String, Set<SysPermission>> permissionMap = new HashMap<>();
-//
-//        // Generate all possible non-empty subsets of sysAttributes
-//        List<List<SysAttribute>> allCombinations = generateAllCombinations(sysAttributes);
-//
-//        for (SysAttribute attribute : sysAttributes) {
-//            String attributeId = attribute.getAttributeId();
-//            Set<SysPermission> sysPermissions = new HashSet<>();
-//
-//            for (List<SysAttribute> combination : allCombinations) {
-//                if (combination.contains(attribute)) {
-//                    List<String> combinedCodes = new ArrayList<>();
-//                    StringBuilder permissionName = new StringBuilder();
-//
-//                    for (SysAttribute attr : combination) {
-//                        combinedCodes.add(attr.getServiceId() + attr.getAttributeCode());
-//                        if (permissionName.length() > 0) {
-//                            permissionName.append(",");
-//                        }
-//                        permissionName.append(attr.getServiceId()).append(":").append(attr.getAttributeCode());
-//                    }
-//
-//                    String key =String.join("-", combinedCodes);
-//                    SysPermission sysPermission = new SysPermission();
-//                    sysPermission.setPermissionId(key);
-//                    sysPermission.setPermissionCode(key);
-//                    sysPermission.setPermissionType("generateCorrelatedKeysService");
-//                    sysPermission.setPermissionName(permissionName.toString());
-//                    sysPermissions.add(sysPermission);
-//                }
-//            }
-//
-//            permissionMap.put(attributeId, sysPermissions);
-//        }
-//
-//        return permissionMap;
-//    }
 
-
-//    private static List<List<SysAttribute>> generateAllCombinations(List<SysAttribute> sysAttributes) {
-//        List<List<SysAttribute>> allCombinations = new ArrayList<>();
-//        int n = sysAttributes.size();
-//
-//        // Generate all possible non-empty subsets
-//        for (int i = 1; i < (1 << n); i++) {
-//            List<SysAttribute> combination = new ArrayList<>();
-//            for (int j = 0; j < n; j++) {
-//                if ((i & (1 << j)) != 0) {
-//                    combination.add(sysAttributes.get(j));
-//                }
-//            }
-//            allCombinations.add(combination);
-//        }
-//
-//        return allCombinations;
-//    }
-
-//    public static void main(String[] args) {
-//        SysAttribute attribute = new SysAttribute();
-//        attribute.setAttributeId("1");
-//        attribute.setServiceId("1");
-//        attribute.setAttributeCode("1");
-//        SysAttribute attribute2 = new SysAttribute();
-//        attribute2.setAttributeId("2");
-//        attribute2.setServiceId("2");
-//        attribute2.setAttributeCode("2");
-//        SysAttribute attribute3 = new SysAttribute();
-//        attribute3.setAttributeId("3");
-//        attribute3.setServiceId("3");
-//        attribute3.setAttributeCode("3");
-//        // Example usage
-//        List<SysAttribute> sysAttributes = Arrays.asList(
-//            attribute,
-//            attribute2,
-//            attribute3
-//        );
-//
-//        Map<String, Set<SysPermission>> result = generateCorrelatedKeys(sysAttributes);
-//        result.forEach((key, value) -> {
-//            System.out.println("Attribute ID: " + key);
-//            value.forEach(permission -> System.out.println("  Permission: " + permission.getPermissionName()));
-//        });
-//    }
+    public static void main(String[] args) {
+        List<String> a = new ArrayList<>();
+        a.add("aprivatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("bprivatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b1privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b11privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b111privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b12privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b122privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinaombpriveasdadsaDombinatioombpriveasdadsaDombinatiotions(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("bpq1212rivatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttombpriveasdadsaDombinatioribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b12w12privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b12e12privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(ombpriveasdadsaDombinatioombpriveasdadsaDombinatioList<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b1e212privatestaticList<List<SysAttribute>>generateAllCombpriveasdadsaDombombpriveasdadsaDombinatioombpriveasdadsaDombinatioombpriveasdadsaDombinatioombpriveasdadsaDombinatioinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b1qw212privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b1qwe212privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b12qwe12privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllComombpriveasdadsaDombinatiobinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b121qwe2qweprivatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>genombpriveasdadsaDombinatioerateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b1212privateqwestayuticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b1212privateqwestaticyuList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b1212privateqwestaticList<List<SysAyuttribute>>generateAllCombprivatestaticList<List<SysAttributombpriveasdadsaDombinatioombpriveasdadsaDombinatioe>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivyuatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<Lisyut<SysAtutribuombpriveasdadsaDombinatioombpriveasdadsaDombinatiote>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<Liyust<SysAttribute>>generaombpriveasdadsaDombinatioteAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttributeyu>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>genyueratombpriveasdadsaDombinatioeAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b1qw212privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b1qwe212privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<ombpriveasdadsaDombinatioombpriveasdadsaDombinatioombpriveasdadsaDombinatio>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b12qwe12privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b121qwe2qweprivatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttrombpriveasdadsaDombinatioibute>>gombpriveasdadsaDombinatioeombpriveasdadsaDombinationerateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b1212privateqwestayuticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b1212privateqwestaticyuList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b1212privateqwestaticList<List<SysAyuttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b1212privateqwestaticList<List<SysAttribute>>geneyurateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivyuatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<Lisyut<SysAtutribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<Liyust<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttributeyu>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        a.add("1b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>genyuerateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
+        String s = generateKey(a);
+        System.out.println(s);
+    }
 }
+//458a044cd5652af47bc4209d60d5d0e490685f293f7fd36fd47b03f26c2840d7
+//458a044cd5652af47bc4209d60d5d0e490685f293f7fd36fd47b03f26c2840d7

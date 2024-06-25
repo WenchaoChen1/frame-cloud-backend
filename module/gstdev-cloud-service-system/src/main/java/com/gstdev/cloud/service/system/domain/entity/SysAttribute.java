@@ -8,8 +8,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -72,8 +70,8 @@ public class SysAttribute extends BaseEntity {
     private DataItemStatus status = DataItemStatus.ENABLE;
 
     @Schema(title = "属性对应权限", description = "根据属性关联权限数据")
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SUBSELECT)
+    @ManyToMany(fetch = FetchType.LAZY)
+//    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "sys_attribute_permission",
             joinColumns = {@JoinColumn(name = "attribute_id")},
             inverseJoinColumns = {@JoinColumn(name = "permission_id")},
