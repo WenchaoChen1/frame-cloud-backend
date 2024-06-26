@@ -78,7 +78,7 @@ public class SysAttribute extends BaseEntity {
             joinColumns = {@JoinColumn(name = "attribute_id", referencedColumnName = "attribute_id")},
             inverseJoinColumns = {@JoinColumn(name = "menu_id", referencedColumnName = "id")},
             uniqueConstraints = {@UniqueConstraint(columnNames = {"attribute_id", "menu_id"})},
-            indexes = {@Index(name = "sys_attribute_menu_aid_idx", columnList = "attribute_id"), @Index(name = "sys_attribute_menu_pid_idx", columnList = "menu_id")})
+            indexes = {@Index(name = "sys_attribute_menu_aid_idx", columnList = "attribute_id"), @Index(name = "sys_attribute_menu_mid_idx", columnList = "menu_id")})
     private Set<SysMenu> menus = new HashSet<>();
 
     @Schema(title = "属性对应权限", description = "根据属性关联权限数据")
