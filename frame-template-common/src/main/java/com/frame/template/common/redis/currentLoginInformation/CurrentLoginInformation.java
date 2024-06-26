@@ -10,10 +10,13 @@ import java.io.Serializable;
 @Setter
 public class CurrentLoginInformation implements Serializable {
     private String userId;
+    private String userName;
     private String accountId;
+    private String accountName;
     private String tenantId;
     private Integer type;
     private JSON tenant;
     private JSON currentLoginAccount;
     private JSON currentLoginAccountUserPermissions;
+
 }

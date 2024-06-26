@@ -47,7 +47,9 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
         }
         CurrentLoginInformation currentLoginInformation = new CurrentLoginInformation();
         currentLoginInformation.setUserId(account.getUser().getId());
+        currentLoginInformation.setUserName(account.getUser().getUsername());
         currentLoginInformation.setAccountId(account.getId());
+        currentLoginInformation.setAccountName(account.getName());
         currentLoginInformation.setTenantId(account.getTenantId());
         currentLoginInformation.setType(account.getType().getValue());
         currentLoginInformation.setTenant(new JSONObject(tenantService.findByIdToDto(account.getTenantId())));
