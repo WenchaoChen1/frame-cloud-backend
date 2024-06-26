@@ -18,13 +18,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.checkerframework.checker.units.qual.A;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.Objects;
 
 
 /**
@@ -69,6 +66,7 @@ public class SysMenu extends BaseTreeEntity {
     private SysMenuLocation location;
 
     @Schema(title = "数据状态")
+
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private DataItemStatus status = DataItemStatus.ENABLE;
@@ -77,23 +75,23 @@ public class SysMenu extends BaseTreeEntity {
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
     private List<SysTenantMenu> rTenantMenus;
 
-
     @JsonIgnore
-    @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<SysRAttributeMenu> rAttributeMenus;
+    @ManyToMany(mappedBy = "menus",cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    private List<SysAttribute> attributes;
 
-//
-//    public void setSysAttributes(List<SysAttribute> sysAttributes) {
-//        if (sysAttributes != null) {
-//            List<SysRAttributeMenu> sysRAttributeMenus = new ArrayList<>();
-//            for (SysAttribute sysAttribute : sysAttributes) {
-//                SysRAttributeMenu sysRAttributeMenu = new SysRAttributeMenu();
-//                sysRAttributeMenu.setMenu(this);
-//                sysRAttributeMenu.setAttribute(sysAttribute);
-//                sysRAttributeMenu.setId(this.getId() + sysAttribute.getAttributeId());
-//                sysRAttributeMenus.add(sysRAttributeMenu);
-//            }
-//            this.rAttributeMenus = sysRAttributeMenus;
-//        }
-//    }
+    @Override
+    public boolean equals(Object
+
+                                      o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        SysMenu sysMenu = (SysMenu) o;
+        return Objects.equals(parentId, sysMenu.parentId) && Objects.equals(menuName, sysMenu.menuName) && Objects.equals(code, sysMenu.code) && Objects.equals(name, sysMenu.name) && Objects.equals(path, sysMenu.path) && Objects.equals(icon, sysMenu.icon) && Objects.equals(sort, sysMenu.sort) && Objects.equals(description, sysMenu.description) && type == sysMenu.type && location == sysMenu.location && status == sysMenu.status && Objects.equals(rTenantMenus, sysMenu.rTenantMenus) && Objects.equals(attributes, sysMenu.attributes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), parentId, menuName, code, name, path, icon, sort, description, type, location, status, rTenantMenus, attributes);
+    }
 }

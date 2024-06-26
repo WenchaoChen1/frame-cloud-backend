@@ -1,43 +1,56 @@
 package com.gstdev.cloud.service.system.repository;
 
 import com.gstdev.cloud.data.core.repository.BaseRepository;
-import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
-import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRAttributeMenu;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 @Transactional
 public interface SysRAttributeMenuRepository extends BaseRepository<SysRAttributeMenu, String> {
 
+    List<SysRAttributeMenu> findAllByMenuId(String menu);
+
     void deleteAllByMenuId(String menuId);
-    void deleteAllByAttributeAttributeId(String attributeId);
-    void deleteAllByMenuIdAndAttributeAttributeId(String menuId, String attributeId);
+
+    void deleteAllByAttributeId(String attributeId);
+
+    void deleteAllByMenuIdAndAttributeId(String menuId, String attributeId);
+
     void deleteAllByMenuIdIn(List<String> menuIds);
-    void deleteAllByAttributeAttributeIdIn(List<String> attributeIds);
-    void deleteAllByMenuIdAndAttributeAttributeIdIn(String menuId, List<String> attributeIds);
-    void deleteAllByMenuIdInAndAttributeAttributeIdIn(List<String> menuIds, List<String> attributeIds);
-    default SysRAttributeMenu saveAndFlush(SysMenu menu, SysAttribute attribute) {
+
+    void deleteAllByAttributeIdIn(List<String> attributeIds);
+
+    void deleteAllByMenuIdAndAttributeIdIn(String menuId, List<String> attributeIds);
+
+    void deleteAllByMenuIdInAndAttributeIdIn(List<String> menuIds, List<String> attributeIds);
+
+
+    default void saveAndFlush(String menu, String attribute) {
         SysRAttributeMenu sysRAttributeMenu = new SysRAttributeMenu();
-        sysRAttributeMenu.setMenu(menu);
-        sysRAttributeMenu.setAttribute(attribute);
-        return saveAndFlush(sysRAttributeMenu);
-    }
-    default List<SysRAttributeMenu> saveAndFlush(SysMenu menu, List<SysAttribute> attributes) {
-        if (attributes == null || attributes.isEmpty()) {
-            return null;
-        }
-        return attributes.stream().map(attribute -> saveAndFlush(menu, attribute)).collect(Collectors.toList());
+        sysRAttributeMenu.setMenuId(menu);
+        sysRAttributeMenu.setAttributeId(attribute);
+        saveAndFlush(sysRAttributeMenu);
     }
 
-    default List<SysRAttributeMenu> saveAndFlush(List<SysMenu> menus, SysAttribute attribute) {
-        if (menus == null || menus.isEmpty()) {
-            return null;
-        }
-        return menus.stream().map(menu -> saveAndFlush(menu, attribute)).collect(Collectors.toList());
+    default void saveAndFlush(String menu, Set<String> attributes) {
+        attributes.forEach(attribute -> saveAndFlush(menu, attribute));
     }
 
+    default void saveAndFlush(Set<String> menus, String attribute) {
+        menus.forEach(menu -> saveAndFlush(menu, attribute));
+    }
+
+    default void saveAndDeleteAndFlush(String menu, Set<String> attributes) {
+        findAllByMenuId(menu).forEach(sysRAttributeMenu -> {
+            if (!attributes.contains(sysRAttributeMenu.getAttributeId())) {
+                delete(sysRAttributeMenu);
+            }
+        });
+        saveAndFlush(menu, attributes);
+    }
 
 }
+
+

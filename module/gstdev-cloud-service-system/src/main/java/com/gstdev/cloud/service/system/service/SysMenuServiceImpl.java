@@ -4,7 +4,10 @@ import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.service.system.domain.base.menu.MenuDto;
-import com.gstdev.cloud.service.system.domain.entity.*;
+import com.gstdev.cloud.service.system.domain.entity.SysAccount;
+import com.gstdev.cloud.service.system.domain.entity.SysMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysRole;
+import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.AccountMenuPermissionsDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.AccountMenuPermissionsQO;
@@ -13,8 +16,10 @@ import com.gstdev.cloud.service.system.domain.pojo.sysMenu.UpdateMenuManageIO;
 import com.gstdev.cloud.service.system.mapper.SysMenuMapper;
 import com.gstdev.cloud.service.system.repository.*;
 import jakarta.annotation.Resource;
+import lombok.Getter;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,13 +29,12 @@ import java.util.stream.Collectors;
 public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, SysMenuRepository, SysMenuMapper, MenuDto> implements SysMenuService {
 
     @Resource
-    private SysRoleRepository roleRepository;
-    @Resource
     private SysAccountRepository accountRepository;
+//    @Resource
+    @Getter
+    private SysMenuService service;
     @Resource
     private SysMenuRepository menuRepository;
-    @Resource
-    private SysAttributeRepository sysAttributeRepository;
     @Resource
     private SysRAttributeMenuRepository sysRAttributeMenuRepository;
     @Resource
@@ -47,82 +51,31 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
         return menuRepository;
     }
 
+    @Override
     public SysMenuMapper getMapper() {
         return menuMapper;
     }
-
-//    @Override
-//    public Result<List<MenuDto>> getAllByRoleMenuToTree(String roleId) {
-//        Optional<SysRole> byId = roleRepository.findById(roleId);
-//        List<SysMenu> menus = byId.get().getRTenantMenus().stream().map(RTenantMenu::getMenu).toList();
-//        return Result.success(new TreeFactory<String, MenuDto>().buildTree(getMapper().toDto(menus)));
-//    }
-
-//    @Override
-//    public Result<MenuDto> getAllTenantMenuIds(String tenantId) {
-//        MenuFindAllByQueryCriteria menuFindAllByQueryCriteria = new MenuFindAllByQueryCriteria();
-//        menuFindAllByQueryCriteria.setTenantId(tenantId);
-//        List<MenuDto> allByQueryCriteriaToDto = findAllByQueryCriteriaToDtoToTree(menuFindAllByQueryCriteria);
-//        return Result.success(getMenuParentChildren(allByQueryCriteriaToDto));
-//    }
-
-//    public MenuDto getMenuParentChildren(List<MenuDto> menuDtos) {
-//        MenuDto menu = new MenuDto();
-//        List<String> checkedMenuIds = new ArrayList<>();
-//        List<String> halfCheckedMenuIds = new ArrayList<>();
-//        for (MenuDto menuDto : menuDtos) {
-//            if (menuDto.getChildren() == null || menuDto.getChildren().size() == 0) {
-//                checkedMenuIds.add(menuDto.getId());
-//            } else {
-//                halfCheckedMenuIds.add(menuDto.getId());
-//                MenuDto menuParentChildren = getMenuParentChildren(menuDto.getChildren());
-//                checkedMenuIds.addAll(menuParentChildren.getCheckedMenuId());
-//                halfCheckedMenuIds.addAll(menuParentChildren.getHalfCheckedMenuId());
-//            }
-//        }
-//        checkedMenuIds.addAll(menu.getCheckedMenuId());
-//        halfCheckedMenuIds.addAll(menu.getHalfCheckedMenuId());
-//        menu.setCheckedMenuId(checkedMenuIds);
-//        menu.setHalfCheckedMenuId(halfCheckedMenuIds);
-//        return menu;
-//    }
-
-//    List<MenuDto> findAllByQueryCriteriaToDtoToTree(MenuFindAllByQueryCriteria menuFindAllByQueryCriteria) {
-//        return findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, menuFindAllByQueryCriteria, criteriaBuilder));
-//    }
-//
-//    List<AccountMenuPermissionsDto> findAllByQueryCriteriaToDtoToTree(MenuFindAllByQueryCriteria menuFindAllByQueryCriteria) {
-//        return findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, menuFindAllByQueryCriteria, criteriaBuilder));
-//    }
-
 
     @Override
     public List<AccountMenuPermissionsDto> getAccountMenuPermissions(String accountId) {
         SysAccount account = accountRepository.findById(accountId).get();
         AccountMenuPermissionsQO accountMenuPermissionsQO = new AccountMenuPermissionsQO();
-        List<SysMenu> sysMenuList = null;
+        List<SysMenu> sysMenuList = new ArrayList<>();
         if (account.getType().equals(SysAccountType.SUPER)) {
-            sysMenuList = findAll();
+            sysMenuList = getService().findAll();
         } else if (account.getType().equals(SysAccountType.ADMIN)) {
             accountMenuPermissionsQO.setTenantId(account.getTenantId());
-            sysMenuList = findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, accountMenuPermissionsQO, criteriaBuilder));
+            sysMenuList = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, accountMenuPermissionsQO, criteriaBuilder));
         } else if (account.getType().equals(SysAccountType.USER)) {
             Map<String, SysMenu> collect = new HashMap<>();
             for (SysRole role : account.getRoles()) {
-                List<SysMenu> menus = role.getTenantMenus().stream().map(SysTenantMenu::getMenu).toList();
-                Map<String, List<SysMenu>> collect2 = menus.stream().collect(Collectors.groupingBy(SysMenu::getId));
                 Map<String, SysMenu> collect1 = role.getTenantMenus().stream().map(SysTenantMenu::getMenu).collect(Collectors.groupingBy(SysMenu::getId,
                     Collectors.collectingAndThen(Collectors.toList(), value -> value.get(0))));
                 collect.putAll(collect1);
             }
             sysMenuList = collect.values().stream().toList();
         }
-        sysMenuList = sysMenuList.stream().filter(sysMenu -> {
-            if (sysMenu.getStatus().equals(DataItemStatus.ENABLE)) {
-                return true;
-            }
-            return false;
-        }).collect(Collectors.toList());
+        sysMenuList = sysMenuList.stream().filter(sysMenu -> sysMenu.getStatus().equals(DataItemStatus.ENABLE)).toList();
         return getMapper().toAccountMenuPermissionsDtoToTree(sysMenuList);
     }
 
@@ -130,23 +83,17 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
     @Transactional
     public void insertAMenuManage(InsertMenuManageIO insertMenuManageIO) {
         SysMenu entity = getMapper().toEntity(insertMenuManageIO);
-//        sysRAttributeMenuRepository.saveAndFlush(entity,sysAttributeRepository.findAllById(insertMenuManageIO.getAttributeIds()));
-//        entity.setSysAttributes(sysAttributeRepository.findAllById(insertMenuManageIO.getAttributeIds()));
-        saveAndFlush(entity);
-        for (String attributeId : insertMenuManageIO.getAttributeIds()) {
-            SysRAttributeMenu sysRAttributeMenu = new SysRAttributeMenu();
-            sysRAttributeMenu.setId(entity.getId(), attributeId);
-            sysRAttributeMenuRepository.saveAndFlush(sysRAttributeMenu);
-        }
-
+        SysMenu sysMenu = getService().saveAndFlush(entity);
+        sysRAttributeMenuRepository.saveAndFlush(sysMenu.getId(), insertMenuManageIO.getAttributeIds());
     }
 
     @Override
+    @Transactional
     public void updateMenuManage(UpdateMenuManageIO updateMenuManageIO) {
-        SysMenu sysMenu = findById(updateMenuManageIO.getId());
+        SysMenu sysMenu = getService().findById(updateMenuManageIO.getId());
         menuMapper.copy(updateMenuManageIO, sysMenu);
-//        sysMenu.setSysAttributes(sysAttributeRepository.findAllById(updateMenuManageIO.getAttributeIds()));
-        SysMenu sysMenu1 = saveAndFlush(sysMenu);
+        SysMenu sysMenu1 = getService().saveAndFlush(sysMenu);
+        sysRAttributeMenuRepository.saveAndDeleteAndFlush(sysMenu1.getId(), updateMenuManageIO.getAttributeIds());
     }
 
 

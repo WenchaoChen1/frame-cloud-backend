@@ -1,6 +1,5 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.generator.SysAttributeUuidGenerator;
@@ -9,9 +8,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -71,14 +71,19 @@ public class SysAttribute extends BaseEntity {
     @Enumerated(EnumType.ORDINAL)
     private DataItemStatus status = DataItemStatus.ENABLE;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "attribute", fetch = FetchType.LAZY)
-    private List<SysRAttributeMenu> rAttributeMenus;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @Fetch(FetchMode.SUBSELECT)
+    @JoinTable(name = "sys_r_attribute_menu",
+            joinColumns = {@JoinColumn(name = "attribute_id", referencedColumnName = "attribute_id")},
+            inverseJoinColumns = {@JoinColumn(name = "menu_id", referencedColumnName = "id")},
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"attribute_id", "menu_id"})},
+            indexes = {@Index(name = "sys_attribute_menu_aid_idx", columnList = "attribute_id"), @Index(name = "sys_attribute_menu_pid_idx", columnList = "menu_id")})
+    private Set<SysMenu> menus = new HashSet<>();
 
     @Schema(title = "属性对应权限", description = "根据属性关联权限数据")
     @ManyToMany(fetch = FetchType.LAZY)
-//    @Fetch(FetchMode.SUBSELECT)
+    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "sys_r_attribute_permission",
         joinColumns = {@JoinColumn(name = "attribute_id")},
         inverseJoinColumns = {@JoinColumn(name = "permission_id")},
@@ -92,5 +97,13 @@ public class SysAttribute extends BaseEntity {
 
     public void addPermissions(SysPermission permissions) {
         this.permissions.add(permissions);
+    }
+
+    public void addMenus(Set<SysMenu> menus) {
+        this.menus.addAll(menus);
+    }
+
+    public void addMenus(SysMenu menus) {
+        this.menus.add(menus);
     }
 }
