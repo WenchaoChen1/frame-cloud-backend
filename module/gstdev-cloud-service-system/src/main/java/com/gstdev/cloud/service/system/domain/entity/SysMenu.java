@@ -82,18 +82,18 @@ public class SysMenu extends BaseTreeEntity {
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<SysRAttributeMenu> rAttributeMenus;
 
-
-    public void setSysAttributes(List<SysAttribute> sysAttributes) {
-        if (sysAttributes != null) {
-            List<SysRAttributeMenu> sysRAttributeMenus = new ArrayList<>();
-            for (SysAttribute sysAttribute : sysAttributes) {
-                SysRAttributeMenu sysRAttributeMenu = new SysRAttributeMenu();
-                sysRAttributeMenu.setMenu(this);
-                sysRAttributeMenu.setAttribute(sysAttribute);
-                sysRAttributeMenu.setId(this.getId() + sysAttribute.getAttributeId());
-                sysRAttributeMenus.add(sysRAttributeMenu);
-            }
-            this.rAttributeMenus = sysRAttributeMenus;
-        }
-    }
+//
+//    public void setSysAttributes(List<SysAttribute> sysAttributes) {
+//        if (sysAttributes != null) {
+//            List<SysRAttributeMenu> sysRAttributeMenus = new ArrayList<>();
+//            for (SysAttribute sysAttribute : sysAttributes) {
+//                SysRAttributeMenu sysRAttributeMenu = new SysRAttributeMenu();
+//                sysRAttributeMenu.setMenu(this);
+//                sysRAttributeMenu.setAttribute(sysAttribute);
+//                sysRAttributeMenu.setId(this.getId() + sysAttribute.getAttributeId());
+//                sysRAttributeMenus.add(sysRAttributeMenu);
+//            }
+//            this.rAttributeMenus = sysRAttributeMenus;
+//        }
+//    }
 }

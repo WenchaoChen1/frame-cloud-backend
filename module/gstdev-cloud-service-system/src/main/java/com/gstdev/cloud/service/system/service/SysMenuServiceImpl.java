@@ -145,7 +145,7 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
     public void updateMenuManage(UpdateMenuManageIO updateMenuManageIO) {
         SysMenu sysMenu = findById(updateMenuManageIO.getId());
         menuMapper.copy(updateMenuManageIO, sysMenu);
-        sysMenu.setSysAttributes(sysAttributeRepository.findAllById(updateMenuManageIO.getAttributeIds()));
+//        sysMenu.setSysAttributes(sysAttributeRepository.findAllById(updateMenuManageIO.getAttributeIds()));
         SysMenu sysMenu1 = saveAndFlush(sysMenu);
     }
 
