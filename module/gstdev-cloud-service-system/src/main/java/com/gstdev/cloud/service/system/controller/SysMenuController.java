@@ -60,8 +60,8 @@ public class SysMenuController implements ResultController {
 
     @PostMapping("/insert-menu-manage")
     @Operation(summary = "insert-menu-manage")
-    public Result<String> insertAMenuManage(@RequestBody @Validated InsertMenuManageIO insertMenuManageIO) {
-        this.getService().insertAMenuManage(insertMenuManageIO);
+    public Result<String> insertMenuManage(@RequestBody @Validated InsertMenuManageIO insertMenuManageIO) {
+        this.getService().insertMenuManage(insertMenuManageIO);
         return Result.success();
     }
 

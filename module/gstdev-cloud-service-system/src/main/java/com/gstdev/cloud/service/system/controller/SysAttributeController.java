@@ -5,14 +5,12 @@ import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
-import com.gstdev.cloud.service.system.domain.pojo.sysAttribute.AttributeManageAssignedPermissionIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysAttribute.AttributeManageDetailVo;
-import com.gstdev.cloud.service.system.domain.pojo.sysAttribute.AttributeManageQO;
-import com.gstdev.cloud.service.system.domain.pojo.sysAttribute.UpdateAttributeManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysAttribute.*;
 import com.gstdev.cloud.service.system.mapper.SysAttributeMapper;
 import com.gstdev.cloud.service.system.service.SysAttributeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.validation.annotation.Validated;
@@ -45,10 +43,20 @@ public class SysAttributeController implements ResultController {
 
     // ********************************* Attribute Manage *****************************************
 
-    @Tag(name = "Attribute Manage")
+    @Tags({
+        @Tag(name = "Menu Manage Assigned Attribute"),
+    })
+    @GetMapping("/get-menu-manage-attribute-page")
+    @Operation(summary = "get-menu-manage-attribute-page")
+    public Result<Map<String, Object>> getMenuManageAttributePage(MenuManageAttributePageQO attributePageQO, BasePage pageable) {
+        return this.result(this.getMapper().toMenuManageAttributePageVo(this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, attributePageQO, criteriaBuilder), pageable)));
+    }
+
+    @Tags({@Tag(name = "Attribute Manage"),
+    })
     @GetMapping("/get-attribute-manage-page")
     @Operation(summary = "get-attribute-manage-page")
-    public Result<Map<String, Object>> getAttributeManagePage(AttributeManageQO sysAttributeAttributeManageQO, BasePage pageable) {
+    public Result<Map<String, Object>> getAttributeManagePage(AttributeManagePageQO sysAttributeAttributeManageQO, BasePage pageable) {
         return this.result(this.getMapper().toAttributeManagePageVo(this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, sysAttributeAttributeManageQO, criteriaBuilder), pageable)));
     }
 

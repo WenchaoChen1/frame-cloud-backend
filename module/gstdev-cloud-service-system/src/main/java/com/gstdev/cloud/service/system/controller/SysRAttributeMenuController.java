@@ -7,6 +7,7 @@ import com.gstdev.cloud.service.system.domain.pojo.sysRAttributeMenu.UpdateMenuA
 import com.gstdev.cloud.service.system.service.SysRAttributeMenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,9 @@ public class SysRAttributeMenuController implements ResultController {
         return Result.success();
     }
 
+    @Tags({
+        @Tag(name = "Menu Manage Assigned Attribute"),
+    })
     @PostMapping("/update-menu-assigned-attribute")
     @Operation(summary = "update-menu-assigned-attribute")
     public Result<String> updateMenuAssignedAttributes(@RequestBody UpdateMenuAssignedAttributesIO updateMenuAssignedAttributesIO) {
@@ -45,6 +49,9 @@ public class SysRAttributeMenuController implements ResultController {
         return result(getService().getAllMenuIdByAttributeId(attributeId));
     }
 
+    @Tags({
+        @Tag(name = "Menu Manage Assigned Attribute"),
+    })
     @GetMapping("/get-all-attribute-id-by-menu-id/{attributeId}")
     @Operation(summary = "get-all-attribute-id-by-menu-id")
     public Result<Set<String>> getAllAttributeIdByMenuId(@PathVariable String attributeId) {

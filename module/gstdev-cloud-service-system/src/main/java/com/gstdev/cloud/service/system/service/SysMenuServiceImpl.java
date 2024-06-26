@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.service.system.domain.base.menu.MenuDto;
@@ -27,7 +28,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Transactional(readOnly = true)
-public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, SysMenuRepository, SysMenuMapper, MenuDto> implements SysMenuService {
+public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenuRepository> implements SysMenuService {
 
     @Resource
     private SysAccountRepository accountRepository;
@@ -41,8 +42,9 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
 
 
     public SysMenuServiceImpl(SysMenuRepository menuRepository, SysMenuMapper menuMapper) {
-        super(menuRepository, menuMapper);
+        super(menuRepository);
         this.menuRepository = menuRepository;
+        this.menuMapper = menuMapper;
     }
 
     @Override
@@ -50,7 +52,6 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
         return menuRepository;
     }
 
-    @Override
     public SysMenuMapper getMapper() {
         return menuMapper;
     }
@@ -85,7 +86,7 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
 
     @Override
     @Transactional
-    public void insertAMenuManage(InsertMenuManageIO insertMenuManageIO) {
+    public void insertMenuManage(InsertMenuManageIO insertMenuManageIO) {
         SysMenu entity = getMapper().toEntity(insertMenuManageIO);
         getService().saveAndFlush(entity);
     }

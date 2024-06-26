@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Data
-public class AttributeManageQO implements Serializable {
+public class AttributeManagePageQO implements Serializable {
 
     private static final long serialVersionUID = 3163118978801722144L;
     @Query(type = Query.Type.INNER_LIKE)

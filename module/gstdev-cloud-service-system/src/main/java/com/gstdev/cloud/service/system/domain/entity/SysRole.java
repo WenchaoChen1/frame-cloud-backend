@@ -58,8 +58,6 @@ public class SysRole extends BaseTreeEntity {
 //    @Column(name = "deleted", nullable = false)
 //    private Integer deleted = 0;
 
-
-
     @ManyToMany
     @JoinTable(name = "sys_r_role_tenant_menu", joinColumns = {
             @JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {

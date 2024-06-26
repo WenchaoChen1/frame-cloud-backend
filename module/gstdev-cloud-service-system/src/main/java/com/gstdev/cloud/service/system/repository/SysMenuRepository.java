@@ -1,12 +1,13 @@
 package com.gstdev.cloud.service.system.repository;
 
 
+import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.data.core.repository.BaseTreeRepository;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 
 import java.util.List;
 
-public interface SysMenuRepository extends BaseTreeRepository<SysMenu, String> {
+public interface SysMenuRepository extends BaseRepository<SysMenu, String> {
     /**
      * 父级主键查询
      *

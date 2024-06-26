@@ -10,10 +10,12 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuLocation;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
+import com.gstdev.cloud.service.system.domain.generator.SysAttributeUuidGenerator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -34,10 +36,15 @@ import java.util.Objects;
 @Table(name = "sys_menu", schema = "public")
 //@Where(clause = "deleted = 0")
 //@SQLDelete(sql = "UPDATE sys_menu SET deleted=1 WHERE id =?")
-public class SysMenu extends BaseTreeEntity {
+public class SysMenu extends BaseEntity {
 
-//    @Column(name = "deleted", nullable = false)
+    //    @Column(name = "deleted", nullable = false)
 //    private Integer deleted = 0;
+    @Schema(title = "sys_menuID")
+    @Id
+    @SysAttributeUuidGenerator
+    @Column(name = "id", length = 64)
+    private String id;
 
     @Column(name = "parent_id", length = 36, nullable = false)
     private String parentId;
@@ -76,13 +83,13 @@ public class SysMenu extends BaseTreeEntity {
     private List<SysTenantMenu> rTenantMenus;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "menus",cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "menus", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<SysAttribute> attributes;
 
     @Override
     public boolean equals(Object
 
-                                      o) {
+                              o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
