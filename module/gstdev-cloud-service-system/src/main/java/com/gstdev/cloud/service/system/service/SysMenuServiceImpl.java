@@ -4,10 +4,7 @@ import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.service.system.domain.base.menu.MenuDto;
-import com.gstdev.cloud.service.system.domain.entity.SysAccount;
-import com.gstdev.cloud.service.system.domain.entity.SysMenu;
-import com.gstdev.cloud.service.system.domain.entity.SysRole;
-import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
+import com.gstdev.cloud.service.system.domain.entity.*;
 import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.AccountMenuPermissionsDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.AccountMenuPermissionsQO;
@@ -134,8 +131,14 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
     public void insertAMenuManage(InsertMenuManageIO insertMenuManageIO) {
         SysMenu entity = getMapper().toEntity(insertMenuManageIO);
 //        sysRAttributeMenuRepository.saveAndFlush(entity,sysAttributeRepository.findAllById(insertMenuManageIO.getAttributeIds()));
-        entity.setSysAttributes(sysAttributeRepository.findAllById(insertMenuManageIO.getAttributeIds()));
+//        entity.setSysAttributes(sysAttributeRepository.findAllById(insertMenuManageIO.getAttributeIds()));
         saveAndFlush(entity);
+        for (String attributeId : insertMenuManageIO.getAttributeIds()) {
+            SysRAttributeMenu sysRAttributeMenu = new SysRAttributeMenu();
+            sysRAttributeMenu.setId(entity.getId(), attributeId);
+            sysRAttributeMenuRepository.saveAndFlush(sysRAttributeMenu);
+        }
+
     }
 
     @Override
