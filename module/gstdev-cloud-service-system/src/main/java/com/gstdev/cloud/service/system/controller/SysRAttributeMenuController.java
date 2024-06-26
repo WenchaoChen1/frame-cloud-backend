@@ -24,7 +24,6 @@ public class SysRAttributeMenuController implements ResultController {
         return accountService;
     }
 
-
     @Tag(name = "Attribute Menu Manage")
     @PostMapping("/update-attribute-assigned-menus")
     @Operation(summary = "update-attribute-assigned-menus")
@@ -39,19 +38,6 @@ public class SysRAttributeMenuController implements ResultController {
         this.getService().updateMenuAssignedAttributes(updateMenuAssignedAttributesIO.getMenuId(), updateMenuAssignedAttributesIO.getAttributeIds());
         return Result.success();
     }
-//    @PostMapping("/update-attribute-assigned-menus")
-//    @Operation(summary = "update-attribute-assigned-menus")
-//    public Result<String> updateAttributeAssignedMenus(@RequestParam(name = "attributeId") String attributeId, @RequestParam(name = "menuIds") Set<String> menuIds) {
-//        this.getService().updateAttributeAssignedMenus(attributeId, menuIds);
-//        return Result.success();
-//    }
-//
-//    @PostMapping("/update-menu-assigned-attribute")
-//    @Operation(summary = "update-menu-assigned-attribute")
-//    public Result<String> updateMenuAssignedAttributes(@RequestParam(name = "menuId") String menuId, @RequestParam(name = "attributeIds") Set<String> attributeIds) {
-//        this.getService().updateMenuAssignedAttributes(menuId, attributeIds);
-//        return Result.success();
-//    }
 
     @GetMapping("/get-all-menu-id-by-attribute-id/{attributeId}")
     @Operation(summary = "get-all-menu-id-by-attribute-id")
