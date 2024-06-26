@@ -69,12 +69,8 @@ public class SysTenantController implements ResultController {
     @Tag(name = "Tenant Manage")
     @GetMapping("/get-tenant-manage-tree")
     @Operation(summary = "get-tenant-manage-tree")
-    public Result<String> getTenantManageTree(TenantManageTreeQO tenantFindAllByQueryCriteria) {
-//        if (tenantFindAllByQueryCriteria.getTenantId() != null) {
-//            List<TenantDto> itselfAndSubsetsToDto = getService().findItselfAndSubsetsToDto(tenantFindAllByQueryCriteria.getTenantId());
-//            List<String> tenantIds = itselfAndSubsetsToDto.stream().map(TenantDto::getId).toList();
-//            tenantFindAllByQueryCriteria.setTenantIds(tenantIds);
-//        }
+    public Result getTenantManageTree(TenantManageTreeQO tenantFindAllByQueryCriteria) {
+
         List<SysTenant> all = this.getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, tenantFindAllByQueryCriteria, criteriaBuilder));
         List<TenantManageTreeVo> tenantManageTreeVoToTree = this.getMapper().toTenantManageTreeVoToTree(all);
         if (ObjectUtils.isEmpty(tenantFindAllByQueryCriteria.getTenantId())) {
