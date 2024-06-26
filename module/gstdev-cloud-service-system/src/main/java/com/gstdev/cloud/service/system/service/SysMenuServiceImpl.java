@@ -14,9 +14,12 @@ import com.gstdev.cloud.service.system.domain.pojo.sysMenu.AccountMenuPermission
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.InsertMenuManageIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.UpdateMenuManageIO;
 import com.gstdev.cloud.service.system.mapper.SysMenuMapper;
-import com.gstdev.cloud.service.system.repository.*;
+import com.gstdev.cloud.service.system.repository.SysAccountRepository;
+import com.gstdev.cloud.service.system.repository.SysMenuRepository;
+import com.gstdev.cloud.service.system.repository.SysRAttributeMenuRepository;
 import jakarta.annotation.Resource;
 import lombok.Getter;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -30,7 +33,8 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
 
     @Resource
     private SysAccountRepository accountRepository;
-//    @Resource
+    @Resource
+    @Lazy
     @Getter
     private SysMenuService service;
     @Resource

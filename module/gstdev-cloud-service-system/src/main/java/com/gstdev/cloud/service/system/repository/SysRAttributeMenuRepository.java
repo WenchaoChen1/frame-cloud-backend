@@ -3,6 +3,7 @@ package com.gstdev.cloud.service.system.repository;
 import com.gstdev.cloud.data.core.repository.BaseRepository;
 import com.gstdev.cloud.service.system.domain.entity.SysRAttributeMenu;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 import java.util.Set;
@@ -28,6 +29,9 @@ public interface SysRAttributeMenuRepository extends BaseRepository<SysRAttribut
 
 
     default void saveAndFlush(String menu, String attribute) {
+        if (ObjectUtils.isEmpty(menu) || ObjectUtils.isEmpty(attribute)) {
+            return;
+        }
         SysRAttributeMenu sysRAttributeMenu = new SysRAttributeMenu();
         sysRAttributeMenu.setMenuId(menu);
         sysRAttributeMenu.setAttributeId(attribute);
@@ -35,14 +39,23 @@ public interface SysRAttributeMenuRepository extends BaseRepository<SysRAttribut
     }
 
     default void saveAndFlush(String menu, Set<String> attributes) {
+        if (ObjectUtils.isEmpty(menu) || ObjectUtils.isEmpty(attributes)) {
+            return;
+        }
         attributes.forEach(attribute -> saveAndFlush(menu, attribute));
     }
 
     default void saveAndFlush(Set<String> menus, String attribute) {
+        if (ObjectUtils.isEmpty(menus) || ObjectUtils.isEmpty(attribute)) {
+            return;
+        }
         menus.forEach(menu -> saveAndFlush(menu, attribute));
     }
 
     default void saveAndDeleteAndFlush(String menu, Set<String> attributes) {
+        if (ObjectUtils.isEmpty(menu) || ObjectUtils.isEmpty(attributes)) {
+            return;
+        }
         findAllByMenuId(menu).forEach(sysRAttributeMenu -> {
             if (!attributes.contains(sysRAttributeMenu.getAttributeId())) {
                 delete(sysRAttributeMenu);
