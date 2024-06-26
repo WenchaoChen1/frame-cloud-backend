@@ -21,6 +21,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.SQLDelete;
 
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,7 @@ import java.util.Objects;
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 @Table(name = "sys_menu", schema = "public")
 //@Where(clause = "deleted = 0")
-//@SQLDelete(sql = "UPDATE sys_menu SET deleted=1 WHERE id =?")
+@SQLDelete(sql = "UPDATE sys_menu SET status=3 WHERE id =?")
 public class SysMenu extends BaseEntity {
 
     //    @Column(name = "deleted", nullable = false)
