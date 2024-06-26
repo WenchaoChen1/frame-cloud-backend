@@ -72,35 +72,35 @@ public class SysRoleController implements ResultController {
     @Tag(name = "Role Manage")
     @PostMapping("/insert-role-manage")
     @Operation(summary = "insert-role-manage")
-    public Result insertRoleManage(@RequestBody @Validated InsertRoleManageIO insertRoleManageIO) {
+    public Result<String> insertRoleManage(@RequestBody @Validated InsertRoleManageIO insertRoleManageIO) {
         this.getService().insertAndUpdate(roleVoMapper.toEntity(insertRoleManageIO));
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Role Manage")
     @PutMapping("/update-role-manage")
     @Operation(summary = "update-role-manage")
-    public Result updateRoleManage(@RequestBody @Validated UpdateRoleManageIO updateRoleManageIO) {
+    public Result<String> updateRoleManage(@RequestBody @Validated UpdateRoleManageIO updateRoleManageIO) {
         SysRole sysRole = this.getService().findById(updateRoleManageIO.getId());
         roleVoMapper.copy(updateRoleManageIO, sysRole);
         this.getService().insertAndUpdate(sysRole);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Role Manage")
     @Operation(summary = "delete-role-manage")
     @DeleteMapping("/delete-role-manage/{id}")
-    public Result deleteRoleManage(@PathVariable String id) {
+    public Result<String> deleteRoleManage(@PathVariable String id) {
         getService().deleteById(id);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Role Manage")
     @Operation(summary = "delete-all-role-manage")
     @DeleteMapping("/delete-all-role-manage")
-    public Result deleteAllRoleManage(List<String> id) {
+    public Result<String> deleteAllRoleManage(List<String> id) {
         getService().deleteAllById(id);
-        return result();
+        return Result.success();
     }
 
     // 角色关联菜单获取这个角色的menu id

@@ -56,41 +56,41 @@ public class SysAccountController implements ResultController {
     @Tag(name = "Account Manage")
     @PostMapping("/insert-account-manage")
     @Operation(summary = "insert-account-manage")
-    public Result insertAccountManage(@RequestBody @Validated InsertAccountManageIO insertAccountManageIO) {
+    public Result<String> insertAccountManage(@RequestBody @Validated InsertAccountManageIO insertAccountManageIO) {
         this.getService().insertAccountManage(insertAccountManageIO);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Account Manage")
     @PutMapping("/update-account-manage")
     @Operation(summary = "update-account-manage")
-    public Result updateAccountManage(@RequestBody @Validated UpdateAccountManageIO updateAccountManageIO) {
+    public Result<String> updateAccountManage(@RequestBody @Validated UpdateAccountManageIO updateAccountManageIO) {
         this.getService().updateAccountManage(updateAccountManageIO);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Account Manage")
     @PostMapping("/insert-account-manage-initialization")
     @Operation(summary = "insert-account-manage-initialization")
-    public Result insertAccountManageInitialization(@RequestBody @Validated InsertAccountManageInitializationIO userInsertInput) {
+    public Result<String> insertAccountManageInitialization(@RequestBody @Validated InsertAccountManageInitializationIO userInsertInput) {
         getService().insertAccountManageInitializationToDto(userInsertInput);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Account Manage")
     @DeleteMapping("/delete-account-manage/{id}")
     @Operation(summary = "delete-account-manage")
-    public Result deleteAccountManage(@PathVariable String id) {
+    public Result<String> deleteAccountManage(@PathVariable String id) {
         getService().deleteById(id);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Account Manage")
     @Operation(summary = "delete-all-account-manage")
     @DeleteMapping("/delete-all-account-manage")
-    public Result deleteAllAccountManage(List<String> id) {
+    public Result<String> deleteAllAccountManage(List<String> id) {
         getService().deleteAllById(id);
-        return result();
+        return Result.success();
     }
 
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/

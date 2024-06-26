@@ -53,9 +53,9 @@ public class SysTenantMenuController implements POJOController<SysTenantMenu, St
     @Tag(name = "Tenant Manage")
     @PostMapping("/insert-tenant-menu")
     @Operation(summary = "insert-tenant-menu")
-    public Result insertTenantMenu(@RequestBody @Validated InsertTenantMenuIO insertTenantMenuIO) {
+    public Result<String> insertTenantMenu(@RequestBody @Validated InsertTenantMenuIO insertTenantMenuIO) {
         getService().insertTenantMenu(insertTenantMenuIO);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Tenant Manage")

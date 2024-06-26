@@ -57,7 +57,7 @@
 //
 @Operation(summary = "Delete file")
 //    @DeleteMapping
-//    public Result delete(@PathVariable final String id) {
+//    public Result<String> delete(@PathVariable final String id) {
 //        return deleteByIdToResult(id);
 //    }
 //

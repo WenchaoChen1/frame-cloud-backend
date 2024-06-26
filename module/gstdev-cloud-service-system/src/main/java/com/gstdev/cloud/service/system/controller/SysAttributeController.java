@@ -64,27 +64,27 @@ public class SysAttributeController implements ResultController {
 //    @Tag(name = "Attribute Manage")
 //    @PostMapping("/insert-attribute-manage")
 //    @Operation(summary = "insert-attribute-manage")
-//    public Result insertAttributeManage(@RequestBody @Validated InsertAttributeManageIO insertAttributeManageIO) {
+//    public Result<String> insertAttributeManage(@RequestBody @Validated InsertAttributeManageIO insertAttributeManageIO) {
 //        this.getService().insertAndUpdate(attributeVoMapper.toEntity(insertAttributeManageIO));
-//        return result();
+//        return Result.success();
 //    }
 
     @Tag(name = "Attribute Manage")
     @PutMapping("/update-attribute-manage")
     @Operation(summary = "update-attribute-manage")
-    public Result updateAttributeManage(@RequestBody @Validated UpdateAttributeManageIO updateAttributeManageIO) {
+    public Result<String> updateAttributeManage(@RequestBody @Validated UpdateAttributeManageIO updateAttributeManageIO) {
         SysAttribute sysAttribute = this.getService().findById(updateAttributeManageIO.getAttributeId());
         getMapper().copy(updateAttributeManageIO, sysAttribute);
         this.getService().insertAndUpdate(sysAttribute);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Attribute Manage")
     @PostMapping("/update-attribute-manage-assigned-permission")
     @Operation(summary = "update-attribute-manage-assigned-permission")
-    public Result updateAttributeManageAssignedPermission(@RequestBody AttributeManageAssignedPermissionIO attributeManageAssignedPermissionIO) {
+    public Result<String> updateAttributeManageAssignedPermission(@RequestBody AttributeManageAssignedPermissionIO attributeManageAssignedPermissionIO) {
         this.getService().updateAttributeManageAssignedPermission(attributeManageAssignedPermissionIO);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Attribute Manage")
@@ -97,16 +97,16 @@ public class SysAttributeController implements ResultController {
 //    @Tag(name = "Attribute Manage")
 //    @Operation(summary = "delete-attribute-manage")
 //    @DeleteMapping("/delete-attribute-manage/{id}")
-//    public Result deleteAttributeManage(@PathVariable String id) {
+//    public Result<String> deleteAttributeManage(@PathVariable String id) {
 //        getService().deleteById(id);
-//        return result();
+//        return Result.success();
 //    }
 //
 //    @Tag(name = "Attribute Manage")
 //    @Operation(summary = "/delete-all-attribute-manage")
 //    @DeleteMapping("/delete-all-attribute-manage")
-//    public Result deleteAllAttributeManage(List<String> id) {
+//    public Result<String> deleteAllAttributeManage(List<String> id) {
 //        getService().deleteAllById(id);
-//        return result();
+//        return Result.success();
 //    }
 }

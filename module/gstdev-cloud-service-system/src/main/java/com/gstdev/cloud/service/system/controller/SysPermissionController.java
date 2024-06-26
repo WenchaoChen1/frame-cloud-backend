@@ -75,7 +75,7 @@ public class SysPermissionController implements ResultController {
     @PostMapping("/insert-permission-manage")
     public Result<SysPermissionVo> insertAndUpdatePermissionManage(@RequestBody @Validated InsertPermissionManageIO insertPermissionManageIO) {
         this.getService().insertAndUpdate(getMapper().toEntity(insertPermissionManageIO));
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Permission Manage")
@@ -85,24 +85,24 @@ public class SysPermissionController implements ResultController {
         SysPermission sysPermission = this.getService().findById(updatePermissionManageIO.getPermissionId());
         getMapper().copy(updatePermissionManageIO, sysPermission);
         this.getService().insertAndUpdate(sysPermission);
-        return result();
+        return Result.success();
     }
 
 
     @Tag(name = "Permission Manage")
     @Operation(summary = "delete-permission-manage")
     @DeleteMapping("/delete-permission-manage/{id}")
-    public Result deletePermissionManage(@PathVariable String id) {
+    public Result<String> deletePermissionManage(@PathVariable String id) {
         this.getService().deleteById(id);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Permission Manage")
     @Operation(summary = "delete-all-permission-manage")
     @DeleteMapping("/delete-all-permission-manage")
-    public Result deleteAllPermissionManage(List<String> id) {
+    public Result<String> deleteAllPermissionManage(List<String> id) {
         this.getService().deleteAllById(id);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Permission Manage")
@@ -116,7 +116,7 @@ public class SysPermissionController implements ResultController {
     @Operation(summary = "permissionInit")
     public Result<PermissionManageDetailVo> permissionInit() {
         getService().permissionInit();
-        return result();
+        return Result.success();
     }
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 

@@ -69,7 +69,7 @@ public class SysTenantController implements ResultController {
     @Tag(name = "Tenant Manage")
     @GetMapping("/get-tenant-manage-tree")
     @Operation(summary = "get-tenant-manage-tree")
-    public Result getTenantManageTree(TenantManageTreeQO tenantFindAllByQueryCriteria) {
+    public Result<String> getTenantManageTree(TenantManageTreeQO tenantFindAllByQueryCriteria) {
 //        if (tenantFindAllByQueryCriteria.getTenantId() != null) {
 //            List<TenantDto> itselfAndSubsetsToDto = getService().findItselfAndSubsetsToDto(tenantFindAllByQueryCriteria.getTenantId());
 //            List<String> tenantIds = itselfAndSubsetsToDto.stream().map(TenantDto::getId).toList();
@@ -94,35 +94,35 @@ public class SysTenantController implements ResultController {
     @Tag(name = "Tenant Manage")
     @PostMapping("/insert-tenant-manage")
     @Operation(summary = "insert-tenant-manage")
-    public Result insertTenantManage(@RequestBody @Validated InsertTenantManageIO insertTenantManageIO) {
+    public Result<String> insertTenantManage(@RequestBody @Validated InsertTenantManageIO insertTenantManageIO) {
         this.getService().insertAndUpdate(tenantVoMapper.toEntity(insertTenantManageIO));
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Tenant Manage")
     @PutMapping("/update-tenant-manage")
     @Operation(summary = "update-tenant-manage")
-    public Result updateTenantManage(@RequestBody @Validated UpdateTenantManageIO updateTenantManageIO) {
+    public Result<String> updateTenantManage(@RequestBody @Validated UpdateTenantManageIO updateTenantManageIO) {
         SysTenant sysTenant = this.getService().findById(updateTenantManageIO.getId());
         tenantVoMapper.copy(updateTenantManageIO, sysTenant);
         this.getService().insertAndUpdate(sysTenant);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Tenant Manage")
     @Operation(summary = "delete-tenant-manage")
     @DeleteMapping("/delete-tenant-manage/{id}")
-    public Result deleteTenantManage(@PathVariable String id) {
+    public Result<String> deleteTenantManage(@PathVariable String id) {
         getService().deleteById(id);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "Tenant Manage")
     @Operation(summary = "delete-all-tenant-manage")
     @DeleteMapping("/delete-all-tenant-manage")
-    public Result deleteAllTenantManage(List<String> id) {
+    public Result<String> deleteAllTenantManage(List<String> id) {
         getService().deleteAllById(id);
-        return result();
+        return Result.success();
     }
 
 

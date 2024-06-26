@@ -59,43 +59,43 @@ public class SysUserController implements ResultController {
     @Tag(name = "User Manage")
     @PostMapping("/insert-user-manage")
     @Operation(summary = "insert-user-manage")
-    public Result insertUserManage(@RequestBody @Validated InsertUserManageIO insertUserManageIO) {
+    public Result<String> insertUserManage(@RequestBody @Validated InsertUserManageIO insertUserManageIO) {
         this.getService().insertAndUpdate(userVoMapper.toEntity(insertUserManageIO));
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "User Manage")
     @PutMapping("/update-user-manage")
     @Operation(summary = "update-user-manage")
-    public Result updateUserManage(@RequestBody @Validated UpdateUserManageIO updateUserManageIO) {
+    public Result<String> updateUserManage(@RequestBody @Validated UpdateUserManageIO updateUserManageIO) {
         SysUser sysUser = this.getService().findById(updateUserManageIO.getId());
         userVoMapper.copy(updateUserManageIO, sysUser);
         this.getService().insertAndUpdate(sysUser);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "User Manage")
     @PostMapping("/insert-user-manage-initialization")
     @Operation(summary = "insert-user-manage-initialization")
-    public Result insertUserManageInitialization(@RequestBody @Validated InsertUserManageInitializationIO userInsertInput) {
+    public Result<String> insertUserManageInitialization(@RequestBody @Validated InsertUserManageInitializationIO userInsertInput) {
         getService().insertUserManageInitialization(userInsertInput);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "User Manage")
     @Operation(summary = "delete-user-manage")
     @DeleteMapping("/delete-user-manage/{id}")
-    public Result deleteUserManage(@PathVariable String id) {
+    public Result<String> deleteUserManage(@PathVariable String id) {
         getService().deleteById(id);
-        return result();
+        return Result.success();
     }
 
     @Tag(name = "User Manage")
     @Operation(summary = "/delete-all-user-manage")
     @DeleteMapping("/delete-all-user-manage")
-    public Result deleteAllUserManage(List<String> id) {
+    public Result<String> deleteAllUserManage(List<String> id) {
         getService().deleteAllById(id);
-        return result();
+        return Result.success();
     }
 
     // ********************************* 登录 *****************************************

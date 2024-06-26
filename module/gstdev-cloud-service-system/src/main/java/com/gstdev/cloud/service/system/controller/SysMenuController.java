@@ -60,30 +60,30 @@ public class SysMenuController implements ResultController {
 
     @PostMapping("/insert-menu-manage")
     @Operation(summary = "insert-menu-manage")
-    public Result insertAMenuManage(@RequestBody @Validated InsertMenuManageIO insertMenuManageIO) {
+    public Result<String> insertAMenuManage(@RequestBody @Validated InsertMenuManageIO insertMenuManageIO) {
         this.getService().insertAMenuManage(insertMenuManageIO);
-        return result();
+        return Result.success();
     }
 
     @PutMapping("/update-menu-manage")
     @Operation(summary = "update-menu-manage")
-    public Result updateMenuManage(@RequestBody @Validated UpdateMenuManageIO updateMenuManageIO) {
+    public Result<String> updateMenuManage(@RequestBody @Validated UpdateMenuManageIO updateMenuManageIO) {
         this.getService().updateMenuManage(updateMenuManageIO);
-        return result();
+        return Result.success();
     }
 
     @Operation(summary = "delete-menu-manage")
     @DeleteMapping("/delete-menu-manage/{id}")
-    public Result deleteMenuManage(@PathVariable String id) {
+    public Result<String> deleteMenuManage(@PathVariable String id) {
         getService().deleteById(id);
-        return result();
+        return Result.success();
     }
 
     @Operation(summary = "delete-all-menu-manage")
     @DeleteMapping("/delete-all-menu-manage")
-    public Result deleteAllMenuManage(List<String> id) {
+    public Result<String> deleteAllMenuManage(List<String> id) {
         getService().deleteAllById(id);
-        return result();
+        return Result.success();
     }
 
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
