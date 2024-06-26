@@ -13,7 +13,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "sys_r_attribute_menu", schema = "public")
 //@GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-public class SysRAttributeMenu extends BasePOJOEntity {
+public class SysRAttributeMenu extends BaseEntity {
 
     @EmbeddedId
     @JoinColumn(name = "id", insertable = false, updatable = false)
@@ -30,7 +30,7 @@ public class SysRAttributeMenu extends BasePOJOEntity {
     private SysAttribute attribute;
 
     public void setId(String menuId, String attributeId) {
-        super.setId(new SysRAttributeMenuEmbeddablePK(menuId, attributeId);
+        setId(new SysRAttributeMenuEmbeddablePK(menuId, attributeId));
     }
 
     //    @Id
