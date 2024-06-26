@@ -16,9 +16,7 @@ import com.gstdev.cloud.service.system.domain.pojo.sysMenu.UpdateMenuManageIO;
 import com.gstdev.cloud.service.system.mapper.SysMenuMapper;
 import com.gstdev.cloud.service.system.repository.SysAccountRepository;
 import com.gstdev.cloud.service.system.repository.SysMenuRepository;
-import com.gstdev.cloud.service.system.repository.SysRAttributeMenuRepository;
 import jakarta.annotation.Resource;
-import lombok.Getter;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,12 +33,9 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
     private SysAccountRepository accountRepository;
     @Resource
     @Lazy
-    @Getter
-    private SysMenuService service;
+    private SysMenuServiceImpl service;
     @Resource
     private SysMenuRepository menuRepository;
-    @Resource
-    private SysRAttributeMenuRepository sysRAttributeMenuRepository;
     @Resource
     private SysMenuMapper menuMapper;
 
@@ -61,15 +56,20 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
     }
 
     @Override
+    public SysMenuServiceImpl getService() {
+        return service;
+    }
+
+    @Override
     public List<AccountMenuPermissionsDto> getAccountMenuPermissions(String accountId) {
         SysAccount account = accountRepository.findById(accountId).get();
         AccountMenuPermissionsQO accountMenuPermissionsQO = new AccountMenuPermissionsQO();
         List<SysMenu> sysMenuList = new ArrayList<>();
         if (account.getType().equals(SysAccountType.SUPER)) {
-            sysMenuList = getService().findAll();
+            sysMenuList = service.findAll();
         } else if (account.getType().equals(SysAccountType.ADMIN)) {
             accountMenuPermissionsQO.setTenantId(account.getTenantId());
-            sysMenuList = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, accountMenuPermissionsQO, criteriaBuilder));
+            sysMenuList = service.findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, accountMenuPermissionsQO, criteriaBuilder));
         } else if (account.getType().equals(SysAccountType.USER)) {
             Map<String, SysMenu> collect = new HashMap<>();
             for (SysRole role : account.getRoles()) {
@@ -87,20 +87,16 @@ public class SysMenuServiceImpl extends BaseTreeServiceImpl<SysMenu, String, Sys
     @Transactional
     public void insertAMenuManage(InsertMenuManageIO insertMenuManageIO) {
         SysMenu entity = getMapper().toEntity(insertMenuManageIO);
-        SysMenu sysMenu = getService().saveAndFlush(entity);
-        sysRAttributeMenuRepository.saveAndFlush(sysMenu.getId(), insertMenuManageIO.getAttributeIds());
+        getService().saveAndFlush(entity);
     }
 
     @Override
     @Transactional
     public void updateMenuManage(UpdateMenuManageIO updateMenuManageIO) {
-        SysMenu sysMenu = getService().findById(updateMenuManageIO.getId());
+        SysMenu sysMenu = service.findById(updateMenuManageIO.getId());
         menuMapper.copy(updateMenuManageIO, sysMenu);
-        SysMenu sysMenu1 = getService().saveAndFlush(sysMenu);
-        sysRAttributeMenuRepository.saveAndDeleteAndFlush(sysMenu1.getId(), updateMenuManageIO.getAttributeIds());
+        service.saveAndFlush(sysMenu);
     }
-
-
     /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
 
 

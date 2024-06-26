@@ -97,6 +97,12 @@ public class FrameSystemControllerConfiguration {
         log.debug("[GstDev Cloud] |- Frame Configure Dict Controller");
         return new SysDictController();
     }
+    @Bean
+    @ConditionalOnMissingBean
+    public SysRAttributeMenuController sysRAttributeMenuController(){
+        log.debug("[GstDev Cloud] |- Frame Configure R Attribute Menu Controller");
+        return new SysRAttributeMenuController();
+    }
 
 //    @Bean
 //    @ConditionalOnMissingBean

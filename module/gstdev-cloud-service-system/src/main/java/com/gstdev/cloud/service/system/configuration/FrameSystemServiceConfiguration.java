@@ -107,10 +107,10 @@ public class FrameSystemServiceConfiguration {
         return new SysTenantDictServiceImpl(tenantDictMapper, tenantDictRepository);
     }
 
-//    @Bean
-//    @ConditionalOnMissingBean
-//    public SysRAttributeMenuService sysRAttributeMenuService(SysRAttributeMenuRepository tenantDictRepository) {
-//        log.debug("[GstDev Cloud] |- Frame Configure R Attribute Service");
-//        return new SysRAttributeMenuServiceImpl(tenantDictRepository);
-//    }
+    @Bean
+    @ConditionalOnMissingBean
+    public SysRAttributeMenuService sysRAttributeMenuService(SysRAttributeMenuRepository tenantDictRepository) {
+        log.debug("[GstDev Cloud] |- Frame Configure R Attribute Service");
+        return new SysRAttributeMenuServiceImpl(tenantDictRepository);
+    }
 }
