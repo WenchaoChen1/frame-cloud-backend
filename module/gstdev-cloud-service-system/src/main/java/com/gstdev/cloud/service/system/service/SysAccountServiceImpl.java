@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
 import cn.hutool.core.util.ObjectUtil;
-import com.gstdev.cloud.data.core.service.BaseDtoServiceImpl;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.service.system.domain.base.account.AccountDto;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
@@ -14,13 +14,14 @@ import com.gstdev.cloud.service.system.repository.SysDepartRepository;
 import com.gstdev.cloud.service.system.repository.SysRoleRepository;
 import com.gstdev.cloud.service.system.repository.SysUserRepository;
 import jakarta.annotation.Resource;
+import lombok.Getter;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 
 @Transactional(readOnly = true)
-public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String, SysAccountRepository, SysAccountMapper, AccountDto> implements SysAccountService {
+public class SysAccountServiceImpl extends BaseServiceImpl<SysAccount, String, SysAccountRepository> implements SysAccountService {
 
     @Resource
     private SysUserRepository userRepository;
@@ -29,12 +30,14 @@ public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String
     @Resource
     private SysRoleRepository roleRepository;
     @Resource
-    private SysAccountMapper accountVoMapper;
+    @Getter
+    private SysAccountMapper accountMapper;
     @Resource
     private SysAccountRepository accountRepository;
 
     public SysAccountServiceImpl(SysAccountRepository accountRepository, SysAccountMapper accountMapper) {
-        super(accountRepository, accountMapper);
+        super(accountRepository);
+        this.accountRepository = accountRepository;
     }
 
     @Override
@@ -66,16 +69,12 @@ public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String
     @Override
     @Transactional
     public AccountDto insertAccountManageInitializationToDto(InsertAccountManageInitializationIO accountInsertInput) {
-        return getMapper().toDto(insertAccountManageInitialization(accountInsertInput));
+        return accountMapper.toDto(insertAccountManageInitialization(accountInsertInput));
     }
 
     @Override
-    @Transactional()
+    @Transactional
     public SysAccount save(SysAccount var) {
-//        var.setUpdatedBy(redisCurrentLoginInformation.getCurrentLoginAccountId());
-//        if (redisCurrentLoginInformation.getCurrentLoginAccountId().equals(var.getId()) && !redisCurrentLoginInformation.getCurrentLoginInformation().getAccountType().equals(var.getType())) {
-//            throw new PlatformRuntimeException("This action is not available");
-//        }
         return getRepository().save(var);
     }
 
@@ -96,7 +95,7 @@ public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String
     @Override
     @Transactional
     public void insertAccountManage(InsertAccountManageIO insertAccountManageIO) {
-        SysAccount entity = accountVoMapper.toEntity(insertAccountManageIO);
+        SysAccount entity = accountMapper.toEntity(insertAccountManageIO);
         entity.setUser(userRepository.findById(insertAccountManageIO.getUserId()).get());
         insertAndUpdate(entity);
     }
@@ -105,15 +104,9 @@ public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String
     @Transactional
     public void updateAccountManage(UpdateAccountManageIO updateAccountManageIO) {
         SysAccount entity = findById(updateAccountManageIO.getId());
-        accountVoMapper.copy(updateAccountManageIO, entity);
+        accountMapper.copy(updateAccountManageIO, entity);
         entity.setUser(userRepository.findById(updateAccountManageIO.getUserId()).get());
         insertAndUpdate(entity);
     }
-//  @Override
-//  public Integer findByTenantId(String tenantId) {
-//    List<Account> accounts = accountRepository.findAllByTenantId(tenantId);
-//      return accounts.size();
-//  }
-
 
 }

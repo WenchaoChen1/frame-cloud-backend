@@ -1,7 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
-import com.gstdev.cloud.data.core.service.BaseDtoServiceImpl;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.service.system.domain.base.user.UserDto;
@@ -24,7 +24,7 @@ import java.util.Random;
 
 @Slf4j
 @Transactional(readOnly = true)
-public class SysUserServiceImpl extends BaseDtoServiceImpl<SysUser, String, SysUserRepository, SysUserMapper, UserDto> implements SysUserService {
+public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUserRepository> implements SysUserService {
 
     private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
     @Resource
@@ -34,11 +34,12 @@ public class SysUserServiceImpl extends BaseDtoServiceImpl<SysUser, String, SysU
     private IdentityFeignService identityFeignService;
     @Resource
     private SysUserRepository userRepository;
-    @Resource
+    //    @Resource
     private SysUserMapper userMapper;
 
     public SysUserServiceImpl(SysUserRepository userRepository, SysUserMapper userMapper) {
-        super(userRepository, userMapper);
+        super(userRepository);
+        this.userMapper = userMapper;
     }
 
     private static char nextChar(Random rnd) {
@@ -76,15 +77,6 @@ public class SysUserServiceImpl extends BaseDtoServiceImpl<SysUser, String, SysU
         }
         return super.save(user);
     }
-//    @Override
-//    @Transactional
-//    public SysUser insert(SysUser user) {
-//        if (ObjectUtils.isEmpty(user.getPassword())) {
-//            user.setPassword(randomPassword());
-//        }
-//        user.setPassword((SecurityUtils.encrypt(user.getPassword())));
-//        return super.insert(user);
-//    }
 
     @Override
     @Transactional
@@ -112,11 +104,10 @@ public class SysUserServiceImpl extends BaseDtoServiceImpl<SysUser, String, SysU
      * @param userInsertInput
      * @return
      */
-    @Override
     @Transactional
     public UserDto insertUserManageInitializationToDto(InsertUserManageInitializationIO userInsertInput) {
         SysUser sysUser = insertUserManageInitialization(userInsertInput);
-        return getMapper().toDto(sysUser);
+        return userMapper.toDto(sysUser);
     }
 
     @Override
@@ -131,10 +122,9 @@ public class SysUserServiceImpl extends BaseDtoServiceImpl<SysUser, String, SysU
 
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 
-    @Override
     public List<AccountListDto> getByIdToAccount(String id) {
         SysUser user = getRepository().findById(id).orElseGet(SysUser::new);
-        return getMapper().accountListToDto(user.getAccount());
+        return userMapper.accountListToDto(user.getAccount());
     }
 
     @Override

@@ -27,9 +27,6 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/v1/attribute")
-//@Tags({
-//    @Tag(name = "元数据管理接口"),
-//})
 public class SysAttributeController implements ResultController {
 
     @Resource
@@ -45,6 +42,7 @@ public class SysAttributeController implements ResultController {
     public SysAttributeMapper getMapper() {
         return sysAttributeMapper;
     }
+
     // ********************************* Attribute Manage *****************************************
 
     @Tag(name = "Attribute Manage")

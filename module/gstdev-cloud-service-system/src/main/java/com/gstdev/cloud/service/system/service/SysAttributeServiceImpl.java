@@ -31,31 +31,12 @@ public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttribute, Strin
         return sysAttributeRepository;
     }
 
-    @Override
-    public SysAttribute assign(String attributeId, String[] permissionIds) {
-
-        Set<SysPermission> sysPermissions = new HashSet<>();
-        for (String permissionId : permissionIds) {
-            SysPermission sysPermission = new SysPermission();
-            sysPermission.setPermissionId(permissionId);
-            sysPermissions.add(sysPermission);
-        }
-
-        SysAttribute sysAttribute = findById(attributeId);
-        sysAttribute.setPermissions(sysPermissions);
-
-        return saveAndFlush(sysAttribute);
-    }
 
     @Override
     public List<SysAttribute> findAllByServiceId(String serviceId) {
         return getRepository().findAllByServiceId(serviceId);
     }
 
-    @Override
-    public List<SysAttribute> findByAttributeIdIn(List<String> ids) {
-        return getRepository().findByAttributeIdIn(ids);
-    }
 
     @Override
     public void updateAttributeManageAssignedPermission(AttributeManageAssignedPermissionIO attributeManageAssignedPermissionIO) {
