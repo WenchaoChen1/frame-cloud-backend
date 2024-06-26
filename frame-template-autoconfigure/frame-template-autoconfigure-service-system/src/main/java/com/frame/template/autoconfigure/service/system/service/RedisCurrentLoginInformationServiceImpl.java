@@ -8,7 +8,7 @@ import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLogin
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
-import com.gstdev.cloud.service.system.domain.base.account.AccountDto;
+import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.service.SysAccountService;
 import com.gstdev.cloud.service.system.service.SysMenuService;
 import com.gstdev.cloud.service.system.service.SysTenantService;
@@ -34,27 +34,25 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
 
     @Override
     public Result<Object> addByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput) {
-        AccountDto accountDto = null;
+        SysAccount account = null;
         if (!ObjectUtils.isEmpty(redisCurrentLoginInformationInput.getAccountId())) {
-            accountDto = accountService.findByIdToDto(redisCurrentLoginInformationInput.getAccountId());
+            account = accountService.findById(redisCurrentLoginInformationInput.getAccountId());
         }
-        System.out.println(SecurityUtils.getUserId());
-        if (accountDto == null || accountDto.getId() == null) {
-            List<AccountDto> accountDtos = accountService.findAllByUserId(SecurityUtils.getUserId());
-            if (accountDtos.size() == 0) {
+        if (account == null || account.getId() == null) {
+            List<SysAccount> accounts = accountService.findAllByUserId(SecurityUtils.getUserId());
+            if (ObjectUtils.isEmpty(accounts)) {
                 throw new CommonException("No account was found, please log in again");
             }
-            accountDto = accountDtos.get(0);
+            account = accounts.get(0);
         }
         CurrentLoginInformation currentLoginInformation = new CurrentLoginInformation();
-        currentLoginInformation.setUserId(accountDto.getUserId());
-        currentLoginInformation.setAccountId(accountDto.getId());
-        currentLoginInformation.setTenantId(accountDto.getTenantId());
-        currentLoginInformation.setType(accountDto.getType().getValue());
-        currentLoginInformation.setTenant(new JSONObject(tenantService.findByIdToDto(accountDto.getTenantId())));
-//    currentLoginInformation.setCurrentLoginAccount(accountDto.toString());
-        currentLoginInformation.setCurrentLoginAccount(new JSONObject(accountDto));
-        currentLoginInformation.setCurrentLoginAccountUserPermissions(new JSONArray(menuService.getAccountMenuPermissions(accountDto.getId())));
+        currentLoginInformation.setUserId(account.getUser().getId());
+        currentLoginInformation.setAccountId(account.getId());
+        currentLoginInformation.setTenantId(account.getTenantId());
+        currentLoginInformation.setType(account.getType().getValue());
+        currentLoginInformation.setTenant(new JSONObject(tenantService.findByIdToDto(account.getTenantId())));
+        currentLoginInformation.setCurrentLoginAccount(new JSONObject(account));
+        currentLoginInformation.setCurrentLoginAccountUserPermissions(new JSONArray(menuService.getAccountMenuPermissions(account.getId())));
         redisCurrentLoginInformation.addByTokenCurrentLoginInformation(currentLoginInformation);
         return Result.success(currentLoginInformation);
     }

@@ -20,7 +20,6 @@ import org.springframework.util.ObjectUtils;
 import java.util.List;
 
 @Transactional(readOnly = true)
-//public  class SysAccountServiceImpl extends BasePOJOServiceImpl<SysAccount, String, SysAccountRepository, SysAccountMapper, AccountDto> implements SysAccountService {
 public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String, SysAccountRepository, SysAccountMapper, AccountDto> implements SysAccountService {
 
     @Resource
@@ -81,10 +80,8 @@ public class SysAccountServiceImpl extends BaseDtoServiceImpl<SysAccount, String
     }
 
     @Override
-    public List<AccountDto> findAllByUserId(String userId) {
-        List<SysAccount> allByUserId = getRepository().findAllByUserId(userId);
-        List<AccountDto> accountDtos = getMapper().toDto(allByUserId);
-        return accountDtos;
+    public List<SysAccount> findAllByUserId(String userId) {
+        return getRepository().findAllByUserId(userId);
     }
 
     @Override

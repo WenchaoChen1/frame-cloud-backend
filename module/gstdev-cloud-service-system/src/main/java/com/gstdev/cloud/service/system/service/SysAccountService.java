@@ -1,6 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
-import com.gstdev.cloud.data.core.service.BasePOJOService;
+import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.service.system.domain.base.account.AccountDto;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageIO;
@@ -9,18 +9,12 @@ import com.gstdev.cloud.service.system.domain.pojo.sysAccount.UpdateAccountManag
 
 import java.util.List;
 
-public interface SysAccountService extends BasePOJOService<SysAccount, String, AccountDto> {
-    List<AccountDto> findAllByUserId(String message);
+public interface SysAccountService extends BaseService<SysAccount, String> {
 
-//  boolean save(AccountSaveInput accountSaveInput);
-
-//    SysAccount insert(SysAccount account);
-
+    List<SysAccount> findAllByUserId(String message);
     SysAccount insertAccountManageInitialization(InsertAccountManageInitializationIO accountInsertInput);
 
     AccountDto insertAccountManageInitializationToDto(InsertAccountManageInitializationIO accountInsertInput);
-
-//    Integer findByTenantId(String tenantId);
 
     void deleteByTenantId(String tenantId);
 
