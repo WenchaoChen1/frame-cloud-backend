@@ -15,7 +15,6 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/v1/attribute-menu")
-@Tag(name = "Attribute Menu Manage")
 public class SysRAttributeMenuController implements ResultController {
 
     @Resource
