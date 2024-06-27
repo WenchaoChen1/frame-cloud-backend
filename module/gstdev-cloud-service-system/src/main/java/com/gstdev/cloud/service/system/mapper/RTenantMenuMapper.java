@@ -10,7 +10,7 @@
 package com.gstdev.cloud.service.system.mapper;
 
 import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
-import com.gstdev.cloud.service.system.TreeUtils;
+import com.gstdev.cloud.service.system.util.TreeUtils;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuDto;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuInsertInput;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuUpdateInput;

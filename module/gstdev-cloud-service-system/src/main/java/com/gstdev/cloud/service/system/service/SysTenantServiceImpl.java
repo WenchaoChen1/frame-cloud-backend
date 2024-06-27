@@ -11,6 +11,7 @@ package com.gstdev.cloud.service.system.service;
 
 
 import cn.hutool.core.lang.UUID;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import com.gstdev.cloud.service.system.domain.base.tenant.TenantDto;
 import com.gstdev.cloud.service.system.domain.entity.SysTenant;
@@ -22,16 +23,19 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Transactional(readOnly = true)
-public class SysTenantServiceImpl extends BaseTreeServiceImpl<SysTenant, String, SysTenantRepository, SysTenantMapper, TenantDto> implements SysTenantService {
+public class SysTenantServiceImpl extends BaseServiceImpl<SysTenant, String, SysTenantRepository> implements SysTenantService {
 
     @Resource
     private SysAccountService accountService;
     @Resource
     private SysTenantRepository tenantRepository;
+    @Resource
+    private SysTenantMapper tenantMapper;
 
     public SysTenantServiceImpl(SysTenantRepository tenantRepository, SysTenantMapper tenantMapper) {
-        super(tenantRepository, tenantMapper);
+        super(tenantRepository);
         this.tenantRepository = tenantRepository;
+        this.tenantMapper = tenantMapper;
     }
 
 
@@ -66,38 +70,7 @@ public class SysTenantServiceImpl extends BaseTreeServiceImpl<SysTenant, String,
         accountService.deleteByTenantId(id);
     }
 
-//  /**
-//   * 获取当前租户id  返回本级和所有子集
-//   * 树查询
-//   * 返回用户数量
-//   *
-//   * @return
-//   */
-//  @Override
-//  public Result<List<TenantDto>> getTenantTree() {
-//    List<TenantDto> tenantDtos = findByParentIdToDto(redisCurrentLoginInformation.getCurrentLoginInformation().getTenantId());
-//    if (ObjectUtil.isNotEmpty(tenantDtos)) {
-//      for (TenantDto tenantDto : tenantDtos) {
-//        Integer users = systemAccountService.findByTenantId(tenantDto.getId());
-//        tenantDto.setUsers(users);
-//      }
-//    }
-//    return Result.success(tenantDtos);
-//  }
-//
-//  @Override
-//  @Transactional
-//  public Result<TenantDto> updateCurrentLoginInferiorSonTenant(TenantLoginInferiorUpdateInput tenantLoginInferiorUpdateInput) {
-//    Tenant tenant = findById(tenantLoginInferiorUpdateInput.getId());
-//    getMapper().copyModify(tenantLoginInferiorUpdateInput, tenant);
-//    update(tenant);
-//    return Result.success(getMapper().toDto(tenant));
-//  }
 
-
-    public List<TenantDto> findAllByIds(List<String> tenantIds) {
-        return getMapper().toDto(getRepository().findAllById(tenantIds));
-    }
 
 
 }

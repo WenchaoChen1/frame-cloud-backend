@@ -2,6 +2,7 @@ package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseDtoServiceImpl;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.service.system.domain.base.SysPermission.SysPermissionDto;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysPermission;
@@ -16,15 +17,18 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Transactional
-public class SysPermissionServiceImpl extends BaseDtoServiceImpl<SysPermission, String, SysPermissionRepository, SysPermissionMapper, SysPermissionDto> implements SysPermissionService {
+public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission, String, SysPermissionRepository> implements SysPermissionService {
 
     @Resource
     private SysAttributeService sysAttributeService;
     @Resource
     private SysPermissionRepository sysPermissionRepository;
+    @Resource
+    private  SysPermissionMapper sysPermissionMapper;
 
     public SysPermissionServiceImpl(SysPermissionRepository sysPermissionRepository, SysPermissionMapper sysPermissionMapper) {
-        super(sysPermissionRepository, sysPermissionMapper);
+        super(sysPermissionRepository);
+        this.sysPermissionMapper=sysPermissionMapper;
     }
 
     public static String generateKey(List<String> input) {

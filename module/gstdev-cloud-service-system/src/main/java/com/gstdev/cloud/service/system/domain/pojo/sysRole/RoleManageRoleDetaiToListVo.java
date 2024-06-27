@@ -9,7 +9,7 @@
 
 package com.gstdev.cloud.service.system.domain.pojo.sysRole;
 
-import com.gstdev.cloud.service.system.TreeNode;
+import com.gstdev.cloud.service.system.util.TreeNode;
 import lombok.Getter;
 import lombok.Setter;
 

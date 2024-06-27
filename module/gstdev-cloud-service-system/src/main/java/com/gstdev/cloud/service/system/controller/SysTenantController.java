@@ -13,7 +13,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
-import com.gstdev.cloud.service.system.TreeUtils;
+import com.gstdev.cloud.service.system.util.TreeUtils;
 import com.gstdev.cloud.service.system.domain.entity.SysTenant;
 import com.gstdev.cloud.service.system.domain.pojo.sysTenant.*;
 import com.gstdev.cloud.service.system.mapper.SysTenantMapper;

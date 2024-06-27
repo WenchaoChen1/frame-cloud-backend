@@ -1,6 +1,6 @@
 package com.gstdev.cloud.service.system.mapper;
 
-import com.gstdev.cloud.service.system.TreeUtils;
+import com.gstdev.cloud.service.system.util.TreeUtils;
 import com.gstdev.cloud.service.system.domain.entity.SysBusinessPermission;
 import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionManageTreeVo;
 import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.InsertBusinessPermissionManageIO;

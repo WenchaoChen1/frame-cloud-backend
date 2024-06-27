@@ -84,19 +84,19 @@ public class FrameSystemControllerConfiguration {
         return new SysAttributeController();
     }
 
-    @Bean
-    @ConditionalOnMissingBean
-    public SysDepartController sysDepartController() {
-        log.debug("[GstDev Cloud] |- Frame Configure Depart Controller");
-        return new SysDepartController();
-    }
-
-    @Bean
-    @ConditionalOnMissingBean
-    public SysDictController sysDictController() {
-        log.debug("[GstDev Cloud] |- Frame Configure Dict Controller");
-        return new SysDictController();
-    }
+//    @Bean
+//    @ConditionalOnMissingBean
+//    public SysDepartController sysDepartController() {
+//        log.debug("[GstDev Cloud] |- Frame Configure Depart Controller");
+//        return new SysDepartController();
+//    }
+//
+//    @Bean
+//    @ConditionalOnMissingBean
+//    public SysDictController sysDictController() {
+//        log.debug("[GstDev Cloud] |- Frame Configure Dict Controller");
+//        return new SysDictController();
+//    }
     @Bean
     @ConditionalOnMissingBean
     public SysRAttributeMenuController sysRAttributeMenuController(){

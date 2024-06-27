@@ -1,6 +1,6 @@
 package com.gstdev.cloud.service.system.domain.pojo.rTenantMenu;
 
-import com.gstdev.cloud.service.system.TreeNode;
+import com.gstdev.cloud.service.system.util.TreeNode;
 import lombok.Getter;
 import lombok.Setter;
 

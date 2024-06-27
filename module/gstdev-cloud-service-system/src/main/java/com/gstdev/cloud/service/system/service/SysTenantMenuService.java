@@ -10,13 +10,14 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.data.core.service.BasePOJOService;
+import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuDto;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuIO;
 
 import java.util.List;
 
-public interface SysTenantMenuService extends BasePOJOService<SysTenantMenu, String, RTenantMenuDto> {
+public interface SysTenantMenuService extends BaseService<SysTenantMenu, String> {
     void insertTenantMenu(InsertTenantMenuIO insertTenantMenuIO);
 
     List<SysTenantMenu> findAllByTenantId(String tenantId);

@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import com.gstdev.cloud.service.system.domain.base.dict.DictDto;
 import com.gstdev.cloud.service.system.domain.entity.SysDict;
@@ -12,14 +13,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Transactional(readOnly = true)
-public class SysDictServiceImpl extends BaseTreeServiceImpl<SysDict, String, SysDictRepository, DictMapper, DictDto> implements SysDictService {
+public class SysDictServiceImpl extends BaseServiceImpl<SysDict, String, SysDictRepository> implements SysDictService {
     private static final Logger log = LoggerFactory.getLogger(SysDictServiceImpl.class);
     @Resource
     private SysDictRepository dictRepository;
+    @Resource
+    private DictMapper dictMapper;
 
     public SysDictServiceImpl(SysDictRepository dictRepository, DictMapper dictMapper) {
-        super(dictRepository, dictMapper);
+        super(dictRepository);
         this.dictRepository = dictRepository;
+        this.dictMapper = dictMapper;
     }
 
     @Override

@@ -9,15 +9,13 @@
 
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.data.core.service.BaseTreeService;
 import com.gstdev.cloud.service.system.domain.base.tenant.TenantDto;
 import com.gstdev.cloud.service.system.domain.entity.SysTenant;
 
 
-public interface SysTenantService extends BaseTreeService<SysTenant, String, TenantDto> {
+public interface SysTenantService extends BaseService<SysTenant, String> {
 //
-//  Result<List<TenantDto>> getTenantTree();
-//
-//  Result<TenantDto> updateCurrentLoginInferiorSonTenant(TenantLoginInferiorUpdateInput tenantLoginInferiorUpdateInput);
 }
 

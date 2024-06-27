@@ -11,6 +11,7 @@ package com.gstdev.cloud.service.system.service;
 
 
 import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuDto;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
@@ -25,7 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Transactional(readOnly = true)
-public class SysTenantMenuServiceImpl extends BasePOJOServiceImpl<SysTenantMenu, String, SysTenantMenuRepository, RTenantMenuMapper, RTenantMenuDto> implements SysTenantMenuService {
+//public class SysTenantMenuServiceImpl extends BasePOJOServiceImpl<SysTenantMenu, String, SysTenantMenuRepository, RTenantMenuMapper, RTenantMenuDto> implements SysTenantMenuService {
+public class SysTenantMenuServiceImpl extends BaseServiceImpl<SysTenantMenu, String, SysTenantMenuRepository> implements SysTenantMenuService {
 
     @Resource
     private SysMenuRepository MenuRepository;
@@ -33,11 +35,14 @@ public class SysTenantMenuServiceImpl extends BasePOJOServiceImpl<SysTenantMenu,
     private SysTenantMenuRepository rTenantMenuRepository;
     @Resource
     private SysRoleService sysRoleService;
+    @Resource
+    private RTenantMenuMapper rTenantMenuMappere;
 //    @Resource
 //    private SysRRoleTenantMenuService sysRRoleTenantMenuService;
 
     public SysTenantMenuServiceImpl(SysTenantMenuRepository rTenantMenuRepository, RTenantMenuMapper rTenantMenuMappere) {
-        super(rTenantMenuRepository, rTenantMenuMappere);
+        super(rTenantMenuRepository);
+        this.rTenantMenuMappere = rTenantMenuMappere;
     }
 
     @Override
@@ -49,37 +54,6 @@ public class SysTenantMenuServiceImpl extends BasePOJOServiceImpl<SysTenantMenu,
     public List<SysTenantMenu> findAllByTenantId(String tenantId) {
         return getRepository().findByTenantId(tenantId);
     }
-//
-//
-//    @Override
-//    @Transactional
-//    public void insertTenantMenu(InsertTenantMenuIO insertTenantMenuIO) {
-//        List<SysTenantMenu> allByTenantId = findAllByTenantId(insertTenantMenuIO.getTenantId());
-//        List<String> menuIds = insertTenantMenuIO.getMenuIds();
-//        List<SysRole> allByTenantId1 = sysRoleService.getAllByTenantId(insertTenantMenuIO.getTenantId());
-//        List<SysTenantMenu> rTenantMenus = new ArrayList<>();
-//        allByTenantId.forEach(rTenantMenu -> {
-//            if (menuIds.contains(rTenantMenu.getMenu().getId())) {
-//                menuIds.remove(rTenantMenu.getMenu().getId());
-//                rTenantMenus.add(rTenantMenu);
-//            } else {
-//                allByTenantId1.forEach(sysRole -> {
-//                    sysRole.getRTenantMenus().remove(rTenantMenu);
-//                    sysRoleService.update(sysRole);
-//                });
-//                getRepository().delete(rTenantMenu);
-//            }
-//        });
-//        if (menuIds.size() > 0) {
-//            menuIds.forEach(id -> {
-//                SysTenantMenu rTenantMenu = new SysTenantMenu();
-//                rTenantMenu.setTenantId(insertTenantMenuIO.getTenantId());
-//                rTenantMenu.setMenu(MenuRepository.findById(id).get());
-//                rTenantMenus.add(rTenantMenu);
-//            });
-//        }
-//        update(rTenantMenus);
-//    }
 
     @Override
     @Transactional

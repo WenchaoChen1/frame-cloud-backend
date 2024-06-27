@@ -10,7 +10,7 @@
 package com.gstdev.cloud.service.system.mapper;
 
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
-import com.gstdev.cloud.service.system.TreeUtils;
+import com.gstdev.cloud.service.system.util.TreeUtils;
 import com.gstdev.cloud.service.system.domain.base.role.RoleDto;
 import com.gstdev.cloud.service.system.domain.base.role.RoleInsertInput;
 import com.gstdev.cloud.service.system.domain.base.role.RoleUpdateInput;

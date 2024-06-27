@@ -10,7 +10,7 @@
 package com.gstdev.cloud.service.system.mapper;
 
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
-import com.gstdev.cloud.service.system.TreeUtils;
+import com.gstdev.cloud.service.system.util.TreeUtils;
 import com.gstdev.cloud.service.system.domain.base.menu.MenuDto;
 import com.gstdev.cloud.service.system.domain.base.menu.MenuInsertInput;
 import com.gstdev.cloud.service.system.domain.base.menu.MenuUpdateInput;
