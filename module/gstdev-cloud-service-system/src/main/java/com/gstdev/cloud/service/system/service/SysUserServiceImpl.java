@@ -22,6 +22,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -165,12 +167,38 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
                         attributeMaps.put(serviceId, sysAttributes);
                     });
         });
-
+        // 将分组后的属性ID集合生成权限并添加到权限集合中
+        for (Set<String> value : attributeMaps.values()) {
+            authorities.add(new FrameGrantedAuthority(generateKey(new ArrayList<>(value))));
+        }
         // 将SysUser对象转换为DefaultSecurityUser对象
         SysUserToSecurityUserConverter sysUserToSecurityUserConverter = new SysUserToSecurityUserConverter();
         return sysUserToSecurityUserConverter.convert(user);
     }
 
+    public static String generateKey(List<String> input) {
+        // 对字符串列表进行排序
+        Collections.sort(input);
+        // 连接排序后的字符串
+        String combinedInput = String.join("", input);
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(combinedInput.getBytes());
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 
     public List<AccountListDto> getByIdToAccount(String id) {
