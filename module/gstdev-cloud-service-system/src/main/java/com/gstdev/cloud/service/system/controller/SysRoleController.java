@@ -5,7 +5,10 @@ import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.base.role.RoleDto;
+import com.gstdev.cloud.service.system.domain.entity.SysBusinessPermission;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
+import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionManageQO;
+import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionManageTreeVo;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.*;
 import com.gstdev.cloud.service.system.mapper.SysRoleMapper;
 import com.gstdev.cloud.service.system.service.SysRoleService;
@@ -50,10 +53,9 @@ public class SysRoleController implements ResultController {
     @GetMapping("/get-role-manage-tree")
     @Operation(summary = "get-role-manage-tree")
     public Result<List<RoleManageTreeVo>> getRoleManageTree(RoleManageTreeQO queryCriteria) {
-        List<RoleDto> allByQueryCriteriaToDtoToTree = this.getService().findAllByQueryCriteriaToDtoToTree((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
-        return this.result(this.getMapper().toRoleManageTreeVo(allByQueryCriteriaToDtoToTree));
+        List<SysRole> byPage = this.getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
+        return this.result(this.getMapper().toRoleManageTreeVoToTree(byPage));
     }
-
     @Tag(name = "Role Manage")
     @Operation(summary = "get-role-manage-role-detail-to-list")
     @GetMapping("/get-role-manage-role-detail-to-list")

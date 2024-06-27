@@ -12,6 +12,7 @@ package com.gstdev.cloud.service.system.controller;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.POJOController;
+import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.*;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
@@ -32,7 +33,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/rTenantMenu")
-public class SysTenantMenuController implements POJOController<SysTenantMenu, String, RTenantMenuVo, RTenantMenuDto, RTenantMenuInsertInput, RTenantMenuUpdateInput, RTenantMenuPageQueryCriteria, RTenantMenuFindAllByQueryCriteria> {
+public class SysTenantMenuController implements ResultController {
 
     @Resource
     private SysTenantMenuService tenantMenuService;
@@ -40,12 +41,10 @@ public class SysTenantMenuController implements POJOController<SysTenantMenu, St
     @Resource
     private RTenantMenuMapper rTenantMenuMapper;
 
-    @Override
     public SysTenantMenuService getService() {
         return tenantMenuService;
     }
 
-    @Override
     public RTenantMenuMapper getMapper() {
         return rTenantMenuMapper;
     }

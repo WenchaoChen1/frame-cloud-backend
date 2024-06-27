@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
 import com.gstdev.cloud.service.system.domain.base.role.RoleDto;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
@@ -17,17 +18,19 @@ import java.util.List;
 
 
 @Transactional
-//@Transactional(readOnly = true)
-public class SysRoleServiceImpl extends BaseTreeServiceImpl<SysRole, String, SysRoleRepository, SysRoleMapper, RoleDto> implements SysRoleService {
+public class SysRoleServiceImpl extends BaseServiceImpl<SysRole, String, SysRoleRepository> implements SysRoleService {
 
     @Resource
     private SysTenantMenuRepository rTenantMenuRepository;
     @Resource
     private SysRoleRepository roleRepository;
+    @Resource
+    private SysRoleMapper roleMapper;
 
     public SysRoleServiceImpl(SysRoleRepository roleRepository, SysRoleMapper roleMapper) {
-        super(roleRepository, roleMapper);
+        super(roleRepository);
         this.roleRepository = roleRepository;
+        this.roleMapper = roleMapper;
     }
 
     @Override

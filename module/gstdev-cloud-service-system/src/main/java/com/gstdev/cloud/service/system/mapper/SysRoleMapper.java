@@ -45,8 +45,6 @@ public interface SysRoleMapper extends BaseTreeMapper<SysRole, RoleDto, RoleVo, 
         );
     }
 
-    List<RoleManageTreeVo> toRoleManageTreeVo(List<RoleDto> sysRole);
-
     List<RoleManagePageVo> toRoleManagePageVo(List<SysRole> sysRole);
 
     default Page<RoleManagePageVo> toRoleManagePageVo(Page<SysRole> page) {
@@ -56,5 +54,18 @@ public interface SysRoleMapper extends BaseTreeMapper<SysRole, RoleDto, RoleVo, 
 
     void copy(UpdateRoleManageIO updateRoleManageIO, @MappingTarget SysRole sysRole);
 
+
+    List<RoleManageTreeVo> toRoleManageTreeVo(List<SysRole> sysRole);
+
+    default List<RoleManageTreeVo> toRoleManageTreeVoToTree(List<SysRole> sysRole) {
+        List<RoleManageTreeVo> roleManageTreeVo = toRoleManageTreeVo(sysRole);
+        return TreeUtils.buildTree(
+            roleManageTreeVo,
+            RoleManageTreeVo::getId,
+            RoleManageTreeVo::getParentId,
+            Comparator.comparingInt((RoleManageTreeVo item) ->
+                item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+        );
+    }
 }
 

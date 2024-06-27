@@ -12,6 +12,8 @@ package com.gstdev.cloud.service.system.domain.pojo.sysRole;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseTreeVo;
+import com.gstdev.cloud.service.system.TreeNode;
+import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionManageTreeVo;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,8 +22,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class RoleManageTreeVo extends BaseTreeVo {
-
+public class RoleManageTreeVo extends TreeNode<String, RoleManageTreeVo> {
     private String id;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdDate;
