@@ -3,8 +3,10 @@ package com.gstdev.cloud.service.system.controller;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
+import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.SwitchUserAccountDetailVo;
 import com.gstdev.cloud.service.system.domain.pojo.sysUser.*;
 import com.gstdev.cloud.service.system.mapper.SysUserMapper;
 import com.gstdev.cloud.service.system.service.SysUserService;
@@ -99,9 +101,6 @@ public class SysUserController implements ResultController {
     }
 
 
-
-
-
     // ********************************* 登录 *****************************************
 
     @Tag(name = "security sign-in")
@@ -119,6 +118,8 @@ public class SysUserController implements ResultController {
         getService().resetPassword(originalPassword, newPassword);
         return Result.success();
     }
+
+
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
 
 }

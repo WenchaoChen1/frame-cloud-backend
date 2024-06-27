@@ -2,11 +2,13 @@ package com.gstdev.cloud.service.system.service;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
+import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.service.system.domain.base.account.AccountDto;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageInitializationIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.SwitchUserAccountDetailDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.UpdateAccountManageIO;
 import com.gstdev.cloud.service.system.mapper.SysAccountMapper;
 import com.gstdev.cloud.service.system.repository.SysAccountRepository;
@@ -108,5 +110,10 @@ public class SysAccountServiceImpl extends BaseServiceImpl<SysAccount, String, S
         entity.setUser(userRepository.findById(updateAccountManageIO.getUserId()).get());
         insertAndUpdate(entity);
     }
+
+    public List<SwitchUserAccountDetailDto> getSwitchUserAccountDetail() {
+        return accountMapper.toSwitchUserAccountDetailDto(findAllByUserId(SecurityUtils.getUserId()));
+    }
+
 
 }

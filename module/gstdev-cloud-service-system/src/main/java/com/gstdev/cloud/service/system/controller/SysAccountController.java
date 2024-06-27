@@ -46,6 +46,7 @@ public class SysAccountController implements ResultController {
         PrincipalDetails principal = SecurityUtils.getPrincipal();
         return this.result(principal);
     }
+
     @Tag(name = "Account Manage")
     @GetMapping("/get-account-manage-page")
     @Operation(summary = "get-account-manage-page")
@@ -102,5 +103,12 @@ public class SysAccountController implements ResultController {
     }
 
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
+//    获取可切换账户的信息
+    @Tag(name = "Switch Account")
+    @GetMapping("/get-switch-user-account-detail")
+    @Operation(summary = "get-switch-user-account-detail")
+    public Result<List<SwitchUserAccountDetailVo>> getSwitchUserAccountDetail() {
+        return this.result(this.getMapper().toSwitchUserAccountDetailVo(this.getService().getSwitchUserAccountDetail()));
+    }
 
 }
