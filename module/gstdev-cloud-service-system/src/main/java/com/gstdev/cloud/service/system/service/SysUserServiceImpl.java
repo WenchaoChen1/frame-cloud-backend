@@ -173,7 +173,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
         }
         // 将SysUser对象转换为DefaultSecurityUser对象
         SysUserToSecurityUserConverter sysUserToSecurityUserConverter = new SysUserToSecurityUserConverter();
-        return sysUserToSecurityUserConverter.convert(user);
+        return sysUserToSecurityUserConverter.convert(user,authorities);
     }
 
     public static String generateKey(List<String> input) {
