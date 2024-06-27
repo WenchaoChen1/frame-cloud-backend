@@ -45,6 +45,7 @@ public class SysTenantMenuServiceImpl extends BasePOJOServiceImpl<SysTenantMenu,
         return rTenantMenuRepository;
     }
 
+    @Override
     public List<SysTenantMenu> findAllByTenantId(String tenantId) {
         return getRepository().findByTenantId(tenantId);
     }

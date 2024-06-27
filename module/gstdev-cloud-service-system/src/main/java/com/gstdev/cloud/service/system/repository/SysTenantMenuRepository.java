@@ -16,6 +16,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.List;
+import java.util.Set;
 
 public interface SysTenantMenuRepository extends JpaRepository<SysTenantMenu, String>, JpaSpecificationExecutor<SysTenantMenu>, BaseRepository<SysTenantMenu, String> {
 
@@ -29,17 +30,9 @@ public interface SysTenantMenuRepository extends JpaRepository<SysTenantMenu, St
      */
     List<SysTenantMenu> findByTenantId(String tenantId);
 
-    /**
-     * 删除
-     *
-     * @param tenantId
-     */
-    void deleteByTenantId(String tenantId);
-
-    SysTenantMenu findByMenuIdAndTenantId(String id, String roleId);
-
-//  List<RTenantMenu> findAllByTenantIdAndInMenuId(String tenantId, List<String> menuIds);
-
     List<SysTenantMenu> findAllByTenantIdAndMenuIdIn(String tenantId, List<String> menuIds);
+
+    List<SysTenantMenu> findAllByTenantIdIn(Set<String> tenantIds);
+
 }
 

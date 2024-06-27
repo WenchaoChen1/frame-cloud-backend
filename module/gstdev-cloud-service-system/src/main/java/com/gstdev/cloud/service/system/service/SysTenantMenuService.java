@@ -14,8 +14,12 @@ import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuDto;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuIO;
 
+import java.util.List;
+
 public interface SysTenantMenuService extends BasePOJOService<SysTenantMenu, String, RTenantMenuDto> {
     void insertTenantMenu(InsertTenantMenuIO insertTenantMenuIO);
+
+    List<SysTenantMenu> findAllByTenantId(String tenantId);
 
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 }

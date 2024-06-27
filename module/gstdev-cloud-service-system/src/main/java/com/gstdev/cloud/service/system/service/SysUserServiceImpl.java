@@ -3,24 +3,27 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
+import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.service.system.domain.base.user.UserDto;
 import com.gstdev.cloud.service.system.domain.converter.SysUserToSecurityUserConverter;
-import com.gstdev.cloud.service.system.domain.entity.SysUser;
+import com.gstdev.cloud.service.system.domain.entity.*;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageInitializationIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysUser.InsertUserManageInitializationIO;
 import com.gstdev.cloud.service.system.domain.vo.user.AccountListDto;
 import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
 import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
 import com.gstdev.cloud.service.system.mapper.SysUserMapper;
+import com.gstdev.cloud.service.system.repository.SysTenantMenuRepository;
 import com.gstdev.cloud.service.system.repository.SysUserRepository;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Transactional(readOnly = true)
@@ -29,11 +32,15 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
     private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
     @Resource
     private SysAccountService accountService;
+    @Resource
+    private SysMenuService menuService;
 
     @Resource
     private IdentityFeignService identityFeignService;
     @Resource
     private SysUserRepository userRepository;
+    @Resource
+    private SysTenantMenuRepository sysTenantMenuRepository;
     //    @Resource
     private SysUserMapper userMapper;
 
@@ -112,12 +119,56 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
 
     @Override
     public DefaultSecurityUser signInFindByUsername(String username) {
-        SysUser byUsername = getRepository().findByUsername(username);
-        if (byUsername == null) {
+        // 根据用户名查找用户
+        SysUser user = getRepository().findByUsername(username);
+        if (user == null) {
             return null;
         }
+
+        // 初始化权限集合
+        Set<FrameGrantedAuthority> authorities = new HashSet<>();
+
+        // 获取用户的账号列表
+        List<SysAccount> accounts = user.getAccount();
+        // 添加超级管理员的特殊权限
+        accounts.stream()
+                .filter(account -> account.getType().equals(SysAccountType.SUPER))
+                .forEach(account -> authorities.add(new FrameGrantedAuthority("5ef5ef0364b6939c4ca61f34b393f7b368d1be8619647aaf83d5b395919ab629")));
+
+        // 初始化租户菜单相关集合
+        List<SysTenantMenu> allByTenantIdIn = null;
+        Map<String, Set<String>> attributeMaps = new HashMap<>();
+        Set<String> adminAccountTenantIds = new HashSet<>();
+
+        // 处理用户的租户账号
+        accounts.forEach(account -> {
+            if (account.getType().equals(SysAccountType.ADMIN)) {
+                adminAccountTenantIds.add(account.getTenantId());
+            }
+        });
+
+        // 根据租户ID获取菜单
+        List<SysMenu> menus = new ArrayList<>();
+        if (!adminAccountTenantIds.isEmpty()) {
+            allByTenantIdIn = sysTenantMenuRepository.findAllByTenantIdIn(adminAccountTenantIds);
+            menus = allByTenantIdIn.stream().map(SysTenantMenu::getMenu).collect(Collectors.toList());
+        }
+        // 处理菜单根据menuId去重
+        menus.stream().collect(Collectors.toMap(SysMenu::getId, menu -> menu, (key1, key2) -> key1));
+        // 处理菜单的属性并进行分组
+        menus.forEach(sysMenu -> {
+            sysMenu.getAttributes().stream()
+                    .collect(Collectors.groupingBy(SysAttribute::getServiceId))
+                    .forEach((serviceId, attributes) -> {
+                        Set<String> sysAttributes = attributeMaps.getOrDefault(serviceId, new HashSet<>());
+                        sysAttributes.addAll(attributes.stream().map(SysAttribute::getAttributeId).collect(Collectors.toSet()));
+                        attributeMaps.put(serviceId, sysAttributes);
+                    });
+        });
+
+        // 将SysUser对象转换为DefaultSecurityUser对象
         SysUserToSecurityUserConverter sysUserToSecurityUserConverter = new SysUserToSecurityUserConverter();
-        return sysUserToSecurityUserConverter.convert(byUsername);
+        return sysUserToSecurityUserConverter.convert(user);
     }
 
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////

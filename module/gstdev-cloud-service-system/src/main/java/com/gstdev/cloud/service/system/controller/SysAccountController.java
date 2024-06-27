@@ -1,8 +1,10 @@
 package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.definition.domain.oauth2.PrincipalDetails;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
+import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.*;
@@ -37,7 +39,13 @@ public class SysAccountController implements ResultController {
     }
 
     // ********************************* Account Manage *****************************************
-
+    @Tag(name = "demo Manage")
+    @GetMapping("/get-demo")
+    @Operation(summary = "get-demo")
+    public Result getDemo() {
+        PrincipalDetails principal = SecurityUtils.getPrincipal();
+        return this.result(principal);
+    }
     @Tag(name = "Account Manage")
     @GetMapping("/get-account-manage-page")
     @Operation(summary = "get-account-manage-page")

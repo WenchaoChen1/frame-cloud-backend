@@ -2,13 +2,7 @@ package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
-import com.gstdev.cloud.data.core.utils.QueryUtils;
-import com.gstdev.cloud.service.system.domain.base.menu.MenuDto;
-import com.gstdev.cloud.service.system.domain.entity.SysAccount;
-import com.gstdev.cloud.service.system.domain.entity.SysMenu;
-import com.gstdev.cloud.service.system.domain.entity.SysRole;
-import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
+import com.gstdev.cloud.service.system.domain.entity.*;
 import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.AccountMenuPermissionsDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.AccountMenuPermissionsQO;
@@ -21,10 +15,7 @@ import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Transactional(readOnly = true)
@@ -39,7 +30,8 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
     private SysMenuRepository menuRepository;
     @Resource
     private SysMenuMapper menuMapper;
-
+    @Resource
+    private SysTenantMenuService tenantMenuService;
 
     public SysMenuServiceImpl(SysMenuRepository menuRepository, SysMenuMapper menuMapper) {
         super(menuRepository);
@@ -60,6 +52,19 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
     public SysMenuServiceImpl getService() {
         return service;
     }
+    public List<SysMenu> findAllMenuByTenantId(String tenantId) {
+        return tenantMenuService.findAllByTenantId(tenantId).stream().map(SysTenantMenu::getMenu).collect(Collectors.toList());
+    }
+
+    @Override
+    public Collection<? extends SysMenu> findAllMenuByAccount(SysAccount account) {
+        return List.of();
+    }
+
+    @Override
+    public Collection<? extends SysMenu> findAllMenuByUser(SysUser user) {
+        return List.of();
+    }
 
     @Override
     public List<AccountMenuPermissionsDto> getAccountMenuPermissions(String accountId) {
@@ -69,8 +74,7 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
         if (account.getType().equals(SysAccountType.SUPER)) {
             sysMenuList = service.findAll();
         } else if (account.getType().equals(SysAccountType.ADMIN)) {
-            accountMenuPermissionsQO.setTenantId(account.getTenantId());
-            sysMenuList = service.findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, accountMenuPermissionsQO, criteriaBuilder));
+            sysMenuList = findAllMenuByTenantId(account.getTenantId());
         } else if (account.getType().equals(SysAccountType.USER)) {
             Map<String, SysMenu> collect = new HashMap<>();
             for (SysRole role : account.getRoles()) {
@@ -90,6 +94,8 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
         SysMenu entity = getMapper().toEntity(insertMenuManageIO);
         getService().saveAndFlush(entity);
     }
+
+
 
     @Override
     @Transactional
