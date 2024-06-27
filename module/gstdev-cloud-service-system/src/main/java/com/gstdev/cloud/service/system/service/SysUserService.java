@@ -9,9 +9,27 @@ public interface SysUserService extends BaseService<SysUser, String> {
 
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 
+    /**
+     * 根据用户名查询用户
+     * @param username
+     * @return
+     */
     DefaultSecurityUser signInFindByUsername(String username);
 
+
+    /**
+     * 用户管理初始化
+     * @param userInsertInput
+     * @return
+     */
     SysUser insertUserManageInitialization(InsertUserManageInitializationIO userInsertInput);
+
+    /**
+     * 重置密码
+     * @param originalPassword
+     * @param newPassword
+     */
+    void resetPassword(String originalPassword, String newPassword);
 }
 
 

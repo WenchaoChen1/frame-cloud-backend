@@ -98,6 +98,10 @@ public class SysUserController implements ResultController {
         return Result.success();
     }
 
+
+
+
+
     // ********************************* 登录 *****************************************
 
     @Tag(name = "security sign-in")
@@ -108,6 +112,13 @@ public class SysUserController implements ResultController {
         return Result.success(defaultSecurityUser);
     }
 
+    @Tag(name = "User Manage")
+    @Operation(summary = "reset-password")
+    @PutMapping("/reset-password/{originalPassword}/{newPassword}")
+    public Result<String> resetPassword(@NotBlank @PathVariable String originalPassword, @NotBlank @PathVariable String newPassword) {
+        getService().resetPassword(originalPassword, newPassword);
+        return Result.success();
+    }
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
 
 }
