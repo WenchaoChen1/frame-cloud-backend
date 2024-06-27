@@ -15,9 +15,13 @@ import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -46,4 +50,14 @@ public class SysTenantMenu extends BasePOJOEntity {
     @JsonIgnore
     @ManyToMany(mappedBy = "tenantMenus")
     private List<SysRole> roles;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @Fetch(FetchMode.SUBSELECT)
+    @JoinTable(name = "sys_r_tenant_menu_business_permission",
+        joinColumns = {@JoinColumn(name = "tenant_menu_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "business_permission_id", referencedColumnName = "id")},
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"tenant_menu_id", "business_permission_id"})},
+        indexes = {@Index(name = "sys_tenant_menu_business_permission_tmid_idx", columnList = "tenant_menu_id"), @Index(name = "sys_tenant_menu_business_permission_bpid_idx", columnList = "business_permission_id")})
+    private Set<SysBusinessPermission> businessPermissions = new HashSet<>();
+
 }

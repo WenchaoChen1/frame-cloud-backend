@@ -90,6 +90,17 @@ public class SysRole extends BaseTreeEntity {
             indexes = {@Index(name = "sys_role_permission_rid_idx", columnList = "role_id"), @Index(name = "sys_role_permission_pid_idx", columnList = "permission_id")})
     private Set<SysPermission> permissions = new HashSet<>();
 
+
+
+    @ManyToMany(fetch = FetchType.LAZY)
+//    @Fetch(FetchMode.SUBSELECT)
+    @JoinTable(name = "sys_r_role_business_permission",
+        joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "business_permission_id", referencedColumnName = "id")},
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"role_id", "business_permission_id"})},
+        indexes = {@Index(name = "sys_role_business_permission_rid_idx", columnList = "role_id"), @Index(name = "sys_role_business_permission_bpid_idx", columnList = "business_permission_id")})
+    private Set<SysBusinessPermission> businessPermissions = new HashSet<>();
+
 }
 
 

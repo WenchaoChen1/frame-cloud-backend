@@ -1,13 +1,17 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.service.system.domain.generator.SysBusinessPermissionUuidGenerator;
 import com.gstdev.cloud.service.system.domain.generator.SysPermissionUuidGenerator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+
+import java.util.List;
 
 /**
  * <p>Description: 系统权限实体 </p>
@@ -20,7 +24,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class SysBusinessPermission extends BaseEntity {
 
     @Id
-    @SysPermissionUuidGenerator
+    @SysBusinessPermissionUuidGenerator
     @Column(name = "id", length = 64)
     private String id;
 
@@ -47,4 +51,10 @@ public class SysBusinessPermission extends BaseEntity {
     @Column(name = "description")
     private String description;
 
+    @JsonIgnore
+    @ManyToMany(mappedBy = "businessPermissions",  fetch = FetchType.LAZY)
+    private List<SysTenantMenu> sysTenantMenus;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "businessPermissions",  fetch = FetchType.LAZY)
+    private List<SysRole> sysRoles;
 }

@@ -12,7 +12,7 @@ import static java.lang.annotation.ElementType.METHOD;
 /**
  * <p>Description: SysInterfaceUuid </p>
  */
-@IdGeneratorType(SysPermissionUuidGeneratorType.class)
+@IdGeneratorType(SysBusinessPermissionUuidGeneratorType.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target({FIELD, METHOD})
 public @interface SysBusinessPermissionUuidGenerator {
