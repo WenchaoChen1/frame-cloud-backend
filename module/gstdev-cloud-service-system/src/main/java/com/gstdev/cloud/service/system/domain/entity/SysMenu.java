@@ -11,11 +11,10 @@ package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
-import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuLocation;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
-import com.gstdev.cloud.service.system.domain.generator.SysAttributeUuidGenerator;
+import com.gstdev.cloud.service.system.domain.generator.SysMenuUuidGenerator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -43,7 +42,7 @@ public class SysMenu extends BaseEntity {
 //    private Integer deleted = 0;
     @Schema(title = "sys_menuID")
     @Id
-    @SysAttributeUuidGenerator
+    @SysMenuUuidGenerator
     @Column(name = "id", length = 64)
     private String id;
 
@@ -84,7 +83,7 @@ public class SysMenu extends BaseEntity {
     private List<SysTenantMenu> rTenantMenus;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "menus", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "menus",  fetch = FetchType.LAZY)
     private List<SysAttribute> attributes;
 
     @Override

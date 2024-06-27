@@ -32,7 +32,7 @@ import java.util.Set;
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 public class SysRole extends BaseTreeEntity {
 
-    @Column(name = "tenant_id", length = 50, nullable = false)
+    @Column(name = "tenant_id", length = 64, nullable = false)
     private String tenantId;
 
     @Column(name = "parent_id", length = 36)

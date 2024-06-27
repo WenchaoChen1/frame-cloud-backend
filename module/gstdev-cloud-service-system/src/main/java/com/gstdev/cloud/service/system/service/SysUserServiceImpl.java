@@ -157,6 +157,14 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
             allByTenantIdIn = sysTenantMenuRepository.findAllByTenantIdIn(adminAccountTenantIds);
             menus = allByTenantIdIn.stream().map(SysTenantMenu::getMenu).toList();
         }
+        // 处理用户的user account
+        accounts.forEach(account -> {
+            if (account.getType().equals(SysAccountType.USER)) {
+                adminAccountTenantIds.add(account.getTenantId());
+            }
+        });
+
+
         // 处理菜单根据menuId去重
         menus.stream().collect(Collectors.toMap(SysMenu::getId, menu -> menu, (key1, key2) -> key1));
         // 处理菜单的属性并进行分组
