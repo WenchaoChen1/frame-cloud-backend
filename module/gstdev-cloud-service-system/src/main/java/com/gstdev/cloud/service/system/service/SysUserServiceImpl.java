@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
@@ -131,7 +132,8 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
         Set<FrameGrantedAuthority> authorities = new HashSet<>();
 
         // 获取用户的账号列表
-        List<SysAccount> accounts = user.getAccount();
+        List<SysAccount> accounts = user.getAccount().stream()
+                .filter(account -> account.getStatus().equals(DataItemStatus.ENABLE)).toList();
         // 添加超级管理员的特殊权限
         accounts.stream()
                 .filter(account -> account.getType().equals(SysAccountType.SUPER))
@@ -153,7 +155,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
         List<SysMenu> menus = new ArrayList<>();
         if (!adminAccountTenantIds.isEmpty()) {
             allByTenantIdIn = sysTenantMenuRepository.findAllByTenantIdIn(adminAccountTenantIds);
-            menus = allByTenantIdIn.stream().map(SysTenantMenu::getMenu).collect(Collectors.toList());
+            menus = allByTenantIdIn.stream().map(SysTenantMenu::getMenu).toList();
         }
         // 处理菜单根据menuId去重
         menus.stream().collect(Collectors.toMap(SysMenu::getId, menu -> menu, (key1, key2) -> key1));
