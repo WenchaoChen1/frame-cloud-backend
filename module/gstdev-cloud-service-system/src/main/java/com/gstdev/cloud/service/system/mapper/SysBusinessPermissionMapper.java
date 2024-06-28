@@ -1,11 +1,9 @@
 package com.gstdev.cloud.service.system.mapper;
 
-import com.gstdev.cloud.service.system.util.TreeUtils;
 import com.gstdev.cloud.service.system.domain.entity.SysBusinessPermission;
-import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionManageTreeVo;
-import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.InsertBusinessPermissionManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.UpdateBusinessPermissionManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysPermission.PermissionManageDetailVo;
+import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.TenantMenuMenuTreeDto;
+import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.*;
+import com.gstdev.cloud.service.system.util.TreeUtils;
 import org.mapstruct.*;
 
 import java.util.Comparator;
@@ -18,7 +16,7 @@ public interface SysBusinessPermissionMapper {
 
     SysBusinessPermission toEntity(InsertBusinessPermissionManageIO insertBusinessPermissionManageIO);
 
-    PermissionManageDetailVo toBusinessPermissionManageDetailVo(SysBusinessPermission sysBusinessPermission);
+    BusinessPermissionManageDetailVo toBusinessPermissionManageDetailVo(SysBusinessPermission sysBusinessPermission);
 
 
     void copy(UpdateBusinessPermissionManageIO updateBusinessPermissionManageIO, @MappingTarget SysBusinessPermission sysBusinessPermission);
@@ -38,4 +36,6 @@ public interface SysBusinessPermissionMapper {
                         item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
         );
     }
+
+    List<BusinessPermissionManageTenantMenuTreeVo> toBusinessPermissionManageMenuTreeVo(List<TenantMenuMenuTreeDto> allTenantMenuMenuTree);
 }

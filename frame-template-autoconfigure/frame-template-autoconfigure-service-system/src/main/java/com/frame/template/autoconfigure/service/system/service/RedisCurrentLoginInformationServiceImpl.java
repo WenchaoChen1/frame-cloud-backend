@@ -1,7 +1,6 @@
 package com.frame.template.autoconfigure.service.system.service;
 
 import cn.hutool.json.JSONArray;
-import cn.hutool.json.JSONObject;
 import com.frame.template.common.exception.CommonException;
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
@@ -13,6 +12,7 @@ import com.gstdev.cloud.service.system.service.SysAccountService;
 import com.gstdev.cloud.service.system.service.SysMenuService;
 import com.gstdev.cloud.service.system.service.SysTenantService;
 import jakarta.annotation.Resource;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -28,6 +28,7 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
     @Resource
     private SysAccountService accountService;
     @Resource
+    @Lazy
     private SysMenuService menuService;
     @Resource
     private SysTenantService tenantService;
@@ -52,7 +53,7 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
         currentLoginInformation.setAccountName(account.getName());
         currentLoginInformation.setTenantId(account.getTenantId());
         currentLoginInformation.setType(account.getType().getValue());
-        currentLoginInformation.setTenant(new JSONObject(tenantService.findById(account.getTenantId())));
+//        currentLoginInformation.setTenant(new JSONObject(tenantService.findById(account.getTenantId())));
 //        currentLoginInformation.setCurrentLoginAccount(new JSONObject(account));
         currentLoginInformation.setCurrentLoginAccountUserPermissions(new JSONArray(menuService.getAccountMenuPermissions(account.getId())));
         redisCurrentLoginInformation.addByTokenCurrentLoginInformation(currentLoginInformation);

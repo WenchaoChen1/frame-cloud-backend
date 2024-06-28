@@ -61,7 +61,7 @@ public class SysRole extends BaseTreeEntity {
     @ManyToMany
     @JoinTable(name = "sys_r_role_tenant_menu", joinColumns = {
             @JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {
-            @JoinColumn(name = "tenant_menu_id", referencedColumnName = "id")})
+            @JoinColumn(name = "tenant_menu_id", referencedColumnName = "tenant_menu_id")})
     private List<SysTenantMenu> tenantMenus;
 
     @ManyToMany(mappedBy = "roles")
@@ -96,7 +96,7 @@ public class SysRole extends BaseTreeEntity {
 //    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "sys_r_role_business_permission",
         joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")},
-        inverseJoinColumns = {@JoinColumn(name = "business_permission_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "business_permission_id", referencedColumnName = "business_permission_id")},
         uniqueConstraints = {@UniqueConstraint(columnNames = {"role_id", "business_permission_id"})},
         indexes = {@Index(name = "sys_role_business_permission_rid_idx", columnList = "role_id"), @Index(name = "sys_role_business_permission_bpid_idx", columnList = "business_permission_id")})
     private Set<SysBusinessPermission> businessPermissions = new HashSet<>();

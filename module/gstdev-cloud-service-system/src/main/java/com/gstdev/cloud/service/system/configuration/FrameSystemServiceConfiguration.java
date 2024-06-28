@@ -120,4 +120,11 @@ public class FrameSystemServiceConfiguration {
         log.debug("[GstDev Cloud] |- Frame Configure Business Permission Service");
         return new SysBusinessPermissionServiceImpl(sysBusinessPermissionRepository);
     }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public SysRTenantMenuBusinessPermissionService sysRTenantMenuBusinessPermissionService(SysRTenantMenuBusinessPermissionRepository sysRTenantMenuBusinessPermissionRepository) {
+        log.debug("[GstDev Cloud] |- Frame Configure R Tenant Menu Business Permission Service");
+        return new SysRTenantMenuBusinessPermissionServiceImpl(sysRTenantMenuBusinessPermissionRepository);
+    }
 }

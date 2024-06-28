@@ -3,10 +3,8 @@ package com.gstdev.cloud.service.system.controller;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
-import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
-import com.gstdev.cloud.service.system.domain.pojo.sysAccount.SwitchUserAccountDetailVo;
 import com.gstdev.cloud.service.system.domain.pojo.sysUser.*;
 import com.gstdev.cloud.service.system.mapper.SysUserMapper;
 import com.gstdev.cloud.service.system.service.SysUserService;
@@ -15,6 +13,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotBlank;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +27,7 @@ import java.util.Map;
 public class SysUserController implements ResultController {
 
     @Resource
+    @Lazy
     private SysUserService userService;
 
     @Resource

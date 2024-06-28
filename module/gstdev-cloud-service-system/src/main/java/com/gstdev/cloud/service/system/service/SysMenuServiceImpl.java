@@ -25,13 +25,15 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
     private SysAccountRepository accountRepository;
     @Resource
     @Lazy
+    private SysTenantMenuService tenantMenuService;
+    @Resource
+    @Lazy
     private SysMenuServiceImpl service;
     @Resource
     private SysMenuRepository menuRepository;
     @Resource
     private SysMenuMapper menuMapper;
-    @Resource
-    private SysTenantMenuService tenantMenuService;
+
 
     public SysMenuServiceImpl(SysMenuRepository menuRepository, SysMenuMapper menuMapper) {
         super(menuRepository);

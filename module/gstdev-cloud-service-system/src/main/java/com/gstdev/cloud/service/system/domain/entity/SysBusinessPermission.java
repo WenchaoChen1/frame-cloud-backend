@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.generator.SysBusinessPermissionUuidGenerator;
-import com.gstdev.cloud.service.system.domain.generator.SysPermissionUuidGenerator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -25,8 +24,8 @@ public class SysBusinessPermission extends BaseEntity {
 
     @Id
     @SysBusinessPermissionUuidGenerator
-    @Column(name = "id", length = 64)
-    private String id;
+    @Column(name = "business_permission_id", length = 64)
+    private String businessPermissionid;
 
     @Column(name = "parent_id", length = 64, nullable = false)
     private String parentId;

@@ -13,6 +13,7 @@ import jakarta.persistence.criteria.Subquery;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -68,6 +69,7 @@ public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, Strin
     }
 
     @Override
+    @Transactional
     public List<SysInterface> storeRequestMappings(Collection<RequestMapping> requestMappings) {
         List<SysInterface> sysAuthorities = toSysInterfaces(requestMappings);
         return saveAllAndFlush(sysAuthorities);

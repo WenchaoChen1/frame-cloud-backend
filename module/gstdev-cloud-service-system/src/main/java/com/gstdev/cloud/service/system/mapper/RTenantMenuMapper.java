@@ -10,7 +10,6 @@
 package com.gstdev.cloud.service.system.mapper;
 
 import com.gstdev.cloud.data.core.mapper.BasePOJOMapper;
-import com.gstdev.cloud.service.system.util.TreeUtils;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuDto;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuInsertInput;
 import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuUpdateInput;
@@ -18,6 +17,8 @@ import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuVo;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.RoleManageTenantMenuTreeVO;
+import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.TenantMenuMenuTreeDto;
+import com.gstdev.cloud.service.system.util.TreeUtils;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
@@ -39,6 +40,18 @@ public interface RTenantMenuMapper extends BasePOJOMapper<SysTenantMenu, RTenant
                 RoleManageTenantMenuTreeVO::getId,
                 RoleManageTenantMenuTreeVO::getParentId,
                 Comparator.comparingInt((RoleManageTenantMenuTreeVO item) ->
+                        item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+        );
+    }
+    List<TenantMenuMenuTreeDto> toTenantMenuMenuTreeDto(List<SysTenantMenu> sysMenus);
+
+    default List<TenantMenuMenuTreeDto> toTenantMenuMenuTreeDtoToTree(List<SysTenantMenu> sysRole) {
+        List<TenantMenuMenuTreeDto> tenantMenuMenuTreeDto = toTenantMenuMenuTreeDto(sysRole);
+        return TreeUtils.buildTree(
+                tenantMenuMenuTreeDto,
+                TenantMenuMenuTreeDto::getId,
+                TenantMenuMenuTreeDto::getParentId,
+                Comparator.comparingInt((TenantMenuMenuTreeDto item) ->
                         item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
         );
     }

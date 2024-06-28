@@ -20,6 +20,7 @@ import com.gstdev.cloud.service.system.repository.SysTenantMenuRepository;
 import com.gstdev.cloud.service.system.repository.SysUserRepository;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
@@ -34,11 +35,14 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
 
     private static final String SPECIAL_CHARS = "! @#$%^&＊_=+-/";
     @Resource
+    @Lazy
     private SysAccountService accountService;
     @Resource
+    @Lazy
     private SysMenuService menuService;
 
     @Resource
+    @Lazy
     private IdentityFeignService identityFeignService;
     @Resource
     private SysUserRepository userRepository;

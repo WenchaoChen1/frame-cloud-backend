@@ -10,23 +10,22 @@
 package com.gstdev.cloud.service.system.service;
 
 
-import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuDto;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuIO;
+import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.TenantMenuMenuTreeDto;
 import com.gstdev.cloud.service.system.mapper.RTenantMenuMapper;
 import com.gstdev.cloud.service.system.repository.SysMenuRepository;
 import com.gstdev.cloud.service.system.repository.SysTenantMenuRepository;
 import jakarta.annotation.Resource;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Transactional(readOnly = true)
-//public class SysTenantMenuServiceImpl extends BasePOJOServiceImpl<SysTenantMenu, String, SysTenantMenuRepository, RTenantMenuMapper, RTenantMenuDto> implements SysTenantMenuService {
 public class SysTenantMenuServiceImpl extends BaseServiceImpl<SysTenantMenu, String, SysTenantMenuRepository> implements SysTenantMenuService {
 
     @Resource
@@ -34,11 +33,15 @@ public class SysTenantMenuServiceImpl extends BaseServiceImpl<SysTenantMenu, Str
     @Resource
     private SysTenantMenuRepository rTenantMenuRepository;
     @Resource
+    @Lazy
     private SysRoleService sysRoleService;
     @Resource
+    @Lazy
     private RTenantMenuMapper rTenantMenuMappere;
-//    @Resource
-//    private SysRRoleTenantMenuService sysRRoleTenantMenuService;
+    @Resource
+    @Lazy
+    private SysTenantMenuServiceImpl service;
+
 
     public SysTenantMenuServiceImpl(SysTenantMenuRepository rTenantMenuRepository, RTenantMenuMapper rTenantMenuMappere) {
         super(rTenantMenuRepository);
@@ -49,10 +52,21 @@ public class SysTenantMenuServiceImpl extends BaseServiceImpl<SysTenantMenu, Str
     public SysTenantMenuRepository getRepository() {
         return rTenantMenuRepository;
     }
+    @Override
+    public SysTenantMenuServiceImpl getService() {
+        return service;
+    }
 
     @Override
     public List<SysTenantMenu> findAllByTenantId(String tenantId) {
         return getRepository().findByTenantId(tenantId);
+    }
+
+    @Override
+    public List<TenantMenuMenuTreeDto> getAllTenantMenuMenuTree(String tenantId) {
+        List<SysTenantMenu> allByTenantId = getRepository().findByTenantId(tenantId);
+        List<TenantMenuMenuTreeDto> tenantMenuMenuTreeDto = rTenantMenuMappere.toTenantMenuMenuTreeDto(allByTenantId);
+        return tenantMenuMenuTreeDto;
     }
 
     @Override

@@ -7,21 +7,21 @@ import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.annotation.Idempotent;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysBusinessPermission;
-import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionManageQO;
-import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionManageTreeVo;
-import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.InsertBusinessPermissionManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.UpdateBusinessPermissionManageIO;
-import com.gstdev.cloud.service.system.domain.pojo.sysPermission.PermissionManageDetailVo;
+import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.TenantMenuMenuTreeDto;
+import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.*;
 import com.gstdev.cloud.service.system.mapper.SysBusinessPermissionMapper;
 import com.gstdev.cloud.service.system.service.SysBusinessPermissionService;
+import com.gstdev.cloud.service.system.service.SysTenantMenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.annotation.Resource;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * <p>Description: SysPermissionController </p>
@@ -33,6 +33,9 @@ public class SysBusinessPermissionController implements ResultController {
 
     @Resource
     private SysBusinessPermissionService sysBusinessPermissionService;
+    @Resource
+    @Lazy
+    private SysTenantMenuService sysTenantMenuService;
 
     @Resource
     private SysBusinessPermissionMapper sysBusinessPermissionMapper;
@@ -61,7 +64,7 @@ public class SysBusinessPermissionController implements ResultController {
     @Tag(name = "Business Permission Manage")
     @GetMapping("/get-business-permission-manage-detail/{id}")
     @Operation(summary = "get-business-permission-manage-detail")
-    public Result<PermissionManageDetailVo> getBusinessPermissionManageDetail(@PathVariable String id) {
+    public Result<BusinessPermissionManageDetailVo> getBusinessPermissionManageDetail(@PathVariable String id) {
         return result(getMapper().toBusinessPermissionManageDetailVo(getService().findById(id)));
     }
 
@@ -108,6 +111,29 @@ public class SysBusinessPermissionController implements ResultController {
 //        return result(getService().findDistinctBusinessPermissionTypes());
 //    }
 
+    @Tag(name = "Business Permission Manage")
+    @GetMapping("/get-business-permission-manage-tenant-menu-tree/{tenantId}")
+    @Operation(summary = "get-business-permission-manage-tenant-menu-tree获取所有菜单，返回树状结构")
+    public Result<List<BusinessPermissionManageTenantMenuTreeVo>> getBusinessPermissionManageTenantMenuTree(@PathVariable String tenantId) {
+        List<TenantMenuMenuTreeDto> allTenantMenuMenuTree = sysTenantMenuService.getAllTenantMenuMenuTree(tenantId);
+        return this.result(this.getMapper().toBusinessPermissionManageMenuTreeVo(allTenantMenuMenuTree));
+    }
+
+
+    @Tag(name = "Business Permission Manage")
+    @GetMapping("/get-all-menu-id-by-business-permission-id/{businessPermissionId}")
+    @Operation(summary = "get-all-menu-id-by-business-permission-id")
+    public Result<Set<String>> getAllMenuIdByBusinessPermissionId(@PathVariable String businessPermissionId) {
+        return result(getService().getAllMenuIdByBusinessPermissionId(businessPermissionId));
+    }
+
+    @Tag(name = "Business Permission Manage")
+    @Tag(name = "Role Manage")
+    @PostMapping("/update-business-permission-assigned-tenant-menu")
+    @Operation(summary = "update-business-permission-assigned-tenant-menu")
+    public Result<String> updateBusinessPermissionAssignedTenantMenu(@RequestBody @Validated UpdateBusinessPermissionAssignedTenantMenuIO updateBusinessPermissionAssignedTenantMenu) {
+        return getService().updateBusinessPermissionAssignedTenantMenu(updateBusinessPermissionAssignedTenantMenu);
+    }
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 
 }
