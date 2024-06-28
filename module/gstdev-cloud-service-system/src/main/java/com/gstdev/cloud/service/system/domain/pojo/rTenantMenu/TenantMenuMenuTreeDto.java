@@ -16,6 +16,7 @@ public class TenantMenuMenuTreeDto extends TreeNode<String, TenantMenuMenuTreeDt
     private String menuName;
     private String name;
     private String path;
+    private SysMenu menu;
 
     void setMenu(SysMenu menu) {
         this.menuId = menu.getId();

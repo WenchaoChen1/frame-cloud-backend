@@ -65,7 +65,7 @@ public class SysTenantMenuServiceImpl extends BaseServiceImpl<SysTenantMenu, Str
     @Override
     public List<TenantMenuMenuTreeDto> getAllTenantMenuMenuTree(String tenantId) {
         List<SysTenantMenu> allByTenantId = getRepository().findByTenantId(tenantId);
-        List<TenantMenuMenuTreeDto> tenantMenuMenuTreeDto = rTenantMenuMappere.toTenantMenuMenuTreeDto(allByTenantId);
+        List<TenantMenuMenuTreeDto> tenantMenuMenuTreeDto = rTenantMenuMappere.toTenantMenuMenuTreeDtoToTree(allByTenantId);
         return tenantMenuMenuTreeDto;
     }
 

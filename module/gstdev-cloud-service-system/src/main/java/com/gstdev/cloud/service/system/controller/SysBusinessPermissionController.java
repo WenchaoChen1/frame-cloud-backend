@@ -81,7 +81,7 @@ public class SysBusinessPermissionController implements ResultController {
     @PutMapping("/update-business-permission-manage")
     @Operation(summary = "update-business-permission-manage")
     public Result<String> updateBusinessPermissionManage(@RequestBody @Validated UpdateBusinessPermissionManageIO updateBusinessPermissionManageIO) {
-        SysBusinessPermission sysBusinessPermission = this.getService().findById(updateBusinessPermissionManageIO.getId());
+        SysBusinessPermission sysBusinessPermission = this.getService().findById(updateBusinessPermissionManageIO.getBusinessPermissionId());
         getMapper().copy(updateBusinessPermissionManageIO, sysBusinessPermission);
         this.getService().insertAndUpdate(sysBusinessPermission);
         return Result.success();

@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 public class BusinessPermissionManageDetailVo {
 
-    private String id;
+    private String businessPermissionId;
     private String parentId;
     private String tenantId;
     private String name;

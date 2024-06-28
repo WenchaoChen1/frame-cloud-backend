@@ -29,7 +29,7 @@ public class BusinessPermissionManageTreeVo extends TreeNode<String, BusinessPer
     private Date updatedDate;
     private String updatedUser;
     private String updatedAccount;
-    private String id;
+    private String businessPermissionId;
     private String parentId;
     private String name;
     private String code;

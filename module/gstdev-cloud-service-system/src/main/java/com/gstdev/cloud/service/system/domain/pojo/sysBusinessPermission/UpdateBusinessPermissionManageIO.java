@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class UpdateBusinessPermissionManageIO {
 
-    private String id;
+    private String businessPermissionId;
     private String tenantId;
     private String parentId;
     private String name;
