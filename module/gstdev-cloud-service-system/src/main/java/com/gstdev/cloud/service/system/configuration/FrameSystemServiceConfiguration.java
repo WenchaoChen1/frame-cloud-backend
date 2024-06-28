@@ -113,4 +113,11 @@ public class FrameSystemServiceConfiguration {
         log.debug("[GstDev Cloud] |- Frame Configure R Attribute Service");
         return new SysRAttributeMenuServiceImpl(tenantDictRepository);
     }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public SysBusinessPermissionService sysBusinessPermissionService(SysBusinessPermissionRepository sysBusinessPermissionRepository) {
+        log.debug("[GstDev Cloud] |- Frame Configure Business Permission Service");
+        return new SysBusinessPermissionServiceImpl(sysBusinessPermissionRepository);
+    }
 }

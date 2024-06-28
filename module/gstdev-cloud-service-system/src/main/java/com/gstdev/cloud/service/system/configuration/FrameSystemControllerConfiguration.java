@@ -102,6 +102,11 @@ public class FrameSystemControllerConfiguration {
     public SysRAttributeMenuController sysRAttributeMenuController(){
         log.debug("[GstDev Cloud] |- Frame Configure R Attribute Menu Controller");
         return new SysRAttributeMenuController();
+    }    @Bean
+    @ConditionalOnMissingBean
+    public SysBusinessPermissionController sysBusinessPermissionController(){
+        log.debug("[GstDev Cloud] |- Frame Configure Business Permission Controller");
+        return new SysBusinessPermissionController();
     }
 
 //    @Bean
