@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
@@ -10,7 +11,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author: zcy
@@ -24,8 +27,11 @@ import java.util.List;
 @Table(name = "sys_account", schema = "public")
 //@Where(clause = "is_deleted = false")
 //@SQLDelete(sql = "UPDATE sys_account SET is_deleted=true WHERE id =?")
-public class SysAccount extends BasePOJOEntity {
-
+public class SysAccount extends BaseEntity {
+    @Id
+    @GeneratedValue(generator = "jpa-uuid")
+    @Column(name = "account_id", length = 64, nullable = false)
+    private String accountId;
     @Column(name = "tenant_id", length = 36, nullable = false)
     private String tenantId;
     @Column(name = "name", nullable = false)
@@ -56,7 +62,17 @@ public class SysAccount extends BasePOJOEntity {
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "sys_r_account_role", joinColumns = {
-            @JoinColumn(name = "account_id", referencedColumnName = "id")}, inverseJoinColumns = {
-            @JoinColumn(name = "role_id", referencedColumnName = "id")})
+        @JoinColumn(name = "account_id", referencedColumnName = "account_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "role_id", referencedColumnName = "id")})
     private List<SysRole> roles;
+
+
+    @ManyToMany(fetch = FetchType.LAZY)
+//    @Fetch(FetchMode.SUBSELECT)
+    @JoinTable(name = "sys_r_account_business_permission",
+        joinColumns = {@JoinColumn(name = "account_id", referencedColumnName = "account_id")},
+        inverseJoinColumns = {@JoinColumn(name = "business_permission_id", referencedColumnName = "business_permission_id")},
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"account_id", "business_permission_id"})},
+        indexes = {@Index(name = "sys_account_business_permission_aid_idx", columnList = "account_id"), @Index(name = "sys_account_business_permission_bpid_idx", columnList = "business_permission_id")})
+    private Set<SysBusinessPermission> businessPermissions = new HashSet<>();
 }

@@ -87,18 +87,18 @@ public class SysAccountController implements ResultController {
     }
 
     @Tag(name = "Account Manage")
-    @DeleteMapping("/delete-account-manage/{id}")
+    @DeleteMapping("/delete-account-manage/{accountId}")
     @Operation(summary = "delete-account-manage")
-    public Result<String> deleteAccountManage(@PathVariable String id) {
-        getService().deleteById(id);
+    public Result<String> deleteAccountManage(@PathVariable String accountId) {
+        getService().deleteById(accountId);
         return Result.success();
     }
 
     @Tag(name = "Account Manage")
     @Operation(summary = "delete-all-account-manage")
     @DeleteMapping("/delete-all-account-manage")
-    public Result<String> deleteAllAccountManage(List<String> id) {
-        getService().deleteAllById(id);
+    public Result<String> deleteAllAccountManage(List<String> accountIds) {
+        getService().deleteAllById(accountIds);
         return Result.success();
     }
 

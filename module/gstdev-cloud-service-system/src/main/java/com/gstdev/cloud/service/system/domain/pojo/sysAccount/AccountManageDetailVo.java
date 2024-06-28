@@ -19,7 +19,7 @@ import lombok.Setter;
 @Setter
 public class AccountManageDetailVo {
 
-    private String id;
+    private String accountId;
     private SysAccountType type;
     private String name;
     private String identity;

@@ -56,4 +56,7 @@ public class SysBusinessPermission extends BaseEntity {
     @JsonIgnore
     @ManyToMany(mappedBy = "businessPermissions",  fetch = FetchType.LAZY)
     private List<SysRole> sysRoles;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "businessPermissions",  fetch = FetchType.LAZY)
+    private List<SysAccount> sysAccounts;
 }

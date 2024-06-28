@@ -39,7 +39,7 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
         if (!ObjectUtils.isEmpty(redisCurrentLoginInformationInput.getAccountId())) {
             account = accountService.findById(redisCurrentLoginInformationInput.getAccountId());
         }
-        if (account == null || account.getId() == null) {
+        if (account == null || account.getAccountId() == null) {
             List<SysAccount> accounts = accountService.findAllByUserId(SecurityUtils.getUserId());
             if (ObjectUtils.isEmpty(accounts)) {
                 throw new CommonException("No account was found, please log in again");
@@ -49,13 +49,13 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
         CurrentLoginInformation currentLoginInformation = new CurrentLoginInformation();
         currentLoginInformation.setUserId(account.getUser().getId());
         currentLoginInformation.setUserName(account.getUser().getUsername());
-        currentLoginInformation.setAccountId(account.getId());
+        currentLoginInformation.setAccountId(account.getAccountId());
         currentLoginInformation.setAccountName(account.getName());
         currentLoginInformation.setTenantId(account.getTenantId());
         currentLoginInformation.setType(account.getType().getValue());
 //        currentLoginInformation.setTenant(new JSONObject(tenantService.findById(account.getTenantId())));
 //        currentLoginInformation.setCurrentLoginAccount(new JSONObject(account));
-        currentLoginInformation.setCurrentLoginAccountUserPermissions(new JSONArray(menuService.getAccountMenuPermissions(account.getId())));
+        currentLoginInformation.setCurrentLoginAccountUserPermissions(new JSONArray(menuService.getAccountMenuPermissions(account.getAccountId())));
         redisCurrentLoginInformation.addByTokenCurrentLoginInformation(currentLoginInformation);
         return Result.success(currentLoginInformation);
     }

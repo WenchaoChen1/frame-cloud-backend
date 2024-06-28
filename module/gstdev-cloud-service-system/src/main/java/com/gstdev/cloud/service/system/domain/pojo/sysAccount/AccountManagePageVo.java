@@ -22,7 +22,7 @@ import java.util.Date;
 @Setter
 public class AccountManagePageVo {
 
-    private String id;
+    private String accountId;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdDate;
     private String createdUser;

@@ -105,7 +105,7 @@ public class SysAccountServiceImpl extends BaseServiceImpl<SysAccount, String, S
     @Override
     @Transactional
     public void updateAccountManage(UpdateAccountManageIO updateAccountManageIO) {
-        SysAccount entity = findById(updateAccountManageIO.getId());
+        SysAccount entity = findById(updateAccountManageIO.getAccountId());
         accountMapper.copy(updateAccountManageIO, entity);
         entity.setUser(userRepository.findById(updateAccountManageIO.getUserId()).get());
         insertAndUpdate(entity);

@@ -56,7 +56,7 @@ public class SysDepart extends BaseTreeEntity {
     @ManyToMany
     @JoinTable(name = "sys_r_account_depart", joinColumns = {
             @JoinColumn(name = "depart_id", referencedColumnName = "id")}, inverseJoinColumns = {
-            @JoinColumn(name = "account_id", referencedColumnName = "id")})
+            @JoinColumn(name = "account_id", referencedColumnName = "account_id")})
     private List<SysAccount> accounts;
 }
 

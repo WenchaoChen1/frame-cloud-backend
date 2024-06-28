@@ -10,7 +10,7 @@ import lombok.Setter;
 public class UpdateAccountManageIO {
 
 
-    private String id;
+    private String accountId;
     private String name;
     private String identity;
     private String tenantId;
