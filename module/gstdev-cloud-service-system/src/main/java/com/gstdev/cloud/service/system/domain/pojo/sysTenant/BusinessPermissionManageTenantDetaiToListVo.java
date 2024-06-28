@@ -16,7 +16,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class MenuManageTenantDetaiToListVo extends TreeNode<String, MenuManageTenantDetaiToListVo> {
+public class BusinessPermissionManageTenantDetaiToListVo extends TreeNode<String, BusinessPermissionManageTenantDetaiToListVo> {
 
     private String id;
     private String tenantName;

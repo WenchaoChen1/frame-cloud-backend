@@ -98,15 +98,15 @@ public interface SysTenantMapper extends BaseTreeMapper<SysTenant, TenantDto, Te
         );
     }
 
-    List<MenuManageTenantDetaiToListVo> toMenuManageTenantDetaiToListVo(List<SysTenant> sysTenant);
+    List<BusinessPermissionManageTenantDetaiToListVo> toBusinessPermissionManageTenantDetaiToListVo(List<SysTenant> sysTenant);
 
-    default List<MenuManageTenantDetaiToListVo> toMenuManageTenantDetaiToListVoToTree(List<SysTenant> sysTenant) {
-        List<MenuManageTenantDetaiToListVo> roleManageTenantDetaiToListVo = toMenuManageTenantDetaiToListVo(sysTenant);
+    default List<BusinessPermissionManageTenantDetaiToListVo> toBusinessPermissionManageTenantDetaiToListVoToTree(List<SysTenant> sysTenant) {
+        List<BusinessPermissionManageTenantDetaiToListVo> roleManageTenantDetaiToListVo = toBusinessPermissionManageTenantDetaiToListVo(sysTenant);
         return TreeUtils.buildTree(
                 roleManageTenantDetaiToListVo,
-                MenuManageTenantDetaiToListVo::getId,
-                MenuManageTenantDetaiToListVo::getParentId,
-                Comparator.comparingInt((MenuManageTenantDetaiToListVo item) ->
+                BusinessPermissionManageTenantDetaiToListVo::getId,
+                BusinessPermissionManageTenantDetaiToListVo::getParentId,
+                Comparator.comparingInt((BusinessPermissionManageTenantDetaiToListVo item) ->
                         item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
         );
     }

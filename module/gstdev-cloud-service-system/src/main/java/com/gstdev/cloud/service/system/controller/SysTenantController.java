@@ -148,12 +148,12 @@ public class SysTenantController implements ResultController {
         return result(getMapper().toAccountManageTenantDetaiToListVoToTree(all));
     }
 
-    @Tag(name = "Menu Manage")
-    @GetMapping("/get-menu-manage-tenant-detail-to-list")
-    @Operation(summary = "get-menu-manage-tenant-detail-to-list")
-    public Result<List<MenuManageTenantDetaiToListVo>> getMenuManageTenantDetaiToListAll(MenuManageTenantDetaiToListQO queryCriteria) {
+    @Tag(name = "Business Permission Manage")
+    @GetMapping("/get-business-permission-manage-tenant-detail-to-list")
+    @Operation(summary = "get-business-permission-manage-tenant-detail-to-list")
+    public Result<List<BusinessPermissionManageTenantDetaiToListVo>> getBusinessPermissionManageTenantDetaiToListAll(BusinessPermissionManageTenantDetaiToListQO queryCriteria) {
         List<SysTenant> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, queryCriteria, criteriaBuilder));
-        return result(getMapper().toMenuManageTenantDetaiToListVoToTree(all));
+        return result(getMapper().toBusinessPermissionManageTenantDetaiToListVoToTree(all));
     }
 //  @GetMapping("/get-all-tenant-to-tree")
 //  @Operation(summary = "获取当前当前租户的所有子租户，返回树状结构")

@@ -7,7 +7,7 @@ import lombok.Data;
  * @author WenchaoChen
  */
 @Data
-public class MenuManageTenantDetaiToListQO {
+public class BusinessPermissionManageTenantDetaiToListQO {
 
     @Query
     private String tenantId;
