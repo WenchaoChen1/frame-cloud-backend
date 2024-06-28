@@ -30,7 +30,7 @@ public interface SysBusinessPermissionMapper {
         List<BusinessPermissionManageTreeVo> businessPermissionManageTreeVo = toBusinessPermissionManageTreeVo(byPage);
         return TreeUtils.buildTree(
                 businessPermissionManageTreeVo,
-                BusinessPermissionManageTreeVo::getId,
+                BusinessPermissionManageTreeVo::getBusinessPermissionId,
                 BusinessPermissionManageTreeVo::getParentId,
                 Comparator.comparingInt((BusinessPermissionManageTreeVo item) ->
                         item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)

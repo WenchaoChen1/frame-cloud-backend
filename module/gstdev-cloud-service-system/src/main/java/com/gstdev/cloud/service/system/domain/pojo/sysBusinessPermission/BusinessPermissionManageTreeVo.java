@@ -36,5 +36,11 @@ public class BusinessPermissionManageTreeVo extends TreeNode<String, BusinessPer
     private DataItemStatus status;
     private Integer sort;
     private String description;
+    private String tenantId;
+
+    public void setBusinessPermissionId(String businessPermissionId) {
+        this.businessPermissionId = businessPermissionId;
+        super.setId(businessPermissionId);
+    }
 }
 

@@ -25,7 +25,7 @@ public class SysBusinessPermission extends BaseEntity {
     @Id
     @SysBusinessPermissionUuidGenerator
     @Column(name = "business_permission_id", length = 64)
-    private String businessPermissionid;
+    private String businessPermissionId;
 
     @Column(name = "parent_id", length = 64, nullable = false)
     private String parentId;

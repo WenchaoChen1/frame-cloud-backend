@@ -27,10 +27,10 @@ public class SysBusinessPermissionUuidGeneratorType extends AbstractUuidGenerato
 
         SysBusinessPermission sysBusinessPermission = (SysBusinessPermission) object;
 
-        if (StringUtils.isEmpty(sysBusinessPermission.getBusinessPermissionid())) {
+        if (StringUtils.isEmpty(sysBusinessPermission.getBusinessPermissionId())) {
             return super.generate(session, object);
         } else {
-            return sysBusinessPermission.getBusinessPermissionid();
+            return sysBusinessPermission.getBusinessPermissionId();
         }
     }
 }
