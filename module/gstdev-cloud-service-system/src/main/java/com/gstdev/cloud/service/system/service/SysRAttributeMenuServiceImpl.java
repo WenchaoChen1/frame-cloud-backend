@@ -7,6 +7,7 @@ import com.gstdev.cloud.service.system.repository.SysRAttributeMenuRepository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
+import java.util.List;
 import java.util.Set;
 
 @Transactional(readOnly = true)
@@ -20,37 +21,15 @@ public class SysRAttributeMenuServiceImpl extends BaseServiceImpl<SysRAttributeM
     @Override
     @Transactional
     public void updateAttributeAssignedMenus(String attributeId, Set<String> menuIds) {
-        if (ObjectUtils.isEmpty(attributeId)) {
-            return;
-        }
-        if (ObjectUtils.isEmpty(menuIds)) {
-            getRepository().deleteAllByAttributeId(attributeId);
-            return;
-        }
-        getRepository().findAllByAttributeId(attributeId).forEach(sysRAttributeMenu -> {
-            if (!menuIds.contains(sysRAttributeMenu.getMenuId())) {
-                delete(sysRAttributeMenu);
-            }
-        });
-        getRepository().saveAndFlush(menuIds, attributeId);
+        getRepository().deleteAllByAttributeId(attributeId);
+        getRepository().saveAllAndFlush(toEntityList(attributeId, menuIds));
     }
 
     @Override
     @Transactional
     public void updateMenuAssignedAttributes(String menuId, Set<String> attributeIds) {
-        if (ObjectUtils.isEmpty(menuId)) {
-            return;
-        }
-        if (ObjectUtils.isEmpty(attributeIds)) {
-            getRepository().deleteAllByMenuId(menuId);
-            return;
-        }
-        getRepository().findAllByMenuId(menuId).forEach(sysRAttributeMenu -> {
-            if (!attributeIds.contains(sysRAttributeMenu.getAttributeId())) {
-                delete(sysRAttributeMenu);
-            }
-        });
-        getRepository().saveAndFlush(menuId, attributeIds);
+        getRepository().deleteAllByMenuId(menuId);
+        getRepository().saveAllAndFlush(toEntityList(attributeIds, menuId));
     }
 
     @Override
@@ -61,5 +40,21 @@ public class SysRAttributeMenuServiceImpl extends BaseServiceImpl<SysRAttributeM
     @Override
     public Set<String> getAllMenuIdByAttributeId(String attributeId) {
         return Set.of(getRepository().findAllByAttributeId(attributeId).stream().map(SysRAttributeMenu::getMenuId).toArray(String[]::new));
+    }
+    List<SysRAttributeMenu> toEntityList(Set<String> attributeIds, String menuId) {
+        return attributeIds.stream().map(attributeId -> {
+            SysRAttributeMenu sysRAttributeMenu = new SysRAttributeMenu();
+            sysRAttributeMenu.setMenuId(menuId);
+            sysRAttributeMenu.setAttributeId(attributeId);
+            return sysRAttributeMenu;
+        }).toList();
+    }
+    List<SysRAttributeMenu> toEntityList(String attributeId, Set<String> menuIds) {
+        return menuIds.stream().map(menuId -> {
+            SysRAttributeMenu sysRAttributeMenu = new SysRAttributeMenu();
+            sysRAttributeMenu.setMenuId(menuId);
+            sysRAttributeMenu.setAttributeId(attributeId);
+            return sysRAttributeMenu;
+        }).toList();
     }
 }

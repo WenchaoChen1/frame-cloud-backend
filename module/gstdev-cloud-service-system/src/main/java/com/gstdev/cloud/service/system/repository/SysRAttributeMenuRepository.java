@@ -30,32 +30,6 @@ public interface SysRAttributeMenuRepository extends BaseRepository<SysRAttribut
 
     void deleteAllByMenuIdInAndAttributeIdIn(List<String> menuIds, List<String> attributeIds);
 
-
-    default void saveAndFlush(String menu, String attribute) {
-        if (ObjectUtils.isEmpty(menu) || ObjectUtils.isEmpty(attribute)) {
-            return;
-        }
-        SysRAttributeMenu sysRAttributeMenu = new SysRAttributeMenu();
-        sysRAttributeMenu.setMenuId(menu);
-        sysRAttributeMenu.setAttributeId(attribute);
-        saveAndFlush(sysRAttributeMenu);
-    }
-
-    default void saveAndFlush(String menu, Set<String> attributes) {
-        if (ObjectUtils.isEmpty(menu) || ObjectUtils.isEmpty(attributes)) {
-            return;
-        }
-        attributes.forEach(attribute -> saveAndFlush(menu, attribute));
-    }
-
-    default void saveAndFlush(Set<String> menus, String attribute) {
-        if (ObjectUtils.isEmpty(menus) || ObjectUtils.isEmpty(attribute)) {
-            return;
-        }
-        menus.forEach(menu -> saveAndFlush(menu, attribute));
-    }
-
-
 }
 
 

@@ -33,33 +33,32 @@ public class SysRTenantMenuBusinessPermissionServiceImpl extends BaseServiceImpl
         return service;
     }
 
-    @Transactional
-    public void saveAndFlush(String businessPermissionId, List<String> tenantMenuIds) {
-        if (tenantMenuIds == null || tenantMenuIds.isEmpty()) {
-            return;
-        }
-        tenantMenuIds.forEach(tenantMenuId -> {
-            SysRTenantMenuBusinessPermission sysRTenantMenuBusinessPermission = new SysRTenantMenuBusinessPermission();
-            sysRTenantMenuBusinessPermission.setBusinessPermissionId(businessPermissionId);
-            sysRTenantMenuBusinessPermission.setTenantMenuId(tenantMenuId);
-            saveAndFlush(sysRTenantMenuBusinessPermission);
-        });
-    }
 
     @Override
     @Transactional
     public void updateBusinessPermissionAssignedTenantMenu(String businessPermissionId, List<String> tenantMenuIds) {
-        if (tenantMenuIds == null || tenantMenuIds.isEmpty()) {
-            getRepository().deleteAllByBusinessPermissionId(businessPermissionId);
-            return;
-        }
-        getRepository().findAllByBusinessPermissionId(businessPermissionId).forEach(sysRTenantMenuBusinessPermission -> {
-            if (!tenantMenuIds.contains(sysRTenantMenuBusinessPermission.getTenantMenuId())) {
-                delete(sysRTenantMenuBusinessPermission);
-                tenantMenuIds.remove(sysRTenantMenuBusinessPermission.getTenantMenuId());
-            }
-        });
-        saveAndFlush(businessPermissionId, tenantMenuIds);
-
+        getRepository().deleteAllByBusinessPermissionId(businessPermissionId);
+        saveAllAndFlush(toEntityList(tenantMenuIds, businessPermissionId));
     }
+
+    List<SysRTenantMenuBusinessPermission> toEntityList(String TenantMenuId, List<String> businessPermissionIds) {
+        return businessPermissionIds.stream().map(businessPermissionId -> {
+            SysRTenantMenuBusinessPermission sysRTenantMenuBusinessPermission = new SysRTenantMenuBusinessPermission();
+            sysRTenantMenuBusinessPermission.setBusinessPermissionId(businessPermissionId);
+            sysRTenantMenuBusinessPermission.setTenantMenuId(TenantMenuId);
+            return sysRTenantMenuBusinessPermission;
+        }).toList();
+    }
+
+    List<SysRTenantMenuBusinessPermission> toEntityList(List<String> tenantMenuIds, String businessPermissionId) {
+        return tenantMenuIds.stream().map(tenantMenuId -> {
+            SysRTenantMenuBusinessPermission sysRTenantMenuBusinessPermission = new SysRTenantMenuBusinessPermission();
+            sysRTenantMenuBusinessPermission.setBusinessPermissionId(businessPermissionId);
+            sysRTenantMenuBusinessPermission.setTenantMenuId(tenantMenuId);
+            return sysRTenantMenuBusinessPermission;
+        }).toList();
+    }
+
+
+
 }
