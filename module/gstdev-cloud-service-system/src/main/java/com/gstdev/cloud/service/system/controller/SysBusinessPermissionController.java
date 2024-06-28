@@ -121,10 +121,10 @@ public class SysBusinessPermissionController implements ResultController {
 
 
     @Tag(name = "Business Permission Manage")
-    @GetMapping("/get-all-menu-id-by-business-permission-id/{businessPermissionId}")
-    @Operation(summary = "get-all-menu-id-by-business-permission-id")
-    public Result<Set<String>> getAllMenuIdByBusinessPermissionId(@PathVariable String businessPermissionId) {
-        return result(getService().getAllMenuIdByBusinessPermissionId(businessPermissionId));
+    @GetMapping("/get-all-tenant-menu-id-by-business-permission-id/{businessPermissionId}")
+    @Operation(summary = "get-all-tenant-menu-id-by-business-permission-id")
+    public Result<Set<String>> getAllTenantMenuIdByBusinessPermissionId(@PathVariable String businessPermissionId) {
+        return result(getService().getAllTenantMenuIdByBusinessPermissionId(businessPermissionId));
     }
 
     @Tag(name = "Business Permission Manage")

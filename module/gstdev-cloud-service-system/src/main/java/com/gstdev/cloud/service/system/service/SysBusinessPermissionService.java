@@ -9,7 +9,7 @@ import java.util.Set;
 
 public interface SysBusinessPermissionService extends BaseService<SysBusinessPermission, String> {
 
-    Set<String> getAllMenuIdByBusinessPermissionId(String businessPermissionId);
+    Set<String> getAllTenantMenuIdByBusinessPermissionId(String businessPermissionId);
 
     Result<String> updateBusinessPermissionAssignedTenantMenu(UpdateBusinessPermissionAssignedTenantMenuIO updateBusinessPermissionAssignedTenantMenu);
 }

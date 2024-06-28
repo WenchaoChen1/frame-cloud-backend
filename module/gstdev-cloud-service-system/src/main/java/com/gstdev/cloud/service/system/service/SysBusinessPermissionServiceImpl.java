@@ -35,9 +35,9 @@ public class SysBusinessPermissionServiceImpl extends BaseServiceImpl<SysBusines
 
 
     @Override
-    public Set<String> getAllMenuIdByBusinessPermissionId(String businessPermissionId) {
+    public Set<String> getAllTenantMenuIdByBusinessPermissionId(String businessPermissionId) {
         SysBusinessPermission byId = sysBusinessPermissionService.findById(businessPermissionId);
-        return byId.getSysTenantMenus().stream().map(SysTenantMenu::getMenu).map(SysMenu::getId).collect(Collectors.toSet());
+        return byId.getSysTenantMenus().stream().map(SysTenantMenu::getTenantId).collect(Collectors.toSet());
     }
 
     @Override

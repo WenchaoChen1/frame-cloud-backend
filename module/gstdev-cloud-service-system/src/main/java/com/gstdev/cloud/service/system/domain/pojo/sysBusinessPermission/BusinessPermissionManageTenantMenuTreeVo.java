@@ -8,7 +8,8 @@ import java.util.List;
 @Getter
 @Setter
 public class BusinessPermissionManageTenantMenuTreeVo {
-    private String id;
+    private String menuId;
+    private String tenantMenuId;
     private String parentId;
     private Integer sort;
 

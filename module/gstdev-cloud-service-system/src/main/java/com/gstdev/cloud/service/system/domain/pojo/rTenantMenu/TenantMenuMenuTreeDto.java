@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class TenantMenuMenuTreeDto extends TreeNode<String, TenantMenuMenuTreeDto> {
     private String tenantMenuId;
-    private String id;
+    private String menuId;
     private String parentId;
     private Integer sort;
 
@@ -18,7 +18,7 @@ public class TenantMenuMenuTreeDto extends TreeNode<String, TenantMenuMenuTreeDt
     private String path;
 
     void setMenu(SysMenu menu) {
-        this.id = menu.getId();
+        this.menuId = menu.getId();
         this.menuName = menu.getMenuName();
         this.name = menu.getName();
         this.path = menu.getPath();
