@@ -4,7 +4,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.service.system.domain.entity.SysBusinessPermission;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
-import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionTreeDto;
+import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.TenantBusinessPermissionTreeDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.UpdateBusinessPermissionAssignedTenantMenuIO;
 import com.gstdev.cloud.service.system.mapper.SysBusinessPermissionMapper;
 import com.gstdev.cloud.service.system.repository.SysBusinessPermissionRepository;
@@ -49,9 +49,9 @@ public class SysBusinessPermissionServiceImpl extends BaseServiceImpl<SysBusines
     }
 
     @Override
-    public List<BusinessPermissionTreeDto> getRoleManageBusinessPermissionTree(String tenantId) {
+    public List<TenantBusinessPermissionTreeDto> getTenantBusinessPermissionTree(String tenantId) {
         List<SysBusinessPermission> allByTenantId = sysBusinessPermissionService.findAllByTenantId(tenantId);
-        return  sysBusinessPermissionMapper.toBusinessPermissionTreeDtoToTree(allByTenantId);
+        return  sysBusinessPermissionMapper.toTenantBusinessPermissionTreeDtoToTree(allByTenantId);
     }
 
     public  List<SysBusinessPermission> findAllByTenantId(String tenantId) {

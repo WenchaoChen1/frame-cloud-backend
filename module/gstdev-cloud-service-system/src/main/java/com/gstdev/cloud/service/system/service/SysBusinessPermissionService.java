@@ -3,7 +3,7 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.service.system.domain.entity.SysBusinessPermission;
-import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionTreeDto;
+import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.TenantBusinessPermissionTreeDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.UpdateBusinessPermissionAssignedTenantMenuIO;
 
 import java.util.List;
@@ -15,8 +15,13 @@ public interface SysBusinessPermissionService extends BaseService<SysBusinessPer
 
     Result<String> updateBusinessPermissionAssignedTenantMenu(UpdateBusinessPermissionAssignedTenantMenuIO updateBusinessPermissionAssignedTenantMenu);
 
+    /**
+     * 获取租户的业务权限树
+     * @param tenantId
+     * @return
+     */
+    List<TenantBusinessPermissionTreeDto> getTenantBusinessPermissionTree(String tenantId);
 
-    List<BusinessPermissionTreeDto> getRoleManageBusinessPermissionTree(String tenantId);
 }
 
 

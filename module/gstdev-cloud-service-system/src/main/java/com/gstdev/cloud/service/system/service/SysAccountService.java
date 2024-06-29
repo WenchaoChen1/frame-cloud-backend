@@ -3,7 +3,6 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.service.system.domain.base.account.AccountDto;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
-import com.gstdev.cloud.service.system.domain.entity.SysUser;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageInitializationIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.SwitchUserAccountDetailDto;
@@ -25,4 +24,5 @@ public interface SysAccountService extends BaseService<SysAccount, String> {
     void updateAccountManage(UpdateAccountManageIO updateAccountManageIO);
 
     List<SwitchUserAccountDetailDto> getSwitchUserAccountDetail();
+
 }

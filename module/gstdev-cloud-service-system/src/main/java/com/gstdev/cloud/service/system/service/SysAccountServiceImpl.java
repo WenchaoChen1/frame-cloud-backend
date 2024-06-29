@@ -37,6 +37,7 @@ public class SysAccountServiceImpl extends BaseServiceImpl<SysAccount, String, S
     @Resource
     private SysAccountRepository accountRepository;
 
+
     public SysAccountServiceImpl(SysAccountRepository accountRepository, SysAccountMapper accountMapper) {
         super(accountRepository);
         this.accountRepository = accountRepository;
@@ -114,6 +115,7 @@ public class SysAccountServiceImpl extends BaseServiceImpl<SysAccount, String, S
     public List<SwitchUserAccountDetailDto> getSwitchUserAccountDetail() {
         return accountMapper.toSwitchUserAccountDetailDto(findAllByUserId(SecurityUtils.getUserId()));
     }
+
 
 
 }

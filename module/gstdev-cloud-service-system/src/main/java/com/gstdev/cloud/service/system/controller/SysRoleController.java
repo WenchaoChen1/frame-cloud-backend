@@ -5,7 +5,7 @@ import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
-import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionTreeDto;
+import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.TenantBusinessPermissionTreeDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.*;
 import com.gstdev.cloud.service.system.mapper.SysRoleMapper;
 import com.gstdev.cloud.service.system.service.SysBusinessPermissionService;
@@ -127,7 +127,7 @@ public class SysRoleController implements ResultController {
     @GetMapping("/get-role-manage-business-permission-tree/{tenantId}")
     @Operation(summary = "get-role-manage-business-permission-tree")
     public Result<List<RoleManageBusinessPermissionTreeVo>> getRoleManageBusinessPermissionTree(@PathVariable String tenantId) {
-        List<BusinessPermissionTreeDto> allTenantMenuMenuTree = sysBusinessPermissionService.getRoleManageBusinessPermissionTree(tenantId);
+        List<TenantBusinessPermissionTreeDto> allTenantMenuMenuTree = sysBusinessPermissionService.getTenantBusinessPermissionTree(tenantId);
         return this.result(this.getMapper().toRoleManageBusinessPermissionTreeVo(allTenantMenuMenuTree));
     }
 

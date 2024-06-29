@@ -1,16 +1,16 @@
-package com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission;
+package com.gstdev.cloud.service.system.domain.pojo.sysAccount;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
-import com.gstdev.cloud.service.system.util.TreeNode;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
-@Setter
 @Getter
-public class BusinessPermissionTreeDto extends TreeNode<String, BusinessPermissionTreeDto> {
+@Setter
+public class AccountManageBusinessPermissionTreeVo {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdDate;
     private String createdUser;
@@ -28,9 +28,5 @@ public class BusinessPermissionTreeDto extends TreeNode<String, BusinessPermissi
     private Integer sort;
     private String description;
     private String tenantId;
-
-    public void setBusinessPermissionId(String businessPermissionId) {
-        this.businessPermissionId = businessPermissionId;
-        super.setId(businessPermissionId);
-    }
+    private List<AccountManageBusinessPermissionTreeVo> children;
 }

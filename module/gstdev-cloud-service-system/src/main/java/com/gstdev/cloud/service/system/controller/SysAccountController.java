@@ -8,8 +8,11 @@ import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.*;
+import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.TenantBusinessPermissionTreeDto;
 import com.gstdev.cloud.service.system.mapper.SysAccountMapper;
 import com.gstdev.cloud.service.system.service.SysAccountService;
+import com.gstdev.cloud.service.system.service.SysBusinessPermissionService;
+import com.gstdev.cloud.service.system.service.SysRAccountBusinessPermissionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
@@ -29,7 +32,10 @@ public class SysAccountController implements ResultController {
 
     @Resource
     private SysAccountMapper accountVoMapper;
-
+    @Resource
+    private SysBusinessPermissionService sysBusinessPermissionService;
+    @Resource
+    private SysRAccountBusinessPermissionService sysRAccountBusinessPermissionService;
     public SysAccountService getService() {
         return accountService;
     }
@@ -99,6 +105,32 @@ public class SysAccountController implements ResultController {
     @DeleteMapping("/delete-all-account-manage")
     public Result<String> deleteAllAccountManage(List<String> accountIds) {
         getService().deleteAllById(accountIds);
+        return Result.success();
+    }
+
+
+
+    @Tag(name = "Account Manage Assigned Business Permission")
+    @GetMapping("/get-account-manage-business-permission-tree/{tenantId}")
+    @Operation(summary = "get-account-manage-business-permission-tree")
+    public Result<List<AccountManageBusinessPermissionTreeVo>> getAccountManageBusinessPermissionTree(@PathVariable String tenantId) {
+        List<TenantBusinessPermissionTreeDto> allTenantMenuMenuTree = sysBusinessPermissionService.getTenantBusinessPermissionTree(tenantId);
+        return this.result(this.getMapper().toAccountManageBusinessPermissionTreeVo(allTenantMenuMenuTree));
+    }
+
+
+    @Tag(name = "Account Manage Assigned Business Permission")
+    @GetMapping("/get-all-business-permission-id-by-account-id/{accountId}")
+    @Operation(summary = "get-all-tenant-menu-id-by-account-id")
+    public Result<List<String>> getAllBusinessPermissionIdByAccountId(@PathVariable String accountId) {
+        return result(sysRAccountBusinessPermissionService.getAllBusinessPermissionIdByAccountId(accountId));
+    }
+
+    @Tag(name = "Account Manage Assigned Business Permission")
+    @PostMapping("/update-account-assigned-business-permission")
+    @Operation(summary = "update-account-assigned-business-permission")
+    public Result<String> updateAccountAssignedBusinessPermission(@RequestBody @Validated UpdateAccountAssignedBusinessPermissionIO entityIo) {
+        sysRAccountBusinessPermissionService.updateAccountAssignedBusinessPermission(entityIo.getAccountId(), entityIo.getBusinessPermissionIds());
         return Result.success();
     }
 
