@@ -36,12 +36,12 @@ public class SysRAccountTenantMenuServiceImpl extends BaseServiceImpl<SysRAccoun
 
     @Override
     @Transactional
-    public void updateAccountAssignedTenantMenu(String roleIds, List<String> businessPermissionIds) {
-        getRepository().deleteAllByAccountId(roleIds);
-        if (businessPermissionIds.isEmpty()) {
+    public void updateAccountAssignedTenantMenu(String accountId, List<String> tenantMenuIds) {
+        getRepository().deleteAllByAccountId(accountId);
+        if (tenantMenuIds.isEmpty()) {
             return;
         }
-        saveAllAndFlush(toEntityList(roleIds, businessPermissionIds));
+        saveAllAndFlush(toEntityList(accountId, tenantMenuIds));
     }
 
     @Override
@@ -49,20 +49,20 @@ public class SysRAccountTenantMenuServiceImpl extends BaseServiceImpl<SysRAccoun
         return getRepository().findAllByAccountId(accountId).stream().map(SysRAccountTenantMenu::getTenantMenuId).toList();
     }
 
-    List<SysRAccountTenantMenu> toEntityList(String roleId, List<String> businessPermissionIds) {
-        return businessPermissionIds.stream().map(businessPermissionId -> {
+    List<SysRAccountTenantMenu> toEntityList(String accountId, List<String> tenantMenuIds) {
+        return tenantMenuIds.stream().map(tenantMenuId -> {
             SysRAccountTenantMenu sysRAccountTenantMenu = new SysRAccountTenantMenu();
-            sysRAccountTenantMenu.setTenantMenuId(businessPermissionId);
-            sysRAccountTenantMenu.setAccountId(roleId);
+            sysRAccountTenantMenu.setTenantMenuId(tenantMenuId);
+            sysRAccountTenantMenu.setAccountId(accountId);
             return sysRAccountTenantMenu;
         }).toList();
     }
 
-    List<SysRAccountTenantMenu> toEntityList(List<String> roleIds, String businessPermissionId) {
-        return roleIds.stream().map(roleId -> {
+    List<SysRAccountTenantMenu> toEntityList(List<String> accountIds, String businessPermissionId) {
+        return accountIds.stream().map(accountId -> {
             SysRAccountTenantMenu sysRAccountTenantMenu = new SysRAccountTenantMenu();
             sysRAccountTenantMenu.setTenantMenuId(businessPermissionId);
-            sysRAccountTenantMenu.setAccountId(roleId);
+            sysRAccountTenantMenu.setAccountId(accountId);
             return sysRAccountTenantMenu;
         }).toList();
     }

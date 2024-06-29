@@ -3,6 +3,7 @@ package com.gstdev.cloud.service.system.domain.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.service.system.domain.enums.SysAccountPermissionType;
 import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -10,6 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -43,6 +45,12 @@ public class SysAccount extends BaseEntity {
     @Enumerated(EnumType.ORDINAL)
     private SysAccountType type = SysAccountType.USER;
 
+    @ElementCollection(targetClass = SysAccountPermissionType.class)
+    @CollectionTable(name = "sys_account_permission_type", joinColumns = @JoinColumn(name = "account_id"))
+    @Column(name = "account_permission_type")
+    @Enumerated(EnumType.STRING) // 使用字符串类型存储枚举值
+    private Set<SysAccountPermissionType> accountPermissionTypes= EnumSet.of(SysAccountPermissionType.ACCOUNT_TYPE);
+
     @Schema(title = "数据状态")
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.ORDINAL)
@@ -59,13 +67,27 @@ public class SysAccount extends BaseEntity {
     @JsonIgnore
     @ManyToMany(mappedBy = "accounts")
     private List<SysDepart> departs;
-    @JsonIgnore
-    @ManyToMany
-    @JoinTable(name = "sys_r_account_role", joinColumns = {
-        @JoinColumn(name = "account_id", referencedColumnName = "account_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "role_id", referencedColumnName = "role_id")})
-    private List<SysRole> roles;
 
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+//    @Fetch(FetchMode.SUBSELECT)
+    @JoinTable(name = "sys_r_account_role", joinColumns = {
+            @JoinColumn(name = "account_id", referencedColumnName = "account_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "role_id")},
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"account_id", "role_id"})},
+            indexes = {@Index(name = "sys_account_role_aid_idx", columnList = "account_id"), @Index(name = "sys_account_role_rid_idx", columnList = "role_id")})
+    private List<SysRole> roles ;
+
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+//    @Fetch(FetchMode.SUBSELECT)
+    @JoinTable(name = "sys_r_account_tenant_menu",
+            joinColumns = {@JoinColumn(name = "account_id", referencedColumnName = "account_id")},
+            inverseJoinColumns = {@JoinColumn(name = "tenant_menu_id", referencedColumnName = "tenant_menu_id")},
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"account_id", "tenant_menu_id"})},
+            indexes = {@Index(name = "sys_account_tenant_menu_aid_idx", columnList = "account_id"), @Index(name = "sys_account_tenant_menu_tmid_idx", columnList = "tenant_menu_id")})
+    private Set<SysTenantMenu> tenantMenus = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
 //    @Fetch(FetchMode.SUBSELECT)
@@ -76,12 +98,4 @@ public class SysAccount extends BaseEntity {
         indexes = {@Index(name = "sys_account_business_permission_aid_idx", columnList = "account_id"), @Index(name = "sys_account_business_permission_bpid_idx", columnList = "business_permission_id")})
     private Set<SysBusinessPermission> businessPermissions = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY)
-//    @Fetch(FetchMode.SUBSELECT)
-    @JoinTable(name = "sys_r_account_tenant_menu",
-            joinColumns = {@JoinColumn(name = "account_id", referencedColumnName = "account_id")},
-            inverseJoinColumns = {@JoinColumn(name = "tenant_menu_id", referencedColumnName = "tenant_menu_id")},
-            uniqueConstraints = {@UniqueConstraint(columnNames = {"account_id", "tenant_menu_id"})},
-            indexes = {@Index(name = "sys_account_tenant_menu_aid_idx", columnList = "account_id"), @Index(name = "sys_account_tenant_menu_tmid_idx", columnList = "tenant_menu_id")})
-    private Set<SysTenantMenu> tenantMenus = new HashSet<>();
 }
