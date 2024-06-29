@@ -3,7 +3,6 @@ package com.gstdev.cloud.service.system.service;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.service.system.domain.entity.SysBusinessPermission;
-import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.UpdateBusinessPermissionAssignedTenantMenuIO;
 import com.gstdev.cloud.service.system.mapper.SysBusinessPermissionMapper;
@@ -41,6 +40,7 @@ public class SysBusinessPermissionServiceImpl extends BaseServiceImpl<SysBusines
     }
 
     @Override
+    @Transactional
     public Result<String> updateBusinessPermissionAssignedTenantMenu(UpdateBusinessPermissionAssignedTenantMenuIO var) {
         sysRTenantMenuBusinessPermissionService.updateBusinessPermissionAssignedTenantMenu(var.getBusinessPermissionId(), var.getTenantMenuIds());
         return null;
