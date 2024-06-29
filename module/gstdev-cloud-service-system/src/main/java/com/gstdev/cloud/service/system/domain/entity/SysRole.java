@@ -68,11 +68,7 @@ public class SysRole extends BaseEntity {
             @JoinColumn(name = "role_id", referencedColumnName = "role_id")}, inverseJoinColumns = {
             @JoinColumn(name = "tenant_menu_id", referencedColumnName = "tenant_menu_id")})
     private List<SysTenantMenu> tenantMenus;
-
-    @ManyToMany(mappedBy = "roles")
-    private List<SysAccount> accounts;
-
-
+    
     /**
      * 用户 - 角色关系定义:
      * (1) 加上fetch=FetchType.LAZY  或 @Fetch(FetchMode.SELECT), 输出结果与上面相同，说明默认设置是fetch=FetchType.LAZY 和 @Fetch(FetchMode.SELECT) 下面四种配置等效，都是N+1条sql的懒加载
@@ -95,8 +91,6 @@ public class SysRole extends BaseEntity {
             indexes = {@Index(name = "sys_role_permission_rid_idx", columnList = "role_id"), @Index(name = "sys_role_permission_pid_idx", columnList = "permission_id")})
     private Set<SysPermission> permissions = new HashSet<>();
 
-
-
     @ManyToMany(fetch = FetchType.LAZY)
 //    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "sys_r_role_business_permission",
@@ -106,6 +100,9 @@ public class SysRole extends BaseEntity {
         indexes = {@Index(name = "sys_role_business_permission_rid_idx", columnList = "role_id"), @Index(name = "sys_role_business_permission_bpid_idx", columnList = "business_permission_id")})
     private Set<SysBusinessPermission> businessPermissions = new HashSet<>();
 
+
+    @ManyToMany(mappedBy = "roles")
+    private List<SysAccount> accounts;
 }
 
 
