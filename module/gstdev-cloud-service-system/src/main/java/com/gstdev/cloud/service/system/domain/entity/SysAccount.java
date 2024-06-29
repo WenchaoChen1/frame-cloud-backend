@@ -29,6 +29,7 @@ import java.util.Set;
 //@Where(clause = "is_deleted = false")
 //@SQLDelete(sql = "UPDATE sys_account SET is_deleted=true WHERE id =?")
 public class SysAccount extends BaseEntity {
+
     @Id
     @GeneratedValue(generator = "jpa-uuid")
     @Column(name = "account_id", length = 64, nullable = false)
@@ -45,12 +46,6 @@ public class SysAccount extends BaseEntity {
     @Enumerated(EnumType.ORDINAL)
     private SysAccountType type = SysAccountType.USER;
 
-    @ElementCollection(targetClass = SysAccountPermissionType.class)
-    @CollectionTable(name = "sys_account_permission_type", joinColumns = @JoinColumn(name = "account_id"))
-    @Column(name = "account_permission_type")
-    @Enumerated(EnumType.STRING) // 使用字符串类型存储枚举值
-    private Set<SysAccountPermissionType> accountPermissionTypes= EnumSet.of(SysAccountPermissionType.ACCOUNT_TYPE);
-
     @Schema(title = "数据状态")
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.ORDINAL)
@@ -59,9 +54,15 @@ public class SysAccount extends BaseEntity {
 //    @Column(name = "is_deleted", nullable = false)
 //    private Boolean isDeleted = false;
 
+
+    @ElementCollection(targetClass = SysAccountPermissionType.class)
+    @CollectionTable(name = "sys_account_permission_type", joinColumns = @JoinColumn(name = "account_id"))
+    @Column(name = "account_permission_type")
+    @Enumerated(EnumType.STRING) // 使用字符串类型存储枚举值
+    private Set<SysAccountPermissionType> accountPermissionTypes= EnumSet.of(SysAccountPermissionType.ACCOUNT_TYPE);
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-//    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private SysUser user;
 
     @JsonIgnore
