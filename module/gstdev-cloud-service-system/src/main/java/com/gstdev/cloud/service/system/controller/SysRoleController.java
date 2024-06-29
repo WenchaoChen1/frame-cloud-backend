@@ -5,8 +5,10 @@ import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
+import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionTreeDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.*;
 import com.gstdev.cloud.service.system.mapper.SysRoleMapper;
+import com.gstdev.cloud.service.system.service.SysBusinessPermissionService;
 import com.gstdev.cloud.service.system.service.SysRoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/v1/role")
@@ -24,6 +27,8 @@ public class SysRoleController implements ResultController {
 
     @Resource
     private SysRoleService roleService;
+    @Resource
+    private SysBusinessPermissionService sysBusinessPermissionService;
 
     @Resource
     private SysRoleMapper roleVoMapper;
@@ -117,6 +122,30 @@ public class SysRoleController implements ResultController {
         return getService().insertRoleMenu(insertRoleMenuIO);
     }
 
+
+    @Tag(name = "Role Manage Assigned Business Permission")
+    @GetMapping("/get-role-manage-business-permission-tree/{tenantId}")
+    @Operation(summary = "get-role-manage-business-permission-tree")
+    public Result<List<RoleManageBusinessPermissionTreeVo>> getRoleManageBusinessPermissionTree(@PathVariable String tenantId) {
+        List<BusinessPermissionTreeDto> allTenantMenuMenuTree = sysBusinessPermissionService.getRoleManageBusinessPermissionTree(tenantId);
+        return this.result(this.getMapper().toRoleManageBusinessPermissionTreeVo(allTenantMenuMenuTree));
+    }
+
+
+    @Tag(name = "Role Manage Assigned Business Permission")
+    @GetMapping("/get-all-business-permission-id-by-role-id/{roleId}")
+    @Operation(summary = "get-all-tenant-menu-id-by-role-id")
+    public Result<Set<String>> getAllBusinessPermissionIdByRoleId(@PathVariable String roleId) {
+        return result(getService().getAllBusinessPermissionIdByRoleId(roleId));
+    }
+
+    @Tag(name = "Role Manage Assigned Business Permission-")
+    @PostMapping("/update-role-assigned-business-permission")
+    @Operation(summary = "update-role-assigned-business-permission")
+    public Result<String> updateRoleAssignedBusinessPermission(@RequestBody @Validated UpdateRoleAssignedBusinessPermissionIO entityIo) {
+         getService().updateRoleAssignedBusinessPermission(entityIo.getRoleId(), entityIo.getBusinessPermissionIds());
+         return Result.success();
+    }
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
 
 

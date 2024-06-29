@@ -38,6 +38,9 @@ public class SysRTenantMenuBusinessPermissionServiceImpl extends BaseServiceImpl
     @Transactional
     public void updateBusinessPermissionAssignedTenantMenu(String businessPermissionId, List<String> tenantMenuIds) {
         getRepository().deleteAllByBusinessPermissionId(businessPermissionId);
+        if (tenantMenuIds.isEmpty()) {
+            return;
+        }
         saveAllAndFlush(toEntityList(tenantMenuIds, businessPermissionId));
     }
 

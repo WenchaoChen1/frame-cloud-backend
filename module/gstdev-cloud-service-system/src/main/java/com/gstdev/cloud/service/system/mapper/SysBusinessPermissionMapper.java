@@ -38,4 +38,19 @@ public interface SysBusinessPermissionMapper {
     }
 
     List<BusinessPermissionManageTenantMenuTreeVo> toBusinessPermissionManageMenuTreeVo(List<TenantMenuMenuTreeDto> allTenantMenuMenuTree);
+
+    List<BusinessPermissionTreeDto> toBusinessPermissionTreeDto(List<SysBusinessPermission> byPage);
+
+
+    default List<BusinessPermissionTreeDto> toBusinessPermissionTreeDtoToTree(List<SysBusinessPermission> byPage) {
+        List<BusinessPermissionTreeDto> businessPermissionTreeDto = toBusinessPermissionTreeDto(byPage);
+        return TreeUtils.buildTree(
+                businessPermissionTreeDto,
+                BusinessPermissionTreeDto::getBusinessPermissionId,
+                BusinessPermissionTreeDto::getParentId,
+                Comparator.comparingInt((BusinessPermissionTreeDto item) ->
+                        item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+        );
+    }
+
 }

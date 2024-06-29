@@ -4,6 +4,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.service.system.domain.entity.SysBusinessPermission;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
+import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionTreeDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.UpdateBusinessPermissionAssignedTenantMenuIO;
 import com.gstdev.cloud.service.system.mapper.SysBusinessPermissionMapper;
 import com.gstdev.cloud.service.system.repository.SysBusinessPermissionRepository;
@@ -11,6 +12,7 @@ import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -44,5 +46,15 @@ public class SysBusinessPermissionServiceImpl extends BaseServiceImpl<SysBusines
     public Result<String> updateBusinessPermissionAssignedTenantMenu(UpdateBusinessPermissionAssignedTenantMenuIO var) {
         sysRTenantMenuBusinessPermissionService.updateBusinessPermissionAssignedTenantMenu(var.getBusinessPermissionId(), var.getTenantMenuIds());
         return null;
+    }
+
+    @Override
+    public List<BusinessPermissionTreeDto> getRoleManageBusinessPermissionTree(String tenantId) {
+        List<SysBusinessPermission> allByTenantId = sysBusinessPermissionService.findAllByTenantId(tenantId);
+        return  sysBusinessPermissionMapper.toBusinessPermissionTreeDtoToTree(allByTenantId);
+    }
+
+    public  List<SysBusinessPermission> findAllByTenantId(String tenantId) {
+        return getRepository().findByTenantId(tenantId);
     }
 }

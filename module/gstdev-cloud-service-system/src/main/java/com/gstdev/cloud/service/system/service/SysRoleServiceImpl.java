@@ -2,6 +2,7 @@ package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
+import com.gstdev.cloud.service.system.domain.entity.SysBusinessPermission;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
@@ -13,6 +14,8 @@ import jakarta.annotation.Resource;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Transactional
@@ -23,7 +26,8 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRole, String, SysRole
     @Resource
     private SysRoleRepository roleRepository;
     @Resource
-    private SysRoleMapper roleMapper;
+    private SysRoleMapper roleMapper;   @Resource
+    private SysRRoleBusinessPermissionService sysRRoleBusinessPermissionService;
 
     public SysRoleServiceImpl(SysRoleRepository roleRepository, SysRoleMapper roleMapper) {
         super(roleRepository);
@@ -55,6 +59,16 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRole, String, SysRole
         role.setTenantMenus(rTenantMenuRepository.findAllByTenantIdAndMenuIdIn(role.getTenantId(), insertRoleMenuIO.getMenuIds()));
         update(role);
         return Result.success();
+    }
+
+    @Override
+    public Set<String> getAllBusinessPermissionIdByRoleId(String roleId) {
+        return getService().findById(roleId).getBusinessPermissions().stream().map(SysBusinessPermission::getBusinessPermissionId).collect(Collectors.toSet());
+    }
+
+    @Override
+    public void updateRoleAssignedBusinessPermission(String roleId, List<String> businessPermissionIds) {
+        sysRRoleBusinessPermissionService.updateRoleAssignedBusinessPermission(roleId, businessPermissionIds);
     }
 
 
