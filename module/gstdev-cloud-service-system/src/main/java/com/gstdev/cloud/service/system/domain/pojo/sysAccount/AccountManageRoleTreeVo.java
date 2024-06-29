@@ -1,0 +1,29 @@
+package com.gstdev.cloud.service.system.domain.pojo.sysAccount;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Date;
+
+@Getter
+@Setter
+public class AccountManageRoleTreeVo {
+    private String roleId;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createdDate;
+    private String createdUser;
+    private String createdAccount;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updatedDate;
+    private String updatedUser;
+    private String updatedAccount;
+    private String code;
+    private String description;
+    private String parentId;
+    private String roleName;
+    private Integer sort;
+    private DataItemStatus status;
+    private String tenantId;
+}

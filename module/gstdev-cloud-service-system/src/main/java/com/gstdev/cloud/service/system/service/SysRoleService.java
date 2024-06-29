@@ -4,6 +4,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.InsertRoleMenuIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysRole.TenantRoleTreeDto;
 
 import java.util.List;
 import java.util.Set;
@@ -19,6 +20,8 @@ public interface SysRoleService extends BaseService<SysRole, String> {
 
 
     void updateRoleAssignedBusinessPermission(String roleId, List<String> businessPermissionIds);
+
+    List<TenantRoleTreeDto> getAllTenantRoleTree(String tenantId);
 
 //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 }

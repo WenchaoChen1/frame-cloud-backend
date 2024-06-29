@@ -18,6 +18,8 @@ import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.TenantMenuMenuTreeDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.*;
 import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.TenantBusinessPermissionTreeDto;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.AccountManageRoleTreeVo;
+import com.gstdev.cloud.service.system.domain.pojo.sysRole.TenantRoleTreeDto;
 import org.mapstruct.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -50,5 +52,7 @@ public interface SysAccountMapper extends BasePOJOMapper<SysAccount, AccountDto,
     List<AccountManageBusinessPermissionTreeVo>  toAccountManageBusinessPermissionTreeVo(List<TenantBusinessPermissionTreeDto> allTenantMenuMenuTree);
 
     List<AccountManageTenantMenuTreeVo> toAccountManageTenantMenuTreeVo(List<TenantMenuMenuTreeDto> allTenantMenuMenuTree);
+
+    List<AccountManageRoleTreeVo> toAccountManageRoleTreeVo(List<TenantRoleTreeDto> allRoleMenuTree);
 }
 

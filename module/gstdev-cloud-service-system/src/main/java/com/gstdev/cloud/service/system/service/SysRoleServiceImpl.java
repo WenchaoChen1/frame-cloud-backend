@@ -7,6 +7,7 @@ import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.InsertRoleMenuIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysRole.TenantRoleTreeDto;
 import com.gstdev.cloud.service.system.mapper.SysRoleMapper;
 import com.gstdev.cloud.service.system.repository.SysRoleRepository;
 import com.gstdev.cloud.service.system.repository.SysTenantMenuRepository;
@@ -69,6 +70,15 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRole, String, SysRole
     @Override
     public void updateRoleAssignedBusinessPermission(String roleId, List<String> businessPermissionIds) {
         sysRRoleBusinessPermissionService.updateRoleAssignedBusinessPermission(roleId, businessPermissionIds);
+    }
+
+    @Override
+    public List<TenantRoleTreeDto> getAllTenantRoleTree(String tenantId) {
+        List<SysRole> allByTenantId = findAllByTenantId(tenantId);
+        return roleMapper.toTenantRoleTreeDto(allByTenantId);
+    }
+    public List<SysRole> findAllByTenantId(String tenantId) {
+        return getRepository().findAllByTenantId(tenantId);
     }
 
 

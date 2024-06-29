@@ -70,5 +70,7 @@ public interface SysRoleMapper extends BaseTreeMapper<SysRole, RoleDto, RoleVo, 
     }
 
     List<RoleManageBusinessPermissionTreeVo> toRoleManageBusinessPermissionTreeVo(List<TenantBusinessPermissionTreeDto> allTenantMenuMenuTree);
+
+    List<TenantRoleTreeDto> toTenantRoleTreeDto(List<SysRole> sysRoles);
 }
 

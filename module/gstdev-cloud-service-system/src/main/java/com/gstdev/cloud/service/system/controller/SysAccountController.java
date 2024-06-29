@@ -10,6 +10,8 @@ import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.TenantMenuMenuTreeDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.*;
 import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.TenantBusinessPermissionTreeDto;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.AccountManageRoleTreeVo;
+import com.gstdev.cloud.service.system.domain.pojo.sysRole.TenantRoleTreeDto;
 import com.gstdev.cloud.service.system.mapper.SysAccountMapper;
 import com.gstdev.cloud.service.system.service.*;
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,6 +41,10 @@ public class SysAccountController implements ResultController {
     private SysRAccountTenantMenuService sysRAccountTenantMenuService;
     @Resource
     private SysTenantMenuService sysTenantMenuService;
+    @Resource
+    private SysRoleService sysRoleService;
+    @Resource
+    private SysRAccountRoleService sysRAccountRoleService;
     public SysAccountService getService() {
         return accountService;
     }
@@ -158,6 +164,30 @@ public class SysAccountController implements ResultController {
     @Operation(summary = "update-account-assigned-tenant-menu")
     public Result<String> updateAccountAssignedTenantMenu(@RequestBody @Validated UpdateAccountAssignedTenantMenuIO entityIo) {
         sysRAccountTenantMenuService.updateAccountAssignedTenantMenu(entityIo.getAccountId(), entityIo.getTenantMenuIds());
+        return Result.success();
+    }
+
+    @Tag(name = "Account Manage Assigned Role")
+    @GetMapping("/get-account-manage-role-tree/{tenantId}")
+    @Operation(summary = "get-account-manage-role-tree")
+    public Result<List<AccountManageRoleTreeVo>> getAccountManageRoleTree(@PathVariable String tenantId) {
+        List<TenantRoleTreeDto> allRoleMenuTree = sysRoleService.getAllTenantRoleTree(tenantId);
+        return this.result(this.getMapper().toAccountManageRoleTreeVo(allRoleMenuTree));
+    }
+
+
+    @Tag(name = "Account Manage Assigned Role")
+    @GetMapping("/get-all-role-id-by-account-id/{accountId}")
+    @Operation(summary = "get-all-role-id-by-account-id")
+    public Result<List<String>> getAllRoleIdByAccountId(@PathVariable String accountId) {
+        return result(sysRAccountRoleService.getAllRoleIdByAccountId(accountId));
+    }
+
+    @Tag(name = "Account Manage Assigned Role")
+    @PostMapping("/update-account-assigned-role")
+    @Operation(summary = "update-account-assigned-role")
+    public Result<String> updateAccountAssignedRole(@RequestBody @Validated UpdateAccountAssignedRoleIO entityIo) {
+        sysRAccountRoleService.updateAccountAssignedRole(entityIo.getAccountId(), entityIo.getRoleIds());
         return Result.success();
     }
 

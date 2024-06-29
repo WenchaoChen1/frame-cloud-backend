@@ -148,4 +148,11 @@ public class FrameSystemServiceConfiguration {
         log.debug("[GstDev Cloud] |- Frame Configure R Tenant Menu Business Permission Service");
         return new SysRAccountTenantMenuServiceImpl(sysRAccountTenantMenuRepository);
     }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public SysRAccountRoleService sysRAccountRoleService(SysRAccountRoleRepository sysRAccountRoleRepository) {
+        log.debug("[GstDev Cloud] |- Frame Configure R Tenant Menu Business Permission Service");
+        return new SysRAccountRoleServiceImpl(sysRAccountRoleRepository);
+    }
 }
