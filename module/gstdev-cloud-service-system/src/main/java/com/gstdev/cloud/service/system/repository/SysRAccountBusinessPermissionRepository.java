@@ -10,7 +10,7 @@ import java.util.List;
 @Transactional
 public interface SysRAccountBusinessPermissionRepository extends BaseRepository<SysRAccountBusinessPermission, SysRAccountBusinessPermissionEmbeddablePK> {
 
-    void deleteAllByAccountId(String roleIds);
+    void deleteAllByAccountId(String accountId);
 
     List<SysRAccountBusinessPermission> findAllByAccountId(String accountId);
 }

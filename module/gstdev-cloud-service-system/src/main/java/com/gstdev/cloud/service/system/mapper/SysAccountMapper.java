@@ -15,6 +15,7 @@ import com.gstdev.cloud.service.system.domain.base.account.AccountInsertInput;
 import com.gstdev.cloud.service.system.domain.base.account.AccountUpdateInput;
 import com.gstdev.cloud.service.system.domain.base.account.AccountVo;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
+import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.TenantMenuMenuTreeDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.*;
 import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.TenantBusinessPermissionTreeDto;
 import org.mapstruct.*;
@@ -47,5 +48,7 @@ public interface SysAccountMapper extends BasePOJOMapper<SysAccount, AccountDto,
     List<SwitchUserAccountDetailDto> toSwitchUserAccountDetailDto(List<SysAccount> allByUserId);
 
     List<AccountManageBusinessPermissionTreeVo>  toAccountManageBusinessPermissionTreeVo(List<TenantBusinessPermissionTreeDto> allTenantMenuMenuTree);
+
+    List<AccountManageTenantMenuTreeVo> toAccountManageTenantMenuTreeVo(List<TenantMenuMenuTreeDto> allTenantMenuMenuTree);
 }
 

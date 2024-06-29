@@ -55,6 +55,9 @@ public class SysTenantMenu extends BaseEntity {
     @JsonIgnore
     @ManyToMany(mappedBy = "tenantMenus")
     private List<SysRole> roles;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "tenantMenus",  fetch = FetchType.LAZY)
+    private List<SysAccount> accounts;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @Fetch(FetchMode.SUBSELECT)

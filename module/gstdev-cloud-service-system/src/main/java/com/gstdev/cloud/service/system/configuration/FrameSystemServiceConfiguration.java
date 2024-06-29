@@ -127,15 +127,25 @@ public class FrameSystemServiceConfiguration {
         log.debug("[GstDev Cloud] |- Frame Configure R Tenant Menu Business Permission Service");
         return new SysRTenantMenuBusinessPermissionServiceImpl(sysRTenantMenuBusinessPermissionRepository);
     }
+
     @Bean
     @ConditionalOnMissingBean
     public SysRRoleBusinessPermissionService sysRRoleBusinessPermissionService(SysRRoleBusinessPermissionRepository sysRRoleBusinessPermissionRepository) {
         log.debug("[GstDev Cloud] |- Frame Configure R Tenant Menu Business Permission Service");
         return new SysRRoleBusinessPermissionServiceImpl(sysRRoleBusinessPermissionRepository);
-    }    @Bean
+    }
+
+    @Bean
     @ConditionalOnMissingBean
     public SysRAccountBusinessPermissionService sysRAccountBusinessPermissionService(SysRAccountBusinessPermissionRepository sysRAccountBusinessPermissionRepository) {
         log.debug("[GstDev Cloud] |- Frame Configure R Tenant Menu Business Permission Service");
         return new SysRAccountBusinessPermissionServiceImpl(sysRAccountBusinessPermissionRepository);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public SysRAccountTenantMenuService sysRAccountTenantMenuService(SysRAccountTenantMenuRepository sysRAccountTenantMenuRepository) {
+        log.debug("[GstDev Cloud] |- Frame Configure R Tenant Menu Business Permission Service");
+        return new SysRAccountTenantMenuServiceImpl(sysRAccountTenantMenuRepository);
     }
 }

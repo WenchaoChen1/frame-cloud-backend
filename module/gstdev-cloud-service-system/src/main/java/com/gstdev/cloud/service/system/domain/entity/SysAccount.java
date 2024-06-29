@@ -75,4 +75,13 @@ public class SysAccount extends BaseEntity {
         uniqueConstraints = {@UniqueConstraint(columnNames = {"account_id", "business_permission_id"})},
         indexes = {@Index(name = "sys_account_business_permission_aid_idx", columnList = "account_id"), @Index(name = "sys_account_business_permission_bpid_idx", columnList = "business_permission_id")})
     private Set<SysBusinessPermission> businessPermissions = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+//    @Fetch(FetchMode.SUBSELECT)
+    @JoinTable(name = "sys_r_account_tenant_menu",
+            joinColumns = {@JoinColumn(name = "account_id", referencedColumnName = "account_id")},
+            inverseJoinColumns = {@JoinColumn(name = "tenant_menu_id", referencedColumnName = "tenant_menu_id")},
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"account_id", "tenant_menu_id"})},
+            indexes = {@Index(name = "sys_account_tenant_menu_aid_idx", columnList = "account_id"), @Index(name = "sys_account_tenant_menu_tmid_idx", columnList = "tenant_menu_id")})
+    private Set<SysTenantMenu> tenantMenus = new HashSet<>();
 }

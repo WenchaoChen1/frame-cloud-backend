@@ -7,12 +7,11 @@ import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
+import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.TenantMenuMenuTreeDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.*;
 import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.TenantBusinessPermissionTreeDto;
 import com.gstdev.cloud.service.system.mapper.SysAccountMapper;
-import com.gstdev.cloud.service.system.service.SysAccountService;
-import com.gstdev.cloud.service.system.service.SysBusinessPermissionService;
-import com.gstdev.cloud.service.system.service.SysRAccountBusinessPermissionService;
+import com.gstdev.cloud.service.system.service.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
@@ -36,6 +35,10 @@ public class SysAccountController implements ResultController {
     private SysBusinessPermissionService sysBusinessPermissionService;
     @Resource
     private SysRAccountBusinessPermissionService sysRAccountBusinessPermissionService;
+    @Resource
+    private SysRAccountTenantMenuService sysRAccountTenantMenuService;
+    @Resource
+    private SysTenantMenuService sysTenantMenuService;
     public SysAccountService getService() {
         return accountService;
     }
@@ -131,6 +134,30 @@ public class SysAccountController implements ResultController {
     @Operation(summary = "update-account-assigned-business-permission")
     public Result<String> updateAccountAssignedBusinessPermission(@RequestBody @Validated UpdateAccountAssignedBusinessPermissionIO entityIo) {
         sysRAccountBusinessPermissionService.updateAccountAssignedBusinessPermission(entityIo.getAccountId(), entityIo.getBusinessPermissionIds());
+        return Result.success();
+    }
+
+    @Tag(name = "Account Manage Assigned Tenant Menu")
+    @GetMapping("/get-account-manage-tenant-menu-tree/{tenantId}")
+    @Operation(summary = "get-account-manage-tenant-menu-tree")
+    public Result<List<AccountManageTenantMenuTreeVo>> getAccountManageTenantMenuTree(@PathVariable String tenantId) {
+        List<TenantMenuMenuTreeDto> allTenantMenuMenuTree = sysTenantMenuService.getAllTenantMenuMenuTree(tenantId);
+        return this.result(this.getMapper().toAccountManageTenantMenuTreeVo(allTenantMenuMenuTree));
+    }
+
+
+    @Tag(name = "Account Manage Assigned Tenant Menu")
+    @GetMapping("/get-all-tenant-menu-id-by-account-id/{accountId}")
+    @Operation(summary = "get-all-tenant-menu-id-by-account-id")
+    public Result<List<String>> getAllTenantMenuIdByAccountId(@PathVariable String accountId) {
+        return result(sysRAccountTenantMenuService.getAllTenantMenuIdByAccountId(accountId));
+    }
+
+    @Tag(name = "Account Manage Assigned Tenant Menu")
+    @PostMapping("/update-account-assigned-tenant-menu")
+    @Operation(summary = "update-account-assigned-tenant-menu")
+    public Result<String> updateAccountAssignedTenantMenu(@RequestBody @Validated UpdateAccountAssignedTenantMenuIO entityIo) {
+        sysRAccountTenantMenuService.updateAccountAssignedTenantMenu(entityIo.getAccountId(), entityIo.getTenantMenuIds());
         return Result.success();
     }
 

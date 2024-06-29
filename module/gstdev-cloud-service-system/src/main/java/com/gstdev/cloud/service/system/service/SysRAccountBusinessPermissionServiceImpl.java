@@ -36,12 +36,12 @@ public class SysRAccountBusinessPermissionServiceImpl extends BaseServiceImpl<Sy
 
     @Override
     @Transactional
-    public void updateAccountAssignedBusinessPermission(String roleIds, List<String> businessPermissionIds) {
-        getRepository().deleteAllByAccountId(roleIds);
+    public void updateAccountAssignedBusinessPermission(String accountId, List<String> businessPermissionIds) {
+        getRepository().deleteAllByAccountId(accountId);
         if (businessPermissionIds.isEmpty()) {
             return;
         }
-        saveAllAndFlush(toEntityList(roleIds, businessPermissionIds));
+        saveAllAndFlush(toEntityList(accountId, businessPermissionIds));
     }
 
     @Override
@@ -49,20 +49,20 @@ public class SysRAccountBusinessPermissionServiceImpl extends BaseServiceImpl<Sy
         return getRepository().findAllByAccountId(accountId).stream().map(SysRAccountBusinessPermission::getBusinessPermissionId).toList();
     }
 
-    List<SysRAccountBusinessPermission> toEntityList(String roleId, List<String> businessPermissionIds) {
+    List<SysRAccountBusinessPermission> toEntityList(String accountId, List<String> businessPermissionIds) {
         return businessPermissionIds.stream().map(businessPermissionId -> {
             SysRAccountBusinessPermission sysRAccountBusinessPermission = new SysRAccountBusinessPermission();
             sysRAccountBusinessPermission.setBusinessPermissionId(businessPermissionId);
-            sysRAccountBusinessPermission.setAccountId(roleId);
+            sysRAccountBusinessPermission.setAccountId(accountId);
             return sysRAccountBusinessPermission;
         }).toList();
     }
 
-    List<SysRAccountBusinessPermission> toEntityList(List<String> roleIds, String businessPermissionId) {
-        return roleIds.stream().map(roleId -> {
+    List<SysRAccountBusinessPermission> toEntityList(List<String> accountIds, String businessPermissionId) {
+        return accountIds.stream().map(accountId -> {
             SysRAccountBusinessPermission sysRAccountBusinessPermission = new SysRAccountBusinessPermission();
             sysRAccountBusinessPermission.setBusinessPermissionId(businessPermissionId);
-            sysRAccountBusinessPermission.setAccountId(roleId);
+            sysRAccountBusinessPermission.setAccountId(accountId);
             return sysRAccountBusinessPermission;
         }).toList();
     }

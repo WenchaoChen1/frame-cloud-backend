@@ -9,7 +9,7 @@ import java.util.List;
 public interface SysRAccountBusinessPermissionService extends BaseService<SysRAccountBusinessPermission, SysRAccountBusinessPermissionEmbeddablePK> {
 
 
-    void updateAccountAssignedBusinessPermission(String roleId, List<String> businessPermissionIds);
+    void updateAccountAssignedBusinessPermission(String accountId, List<String> businessPermissionIds);
 
     List<String> getAllBusinessPermissionIdByAccountId(String accountId);
 }
