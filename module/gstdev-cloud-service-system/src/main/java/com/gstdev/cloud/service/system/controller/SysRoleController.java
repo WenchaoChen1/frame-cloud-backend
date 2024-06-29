@@ -5,11 +5,14 @@ import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
+import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.TenantMenuMenuTreeDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.TenantBusinessPermissionTreeDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.*;
 import com.gstdev.cloud.service.system.mapper.SysRoleMapper;
 import com.gstdev.cloud.service.system.service.SysBusinessPermissionService;
+import com.gstdev.cloud.service.system.service.SysRRoleTenantMenuService;
 import com.gstdev.cloud.service.system.service.SysRoleService;
+import com.gstdev.cloud.service.system.service.SysTenantMenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
@@ -32,6 +35,10 @@ public class SysRoleController implements ResultController {
 
     @Resource
     private SysRoleMapper roleVoMapper;
+    @Resource
+    private SysTenantMenuService sysTenantMenuService;
+    @Resource
+    private SysRRoleTenantMenuService sysRRoleTenantMenuService;
 
     public SysRoleService getService() {
         return roleService;
@@ -118,7 +125,7 @@ public class SysRoleController implements ResultController {
     @Tag(name = "Role Manage")
     @PostMapping("/insert-role-menu")
     @Operation(summary = "insertSave")
-    public Result<String> insertRoleMenu(@RequestBody @Validated InsertRoleMenuIO insertRoleMenuIO) {
+    public Result<String> insertRoleMenu(@RequestBody @Validated UpdateRoleAssignedTenantMenuIO insertRoleMenuIO) {
         return getService().insertRoleMenu(insertRoleMenuIO);
     }
 
@@ -145,6 +152,30 @@ public class SysRoleController implements ResultController {
     public Result<String> updateRoleAssignedBusinessPermission(@RequestBody @Validated UpdateRoleAssignedBusinessPermissionIO entityIo) {
          getService().updateRoleAssignedBusinessPermission(entityIo.getRoleId(), entityIo.getBusinessPermissionIds());
          return Result.success();
+    }
+
+    @Tag(name = "Role Manage Assigned Tenant Menu")
+    @GetMapping("/get-role-manage-tenant-menu-tree/{tenantId}")
+    @Operation(summary = "get-role-manage-tenant-menu-tree")
+    public Result<List<RoleManageTenantMenuTreeVo>> getRoleManageTenantMenuTree(@PathVariable String tenantId) {
+        List<TenantMenuMenuTreeDto> allTenantMenuMenuTree = sysTenantMenuService.getAllTenantMenuMenuTree(tenantId);
+        return this.result(this.getMapper().toRoleManageTenantMenuTreeVo(allTenantMenuMenuTree));
+    }
+
+
+    @Tag(name = "Role Manage Assigned Tenant Menu")
+    @GetMapping("/get-all-tenant-menu-id-by-role-id/{roleId}")
+    @Operation(summary = "get-all-tenant-menu-id-by-role-id")
+    public Result<Set<String>> getAllTenantMenuIdByRoleId(@PathVariable String roleId) {
+        return result(sysRRoleTenantMenuService.getAllTenantMenuIdByRoleId(roleId));
+    }
+
+    @Tag(name = "Role Manage Assigned Tenant Menu")
+    @PostMapping("/update-role-assigned-tenant-menu")
+    @Operation(summary = "update-role-assigned-tenant-menu")
+    public Result<String> updateRoleAssignedTenantMenu(@RequestBody @Validated UpdateRoleAssignedTenantMenuIO entityIo) {
+        sysRRoleTenantMenuService.updateRoleAssignedTenantMenu(entityIo.getRoleId(), entityIo.getTenantMenuIds());
+        return Result.success();
     }
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
 

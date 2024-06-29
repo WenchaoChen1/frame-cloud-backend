@@ -10,6 +10,7 @@
 package com.gstdev.cloud.service.system.mapper;
 
 import com.gstdev.cloud.data.core.mapper.BaseTreeMapper;
+import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.TenantMenuMenuTreeDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.TenantBusinessPermissionTreeDto;
 import com.gstdev.cloud.service.system.util.TreeUtils;
 import com.gstdev.cloud.service.system.domain.base.role.RoleDto;
@@ -72,5 +73,7 @@ public interface SysRoleMapper extends BaseTreeMapper<SysRole, RoleDto, RoleVo, 
     List<RoleManageBusinessPermissionTreeVo> toRoleManageBusinessPermissionTreeVo(List<TenantBusinessPermissionTreeDto> allTenantMenuMenuTree);
 
     List<TenantRoleTreeDto> toTenantRoleTreeDto(List<SysRole> sysRoles);
+
+    List<RoleManageTenantMenuTreeVo> toRoleManageTenantMenuTreeVo(List<TenantMenuMenuTreeDto> allTenantMenuMenuTree);
 }
 

@@ -69,8 +69,10 @@ public class SysRole extends BaseEntity {
     @ManyToMany
     @JoinTable(name = "sys_r_role_tenant_menu", joinColumns = {
             @JoinColumn(name = "role_id", referencedColumnName = "role_id")}, inverseJoinColumns = {
-            @JoinColumn(name = "tenant_menu_id", referencedColumnName = "tenant_menu_id")})
-    private List<SysTenantMenu> tenantMenus;
+            @JoinColumn(name = "tenant_menu_id", referencedColumnName = "tenant_menu_id")},
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"role_id", "tenant_menu_id"})},
+            indexes = {@Index(name = "sys_role_tenant_menu_rid_idx", columnList = "role_id"), @Index(name = "sys_role_tenant_menu_tmid_idx", columnList = "tenant_menu_id")})
+    private Set<SysTenantMenu> tenantMenus = new HashSet<>();
 
     /**
      * 用户 - 角色关系定义:

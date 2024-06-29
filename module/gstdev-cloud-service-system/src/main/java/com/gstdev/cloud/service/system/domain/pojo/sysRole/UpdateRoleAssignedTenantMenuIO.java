@@ -8,8 +8,8 @@ import java.util.List;
 
 @Getter
 @Setter
-public class InsertRoleMenuIO {
+public class UpdateRoleAssignedTenantMenuIO {
     @NotBlank
     private String roleId;
-    private List<String> menuIds;
+    private List<String> tenantMenuIds;
 }

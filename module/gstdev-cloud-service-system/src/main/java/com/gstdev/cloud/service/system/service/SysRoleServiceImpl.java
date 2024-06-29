@@ -6,7 +6,7 @@ import com.gstdev.cloud.service.system.domain.entity.SysBusinessPermission;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
-import com.gstdev.cloud.service.system.domain.pojo.sysRole.InsertRoleMenuIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysRole.UpdateRoleAssignedTenantMenuIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.TenantRoleTreeDto;
 import com.gstdev.cloud.service.system.mapper.SysRoleMapper;
 import com.gstdev.cloud.service.system.repository.SysRoleRepository;
@@ -54,10 +54,10 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRole, String, SysRole
 
     @Transactional
     @Override
-    public Result<String> insertRoleMenu(InsertRoleMenuIO insertRoleMenuIO) {
+    public Result<String> insertRoleMenu(UpdateRoleAssignedTenantMenuIO insertRoleMenuIO) {
         SysRole role = findById(insertRoleMenuIO.getRoleId());
 
-        role.setTenantMenus(rTenantMenuRepository.findAllByTenantIdAndMenuIdIn(role.getTenantId(), insertRoleMenuIO.getMenuIds()));
+//        role.setTenantMenus(rTenantMenuRepository.findAllByTenantIdAndMenuIdIn(role.getTenantId(), insertRoleMenuIO.getMenuIds()));
         update(role);
         return Result.success();
     }
