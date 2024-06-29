@@ -18,6 +18,7 @@ public class TenantMenuMenuTreeDto extends TreeNode<String, TenantMenuMenuTreeDt
     private String path;
     private SysMenuDto menu;
 
+
     public void setTenantMenuId(String tenantMenuId) {
         this.tenantMenuId = tenantMenuId;
     }
@@ -30,7 +31,7 @@ public class TenantMenuMenuTreeDto extends TreeNode<String, TenantMenuMenuTreeDt
         this.name = menu.getName();
         this.path = menu.getPath();
         this.sort = menu.getSort();
-        super.setId(tenantMenuId);
+        super.setId(menu.getId());
     }
 
     @Setter
