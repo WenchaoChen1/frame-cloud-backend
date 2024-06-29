@@ -59,7 +59,14 @@ public interface SysRoleMapper extends BaseTreeMapper<SysRole, RoleDto, RoleVo, 
     List<RoleManageTreeVo> toRoleManageTreeVo(List<SysRole> sysRole);
 
     default List<RoleManageTreeVo> toRoleManageTreeVoToTree(List<SysRole> sysRole) {
-        return null;
+        List<RoleManageTreeVo> roleManageTreeVo = toRoleManageTreeVo(sysRole);
+        return TreeUtils.buildTree(
+                roleManageTreeVo,
+                RoleManageTreeVo::getId,
+                RoleManageTreeVo::getParentId,
+                Comparator.comparingInt((RoleManageTreeVo item) ->
+                        item.getSort() != null ? item.getSort() : Integer.MAX_VALUE)
+        );
     }
 
     List<RoleManageBusinessPermissionTreeVo> toRoleManageBusinessPermissionTreeVo(List<BusinessPermissionTreeDto> allTenantMenuMenuTree);

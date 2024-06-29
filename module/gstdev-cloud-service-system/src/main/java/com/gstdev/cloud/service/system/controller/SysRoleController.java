@@ -139,7 +139,7 @@ public class SysRoleController implements ResultController {
         return result(getService().getAllBusinessPermissionIdByRoleId(roleId));
     }
 
-    @Tag(name = "Role Manage Assigned Business Permission-")
+    @Tag(name = "Role Manage Assigned Business Permission")
     @PostMapping("/update-role-assigned-business-permission")
     @Operation(summary = "update-role-assigned-business-permission")
     public Result<String> updateRoleAssignedBusinessPermission(@RequestBody @Validated UpdateRoleAssignedBusinessPermissionIO entityIo) {
