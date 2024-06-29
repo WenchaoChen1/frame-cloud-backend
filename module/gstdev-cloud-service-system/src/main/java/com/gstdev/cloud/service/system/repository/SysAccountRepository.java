@@ -26,7 +26,7 @@ public interface SysAccountRepository extends BaseRepository<SysAccount, String>
 //
 //    SysAccount findAccountByType(String userId);
 
-    List<SysAccount> findAllByUserId(String userId);
+    List<SysAccount> findAllByUserUserId(String userId);
 
     List<SysAccount> findAllByTenantId(String tenantId);
 }

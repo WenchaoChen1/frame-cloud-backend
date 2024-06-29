@@ -31,13 +31,13 @@ public class AccountManageDetailVo {
         if (user == null) {
             return null;
         }
-        return user.getId();
+        return user.getUserId();
     }
 
     @Getter
     @Setter
     public static class SysUser {
-        private String id;
+        private String userId;
     }
 
 }

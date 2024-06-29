@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 public class UserManageDetailVo {
 
-    private String id;
+    private String userId;
     private String username;
     private String phoneNumber;
     private String email;

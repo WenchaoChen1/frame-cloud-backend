@@ -2,7 +2,6 @@ package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
-import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -53,7 +52,8 @@ public class SysAccount extends BaseEntity {
 //    private Boolean isDeleted = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "user_id")
+//    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private SysUser user;
 
     @JsonIgnore

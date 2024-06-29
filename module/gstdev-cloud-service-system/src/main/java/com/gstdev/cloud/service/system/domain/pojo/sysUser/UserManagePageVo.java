@@ -21,7 +21,7 @@ import java.util.Date;
 @Setter
 public class UserManagePageVo {
 
-    private String id;
+    private String userId;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdDate;
     private String createdUser;

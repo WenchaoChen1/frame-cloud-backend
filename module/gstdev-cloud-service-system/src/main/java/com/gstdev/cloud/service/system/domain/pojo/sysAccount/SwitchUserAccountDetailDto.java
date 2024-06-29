@@ -12,7 +12,4 @@ public class SwitchUserAccountDetailDto {
     public void setName(String name) {
         this.accountName = name;
     }
-    public void setId(String id) {
-        this.accountId = id;
-    }
 }

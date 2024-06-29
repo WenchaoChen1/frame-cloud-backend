@@ -70,7 +70,7 @@ public class SysUserController implements ResultController {
     @PutMapping("/update-user-manage")
     @Operation(summary = "update-user-manage")
     public Result<String> updateUserManage(@RequestBody @Validated UpdateUserManageIO updateUserManageIO) {
-        SysUser sysUser = this.getService().findById(updateUserManageIO.getId());
+        SysUser sysUser = this.getService().findById(updateUserManageIO.getUserId());
         userVoMapper.copy(updateUserManageIO, sysUser);
         this.getService().insertAndUpdate(sysUser);
         return Result.success();
@@ -86,17 +86,17 @@ public class SysUserController implements ResultController {
 
     @Tag(name = "User Manage")
     @Operation(summary = "delete-user-manage")
-    @DeleteMapping("/delete-user-manage/{id}")
-    public Result<String> deleteUserManage(@PathVariable String id) {
-        getService().deleteById(id);
+    @DeleteMapping("/delete-user-manage/{userId}")
+    public Result<String> deleteUserManage(@PathVariable String userId) {
+        getService().deleteById(userId);
         return Result.success();
     }
 
     @Tag(name = "User Manage")
     @Operation(summary = "/delete-all-user-manage")
     @DeleteMapping("/delete-all-user-manage")
-    public Result<String> deleteAllUserManage(List<String> id) {
-        getService().deleteAllById(id);
+    public Result<String> deleteAllUserManage(List<String> userIds) {
+        getService().deleteAllById(userIds);
         return Result.success();
     }
 

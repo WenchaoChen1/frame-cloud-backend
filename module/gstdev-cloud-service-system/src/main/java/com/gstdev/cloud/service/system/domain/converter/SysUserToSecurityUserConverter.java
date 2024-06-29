@@ -44,7 +44,7 @@ public class SysUserToSecurityUserConverter implements Converter<SysUser, Defaul
 //        }
         Optional<SysAccount> firstAccount = sysUser.getAccount().stream().findFirst();
         DefaultSecurityUser defaultSecurityUser = new DefaultSecurityUser(
-                sysUser.getId(),
+                sysUser.getUserId(),
                 sysUser.getUsername(),
                 firstAccount.get().getAccountId(),
                 firstAccount.get().getName(),

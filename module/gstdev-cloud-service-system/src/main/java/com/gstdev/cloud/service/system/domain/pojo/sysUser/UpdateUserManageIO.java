@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class UpdateUserManageIO {
 
-    private String id;
+    private String userId;
     private String username;
     private String phoneNumber;
     private String email;

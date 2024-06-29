@@ -10,7 +10,7 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.gstdev.cloud.data.core.entity.BasePOJOEntity;
+import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -29,7 +29,11 @@ import java.util.List;
 @Table(name = "sys_user", schema = "public")
 //@Where(clause = "deleted = 0")
 //@SQLDelete(sql = "UPDATE public.sys_user SET deleted=1 WHERE id =?")
-public class SysUser extends BasePOJOEntity {
+public class SysUser extends BaseEntity {
+    @Id
+    @GeneratedValue(generator = "jpa-uuid")
+    @Column(name = "user_id", length = 64, nullable = false)
+    private String userId;
 
     @Schema(title = "用户名")
     @Column(name = "username", length = 128, nullable = false, unique = true)

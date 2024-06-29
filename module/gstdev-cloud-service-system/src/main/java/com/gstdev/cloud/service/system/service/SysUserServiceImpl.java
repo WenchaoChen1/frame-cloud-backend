@@ -99,12 +99,12 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
         SysUser insert = insert(user);
         InsertAccountManageInitializationIO accountInsertInput = new InsertAccountManageInitializationIO();
         accountInsertInput.setTenantId(userInsertInput.getTenantId());
-        accountInsertInput.setUserId(insert.getId());
+        accountInsertInput.setUserId(insert.getUserId());
         accountInsertInput.setType(userInsertInput.getType());
         accountService.insertAccountManageInitialization(accountInsertInput);
         // 同步到identity模块
         IdentitySaveDto identitySaveDto = new IdentitySaveDto();
-        identitySaveDto.setUserId(insert.getId());
+        identitySaveDto.setUserId(insert.getUserId());
         identitySaveDto.setEmail(insert.getEmail());
         identitySaveDto.setUsername(insert.getUsername());
         identitySaveDto.setPassword(insert.getPassword());

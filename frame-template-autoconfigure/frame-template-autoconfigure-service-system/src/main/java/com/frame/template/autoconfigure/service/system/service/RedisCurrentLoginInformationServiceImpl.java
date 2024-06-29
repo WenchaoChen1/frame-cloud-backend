@@ -10,7 +10,6 @@ import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.service.SysAccountService;
 import com.gstdev.cloud.service.system.service.SysMenuService;
-import com.gstdev.cloud.service.system.service.SysTenantService;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -30,8 +29,8 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
     @Resource
     @Lazy
     private SysMenuService menuService;
-    @Resource
-    private SysTenantService tenantService;
+//    @Resource
+//    private SysTenantService tenantService;
 
     @Override
     public Result<Object> addByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput) {
@@ -47,7 +46,7 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
             account = accounts.get(0);
         }
         CurrentLoginInformation currentLoginInformation = new CurrentLoginInformation();
-        currentLoginInformation.setUserId(account.getUser().getId());
+        currentLoginInformation.setUserId(account.getUser().getUserId());
         currentLoginInformation.setUserName(account.getUser().getUsername());
         currentLoginInformation.setAccountId(account.getAccountId());
         currentLoginInformation.setAccountName(account.getName());

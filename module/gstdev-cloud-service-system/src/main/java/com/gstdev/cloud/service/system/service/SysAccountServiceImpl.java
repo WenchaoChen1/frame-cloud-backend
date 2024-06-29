@@ -82,7 +82,7 @@ public class SysAccountServiceImpl extends BaseServiceImpl<SysAccount, String, S
 
     @Override
     public List<SysAccount> findAllByUserId(String userId) {
-        return getRepository().findAllByUserId(userId);
+        return getRepository().findAllByUserUserId(userId);
     }
 
     @Override
