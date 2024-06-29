@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class UpdateRoleManageIO {
 
-    private String id;
+    private String roleId;
     private String code;
     private String description;
     private String parentId;

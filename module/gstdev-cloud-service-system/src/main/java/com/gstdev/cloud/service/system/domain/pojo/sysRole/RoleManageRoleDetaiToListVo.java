@@ -18,10 +18,14 @@ import lombok.Setter;
 @Setter
 public class RoleManageRoleDetaiToListVo extends TreeNode<String, RoleManageRoleDetaiToListVo> {
 
-    private String id;
+    private String roleId;
     private String roleName;
     private String parentId;
     private Integer sort;
 //    List<RoleManageRoleDetaiToListVo> children;
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
+        super.setId(roleId);
+    }
 }
 

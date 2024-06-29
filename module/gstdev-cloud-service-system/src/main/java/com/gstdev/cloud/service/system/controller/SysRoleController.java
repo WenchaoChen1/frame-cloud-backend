@@ -4,11 +4,7 @@ import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
-import com.gstdev.cloud.service.system.domain.base.role.RoleDto;
-import com.gstdev.cloud.service.system.domain.entity.SysBusinessPermission;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
-import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionManageQO;
-import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.BusinessPermissionManageTreeVo;
 import com.gstdev.cloud.service.system.domain.pojo.sysRole.*;
 import com.gstdev.cloud.service.system.mapper.SysRoleMapper;
 import com.gstdev.cloud.service.system.service.SysRoleService;
@@ -83,7 +79,7 @@ public class SysRoleController implements ResultController {
     @PutMapping("/update-role-manage")
     @Operation(summary = "update-role-manage")
     public Result<String> updateRoleManage(@RequestBody @Validated UpdateRoleManageIO updateRoleManageIO) {
-        SysRole sysRole = this.getService().findById(updateRoleManageIO.getId());
+        SysRole sysRole = this.getService().findById(updateRoleManageIO.getRoleId());
         roleVoMapper.copy(updateRoleManageIO, sysRole);
         this.getService().insertAndUpdate(sysRole);
         return Result.success();

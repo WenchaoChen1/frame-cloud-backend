@@ -21,7 +21,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class RoleManageTreeVo extends TreeNode<String, RoleManageTreeVo> {
-    private String id;
+    private String roleId;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdDate;
     private String createdUser;
@@ -38,6 +38,9 @@ public class RoleManageTreeVo extends TreeNode<String, RoleManageTreeVo> {
     private DataItemStatus status;
     private String tenantId;
 
-
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
+        super.setId(roleId);
+    }
 }
 

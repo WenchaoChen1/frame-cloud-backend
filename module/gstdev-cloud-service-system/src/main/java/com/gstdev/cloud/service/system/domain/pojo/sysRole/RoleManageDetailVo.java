@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 public class RoleManageDetailVo {
 
-    private String id;
+    private String roleId;
     private String roleName;
     private String code;
     private String tenantId;

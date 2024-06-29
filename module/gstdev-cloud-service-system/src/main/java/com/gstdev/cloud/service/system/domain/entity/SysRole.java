@@ -9,7 +9,7 @@
 
 package com.gstdev.cloud.service.system.domain.entity;
 
-import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
+import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -30,13 +30,18 @@ import java.util.Set;
 //@Where(clause = "deleted = 0")
 //@SQLDelete(sql = "UPDATE sys_role SET deleted=1 WHERE id =?")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-public class SysRole extends BaseTreeEntity {
+public class SysRole extends BaseEntity {
+
+    @Id
+    @GeneratedValue(generator = "jpa-uuid")
+    @Column(name = "role_id", length = 64, nullable = false)
+    private String roleId;
+
+    @Column(name = "parent_id", length = 64, nullable = false)
+    private String parentId;
 
     @Column(name = "tenant_id", length = 64, nullable = false)
     private String tenantId;
-
-    @Column(name = "parent_id", length = 36)
-    private String parentId;
 
     @Column(name = "role_name", length = 50, nullable = false)
     private String roleName;
@@ -60,7 +65,7 @@ public class SysRole extends BaseTreeEntity {
 
     @ManyToMany
     @JoinTable(name = "sys_r_role_tenant_menu", joinColumns = {
-            @JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {
+            @JoinColumn(name = "role_id", referencedColumnName = "role_id")}, inverseJoinColumns = {
             @JoinColumn(name = "tenant_menu_id", referencedColumnName = "tenant_menu_id")})
     private List<SysTenantMenu> tenantMenus;
 
@@ -95,7 +100,7 @@ public class SysRole extends BaseTreeEntity {
     @ManyToMany(fetch = FetchType.LAZY)
 //    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "sys_r_role_business_permission",
-        joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")},
+        joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "role_id")},
         inverseJoinColumns = {@JoinColumn(name = "business_permission_id", referencedColumnName = "business_permission_id")},
         uniqueConstraints = {@UniqueConstraint(columnNames = {"role_id", "business_permission_id"})},
         indexes = {@Index(name = "sys_role_business_permission_rid_idx", columnList = "role_id"), @Index(name = "sys_role_business_permission_bpid_idx", columnList = "business_permission_id")})

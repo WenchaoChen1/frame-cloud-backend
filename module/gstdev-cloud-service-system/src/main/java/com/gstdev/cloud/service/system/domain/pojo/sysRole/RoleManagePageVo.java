@@ -22,7 +22,7 @@ import java.util.Date;
 @Setter
 public class RoleManagePageVo extends BaseTreeVo {
 
-    private String id;
+    private String roleId;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdDate;
     private String createdUser;
@@ -39,6 +39,9 @@ public class RoleManagePageVo extends BaseTreeVo {
     private DataItemStatus status;
     private String tenantId;
 
-
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
+        super.setId(roleId);
+    }
 }
 

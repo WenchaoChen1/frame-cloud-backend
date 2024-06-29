@@ -63,7 +63,7 @@ public class SysAccount extends BaseEntity {
     @ManyToMany
     @JoinTable(name = "sys_r_account_role", joinColumns = {
         @JoinColumn(name = "account_id", referencedColumnName = "account_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "role_id", referencedColumnName = "id")})
+        @JoinColumn(name = "role_id", referencedColumnName = "role_id")})
     private List<SysRole> roles;
 
 
