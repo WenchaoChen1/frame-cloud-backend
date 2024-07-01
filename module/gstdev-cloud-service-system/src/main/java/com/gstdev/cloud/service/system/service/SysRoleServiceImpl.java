@@ -75,7 +75,7 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRole, String, SysRole
     @Override
     public List<TenantRoleTreeDto> getAllTenantRoleTree(String tenantId) {
         List<SysRole> allByTenantId = findAllByTenantId(tenantId);
-        return roleMapper.toTenantRoleTreeDto(allByTenantId);
+        return roleMapper.toRoleManageTreeDtoToTree(allByTenantId);
     }
     public List<SysRole> findAllByTenantId(String tenantId) {
         return getRepository().findAllByTenantId(tenantId);
