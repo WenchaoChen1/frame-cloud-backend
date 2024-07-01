@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,4 +27,5 @@ public class AccountManageRoleTreeVo {
     private Integer sort;
     private DataItemStatus status;
     private String tenantId;
+    private List<AccountManageRoleTreeVo> children = null;
 }

@@ -10,6 +10,8 @@ public interface SysRRoleBusinessPermissionService extends BaseService<SysRRoleB
 
 
     void updateRoleAssignedBusinessPermission(String roleId, List<String> businessPermissionIds);
+
+    List<String> getAllBusinessPermissionIdByRoleIds(List<String> allRoleIdByAccountIds);
 }
 
 

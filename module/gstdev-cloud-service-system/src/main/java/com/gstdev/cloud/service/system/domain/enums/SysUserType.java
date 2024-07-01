@@ -17,24 +17,27 @@ import java.util.Map;
 @Schema(title = "数据状态")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 //@JsonDeserialize(using = DataItemStatusDeserializer.class)
-public enum SysAccountPermissionType implements BaseUiEnum<Integer> {
-
+public enum SysUserType implements BaseUiEnum<Integer> {
 
     /**
-     * 正常情况下account permission type 不会为0  为0的话会和account type有一点的业务重跌 增加0是为了让账户没有任何权限默认为零
+     * 数据条目已启用
      */
-    ACCOUNT_TYPE(0, "1"),
-    ACCOUNT_TENANT_MENU(1, "1"),
-    ACCOUNT_TENANT_BUSINESS_PERMISSION(2, "1"),
-    ACCOUNT_ROLE_MENU(3, "1"),
-    ACCOUNT_ROLE_BUSINESS_PERMISSION(4, "1");
+    SUPER(0, "super"),
+    /**
+     * 数据条目被启用
+     */
+//    ADMIN(0, "admin"),
+    /**
+     * 数据条目被锁定
+     */
+    USER(1, "user");
 
 
-    private static final Map<Integer, SysAccountPermissionType> INDEX_MAP = new HashMap<>();
+    private static final Map<Integer, SysUserType> INDEX_MAP = new HashMap<>();
     private static final List<Map<String, Object>> JSON_STRUCTURE = new ArrayList<>();
 
     static {
-        for (SysAccountPermissionType dataItemStatus : SysAccountPermissionType.values()) {
+        for (SysUserType dataItemStatus : SysUserType.values()) {
             INDEX_MAP.put(dataItemStatus.getValue(), dataItemStatus);
             JSON_STRUCTURE.add(dataItemStatus.getValue(),
                     ImmutableMap.<String, Object>builder()
@@ -50,12 +53,12 @@ public enum SysAccountPermissionType implements BaseUiEnum<Integer> {
     @Schema(title = "文字")
     private final String description;
 
-    SysAccountPermissionType(Integer value, String description) {
+    SysUserType(Integer value, String description) {
         this.value = value;
         this.description = description;
     }
 
-    public static SysAccountPermissionType get(Integer index) {
+    public static SysUserType get(Integer index) {
         return INDEX_MAP.get(index);
     }
 

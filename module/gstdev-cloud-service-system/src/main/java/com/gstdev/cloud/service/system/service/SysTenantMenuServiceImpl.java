@@ -11,6 +11,7 @@ package com.gstdev.cloud.service.system.service;
 
 
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
+import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuIO;
@@ -24,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Transactional(readOnly = true)
 public class SysTenantMenuServiceImpl extends BaseServiceImpl<SysTenantMenu, String, SysTenantMenuRepository> implements SysTenantMenuService {
@@ -41,7 +43,9 @@ public class SysTenantMenuServiceImpl extends BaseServiceImpl<SysTenantMenu, Str
     @Resource
     @Lazy
     private SysTenantMenuServiceImpl service;
-
+    @Resource
+    @Lazy
+    private SysMenuService sysMenuService;
 
     public SysTenantMenuServiceImpl(SysTenantMenuRepository rTenantMenuRepository, RTenantMenuMapper rTenantMenuMappere) {
         super(rTenantMenuRepository);
@@ -67,6 +71,28 @@ public class SysTenantMenuServiceImpl extends BaseServiceImpl<SysTenantMenu, Str
         List<SysTenantMenu> allByTenantId = getRepository().findByTenantId(tenantId);
         List<TenantMenuMenuTreeDto> tenantMenuMenuTreeDto = rTenantMenuMappere.toTenantMenuMenuTreeDtoToTree(allByTenantId);
         return tenantMenuMenuTreeDto;
+    }
+    @Override
+    public List<String> getAllTenantMenuIdByTenantIdIn(Set<String> teantIds) {
+        return getService().findAllByTenantMenuIds(teantIds).stream().map(SysTenantMenu::getTenantMenuId).toList();
+    }
+
+    @Override
+    public List<String> getPermissionsByTenantMenuIds(Set<String> tenantMenuIds) {
+        List<SysMenu> menus = getRepository().findAllById(tenantMenuIds).stream().map(SysTenantMenu::getMenu).toList();
+        return sysMenuService.getPermissionsByMenus(menus);
+    }
+
+    private List<SysTenantMenu> findAllByTenantIds(Set<String> tenantIds) {
+        return getRepository().findByTenantIdIn(tenantIds);
+    }
+    @Override
+    public List<String> getAllTenantMenuIdByTenantMenuIdIn(Set<String> teantMenuIds) {
+        return getService().findAllByTenantMenuIds(teantMenuIds).stream().map(SysTenantMenu::getTenantMenuId).toList();
+    }
+
+    private List<SysTenantMenu> findAllByTenantMenuIds(Set<String> teantMenuIds) {
+        return getRepository().findByTenantMenuIdIn(teantMenuIds);
     }
 
     @Override

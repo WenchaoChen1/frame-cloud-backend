@@ -7,8 +7,10 @@ import com.gstdev.cloud.service.system.repository.SysRAccountRoleRepository;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
+import java.util.Set;
 
 @Transactional
 public class SysRAccountRoleServiceImpl extends BaseServiceImpl<SysRAccountRole, SysRAccountRoleEmbeddablePK, SysRAccountRoleRepository> implements SysRAccountRoleService {
@@ -38,7 +40,7 @@ public class SysRAccountRoleServiceImpl extends BaseServiceImpl<SysRAccountRole,
     @Transactional
     public void updateAccountAssignedRole(String accountId, List<String> roleIds) {
         getRepository().deleteAllByAccountId(accountId);
-        if (roleIds.isEmpty()) {
+        if (ObjectUtils.isEmpty(roleIds)) {
             return;
         }
         saveAllAndFlush(toEntityList(accountId, roleIds));
@@ -47,6 +49,11 @@ public class SysRAccountRoleServiceImpl extends BaseServiceImpl<SysRAccountRole,
     @Override
     public List<String> getAllRoleIdByAccountId(String accountId) {
         return getRepository().findAllByAccountId(accountId).stream().map(SysRAccountRole::getRoleId).toList();
+    }
+
+    @Override
+    public List<String> getAllRoleIdByAccountIds(Set<String> accountIds) {
+        return getRepository().findAllByAccountIdIn(accountIds).stream().map(SysRAccountRole::getRoleId).toList();
     }
 
     List<SysRAccountRole> toEntityList(String accountId, List<String> roleIds) {

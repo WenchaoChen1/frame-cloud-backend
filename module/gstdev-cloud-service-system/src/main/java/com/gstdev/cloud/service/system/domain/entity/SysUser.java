@@ -12,6 +12,7 @@ package com.gstdev.cloud.service.system.domain.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.service.system.domain.enums.SysUserType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -79,12 +80,19 @@ public class SysUser extends BaseEntity {
     @Enumerated(EnumType.ORDINAL)
     private DataItemStatus status = DataItemStatus.ENABLE;
 
+
+    //  super:0 看到所有数据最大权限,admin:1只能看到当前租户的所有权限，user：需要根据role来获取权限
+    @Column(name = "type", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private SysUserType type = SysUserType.USER;
+
     @Column(name = "description")
     private String description;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<SysAccount> account;
+
 
     //-----------------自定义-----------
     @Column(name = "first_name", length = 60)

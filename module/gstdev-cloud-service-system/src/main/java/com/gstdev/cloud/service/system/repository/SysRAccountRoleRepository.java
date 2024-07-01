@@ -6,6 +6,7 @@ import com.gstdev.cloud.service.system.domain.generator.SysRAccountRoleEmbeddabl
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Transactional
 public interface SysRAccountRoleRepository extends BaseRepository<SysRAccountRole, SysRAccountRoleEmbeddablePK> {
@@ -15,6 +16,8 @@ public interface SysRAccountRoleRepository extends BaseRepository<SysRAccountRol
 
     List<SysRAccountRole> findAllByAccountId(String accountId);
     List<SysRAccountRole> findAllByRoleId(String roleId);
+
+    List<SysRAccountRole> findAllByAccountIdIn(Set<String> accountIds);
 }
 
 

@@ -15,6 +15,8 @@ public interface SysRRoleTenantMenuRepository extends BaseRepository<SysRRoleTen
     void deleteAllByRoleId(String roleIds);
 
     List<SysRRoleTenantMenu> findAllByRoleId(String roleId);
+
+    List<SysRRoleTenantMenu> findAllByRoleIdIn(List<String> roleIds);
 }
 
 

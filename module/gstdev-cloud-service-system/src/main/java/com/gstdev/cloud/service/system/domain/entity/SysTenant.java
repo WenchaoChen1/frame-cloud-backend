@@ -11,11 +11,15 @@ package com.gstdev.cloud.service.system.domain.entity;
 
 import com.gstdev.cloud.data.core.entity.BaseTreeEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.service.system.domain.enums.SysTenantPermissionType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+
+import java.util.EnumSet;
+import java.util.Set;
 
 
 @Getter
@@ -47,6 +51,12 @@ public class SysTenant extends BaseTreeEntity {
     @Column(name = "type")//comment 'development 0;platform 1;tenant 2'
     private Integer type = 0;
 
+
+    @ElementCollection(targetClass = SysTenantPermissionType.class)
+    @CollectionTable(name = "sys_tenant_permission_type", joinColumns = @JoinColumn(name = "tenant_id"))
+    @Column(name = "tenant_permission_type")
+    @Enumerated(EnumType.STRING) // 使用字符串类型存储枚举值
+    private Set<SysTenantPermissionType> tenantPermissionTypes= EnumSet.of(SysTenantPermissionType.ACCOUNT_TYPE);
 //    @Column(name = "deleted")
 //    private Integer deleted = 0;
 

@@ -24,7 +24,7 @@ public class UserFindAllByQueryCriteria extends BaseFindAllByQueryCriteria imple
     @Query(propName = "tenantId", joinName = "account", join = Query.Join.LEFT)
     String tenantId;
 
-    @Query(propName = "AccountType", joinName = "account", join = Query.Join.LEFT)
-    String AccountType;
+//    @Query(propName = "AccountType", joinName = "account", join = Query.Join.LEFT)
+//    String AccountType;
 }
 

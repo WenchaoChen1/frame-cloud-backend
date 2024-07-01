@@ -12,8 +12,6 @@ package com.gstdev.cloud.service.system.service;
 
 import cn.hutool.core.lang.UUID;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.data.core.service.BaseTreeServiceImpl;
-import com.gstdev.cloud.service.system.domain.base.tenant.TenantDto;
 import com.gstdev.cloud.service.system.domain.entity.SysTenant;
 import com.gstdev.cloud.service.system.mapper.SysTenantMapper;
 import com.gstdev.cloud.service.system.repository.SysTenantRepository;
@@ -21,6 +19,7 @@ import jakarta.annotation.Resource;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Transactional(readOnly = true)
 public class SysTenantServiceImpl extends BaseServiceImpl<SysTenant, String, SysTenantRepository> implements SysTenantService {
@@ -71,7 +70,9 @@ public class SysTenantServiceImpl extends BaseServiceImpl<SysTenant, String, Sys
     }
 
 
-
-
+    @Override
+    public List<SysTenant> findAllByIds(Set<String> tenantIds) {
+        return getRepository().findAllById(tenantIds);
+    }
 }
 

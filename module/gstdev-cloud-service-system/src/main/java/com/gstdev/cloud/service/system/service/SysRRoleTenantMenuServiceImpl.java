@@ -7,10 +7,12 @@ import com.gstdev.cloud.service.system.repository.SysRRoleTenantMenuRepository;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 import java.util.Set;
 
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 
 @Transactional
@@ -41,7 +43,7 @@ public class SysRRoleTenantMenuServiceImpl extends BaseServiceImpl<SysRRoleTenan
     @Transactional
     public void updateRoleAssignedTenantMenu(String roleIds, List<String> tenantMenuIds) {
         getRepository().deleteAllByRoleId(roleIds);
-        if (tenantMenuIds.isEmpty()) {
+        if (ObjectUtils.isEmpty(tenantMenuIds)) {
             return;
         }
         saveAllAndFlush(toEntityList(roleIds, tenantMenuIds));
@@ -50,6 +52,15 @@ public class SysRRoleTenantMenuServiceImpl extends BaseServiceImpl<SysRRoleTenan
     @Override
     public Set<String> getAllTenantMenuIdByRoleId(String roleId) {
         return getService().findAllByRoleId(roleId).stream().map(SysRRoleTenantMenu::getTenantMenuId).collect(toSet());
+    }
+
+    @Override
+    public List<String> getAllTenantMenuIdByRoleIds(List<String> roleIds) {
+        return getService().findAllByRoleIdIn(roleIds).stream().map(SysRRoleTenantMenu::getTenantMenuId).collect(toList());
+    }
+
+    private List<SysRRoleTenantMenu> findAllByRoleIdIn(List<String> roleIds) {
+        return getRepository().findAllByRoleIdIn(roleIds);
     }
 
     public List<SysRRoleTenantMenu> findAllByRoleId(String roleId) {

@@ -5,6 +5,7 @@ import com.gstdev.cloud.service.system.domain.entity.SysRAccountBusinessPermissi
 import com.gstdev.cloud.service.system.domain.generator.SysRAccountBusinessPermissionEmbeddablePK;
 
 import java.util.List;
+import java.util.Set;
 
 public interface SysRAccountBusinessPermissionService extends BaseService<SysRAccountBusinessPermission, SysRAccountBusinessPermissionEmbeddablePK> {
 
@@ -12,6 +13,8 @@ public interface SysRAccountBusinessPermissionService extends BaseService<SysRAc
     void updateAccountAssignedBusinessPermission(String accountId, List<String> businessPermissionIds);
 
     List<String> getAllBusinessPermissionIdByAccountId(String accountId);
+
+    List<String> getAllBusinessPermissionIdByAccountIds(Set<String> accountTenantBusinessPermissionAccountIds);
 }
 
 

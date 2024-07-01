@@ -7,8 +7,10 @@ import com.gstdev.cloud.service.system.repository.SysRTenantMenuBusinessPermissi
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
+import java.util.Set;
 
 @Transactional
 public class SysRTenantMenuBusinessPermissionServiceImpl extends BaseServiceImpl<SysRTenantMenuBusinessPermission, SysRTenantMenuBusinessPermissionEmbeddablePK, SysRTenantMenuBusinessPermissionRepository> implements SysRTenantMenuBusinessPermissionService {
@@ -38,10 +40,19 @@ public class SysRTenantMenuBusinessPermissionServiceImpl extends BaseServiceImpl
     @Transactional
     public void updateBusinessPermissionAssignedTenantMenu(String businessPermissionId, List<String> tenantMenuIds) {
         getRepository().deleteAllByBusinessPermissionId(businessPermissionId);
-        if (tenantMenuIds.isEmpty()) {
+        if (ObjectUtils.isEmpty(tenantMenuIds)) {
             return;
         }
         saveAllAndFlush(toEntityList(tenantMenuIds, businessPermissionId));
+    }
+
+    @Override
+    public List<String> getAllTenantMenuIdByBusinessPermissionIds(Set<String> tenantBusinessPermissionIds) {
+        return getService().findAllByBusinessPermissionIdIn(tenantBusinessPermissionIds).stream().map(SysRTenantMenuBusinessPermission::getTenantMenuId).toList();
+    }
+
+    private List<SysRTenantMenuBusinessPermission> findAllByBusinessPermissionIdIn(Set<String> tenantBusinessPermissionIds) {
+        return getRepository().findAllByBusinessPermissionIdIn(tenantBusinessPermissionIds);
     }
 
     List<SysRTenantMenuBusinessPermission> toEntityList(String TenantMenuId, List<String> businessPermissionIds) {

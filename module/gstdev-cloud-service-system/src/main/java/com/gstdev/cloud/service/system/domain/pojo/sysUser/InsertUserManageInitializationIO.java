@@ -1,7 +1,6 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysUser;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
-import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,7 +23,7 @@ public class InsertUserManageInitializationIO {
     private String lastName;
     private String accountName;
     private String tenantId;
-    private SysAccountType type = SysAccountType.USER;
+//    private SysAccountType type = SysAccountType.USER;
     private String icon;
     private String description;
 }

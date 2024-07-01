@@ -10,6 +10,7 @@ import com.gstdev.cloud.service.system.domain.pojo.sysMenu.UpdateMenuManageIO;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 
 public interface SysMenuService extends BaseService<SysMenu, String> {
@@ -23,6 +24,9 @@ public interface SysMenuService extends BaseService<SysMenu, String> {
     Collection<? extends SysMenu> findAllMenuByAccount(SysAccount account);
 
     Collection<? extends SysMenu> findAllMenuByUser(SysUser user);
+
+    List<String>  getPermissionsByMenuIds(Set<String> menuIds);
+    List<String>  getPermissionsByMenus(List<SysMenu> menus);
 
     /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
 

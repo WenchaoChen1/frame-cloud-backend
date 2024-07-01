@@ -17,7 +17,7 @@ import java.util.Map;
 @Schema(title = "数据状态")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 //@JsonDeserialize(using = DataItemStatusDeserializer.class)
-public enum SysAccountPermissionType implements BaseUiEnum<Integer> {
+public enum SysTenantPermissionType implements BaseUiEnum<Integer> {
 
 
     /**
@@ -30,11 +30,11 @@ public enum SysAccountPermissionType implements BaseUiEnum<Integer> {
     ACCOUNT_ROLE_BUSINESS_PERMISSION(4, "1");
 
 
-    private static final Map<Integer, SysAccountPermissionType> INDEX_MAP = new HashMap<>();
+    private static final Map<Integer, SysTenantPermissionType> INDEX_MAP = new HashMap<>();
     private static final List<Map<String, Object>> JSON_STRUCTURE = new ArrayList<>();
 
     static {
-        for (SysAccountPermissionType dataItemStatus : SysAccountPermissionType.values()) {
+        for (SysTenantPermissionType dataItemStatus : SysTenantPermissionType.values()) {
             INDEX_MAP.put(dataItemStatus.getValue(), dataItemStatus);
             JSON_STRUCTURE.add(dataItemStatus.getValue(),
                     ImmutableMap.<String, Object>builder()
@@ -50,12 +50,12 @@ public enum SysAccountPermissionType implements BaseUiEnum<Integer> {
     @Schema(title = "文字")
     private final String description;
 
-    SysAccountPermissionType(Integer value, String description) {
+    SysTenantPermissionType(Integer value, String description) {
         this.value = value;
         this.description = description;
     }
 
-    public static SysAccountPermissionType get(Integer index) {
+    public static SysTenantPermissionType get(Integer index) {
         return INDEX_MAP.get(index);
     }
 

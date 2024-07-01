@@ -34,5 +34,8 @@ public interface SysTenantMenuRepository extends JpaRepository<SysTenantMenu, St
 
     List<SysTenantMenu> findAllByTenantIdIn(Set<String> tenantIds);
 
+    List<SysTenantMenu> findByTenantMenuIdIn(Set<String> tenantMenuIds);
+
+    List<SysTenantMenu> findByTenantIdIn(Set<String> tenantIds);
 }
 

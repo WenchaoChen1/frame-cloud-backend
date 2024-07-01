@@ -15,6 +15,7 @@ import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuI
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.TenantMenuMenuTreeDto;
 
 import java.util.List;
+import java.util.Set;
 
 public interface SysTenantMenuService extends BaseService<SysTenantMenu, String> {
     void insertTenantMenu(InsertTenantMenuIO insertTenantMenuIO);
@@ -27,6 +28,11 @@ public interface SysTenantMenuService extends BaseService<SysTenantMenu, String>
      * @return
      */
     List<TenantMenuMenuTreeDto> getAllTenantMenuMenuTree(String tenantId);
+
+    List<String> getAllTenantMenuIdByTenantMenuIdIn(Set<String> teantMenuIds);
+    List<String> getAllTenantMenuIdByTenantIdIn(Set<String> teantMenuIds);
+
+    List<String> getPermissionsByTenantMenuIds(Set<String> tenantMenuIds);
 
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 }

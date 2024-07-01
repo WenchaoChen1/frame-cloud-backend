@@ -12,7 +12,6 @@ package com.gstdev.cloud.service.system.domain.vo.user;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.pojo.BaseInsertInput;
-import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,7 +36,7 @@ public class UserInsertInput extends BaseInsertInput implements Serializable {
     private Date lastLoginTime;
     private String accountName;
     private String tenantId;
-    private SysAccountType type = SysAccountType.USER;
+//    private SysAccountType type = SysAccountType.USER;
     private String firstName;
     private String lastName;
     private String icon;

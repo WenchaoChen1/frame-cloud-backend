@@ -10,12 +10,14 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.data.core.service.BaseService;
-import com.gstdev.cloud.data.core.service.BaseTreeService;
-import com.gstdev.cloud.service.system.domain.base.tenant.TenantDto;
 import com.gstdev.cloud.service.system.domain.entity.SysTenant;
+
+import java.util.List;
+import java.util.Set;
 
 
 public interface SysTenantService extends BaseService<SysTenant, String> {
+    List<SysTenant> findAllByIds(Set<String> tenantIds);
 //
 }
 

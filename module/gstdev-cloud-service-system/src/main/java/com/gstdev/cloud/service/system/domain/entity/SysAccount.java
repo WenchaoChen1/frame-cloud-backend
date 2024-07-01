@@ -3,7 +3,6 @@ package com.gstdev.cloud.service.system.domain.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
-import com.gstdev.cloud.service.system.domain.enums.SysAccountPermissionType;
 import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -11,7 +10,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -55,11 +53,11 @@ public class SysAccount extends BaseEntity {
 //    private Boolean isDeleted = false;
 
 
-    @ElementCollection(targetClass = SysAccountPermissionType.class)
-    @CollectionTable(name = "sys_account_permission_type", joinColumns = @JoinColumn(name = "account_id"))
-    @Column(name = "account_permission_type")
-    @Enumerated(EnumType.STRING) // 使用字符串类型存储枚举值
-    private Set<SysAccountPermissionType> accountPermissionTypes= EnumSet.of(SysAccountPermissionType.ACCOUNT_TYPE);
+//    @ElementCollection(targetClass = SysAccountPermissionType.class)
+//    @CollectionTable(name = "sys_account_permission_type", joinColumns = @JoinColumn(name = "account_id"))
+//    @Column(name = "account_permission_type")
+//    @Enumerated(EnumType.STRING) // 使用字符串类型存储枚举值
+//    private Set<SysAccountPermissionType> accountPermissionTypes= EnumSet.of(SysAccountPermissionType.ACCOUNT_TYPE);
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

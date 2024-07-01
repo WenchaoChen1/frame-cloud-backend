@@ -22,7 +22,7 @@ public enum SysAccountType implements BaseUiEnum<Integer> {
     /**
      * 数据条目已启用
      */
-    SUPER(0, "super"),
+//    SUPER(0, "super"),
     /**
      * 数据条目被启用
      */
@@ -39,8 +39,7 @@ public enum SysAccountType implements BaseUiEnum<Integer> {
     static {
         for (SysAccountType dataItemStatus : SysAccountType.values()) {
             INDEX_MAP.put(dataItemStatus.getValue(), dataItemStatus);
-            JSON_STRUCTURE.add(dataItemStatus.getValue(),
-                    ImmutableMap.<String, Object>builder()
+            JSON_STRUCTURE.add(ImmutableMap.<String, Object>builder()
                             .put("value", dataItemStatus.getValue())
                             .put("key", dataItemStatus.name())
                             .put("description", dataItemStatus.getDescription())

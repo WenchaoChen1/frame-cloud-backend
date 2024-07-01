@@ -5,6 +5,7 @@ import com.gstdev.cloud.service.system.domain.entity.SysRAccountRole;
 import com.gstdev.cloud.service.system.domain.generator.SysRAccountRoleEmbeddablePK;
 
 import java.util.List;
+import java.util.Set;
 
 public interface SysRAccountRoleService extends BaseService<SysRAccountRole, SysRAccountRoleEmbeddablePK> {
 
@@ -12,6 +13,8 @@ public interface SysRAccountRoleService extends BaseService<SysRAccountRole, Sys
     void updateAccountAssignedRole(String accountId, List<String> tenantMenuIds);
 
     List<String> getAllRoleIdByAccountId(String accountId);
+
+    List<String> getAllRoleIdByAccountIds(Set<String> accountRoleAccountIds);
 }
 
 

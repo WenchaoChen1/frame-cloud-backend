@@ -6,6 +6,7 @@ import com.gstdev.cloud.service.system.domain.generator.SysRTenantMenuBusinessPe
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Transactional
 public interface SysRTenantMenuBusinessPermissionRepository extends BaseRepository<SysRTenantMenuBusinessPermission, SysRTenantMenuBusinessPermissionEmbeddablePK> {
@@ -14,8 +15,7 @@ public interface SysRTenantMenuBusinessPermissionRepository extends BaseReposito
     void deleteAllByBusinessPermissionId(String businessPermissionId);
 
 
-
-
+    List<SysRTenantMenuBusinessPermission> findAllByBusinessPermissionIdIn(Set<String> tenantBusinessPermissionIds);
 }
 
 

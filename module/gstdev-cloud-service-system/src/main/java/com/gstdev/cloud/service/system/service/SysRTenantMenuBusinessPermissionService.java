@@ -5,10 +5,13 @@ import com.gstdev.cloud.service.system.domain.entity.SysRTenantMenuBusinessPermi
 import com.gstdev.cloud.service.system.domain.generator.SysRTenantMenuBusinessPermissionEmbeddablePK;
 
 import java.util.List;
+import java.util.Set;
 
 public interface SysRTenantMenuBusinessPermissionService extends BaseService<SysRTenantMenuBusinessPermission, SysRTenantMenuBusinessPermissionEmbeddablePK> {
 
     void updateBusinessPermissionAssignedTenantMenu(String businessPermissionId, List<String> tenantMenuIds);
+
+    List<String> getAllTenantMenuIdByBusinessPermissionIds(Set<String> tenantBusinessPermissionIds);
 }
 
 

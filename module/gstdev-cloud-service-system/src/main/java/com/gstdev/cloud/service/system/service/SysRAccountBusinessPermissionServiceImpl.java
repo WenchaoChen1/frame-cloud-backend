@@ -7,8 +7,10 @@ import com.gstdev.cloud.service.system.repository.SysRAccountBusinessPermissionR
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
+import java.util.Set;
 
 @Transactional
 public class SysRAccountBusinessPermissionServiceImpl extends BaseServiceImpl<SysRAccountBusinessPermission, SysRAccountBusinessPermissionEmbeddablePK, SysRAccountBusinessPermissionRepository> implements SysRAccountBusinessPermissionService {
@@ -38,7 +40,7 @@ public class SysRAccountBusinessPermissionServiceImpl extends BaseServiceImpl<Sy
     @Transactional
     public void updateAccountAssignedBusinessPermission(String accountId, List<String> businessPermissionIds) {
         getRepository().deleteAllByAccountId(accountId);
-        if (businessPermissionIds.isEmpty()) {
+        if (ObjectUtils.isEmpty(businessPermissionIds)) {
             return;
         }
         saveAllAndFlush(toEntityList(accountId, businessPermissionIds));
@@ -47,6 +49,11 @@ public class SysRAccountBusinessPermissionServiceImpl extends BaseServiceImpl<Sy
     @Override
     public List<String> getAllBusinessPermissionIdByAccountId(String accountId) {
         return getRepository().findAllByAccountId(accountId).stream().map(SysRAccountBusinessPermission::getBusinessPermissionId).toList();
+    }
+
+    @Override
+    public List<String> getAllBusinessPermissionIdByAccountIds(Set<String> accountIds) {
+        return getRepository().findAllByAccountIdIn(accountIds).stream().map(SysRAccountBusinessPermission::getBusinessPermissionId).toList();
     }
 
     List<SysRAccountBusinessPermission> toEntityList(String accountId, List<String> businessPermissionIds) {

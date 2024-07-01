@@ -7,8 +7,10 @@ import com.gstdev.cloud.service.system.repository.SysRAccountTenantMenuRepositor
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
+import java.util.Set;
 
 @Transactional
 public class SysRAccountTenantMenuServiceImpl extends BaseServiceImpl<SysRAccountTenantMenu, SysRAccountTenantMenuEmbeddablePK, SysRAccountTenantMenuRepository> implements SysRAccountTenantMenuService {
@@ -38,7 +40,7 @@ public class SysRAccountTenantMenuServiceImpl extends BaseServiceImpl<SysRAccoun
     @Transactional
     public void updateAccountAssignedTenantMenu(String accountId, List<String> tenantMenuIds) {
         getRepository().deleteAllByAccountId(accountId);
-        if (tenantMenuIds.isEmpty()) {
+        if (ObjectUtils.isEmpty(tenantMenuIds)) {
             return;
         }
         saveAllAndFlush(toEntityList(accountId, tenantMenuIds));
@@ -47,6 +49,11 @@ public class SysRAccountTenantMenuServiceImpl extends BaseServiceImpl<SysRAccoun
     @Override
     public List<String> getAllTenantMenuIdByAccountId(String accountId) {
         return getRepository().findAllByAccountId(accountId).stream().map(SysRAccountTenantMenu::getTenantMenuId).toList();
+    }
+
+    @Override
+    public List<String> getAllTenantMenuIdByAccountIds(Set<String> accountIds) {
+        return getRepository().findAllByAccountIdIn(accountIds).stream().map(SysRAccountTenantMenu::getTenantMenuId).toList();
     }
 
     List<SysRAccountTenantMenu> toEntityList(String accountId, List<String> tenantMenuIds) {

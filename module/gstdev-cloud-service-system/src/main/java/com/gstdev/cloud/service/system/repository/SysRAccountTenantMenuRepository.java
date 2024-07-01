@@ -6,6 +6,7 @@ import com.gstdev.cloud.service.system.domain.generator.SysRAccountTenantMenuEmb
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Transactional
 public interface SysRAccountTenantMenuRepository extends BaseRepository<SysRAccountTenantMenu, SysRAccountTenantMenuEmbeddablePK> {
@@ -13,6 +14,8 @@ public interface SysRAccountTenantMenuRepository extends BaseRepository<SysRAcco
     void deleteAllByAccountId(String accountId);
 
     List<SysRAccountTenantMenu> findAllByAccountId(String accountId);
+
+    List<SysRAccountTenantMenu> findAllByAccountIdIn(Set<String> accountIds);
 }
 
 

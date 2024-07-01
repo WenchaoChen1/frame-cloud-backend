@@ -13,6 +13,8 @@ public interface SysRRoleTenantMenuService extends BaseService<SysRRoleTenantMen
     void updateRoleAssignedTenantMenu(String roleId, List<String> tenantMenuIds);
 
     Set<String> getAllTenantMenuIdByRoleId(String roleId);
+
+    List<String> getAllTenantMenuIdByRoleIds(List<String> allRoleIdByAccountIds);
 }
 
 
