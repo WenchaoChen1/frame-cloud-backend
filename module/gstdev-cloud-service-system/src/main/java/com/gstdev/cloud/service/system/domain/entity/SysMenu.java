@@ -40,7 +40,6 @@ public class SysMenu extends BaseEntity {
 
     //    @Column(name = "deleted", nullable = false)
 //    private Integer deleted = 0;
-    @Schema(title = "sys_menuID")
     @Id
     @SysMenuUuidGenerator
     @Column(name = "id", length = 64)

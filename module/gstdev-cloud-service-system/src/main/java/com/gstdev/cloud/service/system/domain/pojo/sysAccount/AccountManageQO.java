@@ -11,6 +11,8 @@ public class AccountManageQO {
 
     private static final long serialVersionUID = 3163118978801722144L;
 
+    @Query
+    private String tenantId;
     @Query(type = Query.Type.INNER_LIKE)
     private String name;
     @Query(type = Query.Type.INNER_LIKE)
