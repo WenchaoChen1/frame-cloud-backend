@@ -11,6 +11,7 @@ import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.TenantMenuMenuTre
 import com.gstdev.cloud.service.system.domain.pojo.sysBusinessPermission.*;
 import com.gstdev.cloud.service.system.mapper.SysBusinessPermissionMapper;
 import com.gstdev.cloud.service.system.service.SysBusinessPermissionService;
+import com.gstdev.cloud.service.system.service.SysRTenantMenuBusinessPermissionService;
 import com.gstdev.cloud.service.system.service.SysTenantMenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -39,7 +40,9 @@ public class SysBusinessPermissionController implements ResultController {
 
     @Resource
     private SysBusinessPermissionMapper sysBusinessPermissionMapper;
-
+    @Resource
+    @Lazy
+    private SysRTenantMenuBusinessPermissionService sysRTenantMenuBusinessPermissionService;
     public SysBusinessPermissionService getService() {
         return sysBusinessPermissionService;
     }
@@ -131,8 +134,9 @@ public class SysBusinessPermissionController implements ResultController {
     @Tag(name = "Role Manage")
     @PostMapping("/update-business-permission-assigned-tenant-menu")
     @Operation(summary = "update-business-permission-assigned-tenant-menu")
-    public Result<String> updateBusinessPermissionAssignedTenantMenu(@RequestBody @Validated UpdateBusinessPermissionAssignedTenantMenuIO updateBusinessPermissionAssignedTenantMenu) {
-        return getService().updateBusinessPermissionAssignedTenantMenu(updateBusinessPermissionAssignedTenantMenu);
+    public Result<String> updateBusinessPermissionAssignedTenantMenu(@RequestBody @Validated UpdateBusinessPermissionAssignedTenantMenuIO var) {
+        sysRTenantMenuBusinessPermissionService.updateBusinessPermissionAssignedTenantMenu(var.getBusinessPermissionId(), var.getTenantMenuIds());
+        return Result.success();
     }
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 

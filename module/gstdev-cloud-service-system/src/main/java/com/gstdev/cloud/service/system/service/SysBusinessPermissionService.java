@@ -13,8 +13,6 @@ public interface SysBusinessPermissionService extends BaseService<SysBusinessPer
 
     Set<String> getAllTenantMenuIdByBusinessPermissionId(String businessPermissionId);
 
-    Result<String> updateBusinessPermissionAssignedTenantMenu(UpdateBusinessPermissionAssignedTenantMenuIO updateBusinessPermissionAssignedTenantMenu);
-
     /**
      * 获取租户的业务权限树
      * @param tenantId
