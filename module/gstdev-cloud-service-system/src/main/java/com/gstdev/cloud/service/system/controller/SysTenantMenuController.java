@@ -16,8 +16,6 @@ import com.gstdev.cloud.service.system.domain.base.rTenantMenu.RTenantMenuFindAl
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuIO;
-import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.RoleManageTenantMenuTreeQO;
-import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.RoleManageTenantMenuTreeVO;
 import com.gstdev.cloud.service.system.mapper.RTenantMenuMapper;
 import com.gstdev.cloud.service.system.service.SysTenantMenuService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -74,22 +72,22 @@ public class SysTenantMenuController implements ResultController {
     }
 
 
-    /**
-     * 获取指定租户的所有菜单，返回树状结构.租户管理
-     *
-     * @param
-     * @return
-     */
-    @Tag(name = "Role Manage")
-    @GetMapping("/get-role-manage-tenant-menu-tree")
-    @Operation(summary = "get-role-manage-tenant-menu-tree")
-    public Result<List<RoleManageTenantMenuTreeVO>> getRoleManageTenantMenuTree(RoleManageTenantMenuTreeQO roleManageTenantMenuTreeQO, @NotBlank @RequestParam("tenantId") String tenantId) {
-        roleManageTenantMenuTreeQO.setTenantId(tenantId);
-        List<SysTenantMenu> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, roleManageTenantMenuTreeQO, criteriaBuilder));
-        List<SysMenu> list = all.stream().map(SysTenantMenu::getMenu).toList();
-        List<RoleManageTenantMenuTreeVO> roleManageRTenantMenuTreeVOToTree = getMapper().toRoleManageRTenantMenuTreeVOToTree(list);
-        return result(roleManageRTenantMenuTreeVOToTree);
-    }
+//    /**
+//     * 获取指定租户的所有菜单，返回树状结构.租户管理
+//     *
+//     * @param
+//     * @return
+//     */
+//    @Tag(name = "Role Manage")
+//    @GetMapping("/get-role-manage-tenant-menu-tree")
+//    @Operation(summary = "get-role-manage-tenant-menu-tree")
+//    public Result<List<RoleManageTenantMenuTreeVO>> getRoleManageTenantMenuTree(RoleManageTenantMenuTreeQO roleManageTenantMenuTreeQO, @NotBlank @RequestParam("tenantId") String tenantId) {
+//        roleManageTenantMenuTreeQO.setTenantId(tenantId);
+//        List<SysTenantMenu> all = getService().findAll((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, roleManageTenantMenuTreeQO, criteriaBuilder));
+//        List<SysMenu> list = all.stream().map(SysTenantMenu::getMenu).toList();
+//        List<RoleManageTenantMenuTreeVO> roleManageRTenantMenuTreeVOToTree = getMapper().toRoleManageRTenantMenuTreeVOToTree(list);
+//        return result(roleManageRTenantMenuTreeVOToTree);
+//    }
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 
 

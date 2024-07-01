@@ -112,22 +112,22 @@ public class SysRoleController implements ResultController {
         getService().deleteAllById(id);
         return Result.success();
     }
-
-    // 角色关联菜单获取这个角色的menu id
-    @Tag(name = "Role Manage")
-    @GetMapping("/get-all-menu-id-by-role-id/{roleId}")
-    @Operation(summary = "get-all-menu-id-by-role-id")
-    public Result<List<String>> getAllMenuIdByRoleId(@PathVariable String roleId) {
-        return getService().getAllMenuIdByRoleId(roleId);
-    }
-
-    // 角色关联菜单
-    @Tag(name = "Role Manage")
-    @PostMapping("/insert-role-menu")
-    @Operation(summary = "insertSave")
-    public Result<String> insertRoleMenu(@RequestBody @Validated UpdateRoleAssignedTenantMenuIO insertRoleMenuIO) {
-        return getService().insertRoleMenu(insertRoleMenuIO);
-    }
+//
+//    // 角色关联菜单获取这个角色的menu id
+//    @Tag(name = "Role Manage")
+//    @GetMapping("/get-all-menu-id-by-role-id/{roleId}")
+//    @Operation(summary = "get-all-menu-id-by-role-id")
+//    public Result<List<String>> getAllMenuIdByRoleId(@PathVariable String roleId) {
+//        return getService().getAllMenuIdByRoleId(roleId);
+//    }
+//
+//    // 角色关联菜单
+//    @Tag(name = "Role Manage")
+//    @PostMapping("/insert-role-menu")
+//    @Operation(summary = "insertSave")
+//    public Result<String> insertRoleMenu(@RequestBody @Validated UpdateRoleAssignedTenantMenuIO insertRoleMenuIO) {
+//        return getService().insertRoleMenu(insertRoleMenuIO);
+//    }
 
 
     @Tag(name = "Role Manage Assigned Business Permission")
