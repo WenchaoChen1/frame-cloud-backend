@@ -23,11 +23,11 @@ public enum SysTenantPermissionType implements BaseUiEnum<Integer> {
     /**
      * 正常情况下account permission type 不会为0  为0的话会和account type有一点的业务重跌 增加0是为了让账户没有任何权限默认为零
      */
-    ACCOUNT_TYPE(0, "1"),
-    ACCOUNT_TENANT_MENU(1, "1"),
-    ACCOUNT_TENANT_BUSINESS_PERMISSION(2, "1"),
-    ACCOUNT_ROLE_MENU(3, "1"),
-    ACCOUNT_ROLE_BUSINESS_PERMISSION(4, "1");
+    ACCOUNT_TYPE(0,0, "1"),
+    ACCOUNT_TENANT_MENU(1,1, "1"),
+    ACCOUNT_TENANT_BUSINESS_PERMISSION(2,2, "1"),
+    ACCOUNT_ROLE_MENU(3,3, "1"),
+    ACCOUNT_ROLE_BUSINESS_PERMISSION(4,4, "1");
 
 
     private static final Map<Integer, SysTenantPermissionType> INDEX_MAP = new HashMap<>();
@@ -36,9 +36,10 @@ public enum SysTenantPermissionType implements BaseUiEnum<Integer> {
     static {
         for (SysTenantPermissionType dataItemStatus : SysTenantPermissionType.values()) {
             INDEX_MAP.put(dataItemStatus.getValue(), dataItemStatus);
-            JSON_STRUCTURE.add(dataItemStatus.getValue(),
+            JSON_STRUCTURE.add(dataItemStatus.getSort(),
                     ImmutableMap.<String, Object>builder()
                             .put("value", dataItemStatus.getValue())
+                            .put("sort", dataItemStatus.getSort())
                             .put("key", dataItemStatus.name())
                             .put("description", dataItemStatus.getDescription())
                             .build());
@@ -47,11 +48,14 @@ public enum SysTenantPermissionType implements BaseUiEnum<Integer> {
 
     @Schema(title = "枚举值")
     private final Integer value;
+    @Schema(title = "顺序")
+    private final Integer sort;
     @Schema(title = "文字")
     private final String description;
 
-    SysTenantPermissionType(Integer value, String description) {
+    SysTenantPermissionType(Integer value, Integer sort, String description) {
         this.value = value;
+        this.sort = sort;
         this.description = description;
     }
 
@@ -80,5 +84,9 @@ public enum SysTenantPermissionType implements BaseUiEnum<Integer> {
     @Override
     public String getDescription() {
         return this.description;
+    }
+
+    public Integer getSort() {
+        return sort;
     }
 }
