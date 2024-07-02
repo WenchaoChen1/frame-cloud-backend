@@ -26,11 +26,11 @@ public enum SysAccountType implements BaseUiEnum<Integer> {
     /**
      * 数据条目被启用
      */
-    ADMIN(1, 0,"admin"),
+    ADMIN(1, "admin",0,"admin"),
     /**
      * 数据条目被锁定
      */
-    USER(2, 1,"user");
+    USER(2, "account",1,"user");
 
 
     private static final Map<Integer, SysAccountType> INDEX_MAP = new HashMap<>();
@@ -42,6 +42,7 @@ public enum SysAccountType implements BaseUiEnum<Integer> {
             JSON_STRUCTURE.add(dataItemStatus.getSort(),
                     ImmutableMap.<String, Object>builder()
                             .put("value", dataItemStatus.getValue())
+                            .put("name", dataItemStatus.getName())
                             .put("sort", dataItemStatus.getSort())
                             .put("key", dataItemStatus.name())
                             .put("description", dataItemStatus.getDescription())
@@ -51,13 +52,16 @@ public enum SysAccountType implements BaseUiEnum<Integer> {
 
     @Schema(title = "枚举值")
     private final Integer value;
+    @Schema(title = "name")
+    private final String name;
     @Schema(title = "顺序")
     private final Integer sort;
     @Schema(title = "文字")
     private final String description;
 
-    SysAccountType(Integer value, Integer sort,String description) {
+    SysAccountType(Integer value, String name, Integer sort,String description) {
         this.value = value;
+        this.name = name;
         this.sort = sort;
         this.description = description;
     }
@@ -91,5 +95,8 @@ public enum SysAccountType implements BaseUiEnum<Integer> {
 
     public Integer getSort() {
         return sort;
+    }
+    public String getName() {
+        return name;
     }
 }

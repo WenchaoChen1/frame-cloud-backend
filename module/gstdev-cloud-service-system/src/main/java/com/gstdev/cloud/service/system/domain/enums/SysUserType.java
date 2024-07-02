@@ -22,7 +22,7 @@ public enum SysUserType implements BaseUiEnum<Integer> {
     /**
      * 数据条目已启用
      */
-    SUPER(0,0, "super"),
+    SUPER(0, "super", 0, "super"),
     /**
      * 数据条目被启用
      */
@@ -30,7 +30,7 @@ public enum SysUserType implements BaseUiEnum<Integer> {
     /**
      * 数据条目被锁定
      */
-    USER(1,1, "user");
+    USER(1, "user", 1, "user");
 
 
     private static final Map<Integer, SysUserType> INDEX_MAP = new HashMap<>();
@@ -42,6 +42,7 @@ public enum SysUserType implements BaseUiEnum<Integer> {
             JSON_STRUCTURE.add(dataItemStatus.getValue(),
                     ImmutableMap.<String, Object>builder()
                             .put("value", dataItemStatus.getValue())
+                            .put("name", dataItemStatus.getName())
                             .put("sort", dataItemStatus.getSort())
                             .put("key", dataItemStatus.name())
                             .put("description", dataItemStatus.getDescription())
@@ -51,13 +52,16 @@ public enum SysUserType implements BaseUiEnum<Integer> {
 
     @Schema(title = "枚举值")
     private final Integer value;
+    @Schema(title = "name")
+    private final String name;
     @Schema(title = "顺序")
     private final Integer sort;
     @Schema(title = "文字")
     private final String description;
 
-    SysUserType(Integer value, Integer sort,String description) {
+    SysUserType(Integer value, String name, Integer sort, String description) {
         this.value = value;
+        this.name = name;
         this.sort = sort;
         this.description = description;
     }
@@ -90,5 +94,9 @@ public enum SysUserType implements BaseUiEnum<Integer> {
     }
     public Integer getSort() {
         return sort;
+    }
+
+    public String getName() {
+        return name;
     }
 }

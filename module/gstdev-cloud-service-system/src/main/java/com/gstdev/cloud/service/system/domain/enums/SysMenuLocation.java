@@ -21,11 +21,11 @@ public enum SysMenuLocation implements BaseUiEnum<Integer> {
     /**
      * 左侧菜单
      */
-    LEFT_MENU(0, 0, "left menu"),
+    LEFT_MENU(0, "left menu",0, "left menu"),
     /**
      * 其他菜单
      */
-    OTHER(1,1, "other");
+    OTHER(1,"other",1, "other");
 
 
 
@@ -38,6 +38,7 @@ public enum SysMenuLocation implements BaseUiEnum<Integer> {
             JSON_STRUCTURE.add(dataItemStatus.getSort(),
                     ImmutableMap.<String, Object>builder()
                             .put("value", dataItemStatus.getValue())
+                            .put("name", dataItemStatus.getName())
                             .put("sort", dataItemStatus.getSort())
                             .put("key", dataItemStatus.name())
                             .put("description", dataItemStatus.getDescription())
@@ -47,13 +48,16 @@ public enum SysMenuLocation implements BaseUiEnum<Integer> {
 
     @Schema(title = "枚举值")
     private final Integer value;
+    @Schema(title = "name")
+    private final String name;
     @Schema(title = "顺序")
     private final Integer sort;
     @Schema(title = "文字")
     private final String description;
 
-    SysMenuLocation(Integer value, Integer sort,String description) {
+    SysMenuLocation(Integer value, String name, Integer sort,String description) {
         this.value = value;
+        this.name = name;
         this.sort = sort;
         this.description = description;
     }
@@ -86,5 +90,8 @@ public enum SysMenuLocation implements BaseUiEnum<Integer> {
     }
     public Integer getSort() {
         return sort;
+    }
+    public String getName() {
+        return name;
     }
 }

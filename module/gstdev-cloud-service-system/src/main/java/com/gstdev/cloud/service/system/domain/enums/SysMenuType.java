@@ -21,15 +21,15 @@ public enum SysMenuType implements BaseUiEnum<Integer> {
     /**
      * 目录
      */
-    CATALOGUE(0,0, "catalogue"),
+    CATALOGUE(0,"catalogue",0, "catalogue"),
     /**
      * 页面
      */
-    PAGE(1,1, "page"),
+    PAGE(1,"page",1, "page"),
     /**
      * 按钮
      */
-    BUTTON(2, 2, "button");
+    BUTTON(2, "button",2, "button");
 
 
     private static final Map<Integer, SysMenuType> INDEX_MAP = new HashMap<>();
@@ -41,6 +41,7 @@ public enum SysMenuType implements BaseUiEnum<Integer> {
             JSON_STRUCTURE.add(dataItemStatus.getSort(),
                     ImmutableMap.<String, Object>builder()
                             .put("value", dataItemStatus.getValue())
+                            .put("name", dataItemStatus.getName())
                             .put("sort", dataItemStatus.getSort())
                             .put("key", dataItemStatus.name())
                             .put("description", dataItemStatus.getDescription())
@@ -50,13 +51,16 @@ public enum SysMenuType implements BaseUiEnum<Integer> {
 
     @Schema(title = "枚举值")
     private final Integer value;
+    @Schema(title = "name")
+    private final String name;
     @Schema(title = "顺序")
     private final Integer sort;
     @Schema(title = "文字")
     private final String description;
 
-    SysMenuType(Integer value, Integer sort,String description) {
+    SysMenuType(Integer value, String name, Integer sort,String description) {
         this.value = value;
+        this.name = name;
         this.sort = sort;
         this.description = description;
     }
@@ -88,5 +92,8 @@ public enum SysMenuType implements BaseUiEnum<Integer> {
     }
     public Integer getSort() {
         return sort;
+    }
+    public String getName() {
+        return name;
     }
 }
