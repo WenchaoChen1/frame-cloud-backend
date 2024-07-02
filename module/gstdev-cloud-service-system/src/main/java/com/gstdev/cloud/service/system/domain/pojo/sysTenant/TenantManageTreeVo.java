@@ -30,6 +30,7 @@ public class TenantManageTreeVo extends TreeNode<String, TenantManageTreeVo> {
     private Date updatedDate;
     private String updatedUser;
     private String updatedAccount;
+
     private String parentId;
     private String tenantCode;
     private String tenantName;

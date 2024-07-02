@@ -30,10 +30,17 @@ public class UserManagePageVo {
     private Date updatedDate;
     private String updatedUser;
     private String updatedAccount;
+
     private String username;
     private String email;
     private String phoneNumber;
     private DataItemStatus status;
     private String description;
+
+    private Integer gender;
+    private String nickname;
+    private String avatar;
+    private String firstName;
+    private String lastName;
 }
 

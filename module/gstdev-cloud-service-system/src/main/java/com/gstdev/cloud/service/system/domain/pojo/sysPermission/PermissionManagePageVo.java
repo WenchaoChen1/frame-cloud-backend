@@ -29,6 +29,7 @@ public class PermissionManagePageVo {
     private Date updatedDate;
     private String updatedUser;
     private String updatedAccount;
+
     private String permissionId;
     private String permissionCode;
     private String permissionName;

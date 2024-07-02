@@ -31,6 +31,7 @@ public class AccountManagePageVo {
     private Date updatedDate;
     private String updatedUser;
     private String updatedAccount;
+
     private String name;
     private String identity;
     private SysAccountType type;

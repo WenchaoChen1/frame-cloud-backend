@@ -30,6 +30,7 @@ public class RoleManageTreeVo extends TreeNode<String, RoleManageTreeVo> {
     private Date updatedDate;
     private String updatedUser;
     private String updatedAccount;
+
     private String code;
     private String description;
     private String parentId;

@@ -46,7 +46,7 @@ public class SysMenuController implements ResultController {
     }
 
     // ********************************* menu Manage *****************************************
-
+    @Tag(name = "Tenant Manage")
     @GetMapping("/get-menu-manage-tree")
     @Operation(summary = "get-menu-manage-tree")
     public Result<List<MenuManageTreeVo>> getMenuManageMageTree(MenuManageTreeQO queryCriteria) {
@@ -54,12 +54,14 @@ public class SysMenuController implements ResultController {
         return this.result(this.getMapper().toMenuManageTreeVoToTree(byPage));
     }
 
+    @Tag(name = "Tenant Manage")
     @GetMapping("/get-menu-manage-detail/{id}")
     @Operation(summary = "get-menu-manage-detail")
     public Result<MenuManageDetailVo> getMenuManageDetail(@PathVariable String id) {
         return result(this.getMapper().toMenuManageDetailVo(getService().findById(id)));
     }
 
+    @Tag(name = "Tenant Manage")
     @PostMapping("/insert-menu-manage")
     @Operation(summary = "insert-menu-manage")
     public Result<String> insertMenuManage(@RequestBody @Validated InsertMenuManageIO insertMenuManageIO) {
@@ -67,6 +69,7 @@ public class SysMenuController implements ResultController {
         return Result.success();
     }
 
+    @Tag(name = "Tenant Manage")
     @PutMapping("/update-menu-manage")
     @Operation(summary = "update-menu-manage")
     public Result<String> updateMenuManage(@RequestBody @Validated UpdateMenuManageIO updateMenuManageIO) {
@@ -74,6 +77,7 @@ public class SysMenuController implements ResultController {
         return Result.success();
     }
 
+    @Tag(name = "Tenant Manage")
     @Operation(summary = "delete-menu-manage")
     @DeleteMapping("/delete-menu-manage/{id}")
     public Result<String> deleteMenuManage(@PathVariable String id) {
@@ -81,6 +85,7 @@ public class SysMenuController implements ResultController {
         return Result.success();
     }
 
+    @Tag(name = "Tenant Manage")
     @Operation(summary = "delete-all-menu-manage")
     @DeleteMapping("/delete-all-menu-manage")
     public Result<String> deleteAllMenuManage(List<String> id) {
