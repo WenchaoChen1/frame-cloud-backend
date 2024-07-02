@@ -31,7 +31,7 @@ import java.util.Set;
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 public class SysTenant extends BaseTreeEntity {
 
-    @Column(name = "parent_id", length = 36, nullable = false)
+    @Column(name = "parent_id", length = 36)
     private String parentId;
 
     @Column(name = "tenant_code", length = 50, nullable = false)
