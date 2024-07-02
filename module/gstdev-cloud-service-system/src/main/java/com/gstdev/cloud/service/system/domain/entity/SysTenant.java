@@ -55,7 +55,7 @@ public class SysTenant extends BaseTreeEntity {
     @ElementCollection(targetClass = SysTenantPermissionType.class)
     @CollectionTable(name = "sys_tenant_permission_type", joinColumns = @JoinColumn(name = "tenant_id"))
     @Column(name = "tenant_permission_type")
-    @Enumerated(EnumType.STRING) // 使用字符串类型存储枚举值
+    @Enumerated(EnumType.ORDINAL) // 使用字符串类型存储枚举值
     private Set<SysTenantPermissionType> tenantPermissionTypes= EnumSet.of(SysTenantPermissionType.ACCOUNT_TYPE);
 //    @Column(name = "deleted")
 //    private Integer deleted = 0;

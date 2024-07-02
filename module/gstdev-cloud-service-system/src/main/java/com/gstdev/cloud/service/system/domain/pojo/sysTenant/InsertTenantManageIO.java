@@ -12,7 +12,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class InsertTenantManageIO {
-    private String parentId = "0";
+    private String parentId;
     private String tenantCode;
     private String tenantName;
     private String description;

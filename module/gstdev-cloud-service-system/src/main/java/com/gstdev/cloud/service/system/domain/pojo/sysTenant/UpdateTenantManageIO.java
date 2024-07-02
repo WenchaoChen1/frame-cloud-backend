@@ -2,7 +2,6 @@ package com.gstdev.cloud.service.system.domain.pojo.sysTenant;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.enums.SysTenantPermissionType;
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,8 +14,6 @@ import java.util.Set;
 public class UpdateTenantManageIO {
     private String id;
 
-    @Schema(title = "parentId 不能为空", required = true)
-    @NotEmpty
     private String parentId;
     private String tenantCode;
     private String tenantName;

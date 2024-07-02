@@ -33,6 +33,7 @@ public class AccountManagePageVo {
     private String updatedAccount;
 
     private String name;
+    private String tenantId;
     private String identity;
     private SysAccountType type;
     private DataItemStatus status;

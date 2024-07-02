@@ -21,11 +21,12 @@ public enum SysMenuLocation implements BaseUiEnum<Integer> {
     /**
      * 左侧菜单
      */
-    LEFT_MENU(0, "left menu",0, "left menu"),
+    LEFT_MENU(0, "left or top menu",0, "left or top menu"),
     /**
      * 其他菜单
      */
-    OTHER(1,"other",1, "other");
+    OTHER(1,"other",1, "other"),
+    RIGHT_MENU(2,"right menu",2, "right menu");
 
 
 
