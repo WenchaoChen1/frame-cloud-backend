@@ -102,7 +102,8 @@ public class FrameSystemControllerConfiguration {
     public SysRAttributeMenuController sysRAttributeMenuController(){
         log.debug("[GstDev Cloud] |- Frame Configure R Attribute Menu Controller");
         return new SysRAttributeMenuController();
-    }    @Bean
+    }
+    @Bean
     @ConditionalOnMissingBean
     public SysBusinessPermissionController sysBusinessPermissionController(){
         log.debug("[GstDev Cloud] |- Frame Configure Business Permission Controller");
@@ -115,5 +116,10 @@ public class FrameSystemControllerConfiguration {
 //        log.debug("[GstDev Cloud] |- Frame Configure Tenant Dict Controller");
 //        return new SysTenantDictController();
 //    }
-
+    @Bean
+    @ConditionalOnMissingBean
+    public SysConstantController sysConstantController() {
+        log.debug("[GstDev Cloud] |- Frame Configure Constant Controller");
+        return new SysConstantController();
+    }
 }

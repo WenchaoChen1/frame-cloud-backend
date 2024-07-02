@@ -1,10 +1,13 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysTenant;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
-import io.swagger.v3.oas.annotations.media.Schema;
+import com.gstdev.cloud.service.system.domain.enums.SysTenantPermissionType;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.EnumSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -14,6 +17,8 @@ public class InsertTenantManageIO {
     private String tenantName;
     private String description;
     private DataItemStatus status = DataItemStatus.ENABLE;
+    @NotEmpty
+    private Set<SysTenantPermissionType> tenantPermissionTypes= EnumSet.of(SysTenantPermissionType.ACCOUNT_TYPE);
     private Integer type;
 
     //-----------------自定义-----------

@@ -162,4 +162,10 @@ public class FrameSystemServiceConfiguration {
         log.debug("[GstDev Cloud] |- Frame Configure R Tenant Menu Business Permission Service");
         return new SysRAccountRoleServiceImpl(sysRAccountRoleRepository);
     }
+    @Bean
+    @ConditionalOnMissingBean
+    public SysConstantService sysConstantService() {
+        log.debug("[GstDev Cloud] |- Frame Configure Constant Service");
+        return new SysConstantServiceImpl();
+    }
 }

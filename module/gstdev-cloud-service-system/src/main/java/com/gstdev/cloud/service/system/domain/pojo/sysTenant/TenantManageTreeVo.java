@@ -11,11 +11,13 @@ package com.gstdev.cloud.service.system.domain.pojo.sysTenant;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.service.system.domain.enums.SysTenantPermissionType;
 import com.gstdev.cloud.service.system.util.TreeNode;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.Set;
 
 
 @Getter
@@ -37,5 +39,7 @@ public class TenantManageTreeVo extends TreeNode<String, TenantManageTreeVo> {
     private String description;
     private DataItemStatus status;
     private Integer type;
+
+    private Set<SysTenantPermissionType> tenantPermissionTypes;
 }
 

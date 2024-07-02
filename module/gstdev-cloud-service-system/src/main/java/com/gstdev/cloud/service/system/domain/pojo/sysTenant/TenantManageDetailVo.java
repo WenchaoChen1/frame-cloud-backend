@@ -10,8 +10,11 @@
 package com.gstdev.cloud.service.system.domain.pojo.sysTenant;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.service.system.domain.enums.SysTenantPermissionType;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Set;
 
 
 @Getter
@@ -25,4 +28,5 @@ public class TenantManageDetailVo {
     private String description;
     private DataItemStatus status;
     private Integer type;
+    private Set<SysTenantPermissionType> tenantPermissionTypes;
 }
