@@ -274,4 +274,14 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
         }
         getRepository().deleteById(id);
     }
+    @Override
+    public void changeStatus(String userId, DataItemStatus status) {
+        SysUser sysUser = getService().findById(userId);
+        if (org.apache.commons.lang3.ObjectUtils.isNotEmpty(sysUser)) {
+            sysUser.setStatus(status);
+            log.debug("[Herodotus] |- Change user [{}] status to [{}]", sysUser.getUsername(), status.name());
+            getService().save(sysUser);
+        }
+
+    }
 }

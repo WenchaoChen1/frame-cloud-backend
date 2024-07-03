@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseService;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
@@ -30,6 +31,8 @@ public interface SysUserService extends BaseService<SysUser, String> {
      * @param newPassword
      */
     void resetPassword(String originalPassword, String newPassword);
+
+    void changeStatus(String userId, DataItemStatus dataItemStatus);
 }
 
 
