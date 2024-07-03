@@ -11,7 +11,7 @@ import lombok.Setter;
 public class UpdateBusinessPermissionManageIO {
 
     private String businessPermissionId;
-    private String tenantId;
+//    private String tenantId;
     private String parentId;
     private String name;
     private String code;

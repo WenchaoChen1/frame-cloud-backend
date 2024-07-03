@@ -62,8 +62,8 @@ logging:
   #  config: http://${spring.cloud.nacos.config.server-addr}/nacos/v1/cs/configs?group=logs&dataId=logback-spring.xml
   level:
     root: INFO
-    #        root: DEBUG
-    #        root: trace
+    #    root: DEBUG
+    #    root: trace
     # 关闭不必要的日志
     org.reflections.Reflections: off
     com.alibaba.nacos.client: error

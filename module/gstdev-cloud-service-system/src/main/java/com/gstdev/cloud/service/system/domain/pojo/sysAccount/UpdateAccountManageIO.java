@@ -13,7 +13,7 @@ public class UpdateAccountManageIO {
     private String accountId;
     private String name;
     private String identity;
-    private String tenantId;
+//    private String tenantId;
     private String userId;
     private DataItemStatus status;
     private SysAccountType type;

@@ -15,5 +15,5 @@ public class UpdateRoleManageIO {
     private String roleName;
     private Integer sort;
     private DataItemStatus status;
-    private String tenantId;
+//    private String tenantId;
 }
