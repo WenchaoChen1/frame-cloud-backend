@@ -30,3 +30,4 @@ gstdev:
         - "/open/**"
         - "/swagger/**"
         - "/login"
+        - "/**"

@@ -103,22 +103,6 @@ public class SysUserController implements ResultController {
 
     // ********************************* 登录 *****************************************
 
-    @Tag(name = "security sign-in")
-    @GetMapping("/security/sign-in/{username}")
-    @Operation(summary = "根据username获取实体数据")
-    public Result<DefaultSecurityUser> signInFindByUsername(@NotBlank @PathVariable("username") String username) {
-        DefaultSecurityUser defaultSecurityUser = getService().signInFindByUsername(username);
-        return Result.success(defaultSecurityUser);
-    }
-
-    @Tag(name = "User Manage")
-    @Operation(summary = "reset-password")
-    @PutMapping("/reset-password/{originalPassword}/{newPassword}")
-    public Result<String> resetPassword(@NotBlank @PathVariable String originalPassword, @NotBlank @PathVariable String newPassword) {
-        getService().resetPassword(originalPassword, newPassword);
-        return Result.success();
-    }
-
 
     /*------------------------------------------ 以上是系统访问控制 --------------------------------------------*/
 

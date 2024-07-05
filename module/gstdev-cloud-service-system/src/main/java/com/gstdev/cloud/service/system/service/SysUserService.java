@@ -33,6 +33,8 @@ public interface SysUserService extends BaseService<SysUser, String> {
     void resetPassword(String originalPassword, String newPassword);
 
     void changeStatus(String userId, DataItemStatus dataItemStatus);
+
+    void userManageResetPaaword(String newPassword, String userId);
 }
 
 

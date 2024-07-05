@@ -15,6 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface FeignRemoteUserDetailsService {
 
     @Inner
-    @GetMapping("/v1/user/security/sign-in/{username}")
+    @GetMapping("/v1/security/feign/sign-in/{username}")
     Result<DefaultSecurityUser> findByUsername(@PathVariable("username") String username);
 }

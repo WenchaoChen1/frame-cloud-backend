@@ -122,4 +122,11 @@ public class FrameSystemControllerConfiguration {
         log.debug("[GstDev Cloud] |- Frame Configure Constant Controller");
         return new SysConstantController();
     }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public SysSecurityController sysSecurityController() {
+        log.debug("[GstDev Cloud] |- Frame Configure Constant Controller");
+        return new SysSecurityController();
+    }
 }

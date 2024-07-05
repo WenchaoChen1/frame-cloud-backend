@@ -129,15 +129,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
         return insert;
     }
 
-    @Override
-    public void resetPassword(String originalPassword, String newPassword) {
-        SysUser user = getRepository().findById(SecurityUtils.getUserId()).orElseGet(SysUser::new);
-        if (!SecurityUtils.matches(originalPassword, user.getPassword())) {
-            throw new PlatformRuntimeException("The original password is incorrect");
-        }
-        user.setPassword(SecurityUtils.encrypt(newPassword));
-        save(user);
-    }
+
 
     /**
      * 新增用户并且创建账户角色，关联部门
@@ -275,13 +267,35 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
         getRepository().deleteById(id);
     }
     @Override
+    @Transactional
     public void changeStatus(String userId, DataItemStatus status) {
         SysUser sysUser = getService().findById(userId);
         if (org.apache.commons.lang3.ObjectUtils.isNotEmpty(sysUser)) {
             sysUser.setStatus(status);
-            log.debug("[Herodotus] |- Change user [{}] status to [{}]", sysUser.getUsername(), status.name());
+            log.debug("[GstDev Cloud] |- Change user [{}] status to [{}]", sysUser.getUsername(), status.name());
             getService().save(sysUser);
         }
 
+    }
+    @Override
+    @Transactional
+    public void resetPassword(String originalPassword, String newPassword) {
+        SysUser user = getRepository().findById(SecurityUtils.getUserId()).orElseGet(SysUser::new);
+        if (!SecurityUtils.matches(originalPassword, user.getPassword())) {
+            throw new PlatformRuntimeException("The original password is incorrect");
+        }
+        user.setPassword(SecurityUtils.encrypt(newPassword));
+        save(user);
+    }
+    @Override
+    @Transactional
+    public void userManageResetPaaword(String newPassword, String userId) {
+        SysUser sysUser = getService().findById(userId);
+        if (ObjectUtils.isEmpty(sysUser)) {
+            throw new PlatformRuntimeException("Reset failure");
+        }
+        sysUser.setPassword(SecurityUtils.encrypt(newPassword));
+        log.debug("[GstDev Cloud] |- Reset user [{}] password to [{}]", sysUser.getUsername(), newPassword);
+        getService().save(sysUser);
     }
 }
