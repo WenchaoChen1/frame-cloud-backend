@@ -45,7 +45,7 @@ replay_pid*
 *.war
 *.nar
 *.ear
-*.zip
+#*.zip
 *.tar.gz
 *.rar
 .idea
