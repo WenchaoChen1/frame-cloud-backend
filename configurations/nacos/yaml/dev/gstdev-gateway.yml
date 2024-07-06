@@ -1,0 +1,82 @@
+server:
+    port: 8201
+spring:
+    cloud:
+        gateway: # 全局的跨域处理
+            globalcors: # 解决options请求被拦截问题，Cors解决方案，客户端询问服务端，这次询问需要放行
+                add-to-simple-url-handler-mapping: true 
+                corsConfigurations:
+                    '[/**]':
+                        allowedOriginPatterns: "*"
+                        #allowedOrigins: "*" 
+                        # 允许哪些网站的跨域请求
+                        # - "http://localhost:8089"
+                        # - "http://localhost:8099"
+                        allowedMethods: 
+                        # 允许的跨域ajax的请求方式
+                            - "GET"
+                            - "POST"
+                            - "DELETE"
+                            - "PUT"
+                            - "OPTIONS"
+                        # 允许在请求中携带的头信息
+                        allowedHeaders: "*" 
+                        # 是否允许携带cookie
+                        allowCredentials: true 
+                        # 这次跨域检测的有效期，在有效期内容不需要每次Ajax请求都询问服务端
+                        maxAge: 360000 
+            discovery:
+                locator:
+                    enabled: true
+                    lowerCaseServiceId: true #使用小写service-id
+                    # filters:
+                    #     - StripPrefix=1
+            routes: #配置路由路径
+                -   id: gstdev-identity
+                    uri: lb://gstdev-identity
+                    predicates:
+                        - Path=/gstdev-identity/**
+                    filters:
+                        - StripPrefix=1
+                -   id: gstdev-system
+                    uri: lb://gstdev-system
+                    predicates:
+                        - Path=/gstdev-system/**
+                    filters:
+                        - StripPrefix=1
+                -   id: gstdev-tenant
+                    uri: lb://gstdev-tenant
+                    predicates:
+                        - Path=/gstdev-tenant/**
+                    filters:
+                        - StripPrefix=1
+                -   id: gstdev-business
+                    uri: lb://gstdev-business
+                    predicates:
+                        - Path=/gstdev-business/**
+                    filters:
+                        - StripPrefix=1
+                -   id: gstdev-demo
+                    uri: lb://gstdev-demo
+                    predicates:
+                        - Path=/gstdev-demo/**
+                    filters:
+                        - StripPrefix=1
+                -   id: edu-base-websocket
+                    uri: lb:ws://edu-base-websocket
+                    predicates:
+                        - Path=/edu-base-websocket/websocket/**
+                    filters:
+                        - StripPrefix=1
+
+logging:
+    level:
+        root: ERROR
+        org.springframework.web: WARN
+        com.gstdev: DEBUG
+ignore:
+    whites:
+        - /gstdev-identity/oauth2/token
+        - /**
+    whiteIps:
+        - /**

@@ -1,0 +1,77 @@
+spring:
+    mvc:
+        throw-exception-if-no-handler-found: true
+        pathmatch:
+            matching-strategy: ant_path_matcher
+    web:
+        resources:
+            add-mappings: false
+    freemarker:
+        check-template-location: false
+    jta:
+        atomikos:
+            datasource:
+                borrow-connection-timeout: 10000
+                max-pool-size: 100
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    jwk-set-uri: http://localhost:8101/oauth2/jwks
+                    issuer-uri: http://127.0.0.1:8101
+                    whitelist:       
+    servlet:
+        multipart:
+            max-request-size: 500MB
+            max-file-size: 500MB
+    cloud:
+        gateway:
+            httpclient:
+                connect-timeout: 3600
+                response-timeout: 3600s
+springdoc:
+  swagger-ui:
+    # API 排序
+    tags-sorter: alpha
+    # HTTP 方法排序
+    operations-sorter: method
+
+application:
+    security:
+        authentication:
+            jwt:
+                secret: "#9m7!CnPhTm8!pjzVoikJ30i2o*^mLL^"
+                access-token-validity-seconds: 25920000
+                refresh-token-validity-seconds: 25920000
+        client-authorization:
+            service-system:
+                secret: ${CIOAAS_SERVICE_SYSTEM_CLIENT_SECRET:black123}
+gstdev:
+    cloud:
+        oauth2:
+            authentication:
+                authorizationServersettings:
+                    issuer-uri: http://127.0.0.1:8101
+                formLogin:
+                    closeCaptcha: true
+                    # category: HUTOOL_GIF
+                    # loginPageUrl: /a/login
+            authorization:
+                validate: LOCAL
+                matcher:
+                    staticResources:
+                    permitAll:
+                        - "/test/a"
+                        # - "/actuator*"
+                        # - "/actuator/**"
+                        - "/actuator/beans"
+                        # - "/**"
+                        - "/v1/permission/a"
+                        # - "/**"
+                    hasAuthenticated:
+        # security:
+        #     oauth2:
+        #         issuer-uri: http://127.0.0.1:8101
+        #         whitelist:
+        #             - "/**"
+        #             - "/test/a"

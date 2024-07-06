@@ -1,0 +1,14 @@
+server:
+    port: 8101
+spring:
+    application:
+        name: gstdev-identity
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    issuer-uri: ${gstdev.cloud.endpoint.issuer-uri}
+                    jwk-set-uri: ${gstdev.cloud.endpoint.jwk-set-uri}
+                opaquetoken:
+                    client-id: password-client
+                    client-secret: 123456

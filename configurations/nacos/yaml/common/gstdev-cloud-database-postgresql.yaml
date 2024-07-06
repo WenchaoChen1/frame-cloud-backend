@@ -1,0 +1,7 @@
+gstdev:
+    cloud:
+        database-information:
+            platform: postgresql
+            driver-class-name: org.postgresql.Driver
+            dialect: org.hibernate.dialect.PostgreSQLDialect
+            url: jdbc:postgresql://${gstdev.cloud.environment.database.host}:${gstdev.cloud.environment.database.port}/${gstdev.cloud.environment.database.name}

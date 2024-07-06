@@ -1,0 +1,48 @@
+gstdev:
+    cloud:
+        environment:
+            logstash-server-addr: false
+            gateway-server-addr: http://192.168.0.99:8201
+            database:
+                host: 192.168.0.99
+                port: 5432
+                name: frame-cloud
+                username: postgres
+                password: postgres
+            redis:
+                host: 192.168.0.99
+                port: 6379
+                password: 
+                database: 0
+            kafka:
+                bootstrap-servers: 192.168.0.99:9092
+        switch:
+            database:
+                ddl-auto: update
+                init-mode: never
+                # init-mode: always
+                use-second-level-cache: true
+                show-sql: false
+                format-sql: false
+                generate-statistics: false
+            swagger:
+                enabled: true
+            rest:
+                scan:
+                    enabled: true
+        session:
+            timeout: 2h
+        log-center:
+            server-addr: ${gstdev.cloud.environment.logstash-server-addr}
+            loggers:
+                org.springframework.security: debug
+                com.alibaba.nacos.client.naming: error
+                com.alibaba.nacos.shaded.io.grpc.netty.shaded.io.grpc.netty: error
+                org.reflections.Reflections: off
+                com.alibaba.nacos.client: error
+                com.alibaba.nacos.common.remote.client: error
+                com.ulisesbocchio: error
+
+jasypt:
+  encryptor:
+    password: ${JASPYT_HOME:2bda7d3a-dba1-45a4-b08e-cbd731a0418e}

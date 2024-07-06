@@ -1,0 +1,74 @@
+spring:
+  # sql:
+  #   init:
+  #     mode: ${gstdev.cloud.switch.database.init-mode}
+  #     platform: ${herodotus.database-information.platform}
+  #     continue-on-error: true
+  #     encoding: UTF-8
+  #     username: ${gstdev.cloud.environment.database.username}
+  #     password: ${gstdev.cloud.environment.database.password}
+  datasource:
+    driver-class-name: ${gstdev.cloud.database-information.driver-class-name}
+    url: ${gstdev.cloud.database-information.url}
+    username: ${gstdev.cloud.environment.database.username}
+    password: ${gstdev.cloud.environment.database.password}
+    type: com.zaxxer.hikari.HikariDataSource
+    # driver-class-name: org.postgresql.Driver
+    # url: jdbc:postgresql://192.168.0.99:5432/frame-cloud
+    # username: postgres
+    # password: postgres
+    # type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 5000
+      # connection-test-query: SELECT 1
+      idle-timeout: 600000
+      minimum-idle: 5
+      maximum-pool-size: 50
+      max-lifetime: 1800000
+      # pool-name: Hikari
+      # validation-timeout: 5000
+      # data-source-properties:
+      #   prepStmtCacheSize: 250
+      #   prepStmtCacheSqlLimit: 2048
+      #   cachePrepStmts: true
+  jpa:
+    # database: ${gstdev.cloud.database-information.platform}
+    # database-platform: ${gstdev.cloud.database-information.platform}
+    open-in-view: true
+    show-sql: ${gstdev.cloud.switch.database.show-sql}
+    # hibernate:
+    #   ddl-auto: ${gstdev.cloud.switch.database.ddl-auto}
+    #   naming:
+    #     physical-strategy: com.gstdev.cloud.data.jpa.hibernate.FramePhysicalNamingStrategy
+    properties:
+      # jakarta:
+      #   persistence:
+      #     sharedCache:
+      #       mode: ENABLE_SELECTIVE
+      hibernate:
+        dialect: ${gstdev.cloud.database-information.dialect}
+        enable_lazy_load_no_trans: true
+        jdbc.time_zone: UTC
+        hbm2ddl.auto: update
+        # format_sql: ${gstdev.cloud.switch.database.format-sql}
+        # show_sql: ${gstdev.cloud.switch.database.show-sql}
+        # generate_statistics: ${gstdev.cloud.switch.database.generate-statistics}
+        # cache:
+        #   use_query_cache: true
+        #   use_second_level_cache: ${gstdev.cloud.switch.database.use-second-level-cache}
+        #   region:
+        #     factory_class: com.gstdev.cloud.data.jpa.hibernate.spi.cache.FrameRegionFactory
+        # jakarta:
+        #   cache:
+        #     missing_cache_strategy: create
+        # temp:
+        #   use_jdbc_metadata_defaults: true
+
+# mybatis-plus:
+#   global-config:
+#     banner: false
+#     db-config:
+#       table-underline: true
+#   configuration:
+#     cache-enabled: ${gstdev.cloud.switch.database.use-second-level-cache}
+#     map-underscore-to-camel-case: true

@@ -1,0 +1,60 @@
+gstdev:
+  cloud:
+    endpoint:
+      identity-service-name: gstdev-identity
+      system-service-name: gstdev-system
+      uaa-service-name: gstdev-cloud-uaa
+      upms-service-name: gstdev-cloud-upms
+      message-service-name: gstdev-cloud-message
+      oss-service-name: gstdev-cloud-oss-ability
+      gateway-service-uri: http://192.168.0.229:8201
+      #gateway-service-uri: ${gstdev.cloud.environment.gateway-server-addr}
+      identity-service-uri: ${gstdev.cloud.endpoint.gateway-service-uri}/${gstdev.cloud.endpoint.identity-service-name}
+      system-service-uri: ${gstdev.cloud.endpoint.gateway-service-uri}/${gstdev.cloud.endpoint.system-service-name}
+      uaa-service-uri: ${gstdev.cloud.endpoint.gateway-service-uri}/${gstdev.cloud.endpoint.identity-service-name}
+      upms-service-uri: ${gstdev.cloud.endpoint.gateway-service-uri}/${gstdev.cloud.endpoint.upms-service-name}
+      message-service-uri: ${gstdev.cloud.endpoint.gateway-service-uri}/${gstdev.cloud.endpoint.message-service-name}
+      oss-service-uri: ${gstdev.cloud.endpoint.gateway-service-uri}/${gstdev.cloud.endpoint.oss-service-name}
+      access-token-uri: ${gstdev.cloud.endpoint.identity-service-uri}/oauth2/token
+      authorization-uri: ${gstdev.cloud.endpoint.identity-service-uri}/oauth2/authorize
+      token-revocation-uri: ${gstdev.cloud.endpoint.identity-service-uri}/oauth2/revoke
+      token-introspection-uri: ${gstdev.cloud.endpoint.identity-service-uri}/oauth2/introspect
+      #jwk-set-uri: ${gstdev.cloud.endpoint.identity-service-uri}/oauth2/jwks
+      #issuer-uri: ${gstdev.cloud.endpoint.identity-service-uri}
+      jwk-set-uri: http://localhost:8101/oauth2/jwks
+      issuer-uri: http://127.0.0.1:8101
+      oidc-client-registration-uri: ${gstdev.cloud.endpoint.identity-service-uri}/connect/register
+      oidc-user-info-uri: ${gstdev.cloud.endpoint.identity-service-uri}/userinfo
+    swagger:
+      enabled: ${gstdev.cloud.switch.swagger.enabled}
+    oauth2:
+      jwk:
+        certificate: standard
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: ALWAYS
+
+server:
+  shutdown: graceful
+  servlet:
+    session:
+      timeout: ${gstdev.cloud.session.timeout}
+
+spring:
+  session:
+    timeout: ${server.servlet.session.timeout}
+    redis:
+      repository-type: indexed
+      save-mode: always
+      flush-mode: immediate
+
+sms:
+  is-print: false

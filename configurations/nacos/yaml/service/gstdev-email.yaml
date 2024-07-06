@@ -1,0 +1,30 @@
+server:
+    port: 8105
+spring:
+    application:
+        name: gstdev-email
+    mail:
+        email: welcome@veritypay.com
+        host: email-smtp.us-east-1.amazonaws.com
+        username: AKIAXHDVQPI116NR7I7DHT
+        password: rtuVyg+3+efaXnFx11yDSSAxN0UQVt4TTynTh53vvs
+        properties.smtp.auth: true
+        properties.smtp.socketFactory.port: 465
+        properties.mail.smtp.auth: true
+        properties.mail.smtp.socketFactory.port: 465
+        properties.mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+        properties.mail.smtp.socketFactory.fallback: true
+    thymeleaf:
+        cache: false
+        check-template-location: true
+        prefix: classpath:/templates/
+        suffix: .html
+        mode: HTML5
+        encoding: UTF-8
+        enabled: true
+        
+invitation:
+  app-url: http://uat.veritypay.com
+ses:
+  accessKey: AKIAXHDVQPI6NR17I7DHT
+  secretAccessKey: rtuVyg+3+efaXnFxyDSSA1xN0UQVt4TTynTh53vvs
