@@ -30,6 +30,7 @@ import java.util.List;
 public interface SysUserMapper extends BasePOJOMapper<SysUser, UserDto, UserVo, UserInsertInput, UserUpdateInput> {
 
     SysUser toEntity(InsertUserManageIO insertUserManageInput);
+    UserSettingsDetailVO toUserSettingsDetailVo(SysUser sysUser);
 
     SysUser toEntity(InsertUserManageInitializationIO insertUserManageInitializationIO);
 
@@ -43,6 +44,7 @@ public interface SysUserMapper extends BasePOJOMapper<SysUser, UserDto, UserVo, 
     }
 
     void copy(UpdateUserManageIO updateUserManageIO, @MappingTarget SysUser sysUser);
+    void copy(UpdateUserSettingsDetailIO updateUserSettingsDetailIO, @MappingTarget SysUser sysUser);
 
     List<AccountListDto> accountListToDto(List<SysAccount> accountList);
 }

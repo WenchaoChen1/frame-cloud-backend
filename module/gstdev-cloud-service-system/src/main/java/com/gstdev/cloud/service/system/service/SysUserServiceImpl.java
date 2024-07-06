@@ -15,7 +15,10 @@ import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
 import com.gstdev.cloud.service.system.domain.enums.SysTenantPermissionType;
 import com.gstdev.cloud.service.system.domain.enums.SysUserType;
 import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageInitializationIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.UpdateAccountSettingsDetailIO;
 import com.gstdev.cloud.service.system.domain.pojo.sysUser.InsertUserManageInitializationIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysUser.UpdateUserSettingsDetailIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysUser.UserSettingsDetailVO;
 import com.gstdev.cloud.service.system.domain.vo.user.AccountListDto;
 import com.gstdev.cloud.service.system.feign.service.IdentityFeignService;
 import com.gstdev.cloud.service.system.feign.vo.IdentitySaveDto;
@@ -41,7 +44,9 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
     @Resource
     @Lazy
     private SysMenuService menuService;
-
+    @Resource
+    @Lazy
+    private SysTenantService sysTenantService;
     @Resource
     @Lazy
     private IdentityFeignService identityFeignService;
@@ -63,8 +68,6 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
     private SysBusinessPermissionService sysBusinessPermissionService;
     @Resource
     private SysRTenantMenuBusinessPermissionService sysRTenantMenuBusinessPermissionService;
-    @Resource
-    private SysTenantService sysTenantService;
     //    @Resource
     private SysUserMapper userMapper;
 
@@ -296,6 +299,41 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String, SysUser
         }
         sysUser.setPassword(SecurityUtils.encrypt(newPassword));
         log.debug("[GstDev Cloud] |- Reset user [{}] password to [{}]", sysUser.getUsername(), newPassword);
+        getService().save(sysUser);
+    }
+
+    /**
+     * 用户只有在登录状态下才能获取自己的用户信息
+     * 如果账户有多个不返回账户信息需要去账户配置页面寻找
+     *
+     * @return
+     */
+    @Override
+    public UserSettingsDetailVO getUserSettingsDetail() {
+        SysUser sysUser = getService().findById(SecurityUtils.getUserId());
+        UserSettingsDetailVO userSettingsDetailVo = userMapper.toUserSettingsDetailVo(sysUser);
+        List<SysAccount> account = sysUser.getAccount();
+        if (account.size() == 1) {
+            userSettingsDetailVo.setAccountId(account.get(0).getAccountId());
+            userSettingsDetailVo.setAccountName(account.get(0).getName());
+            userSettingsDetailVo.setAccountType(account.get(0).getType());
+            SysTenant sysTenant = sysTenantService.findById(account.get(0).getTenantId());
+            userSettingsDetailVo.setTenantName(sysTenant.getTenantName());
+        }
+        return userSettingsDetailVo;
+    }
+
+    @Override
+    @Transactional
+    public void updateUserSettingsDetail(UpdateUserSettingsDetailIO updateUserSettingsDetailIO) {
+        SysUser sysUser = getService().findById(SecurityUtils.getUserId());
+        userMapper.copy(updateUserSettingsDetailIO, sysUser);
+        if (!ObjectUtils.isEmpty(updateUserSettingsDetailIO.getAccountId())) {
+            UpdateAccountSettingsDetailIO updateAccountSettingsDetailIO = new UpdateAccountSettingsDetailIO();
+            updateAccountSettingsDetailIO.setAccountId(updateUserSettingsDetailIO.getAccountId());
+            updateAccountSettingsDetailIO.setName(updateUserSettingsDetailIO.getAccountName());
+            accountService.updateAccountSettingsDetail(updateAccountSettingsDetailIO);
+        }
         getService().save(sysUser);
     }
 }
