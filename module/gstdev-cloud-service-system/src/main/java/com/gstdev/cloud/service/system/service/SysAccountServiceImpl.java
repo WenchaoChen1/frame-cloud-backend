@@ -6,7 +6,10 @@ import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.service.system.domain.base.account.AccountDto;
 import com.gstdev.cloud.service.system.domain.entity.SysAccount;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
-import com.gstdev.cloud.service.system.domain.pojo.sysAccount.*;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.InsertAccountManageInitializationIO;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.SwitchUserAccountDetailDto;
+import com.gstdev.cloud.service.system.domain.pojo.sysAccount.UpdateAccountManageIO;
 import com.gstdev.cloud.service.system.mapper.SysAccountMapper;
 import com.gstdev.cloud.service.system.repository.SysAccountRepository;
 import com.gstdev.cloud.service.system.repository.SysDepartRepository;
@@ -109,28 +112,10 @@ public class SysAccountServiceImpl extends BaseServiceImpl<SysAccount, String, S
         insertAndUpdate(entity);
     }
 
-    @Override
     public List<SwitchUserAccountDetailDto> getSwitchUserAccountDetail() {
         return accountMapper.toSwitchUserAccountDetailDto(findAllByUserId(SecurityUtils.getUserId()));
     }
 
-    /**
-     * 获取当前登录账号的设置详情
-     *
-     * @return
-     */
-    @Override
-    public List<AccountSettingsDetailVO> getAccountSettingsDetail() {
-        return accountMapper.toAccountSettingsDetailVO(findAllByUserId(SecurityUtils.getUserId()));
-    }
-
-    @Override
-    @Transactional
-    public void updateAccountSettingsDetail(UpdateAccountSettingsDetailIO updateAccountSettingsDetailIO) {
-        SysAccount entity = findById(updateAccountSettingsDetailIO.getAccountId());
-        accountMapper.copy(updateAccountSettingsDetailIO, entity);
-        insertAndUpdate(entity);
-    }
 
 
 }
