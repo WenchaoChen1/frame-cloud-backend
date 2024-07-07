@@ -19,7 +19,10 @@
             <groupId>com.frame.template</groupId>
             <artifactId>frame-template-autoconfigure-service-system</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-service-common</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
