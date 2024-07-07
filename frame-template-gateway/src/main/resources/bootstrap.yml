@@ -1,33 +1,37 @@
 spring:
-  application:
-    name: gstdev-gateway
-  cloud:
-    nacos:
-      discovery:
-        #                server-addr: ${NACOS_DISCOVERY_HOST:@alibaba.config.server-addr@}
-        server-addr: ${NACOS_DISCOVERY_HOST:192.168.0.99}:${NACOS_DISCOVERY_PORT:8848}
-        namespace: ${NACOS_DISCOVERY_NAMESPACE:frame-cloud}
-        group: ${NACOS_DISCOVERY_GROUP:dev}
-      config:
-        namespace: ${spring.cloud.nacos.discovery.namespace}
-        server-addr: ${spring.cloud.nacos.discovery.server-addr}
-        file-extension: yml
-        group: ${NACOS_CONFIG_GROUP:dev}
-    sentinel:
-      transport:
-        #                port: 8719
-        dashboard: localhost:8858
-      eager: true #服务注启动，直接注册到dashboard
+    application:
+        name: gstdev-gateway
+    cloud:
+        nacos:
+            discovery:
+                #                server-addr: ${NACOS_DISCOVERY_HOST:@alibaba.config.server-addr@}
+                server-addr: ${NACOS_DISCOVERY_HOST:127.0.0.1}:${NACOS_DISCOVERY_PORT:8848}
+                namespace: ${NACOS_DISCOVERY_NAMESPACE:frame-cloud}
+                group: ${NACOS_DISCOVERY_GROUP:dev}
+            config:
+                namespace: ${spring.cloud.nacos.discovery.namespace}
+                server-addr: ${spring.cloud.nacos.discovery.server-addr}
+                file-extension: yaml
+                #                group: ${NACOS_CONFIG_GROUP:service}
+                #指定共享配置，且支持动态刷新
+                extension-configs:
+                    -   data-id: ${spring.application.name}.yaml
+                        group: service
+        sentinel:
+            transport:
+                #                port: 8719
+                dashboard: localhost:8858
+            eager: true #服务注启动，直接注册到dashboard
 server:
-  forward-headers-strategy: framework
+    forward-headers-strategy: framework
 gstdev:
-  cloud:
-    gateway:
-      white-list:
-        - "/oauth2/**"
-        - "/v3/api-docs/**"
-        - "/openapi*"
-        - "/open/**"
-        - "/swagger/**"
-        - "/login"
-        - "/**"
+    cloud:
+        gateway:
+            white-list:
+                - "/oauth2/**"
+                - "/v3/api-docs/**"
+                - "/openapi*"
+                - "/open/**"
+                - "/swagger/**"
+                - "/login"
+                - "/**"

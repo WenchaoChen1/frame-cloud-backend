@@ -2,20 +2,20 @@ gstdev:
     cloud:
         environment:
             logstash-server-addr: false
-            gateway-server-addr: http://192.168.0.99:8201
+            gateway-server-addr: http://127.0.0.1:8201
             database:
-                host: 192.168.0.99
+                host: 127.0.0.1
                 port: 5432
                 name: frame-cloud
                 username: postgres
                 password: postgres
             redis:
-                host: 192.168.0.99
+                host: 127.0.0.1
                 port: 6379
-                password: 
+                password:
                 database: 0
             kafka:
-                bootstrap-servers: 192.168.0.99:9092
+                bootstrap-servers: 127.0.0.1:9092
         switch:
             database:
                 ddl-auto: update
