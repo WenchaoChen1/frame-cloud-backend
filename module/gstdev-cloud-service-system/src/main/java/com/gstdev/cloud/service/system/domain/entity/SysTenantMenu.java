@@ -36,7 +36,7 @@ public class SysTenantMenu extends BaseEntity {
     @Column(name = "tenant_menu_id", length = 64)
     private String tenantMenuId;
 
-    @Column(name = "tenantId", length = 36, nullable = false)
+    @Column(name = "tenant_id", length = 36, nullable = false)
     private String tenantId;
 
     @ManyToOne(fetch = FetchType.EAGER)

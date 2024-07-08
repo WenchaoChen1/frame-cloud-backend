@@ -2,10 +2,7 @@ package com.gstdev.cloud.service.system.domain.entity;
 
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.service.system.domain.generator.SysRAccountRoleEmbeddablePK;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +15,9 @@ import lombok.Setter;
 public class SysRAccountRole extends BaseEntity {
 
     @Id
+    @Column(name = "account_id", length = 64)
     private String accountId;
     @Id
+    @Column(name = "role_id", length = 64)
     private String roleId;
 }

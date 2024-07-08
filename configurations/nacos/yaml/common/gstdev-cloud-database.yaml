@@ -14,7 +14,7 @@ spring:
     password: ${gstdev.cloud.environment.database.password}
     type: com.zaxxer.hikari.HikariDataSource
     # driver-class-name: org.postgresql.Driver
-    # url: jdbc:postgresql://127.0.0.1:5432/frame-cloud
+    # url: jdbc:postgresql://192.168.0.99:5432/frame-cloud
     # username: postgres
     # password: postgres
     # type: com.zaxxer.hikari.HikariDataSource

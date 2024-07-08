@@ -2,14 +2,9 @@ package com.gstdev.cloud.service.system.domain.entity;
 
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.service.system.domain.generator.SysRRoleBusinessPermissionEmbeddablePK;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.io.Serializable;
 
 
 @Getter
@@ -20,7 +15,9 @@ import java.io.Serializable;
 public class SysRRoleBusinessPermission extends BaseEntity {
 
     @Id
+    @Column(name = "role_id", length = 64)
     private String roleId;
     @Id
+    @Column(name = "business_permission_id", length = 64)
     private String businessPermissionId;
 }

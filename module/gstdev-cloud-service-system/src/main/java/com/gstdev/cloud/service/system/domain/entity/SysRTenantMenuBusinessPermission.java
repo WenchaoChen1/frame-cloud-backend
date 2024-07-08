@@ -1,16 +1,10 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
 import com.gstdev.cloud.data.core.entity.BaseEntity;
-import com.gstdev.cloud.service.system.domain.generator.SysRAttributeMenuEmbeddablePK;
 import com.gstdev.cloud.service.system.domain.generator.SysRTenantMenuBusinessPermissionEmbeddablePK;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.io.Serializable;
 
 
 @Getter
@@ -21,7 +15,9 @@ import java.io.Serializable;
 public class SysRTenantMenuBusinessPermission extends BaseEntity {
 
     @Id
+    @Column(name = "tenant_menu_id", length = 64)
     private String tenantMenuId;
     @Id
+    @Column(name = "business_permission_id", length = 64)
     private String businessPermissionId;
 }

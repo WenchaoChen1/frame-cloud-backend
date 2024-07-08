@@ -15,8 +15,10 @@ import lombok.Setter;
 public class SysRAttributeMenu extends BaseEntity {
 
     @Id
+    @Column(name = "menu_id", length = 64)
     private String menuId;
     @Id
+    @Column(name = "attribute_id", length = 64)
     private String attributeId;
 
 
