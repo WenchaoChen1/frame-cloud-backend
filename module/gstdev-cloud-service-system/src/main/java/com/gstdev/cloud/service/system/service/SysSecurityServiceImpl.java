@@ -210,20 +210,25 @@ public class SysSecurityServiceImpl implements SysSecurityService {
             .filter(sysMenu -> sysMenu.getStatus().equals(DataItemStatus.ENABLE)).toList();
 
         List<SysMenu> leftAndTopRoutes = accountSysMenu.stream()
-            .filter(sysMenu -> sysMenu.getStatus().equals(DataItemStatus.ENABLE)
-                && sysMenu.getLocation().equals(SysMenuLocation.LEFT_MENU)
+            .filter(sysMenu -> sysMenu.getLocation().equals(SysMenuLocation.LEFT_MENU)
                 && (sysMenu.getType().equals(SysMenuType.CATALOGUE)
                 || sysMenu.getType().equals(SysMenuType.PAGE))
             ).toList();
 
         currentLoginInformation.setLeftAndTopRoutes(sysSecurityMapper.toRoutes(sysSecurityMapper.toMenuRoutesDtoToTree(leftAndTopRoutes)));
         List<SysMenu> rightRoutes = accountSysMenu.stream()
-            .filter(sysMenu -> sysMenu.getStatus().equals(DataItemStatus.ENABLE)
-                && sysMenu.getLocation().equals(SysMenuLocation.RIGHT_MENU)
+            .filter(sysMenu -> sysMenu.getLocation().equals(SysMenuLocation.RIGHT_MENU)
                 && sysMenu.getType().equals(SysMenuType.FUNCTION)
                 ).toList();
         currentLoginInformation.setRightRoutes(sysSecurityMapper.toRoutes(sysSecurityMapper.toMenuRoutesDtoToTree(rightRoutes)));
-
+        List<String> functionPermissionCode = accountSysMenu.stream()
+            .filter(sysMenu ->  sysMenu.getType().equals(SysMenuType.FUNCTION)
+            ).map(SysMenu::getCode).toList();
+        currentLoginInformation.setFunctionPermissionCode(functionPermissionCode);
+        List<String> pagePathAccessPermission = accountSysMenu.stream()
+            .filter(sysMenu ->  sysMenu.getType().equals(SysMenuType.FUNCTION)
+            ).map(SysMenu::getName).toList();
+        currentLoginInformation.setPagePathAccessPermission(pagePathAccessPermission);
         return currentLoginInformation;
     }
 

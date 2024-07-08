@@ -73,6 +73,8 @@ public class RedisCurrentLoginInformationServiceImpl implements RedisCurrentLogi
         currentLoginInformation.setCurrentLoginAccountUserPermissions(accountCurrentLoginInformation.getCurrentLoginAccountUserPermissions());
         currentLoginInformation.setLeftAndTopRoutes(Collections.singletonList(accountCurrentLoginInformation.getLeftAndTopRoutes()));
         currentLoginInformation.setRightRoutes(Collections.singletonList(accountCurrentLoginInformation.getRightRoutes()));
+        currentLoginInformation.setFunctionPermissionCode(accountCurrentLoginInformation.getFunctionPermissionCode());
+        currentLoginInformation.setPagePathAccessPermission(accountCurrentLoginInformation.getPagePathAccessPermission());
         currentLoginInformation.setCurrentLoginAccountUserPermissions(new JSONArray(menuService.getAccountMenuPermissions(accountCurrentLoginInformation.getAccountId())));
         redisCurrentLoginInformation.addByTokenCurrentLoginInformation(currentLoginInformation);
         return Result.success(currentLoginInformation);

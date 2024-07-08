@@ -22,7 +22,7 @@ public class CurrentLoginInformation implements Serializable {
     private JSON currentLoginAccountUserPermissions;
     private List<Object> leftAndTopRoutes;
     private List<Object> rightRoutes;
-    private List<Object> functionPermissionCode;
-
+    private List<String> functionPermissionCode;
+    private List<String> pagePathAccessPermission;
 
 }

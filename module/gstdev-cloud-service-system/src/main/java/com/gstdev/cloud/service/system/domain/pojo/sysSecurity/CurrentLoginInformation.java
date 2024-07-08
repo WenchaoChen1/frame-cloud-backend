@@ -19,6 +19,7 @@ public class CurrentLoginInformation implements Serializable {
     private List<Routes> leftAndTopRoutes;
     private List<Routes> rightRoutes;
     private List<String> functionPermissionCode;
+    private List<String> pagePathAccessPermission;
     private Integer type;
     private JSON tenant;
     private JSON currentLoginAccount;
@@ -29,14 +30,14 @@ public class CurrentLoginInformation implements Serializable {
     @Setter
     public static class Routes implements Serializable {
 
-        private String id;
-        private String code;
-        private String icon;
+//        private String id;
+//        private String code;
+//        private String icon;
         private String name;
-        private String parentId;
+//        private String parentId;
         private String path;
-        private Integer sort;
-        private DataItemStatus status;
+//        private Integer sort;
+//        private DataItemStatus status;
         private List<Routes> children = null;
 
 //        private String component;
