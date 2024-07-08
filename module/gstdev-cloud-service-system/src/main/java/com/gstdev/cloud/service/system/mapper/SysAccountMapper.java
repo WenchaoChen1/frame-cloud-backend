@@ -44,6 +44,7 @@ public interface SysAccountMapper extends BasePOJOMapper<SysAccount, AccountDto,
     }
 
     void copy(UpdateAccountManageIO updateAccountManageIO, @MappingTarget SysAccount sysAccount);
+    void copy(UpdateAccountSettingsDetailIO updateAccountSettingsDetailIO, @MappingTarget SysAccount sysAccount);
 
     List<SwitchUserAccountDetailVo> toSwitchUserAccountDetailVo(List<SwitchUserAccountDetailDto> byId);
 
@@ -54,5 +55,7 @@ public interface SysAccountMapper extends BasePOJOMapper<SysAccount, AccountDto,
     List<AccountManageTenantMenuTreeVo> toAccountManageTenantMenuTreeVo(List<TenantMenuMenuTreeDto> allTenantMenuMenuTree);
 
     List<AccountManageRoleTreeVo> toAccountManageRoleTreeVo(List<TenantRoleTreeDto> allRoleMenuTree);
+
+    List<AccountSettingsDetailVO> toAccountSettingsDetailVO(List<SysAccount> allByUserId);
 }
 

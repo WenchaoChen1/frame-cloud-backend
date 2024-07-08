@@ -199,5 +199,17 @@ public class SysAccountController implements ResultController {
     public Result<List<SwitchUserAccountDetailVo>> getSwitchUserAccountDetail() {
         return this.result(this.getMapper().toSwitchUserAccountDetailVo(this.getService().getSwitchUserAccountDetail()));
     }
-
+    @Tag(name = "Account Settings")
+    @Operation(summary = "get-account-settings-detail")
+    @GetMapping("/get-account-settings-detail")
+    public Result<List<AccountSettingsDetailVO>> getAccountSettingsDetail() {
+        return Result.success(accountService.getAccountSettingsDetail());
+    }
+    @Tag(name = "Account Settings")
+    @Operation(summary = "update-account-settings-detail")
+    @PostMapping("/update-account-settings-detail")
+    public Result<String> updateAccountSettingsDetail(@RequestBody UpdateAccountSettingsDetailIO updateAccountSettingsDetailIO) {
+        accountService.updateAccountSettingsDetail(updateAccountSettingsDetailIO);
+        return Result.success();
+    }
 }
