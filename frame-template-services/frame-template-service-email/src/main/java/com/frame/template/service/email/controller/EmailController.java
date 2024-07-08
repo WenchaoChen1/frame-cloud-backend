@@ -35,7 +35,5 @@ public class EmailController {
     @GetMapping("/a")
     @Operation(summary = "创建用户时时发送邮件")
     public void a() {
-        System.out.println("aaaaaaaaaaaaaaaa");
-//    emailService.inviteUser(userDto);
     }
 }

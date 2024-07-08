@@ -1,9 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
-import com.gstdev.cloud.data.core.service.BaseDtoServiceImpl;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.service.system.domain.base.SysPermission.SysPermissionDto;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysPermission;
 import com.gstdev.cloud.service.system.mapper.SysPermissionMapper;
@@ -141,51 +139,5 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission, Str
     public void updateStatusByPermissionType(DataItemStatus status, String permissionType) {
         getRepository().updateStatusByPermissionType(status, permissionType);
     }
-
-
-    public static void main(String[] args) {
-        List<String> a = new ArrayList<>();
-        a.add("aprivatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("bprivatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b1privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b11privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b111privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b12privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b122privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinaombpriveasdadsaDombinatioombpriveasdadsaDombinatiotions(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("bpq1212rivatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttombpriveasdadsaDombinatioribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b12w12privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b12e12privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(ombpriveasdadsaDombinatioombpriveasdadsaDombinatioList<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b1e212privatestaticList<List<SysAttribute>>generateAllCombpriveasdadsaDombombpriveasdadsaDombinatioombpriveasdadsaDombinatioombpriveasdadsaDombinatioombpriveasdadsaDombinatioinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b1qw212privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b1qwe212privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b12qwe12privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllComombpriveasdadsaDombinatiobinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b121qwe2qweprivatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>genombpriveasdadsaDombinatioerateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b1212privateqwestayuticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b1212privateqwestaticyuList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b1212privateqwestaticList<List<SysAyuttribute>>generateAllCombprivatestaticList<List<SysAttributombpriveasdadsaDombinatioombpriveasdadsaDombinatioe>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivyuatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<Lisyut<SysAtutribuombpriveasdadsaDombinatioombpriveasdadsaDombinatiote>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<Liyust<SysAttribute>>generaombpriveasdadsaDombinatioteAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttributeyu>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>genyueratombpriveasdadsaDombinatioeAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b1qw212privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b1qwe212privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<ombpriveasdadsaDombinatioombpriveasdadsaDombinatioombpriveasdadsaDombinatio>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b12qwe12privatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b121qwe2qweprivatestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttrombpriveasdadsaDombinatioibute>>gombpriveasdadsaDombinatioeombpriveasdadsaDombinationerateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b1212privateqwestayuticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b1212privateqwestaticyuList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b1212privateqwestaticList<List<SysAyuttribute>>generateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b1212privateqwestaticList<List<SysAttribute>>geneyurateAllCombprivatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivyuatestaticList<List<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<Lisyut<SysAtutribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<Liyust<SysAttribute>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttributeyu>>generateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        a.add("1b1212privateqwestaticList<List<SysAttribute>>generateAllCombprivatestaticList<List<SysAttribute>>genyuerateAllCombinations(List<SysAttribute>sysAttributes){inations(List<SysAttribute>sysAttributes){");
-        String s = generateKey(a);
-        System.out.println(s);
-    }
 }
-//458a044cd5652af47bc4209d60d5d0e490685f293f7fd36fd47b03f26c2840d7
-//458a044cd5652af47bc4209d60d5d0e490685f293f7fd36fd47b03f26c2840d7
+
