@@ -168,4 +168,10 @@ public class FrameSystemServiceConfiguration {
         log.debug("[GstDev Cloud] |- Frame Configure Constant Service");
         return new SysConstantServiceImpl();
     }
+    @Bean
+    @ConditionalOnMissingBean
+    public SysSecurityService sysSecurityService() {
+        log.debug("[GstDev Cloud] |- Frame Configure Constant Service");
+        return new SysSecurityServiceImpl();
+    }
 }

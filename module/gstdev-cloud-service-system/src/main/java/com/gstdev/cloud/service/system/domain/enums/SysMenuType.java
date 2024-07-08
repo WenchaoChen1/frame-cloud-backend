@@ -27,9 +27,9 @@ public enum SysMenuType implements BaseUiEnum<Integer> {
      */
     PAGE(1,"page",1, "page"),
     /**
-     * 按钮
+     * 功能
      */
-    BUTTON(2, "button",2, "button");
+    BUTTON(2, "function",2, "function");
 
 
     private static final Map<Integer, SysMenuType> INDEX_MAP = new HashMap<>();

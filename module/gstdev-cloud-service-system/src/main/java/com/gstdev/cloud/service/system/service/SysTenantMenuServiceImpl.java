@@ -11,7 +11,6 @@ package com.gstdev.cloud.service.system.service;
 
 
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
-import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRole;
 import com.gstdev.cloud.service.system.domain.entity.SysTenantMenu;
 import com.gstdev.cloud.service.system.domain.pojo.rTenantMenu.InsertTenantMenuIO;
@@ -77,11 +76,17 @@ public class SysTenantMenuServiceImpl extends BaseServiceImpl<SysTenantMenu, Str
         return getService().findAllByTenantMenuIds(teantIds).stream().map(SysTenantMenu::getTenantMenuId).toList();
     }
 
+//    @Override
+//    public List<String> getPermissionsByTenantMenuIds(Set<String> tenantMenuIds) {
+//        List<SysMenu> menus = findAllById(tenantMenuIds).stream().map(SysTenantMenu::getMenu).toList();
+//        return sysMenuService.getPermissionsByMenus(menus);
+//    }
+
     @Override
-    public List<String> getPermissionsByTenantMenuIds(Set<String> tenantMenuIds) {
-        List<SysMenu> menus = getRepository().findAllById(tenantMenuIds).stream().map(SysTenantMenu::getMenu).toList();
-        return sysMenuService.getPermissionsByMenus(menus);
+    public List<SysTenantMenu> findAllById(Set<String> tenantMenuIds) {
+        return getRepository().findAllById(tenantMenuIds);
     }
+
 
     private List<SysTenantMenu> findAllByTenantIds(Set<String> tenantIds) {
         return getRepository().findByTenantIdIn(tenantIds);

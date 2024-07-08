@@ -32,7 +32,7 @@ public interface SysTenantMenuService extends BaseService<SysTenantMenu, String>
     List<String> getAllTenantMenuIdByTenantMenuIdIn(Set<String> teantMenuIds);
     List<String> getAllTenantMenuIdByTenantIdIn(Set<String> teantMenuIds);
 
-    List<String> getPermissionsByTenantMenuIds(Set<String> tenantMenuIds);
+    List<SysTenantMenu> findAllById(Set<String> tenantMenuIds);
 
     //////////////////////////////////////////自定义代码//////////////////////////////////////////////////////////////
 }
