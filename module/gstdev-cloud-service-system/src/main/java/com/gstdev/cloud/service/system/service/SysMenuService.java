@@ -24,6 +24,8 @@ public interface SysMenuService extends BaseService<SysMenu, String> {
 
     Collection<? extends SysMenu> findAllMenuByUser(SysUser user);
 
+
+
     /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
 
 

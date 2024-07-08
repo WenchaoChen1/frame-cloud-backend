@@ -29,7 +29,7 @@ public enum SysMenuType implements BaseUiEnum<Integer> {
     /**
      * 功能
      */
-    BUTTON(2, "function",2, "function");
+    FUNCTION(2, "function",2, "function");
 
 
     private static final Map<Integer, SysMenuType> INDEX_MAP = new HashMap<>();

@@ -2,10 +2,13 @@ package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
+import com.gstdev.cloud.oauth2.core.exception.PlatformAuthenticationException;
+import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.service.system.domain.entity.*;
-import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
-import com.gstdev.cloud.service.system.domain.enums.SysTenantPermissionType;
-import com.gstdev.cloud.service.system.domain.enums.SysUserType;
+import com.gstdev.cloud.service.system.domain.enums.*;
+import com.gstdev.cloud.service.system.domain.pojo.sysSecurity.CurrentLoginInformation;
+import com.gstdev.cloud.service.system.mapper.SysMenuMapper;
+import com.gstdev.cloud.service.system.mapper.SysSecurityMapper;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +26,12 @@ public class SysSecurityServiceImpl implements SysSecurityService {
     @Resource
     @Lazy
     private SysTenantService sysTenantService;
+    @Resource
+    @Lazy
+    private SysAccountService sysAccountService;
+    @Resource
+    @Lazy
+    private SysMenuService sysMenuService;
 
     @Resource
     private SysTenantMenuService sysTenantMenuService;
@@ -41,6 +50,10 @@ public class SysSecurityServiceImpl implements SysSecurityService {
     @Resource
     private SysRTenantMenuBusinessPermissionService sysRTenantMenuBusinessPermissionService;
 
+    @Resource
+    private SysSecurityMapper sysSecurityMapper;
+    @Resource
+    private SysMenuMapper sysMenuMapper;
     /**
      * 获取用户的权限
      * @param user
@@ -162,6 +175,61 @@ public class SysSecurityServiceImpl implements SysSecurityService {
 
         List<SysTenantMenu> sysTenantMenus = sysTenantMenuService.findAllById(userTenantMenuIds);
         return sysTenantMenus.stream().map(SysTenantMenu::getMenu).toList();
+    }
+
+    public void getAccountCurrentLoginInformation(String accountId) {
+        SysAccount account = null;
+        if (!ObjectUtils.isEmpty(accountId)) {
+            account = sysAccountService.findById(accountId);
+        }
+        if (account == null || account.getAccountId() == null) {
+            List<SysAccount> accounts = sysAccountService.findAllByUserId(SecurityUtils.getUserId());
+            if (ObjectUtils.isEmpty(accounts)) {
+                throw new PlatformAuthenticationException("No account was found, please log in again");
+            }
+            account = accounts.get(0);
+        }
+        CurrentLoginInformation currentLoginInformation = new CurrentLoginInformation();
+        currentLoginInformation.setUserId(account.getUser().getUserId());
+        currentLoginInformation.setUserName(account.getUser().getUsername());
+        currentLoginInformation.setAccountId(account.getAccountId());
+        currentLoginInformation.setAccountName(account.getName());
+        currentLoginInformation.setTenantId(account.getTenantId());
+        currentLoginInformation.setType(account.getType().getValue());
+
+//        CurrentLoginInformation.Routes routes = sysSecurityMapper.toRoutes(account);
+        List<SysMenu> accountSysMenu = getAccountSysMenu(List.of(account));
+        accountSysMenu = accountSysMenu.stream()
+                .filter(sysMenu -> sysMenu.getStatus().equals(DataItemStatus.ENABLE)).toList();
+
+//        List<SysMenu> leftAndTopRoutes = accountSysMenu.stream()
+//                .filter(sysMenu -> {
+//                    if (sysMenu.getStatus().equals(DataItemStatus.ENABLE)
+//                            && sysMenu.getLocation().equals(SysMenuLocation.LEFT_MENU)
+//                            && sysMenu.getType().equals(SysMenuType.CATALOGUE)
+//                            && sysMenu.getType().equals(SysMenuType.PAGE)
+//                    ) {
+//                        return true;
+//                    } else {
+//                        return false;
+//                    }
+//                }).toList();
+//
+//        currentLoginInformation.setLeftAndTopRoutes(sysSecurityMapper.toRoutes(leftAndTopRoutes);
+//        List<SysMenu> rightRoutes = accountSysMenu.stream()
+//                .filter(sysMenu -> {
+//                    if (sysMenu.getStatus().equals(DataItemStatus.ENABLE)
+//                            && sysMenu.getLocation().equals(SysMenuLocation.LEFT_MENU)
+//                            && sysMenu.getType().equals(SysMenuType.CATALOGUE)
+//                            && sysMenu.getType().equals(SysMenuType.PAGE)
+//                    ) {
+//                        return true;
+//                    } else {
+//                        return false;
+//                    }
+//                }).toList();
+//        currentLoginInformation.setRightRoutes(rightRoutes);
+//        currentLoginInformation.setCurrentLoginAccountUserPermissions(new JSONArray(menuService.getAccountMenuPermissions(account.getAccountId())));
     }
 
     /**
