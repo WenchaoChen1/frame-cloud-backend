@@ -54,8 +54,10 @@ public class SysSecurityServiceImpl implements SysSecurityService {
     private SysSecurityMapper sysSecurityMapper;
     @Resource
     private SysMenuMapper sysMenuMapper;
+
     /**
      * 获取用户的权限
+     *
      * @param user
      * @return
      */
@@ -77,6 +79,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
 
     /**
      * 获取账户的权限
+     *
      * @param sysAccounts
      * @return
      */
@@ -84,7 +87,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
         Set<FrameGrantedAuthority> authorities = new HashSet<>();
         // 获取用户的账号列表
         sysAccounts = sysAccounts.stream()
-                .filter(account -> account.getStatus().equals(DataItemStatus.ENABLE)).toList();
+            .filter(account -> account.getStatus().equals(DataItemStatus.ENABLE)).toList();
         List<SysMenu> accountSysMenu = getAccountSysMenu(sysAccounts);
 
         List<String> permissionsByTenantMenuIds = getPermissionsByMenus(accountSysMenu);
@@ -103,11 +106,11 @@ public class SysSecurityServiceImpl implements SysSecurityService {
     public List<SysMenu> getAccountSysMenu(List<SysAccount> accounts) {
         Set<String> tenantIds = accounts.stream().map(SysAccount::getTenantId).collect(Collectors.toSet());
         Map<String, SysTenant> tenantMap = sysTenantService.findAllByIds(tenantIds).stream()
-                .collect(Collectors.toMap(
-                        SysTenant::getId,
-                        employee -> employee,
-                        (existing, replacement) -> existing
-                ));
+            .collect(Collectors.toMap(
+                SysTenant::getId,
+                employee -> employee,
+                (existing, replacement) -> existing
+            ));
 
         // 初始化租户菜单相关集合
         Set<String> userTenantMenuIds = new HashSet<>();
@@ -177,7 +180,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
         return sysTenantMenus.stream().map(SysTenantMenu::getMenu).toList();
     }
 
-    public void getAccountCurrentLoginInformation(String accountId) {
+    public CurrentLoginInformation getAccountCurrentLoginInformation(String accountId) {
         SysAccount account = null;
         if (!ObjectUtils.isEmpty(accountId)) {
             account = sysAccountService.findById(accountId);
@@ -196,44 +199,37 @@ public class SysSecurityServiceImpl implements SysSecurityService {
         currentLoginInformation.setAccountName(account.getName());
         currentLoginInformation.setTenantId(account.getTenantId());
         currentLoginInformation.setType(account.getType().getValue());
+        List<SysMenu> accountSysMenu = new ArrayList<>();
+        if (account.getUser().getType().equals(SysUserType.SUPER)) {
+            accountSysMenu = sysMenuService.findAll();
+        } else {
+            accountSysMenu = getAccountSysMenu(List.of(account));
+        }
 
-//        CurrentLoginInformation.Routes routes = sysSecurityMapper.toRoutes(account);
-        List<SysMenu> accountSysMenu = getAccountSysMenu(List.of(account));
         accountSysMenu = accountSysMenu.stream()
-                .filter(sysMenu -> sysMenu.getStatus().equals(DataItemStatus.ENABLE)).toList();
+            .filter(sysMenu -> sysMenu.getStatus().equals(DataItemStatus.ENABLE)).toList();
 
-//        List<SysMenu> leftAndTopRoutes = accountSysMenu.stream()
-//                .filter(sysMenu -> {
-//                    if (sysMenu.getStatus().equals(DataItemStatus.ENABLE)
-//                            && sysMenu.getLocation().equals(SysMenuLocation.LEFT_MENU)
-//                            && sysMenu.getType().equals(SysMenuType.CATALOGUE)
-//                            && sysMenu.getType().equals(SysMenuType.PAGE)
-//                    ) {
-//                        return true;
-//                    } else {
-//                        return false;
-//                    }
-//                }).toList();
-//
-//        currentLoginInformation.setLeftAndTopRoutes(sysSecurityMapper.toRoutes(leftAndTopRoutes);
-//        List<SysMenu> rightRoutes = accountSysMenu.stream()
-//                .filter(sysMenu -> {
-//                    if (sysMenu.getStatus().equals(DataItemStatus.ENABLE)
-//                            && sysMenu.getLocation().equals(SysMenuLocation.LEFT_MENU)
-//                            && sysMenu.getType().equals(SysMenuType.CATALOGUE)
-//                            && sysMenu.getType().equals(SysMenuType.PAGE)
-//                    ) {
-//                        return true;
-//                    } else {
-//                        return false;
-//                    }
-//                }).toList();
-//        currentLoginInformation.setRightRoutes(rightRoutes);
-//        currentLoginInformation.setCurrentLoginAccountUserPermissions(new JSONArray(menuService.getAccountMenuPermissions(account.getAccountId())));
+        List<SysMenu> leftAndTopRoutes = accountSysMenu.stream()
+            .filter(sysMenu -> sysMenu.getStatus().equals(DataItemStatus.ENABLE)
+                && sysMenu.getLocation().equals(SysMenuLocation.LEFT_MENU)
+                && (sysMenu.getType().equals(SysMenuType.CATALOGUE)
+                || sysMenu.getType().equals(SysMenuType.PAGE))
+            ).toList();
+
+        currentLoginInformation.setLeftAndTopRoutes(sysSecurityMapper.toRoutes(sysSecurityMapper.toMenuRoutesDtoToTree(leftAndTopRoutes)));
+        List<SysMenu> rightRoutes = accountSysMenu.stream()
+            .filter(sysMenu -> sysMenu.getStatus().equals(DataItemStatus.ENABLE)
+                && sysMenu.getLocation().equals(SysMenuLocation.RIGHT_MENU)
+                && sysMenu.getType().equals(SysMenuType.FUNCTION)
+                ).toList();
+        currentLoginInformation.setRightRoutes(sysSecurityMapper.toRoutes(sysSecurityMapper.toMenuRoutesDtoToTree(rightRoutes)));
+
+        return currentLoginInformation;
     }
 
     /**
      * 获取菜单的权限
+     *
      * @param menus
      * @return
      */
@@ -243,13 +239,13 @@ public class SysSecurityServiceImpl implements SysSecurityService {
         menus.stream().collect(Collectors.toMap(SysMenu::getId, menu -> menu, (key1, key2) -> key1));
         // 处理菜单的属性并进行分组
         menus.forEach(sysMenu ->
-                sysMenu.getAttributes().stream()
-                        .collect(Collectors.groupingBy(SysAttribute::getServiceId))
-                        .forEach((serviceId, attributes) -> {
-                            Set<String> sysAttributes = attributeMaps.getOrDefault(serviceId, new HashSet<>());
-                            sysAttributes.addAll(attributes.stream().map(SysAttribute::getAttributeId).collect(Collectors.toSet()));
-                            attributeMaps.put(serviceId, sysAttributes);
-                        })
+            sysMenu.getAttributes().stream()
+                .collect(Collectors.groupingBy(SysAttribute::getServiceId))
+                .forEach((serviceId, attributes) -> {
+                    Set<String> sysAttributes = attributeMaps.getOrDefault(serviceId, new HashSet<>());
+                    sysAttributes.addAll(attributes.stream().map(SysAttribute::getAttributeId).collect(Collectors.toSet()));
+                    attributeMaps.put(serviceId, sysAttributes);
+                })
         );
         List<String> collect = new ArrayList<>();
         // 将分组后的属性ID集合生成权限并添加到权限集合中
@@ -261,6 +257,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
 
     /**
      * 生成权限key
+     *
      * @param input
      * @return
      */

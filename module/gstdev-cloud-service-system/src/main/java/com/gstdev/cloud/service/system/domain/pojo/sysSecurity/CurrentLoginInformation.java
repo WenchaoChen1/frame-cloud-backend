@@ -16,8 +16,8 @@ public class CurrentLoginInformation implements Serializable {
     private String accountId;
     private String accountName;
     private String tenantId;
-    private Routes leftAndTopRoutes;
-    private Routes rightRoutes;
+    private List<Routes> leftAndTopRoutes;
+    private List<Routes> rightRoutes;
     private List<String> functionPermissionCode;
     private Integer type;
     private JSON tenant;

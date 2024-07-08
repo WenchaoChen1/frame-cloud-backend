@@ -1,10 +1,12 @@
 package com.frame.template.common.redis.currentLoginInformation;
 
 import cn.hutool.json.JSON;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,5 +20,9 @@ public class CurrentLoginInformation implements Serializable {
     private JSON tenant;
     private JSON currentLoginAccount;
     private JSON currentLoginAccountUserPermissions;
+    private List<Object> leftAndTopRoutes;
+    private List<Object> rightRoutes;
+    private List<Object> functionPermissionCode;
+
 
 }

@@ -4,6 +4,7 @@ import com.frame.template.autoconfigure.service.system.service.RedisCurrentLogin
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.service.system.service.SysSecurityService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;

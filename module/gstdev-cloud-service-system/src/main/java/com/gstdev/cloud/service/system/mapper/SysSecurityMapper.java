@@ -27,7 +27,7 @@ import java.util.List;
 public interface SysSecurityMapper {
 
 
-    CurrentLoginInformation.Routes toRoutes(MenuRoutesDto menuRoutesDto);
+    List<CurrentLoginInformation.Routes> toRoutes(List<MenuRoutesDto> menuRoutesDtos);
 
     List<MenuRoutesDto> toMenuRoutesDto(List<SysMenu> sysMenus);
 
