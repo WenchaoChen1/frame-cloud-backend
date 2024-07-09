@@ -187,15 +187,28 @@ public class SysSecurityServiceImpl implements SysSecurityService {
      * @return
      */
     @Override
+    public CurrentLoginInformation getAccountCurrentLoginInformation(String accountId) {
+        return findAccountCurrentLoginInformation(accountId);
+    }
+    /**
+     * 更新当前登录信息
+     *
+     * @param accountId
+     * @return
+     */
+    @Override
     public CurrentLoginInformation updateAccountCurrentLoginInformation(String accountId) {
         CurrentLoginInformation accountCurrentLoginInformation = findAccountCurrentLoginInformation(accountId);
 
         return accountCurrentLoginInformation;
     }
-    @Override
-    public CurrentLoginInformation getAccountCurrentLoginInformation(String accountId) {
-        return findAccountCurrentLoginInformation(accountId);
-    }
+
+    /**
+     * 获取当前登录信息
+     *
+     * @param accountId
+     * @return
+     */
     public CurrentLoginInformation findAccountCurrentLoginInformation(String accountId) {
         SysAccount account = null;
         if (!ObjectUtils.isEmpty(accountId)) {
@@ -227,7 +240,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
         currentLoginInformation.setAccountName(account.getName());
         currentLoginInformation.setTenantId(account.getTenantId());
         currentLoginInformation.setType(account.getType().getValue());
-        List<SysMenu> accountSysMenu ;
+        List<SysMenu> accountSysMenu;
         if (account.getUser().getType().equals(SysUserType.SUPER)) {
             accountSysMenu = sysMenuService.findAll();
         } else {
@@ -247,17 +260,17 @@ public class SysSecurityServiceImpl implements SysSecurityService {
         List<SysMenu> rightRoutes = accountSysMenu.stream()
             .filter(sysMenu -> sysMenu.getLocation().equals(SysMenuLocation.RIGHT_MENU)
                 && sysMenu.getType().equals(SysMenuType.FUNCTION)
-                ).toList();
+            ).toList();
 
         currentLoginInformation.setRightRoutes(sysSecurityMapper.toRoutes(sysSecurityMapper.toMenuRoutesDtoToTree(rightRoutes)));
 
         List<String> functionPermissionCode = accountSysMenu.stream()
-            .filter(sysMenu ->  sysMenu.getType().equals(SysMenuType.FUNCTION)
+            .filter(sysMenu -> sysMenu.getType().equals(SysMenuType.FUNCTION)
             ).map(SysMenu::getCode).toList();
         currentLoginInformation.setFunctionPermissionCode(functionPermissionCode);
 
         List<String> pagePathAccessPermission = accountSysMenu.stream()
-            .filter(sysMenu ->  sysMenu.getType().equals(SysMenuType.CATALOGUE)|| sysMenu.getType().equals(SysMenuType.PAGE)
+            .filter(sysMenu -> sysMenu.getType().equals(SysMenuType.CATALOGUE) || sysMenu.getType().equals(SysMenuType.PAGE)
             ).map(SysMenu::getName).toList();
         currentLoginInformation.setPagePathAccessPermission(pagePathAccessPermission);
         return currentLoginInformation;
