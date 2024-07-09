@@ -4,7 +4,6 @@ import com.frame.template.autoconfigure.service.system.service.RedisCurrentLogin
 import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
 import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.service.system.service.SysSecurityService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +22,16 @@ public class RedisCurrentLoginInformationController {
     @Operation(summary = "")
     @PostMapping("/add-by-token-current-login-information")
     public Result<Object> addByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput) {
+        try {
+            return redisCurrentLoginInformationService.addByTokenCurrentLoginInformation(redisCurrentLoginInformationInput);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.failure(e.getMessage());
+        }
+    }
+    @Operation(summary = "")
+    @PostMapping("/add-aby-token-current-login-information")
+    public Result<Object> addByTokenCurrentaLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput) {
         try {
             return redisCurrentLoginInformationService.addByTokenCurrentLoginInformation(redisCurrentLoginInformationInput);
         } catch (Exception e) {

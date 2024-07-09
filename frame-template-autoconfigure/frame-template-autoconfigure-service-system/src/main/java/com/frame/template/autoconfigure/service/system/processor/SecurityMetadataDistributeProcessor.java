@@ -67,7 +67,7 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
         List<SysInterface> storedInterfaces = sysInterfaceService.storeRequestMappings(requestMappings);
         if (CollectionUtils.isNotEmpty(storedInterfaces)) {
             log.debug("[Gstdev Cloud] |- [5] Request mapping store success, start to merge security metadata!");
-//            sysAttributeService.attributeInit();
+
             List<SysInterface> sysInterfaces = sysInterfaceService.findAllocatable();
             sysAttributeService.updateAttributeInterFace();
             if (CollectionUtils.isNotEmpty(sysInterfaces)) {

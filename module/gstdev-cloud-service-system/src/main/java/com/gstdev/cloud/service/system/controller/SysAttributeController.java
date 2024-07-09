@@ -51,6 +51,15 @@ public class SysAttributeController implements ResultController {
     public Result<Map<String, Object>> getMenuManageAttributePage(MenuManageAttributePageQO attributePageQO, BasePage pageable) {
         return this.result(this.getMapper().toMenuManageAttributePageVo(this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, attributePageQO, criteriaBuilder), pageable)));
     }
+//    @Tags({
+//        @Tag(name = "attributeInit"),
+//    })
+//    @GetMapping("/attributeInit")
+//    @Operation(summary = "attributeInit")
+//    public Result<Map<String, Object>> attributeInit() {
+//        this.getService().attributeInit();
+//        return this.result();
+//    }
 
     @Tags({@Tag(name = "Attribute Manage"),
     })

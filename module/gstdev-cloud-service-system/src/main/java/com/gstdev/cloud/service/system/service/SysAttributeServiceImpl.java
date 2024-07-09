@@ -52,48 +52,35 @@ public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttribute, Strin
         saveAllAndFlush(sysAttributes);
     }
 
-    @Override
-    @Transactional
-    public void attributeInit() {
-        List<SysInterface> sysInterfaces = sysInterfaceService.findAll();
-        List<SysAttribute> sysAttributes = findAll();
-        List<SysAttribute> sysAttributeList = new ArrayList<>();
-
-        // 使用迭代器避免并发修改异常
-        Iterator<SysAttribute> attributeIterator = sysAttributes.iterator();
-        while (attributeIterator.hasNext()) {
-            SysAttribute sysAttribute = attributeIterator.next();
-            for (SysInterface sysInterface : sysInterfaces) {
-                if (sysInterface.getServiceId().equals(sysAttribute.getServiceId())) {
-                    if (!sysInterface.getStatus().equals(DataItemStatus.ENABLE)) {
-                        sysAttribute.setStatus(DataItemStatus.EXPIRED);
-                    }
-                    sysAttributeList.add(sysAttribute);
-                    attributeIterator.remove(); // 从原集合中删除已处理的元素
-                    break; // 找到匹配的服务ID后退出循环
-                }
-            }
-        }
-
-        // 将剩余的 sysInterfaces 转换为 sysAttributes 并添加到列表中
-        sysAttributeList.addAll(toSysAttributes.convert(sysInterfaces));
-
-        // 保存并刷新所有属性
-        getService().saveAllAndFlush(sysAttributeList);
-//        sysInterfaces.forEach(sysInterface -> {
-//            sysAttributes.forEach(sysAttribute -> {
+//    @Override
+//    @Transactional
+//    public void attributeInit() {
+//        List<SysInterface> sysInterfaces = sysInterfaceService.findAll();
+//        List<SysAttribute> sysAttributes = findAll();
+//        List<SysAttribute> sysAttributeList = new ArrayList<>();
+//
+//        // 使用迭代器避免并发修改异常
+//        Iterator<SysAttribute> attributeIterator = sysAttributes.iterator();
+//        while (attributeIterator.hasNext()) {
+//            SysAttribute sysAttribute = attributeIterator.next();
+//            for (SysInterface sysInterface : sysInterfaces) {
 //                if (sysInterface.getServiceId().equals(sysAttribute.getServiceId())) {
 //                    if (!sysInterface.getStatus().equals(DataItemStatus.ENABLE)) {
 //                        sysAttribute.setStatus(DataItemStatus.EXPIRED);
 //                    }
 //                    sysAttributeList.add(sysAttribute);
-//                    sysAttributes.remove(sysAttribute);
+//                    attributeIterator.remove(); // 从原集合中删除已处理的元素
+//                    break; // 找到匹配的服务ID后退出循环
 //                }
-//            });
-//        });
+//            }
+//        }
+//
+//        // 将剩余的 sysInterfaces 转换为 sysAttributes 并添加到列表中
 //        sysAttributeList.addAll(toSysAttributes.convert(sysInterfaces));
+//
+//        // 保存并刷新所有属性
 //        getService().saveAllAndFlush(sysAttributeList);
-    }
+//    }
 
     @Override
     public List<SysAttribute> findAllByServiceId(String serviceId) {
