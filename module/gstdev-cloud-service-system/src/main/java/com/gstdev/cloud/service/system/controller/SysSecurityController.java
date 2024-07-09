@@ -2,6 +2,8 @@ package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
+import com.gstdev.cloud.service.system.domain.pojo.sysSecurity.CurrentLoginInformation;
+import com.gstdev.cloud.service.system.service.SysSecurityService;
 import com.gstdev.cloud.service.system.service.SysUserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -19,6 +21,24 @@ public class SysSecurityController {
     @Resource
     @Lazy
     private SysUserService userService;
+    @Resource
+    @Lazy
+    private SysSecurityService sysSecurityService;
+
+    @Tag(name = "Login")
+    @Operation(summary = "reset-password")
+    @GetMapping("/get-account-current-login-information/{accountId}")
+    public Result<CurrentLoginInformation> getAccountCurrentLoginInformation(@NotBlank @PathVariable String accountId) {
+        return Result.success(sysSecurityService.getAccountCurrentLoginInformation(accountId));
+    }
+
+    @Tag(name = "Login")
+    @Operation(summary = "reset-password")
+    @PutMapping("/update-account-current-login-information/{accountId}")
+    public Result<CurrentLoginInformation> updateAccountCurrentLoginInformation(@NotBlank @PathVariable String accountId) {
+        return Result.success(sysSecurityService.updateAccountCurrentLoginInformation(accountId));
+    }
+
 
     @Tag(name = "User Settings")
     @Operation(summary = "reset-password")

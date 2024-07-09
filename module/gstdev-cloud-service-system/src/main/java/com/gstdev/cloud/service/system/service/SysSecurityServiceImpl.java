@@ -180,6 +180,19 @@ public class SysSecurityServiceImpl implements SysSecurityService {
         return sysTenantMenus.stream().map(SysTenantMenu::getMenu).toList();
     }
 
+    /**
+     * 获取当前登录信息
+     *
+     * @param accountId
+     * @return
+     */
+    @Override
+    public CurrentLoginInformation updateAccountCurrentLoginInformation(String accountId) {
+        CurrentLoginInformation accountCurrentLoginInformation = getAccountCurrentLoginInformation(accountId);
+
+        return accountCurrentLoginInformation;
+    }
+
     @Override
     public CurrentLoginInformation getAccountCurrentLoginInformation(String accountId) {
         SysAccount account = null;
@@ -193,6 +206,18 @@ public class SysSecurityServiceImpl implements SysSecurityService {
             }
             account = accounts.get(0);
         }
+        return getAccountCurrentLoginInformation(account);
+    }
+
+
+    /**
+     * 获取指定账户登录信息
+     *
+     * @param account
+     * @return
+     */
+    public CurrentLoginInformation getAccountCurrentLoginInformation(SysAccount account) {
+
         CurrentLoginInformation currentLoginInformation = new CurrentLoginInformation();
         currentLoginInformation.setUserId(account.getUser().getUserId());
         currentLoginInformation.setUserName(account.getUser().getUsername());

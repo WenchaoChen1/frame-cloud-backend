@@ -11,4 +11,7 @@ public interface SysSecurityService {
     Set<FrameGrantedAuthority> getUserAuthoritiesPermissions(SysUser sysUser);
 
     CurrentLoginInformation getAccountCurrentLoginInformation(String accountId);
+
+    CurrentLoginInformation updateAccountCurrentLoginInformation(String accountId);
+
 }
