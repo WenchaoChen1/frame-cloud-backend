@@ -50,13 +50,16 @@ public class SysMenu extends BaseEntity {
 
     @Column(name = "menu_name", length = 64, nullable = false)
     private String menuName;
+
     @Column(name = "code", length = 64, nullable = false, unique = true)
     private String code;
 
     @Column(name = "name", length = 150)
     private String name;
+
     @Column(name = "path", length = 250)
     private String path;
+
     @Column(name = "icon", length = 100)
     private String icon;
 
@@ -68,7 +71,8 @@ public class SysMenu extends BaseEntity {
 
     @Column(name = "type", nullable = false)
     private SysMenuType type;
-    @Column(name = "location", nullable = false)
+
+    @Column(name = "location")
     private SysMenuLocation location;
 
     @Schema(title = "数据状态")

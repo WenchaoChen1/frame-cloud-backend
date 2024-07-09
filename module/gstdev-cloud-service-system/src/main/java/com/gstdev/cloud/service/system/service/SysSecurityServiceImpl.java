@@ -225,7 +225,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
         currentLoginInformation.setAccountName(account.getName());
         currentLoginInformation.setTenantId(account.getTenantId());
         currentLoginInformation.setType(account.getType().getValue());
-        List<SysMenu> accountSysMenu = new ArrayList<>();
+        List<SysMenu> accountSysMenu ;
         if (account.getUser().getType().equals(SysUserType.SUPER)) {
             accountSysMenu = sysMenuService.findAll();
         } else {
@@ -256,7 +256,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
 
         List<String> pagePathAccessPermission = accountSysMenu.stream()
             .filter(sysMenu ->  sysMenu.getType().equals(SysMenuType.FUNCTION)
-            ).map(SysMenu::getName).toList();
+            ).map(SysMenu::getCode).toList();
         currentLoginInformation.setPagePathAccessPermission(pagePathAccessPermission);
         return currentLoginInformation;
     }
