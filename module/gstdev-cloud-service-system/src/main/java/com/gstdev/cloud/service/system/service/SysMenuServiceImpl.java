@@ -4,6 +4,7 @@ import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.service.system.domain.entity.*;
 import com.gstdev.cloud.service.system.domain.enums.SysAccountType;
+import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
 import com.gstdev.cloud.service.system.domain.enums.SysUserType;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.AccountMenuPermissionsDto;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.AccountMenuPermissionsQO;
@@ -15,6 +16,7 @@ import com.gstdev.cloud.service.system.repository.SysMenuRepository;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -98,6 +100,7 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
     @Transactional
     public void insertMenuManage(InsertMenuManageIO insertMenuManageIO) {
         SysMenu entity = getMapper().toEntity(insertMenuManageIO);
+        verify(entity);
         getService().saveAndFlush(entity);
     }
 
@@ -108,7 +111,27 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
     public void updateMenuManage(UpdateMenuManageIO updateMenuManageIO) {
         SysMenu sysMenu = service.findById(updateMenuManageIO.getId());
         menuMapper.copy(updateMenuManageIO, sysMenu);
+        verify(sysMenu);
         service.saveAndFlush(sysMenu);
+    }
+
+    public void verify(SysMenu entity) {
+        if (entity.getType().equals(SysMenuType.CATALOGUE)) {
+           if(ObjectUtils.isEmpty(entity.getName())){
+               throw new RuntimeException("目录类型菜单必须填写name");
+           }
+        }
+        if (entity.getType().equals(SysMenuType.PAGE)) {
+            if(ObjectUtils.isEmpty(entity.getName())){
+                throw new RuntimeException("目录类型菜单必须填写name");
+            }
+            if(ObjectUtils.isEmpty(entity.getPath())){
+                throw new RuntimeException("目录类型菜单必须填写路径");
+            }
+        }
+        if (entity.getType().equals(SysMenuType.FUNCTION)) {
+
+        }
     }
     /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
 

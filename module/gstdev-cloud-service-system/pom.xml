@@ -24,6 +24,9 @@
         <dependency>
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-oauth2-core</artifactId>
+        </dependency>        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+        <artifactId>gstdev-cloud-base-core</artifactId>
         </dependency>
     </dependencies>
 </project>

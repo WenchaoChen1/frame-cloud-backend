@@ -14,7 +14,6 @@ public class UpdateMenuManageIO {
     private String id;
     private String menuName;
     private String parentId;
-    private String code;
     private Integer sort;
     private SysMenuType type;
     private SysMenuLocation location;
