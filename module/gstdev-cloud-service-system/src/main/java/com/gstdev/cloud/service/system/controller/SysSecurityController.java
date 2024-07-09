@@ -26,14 +26,14 @@ public class SysSecurityController {
     private SysSecurityService sysSecurityService;
 
     @Tag(name = "Login")
-    @Operation(summary = "reset-password")
+    @Operation(summary = "get-account-current-login-information")
     @GetMapping("/get-account-current-login-information/{accountId}")
     public Result<CurrentLoginInformation> getAccountCurrentLoginInformation(@NotBlank @PathVariable String accountId) {
         return Result.success(sysSecurityService.getAccountCurrentLoginInformation(accountId));
     }
 
     @Tag(name = "Login")
-    @Operation(summary = "reset-password")
+    @Operation(summary = "update-account-current-login-information")
     @PutMapping("/update-account-current-login-information/{accountId}")
     public Result<CurrentLoginInformation> updateAccountCurrentLoginInformation(@NotBlank @PathVariable String accountId) {
         return Result.success(sysSecurityService.updateAccountCurrentLoginInformation(accountId));
