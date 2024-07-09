@@ -9,31 +9,44 @@
 
 package com.gstdev.cloud.service.system.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
+import com.gstdev.cloud.service.system.domain.entity.SysRAttributeMenu;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.*;
 import com.gstdev.cloud.service.system.mapper.SysMenuMapper;
 import com.gstdev.cloud.service.system.service.SysMenuService;
+import com.gstdev.cloud.service.system.service.SysRAttributeMenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 
 @RestController
 @RequestMapping("/v1/menu")
 public class SysMenuController implements ResultController {
-
     @Resource
     @Lazy
     private SysMenuService menuService;
-
+    @Resource
+    @Lazy
+    private SysRAttributeMenuService sysRAttributeMenuService;
     @Resource
     private SysMenuMapper menuMapper;
 
@@ -93,6 +106,66 @@ public class SysMenuController implements ResultController {
         return Result.success();
     }
 
+    @Tag(name = "Menu Manage")
+    @Operation(summary = "upload-menu-manage")
+    @PostMapping("/upload-menu-manage")
+    public Result<String> uploadMenuManageJsonFile(@RequestParam("file") MultipartFile file) throws IOException {
+        // 将 MultipartFile 转换为 User 对象
+        List<SysMenu> sysMenus = Jackson2Utils.getObjectMapper().readValue(file.getInputStream(), new TypeReference<List<SysMenu>>() {
+        });
+        List<SysMenu> all = getService().findAll();
+        if(all.size()>1){
+            throw new PlatformRuntimeException("Menu data already exists, please delete the data first");
+        }
+
+        getService().saveAllAndFlush(sysMenus);
+        return Result.success();
+    }
+
+    @Tag(name = "Menu Manage")
+    @Operation(summary = "download-menu-manage")
+    @GetMapping("/download-menu-manage")
+    public ResponseEntity<byte[]> downloadMenuManageJsonFile() throws JsonProcessingException {
+        List<SysMenu> all = getService().findAll();
+        // 将实体对象转换为JSON字符串
+        byte[] jsonBytes = Jackson2Utils.getObjectMapper().writeValueAsBytes(all);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setContentDispositionFormData("attachment", "menu.json");
+
+        return new ResponseEntity<>(jsonBytes, headers, HttpStatus.OK);
+    }
+    @Tag(name = "Menu Manage")
+    @Operation(summary = "upload-menu-manage-assigned-attribute")
+    @PostMapping("/upload-menu-manage-assigned-attribute")
+    public Result<String> uploadMenuManageAssignedAttributeJsonFile(@RequestParam("file") MultipartFile file) throws IOException {
+        // 将 MultipartFile 转换为 User 对象
+        List<SysRAttributeMenu> sysRAttributeMenus = Jackson2Utils.getObjectMapper().readValue(file.getInputStream(), new TypeReference<List<SysRAttributeMenu>>() {
+        });
+        List<SysRAttributeMenu> all = sysRAttributeMenuService.findAll();
+        if(all.size()>1){
+            throw new PlatformRuntimeException("Menu data already exists, please delete the data first");
+        }
+
+        sysRAttributeMenuService.saveAllAndFlush(sysRAttributeMenus);
+        return Result.success();
+    }
+
+    @Tag(name = "Menu Manage")
+    @Operation(summary = "download-menu-manage-assigned-attribute")
+    @GetMapping("/download-menu-manage-assigned-attribute")
+    public ResponseEntity<byte[]> downloadMenuManageAssignedAttributeJsonFile() throws JsonProcessingException {
+        List<SysRAttributeMenu> all = sysRAttributeMenuService.findAll();
+        // 将实体对象转换为JSON字符串
+        byte[] jsonBytes = Jackson2Utils.getObjectMapper().writeValueAsBytes(all);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setContentDispositionFormData("attachment", "menu.json");
+
+        return new ResponseEntity<>(jsonBytes, headers, HttpStatus.OK);
+    }
     /*------------------------------------------以上是系统访问控制自定义代码--------------------------------------------*/
 
     @Tag(name = "Tenant Manage")

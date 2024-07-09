@@ -11,13 +11,14 @@ package com.gstdev.cloud.service.system.domain.pojo.sysMenu;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
-import com.gstdev.cloud.service.system.util.TreeNode;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuLocation;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
+import com.gstdev.cloud.service.system.util.TreeNode;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
@@ -45,5 +46,17 @@ public class MenuManageTreeVo extends TreeNode<String, MenuManageTreeVo> {
     private SysMenuLocation location;
     private String path;
     private String icon;
+    private List<SysAttributesVO> attributes;
+
+    @Getter
+    @Setter
+    public static class SysAttributesVO{
+        private String attributeCode;
+        private String requestMethod;
+        private String serviceId;
+        private String className;
+        private String methodName;
+        private String url;
+    }
 }
 
