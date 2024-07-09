@@ -14,6 +14,7 @@ import com.gstdev.cloud.service.system.repository.SysRoleRepository;
 import com.gstdev.cloud.service.system.repository.SysUserRepository;
 import jakarta.annotation.Resource;
 import lombok.Getter;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
@@ -33,8 +34,9 @@ public class SysAccountServiceImpl extends BaseServiceImpl<SysAccount, String, S
     private SysAccountMapper accountMapper;
     @Resource
     private SysAccountRepository accountRepository;
-
-
+    @Resource
+    @Lazy
+    private SysTenantService sysTenantService;
     public SysAccountServiceImpl(SysAccountRepository accountRepository, SysAccountMapper accountMapper) {
         super(accountRepository);
         this.accountRepository = accountRepository;
@@ -121,7 +123,17 @@ public class SysAccountServiceImpl extends BaseServiceImpl<SysAccount, String, S
      */
     @Override
     public List<AccountSettingsDetailVO> getAccountSettingsDetail() {
-        return accountMapper.toAccountSettingsDetailVO(findAllByUserId(SecurityUtils.getUserId()));
+        List<SysAccount> allByUserId = findAllByUserId(SecurityUtils.getUserId());
+        List<AccountSettingsDetailVO> accountSettingsDetailVO = accountMapper.toAccountSettingsDetailVO(allByUserId);
+
+        allByUserId.forEach(account -> {
+            accountSettingsDetailVO.forEach(accountSettingsDetailVO1 -> {
+                if (account.getAccountId().equals(accountSettingsDetailVO1.getAccountId())) {
+                    accountSettingsDetailVO1.setTenantName(sysTenantService.findById(account.getTenantId()).getTenantName());
+                }
+            });
+        });
+        return accountSettingsDetailVO;
     }
 
     @Override

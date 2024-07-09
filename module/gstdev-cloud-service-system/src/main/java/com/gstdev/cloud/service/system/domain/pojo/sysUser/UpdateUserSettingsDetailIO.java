@@ -13,8 +13,6 @@ public class UpdateUserSettingsDetailIO {
     private String lastName;
     private String description;
 
-
-
     private String accountId;
     private String accountName;
 }
