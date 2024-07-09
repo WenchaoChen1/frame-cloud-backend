@@ -3,6 +3,7 @@ package com.gstdev.cloud.service.system.domain.entity;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.generator.SysInterfaceUuidGenerator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -55,7 +56,10 @@ public class SysInterface extends BaseEntity {
     @Schema(title = "备注")
     @Column(name = "description", length = 512)
     private String description;
-
+    @Schema(title = "数据状态")
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private DataItemStatus status = DataItemStatus.ENABLE;
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -83,6 +87,7 @@ public class SysInterface extends BaseEntity {
                 .add("className", className)
                 .add("methodName", methodName)
                 .add("url", url)
+                .add("status", status)
                 .toString();
     }
 }

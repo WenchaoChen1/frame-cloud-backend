@@ -1,8 +1,6 @@
 package com.frame.template.autoconfigure.service.system.processor;
 
 
-import com.frame.template.autoconfigure.service.system.converter.SysAttributeToSecurityAttributeConverter;
-import com.frame.template.autoconfigure.service.system.converter.SysInterfacesToSysAttributesConverter;
 import com.google.common.collect.ImmutableList;
 import com.gstdev.cloud.base.core.exception.transaction.TransactionalRollbackException;
 import com.gstdev.cloud.message.core.definition.strategy.StrategyEventManager;
@@ -10,6 +8,8 @@ import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
 import com.gstdev.cloud.oauth2.core.definition.domain.SecurityAttribute;
 import com.gstdev.cloud.oauth2.resource.server.processor.SecurityMetadataSourceAnalyzer;
 import com.gstdev.cloud.service.common.autoconfigure.bus.RemoteSecurityMetadataSyncEvent;
+import com.gstdev.cloud.service.system.converter.SysAttributeToSecurityAttributeConverter;
+import com.gstdev.cloud.service.system.converter.SysInterfacesToSysAttributesConverter;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysInterface;
 import com.gstdev.cloud.service.system.service.SysAttributeService;
@@ -67,17 +67,13 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
         List<SysInterface> storedInterfaces = sysInterfaceService.storeRequestMappings(requestMappings);
         if (CollectionUtils.isNotEmpty(storedInterfaces)) {
             log.debug("[Gstdev Cloud] |- [5] Request mapping store success, start to merge security metadata!");
-
+//            sysAttributeService.attributeInit();
             List<SysInterface> sysInterfaces = sysInterfaceService.findAllocatable();
-
+            sysAttributeService.updateAttributeInterFace();
             if (CollectionUtils.isNotEmpty(sysInterfaces)) {
                 List<SysAttribute> elements = toSysAttributes.convert(sysInterfaces);
-//                List<SysPermission> collect = elements.stream()
-//                    .flatMap(attribute -> attribute.getPermissions().stream())
-//                    .distinct()
-//                    .collect(Collectors.toList());
-//                List<SysPermission> sysPermissions = sysPermissionService.saveAllAndFlush(collect);
                 List<SysAttribute> result = sysAttributeService.saveAllAndFlush(elements);
+
                 sysPermissionService.permissionInit();
                 if (CollectionUtils.isNotEmpty(result)) {
                     log.debug("[Gstdev Cloud] |- Merge security attribute SUCCESS and FINISHED!");

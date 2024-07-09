@@ -248,11 +248,12 @@ public class SysSecurityServiceImpl implements SysSecurityService {
                 ).toList();
 
         currentLoginInformation.setRightRoutes(sysSecurityMapper.toRoutes(sysSecurityMapper.toMenuRoutesDtoToTree(rightRoutes)));
+
         List<String> functionPermissionCode = accountSysMenu.stream()
             .filter(sysMenu ->  sysMenu.getType().equals(SysMenuType.FUNCTION)
             ).map(SysMenu::getCode).toList();
-
         currentLoginInformation.setFunctionPermissionCode(functionPermissionCode);
+
         List<String> pagePathAccessPermission = accountSysMenu.stream()
             .filter(sysMenu ->  sysMenu.getType().equals(SysMenuType.FUNCTION)
             ).map(SysMenu::getName).toList();

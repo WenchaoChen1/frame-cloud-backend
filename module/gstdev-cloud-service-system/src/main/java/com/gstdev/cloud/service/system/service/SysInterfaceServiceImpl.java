@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
 import com.gstdev.cloud.service.system.domain.converter.RequestMappingToSysInterfaceConverter;
@@ -15,9 +16,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, String, SysInterfaceRepository> implements SysInterfaceService {
@@ -72,6 +71,13 @@ public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, Strin
     @Transactional
     public List<SysInterface> storeRequestMappings(Collection<RequestMapping> requestMappings) {
         List<SysInterface> sysAuthorities = toSysInterfaces(requestMappings);
+        Map<String, List<SysInterface>> attributeMap = sysAuthorities.stream()
+                .collect(Collectors.groupingBy(SysInterface::getServiceId));
+        Set<Map.Entry<String, List<SysInterface>>> entries = attributeMap.entrySet();
+        for (Map.Entry<String, List<SysInterface>> entry : entries) {
+            String serviceId = entry.getKey();
+            getRepository().updateStatusByServiceId(DataItemStatus.EXPIRED, serviceId);
+        }
         return saveAllAndFlush(sysAuthorities);
     }
 
@@ -81,6 +87,13 @@ public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterface, Strin
             return requestMappings.stream().map(toSysInterface::convert).collect(Collectors.toList());
         }
         return new ArrayList<>();
+    }
+
+    @Override
+    public List<String> getInterfacesIdStausExpired() {
+        return getRepository().findAll().stream().filter(sysInterface ->
+                        sysInterface.getStatus() == DataItemStatus.EXPIRED)
+                .map(SysInterface::getInterfaceId).collect(Collectors.toList());
     }
 
 }

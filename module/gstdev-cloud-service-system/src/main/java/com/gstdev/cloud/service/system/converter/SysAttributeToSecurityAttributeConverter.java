@@ -1,4 +1,4 @@
-package com.frame.template.autoconfigure.service.system.converter;
+package com.gstdev.cloud.service.system.converter;
 
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.definition.domain.SecurityAttribute;

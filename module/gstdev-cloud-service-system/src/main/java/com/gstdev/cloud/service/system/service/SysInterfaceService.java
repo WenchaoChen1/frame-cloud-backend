@@ -14,4 +14,10 @@ public interface SysInterfaceService extends BaseService<SysInterface, String> {
     List<SysInterface> storeRequestMappings(Collection<RequestMapping> requestMappings);
 
     List<SysInterface> toSysInterfaces(Collection<RequestMapping> requestMappings);
+
+    /**
+     * 获取过期的接口ID
+     * @return
+     */
+    List<String> getInterfacesIdStausExpired();
 }

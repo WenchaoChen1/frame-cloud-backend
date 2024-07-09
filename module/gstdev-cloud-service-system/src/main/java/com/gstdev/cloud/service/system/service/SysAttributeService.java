@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.Set;
 
 public interface SysAttributeService extends BaseService<SysAttribute, String> {
+    void attributeInit();
 
+    void updateAttributeInterFace();
     List<SysAttribute> findAllByServiceId(String serviceId);
 
     void updateAttributeManageAssignedPermission(AttributeManageAssignedPermissionIO attributeManageAssignedPermissionIO);

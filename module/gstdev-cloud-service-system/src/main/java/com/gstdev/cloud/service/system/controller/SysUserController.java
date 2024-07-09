@@ -103,13 +103,13 @@ public class SysUserController implements ResultController {
     // ********************************* 登录 *****************************************
 
     @Tag(name = "User Settings")
-    @Operation(summary = "reset-password")
+    @Operation(summary = "get-user-settings-detail")
     @GetMapping("/get-user-settings-detail")
     public Result<UserSettingsDetailVO> getUserSettingsDetail() {
         return Result.success(userService.getUserSettingsDetail());
     }
     @Tag(name = "User Settings")
-    @Operation(summary = "reset-password")
+    @Operation(summary = "update-user-settings-detail")
     @PostMapping("/update-user-settings-detail")
     public Result<String> updateUserSettingsDetail(@RequestBody UpdateUserSettingsDetailIO updateUserSettingsDetailIO) {
         userService.updateUserSettingsDetail(updateUserSettingsDetailIO);
