@@ -11,6 +11,8 @@ import java.util.Set;
 public class PermissionManageQO implements Serializable {
 
     private static final long serialVersionUID = 3163118978801722144L;
+    @Query(type = Query.Type.IN)
+    private Set<String> permissionId;
     @Query(type = Query.Type.INNER_LIKE)
     private String permissionName;
     @Query(type = Query.Type.INNER_LIKE)
@@ -19,4 +21,5 @@ public class PermissionManageQO implements Serializable {
     private Set<DataItemStatus> status;
     @Query(type = Query.Type.IN)
     private Set<String> permissionType;
+
 }

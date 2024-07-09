@@ -256,7 +256,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
 
         List<String> pagePathAccessPermission = accountSysMenu.stream()
             .filter(sysMenu ->  sysMenu.getType().equals(SysMenuType.CATALOGUE)|| sysMenu.getType().equals(SysMenuType.PAGE)
-            ).map(SysMenu::getCode).toList();
+            ).map(SysMenu::getName).toList();
         currentLoginInformation.setPagePathAccessPermission(pagePathAccessPermission);
         return currentLoginInformation;
     }

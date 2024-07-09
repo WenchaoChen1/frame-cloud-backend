@@ -11,6 +11,8 @@ import java.util.Set;
 public class MenuManageAttributePageQO implements Serializable {
 
     private static final long serialVersionUID = 3163118978801722144L;
+    @Query(type = Query.Type.IN)
+    private Set<String> attributeId;
     @Query(type = Query.Type.INNER_LIKE)
     private String attributeCode;
     @Query(type = Query.Type.INNER_LIKE)
