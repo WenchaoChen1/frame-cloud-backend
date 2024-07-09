@@ -10,6 +10,7 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.gstdev.cloud.base.core.utils.SecureUtil;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuLocation;
@@ -90,7 +91,7 @@ public class SysMenu extends BaseEntity {
     private List<SysAttribute> attributes;
 
     public void setId(String id) {
-        this.id = SecureUtil.MD5(this.code);
+        this.id = SecureUtil.md5(id);
     }
 
     @Override
@@ -108,4 +109,5 @@ public class SysMenu extends BaseEntity {
     public int hashCode() {
         return Objects.hash(super.hashCode(), parentId, menuName, code, name, path, icon, sort, description, type, location, status, rTenantMenus, attributes);
     }
+
 }
