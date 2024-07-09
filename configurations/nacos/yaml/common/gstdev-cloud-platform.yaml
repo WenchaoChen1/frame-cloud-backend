@@ -22,7 +22,7 @@ gstdev:
       #jwk-set-uri: ${gstdev.cloud.endpoint.identity-service-uri}/oauth2/jwks
       #issuer-uri: ${gstdev.cloud.endpoint.identity-service-uri}
       jwk-set-uri: http://localhost:8101/oauth2/jwks
-      issuer-uri: http://127.0.0.1:8101
+      issuer-uri: http://192.168.0.99:8101
       oidc-client-registration-uri: ${gstdev.cloud.endpoint.identity-service-uri}/connect/register
       oidc-user-info-uri: ${gstdev.cloud.endpoint.identity-service-uri}/userinfo
     swagger:

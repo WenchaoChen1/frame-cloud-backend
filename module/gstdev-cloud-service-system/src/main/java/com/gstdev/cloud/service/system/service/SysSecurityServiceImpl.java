@@ -180,6 +180,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
         return sysTenantMenus.stream().map(SysTenantMenu::getMenu).toList();
     }
 
+    @Override
     public CurrentLoginInformation getAccountCurrentLoginInformation(String accountId) {
         SysAccount account = null;
         if (!ObjectUtils.isEmpty(accountId)) {
@@ -220,10 +221,12 @@ public class SysSecurityServiceImpl implements SysSecurityService {
             .filter(sysMenu -> sysMenu.getLocation().equals(SysMenuLocation.RIGHT_MENU)
                 && sysMenu.getType().equals(SysMenuType.FUNCTION)
                 ).toList();
+
         currentLoginInformation.setRightRoutes(sysSecurityMapper.toRoutes(sysSecurityMapper.toMenuRoutesDtoToTree(rightRoutes)));
         List<String> functionPermissionCode = accountSysMenu.stream()
             .filter(sysMenu ->  sysMenu.getType().equals(SysMenuType.FUNCTION)
             ).map(SysMenu::getCode).toList();
+
         currentLoginInformation.setFunctionPermissionCode(functionPermissionCode);
         List<String> pagePathAccessPermission = accountSysMenu.stream()
             .filter(sysMenu ->  sysMenu.getType().equals(SysMenuType.FUNCTION)
