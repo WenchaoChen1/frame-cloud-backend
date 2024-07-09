@@ -10,7 +10,7 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.gstdev.cloud.base.core.utils.SecureUtil;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuLocation;
@@ -22,6 +22,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SQLDelete;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -91,7 +92,10 @@ public class SysMenu extends BaseEntity {
     private List<SysAttribute> attributes;
 
     public void setId(String id) {
-        this.id = SecureUtil.md5(id);
+        if(ObjectUtils.isEmpty(id)){
+            throw new PlatformRuntimeException("id 不能为空");
+        }
+        this.id = id;
     }
 
     @Override
