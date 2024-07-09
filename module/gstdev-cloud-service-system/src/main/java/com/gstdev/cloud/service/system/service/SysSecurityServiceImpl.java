@@ -188,13 +188,15 @@ public class SysSecurityServiceImpl implements SysSecurityService {
      */
     @Override
     public CurrentLoginInformation updateAccountCurrentLoginInformation(String accountId) {
-        CurrentLoginInformation accountCurrentLoginInformation = getAccountCurrentLoginInformation(accountId);
+        CurrentLoginInformation accountCurrentLoginInformation = findAccountCurrentLoginInformation(accountId);
 
         return accountCurrentLoginInformation;
     }
-
     @Override
     public CurrentLoginInformation getAccountCurrentLoginInformation(String accountId) {
+        return findAccountCurrentLoginInformation(accountId);
+    }
+    public CurrentLoginInformation findAccountCurrentLoginInformation(String accountId) {
         SysAccount account = null;
         if (!ObjectUtils.isEmpty(accountId)) {
             account = sysAccountService.findById(accountId);
