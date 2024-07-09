@@ -10,6 +10,7 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.gstdev.cloud.base.core.utils.SecureUtil;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
@@ -91,11 +92,9 @@ public class SysMenu extends BaseEntity {
     @ManyToMany(mappedBy = "menus",  fetch = FetchType.LAZY)
     private List<SysAttribute> attributes;
 
-    public void setId(String id) {
-        if(ObjectUtils.isEmpty(id)){
-            throw new PlatformRuntimeException("id 不能为空");
-        }
-        this.id = id;
+    public void setCode(String code) {
+        this.code = code;
+        this.id= SecureUtil.md5(code);
     }
 
     @Override
