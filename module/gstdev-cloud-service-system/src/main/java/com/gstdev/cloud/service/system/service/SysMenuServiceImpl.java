@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.base.core.utils.SecureUtil;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.service.system.domain.entity.*;
@@ -56,6 +57,7 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
     public SysMenuServiceImpl getService() {
         return service;
     }
+
     public List<SysMenu> findAllMenuByTenantId(String tenantId) {
         return tenantMenuService.findAllByTenantId(tenantId).stream().map(SysTenantMenu::getMenu).collect(Collectors.toList());
     }
@@ -86,7 +88,7 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
                 Map<String, SysMenu> collect = new HashMap<>();
                 for (SysRole role : account.getRoles()) {
                     Map<String, SysMenu> collect1 = role.getTenantMenus().stream().map(SysTenantMenu::getMenu).collect(Collectors.groupingBy(SysMenu::getId,
-                            Collectors.collectingAndThen(Collectors.toList(), value -> value.get(0))));
+                        Collectors.collectingAndThen(Collectors.toList(), value -> value.get(0))));
                     collect.putAll(collect1);
                 }
                 sysMenuList = collect.values().stream().toList();
@@ -100,10 +102,10 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
     @Transactional
     public void insertMenuManage(InsertMenuManageIO insertMenuManageIO) {
         SysMenu entity = getMapper().toEntity(insertMenuManageIO);
+        entity.setId(SecureUtil.md5(entity.getCode()));
         verify(entity);
         getService().saveAndFlush(entity);
     }
-
 
 
     @Override
@@ -117,15 +119,15 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
 
     public void verify(SysMenu entity) {
         if (entity.getType().equals(SysMenuType.CATALOGUE)) {
-           if(ObjectUtils.isEmpty(entity.getName())){
-               throw new RuntimeException("目录类型菜单必须填写name");
-           }
-        }
-        if (entity.getType().equals(SysMenuType.PAGE)) {
-            if(ObjectUtils.isEmpty(entity.getName())){
+            if (ObjectUtils.isEmpty(entity.getName())) {
                 throw new RuntimeException("目录类型菜单必须填写name");
             }
-            if(ObjectUtils.isEmpty(entity.getPath())){
+        }
+        if (entity.getType().equals(SysMenuType.PAGE)) {
+            if (ObjectUtils.isEmpty(entity.getName())) {
+                throw new RuntimeException("目录类型菜单必须填写name");
+            }
+            if (ObjectUtils.isEmpty(entity.getPath())) {
                 throw new RuntimeException("目录类型菜单必须填写路径");
             }
         }

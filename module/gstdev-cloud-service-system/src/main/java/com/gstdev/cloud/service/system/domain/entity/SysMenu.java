@@ -89,10 +89,10 @@ public class SysMenu extends BaseEntity {
     @ManyToMany(mappedBy = "menus",  fetch = FetchType.LAZY)
     private List<SysAttribute> attributes;
 
-    public void setCode(String code) {
-        this.code = code;
-        this.id= SecureUtil.md5(code);
-    }
+//    public void setCode(String code) {
+//        this.code = code;
+//        this.id= SecureUtil.md5(code);
+//    }
 
     @Override
     public boolean equals(Object

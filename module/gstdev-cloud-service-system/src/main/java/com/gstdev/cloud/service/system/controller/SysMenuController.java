@@ -35,6 +35,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -125,6 +126,8 @@ public class SysMenuController implements ResultController {
         // 将 MultipartFile 转换为 User 对象
         List<SysMenu> sysMenus = Jackson2Utils.getObjectMapper().readValue(file.getInputStream(), new TypeReference<List<SysMenu>>() {
         });
+        Map<String, SysMenu> collect = sysMenus.stream()
+            .collect(Collectors.toMap(SysMenu::getId, sysMenu -> sysMenu));
         // 根据code分组并将结果映射为Map，key为id，value为实体
         List<SysMenu> all = getService().findAll();
         List<SysMenu> sysMenuLists = new ArrayList<>();
@@ -133,9 +136,19 @@ public class SysMenuController implements ResultController {
         Map<String, SysMenu> groupedByCode = all.stream()
             .collect(Collectors.toMap(SysMenu::getCode, sysMenu -> sysMenu));
         for (SysMenu sysMenu : sysMenus) {
+            sysMenu.setId(SecureUtil.md5(sysMenu.getCode()));
+
+            System.out.println(collect.get(sysMenu.getParentId()));
+            if (!ObjectUtils.isEmpty(collect.get(sysMenu.getParentId()))) {
+                System.out.println(collect.get(sysMenu.getParentId()).getCode()+":1111111:"+SecureUtil.md5(collect.get(sysMenu.getParentId()).getCode()));
+                sysMenu.setParentId(SecureUtil.md5(collect.get(sysMenu.getParentId()).getCode()));
+            }
+
             if (groupedById.containsKey(sysMenu.getId())) {
-                if (sysMenu.getCode().equals(groupedById.get(sysMenu.getId()).getCode())
-                    && sysMenu.getId().equals(SecureUtil.md5(groupedById.get(sysMenu.getId()).getCode()))) {
+                if (!sysMenu.getId().equals(SecureUtil.md5(groupedById.get(sysMenu.getId()).getCode()))) {
+                    throw new PlatformRuntimeException("Menu data already exists, please delete the data first.:" + sysMenu.toString() + "new:" + groupedById.get(sysMenu.getId()));
+                }
+                if (sysMenu.getCode().equals(groupedById.get(sysMenu.getId()).getCode())) {
                     if (!groupedById.get(sysMenu.getId()).getName().equals(sysMenu.getName())
                         || !groupedById.get(sysMenu.getId()).getPath().equals(sysMenu.getPath())
                         || !groupedById.get(sysMenu.getId()).getType().equals(sysMenu.getType())
@@ -143,7 +156,7 @@ public class SysMenuController implements ResultController {
                         sysMenu.setStatus(DataItemStatus.LOCKING);
                     }
                     sysMenuLists.add(sysMenu);
-                    break;
+                    continue;
                 }
                 throw new PlatformRuntimeException("Menu data already exists, please delete the data first.:" + sysMenu.toString() + "new:" + groupedById.get(sysMenu.getId()));
             }
@@ -152,8 +165,9 @@ public class SysMenuController implements ResultController {
             }
             sysMenu.setStatus(DataItemStatus.FORBIDDEN);
             sysMenuLists.add(sysMenu);
+
         }
-        getService().saveAllAndFlush(sysMenus);
+        getService().saveAllAndFlush(sysMenuLists);
         return Result.success();
     }
 
