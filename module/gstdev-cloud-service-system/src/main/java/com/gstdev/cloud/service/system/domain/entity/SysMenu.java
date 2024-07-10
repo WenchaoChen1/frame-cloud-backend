@@ -15,7 +15,6 @@ import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuLocation;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuType;
-import com.gstdev.cloud.service.system.domain.generator.SysMenuUuidGenerator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -42,7 +41,7 @@ public class SysMenu extends BaseEntity {
     //    @Column(name = "deleted", nullable = false)
 //    private Integer deleted = 0;
     @Id
-    @SysMenuUuidGenerator
+//    @SysMenuUuidGenerator
     @Column(name = "id", length = 64)
     private String id;
 
