@@ -12,8 +12,10 @@ package com.gstdev.cloud.service.system.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
+import com.gstdev.cloud.base.core.utils.SecureUtil;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
+import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
@@ -40,6 +42,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -121,11 +125,34 @@ public class SysMenuController implements ResultController {
         // 将 MultipartFile 转换为 User 对象
         List<SysMenu> sysMenus = Jackson2Utils.getObjectMapper().readValue(file.getInputStream(), new TypeReference<List<SysMenu>>() {
         });
+        // 根据code分组并将结果映射为Map，key为id，value为实体
         List<SysMenu> all = getService().findAll();
-        if(all.size()>1){
-            throw new PlatformRuntimeException("Menu data already exists, please delete the data first");
+        List<SysMenu> sysMenuLists = new ArrayList<>();
+        Map<String, SysMenu> groupedById = all.stream()
+            .collect(Collectors.toMap(SysMenu::getId, sysMenu -> sysMenu));
+        Map<String, SysMenu> groupedByCode = all.stream()
+            .collect(Collectors.toMap(SysMenu::getCode, sysMenu -> sysMenu));
+        for (SysMenu sysMenu : sysMenus) {
+            if (groupedById.containsKey(sysMenu.getId())) {
+                if (sysMenu.getCode().equals(groupedById.get(sysMenu.getId()).getCode())
+                    && sysMenu.getId().equals(SecureUtil.md5(groupedById.get(sysMenu.getId()).getCode()))) {
+                    if (!groupedById.get(sysMenu.getId()).getName().equals(sysMenu.getName())
+                        || !groupedById.get(sysMenu.getId()).getPath().equals(sysMenu.getPath())
+                        || !groupedById.get(sysMenu.getId()).getType().equals(sysMenu.getType())
+                        || !groupedById.get(sysMenu.getId()).getLocation().equals(sysMenu.getLocation())) {
+                        sysMenu.setStatus(DataItemStatus.LOCKING);
+                    }
+                    sysMenuLists.add(sysMenu);
+                    break;
+                }
+                throw new PlatformRuntimeException("Menu data already exists, please delete the data first.:" + sysMenu.toString() + "new:" + groupedById.get(sysMenu.getId()));
+            }
+            if (groupedByCode.containsKey(sysMenu.getCode())) {
+                throw new PlatformRuntimeException("Menu data already exists, please delete the data first:" + sysMenu.toString() + "new:" + groupedById.get(sysMenu.getId()));
+            }
+            sysMenu.setStatus(DataItemStatus.FORBIDDEN);
+            sysMenuLists.add(sysMenu);
         }
-
         getService().saveAllAndFlush(sysMenus);
         return Result.success();
     }
