@@ -11,7 +11,6 @@ package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gstdev.cloud.base.core.utils.SecureUtil;
-import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuLocation;
@@ -23,7 +22,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SQLDelete;
-import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -75,8 +73,8 @@ public class SysMenu extends BaseEntity {
     @Column(name = "type", nullable = false)
     private SysMenuType type;
 
-    @Column(name = "location")
-    private SysMenuLocation location;
+    @Column(name = "location", nullable = false)
+    private SysMenuLocation location = SysMenuLocation.OTHER;
 
     @Schema(title = "数据状态")
 
