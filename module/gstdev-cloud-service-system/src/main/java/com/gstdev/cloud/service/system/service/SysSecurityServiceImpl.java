@@ -4,10 +4,10 @@ import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.exception.PlatformAuthenticationException;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
+import com.gstdev.cloud.service.common.autoconfigure.currentLoginInformation.CurrentLoginInformation;
 import com.gstdev.cloud.service.common.autoconfigure.currentLoginInformation.RedisCurrentLoginInformation;
 import com.gstdev.cloud.service.system.domain.entity.*;
 import com.gstdev.cloud.service.system.domain.enums.*;
-import com.gstdev.cloud.service.system.domain.pojo.sysSecurity.CurrentLoginInformation;
 import com.gstdev.cloud.service.system.mapper.SysMenuMapper;
 import com.gstdev.cloud.service.system.mapper.SysSecurityMapper;
 import jakarta.annotation.Resource;
@@ -191,7 +191,8 @@ public class SysSecurityServiceImpl implements SysSecurityService {
      */
     @Override
     public CurrentLoginInformation getAccountCurrentLoginInformation(String accountId) {
-        return findAccountCurrentLoginInformation(accountId);
+        CurrentLoginInformation currentLoginInformation = redisCurrentLoginInformation.getCurrentLoginInformation();
+        return currentLoginInformation == null ? updateAccountCurrentLoginInformation(accountId) : currentLoginInformation;
     }
     /**
      * 更新当前登录信息

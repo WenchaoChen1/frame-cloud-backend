@@ -2,7 +2,7 @@ package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
-import com.gstdev.cloud.service.system.domain.pojo.sysSecurity.CurrentLoginInformation;
+import com.gstdev.cloud.service.common.autoconfigure.currentLoginInformation.CurrentLoginInformation;
 import com.gstdev.cloud.service.system.service.SysSecurityService;
 import com.gstdev.cloud.service.system.service.SysUserService;
 import io.swagger.v3.oas.annotations.Operation;

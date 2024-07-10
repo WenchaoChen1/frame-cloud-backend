@@ -9,8 +9,8 @@
 
 package com.gstdev.cloud.service.system.mapper;
 
+import com.gstdev.cloud.service.common.autoconfigure.currentLoginInformation.CurrentLoginInformation;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
-import com.gstdev.cloud.service.system.domain.pojo.sysSecurity.CurrentLoginInformation;
 import com.gstdev.cloud.service.system.domain.pojo.sysSecurity.MenuRoutesDto;
 import com.gstdev.cloud.service.system.util.TreeUtils;
 import org.mapstruct.Mapper;
