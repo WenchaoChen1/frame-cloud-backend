@@ -4,6 +4,7 @@ import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.exception.PlatformAuthenticationException;
 import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
+import com.gstdev.cloud.service.common.autoconfigure.currentLoginInformation.RedisCurrentLoginInformation;
 import com.gstdev.cloud.service.system.domain.entity.*;
 import com.gstdev.cloud.service.system.domain.enums.*;
 import com.gstdev.cloud.service.system.domain.pojo.sysSecurity.CurrentLoginInformation;
@@ -54,6 +55,8 @@ public class SysSecurityServiceImpl implements SysSecurityService {
     private SysSecurityMapper sysSecurityMapper;
     @Resource
     private SysMenuMapper sysMenuMapper;
+    @Resource
+    private RedisCurrentLoginInformation redisCurrentLoginInformation;
 
     /**
      * 获取用户的权限
@@ -199,7 +202,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
     @Override
     public CurrentLoginInformation updateAccountCurrentLoginInformation(String accountId) {
         CurrentLoginInformation accountCurrentLoginInformation = findAccountCurrentLoginInformation(accountId);
-
+        redisCurrentLoginInformation.updateByTokenCurrentLoginInformation(accountCurrentLoginInformation);
         return accountCurrentLoginInformation;
     }
 

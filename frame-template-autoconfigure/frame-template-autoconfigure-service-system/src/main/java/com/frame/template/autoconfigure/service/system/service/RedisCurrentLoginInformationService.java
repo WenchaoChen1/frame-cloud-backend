@@ -1,16 +1,16 @@
-package com.frame.template.autoconfigure.service.system.service;
-
-import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
-import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
-import com.gstdev.cloud.base.definition.domain.Result;
-
-public interface RedisCurrentLoginInformationService {
-
-    Result<Object> addByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput);
-
-    Result<Object> updateByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput);
-
-    Result<Object> deleteByTokenCurrentLoginInformation();
-
-    Result<CurrentLoginInformation> getCurrentLoginInformation();
-}
+//package com.frame.template.autoconfigure.service.system.service;
+//
+//import com.frame.template.common.redis.currentLoginInformation.CurrentLoginInformation;
+//import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformationInput;
+//import com.gstdev.cloud.base.definition.domain.Result;
+//
+//public interface RedisCurrentLoginInformationService {
+//
+//    Result<Object> addByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput);
+//
+//    Result<Object> updateByTokenCurrentLoginInformation(RedisCurrentLoginInformationInput redisCurrentLoginInformationInput);
+//
+//    Result<Object> deleteByTokenCurrentLoginInformation();
+//
+//    Result<CurrentLoginInformation> getCurrentLoginInformation();
+//}
