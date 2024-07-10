@@ -12,20 +12,22 @@ package com.gstdev.cloud.service.system.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
-import com.gstdev.cloud.base.core.utils.SecureUtil;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.controller.ResultController;
+import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysMenu;
 import com.gstdev.cloud.service.system.domain.entity.SysRAttributeMenu;
 import com.gstdev.cloud.service.system.domain.pojo.sysMenu.*;
 import com.gstdev.cloud.service.system.mapper.SysMenuMapper;
+import com.gstdev.cloud.service.system.service.SysAttributeService;
 import com.gstdev.cloud.service.system.service.SysMenuService;
 import com.gstdev.cloud.service.system.service.SysRAttributeMenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -36,6 +38,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -50,6 +53,10 @@ public class SysMenuController implements ResultController {
     private SysRAttributeMenuService sysRAttributeMenuService;
     @Resource
     private SysMenuMapper menuMapper;
+    @Autowired
+    private SysMenuService sysMenuService;
+    @Autowired
+    private SysAttributeService sysAttributeService;
 
     public SysMenuService getService() {
         return menuService;
@@ -137,19 +144,32 @@ public class SysMenuController implements ResultController {
 
         return new ResponseEntity<>(jsonBytes, headers, HttpStatus.OK);
     }
+
     @Tag(name = "Menu Manage")
     @Operation(summary = "upload-menu-manage-assigned-attribute")
     @PostMapping("/upload-menu-manage-assigned-attribute")
     public Result<String> uploadMenuManageAssignedAttributeJsonFile(@RequestParam("file") MultipartFile file) throws IOException {
+
         // 将 MultipartFile 转换为 User 对象
         List<SysRAttributeMenu> sysRAttributeMenus = Jackson2Utils.getObjectMapper().readValue(file.getInputStream(), new TypeReference<List<SysRAttributeMenu>>() {
         });
-        List<SysRAttributeMenu> all = sysRAttributeMenuService.findAll();
-        if(all.size()>1){
-            throw new PlatformRuntimeException("Menu data already exists, please delete the data first");
+
+//        List<SysRAttributeMenu> sysRAttributeMenuList = sysRAttributeMenuService.findAll();
+        List<String> sysMenuIdList = sysMenuService.findAll().stream().map(SysMenu::getId).toList();
+        List<String> sysAttributeIdList = sysAttributeService.findAll().stream().map(SysAttribute::getAttributeId).toList();
+        List<SysRAttributeMenu> sysRAttributeMenuLists = new ArrayList<>();
+        for (SysRAttributeMenu sysRAttributeMenu : sysRAttributeMenus) {
+            if (!sysMenuIdList.contains(sysRAttributeMenu.getMenuId()) || !sysAttributeIdList.contains(sysRAttributeMenu.getAttributeId())) {
+                throw new PlatformRuntimeException("Menu data already exists, please delete the data first");
+            }
+            sysRAttributeMenuLists.add(sysRAttributeMenu);
         }
 
-        sysRAttributeMenuService.saveAllAndFlush(sysRAttributeMenus);
+//        if (sysRAttributeMenuList.size() > 1) {
+//            throw new PlatformRuntimeException("Menu data already exists, please delete the data first");
+//        }
+
+        sysRAttributeMenuService.saveAllAndFlush(sysRAttributeMenuLists);
         return Result.success();
     }
 
