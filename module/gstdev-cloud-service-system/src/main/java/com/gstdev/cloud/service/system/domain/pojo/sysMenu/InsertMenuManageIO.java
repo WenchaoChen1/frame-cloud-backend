@@ -16,7 +16,7 @@ public class InsertMenuManageIO {
     private String code;
     private Integer sort;
     private SysMenuType type;
-    private SysMenuLocation location;
+    private SysMenuLocation location= SysMenuLocation.OTHER;
     private String description;
     private DataItemStatus status;
 

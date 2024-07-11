@@ -16,7 +16,7 @@ public class UpdateMenuManageIO {
     private String parentId;
     private Integer sort;
     private SysMenuType type;
-    private SysMenuLocation location;
+    private SysMenuLocation location= SysMenuLocation.OTHER;
     private String description;
     private DataItemStatus status;
     private Set<String> attributeIds;

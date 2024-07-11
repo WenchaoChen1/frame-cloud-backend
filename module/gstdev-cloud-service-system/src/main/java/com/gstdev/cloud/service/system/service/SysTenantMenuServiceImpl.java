@@ -73,7 +73,11 @@ public class SysTenantMenuServiceImpl extends BaseServiceImpl<SysTenantMenu, Str
     }
     @Override
     public List<String> getAllTenantMenuIdByTenantIdIn(Set<String> teantIds) {
-        return getService().findAllByTenantMenuIds(teantIds).stream().map(SysTenantMenu::getTenantMenuId).toList();
+        return getService().findAllByTenanIdIn(teantIds).stream().map(SysTenantMenu::getTenantMenuId).toList();
+    }
+
+    private List<SysTenantMenu> findAllByTenanIdIn(Set<String> teantIds) {
+        return getRepository().findByTenantIdIn(teantIds);
     }
 
 //    @Override
