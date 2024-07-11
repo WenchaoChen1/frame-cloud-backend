@@ -22,7 +22,7 @@ public enum SysUserType implements BaseUiEnum<Integer> {
     /**
      * 数据条目已启用
      */
-    SUPER(0, "super", 0, "super"),
+    SUPER(0, "Super", 0, "super"),
     /**
      * 数据条目被启用
      */
@@ -30,7 +30,7 @@ public enum SysUserType implements BaseUiEnum<Integer> {
     /**
      * 数据条目被锁定
      */
-    USER(1, "user", 1, "user");
+    USER(1, "User", 1, "user");
 
 
     private static final Map<Integer, SysUserType> INDEX_MAP = new HashMap<>();

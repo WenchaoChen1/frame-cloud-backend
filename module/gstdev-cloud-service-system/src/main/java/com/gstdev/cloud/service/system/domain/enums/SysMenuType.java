@@ -21,15 +21,15 @@ public enum SysMenuType implements BaseUiEnum<Integer> {
     /**
      * 目录
      */
-    CATALOGUE(0,"catalogue",0, "catalogue"),
+    CATALOGUE(0,"Catalogue",0, "catalogue"),
     /**
      * 页面
      */
-    PAGE(1,"page",1, "page"),
+    PAGE(1,"Page",1, "page"),
     /**
      * 功能
      */
-    FUNCTION(2, "function",2, "function");
+    FUNCTION(2, "Function",2, "function");
 
 
     private static final Map<Integer, SysMenuType> INDEX_MAP = new HashMap<>();

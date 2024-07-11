@@ -23,11 +23,11 @@ public enum SysTenantPermissionType implements BaseUiEnum<Integer> {
     /**
      * 正常情况下account permission type 不会为0  为0的话会和account type有一点的业务重跌 增加0是为了让账户没有任何权限默认为零
      */
-    ACCOUNT_TYPE(0,"account type",0, "1"),
-    ACCOUNT_TENANT_MENU(1,"account tenant menu",1, "1"),
-    ACCOUNT_TENANT_BUSINESS_PERMISSION(2,"account tenant business permission",2, "1"),
-    ACCOUNT_ROLE_MENU(3,"account role menu",3, "1"),
-    ACCOUNT_ROLE_BUSINESS_PERMISSION(4,"account role business permission",4, "1");
+    ACCOUNT_TYPE(0,"Account Type",0, "1"),
+    ACCOUNT_TENANT_MENU(1,"Account Tenant Menu",1, "1"),
+    ACCOUNT_TENANT_BUSINESS_PERMISSION(2,"Account Tenant Business Permission",2, "1"),
+    ACCOUNT_ROLE_MENU(3,"Account Role menu",3, "1"),
+    ACCOUNT_ROLE_BUSINESS_PERMISSION(4,"Account Role Business Permission",4, "1");
 
 
     private static final Map<Integer, SysTenantPermissionType> INDEX_MAP = new HashMap<>();
