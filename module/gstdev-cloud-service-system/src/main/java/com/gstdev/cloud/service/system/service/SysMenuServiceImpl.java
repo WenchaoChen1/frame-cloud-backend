@@ -120,6 +120,8 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
     }
 
     public void verify(SysMenu entity) {
+
+
         if (entity.getType().equals(SysMenuType.CATALOGUE)) {
             if (ObjectUtils.isEmpty(entity.getName())) {
                 throw new PlatformRuntimeException("目录类型菜单必须填写name");
@@ -135,6 +137,14 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
         }
 
         /**
+         * ^(?=.*[a-zA-Z]{3,})：使用正向肯定预查（positive lookahead）确保字符串中至少包含三个字母。
+         * [a-zA-Z0-9-]*$：表示字符串可以包含任意数量的字母、数字或连字符，但不能包含其他特殊符号。
+         */
+        if (Pattern.compile("^(?=.*[a-zA-Z]{3,})[a-zA-Z0-9-]*$").matcher(entity.getCode()).matches()) {
+            throw new PlatformRuntimeException("code 不符合格式");
+        }
+
+        /**
          * ^[a-zA-Z]{3,}: 表示字符串必须以至少三个字母开头（字母数不少于三位）。
          * -: 表示字母和数字之间必须用一个连字符 - 间隔。
          * \\d{3,}$: 表示连字符后必须跟随至少三个数字（数字数不少于三位）。
@@ -146,17 +156,9 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
             throw new PlatformRuntimeException("code 不符合格式");
         }
         if (entity.getType().equals(SysMenuType.FUNCTION)) {
-            /**
-             * ^(?=.*[a-zA-Z]{3,})：使用正向肯定预查（positive lookahead）确保字符串中至少包含三个字母。
-             * [a-zA-Z0-9-]*$：表示字符串可以包含任意数量的字母、数字或连字符，但不能包含其他特殊符号。
-             */
-            if (Pattern.compile("^(?=.*[a-zA-Z]{3,})[a-zA-Z0-9-]*$").matcher(entity.getCode()).matches()
-            ) {
-                throw new PlatformRuntimeException("code 不符合格式");
-            }
+
         }
     }
     /*------------------------------------------以上是系统访问控制代码--------------------------------------------*/
-
 
 }
