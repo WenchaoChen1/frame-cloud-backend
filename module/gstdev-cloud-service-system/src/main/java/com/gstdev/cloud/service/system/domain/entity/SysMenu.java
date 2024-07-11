@@ -10,7 +10,6 @@
 package com.gstdev.cloud.service.system.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.gstdev.cloud.base.core.utils.SecureUtil;
 import com.gstdev.cloud.data.core.entity.BaseEntity;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.service.system.domain.enums.SysMenuLocation;
@@ -20,7 +19,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.SQLDelete;
 
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +33,7 @@ import java.util.Objects;
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
 @Table(name = "sys_menu", schema = "public")
 //@Where(clause = "deleted = 0")
-@SQLDelete(sql = "UPDATE sys_menu SET status=3 WHERE id =?")
+//@SQLDelete(sql = "UPDATE sys_menu SET status=3 WHERE id =?")
 public class SysMenu extends BaseEntity {
 
     //    @Column(name = "deleted", nullable = false)
