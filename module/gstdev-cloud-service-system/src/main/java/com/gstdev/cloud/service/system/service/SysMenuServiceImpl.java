@@ -1,6 +1,7 @@
 package com.gstdev.cloud.service.system.service;
 
 import com.gstdev.cloud.base.core.utils.SecureUtil;
+import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.service.system.domain.entity.*;
@@ -20,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Transactional(readOnly = true)
@@ -120,16 +122,26 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
     public void verify(SysMenu entity) {
         if (entity.getType().equals(SysMenuType.CATALOGUE)) {
             if (ObjectUtils.isEmpty(entity.getName())) {
-                throw new RuntimeException("目录类型菜单必须填写name");
+                throw new PlatformRuntimeException("目录类型菜单必须填写name");
             }
         }
         if (entity.getType().equals(SysMenuType.PAGE)) {
             if (ObjectUtils.isEmpty(entity.getName())) {
-                throw new RuntimeException("目录类型菜单必须填写name");
+                throw new PlatformRuntimeException("页面类型菜单必须填写name");
             }
             if (ObjectUtils.isEmpty(entity.getPath())) {
-                throw new RuntimeException("目录类型菜单必须填写路径");
+                throw new PlatformRuntimeException("页面类型菜单必须填写路径");
             }
+        }
+
+        /**
+         * ^[a-zA-Z]{3,}: 表示字符串必须以至少三个字母开头（字母数不少于三位）。
+         * -: 表示字母和数字之间必须用一个连字符 - 间隔。
+         * \\d{3,}$: 表示连字符后必须跟随至少三个数字（数字数不少于三位）。
+         * 确保整个字符串的长度不少于七个字符时，只需保证字母和数字各不少于三位，并且中间有一个连字符，即可满足要求。以下是一个示例代码，用于检查字符串是否符合上述正则表达式：
+         */
+        if(!Pattern.compile("^[a-zA-Z]{3,}-\\d{3,}$").matcher(entity.getCode()).matches()){
+            throw new PlatformRuntimeException("code 不符合格式");
         }
         if (entity.getType().equals(SysMenuType.FUNCTION)) {
 
