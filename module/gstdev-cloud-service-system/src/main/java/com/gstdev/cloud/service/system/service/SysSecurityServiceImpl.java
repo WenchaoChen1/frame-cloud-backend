@@ -75,7 +75,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
             return authorities;
         }
         if (user.getType().equals(SysUserType.USER)) {
-            getAccountAuthoritiesPermissions(user.getAccount());
+            authorities.addAll(getAccountAuthoritiesPermissions(user.getAccount()));
         }
         return authorities;
     }
@@ -289,22 +289,41 @@ public class SysSecurityServiceImpl implements SysSecurityService {
     public List<String> getPermissionsByMenus(List<SysMenu> menus) {
         Map<String, Set<String>> attributeMaps = new HashMap<>();
         // 处理菜单根据menuId去重
-        menus.stream().collect(Collectors.toMap(SysMenu::getId, menu -> menu, (key1, key2) -> key1));
+//        menus.stream().collect(Collectors.toMap(SysMenu::getId, menu -> menu, (key1, key2) -> key1));
+//        List<SysMenu> distinctMenus = menus.stream()
+//                .filter(Objects::nonNull)
+//                .collect(Collectors.toMap(
+//                        SysMenu::getId,
+//                        Function.identity(),
+//                        (existing, replacement) -> existing
+//                ))
+//                .values()
+//                .stream()
+//                .collect(Collectors.toList());
+
         // 处理菜单的属性并进行分组
         menus.forEach(sysMenu ->
             sysMenu.getAttributes().stream()
                 .collect(Collectors.groupingBy(SysAttribute::getServiceId))
                 .forEach((serviceId, attributes) -> {
                     Set<String> sysAttributes = attributeMaps.getOrDefault(serviceId, new HashSet<>());
-                    sysAttributes.addAll(attributes.stream().map(SysAttribute::getAttributeId).collect(Collectors.toSet()));
+                    sysAttributes.addAll(attributes.stream().map(SysAttribute::getAttributeCode).collect(Collectors.toSet()));
                     attributeMaps.put(serviceId, sysAttributes);
                 })
         );
         List<String> collect = new ArrayList<>();
         // 将分组后的属性ID集合生成权限并添加到权限集合中
-        for (Set<String> value : attributeMaps.values()) {
-            collect.add(generateKey(new ArrayList<>(value)));
+        for (Map.Entry<String, Set<String>> stringSetEntry : attributeMaps.entrySet()) {
+            Set<String> value = stringSetEntry.getValue();
+            String key = stringSetEntry.getKey();
+            List<String> objects = new ArrayList<>();
+            for (String s : value) {
+                objects.add(key+s);
+            }
+
+            collect.add(generateKey(new ArrayList<>(objects)));
         }
+
         return collect;
     }
 
