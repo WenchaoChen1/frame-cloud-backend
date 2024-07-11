@@ -140,7 +140,7 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
          * ^(?=.*[a-zA-Z]{3,})：使用正向肯定预查（positive lookahead）确保字符串中至少包含三个字母。
          * [a-zA-Z0-9-]*$：表示字符串可以包含任意数量的字母、数字或连字符，但不能包含其他特殊符号。
          */
-        if (Pattern.compile("^(?=.*[a-zA-Z]{3,})[a-zA-Z0-9-]*$").matcher(entity.getCode()).matches()) {
+        if (!Pattern.compile("^(?=.*[a-zA-Z]{3,})[a-zA-Z0-9-]*$").matcher(entity.getCode()).matches()) {
             throw new PlatformRuntimeException("code 不符合格式");
         }
 
@@ -150,7 +150,7 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenu, String, SysMenu
          * \\d{3,}$: 表示连字符后必须跟随至少三个数字（数字数不少于三位）。
          * 确保整个字符串的长度不少于七个字符时，只需保证字母和数字各不少于三位，并且中间有一个连字符，即可满足要求。以下是一个示例代码，用于检查字符串是否符合上述正则表达式：
          */
-        if (Pattern.compile("^[a-zA-Z]{3,}-\\d{3,}$").matcher(entity.getCode()).matches()
+        if (!Pattern.compile("^[a-zA-Z]{3,}-\\d{3,}$").matcher(entity.getCode()).matches()
                 && !entity.getType().equals(SysMenuType.FUNCTION)
         ) {
             throw new PlatformRuntimeException("code 不符合格式");
