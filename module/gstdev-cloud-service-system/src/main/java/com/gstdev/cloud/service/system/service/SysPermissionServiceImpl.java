@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.base.core.utils.SecureUtil;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
@@ -9,8 +10,6 @@ import com.gstdev.cloud.service.system.repository.SysPermissionRepository;
 import jakarta.annotation.Resource;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -34,22 +33,23 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermission, Str
         Collections.sort(input);
         // 连接排序后的字符串
         String combinedInput = String.join("", input);
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(combinedInput.getBytes());
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : hash) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) {
-                    hexString.append('0');
-                }
-                hexString.append(hex);
-            }
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return SecureUtil.md5(combinedInput);
+//        try {
+//            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+//            byte[] hash = digest.digest(combinedInput.getBytes());
+//            StringBuilder hexString = new StringBuilder();
+//            for (byte b : hash) {
+//                String hex = Integer.toHexString(0xff & b);
+//                if (hex.length() == 1) {
+//                    hexString.append('0');
+//                }
+//                hexString.append(hex);
+//            }
+//            return hexString.toString();
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//            return null;
+//        }
 
     }
 

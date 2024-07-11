@@ -1,5 +1,6 @@
 package com.gstdev.cloud.service.system.service;
 
+import com.gstdev.cloud.base.core.utils.SecureUtil;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
 import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.exception.PlatformAuthenticationException;
@@ -15,8 +16,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -71,7 +70,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
 
         // 添加超级管理员的特殊权限
         if (user.getType().equals(SysUserType.SUPER)) {
-            authorities.add(new FrameGrantedAuthority("5ef5ef0364b6939c4ca61f34b393f7b368d1be8619647aaf83d5b395919ab629"));
+            authorities.add(new FrameGrantedAuthority("a181a603769c1f98ad927e7367c7aa51"));
             return authorities;
         }
         if (user.getType().equals(SysUserType.USER)) {
@@ -308,6 +307,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
                 .forEach((serviceId, attributes) -> {
                     Set<String> sysAttributes = attributeMaps.getOrDefault(serviceId, new HashSet<>());
                     sysAttributes.addAll(attributes.stream().map(SysAttribute::getAttributeCode).collect(Collectors.toSet()));
+                    sysAttributes.addAll(attributeMaps.get(serviceId));
                     attributeMaps.put(serviceId, sysAttributes);
                 })
         );
@@ -318,6 +318,7 @@ public class SysSecurityServiceImpl implements SysSecurityService {
             String key = stringSetEntry.getKey();
             List<String> objects = new ArrayList<>();
             for (String s : value) {
+                System.out.println(key+s);
                 objects.add(key+s);
             }
 
@@ -338,22 +339,23 @@ public class SysSecurityServiceImpl implements SysSecurityService {
         Collections.sort(input);
         // 连接排序后的字符串
         String combinedInput = String.join("", input);
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(combinedInput.getBytes());
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : hash) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) {
-                    hexString.append('0');
-                }
-                hexString.append(hex);
-            }
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return SecureUtil.md5(combinedInput);
+//        try {
+//            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+//            byte[] hash = digest.digest(combinedInput.getBytes());
+//            StringBuilder hexString = new StringBuilder();
+//            for (byte b : hash) {
+//                String hex = Integer.toHexString(0xff & b);
+//                if (hex.length() == 1) {
+//                    hexString.append('0');
+//                }
+//                hexString.append(hex);
+//            }
+//            return hexString.toString();
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//            return null;
+//        }
     }
 
 
