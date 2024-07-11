@@ -26,7 +26,7 @@ public enum SysTenantPermissionType implements BaseUiEnum<Integer> {
     ACCOUNT_TYPE(0,"Account Type",0, "1"),
     ACCOUNT_TENANT_MENU(1,"Account Tenant Menu",1, "1"),
     ACCOUNT_TENANT_BUSINESS_PERMISSION(2,"Account Tenant Business Permission",2, "1"),
-    ACCOUNT_ROLE_MENU(3,"Account Role menu",3, "1"),
+    ACCOUNT_ROLE_MENU(3,"Account Role Menu",3, "1"),
     ACCOUNT_ROLE_BUSINESS_PERMISSION(4,"Account Role Business Permission",4, "1");
 
 
