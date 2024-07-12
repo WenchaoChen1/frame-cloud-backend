@@ -1,7 +1,6 @@
 package com.gstdev.cloud.service.system.controller;
 
 import com.gstdev.cloud.base.definition.domain.Result;
-import com.gstdev.cloud.data.core.utils.BasePage;
 import com.gstdev.cloud.data.core.utils.QueryUtils;
 import com.gstdev.cloud.rest.core.annotation.AccessLimited;
 import com.gstdev.cloud.rest.core.annotation.Idempotent;
@@ -56,8 +55,8 @@ public class SysPermissionController implements ResultController {
     @AccessLimited
     @PostMapping("/get-permission-manage-page")
     @Operation(summary = "get-permission-manage-page")
-    public Result<Map<String, Object>> getPermissionManagePage(PermissionManageQO permissionManageQO, BasePage basePage) {
-        Page<SysPermission> byPage = this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, permissionManageQO, criteriaBuilder), basePage);
+    public Result<Map<String, Object>> getPermissionManagePage(@RequestBody PermissionManageQO permissionManageQO) {
+        Page<SysPermission> byPage = this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, permissionManageQO, criteriaBuilder), permissionManageQO.getPage());
         return this.result(this.getMapper().toPermissionManagePageVo(byPage));
     }
 

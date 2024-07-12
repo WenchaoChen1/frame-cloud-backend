@@ -2,6 +2,7 @@ package com.gstdev.cloud.service.system.domain.pojo.sysAttribute;
 
 import com.gstdev.cloud.data.core.annotations.Query;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.data.core.utils.BasePage;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -31,4 +32,6 @@ public class MenuManageAttributePageQO implements Serializable {
     private String description;
     @Query(type = Query.Type.IN)
     private Set<DataItemStatus> status;
+
+    private  BasePage page;
 }

@@ -2,6 +2,7 @@ package com.gstdev.cloud.service.system.domain.pojo.sysPermission;
 
 import com.gstdev.cloud.data.core.annotations.Query;
 import com.gstdev.cloud.data.core.enums.DataItemStatus;
+import com.gstdev.cloud.data.core.utils.BasePage;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -21,5 +22,7 @@ public class PermissionManageQO implements Serializable {
     private Set<DataItemStatus> status;
     @Query(type = Query.Type.IN)
     private Set<String> permissionType;
+
+    private BasePage page;
 
 }
