@@ -26,11 +26,11 @@ public enum SysAccountType implements BaseUiEnum<Integer> {
     /**
      * 数据条目被启用
      */
-    ADMIN(1, "admin",0,"admin"),
+    ADMIN(1, "Admin",0,"admin"),
     /**
      * 数据条目被锁定
      */
-    USER(2, "account",1,"user");
+    USER(2, "Account",1,"user");
 
 
     private static final Map<Integer, SysAccountType> INDEX_MAP = new HashMap<>();
