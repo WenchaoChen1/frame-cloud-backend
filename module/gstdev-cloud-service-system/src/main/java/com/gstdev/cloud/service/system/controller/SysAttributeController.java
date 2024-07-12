@@ -46,9 +46,9 @@ public class SysAttributeController implements ResultController {
     @Tags({
         @Tag(name = "Menu Manage Assigned Attribute"),
     })
-    @GetMapping("/get-menu-manage-attribute-page")
+    @PostMapping("/get-menu-manage-attribute-page")
     @Operation(summary = "get-menu-manage-attribute-page")
-    public Result<Map<String, Object>> getMenuManageAttributePage(MenuManageAttributePageQO attributePageQO, BasePage pageable) {
+    public Result<Map<String, Object>> getMenuManageAttributePage(@RequestBody MenuManageAttributePageQO attributePageQO, @RequestBody BasePage pageable) {
         return this.result(this.getMapper().toMenuManageAttributePageVo(this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, attributePageQO, criteriaBuilder), pageable)));
     }
 //    @Tags({

@@ -12,11 +12,12 @@ package com.frame.template.service.system;
 import com.frame.template.autoconfigure.service.system.configuration.AutoSystemConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
-//@ComponentScan(basePackages = {
-//    "com.frame.template.service.system.controller",
-//})
+@ComponentScan(basePackages = {
+    "com.frame.template.service.system.controller",
+})
 @SpringBootApplication
 @Import({AutoSystemConfiguration.class})
 public class SystemApplication {

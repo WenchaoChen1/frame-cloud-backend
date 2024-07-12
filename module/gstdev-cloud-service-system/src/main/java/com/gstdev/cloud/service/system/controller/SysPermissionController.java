@@ -54,9 +54,9 @@ public class SysPermissionController implements ResultController {
             @Tag(name = "Attribute Manage")
     })
     @AccessLimited
-    @GetMapping("/get-permission-manage-page")
+    @PostMapping("/get-permission-manage-page")
     @Operation(summary = "get-permission-manage-page")
-    public Result<Map<String, Object>> getPermissionManagePage(PermissionManageQO permissionManageQO, BasePage basePage) {
+    public Result<Map<String, Object>> getPermissionManagePage(@RequestBody PermissionManageQO permissionManageQO,@RequestBody BasePage basePage) {
         Page<SysPermission> byPage = this.getService().findByPage((root, criteriaQuery, criteriaBuilder) -> QueryUtils.getPredicate(root, permissionManageQO, criteriaBuilder), basePage);
         return this.result(this.getMapper().toPermissionManagePageVo(byPage));
     }
