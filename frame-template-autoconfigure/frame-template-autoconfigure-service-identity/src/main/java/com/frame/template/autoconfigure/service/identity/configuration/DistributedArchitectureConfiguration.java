@@ -2,9 +2,7 @@ package com.frame.template.autoconfigure.service.identity.configuration;
 
 
 import com.frame.template.autoconfigure.service.identity.feign.FeignRemoteUserDetailsService;
-import com.frame.template.autoconfigure.service.identity.service.LocalUserDetailsService;
 import com.frame.template.autoconfigure.service.identity.service.RemoteUserDetailsService;
-import com.frame.template.autoconfigure.service.identity.service.UserService;
 import com.gstdev.cloud.oauth2.core.definition.strategy.StrategyUserDetailsService;
 import com.gstdev.cloud.rest.condition.annotation.ConditionalOnDistributedArchitecture;
 import com.gstdev.cloud.rest.condition.annotation.ConditionalOnLocalDataAccess;
@@ -18,7 +16,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * <p>Description: 分布式架构配置 </p>
@@ -28,12 +25,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableFeignClients(basePackages = {"com.frame.template.autoconfigure.service.identity.feign"})
 @ComponentScan(value = {
         "com.gstdev.cloud.rest.autoconfigure",
-        "com.frame.template.autoconfigure.service.identity.controller",
         "com.frame.template.autoconfigure.service.identity.service",
-        "com.frame.template.autoconfigure.service.identity.mapper",
 })
 @EntityScan(value = {"com.frame.template.autoconfigure.service.identity.pojo.entity"})
-@EnableJpaRepositories(value = {"com.frame.template.autoconfigure.service.identity.repository"})
+//@EnableJpaRepositories(value = {"com.frame.template.autoconfigure.service.identity.repository"})
 public class DistributedArchitectureConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(DistributedArchitectureConfiguration.class);
@@ -47,12 +42,12 @@ public class DistributedArchitectureConfiguration {
     @ConditionalOnLocalDataAccess
     static class DataAccessStrategyLocalConfiguration {
 
-        @Bean
-        @ConditionalOnMissingBean
-        public StrategyUserDetailsService localUserDetailsService(UserService userService) {
-            log.debug("[GstDev Cloud] |- Strategy [Local User Details Service] Auto Configure.");
-            return new LocalUserDetailsService(userService);
-        }
+//        @Bean
+//        @ConditionalOnMissingBean
+//        public StrategyUserDetailsService localUserDetailsService(UserService userService) {
+//            log.debug("[GstDev Cloud] |- Strategy [Local User Details Service] Auto Configure.");
+//            return new LocalUserDetailsService(userService);
+//        }
 //        @Bean
 //        @ConditionalOnMissingBean
 //        public StrategyUserDetailsService localUserDetailsService(SysUserService sysUserService, SocialAuthenticationHandler socialAuthenticationHandler) {
