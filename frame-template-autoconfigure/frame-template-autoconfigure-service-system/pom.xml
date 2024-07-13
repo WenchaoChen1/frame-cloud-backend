@@ -21,22 +21,22 @@
             <groupId>com.gstdev.cloud</groupId>
             <artifactId>gstdev-cloud-starter-service-system</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-starter-service-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-web-server-spring-boot-starter</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.gstdev.cloud</groupId>-->
+<!--            <artifactId>gstdev-cloud-starter-service-common</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.gstdev.cloud</groupId>-->
+<!--            <artifactId>gstdev-cloud-web-server-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.frame.template</groupId>
             <artifactId>frame-template-common</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-rest-core</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.gstdev.cloud</groupId>-->
+<!--            <artifactId>gstdev-cloud-rest-core</artifactId>-->
+<!--        </dependency>-->
 <!--        <dependency>-->
 <!--            <groupId>com.frame.template</groupId>-->
 <!--            <artifactId>gstdev-cloud-service-system</artifactId>-->
