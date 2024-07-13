@@ -19,6 +19,10 @@
             <groupId>com.frame.template</groupId>
             <artifactId>frame-template-autoconfigure-service-system</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.gstdev.cloud</groupId>
+            <artifactId>gstdev-cloud-sentinel-alibaba</artifactId>
+        </dependency>
 
 <!--        <dependency>-->
 <!--            <groupId>com.gstdev.cloud</groupId>-->
@@ -53,15 +57,15 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
 
-        <!--nacos -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
+<!--        &lt;!&ndash;nacos &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>com.zaxxer</groupId>
