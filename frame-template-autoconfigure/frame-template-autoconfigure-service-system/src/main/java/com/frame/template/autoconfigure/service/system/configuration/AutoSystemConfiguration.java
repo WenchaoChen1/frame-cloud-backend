@@ -1,8 +1,6 @@
 package com.frame.template.autoconfigure.service.system.configuration;
 
 
-import com.gstdev.cloud.service.system.configuration.FrameSystemConfiguration;
-import com.gstdev.cloud.starter.ouath2.resource.server.configuration.ResourceServerAutoConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +8,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 @Configuration(proxyBeanMethods = false)
 @EnableFeignClients(basePackages = {"com.frame.template.autoconfigure.service.system.feign"})
@@ -37,7 +34,7 @@ import org.springframework.context.annotation.Import;
 //    "com.gstdev.cloud.oauth2"
 })
 @EntityScan(value = {"com.frame.template.service.system"})
-@Import({FrameSystemConfiguration.class, ResourceServerAutoConfiguration.class})
+//@Import({FrameSystemConfiguration.class, ResourceServerAutoConfiguration.class})
 public class AutoSystemConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(AutoSystemConfiguration.class);

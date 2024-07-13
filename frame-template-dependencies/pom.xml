@@ -47,11 +47,11 @@
                 <artifactId>frame-template-common</artifactId>
                 <version>${frame-template.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.frame.template</groupId>
-                <artifactId>gstdev-cloud-service-system</artifactId>
-                <version>${frame-template.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.frame.template</groupId>-->
+<!--                <artifactId>gstdev-cloud-service-system</artifactId>-->
+<!--                <version>${frame-template.version}</version>-->
+<!--            </dependency>-->
 
 
             <dependency>
