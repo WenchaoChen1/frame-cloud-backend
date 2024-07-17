@@ -2,7 +2,7 @@ package com.frame.template.autoconfigure.service.system.listener;
 
 import com.frame.template.autoconfigure.service.system.processor.RequestMappingStoreProcessor;
 import com.gstdev.cloud.base.core.json.jackson2.utils.Jackson2Utils;
-import com.gstdev.cloud.message.core.logic.domain.RequestMapping;
+import com.gstdev.cloud.rest.service.scan.RequestMapping;
 import com.gstdev.cloud.service.common.autoconfigure.bus.RemoteRequestMappingGatherEvent;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
