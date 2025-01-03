@@ -18,7 +18,7 @@ spring:
             resourceserver:
                 jwt:
                     jwk-set-uri: http://localhost:8101/oauth2/jwks
-                    issuer-uri: http://192.168.0.99:8101
+                    issuer-uri: http://127.0.0.1:8101
                     whitelist:
     servlet:
         multipart:
@@ -51,7 +51,7 @@ gstdev:
         oauth2:
             authentication:
                 authorizationServersettings:
-                    issuer-uri: http://192.168.0.99:8101
+                    issuer-uri: http://127.0.0.1:8101
                 formLogin:
                     closeCaptcha: true
                     # category: HUTOOL_GIF
@@ -71,7 +71,7 @@ gstdev:
                     hasAuthenticated:
         # security:
         #     oauth2:
-        #         issuer-uri: http://192.168.0.99:8101
+        #         issuer-uri: http://127.0.0.1:8101
         #         whitelist:
         #             - "/**"
         #             - "/test/a"
