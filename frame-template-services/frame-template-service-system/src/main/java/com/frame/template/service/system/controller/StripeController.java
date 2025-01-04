@@ -2,16 +2,15 @@ package com.frame.template.service.system.controller;
 
 import com.gstdev.cloud.base.core.utils.SecureUtil;
 import com.gstdev.cloud.base.definition.domain.Result;
+import com.gstdev.cloud.oauth2.core.utils.SecurityUtils;
 import com.gstdev.cloud.service.system.domain.pojo.sysPermission.PermissionManageQO;
 import com.stripe.exception.StripeException;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,10 +29,19 @@ public class StripeController {
         System.out.println(property);
         System.out.println("aaaaaaaaa11112");
     }
-
+    @GetMapping("/a")
+    @Operation(summary = "a")
+    public void a() {
+        System.out.println("aaaaaaaaa1111");
+        SecurityContext securityContext = SecurityUtils.getSecurityContext();
+        System.out.println(SecurityUtils.getTokenValue());
+    }
     @PostMapping("/{aaa}/get-permission-manage-page")
     @Operation(summary = "get-permission-manage-page")
     public Result<Map<String, Object>> getPermissionManagePage(@RequestBody PermissionManageQO permissionManageQO) {
+        System.out.println("aaaaaaaaa1111");
+        SecurityContext securityContext = SecurityUtils.getSecurityContext();
+        System.out.println(SecurityUtils.getTokenValue());
         return null;
     }
 
@@ -82,21 +90,12 @@ public static void generateCombinations(List<String> input, List<String> tempCom
 
 
     public static void main(String[] args) throws StripeException {
-//            int[] array = {0, 1, 2, 3};
         List<String> combinedCodes = new ArrayList<>();
-        combinedCodes.add("0");
-        combinedCodes.add("1");
-        combinedCodes.add("2");
-        combinedCodes.add("3");
+        for (int i = 0; i < 30; i++) {
+            combinedCodes.add(String.valueOf(i));
+        }
         List<String> strings = printCombinations(combinedCodes, 0, new ArrayList<>());
         System.out.println(strings);
-////        combinedCodes.add("4");
-////        combinedCodes.add("5");
-//        generateCombinations(combinedCodes,new ArrayList<>(),0);
-//
-
-
-
 //        List<String> combinedCodes = new ArrayList<>();
 //        List<String> tempCombination1 = new ArrayList<>();
 //        int a = 0;

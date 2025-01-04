@@ -107,13 +107,14 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
         SecurityAttribute securityAttribute = toSecurityAttribute.convert(sysAttribute);
         postProcess(securityAttribute.getServiceId(), ImmutableList.of(securityAttribute));
     }
-//    public void distributeChangedSecurityAttribute(SysPermission sysPermission) {
-//        if (CollectionUtils.isNotEmpty(sysPermission.getSysAttributes())) {
-//            log.debug("[Gstdev Cloud] |-  Distribute changed security attribute, start to process!");
-//            List<SecurityAttribute> securityAttributes = sysPermission.getSysAttributes().stream().map(toSecurityAttribute::convert).toList();
-//            Map<String, List<SecurityAttribute>> collect = securityAttributes.stream().collect(Collectors.groupingBy(SecurityAttribute::getServiceId));
-//            collect.forEach(this::postProcess);
-//        }
-//    }
+    public void distributeChangedSecurityAttribute(SysPermission sysPermission) {
+        SysPermission byId = sysPermissionService.findById(sysPermission.getPermissionId());
+        if (CollectionUtils.isNotEmpty(byId.getSysAttributes())) {
+            log.debug("[Gstdev Cloud] |-  Distribute changed security attribute, start to process!");
+            List<SecurityAttribute> securityAttributes = byId.getSysAttributes().stream().map(toSecurityAttribute::convert).toList();
+            Map<String, List<SecurityAttribute>> collect = securityAttributes.stream().collect(Collectors.groupingBy(SecurityAttribute::getServiceId));
+            collect.forEach(this::postProcess);
+        }
+    }
 
 }
