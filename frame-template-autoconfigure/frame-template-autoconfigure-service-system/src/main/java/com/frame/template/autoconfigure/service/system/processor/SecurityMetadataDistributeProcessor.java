@@ -12,6 +12,7 @@ import com.gstdev.cloud.service.system.domain.converter.SysAttributeToSecurityAt
 import com.gstdev.cloud.service.system.domain.converter.SysInterfacesToSysAttributesConverter;
 import com.gstdev.cloud.service.system.domain.entity.SysAttribute;
 import com.gstdev.cloud.service.system.domain.entity.SysInterface;
+import com.gstdev.cloud.service.system.domain.entity.SysPermission;
 import com.gstdev.cloud.service.system.service.SysAttributeService;
 import com.gstdev.cloud.service.system.service.SysInterfaceService;
 import com.gstdev.cloud.service.system.service.SysPermissionService;
@@ -23,6 +24,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * <p>Description: SecurityMetadata数据处理器 </p>
@@ -104,4 +107,13 @@ public class SecurityMetadataDistributeProcessor implements StrategyEventManager
         SecurityAttribute securityAttribute = toSecurityAttribute.convert(sysAttribute);
         postProcess(securityAttribute.getServiceId(), ImmutableList.of(securityAttribute));
     }
+//    public void distributeChangedSecurityAttribute(SysPermission sysPermission) {
+//        if (CollectionUtils.isNotEmpty(sysPermission.getSysAttributes())) {
+//            log.debug("[Gstdev Cloud] |-  Distribute changed security attribute, start to process!");
+//            List<SecurityAttribute> securityAttributes = sysPermission.getSysAttributes().stream().map(toSecurityAttribute::convert).toList();
+//            Map<String, List<SecurityAttribute>> collect = securityAttributes.stream().collect(Collectors.groupingBy(SecurityAttribute::getServiceId));
+//            collect.forEach(this::postProcess);
+//        }
+//    }
+
 }
