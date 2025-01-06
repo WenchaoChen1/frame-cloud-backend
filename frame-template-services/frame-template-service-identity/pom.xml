@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <name>Frame Template Cloud :: Service :: identity</name>
     <artifactId>frame-template-service-identity</artifactId>
-    <!--  <groupId>com.gstdev.cloud</groupId>-->
+    <description>${project.name}</description>
 
     <parent>
         <artifactId>frame-template-services</artifactId>
@@ -19,60 +19,6 @@
             <groupId>com.frame.template</groupId>
             <artifactId>frame-template-autoconfigure-service-identity</artifactId>
         </dependency>
-
-
-        <!--        <dependency>-->
-        <!--            <groupId>com.gstdev.cloud</groupId>-->
-        <!--            <artifactId>gstdev-cloud-starter-oauth2-authorization-server</artifactId>-->
-        <!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.gstdev.cloud</groupId>-->
-<!--            <artifactId>gstdev-cloud-web-server-spring-boot-starter</artifactId>-->
-<!--        </dependency>-->
-
-        <dependency>
-            <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-sentinel-alibaba</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.gstdev.cloud</groupId>
-            <artifactId>gstdev-cloud-starter-openapi-springdoc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.frame.template</groupId>
-            <artifactId>frame-template-common</artifactId>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.gstdev.cloud</groupId>-->
-<!--            <artifactId>gstdev-cloud-rest-core</artifactId>-->
-<!--        </dependency>-->
-
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bootstrap</artifactId>
-        </dependency>
-
-<!--        &lt;!&ndash;nacos &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>com.zaxxer</groupId>-->
-<!--            <artifactId>HikariCP</artifactId>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-        </dependency>
-
     </dependencies>
     <build>
         <plugins>
