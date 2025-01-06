@@ -7,7 +7,6 @@
     <description>${project.name}</description>
     <artifactId>frame-template-dependencies</artifactId>
     <packaging>pom</packaging>
-    <!--  <groupId>com.frame.template</groupId>-->
 
     <parent>
         <groupId>com.frame.template</groupId>
@@ -15,11 +14,7 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <!--    <parent>-->
-    <!--      <groupId>com.gstdev.cloud</groupId>-->
-    <!--      <artifactId>gstdev-cloud-dependencies</artifactId>-->
-    <!--      <version>2024.0.1-SNAPSHOT</version>-->
-    <!--    </parent>-->
+
     <properties>
         <gstdev-cloud.version>2024.0.1-SNAPSHOT</gstdev-cloud.version>
         <hikaricp.version>3.4.5</hikaricp.version>
@@ -30,7 +25,6 @@
     <dependencyManagement>
         <dependencies>
             <!-- cloud 底层库依赖 -->
-
             <!--当前库-->
             <dependency>
                 <groupId>com.frame.template</groupId>
@@ -47,13 +41,6 @@
                 <artifactId>frame-template-common</artifactId>
                 <version>${frame-template.version}</version>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>com.frame.template</groupId>-->
-<!--                <artifactId>gstdev-cloud-service-system</artifactId>-->
-<!--                <version>${frame-template.version}</version>-->
-<!--            </dependency>-->
-
-
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
