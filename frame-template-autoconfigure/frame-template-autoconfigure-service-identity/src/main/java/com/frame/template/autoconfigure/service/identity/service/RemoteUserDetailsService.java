@@ -25,9 +25,6 @@ public class RemoteUserDetailsService implements StrategyUserDetailsService {
 
     @Override
     public DefaultSecurityUser findUserDetailsByUsername(String username) throws UsernameNotFoundException {
-        RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         Result<DefaultSecurityUser> result = feignRemoteUserDetailsService.findByUsername(username);
         return result.getData();
     }
