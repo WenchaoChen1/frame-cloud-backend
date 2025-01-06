@@ -33,10 +33,10 @@
                         <nonFilteredFileExtension>old</nonFilteredFileExtension>
                         <nonFilteredFileExtension>pub</nonFilteredFileExtension>
                     </nonFilteredFileExtensions>
-                    <delimiters>
-                        <delimiter>@</delimiter>
-                    </delimiters>
-                    <useDefaultDelimiters>false</useDefaultDelimiters>
+<!--                    <delimiters>-->
+<!--                        <delimiter>@</delimiter>-->
+<!--                    </delimiters>-->
+<!--                    <useDefaultDelimiters>false</useDefaultDelimiters>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -70,18 +70,18 @@
                 </configuration>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>${project.basedir}/src/main/java</directory>
-            </resource>
-            <resource>
-                <directory>${project.basedir}/src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>${project.basedir}/src/main/java</directory>-->
+<!--            </resource>-->
+<!--            <resource>-->
+<!--                <directory>${project.basedir}/src/main/resources</directory>-->
+<!--            </resource>-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <filtering>true</filtering>-->
+<!--            </resource>-->
+<!--        </resources>-->
 
     </build>
 
