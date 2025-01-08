@@ -39,5 +39,6 @@
         <module>frame-template-service-storage</module>
         <module>frame-template-service-demo</module>
         <module>frame-template-service-email</module>
+        <module>frame-template-service-business</module>
     </modules>
 </project>

@@ -1,0 +1,39 @@
+server:
+    port: 8103
+spring:
+    application:
+        name: gstdev-business
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    issuer-uri: ${gstdev.cloud.endpoint.issuer-uri}
+                    jwk-set-uri: ${gstdev.cloud.endpoint.jwk-set-uri}
+                opaquetoken:
+                    client-id: password-client
+                    client-secret: 123456
+gstdev:
+    cloud:
+        oauth2:
+            authentication:
+                authorizationServersettings:
+                    issuer-uri: http://127.0.0.1:8101
+                formLogin:
+                    closeCaptcha: true
+                    # category: HUTOOL_GIF
+                    # loginPageUrl: /a/login
+            authorization:
+                validate: LOCAL
+                matcher:
+                    staticResources:
+                    permitAll:
+                        - "/test/a"
+                        - "/musician/**"
+                        - "/aaaaaaaat/a"
+                        # - "/actuator*"
+                        # - "/actuator/**"
+                        - "/actuator/beans"
+                        # - "/**"
+                        - "/v1/permission/a"
+                        # - "/**"
+                    hasAuthenticated:
