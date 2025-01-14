@@ -7,6 +7,7 @@ import com.gstdev.cloud.access.core.definition.AccessUserDetails;
 import com.gstdev.cloud.access.core.exception.AccessIdentityVerificationFailedException;
 import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
+import com.gstdev.cloud.oauth2.core.definition.domain.FrameGrantedAuthority;
 import com.gstdev.cloud.oauth2.core.definition.domain.SocialUserDetails;
 import com.gstdev.cloud.oauth2.core.definition.handler.AbstractSocialAuthenticationHandler;
 import com.gstdev.cloud.oauth2.core.exception.SocialCredentialsParameterBindingFailedException;
@@ -14,6 +15,7 @@ import com.gstdev.cloud.oauth2.core.exception.UsernameAlreadyExistsException;
 import com.gstdev.cloud.service.system.domain.converter.SysUserToSecurityUserConverter;
 import com.gstdev.cloud.service.system.domain.entity.SysSocialUser;
 import com.gstdev.cloud.service.system.domain.entity.SysUser;
+import com.gstdev.cloud.service.system.service.SysSecurityService;
 import com.gstdev.cloud.service.system.service.SysSocialUserService;
 import com.gstdev.cloud.service.system.service.SysUserService;
 import org.apache.commons.lang3.ObjectUtils;
@@ -22,6 +24,8 @@ import org.dromara.hutool.core.bean.BeanUtil;
 import org.dromara.hutool.core.data.id.IdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
+
+import java.util.Set;
 
 /**
  * <p>Description: 社交登录默认处理器。 </p>
@@ -35,6 +39,8 @@ public class DefaultSocialAuthenticationHandler extends AbstractSocialAuthentica
     private SysUserService sysUserService;
     @Autowired
     private SysSocialUserService sysSocialUserService;
+    @Autowired
+    private SysSecurityService sysSecurityService;
     @Autowired
     private AccessHandlerStrategyFactory accessHandlerStrategyFactory;
 
@@ -93,7 +99,13 @@ public class DefaultSocialAuthenticationHandler extends AbstractSocialAuthentica
         if (socialUserDetails instanceof SysSocialUser sysSocialUser) {
             SysUser sysUser = sysSocialUser.getUsers().stream().findFirst().orElse(null);
             if (ObjectUtils.isNotEmpty(sysUser)) {
-                return toUser.convert(sysUser);
+                // 获取用户的权限
+                Set<FrameGrantedAuthority> authorities = sysSecurityService.getUserAuthoritiesPermissions(sysUser);
+
+                // 将SysUser对象转换为DefaultSecurityUser对象
+                SysUserToSecurityUserConverter sysUserToSecurityUserConverter = new SysUserToSecurityUserConverter();
+                return sysUserToSecurityUserConverter.convert(sysUser,authorities);
+//                return toUser.convert(sysUser);
             } else {
                 return null;
             }
