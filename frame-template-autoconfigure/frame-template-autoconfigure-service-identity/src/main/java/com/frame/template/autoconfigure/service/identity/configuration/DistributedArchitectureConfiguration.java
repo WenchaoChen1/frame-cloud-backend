@@ -2,6 +2,7 @@ package com.frame.template.autoconfigure.service.identity.configuration;
 
 
 import com.frame.template.autoconfigure.service.identity.feign.FeignRemoteUserDetailsService;
+import com.frame.template.autoconfigure.service.identity.feign.RemoteSocialDetailsService;
 import com.frame.template.autoconfigure.service.identity.service.RemoteUserDetailsService;
 import com.gstdev.cloud.oauth2.core.definition.strategy.StrategyUserDetailsService;
 import com.gstdev.cloud.rest.condition.annotation.ConditionalOnDistributedArchitecture;
@@ -64,10 +65,10 @@ public class DistributedArchitectureConfiguration {
 
         @Bean
         @ConditionalOnMissingBean
-        public StrategyUserDetailsService herodotusRemoteUserDetailsService(FeignRemoteUserDetailsService feignRemoteUserDetailsService) {
-//        public StrategyUserDetailsService herodotusRemoteUserDetailsService(RemoteUserDetailsService remoteUserDetailsService, RemoteSocialDetailsService remoteSocialDetailsService) {
+//        public StrategyUserDetailsService herodotusRemoteUserDetailsService(FeignRemoteUserDetailsService feignRemoteUserDetailsService) {
+        public StrategyUserDetailsService herodotusRemoteUserDetailsService(FeignRemoteUserDetailsService remoteUserDetailsService, RemoteSocialDetailsService remoteSocialDetailsService) {
             log.debug("[GstDev Cloud] |- Strategy [Remote User Details Service] Auto Configure.");
-            return new RemoteUserDetailsService(feignRemoteUserDetailsService);
+            return new RemoteUserDetailsService(remoteUserDetailsService,remoteSocialDetailsService);
         }
     }
 }

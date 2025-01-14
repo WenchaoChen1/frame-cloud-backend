@@ -1,16 +1,13 @@
 package com.frame.template.autoconfigure.service.identity.service;
 
 import com.frame.template.autoconfigure.service.identity.feign.FeignRemoteUserDetailsService;
+import com.frame.template.autoconfigure.service.identity.feign.RemoteSocialDetailsService;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.domain.oauth2.AccessPrincipal;
 import com.gstdev.cloud.oauth2.core.definition.domain.DefaultSecurityUser;
 import com.gstdev.cloud.oauth2.core.definition.strategy.StrategyUserDetailsService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
  * <p>Description: UserDetail远程调用服务 </p>
@@ -18,9 +15,10 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 public class RemoteUserDetailsService implements StrategyUserDetailsService {
 
     private final FeignRemoteUserDetailsService feignRemoteUserDetailsService;
-
-    public RemoteUserDetailsService(FeignRemoteUserDetailsService feignRemoteUserDetailsService) {
+    private final RemoteSocialDetailsService remoteSocialDetailsService;
+    public RemoteUserDetailsService(FeignRemoteUserDetailsService feignRemoteUserDetailsService,RemoteSocialDetailsService remoteSocialDetailsService) {
         this.feignRemoteUserDetailsService = feignRemoteUserDetailsService;
+        this.remoteSocialDetailsService = remoteSocialDetailsService;
     }
 
     @Override
@@ -31,7 +29,8 @@ public class RemoteUserDetailsService implements StrategyUserDetailsService {
 
     @Override
     public DefaultSecurityUser findUserDetailsBySocial(String source, AccessPrincipal accessPrincipal) throws AuthenticationException {
-        return null;
+        Result<DefaultSecurityUser> result = remoteSocialDetailsService.findUserDetailsBySocial(source, accessPrincipal);
+        return result.getData();
     }
 
 

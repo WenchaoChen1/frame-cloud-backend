@@ -1,11 +1,14 @@
 package com.frame.template.autoconfigure.service.system.configuration;
 
 
+import com.frame.template.autoconfigure.service.system.processor.DefaultSocialAuthenticationHandler;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -43,6 +46,12 @@ public class AutoSystemConfiguration {
     public void postConstruct() {
         log.debug("[GstDev Cloud] |- Module [Auto System Configuration] Auto Configure.");
     }
-
+    @Bean
+    @ConditionalOnMissingBean
+    public DefaultSocialAuthenticationHandler defaultSocialAuthenticationHandler() {
+        DefaultSocialAuthenticationHandler defaultSocialAuthenticationHandler = new DefaultSocialAuthenticationHandler();
+        log.trace("[GstDev Cloud] |- Bean [Default Social Authentication Handler] Auto Configure.");
+        return defaultSocialAuthenticationHandler;
+    }
 
 }
