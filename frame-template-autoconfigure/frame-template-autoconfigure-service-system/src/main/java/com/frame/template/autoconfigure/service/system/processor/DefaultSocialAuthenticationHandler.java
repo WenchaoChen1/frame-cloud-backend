@@ -19,6 +19,7 @@ import com.gstdev.cloud.service.system.service.SysUserService;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.hutool.core.bean.BeanUtil;
+import org.dromara.hutool.core.data.id.IdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 
@@ -69,8 +70,7 @@ public class DefaultSocialAuthenticationHandler extends AbstractSocialAuthentica
 
     @Override
     public DefaultSecurityUser register(SocialUserDetails socialUserDetails) throws UsernameAlreadyExistsException {
-//        return sysUserService.registerUserDetails(socialUserDetails);
-        return new DefaultSecurityUser();
+        return sysUserService.registerUserDetails(socialUserDetails);
     }
 
     @Override
@@ -121,5 +121,9 @@ public class DefaultSocialAuthenticationHandler extends AbstractSocialAuthentica
         sysSocialUser.setOpenId(openId);
         sysSocialUser.setAccessCode(accessCode);
         sysSocialUser.setUnionId(unionId);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(IdUtil.nanoId(12));
     }
 }

@@ -85,3 +85,26 @@ logging:
         com.alicp.jetcache: trace
         org.springframework.cloud.bus: info
         org.apache.kafka: warn
+gstdev:
+    cloud:
+        sms:
+            enabled: true
+            sandbox: true
+            test-code: 123456
+            default-channel: aliyun
+            aliyun:
+                enabled: true
+                access-key-id: xxxxxx
+                access-key-secret: xxxxxxx
+                region-id: cn-shanghai
+                sign-name: helloword
+                version: 2017-05-25
+                templates: { "VERIFICATION_CODE": "SMS_222222222" }
+        access:
+            justauth:
+                enabled: true
+                configs:
+                    GITEE:
+                        client-id: 325c16cf9b13eb0718e24f9a4859605f9876cce1e6e94d3f47709a8da50da14d
+                        client-secret: e058750b68a99d5311a48df6aa73926afcf2f0e70b1727183772c7ba6cf2251a
+                        redirect-uri: http://192.168.0.229:3000/social/oauth2/callback/GITEE
