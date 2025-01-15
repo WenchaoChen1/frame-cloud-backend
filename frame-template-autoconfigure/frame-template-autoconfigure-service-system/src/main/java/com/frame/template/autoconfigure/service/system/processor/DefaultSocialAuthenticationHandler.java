@@ -21,7 +21,6 @@ import com.gstdev.cloud.service.system.service.SysUserService;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.hutool.core.bean.BeanUtil;
-import org.dromara.hutool.core.data.id.IdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 
@@ -101,16 +100,13 @@ public class DefaultSocialAuthenticationHandler extends AbstractSocialAuthentica
             if (ObjectUtils.isNotEmpty(sysUser)) {
                 // 获取用户的权限
                 Set<FrameGrantedAuthority> authorities = sysSecurityService.getUserAuthoritiesPermissions(sysUser);
-
                 // 将SysUser对象转换为DefaultSecurityUser对象
                 SysUserToSecurityUserConverter sysUserToSecurityUserConverter = new SysUserToSecurityUserConverter();
                 return sysUserToSecurityUserConverter.convert(sysUser,authorities);
-//                return toUser.convert(sysUser);
             } else {
                 return null;
             }
         }
-
         return null;
     }
 
@@ -135,7 +131,4 @@ public class DefaultSocialAuthenticationHandler extends AbstractSocialAuthentica
         sysSocialUser.setUnionId(unionId);
     }
 
-    public static void main(String[] args) {
-        System.out.println(IdUtil.nanoId(12));
-    }
 }
