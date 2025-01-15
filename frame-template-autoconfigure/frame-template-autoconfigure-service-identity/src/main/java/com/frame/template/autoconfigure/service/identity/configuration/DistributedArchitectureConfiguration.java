@@ -65,7 +65,6 @@ public class DistributedArchitectureConfiguration {
 
         @Bean
         @ConditionalOnMissingBean
-//        public StrategyUserDetailsService herodotusRemoteUserDetailsService(FeignRemoteUserDetailsService feignRemoteUserDetailsService) {
         public StrategyUserDetailsService herodotusRemoteUserDetailsService(FeignRemoteUserDetailsService remoteUserDetailsService, RemoteSocialDetailsService remoteSocialDetailsService) {
             log.debug("[GstDev Cloud] |- Strategy [Remote User Details Service] Auto Configure.");
             return new RemoteUserDetailsService(remoteUserDetailsService,remoteSocialDetailsService);

@@ -18,11 +18,10 @@ import com.gstdev.cloud.service.system.domain.entity.SysUser;
 import com.gstdev.cloud.service.system.service.SysSecurityService;
 import com.gstdev.cloud.service.system.service.SysSocialUserService;
 import com.gstdev.cloud.service.system.service.SysUserService;
+import jakarta.annotation.Resource;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.hutool.core.bean.BeanUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.converter.Converter;
 
 import java.util.Set;
 
@@ -34,20 +33,14 @@ import java.util.Set;
  */
 public class DefaultSocialAuthenticationHandler extends AbstractSocialAuthenticationHandler {
 
-    @Autowired
+    @Resource
     private SysUserService sysUserService;
-    @Autowired
+    @Resource
     private SysSocialUserService sysSocialUserService;
-    @Autowired
+    @Resource
     private SysSecurityService sysSecurityService;
-    @Autowired
+    @Resource
     private AccessHandlerStrategyFactory accessHandlerStrategyFactory;
-
-    private final Converter<SysUser, DefaultSecurityUser> toUser;
-
-    public DefaultSocialAuthenticationHandler() {
-        this.toUser = new SysUserToSecurityUserConverter();
-    }
 
     @Override
     public SocialUserDetails identity(String source, AccessPrincipal accessPrincipal) throws AccessIdentityVerificationFailedException {

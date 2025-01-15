@@ -50,7 +50,7 @@ public class AutoSystemConfiguration {
     @ConditionalOnMissingBean
     public DefaultSocialAuthenticationHandler defaultSocialAuthenticationHandler() {
         DefaultSocialAuthenticationHandler defaultSocialAuthenticationHandler = new DefaultSocialAuthenticationHandler();
-        log.trace("[GstDev Cloud] |- Bean [Default Social Authentication Handler] Auto Configure.");
+        log.info("[GstDev Cloud] |- Bean [Default Social Authentication Handler] Auto Configure.");
         return defaultSocialAuthenticationHandler;
     }
 
