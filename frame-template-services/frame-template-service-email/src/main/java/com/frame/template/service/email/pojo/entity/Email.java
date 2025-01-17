@@ -1,9 +1,6 @@
 package com.frame.template.service.email.pojo.entity;
 
-import com.frame.template.common.persistence.AbstractAuditingEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -15,7 +12,12 @@ import java.util.Objects;
 @Entity
 @Table(name = "email")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid2")
-public class Email extends AbstractAuditingEntity {
+public class Email {
+
+    @Id
+    @GeneratedValue(generator = "jpa-uuid")
+    @Column(name = "id", length = 64, nullable = false)
+    private String id;
 
     @Column(name = "type")
     private int type;

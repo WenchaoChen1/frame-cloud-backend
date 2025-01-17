@@ -1,22 +1,76 @@
 spring:
-  cloud:
-    nacos:
-      discovery:
-        server-addr: ${NACOS_DISCOVERY_HOST:127.0.0.1}:${NACOS_DISCOVERY_PORT:8848}
-        namespace: ${NACOS_DISCOVERY_NAMESPACE:frame-cloud}
-        group: ${NACOS_DISCOVERY_GROUP:dev}
-      config:
-        namespace: ${spring.cloud.nacos.discovery.namespace}
-        server-addr: ${spring.cloud.nacos.discovery.server-addr}
-        file-extension: yml
-        group: ${NACOS_CONFIG_GROUP:dev}
-        #指定共享配置，且支持动态刷新
-        extension-configs:
-          - data-id: common-config.yml
-            group: ${NACOS_CONFIG_GROUP:dev}
-            refresh: true
-  application:
-    name: gstdev-storage
-
+    application:
+        name: gstdev-business
+    cloud:
+        nacos:
+            discovery:
+                server-addr: ${NACOS_DISCOVERY_HOST:127.0.0.1}:${NACOS_DISCOVERY_PORT:8848}
+                namespace: ${NACOS_DISCOVERY_NAMESPACE:frame-cloud}
+                group: ${NACOS_DISCOVERY_GROUP:dev}
+            config:
+                namespace: ${spring.cloud.nacos.discovery.namespace}
+                server-addr: ${spring.cloud.nacos.discovery.server-addr}
+                file-extension: yml
+                group: ${NACOS_CONFIG_GROUP:dev}
+                #指定共享配置，且支持动态刷新
+                extension-configs:
+                    #          - data-id: common-config.yaml
+                    #            group: ${NACOS_CONFIG_GROUP:common}
+                    -   data-id: gstdev-cloud-environment.yaml
+                       #                        group: ${PROFILE:@profile@}
+                        group: development
+                    -   data-id: gstdev-cloud-platform.yaml
+                        group: common
+                    #                    -   data-id: gstdev-cloud-database-${DATABASE:@database@}.yaml
+                    -   data-id: gstdev-cloud-database-postgresql.yaml
+                        group: common
+                    -   data-id: gstdev-cloud-database.yaml
+                        group: common
+                    -   data-id: gstdev-cloud-redis.yaml
+                        group: common
+                    -   data-id: gstdev-cloud-cache.yaml
+                        group: common
+                    -   data-id: gstdev-cloud-rest.yaml
+                        group: common
+                    -   data-id: gstdev-cloud-kafka.yaml
+                        group: common
+                    #                    -   data-id: gstdev-cloud-social.yaml
+                    #                        group: common
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    issuer-uri: ${gstdev.cloud.endpoint.issuer-uri}
+                    jwk-set-uri: ${gstdev.cloud.endpoint.jwk-set-uri}
+                opaquetoken:
+                    client-id: password-client
+                    client-secret: 123456
+server:
+    port: 8107
+gstdev:
+    cloud:
+        oauth2:
+            authentication:
+                authorizationServersettings:
+                    issuer-uri: http://127.0.0.1:8101
+                formLogin:
+                    closeCaptcha: true
+                    # category: HUTOOL_GIF
+                    # loginPageUrl: /a/login
+            authorization:
+                validate: LOCAL
+                matcher:
+                    staticResources:
+                    permitAll:
+                        - "/test/a"
+                        - "/v1/**"
+                        - "/aaaaaaaat/a"
+                        # - "/actuator*"
+                        # - "/actuator/**"
+                        - "/actuator/beans"
+                        # - "/**"
+                        - "/v1/permission/a"
+                        # - "/**"
+                    hasAuthenticated:
 
 

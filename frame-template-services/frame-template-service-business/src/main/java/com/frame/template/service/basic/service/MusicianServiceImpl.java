@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 @Service
 public class MusicianServiceImpl extends BaseServiceImpl<Musician, String, MusicianRepository> implements MusicianService {
-    public MusicianServiceImpl(MusicianRepository musicianRepository) {
-        super(musicianRepository);
+    public MusicianServiceImpl(MusicianRepository baseRepository) {
+        super(baseRepository);
     }
 }

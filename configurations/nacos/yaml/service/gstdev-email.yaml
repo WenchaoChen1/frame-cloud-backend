@@ -22,7 +22,16 @@ spring:
         mode: HTML5
         encoding: UTF-8
         enabled: true
-        
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    issuer-uri: ${gstdev.cloud.endpoint.issuer-uri}
+                    jwk-set-uri: ${gstdev.cloud.endpoint.jwk-set-uri}
+                opaquetoken:
+                    client-id: password-client
+                    client-secret: 123456
+
 invitation:
   app-url: http://uat.veritypay.com
 ses:

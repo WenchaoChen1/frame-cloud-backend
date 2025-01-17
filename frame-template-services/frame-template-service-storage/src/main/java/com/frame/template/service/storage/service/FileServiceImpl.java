@@ -10,8 +10,8 @@
 package com.frame.template.service.storage.service;
 
 
-import com.frame.template.common.constant.FileConstants;
-import com.frame.template.common.redis.currentLoginInformation.RedisCurrentLoginInformation;
+
+import com.frame.template.service.storage.FileConstants;
 import com.frame.template.service.storage.domain.base.*;
 import com.frame.template.service.storage.domain.entity.File;
 import com.frame.template.service.storage.mapper.FileMapper;
@@ -19,6 +19,7 @@ import com.frame.template.service.storage.repository.FileRepository;
 import com.gstdev.cloud.base.definition.domain.Result;
 import com.gstdev.cloud.base.definition.exception.PlatformRuntimeException;
 import com.gstdev.cloud.data.core.service.BasePOJOServiceImpl;
+import com.gstdev.cloud.data.core.service.BaseServiceImpl;
 import com.gstdev.cloud.plugin.storage.core.service.StorageService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -30,50 +31,32 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class FileServiceImpl extends BasePOJOServiceImpl<File, String, FileRepository, FileMapper, FileDto, FileInsertInput, FileUpdateInput, FilePageQueryCriteria, FileFindAllByQueryCriteria> implements FileService {
+public class FileServiceImpl  extends BaseServiceImpl<File, String, FileRepository> implements FileService {
 
     @Resource
     private FileRepository fileRepository;
     @Resource
     private FileMapper fileMapper;
-    @Resource
-    private RedisCurrentLoginInformation redisCurrentLoginInformation;
 
-//  @Resource
-//  private StorageProperties storageProperties;
-
-    @Resource
-    private StorageService storageService;
-
-
-    public FileServiceImpl(FileRepository fileRepository, FileMapper fileMapper) {
-        super(fileRepository, fileMapper);
+    public FileServiceImpl(FileRepository fileRepository) {
+        super(fileRepository);
 //        this.fileRepository = fileRepository;
 //        this.fileMapper = fileMapper;
     }
 
-    @Override
-    public FileDto findByIdToDto(String id) {
-        FileDto byId = super.findByIdToDto(id);
-        String url = storageService.getObjectURL(byId.getBucketName(), byId.getName(), 2);
-        byId.setLink(url);
-        return byId;
-    }
 
     @Override
     @Transactional
     public Result<FileDto> upload(MultipartFile file, String tenantId, FileConstants fileConstants) {
         File fileEntity = upload(file);
         fileEntity.setTenantId(tenantId);
-        fileEntity.setServices(fileConstants.getService());
-        fileEntity.setTableCode(fileConstants.getCode());
-        FileDto fileDto = insertToDto(fileEntity);
+        FileDto fileDto = fileMapper.toDto(fileEntity);
         return Result.success(fileDto);
     }
 
     @Override
     @Transactional
-    public Result<List<FileDto>> uploads(List<MultipartFile> file, String tenantId, FileConstants fileConstants) {
+    public Result<List<FileDto>> uploads(List<MultipartFile> file, String tenantId,FileConstants fileConstants) {
         if (file.size() == 0) {
             throw new PlatformRuntimeException("文件不能为空");
         }
@@ -81,9 +64,7 @@ public class FileServiceImpl extends BasePOJOServiceImpl<File, String, FileRepos
         for (MultipartFile multipartFile : file) {
             File fileEntity = upload(multipartFile);
             fileEntity.setTenantId(tenantId);
-            fileEntity.setServices(fileConstants.getService());
-            fileEntity.setTableCode(fileConstants.getCode());
-            FileDto fileDto = insertToDto(fileEntity);
+            FileDto fileDto = fileMapper.toDto(fileEntity);
             fileDtos.add(fileDto);
         }
         return Result.success(fileDtos);
